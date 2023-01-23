@@ -23,8 +23,8 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           ACCESS_TOKEN: ${{ secrets.HEXO }}
-          BRANCH: source
-          FOLDER: source/_posts
+          BRANCH: source-book
+          FOLDER: source/_posts/
 
       # 生成静态文件
       - name: Build
