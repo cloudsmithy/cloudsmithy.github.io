@@ -17,6 +17,10 @@ jobs:
         uses: checkout@V2
         with:
           persist-credentials: false
+
+            # 生成静态文件
+      - name: install and build
+        run: npm install && npm run build
           
       # 部署到 GitHub markdown BOOK
       - name: Deploy markdown Book
@@ -24,11 +28,7 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.HEXO }}
           BRANCH: source-book
-          FOLDER: source/_posts/
-
-      # 生成静态文件
-      - name: Build
-        run: npm install && npm run build
+          FOLDER: ./source/_posts/
 
       # 部署到 GitHub Pages
       - name: Deploy Pages
@@ -36,8 +36,24 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.HEXO }}
           BRANCH: gh-pages
-          FOLDER: public
+          FOLDER: ./public
 
+
+
+# name: Code Linting
+
+# on: [push, pull_request]
+
+# jobs:
+#   lint:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: latest
+#       - run: npm install
+#       - run: npm run lint
 # name: Pages
 
 # on:
