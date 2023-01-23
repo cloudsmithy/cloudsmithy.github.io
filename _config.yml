@@ -1,11 +1,11 @@
-title: 镜湖元自属闲人 # 浏览器显示标题
+title: 镜湖元自属闲人
 subtitle: ''
 description: ''
 keywords: null
-author: Xu # 作者姓名
-language: zh-CN # 语言
+author: Xu
+language: zh-CN
 timezone: ''
-url: http://mengze-han.github.io # URL
+url: https://xu-hardy.github.io/
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
