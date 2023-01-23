@@ -14,7 +14,7 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: checkout@V3
         with:
           persist-credentials: false
           
@@ -37,3 +37,36 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.HEXO }}
           BRANCH: gh-pages
           FOLDER: public
+
+# name: Pages
+
+# on:
+#   push:
+#     branches:
+#       - main # default branch
+
+# jobs:
+#   pages:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Use Node.js 16.x
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: "16"
+#       - name: Cache NPM dependencies
+#         uses: actions/cache@v2
+#         with:
+#           path: node_modules
+#           key: ${{ runner.OS }}-npm-cache
+#           restore-keys: |
+#             ${{ runner.OS }}-npm-cache
+#       - name: Install Dependencies
+#         run: npm install
+#       - name: Build
+#         run: npm run build
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.HEXO }}
+#           publish_dir: ./public
