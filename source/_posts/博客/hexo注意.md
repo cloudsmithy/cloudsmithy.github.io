@@ -27,5 +27,17 @@ toc: true # 显示目录
 categories: blog #显示分类
 ```
 
-折叠文章用：
+折叠文章用，不喜欢改框架里的JS代码
 <!--more-->
+
+https://sherlockgy.github.io/2018/06/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87/
+
+## 404页面
+
+404页面和page页面地位一样，404文件夹+index.md, 网上也有很多好看的404页面可以借鉴，不过本地调式的时候不显示，部署之后就有了。
+
+
+
+## 附件
+
+yml文件附件找的根目录是source，所有图片什么的放在source/images下就好。
