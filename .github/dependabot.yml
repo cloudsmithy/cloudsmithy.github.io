@@ -23,24 +23,23 @@ jobs:
       #   uses: checkout@V2
       #   with:
       #     persist-credentials: false
-
             # 生成静态文件
       - name: install and build
         run: npm install && npm run build
           
       # 部署到 GitHub markdown BOOK
       - name: Deploy markdown Book
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.HEXO }}
-          BRANCH: source-book
+          ACCESS_TOKEN: ${{ secrets.acc }}
+          BRANCH: docs
           FOLDER: ./source/_posts/
 
       # 部署到 GitHub Pages
       - name: Deploy Pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          ACCESS_TOKEN: ${{ secrets.HEXO }}
+          ACCESS_TOKEN: ${{ secrets.acc }}
           BRANCH: gh-pages
           FOLDER: ./public
 
