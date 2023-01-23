@@ -12,13 +12,13 @@ jobs:
     # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: latest
+      # - uses: actions/checkout@v3
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: latest
       
-      - name: install and build
-        run: npm install && npm run build
+      # - name: install and build
+      #   run: npm install && npm run build
           
       # 部署到 GitHub markdown BOOK
       - name: Deploy markdown Book
@@ -28,10 +28,10 @@ jobs:
           BRANCH: docs
           FOLDER: ./source/_posts/
 
-      # 部署到 GitHub Pages
-      - name: Deploy Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v4
-        with:
-          ACCESS_TOKEN: ${{ secrets.acc }}
-          BRANCH: gh-pages
-          FOLDER: ./public
+      # # 部署到 GitHub Pages
+      # - name: Deploy Pages
+      #   uses: JamesIves/github-pages-deploy-action@releases/v3
+      #   with:
+      #     ACCESS_TOKEN: ${{ secrets.acc }}
+      #     BRANCH: gh-pages
+      #     FOLDER: ./public
