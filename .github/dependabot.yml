@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 拉取代码
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          node-version: latest
+          persist-credentials: false
           
       # 部署到 GitHub markdown BOOK
       - name: Deploy markdown Book
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.HEXO }}
           BRANCH: source
@@ -32,41 +32,8 @@ jobs:
 
       # 部署到 GitHub Pages
       - name: Deploy Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.HEXO }}
           BRANCH: gh-pages
           FOLDER: public
-
-# name: Pages
-
-# on:
-#   push:
-#     branches:
-#       - main # default branch
-
-# jobs:
-#   pages:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Use Node.js 16.x
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: "16"
-#       - name: Cache NPM dependencies
-#         uses: actions/cache@v2
-#         with:
-#           path: node_modules
-#           key: ${{ runner.OS }}-npm-cache
-#           restore-keys: |
-#             ${{ runner.OS }}-npm-cache
-#       - name: Install Dependencies
-#         run: npm install
-#       - name: Build
-#         run: npm run build
-#       - name: Deploy
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           github_token: ${{ secrets.HEXO }}
-#           publish_dir: ./public
