@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "start": "hexo s --debug",
+    "dev": "hexo s --debug",
     "page": "hexo new page",
     "post": "hexo new post",
     "draft": "hexo new draft",
