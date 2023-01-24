@@ -27,6 +27,18 @@ toc: true # 显示目录
 categories: blog #显示分类
 ```
 
+```yaml
+---
+title: 
+date: 2021-01-22
+tags: 
+toc: true 
+categories: blog 
+---
+```
+
+
+
 折叠文章用，不喜欢改框架里的JS代码
 <!--more-->
 
