@@ -44,9 +44,11 @@ navbar:
     menu:
         镜湖: /
         时光线: /archives
+        标签: /tags
         博客新功能计划: /todo
         计算机技术: /vue_blog
         AWS: /aws
+        备注: /note
         关于我: /about
     links:
         Download on GitHub:
