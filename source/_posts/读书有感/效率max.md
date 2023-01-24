@@ -3,7 +3,7 @@ title: 效率（忘记哪里摘抄的了
 date: 2021-01-22
 tags: 读书
 toc: true 
-categories: 读书
+categories: 读书笔记
 ---
 
 ### 1.两分钟法则

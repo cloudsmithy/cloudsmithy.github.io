@@ -10,7 +10,9 @@
     "start": "hexo s --debug",
     "page": "hexo new page",
     "post": "hexo new post",
-    "draft": "hexo new draft"
+    "draft": "hexo new draft",
+    "commit": "git add . && git commit -m",
+    "push": "git push"
   },
   "hexo": {
     "version": "6.3.0"
