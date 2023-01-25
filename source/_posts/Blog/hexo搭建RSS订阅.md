@@ -17,7 +17,11 @@ categories:
 npm install --save hexo-generator-feed
 ```
 
-然后在 hexo 根目录下的 `_config.yml` 文件中添加配置
+<!--more-->
+
+
+
+然后在 hexo 根目录下的 `_config.yml` 文件中添加配置，用来开启
 
 ```yaml
 feed:
@@ -26,15 +30,12 @@ feed:
     limit: 20
 ```
 
-然后在 theme 目录下的 `_config.yml` 文件中添加配置, 然后部署就可以看到效果了
-
-```yaml
-social_links：
-	rss: /atom.xml
-```
-
-
+然后在 theme 目录下的 `_config.yml` 文件中添加配置, 调试和部署模式可以看到效果
 
 参考：
 
 https://wxnacy.com/2018/12/12/hexo-add-rss/
+
+https://blog.haysc.tech/hexo-feed-setup/
+
+https://sspai.com/post/56079
