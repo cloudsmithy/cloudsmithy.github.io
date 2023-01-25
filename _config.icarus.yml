@@ -129,7 +129,7 @@ widgets:
                 url: https://xu-hardy.github.io/tag
             RSS:
                 icon: fas fa-rss
-                url: /
+                url: "atom.xml"
     -
         position: left
         type: toc
