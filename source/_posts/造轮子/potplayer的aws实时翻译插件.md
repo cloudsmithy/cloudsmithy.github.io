@@ -7,3 +7,4 @@ tags:
     - 实时翻译
 ---
 
+![image-20230125094149373](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/image-20230125094149373.png)
