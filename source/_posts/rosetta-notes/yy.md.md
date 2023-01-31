@@ -1,3 +1,6 @@
+---
+abbrlink: '0'
+---
 The second part of a compound adjective, which is the more important part and is modified by the first, may be:
 ·an adjective;
 Example: I fell in the water, and it was ice-cold! Many compound adjectives fit none of the cases described above.

@@ -1,9 +1,10 @@
 ---
 title: markdown for Typora
-date: 2020-07-24
 tags: blog
 toc: true
 categories: blog
+abbrlink: dd692f46
+date: 2020-07-24 00:00:00
 ---
 
 

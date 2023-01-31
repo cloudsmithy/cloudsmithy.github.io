@@ -183,7 +183,7 @@ plugins:
         tracking_id: 
     bing_webmaster:
         tracking_id: 
-    busuanzi: false
+    busuanzi: true
     cnzz:
         id: 
         web_id: 

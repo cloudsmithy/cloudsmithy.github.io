@@ -1,9 +1,10 @@
 ---
 title: 记录mokee刷机
-date: 2021-01-22
-tags: 
-toc: true 
-categories: 外设 
+toc: true
+categories: 外设
+abbrlink: a8322290
+date: 2021-01-22 00:00:00
+tags:
 ---
 
 ## How does flash mokee as Android System?

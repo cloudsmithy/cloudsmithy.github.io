@@ -1,3 +1,6 @@
+---
+abbrlink: '0'
+---
 ### The present conditional is used:
 
 in a principal clause of which the dependent (often understood) is introduced by if+ preterite and

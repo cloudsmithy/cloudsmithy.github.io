@@ -1,9 +1,10 @@
 ---
 title: pcigo 搭建GitHub图床
-date: 2023-01-24
 tags: blog
 toc: true
 categories: blog
+abbrlink: 27e87c64
+date: 2023-01-24 00:00:00
 ---
 
 

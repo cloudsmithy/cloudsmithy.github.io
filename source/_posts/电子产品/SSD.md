@@ -1,9 +1,10 @@
 ---
-title:  SSD介绍
-date: 2017-03-10
-tags: 
-toc: true 
-categories: 外设 
+title: SSD介绍
+toc: true
+categories: 外设
+abbrlink: 2e34d332
+date: 2017-03-10 00:00:00
+tags:
 ---
 ## slc、mlc、tlc闪存芯片颗粒区别介绍
 

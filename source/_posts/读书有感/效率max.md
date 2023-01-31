@@ -1,9 +1,10 @@
 ---
 title: 效率（忘记哪里摘抄的了
-date: 2021-01-22
 tags: 读书
-toc: true 
+toc: true
 categories: 读书笔记
+abbrlink: 26314a8
+date: 2021-01-22 00:00:00
 ---
 
 ### 1.两分钟法则

@@ -1,3 +1,6 @@
+---
+abbrlink: '0'
+---
 ### Construction of the preterite
 
 

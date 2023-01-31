@@ -1,12 +1,13 @@
 ---
 title: Hexo 注意
-date: 2021-01-22
-tags: 
-    - blog
-    - hexo
+tags:
+  - blog
+  - hexo
 toc: true
 categories:
-    - blog
+  - blog
+abbrlink: 2dedb869
+date: 2021-01-22 00:00:00
 ---
 
 ## 文章类型
