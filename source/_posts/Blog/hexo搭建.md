@@ -72,15 +72,15 @@ More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 
 hexo的配置文件是_config.yml，其中加了注释的是覆盖主题配置文件的。
 
-```yaml
-title: Hexo
+```
+title: 镜湖
 subtitle: ''
 description: ''
 keywords: null
-author: Xu # 作者姓名
-language: zh-CN # 语言
+author: Xu
+language: zh-CN
 timezone: ''
-url: http://mengze-han.github.io # URL
+url: https://xu-hardy.github.io/
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
@@ -103,8 +103,8 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
-relative_link: false
+post_asset_folder: true
+relative_link: true
 future: true
 highlight:
   enable: true
@@ -137,15 +137,21 @@ ignore: null
 theme: icarus
 deploy:
   type: ''
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20
+
 ```
+
+
 
 接下来是_config.icarus.yml，这个是icarus主题的配置文件：
 
 ```yaml
 version: 5.1.0
 variant: default
-logo:
-    text: 镜湖元自属闲人
+logo: /img/favicon.svg
 head:
     favicon: /img/favicon.svg
     manifest:
@@ -186,25 +192,19 @@ head:
         - ''
     rss: 
 navbar:
-    menu: # 下边需要改成中文
-        主页: /
+    menu:
+        镜湖: /
         时光线: /archives
-        分类: /categories
         标签: /tags
-        技术: /vue_blog
+        博客新功能计划: /todo
+        计算机技术: /vue_blog
         AWS: /aws
+        备注: /note
         关于我: /about
-        # Home: /
-        # Archives: /archives
-        # Categories: /categories
-        # Tags: /tags
-        # Tech: /tech
-        # Aws: /aws
-        # About: /about
     links:
         Download on GitHub:
             icon: fab fa-github
-            url: https://github.com/mengze-han
+            url: https://github.com/Xu-Hardy/Xu-Hardy.github.io
 footer:
     links:
         Creative Commons:
@@ -215,7 +215,7 @@ footer:
             url: https://creativecommons.org/licenses/by/4.0/
         Download on GitHub:
             icon: fab fa-github
-            url: https://github.com/mengze-han
+            url: https://github.com/Xu-Hardy/Xu-Hardy.github.io
 article:
     highlight:
         theme: atom-one-light
@@ -241,23 +241,17 @@ comment:
     shortname: 'my'
 donates:
     -
-        type: afdian
-        url: ''
-    -
         type: alipay
-        qrcode: ''
-    -
-        type: patreon
-        url: ''
+        qrcode: '/images/ali.jpg'
     -
         type: wechat
-        qrcode: ''
+        qrcode: '/images/wechat.jpg'
 # share:
 #     type: sharethis
 #     install_url: ''
-sidebar:
+sidebar: # 固定左右边栏
     left:
-        sticky: false
+        sticky: true
     right:
         sticky: true
 widgets:
@@ -266,27 +260,27 @@ widgets:
         type: profile
         author: Xu
         author_title: AWS SUPPORT
-        location: Bei Jing
-        avatar: 
-        avatar_rounded: false
+        location: BEI JING
+        avatar: '/images/me.png'
+        avatar_rounded: true
         gravatar: 
-        follow_link: https://github.com/mengze-han
+        follow_link: https://github.com/Xu-Hardy/Xu-Hardy.github.io
         social_links:
-            Github:
-                icon: fab fa-github
-                url: https://github.com/mengze-han
-            Facebook:
-                icon: fab fa-facebook
-                url: https://facebook.com
-            Twitter:
-                icon: fab fa-twitter
-                url: https://twitter.com
-            Dribbble:
-                icon: fab fa-dribbble
-                url: https://dribbble.com
+            Home:
+                icon: fa fa-home
+                url: https://xu-hardy.github.io/
+            AWS:
+                icon: fab fa-aws
+                url: https://xu-hardy.github.io/aws
+            archives:
+                icon: fa fa-calendar
+                url: https://xu-hardy.github.io/archives
+            Tags: 
+                icon: fa fa-tags
+                url: https://xu-hardy.github.io/tag
             RSS:
                 icon: fas fa-rss
-                url: /
+                url: "atom.xml"
     -
         position: left
         type: toc
@@ -299,6 +293,9 @@ widgets:
         links:
             Hexo: https://hexo.io
             Bulma: https://bulma.io
+            Liarlee: https://liarlee.site/
+            easyhexo: https://easyhexo.com/
+            hexo-theme-icarus: https://ppoffice.github.io/hexo-theme-icarus/
     -
         position: left
         type: categories
@@ -319,6 +316,11 @@ widgets:
         type: subscribe_email
         description: 
         feedburner_id: ''
+    # -
+        # position: left
+        # type: adsense
+        # client_id: ''
+        # slot_id: ''
     -
         position: left
         type: followit
@@ -360,6 +362,5 @@ providers:
     cdn: jsdelivr
     fontcdn: google
     iconcdn: fontawesome
-
 ```
 

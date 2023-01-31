@@ -5,3 +5,8 @@ tags: blog
 toc: true
 categories: blog
 ---
+
+怎么开启git page，
+
+
+action yml
