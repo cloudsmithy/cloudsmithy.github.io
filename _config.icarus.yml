@@ -126,7 +126,7 @@ widgets:
                 url: https://xu-hardy.github.io/archives
             Tags: 
                 icon: fa fa-tags
-                url: https://xu-hardy.github.io/tag
+                url: https://xu-hardy.github.io/tags
             RSS:
                 icon: fas fa-rss
                 url: "atom.xml"
