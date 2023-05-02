@@ -1,7 +1,7 @@
 ---
 title: ventoy引导wtg
 tags: 外设
-date: 2023-05-10 00:00:00
+date: 2023-02-10 00:00:00
 ---
 
 ## ventoy
@@ -18,7 +18,7 @@ https://bbs.luobotou.org/thread-761-1-1.html
 
 我的系统是CZ880 的256G版本,读写均可达到400MB/S左右，这个速度已经很接近Sata3固态硬盘了。
 
-
+<!--more-->
 
 ![Disk mark](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/image-20230210161015798.png)
 
