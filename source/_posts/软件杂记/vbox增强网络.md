@@ -2,6 +2,7 @@
 title: vbox增强网络
 tags:
   - 虚拟机
+abbrlink: d73d2602
 date: 2022-12-30 00:00:00
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: ventoy引导wtg
 tags: 外设
+abbrlink: 874b576b
 date: 2023-02-10 00:00:00
 ---
 
