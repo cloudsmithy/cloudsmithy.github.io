@@ -12,7 +12,6 @@ tags:
 如果你的系统是稳定版的话，可能需要先降级回到开发版
 
 
-
 ### 0. unlock and image zip download
 
 
