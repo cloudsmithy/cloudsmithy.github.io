@@ -11,8 +11,9 @@
     "page": "hexo new page",
     "post": "hexo new post",
     "draft": "hexo new draft",
-    "commit": "git add . && git commit -m",
-    "push": "git push"
+    "cm": "git add . && git commit -m",
+    "dp": "yarn sp && git push",
+    "sp": "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
   },
   "hexo": {
     "version": "6.3.0"
