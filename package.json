@@ -12,7 +12,7 @@
     "post": "hexo new post",
     "draft": "hexo new draft",
     "cm": "git add . && git commit -m",
-    "dp": "yarn sp && git push",
+    "dp": "yarn sp && git push -v",
     "sp": "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
   },
   "hexo": {
