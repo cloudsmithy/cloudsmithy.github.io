@@ -45,8 +45,8 @@ navbar:
         镜湖: /
         时光线: /archives
         标签: /tags
-        博客新功能计划: /todo
-        计算机技术: /vue_blog
+        语录: /quotes
+        CS Core: /vue_blog
         AWS: /aws
         备注: /note
         关于我: /about
@@ -108,7 +108,7 @@ widgets:
         position: left
         type: profile
         author: Xu
-        author_title: AWS SUPPORT
+        author_title:  随手记
         location: BEI JING
         avatar: '/images/me.png'
         avatar_rounded: true
@@ -145,6 +145,8 @@ widgets:
             Liarlee: https://liarlee.site/
             easyhexo: https://easyhexo.com/
             hexo-theme-icarus: https://ppoffice.github.io/hexo-theme-icarus/
+            中国哲学书电子化计划: https://ctext.org/histories/zhs
+            五个五百年前: http://mahacashiaba.blogspot.com/
     -
         position: left
         type: categories
