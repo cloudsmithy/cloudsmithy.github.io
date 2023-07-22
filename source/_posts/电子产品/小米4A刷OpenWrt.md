@@ -20,10 +20,10 @@ date: 2023-06-22 00:00:00
 
 ### 刷前提醒  
 
-1不要偷懒不刷breed，否则刷崩了就只能救砖  
-2救砖只能用小米自己的软件，毕竟封装的太多了，能用开源就用开源，尽量屏蔽厂家这一层  
-3可以找下国内魔改的Rom，虽然官方有小米的适配，但是刷完默认Wi-Fi，还有过几十分钟5G Wi-Fi变成公开的问题。  
-4还是建议使用有线刷机，无线的话无法刷入Breed  
+1. 不要偷懒不刷breed，否则刷崩了就只能救砖  
+2. 救砖只能用小米自己的软件，毕竟封装的太多了，能用开源就用开源，尽量屏蔽厂家这一层  
+3. 可以找下国内魔改的Rom，虽然官方有小米的适配，但是刷完默认Wi-Fi，还有过几十分钟5G Wi-Fi变成公开的问题。  
+4. 还是建议使用有线刷机，无线的话无法刷入Breed  
   
 官方的地址，看看就好  
 
@@ -95,10 +95,10 @@ Breed更像是BIOS一类的东西，每次Reset路由器之后，就会进入到
   
 路由器没啥空间了，所以都要放在/tmp文件夹下，把链接换成自己文件服务器的链接。  
   
-1进入到临时目录:cd /tmp.  
-2下载"breed":curl [https://breed.hackpascal.net/breed-mt7621-pbr-m1.bin](https://breed.hackpascal.net/breed-mt7621-pbr-m1.bin) --output firmware.bin  
-3执行命令:mtd -r write /tmp/firmware.bin Bootloader  
-4重启后浏览器进入"Breed Web 恢复控制台":192.168.1.1  
+1. 进入到临时目录:cd /tmp.  
+2. 下载"breed":curl [https://breed.hackpascal.net/breed-mt7621-pbr-m1.bin](https://breed.hackpascal.net/breed-mt7621-pbr-m1.bin) --output firmware.bin  
+3. 执行命令:mtd -r write /tmp/firmware.bin Bootloader  
+4. 重启后浏览器进入"Breed Web 恢复控制台":192.168.1.1  
 
 [v2.5.29 小米4A千兆版OpenWrt固件.zip(39.8 MB)](https://github.com/Xu-Hardy/object-storage/blob/master/mi4A/v2.5.29%20%E5%B0%8F%E7%B1%B34A%E5%8D%83%E5%85%86%E7%89%88OpenWrt%E5%9B%BA%E4%BB%B6.zip)
   
