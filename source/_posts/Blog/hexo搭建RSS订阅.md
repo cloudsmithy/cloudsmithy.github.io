@@ -1,12 +1,11 @@
 ---
-social_linkstitle: Hexo RSS订阅
+title: Hexo RSS订阅
 tags:
   - blog
   - hexo
 toc: true
 categories:
   - blog
-abbrlink: '0'
 date: 2022-01-25 00:00:00
 ---
 
