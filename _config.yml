@@ -6,13 +6,13 @@ author: Xu
 language: zh-CN
 timezone: 'Asia/Shanghai'
 url: https://xu-hardy.github.io/
-permalink: :abbrlink/
-abbrlink:
-  alg: crc32  #算法: crc16(default) and crc32
-  rep: hex    #进制: dec(default) and hex
+permalink: :post_title
+# abbrlink:
+#   alg: crc32  #算法: crc16(default) and crc32
+#   rep: hex    #进制: dec(default) and hex
 pretty_urls:
-  trailing_index: true
-  trailing_html: true
+  trailing_index: false
+  trailing_html: false
 source_dir: source
 public_dir: public
 tag_dir: tags

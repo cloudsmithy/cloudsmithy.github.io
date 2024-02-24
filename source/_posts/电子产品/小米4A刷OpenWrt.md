@@ -1,8 +1,8 @@
 ---
 title: 小米4A刷OpenWrt
-tags: 外设
+tags:
+  - 外设
 toc: true
-abbrlink: 63a7a8fe
 date: 2023-06-22 00:00:00
 ---
 
