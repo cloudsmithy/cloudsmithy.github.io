@@ -6,6 +6,7 @@ title: NFC复制卡写手机手环
 
 ### 读原来的卡
 
+ <!--more-->
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20240225075543.png)
 
 
