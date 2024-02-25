@@ -15,6 +15,10 @@ title: NFC复制卡写手机手环
 
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20240225075512.png)
 
+### 创建空白卡
+
+![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/202402250843204.png)
+
 ### 仅复制卡片卡号
 
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/IMG_4586.jpg)
@@ -31,6 +35,10 @@ title: NFC复制卡写手机手环
 
 
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/IMG_4587.JPG)
+
+添加成功
+
+![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20240225084428.png)
 
 ### 参考资料
 NFC-PRO至尊双频版操作说明
