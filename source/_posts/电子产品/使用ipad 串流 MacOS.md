@@ -1,6 +1,7 @@
 ---
 title: 使用ipad 串流 MacOS
 categories: 远程访问
+date: 2024-03-24 00:00:00
 ---
 
 服务端是sunshine，客户端叫做moonlight
