@@ -14,6 +14,8 @@ https://appstore.lazycat.cloud/#/shop/detail/xu.deploy.containly
 
 故事还要用上次折腾黑群晖说起，本意想把 NAS 和打印机共享二合一的，所以把闲着的软路由做了改装。顺便使用 Docker 跑一些服务，有老本行的 ES 集群，也有自己写的一些工具类型的服务。
 
+<!-- more -->
+
 随着时间增长，部署的服务多了，时间长了就会忘记服务的端口，甚至还要登录群晖 Web 端进行查看，群晖的 Container Manager 很好用，就是登录的密码策略比较复杂，每次登录都比较麻烦，所以后来使用了一个 HomePage 来保存这些服务。但是每次调试 Docker 都非常麻烦。与 Portainer 相比，我需要的只是一个简洁的面板来查看容器的 URI、状态，并进行启停操作，因此我决定自己开发一个。
 
 ![image-20250606164850382](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250606164850382.png)
