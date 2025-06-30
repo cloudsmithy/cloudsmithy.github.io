@@ -3,7 +3,7 @@ title: 记一次Amazon Q pro的使用
 tags: AWS
 toc: true
 categories: AWS
-date: 2025-07-02 00:00:00
+date: 2025-06-02 00:00:00
 ---
 
 参加 AWS 的比赛申请了 Amazon Q pro，平时也在用 builderID 登陆使用免费的账户。Amazon Q pro 需要和 IAM identity center 一起用，不过比赛直接给配置好了，直接分发 IAM identity center 的账户，我们只需要注册，登陆，然后关联 Q pro。
