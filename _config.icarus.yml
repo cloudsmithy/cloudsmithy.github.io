@@ -53,7 +53,7 @@ navbar:
     links:
         Download on GitHub:
             icon: fab fa-github
-            url: https://github.com/Xu-Hardy/Xu-Hardy.github.io
+            url: https://github.com/cloudsmithy/cloudsmithy.github.io
 footer:
     links:
         Creative Commons:
@@ -64,7 +64,7 @@ footer:
             url: https://creativecommons.org/licenses/by/4.0/
         Download on GitHub:
             icon: fab fa-github
-            url: https://github.com/Xu-Hardy/Xu-Hardy.github.io
+            url: https://github.com/cloudsmithy/cloudsmithy.github.io
 article:
     highlight:
         theme: atom-one-light
