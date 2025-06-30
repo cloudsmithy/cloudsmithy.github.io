@@ -23,6 +23,8 @@ date: 2025-07-02 00:00:00
 
 ![懒猫清单 PWA 效果图](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506145822013.png)
 
+<!-- more -->
+
 **支持 PWA 的网站，在地址栏右侧会自动弹出“安装应用”按钮。**
 
 ![添加应用](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506144310554.png)
