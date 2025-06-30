@@ -2,214 +2,203 @@ version: 5.1.0
 variant: default
 logo: /img/favicon.svg
 head:
-    favicon: /img/favicon.svg
-    manifest:
-        name: 
-        short_name: 
-        start_url: 
-        theme_color: 
-        background_color: 
-        display: standalone
-        icons:
-            -
-                src: ''
-                sizes: ''
-                type: 
-    open_graph:
-        title: 
-        type: blog
-        url: 
-        image: 
-        site_name: 
-        author: 
-        description: 
-        twitter_card: 
-        twitter_id: 
-        twitter_site: 
-        google_plus: 
-        fb_admins: 
-        fb_app_id: 
-    structured_data:
-        title: 
-        description: 
-        url: 
-        author: 
-        publisher: 
-        publisher_logo: 
-        image: 
-    meta:
-        - ''
-    rss: 
+  favicon: /img/favicon.svg
+  manifest:
+    name:
+    short_name:
+    start_url:
+    theme_color:
+    background_color:
+    display: standalone
+    icons:
+      - src: ""
+        sizes: ""
+        type:
+  open_graph:
+    title:
+    type: blog
+    url:
+    image:
+    site_name:
+    author:
+    description:
+    twitter_card:
+    twitter_id:
+    twitter_site:
+    google_plus:
+    fb_admins:
+    fb_app_id:
+  structured_data:
+    title:
+    description:
+    url:
+    author:
+    publisher:
+    publisher_logo:
+    image:
+  meta:
+    - ""
+  rss:
 navbar:
-    menu:
-        镜湖: /
-        时光线: /archives
-        标签: /tags
-        语录: /quotes
-        CS Core: /vue_blog
-        AWS: /aws
-        备注: /note
-        关于我: /about
-    links:
-        Download on GitHub:
-            icon: fab fa-github
-            url: https://github.com/cloudsmithy/cloudsmithy.github.io
+  menu:
+    镜湖: /
+    时光线: /archives
+    标签: /tags
+    分类: /categories
+    语录: /quotes
+    CS Core: /vue_blog
+    AWS: /aws
+    备注: /note
+    关于我: /about
+  links:
+    Download on GitHub:
+      icon: fab fa-github
+      url: https://github.com/cloudsmithy/cloudsmithy.github.io
 footer:
-    links:
-        Creative Commons:
-            icon: fab fa-creative-commons
-            url: https://creativecommons.org/
-        Attribution 4.0 International:
-            icon: fab fa-creative-commons-by
-            url: https://creativecommons.org/licenses/by/4.0/
-        Download on GitHub:
-            icon: fab fa-github
-            url: https://github.com/cloudsmithy/cloudsmithy.github.io
+  links:
+    Creative Commons:
+      icon: fab fa-creative-commons
+      url: https://creativecommons.org/
+    Attribution 4.0 International:
+      icon: fab fa-creative-commons-by
+      url: https://creativecommons.org/licenses/by/4.0/
+    Download on GitHub:
+      icon: fab fa-github
+      url: https://github.com/cloudsmithy/cloudsmithy.github.io
 article:
-    highlight:
-        theme: atom-one-light
-        clipboard: true
-        fold: unfolded
-    readtime: true
-    update_time: true
-    licenses:
-        Creative Commons:
-            icon: fab fa-creative-commons
-            url: https://creativecommons.org/
-        Attribution:
-            icon: fab fa-creative-commons-by
-            url: https://creativecommons.org/licenses/by/4.0/
-        Noncommercial:
-            icon: fab fa-creative-commons-nc
-            url: https://creativecommons.org/licenses/by-nc/4.0/
+  highlight:
+    theme: atom-one-light
+    clipboard: true
+    fold: unfolded
+  readtime: true
+  update_time: true
+  licenses:
+    Creative Commons:
+      icon: fab fa-creative-commons
+      url: https://creativecommons.org/
+    Attribution:
+      icon: fab fa-creative-commons-by
+      url: https://creativecommons.org/licenses/by/4.0/
+    Noncommercial:
+      icon: fab fa-creative-commons-nc
+      url: https://creativecommons.org/licenses/by-nc/4.0/
 search:
-    type: insight
-    index_pages: true
+  type: insight
+  index_pages: true
 comment:
-    type: disqus
-    shortname: 'my'
+  type: disqus
+  shortname: "my"
 donates:
-    -
-        type: alipay
-        qrcode: '/images/ali.jpg'
-    -
-        type: wechat
-        qrcode: '/images/wechat.jpg'
+  - type: alipay
+    qrcode: "/images/ali.jpg"
+  - type: wechat
+    qrcode: "/images/wechat.jpg"
 # share:
 #     type: sharethis
 #     install_url: ''
 sidebar: # 固定左右边栏
-    left:
-        sticky: true
-    right:
-        sticky: true
+  left:
+    sticky: true
+  right:
+    sticky: true
 widgets:
-    -
-        position: left
-        type: profile
-        author: Xu
-        author_title:  随手记
-        location: BEI JING
-        avatar: '/images/me.png'
-        avatar_rounded: true
-        gravatar: 
-        follow_link: https://github.com/Xu-Hardy/Xu-Hardy.github.io
-        social_links:
-            Home:
-                icon: fa fa-home
-                url: https://xu-hardy.github.io/
-            AWS:
-                icon: fab fa-aws
-                url: https://xu-hardy.github.io/aws
-            archives:
-                icon: fa fa-calendar
-                url: https://xu-hardy.github.io/archives
-            Tags: 
-                icon: fa fa-tags
-                url: https://xu-hardy.github.io/tags
-            RSS:
-                icon: fas fa-rss
-                url: "atom.xml"
-    -
-        position: left
-        type: toc
-        index: true
-        collapsed: true
-        depth: 3
-    -
-        position: left
-        type: links
-        links:
-            Hexo: https://hexo.io
-            Bulma: https://bulma.io
-            Liarlee: https://liarlee.site/
-            easyhexo: https://easyhexo.com/
-            hexo-theme-icarus: https://ppoffice.github.io/hexo-theme-icarus/
-            中国哲学书电子化计划: https://ctext.org/histories/zhs
-            五个五百年前: http://mahacashiaba.blogspot.com/
-    -
-        position: left
-        type: categories
-    -
-        position: right
-        type: recent_posts
-    -
-        position: right
-        type: archives
-    -
-        position: right
-        type: tags
-        order_by: name
-        amount: 
-        show_count: true
-    -
-        position: right
-        type: subscribe_email
-        description: 
-        feedburner_id: ''
-    # -
-        # position: left
-        # type: adsense
-        # client_id: ''
-        # slot_id: ''
-    -
-        position: left
-        type: followit
-        description: 
-        action_url: ''
-        verification_code: ''
+  - position: left
+    type: profile
+    author: Xu
+    author_title: 随手记
+    location: BEI JING
+    avatar: "/images/me.png"
+    avatar_rounded: true
+    gravatar:
+    follow_link: https://github.com/Xu-Hardy/Xu-Hardy.github.io
+    social_links:
+      Home:
+        icon: fa fa-home
+        url: https://xu-hardy.github.io/
+      AWS:
+        icon: fab fa-aws
+        url: https://xu-hardy.github.io/aws
+      archives:
+        icon: fa fa-calendar
+        url: https://xu-hardy.github.io/archives
+      Tags:
+        icon: fa fa-tags
+        url: https://xu-hardy.github.io/tags
+      RSS:
+        icon: fas fa-rss
+        url: "atom.xml"
+  - position: left
+    type: toc
+    index: true
+    collapsed: true
+    depth: 3
+  - position: left
+    type: links
+    links:
+      Hexo: https://hexo.io
+      Bulma: https://bulma.io
+      Liarlee: https://liarlee.site/
+      easyhexo: https://easyhexo.com/
+      hexo-theme-icarus: https://ppoffice.github.io/hexo-theme-icarus/
+      中国哲学书电子化计划: https://ctext.org/histories/zhs
+      五个五百年前: http://mahacashiaba.blogspot.com/
+  - position: left
+    type: categories
+  - position: right
+    type: recent_posts
+  - position: right
+    type: archives
+  - position: right
+    type: tags
+    order_by: name
+    amount:
+    show_count: true
+  - position: right
+    type: subscribe_email
+    description:
+    feedburner_id: ""
+  # -
+  # position: left
+  # type: adsense
+  # client_id: ''
+  # slot_id: ''
+  - position: left
+    type: followit
+    description:
+    action_url: ""
+    verification_code: ""
 plugins:
-    animejs: true
-    back_to_top: true
-    baidu_analytics:
-        tracking_id: 
-    bing_webmaster:
-        tracking_id: 
-    busuanzi: true
-    cnzz:
-        id: 
-        web_id: 
-    cookie_consent:
-        type: info
-        theme: edgeless
-        static: false
-        position: bottom-left
-        policyLink: https://www.cookiesandyou.com/
-    gallery: true
-    google_analytics:
-        tracking_id: 
-    hotjar:
-        site_id: 
-    katex: false
-    mathjax: false
-    outdated_browser: false
-    progressbar: true
-    statcounter:
-        project: 
-        security: 
-    twitter_conversion_tracking:
-        pixel_id: 
+  animejs: true
+  back_to_top: true
+  baidu_analytics:
+    tracking_id:
+  bing_webmaster:
+    tracking_id:
+  busuanzi: true
+  cnzz:
+    id:
+    web_id:
+  cookie_consent:
+    type: info
+    theme: edgeless
+    static: false
+    position: bottom-left
+    policyLink: https://www.cookiesandyou.com/
+  gallery: true
+  google_analytics:
+    tracking_id:
+  hotjar:
+    site_id:
+  katex: false
+  mathjax: false
+  outdated_browser: false
+  progressbar: true
+  statcounter:
+    project:
+    security:
+  twitter_conversion_tracking:
+    pixel_id:
 providers:
-    cdn: jsdelivr
-    fontcdn: google
-    iconcdn: fontawesome
+  cdn: jsdelivr
+  fontcdn: google
+  iconcdn: fontawesome
