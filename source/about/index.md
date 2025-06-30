@@ -6,8 +6,6 @@ toc: true
 仍然在折腾路上的不断探索。
 人在江湖，又岂能笑傲江湖？
 
-# [repo](https://github.com/cloudsmithy/me)
-
 亚马逊云科技（AWS） Community Builders（AI）、亚马逊云科技（AWS）中国技领云博主、极限科技技术博主、Milvus 北辰使者，懒猫微服专栏作家。
 
 专注于 Python 后端开发与 AI 服务部署，熟练掌握亚马逊云科技（AWS）核心服务，包括 Lambda、API Gateway、SageMaker、Bedrock、OpenSearch 等，具备扎实的工程实践能力与系统架构经验。
