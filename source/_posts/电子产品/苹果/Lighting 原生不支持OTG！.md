@@ -14,6 +14,8 @@ date: 2025-07-02 00:00:00
 
 Lighting 原生不支持 OTG，还得买转接头，这算盘打的真响。
 
+<!-- more -->
+
 https://discussionschinese.apple.com/thread/252659031?=undefined&previousThread=255169304321&sortBy=rank
 
 ![image-20250624115019794](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250624115019794.png)

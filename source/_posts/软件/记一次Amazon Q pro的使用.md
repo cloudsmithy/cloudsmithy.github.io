@@ -12,6 +12,8 @@ date: 2025-07-02 00:00:00
 
 从邮箱里给的链接注册，登录。然后绑定 MFA，这个 MFA 其实就是一个二次验证，如果账户被盗，对方没有 MFA 也是无法登录的。
 
+<!-- more -->
+
 ![image-20250613215145521](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250613215145521.png)
 
 我用了 2Fauth 来绑定的，当然你也可以使用 google authenticator 之类的软件，绑定六位动态码。当然比较常见的 MFA 就是短信验证码，当然还有打电话的。这边刚刚登录，这边电话马上过来。

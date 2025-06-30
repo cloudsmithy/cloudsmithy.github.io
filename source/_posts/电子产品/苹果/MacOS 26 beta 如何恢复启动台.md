@@ -14,6 +14,8 @@ date: 2025-07-02 00:00:00
 
 除了检索应用，也能检索邮件和文件什么的，属于是一键搜索了。
 
+<!-- more -->
+
 ![f2ffc0aca969718696707c309990f94a](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/f2ffc0aca969718696707c309990f94a.png)
 
 那么我们怎么改原来的启动台呢？执行这两个命令然后重启：
