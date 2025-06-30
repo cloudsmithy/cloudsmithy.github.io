@@ -30,7 +30,1011 @@
       window.addEventListener('hashchange', switchTab, false);
   })();
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="atom.xml" title="镜湖" type="application/atom+xml">
-</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="../../index.html"><img src="../../img/favicon.svg" alt="镜湖" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="../../index.html">镜湖</a><a class="navbar-item" href="../../archives">时光线</a><a class="navbar-item" href="../../tags">标签</a><a class="navbar-item" href="../../categories">分类</a><a class="navbar-item" href="../../quotes">语录</a><a class="navbar-item" href="../../vue_blog">CS Core</a><a class="navbar-item" href="../../aws">AWS</a><a class="navbar-item" href="../../note">备注</a><a class="navbar-item" href="../../about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="../../tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">懒猫微服</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">4 分钟读完 (大约555个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A-%E4%BB%8E%E5%BC%80%E5%90%AFssh%E5%88%B0%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%95%99%E4%BD%A0%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/">懒猫微服实战入门（一）： 从开启SSH到免密登录，一步步教你搞定远程管理</a></p><div class="content"><p>对于很多资深的 NAS 玩家来说，拿到一台机器首先要配置远程登录和环境依赖。懒猫上其实可以实现云计算讲的 Iass - Pass -Sass 这三个层级，不过对于资深玩家而言，肯定是要从 Infra 这个级别入手的。</p>
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="../../index.html"><img src="../../img/favicon.svg" alt="镜湖" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="../../index.html">镜湖</a><a class="navbar-item" href="../../archives">时光线</a><a class="navbar-item" href="../../tags">标签</a><a class="navbar-item" href="../../categories">分类</a><a class="navbar-item" href="../../quotes">语录</a><a class="navbar-item" href="../../vue_blog">CS Core</a><a class="navbar-item" href="../../aws">AWS</a><a class="navbar-item" href="../../note">备注</a><a class="navbar-item" href="../../about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="../../tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">懒猫微服</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.100Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">19 分钟读完 (大约2902个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E3%80%8A%E9%95%9C%E5%83%8F%E6%97%85%E9%A6%86%E7%9A%84%E7%A7%98%E5%AF%86%E3%80%8B/">写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》</a></p><div class="content"><blockquote>
+<p>一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。</p>
+</blockquote>
+<h1 id="《镜像旅馆的秘密》讲的是-Docker-镜像的原理、分层结构、生命周期、Docker-Hub-上传与下载、常见镜像命令详解"><a href="#《镜像旅馆的秘密》讲的是-Docker-镜像的原理、分层结构、生命周期、Docker-Hub-上传与下载、常见镜像命令详解" class="headerlink" title="《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Docker Hub 上传与下载、常见镜像命令详解"></a>《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Docker Hub 上传与下载、常见镜像命令详解</h1><h3 id="🏰-开篇：进入镜像旅馆"><a href="#🏰-开篇：进入镜像旅馆" class="headerlink" title="🏰 开篇：进入镜像旅馆"></a>🏰 开篇：进入镜像旅馆</h3><p>自从小李用 Docker 成功打包并运行了自己的 Flask 项目，他的开发效率飞快提高。</p>
+<p>某天，老周带他来到一座巨大的数字建筑——<strong>Docker 镜像旅馆</strong>。</p>
+<p>“这是你所有镜像的家，”老周说，“也是全球程序员共享旅程资源的中转站。”</p>
+<p>镜像旅馆里，层层叠叠地存放着成千上万个镜像，就像一栋模块化的高楼大厦。</p>
+<hr>
+<h3 id="🧱-镜像的本质：一层一层搭起来的文件系统"><a href="#🧱-镜像的本质：一层一层搭起来的文件系统" class="headerlink" title="🧱 镜像的本质：一层一层搭起来的文件系统"></a>🧱 镜像的本质：一层一层搭起来的文件系统</h3><p>老周告诉小李：</p>
+<blockquote>
+<p>“镜像（Image）其实是一个<strong>只读的分层文件系统</strong>。你写的每一条 Dockerfile 指令，都会构成一层 Layer。”</p>
+</blockquote>
+<p>比如这个简单的 Dockerfile：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.11</span>-slim</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /app</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;main.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>对应的镜像层如下：</p>
+<ol>
+<li><code>FROM</code> → 拉了一个基础镜像层（Python 3.11）</li>
+<li><code>WORKDIR</code> → 添加一个设置工作目录的 Layer</li>
+<li><code>COPY</code> → 拷贝代码文件的 Layer</li>
+<li><code>RUN</code> → 安装依赖的新 Layer</li>
+<li><code>CMD</code> → 容器入口（不是 Layer，但存配置）</li>
+</ol>
+<blockquote>
+<p>💡 小知识：Docker 会尽量缓存和复用前面的 Layer，节省时间和存储。</p>
+</blockquote>
+<hr>
+<h3 id="🧪-镜像命令全攻略"><a href="#🧪-镜像命令全攻略" class="headerlink" title="🧪 镜像命令全攻略"></a>🧪 镜像命令全攻略</h3><p>小李打开终端，开始探索这些镜像的日常操作。</p>
+<h4 id="1-查看本地镜像："><a href="#1-查看本地镜像：" class="headerlink" title="1. 查看本地镜像："></a>1. 查看本地镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY     TAG        IMAGE ID       CREATED          SIZE</span><br><span class="line">my-flask-app   latest     123abc456def   2 minutes ago    125MB</span><br><span class="line">python         3.11-slim  789xyz654hij   3 days ago       40MB</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li><code>REPOSITORY</code>：镜像名</li>
+<li><code>TAG</code>：标签（版本号）</li>
+<li><code>IMAGE ID</code>：镜像唯一标识符</li>
+<li><code>SIZE</code>：镜像大小</li>
+</ul>
+<h4 id="2-查看镜像历史构建过程（看每层）："><a href="#2-查看镜像历史构建过程（看每层）：" class="headerlink" title="2. 查看镜像历史构建过程（看每层）："></a>2. 查看镜像历史构建过程（看每层）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">history</span> my-flask-app</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-删除镜像："><a href="#3-删除镜像：" class="headerlink" title="3. 删除镜像："></a>3. 删除镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>（⚠️ 若有容器在运行该镜像，需先停止并删除容器）</p>
+<hr>
+<h3 id="🗂-镜像仓库：Docker-Hub"><a href="#🗂-镜像仓库：Docker-Hub" class="headerlink" title="🗂 镜像仓库：Docker Hub"></a>🗂 镜像仓库：Docker Hub</h3><p>老周指了指旅馆大堂里的一个巨大电梯：</p>
+<blockquote>
+<p>“这是 Docker Hub，全球最大的镜像共享仓库。”</p>
+</blockquote>
+<p>在这里，小李能下载成千上万的开源镜像，也能上传自己的。</p>
+<h4 id="登录-Docker-Hub："><a href="#登录-Docker-Hub：" class="headerlink" title="登录 Docker Hub："></a>登录 Docker Hub：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
+
+<p>（需要先注册账号）</p>
+<h4 id="下载镜像："><a href="#下载镜像：" class="headerlink" title="下载镜像："></a>下载镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
+
+<p>这会从 Docker Hub 拉取最新版本的 <code>nginx</code> 镜像</p>
+<h4 id="指定版本拉取："><a href="#指定版本拉取：" class="headerlink" title="指定版本拉取："></a>指定版本拉取：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis:6.2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果 docker run&#x2F;pull 有问题，那么可以通过<code>lzc-cli appstore copy-image your-images</code>来使用懒猫的镜像仓库。</p>
+</blockquote>
+<p>（相当于拉取 <code>redis</code> 仓库中 tag 为 <code>6.2</code> 的镜像）</p>
+<h4 id="上传镜像（先打标签）："><a href="#上传镜像（先打标签）：" class="headerlink" title="上传镜像（先打标签）："></a>上传镜像（先打标签）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag my-flask-app yourdockerhubname/my-flask-app:1.0</span><br><span class="line">docker push yourdockerhubname/my-flask-app:1.0</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="📦-镜像-Tag-与版本控制"><a href="#📦-镜像-Tag-与版本控制" class="headerlink" title="📦 镜像 Tag 与版本控制"></a>📦 镜像 Tag 与版本控制</h3><p>老周问：“小李，你知道为什么镜像都有个 <code>:latest</code> 吗？”</p>
+<p>小李说：“这是默认版本号吧？”</p>
+<p>“对，但我们不能依赖它。<strong>开发、测试、生产应使用明确版本号，比如 1.0、20240321 等</strong>。”</p>
+<p>Docker 镜像是通过 <code>tag</code> 来区分版本的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t myapp:1.0 .</span><br><span class="line">docker build -t myapp:latest .</span><br></pre></td></tr></table></figure>
+
+<p>你可以为同一个镜像打多个标签，对应不同场景使用。</p>
+<hr>
+<h3 id="🔍-镜像体积优化技巧"><a href="#🔍-镜像体积优化技巧" class="headerlink" title="🔍 镜像体积优化技巧"></a>🔍 镜像体积优化技巧</h3><p>小李注意到镜像越来越大了，占了很多硬盘空间。</p>
+<p>老周给了他几点建议：</p>
+<ol>
+<li><p>使用轻量级基础镜像：</p>
+<ul>
+<li>比如 <code>python:3.11-slim</code> 代替 <code>python:3.11</code></li>
+</ul>
+</li>
+<li><p>合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN</span><br></pre></td></tr></table></figure>
+
+<p>命令，减少层数：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt update &amp;&amp; apt install -y git &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除临时文件：</p>
+<ul>
+<li>安装后清理缓存，避免垃圾文件残留</li>
+</ul>
+</li>
+<li><p>多阶段构建（进阶）：</p>
+<ul>
+<li>构建和运行使用不同的镜像阶段</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="📂-镜像保存与迁移"><a href="#📂-镜像保存与迁移" class="headerlink" title="📂 镜像保存与迁移"></a>📂 镜像保存与迁移</h3><p>后来小李想把自己的镜像传给另一位没有 Docker Hub 的同事。</p>
+<p>他用到了镜像导出与导入：</p>
+<h4 id="导出镜像为-tar-文件："><a href="#导出镜像为-tar-文件：" class="headerlink" title="导出镜像为 .tar 文件："></a>导出镜像为 <code>.tar</code> 文件：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save my-flask-app &gt; myapp.tar</span><br></pre></td></tr></table></figure>
+
+<h4 id="导入镜像："><a href="#导入镜像：" class="headerlink" title="导入镜像："></a>导入镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; myapp.tar</span><br></pre></td></tr></table></figure>
+
+<p>镜像打包成离线文件，便于携带与备份。</p>
+<hr>
+<h3 id="🔍-深入-Layer-实战：查看镜像内容"><a href="#🔍-深入-Layer-实战：查看镜像内容" class="headerlink" title="🔍 深入 Layer 实战：查看镜像内容"></a>🔍 深入 Layer 实战：查看镜像内容</h3><p>小李很好奇，镜像到底长什么样？</p>
+<p>老周教他运行容器并进到里面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --<span class="built_in">rm</span> my-flask-app /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>这样他就能直接进入容器的 Linux 环境，像在服务器上一样查看文件结构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br><span class="line"><span class="built_in">cd</span> /app</span><br><span class="line"><span class="built_in">cat</span> requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>他终于明白，每个镜像就像是一个“静态快照”，而容器才是“它的动态运行副本”。</p>
+<hr>
+<h3 id="📊-镜像生命周期总结表"><a href="#📊-镜像生命周期总结表" class="headerlink" title="📊 镜像生命周期总结表"></a>📊 镜像生命周期总结表</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看本地镜像</td>
+<td><code>docker images</code></td>
+</tr>
+<tr>
+<td>构建新镜像</td>
+<td><code>docker build -t name .</code></td>
+</tr>
+<tr>
+<td>删除镜像</td>
+<td><code>docker rmi 镜像名</code></td>
+</tr>
+<tr>
+<td>下载镜像</td>
+<td><code>docker pull 镜像名[:tag]</code></td>
+</tr>
+<tr>
+<td>上传镜像</td>
+<td><code>docker push 镜像名[:tag]</code></td>
+</tr>
+<tr>
+<td>镜像打包导出</td>
+<td><code>docker save &gt; xxx.tar</code></td>
+</tr>
+<tr>
+<td>镜像导入还原</td>
+<td><code>docker load &lt; xxx.tar</code></td>
+</tr>
+<tr>
+<td>镜像历史层查看</td>
+<td><code>docker history 镜像名</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🎬-尾声：镜像旅馆的门票"><a href="#🎬-尾声：镜像旅馆的门票" class="headerlink" title="🎬 尾声：镜像旅馆的门票"></a>🎬 尾声：镜像旅馆的门票</h3><p>小李现在拥有了多个镜像，搭配不同的版本、依赖、语言，像积木一样可以快速组合各种环境。</p>
+<p>“这就像 Minecraft 的世界地图，每张都是一个镜像。”小李说。</p>
+<p>老周点点头：“没错，镜像只是开始，真正的冒险——是容器运行起来后的世界。”</p>
+<hr>
+<h2 id="🧭-第二章小结"><a href="#🧭-第二章小结" class="headerlink" title="🧭 第二章小结"></a>🧭 第二章小结</h2><ul>
+<li>镜像是构建环境的基础模板，支持版本控制、缓存加速、快速构建</li>
+<li>可以上传到 Docker Hub 或导出 <code>.tar</code> 进行离线传输</li>
+<li>管理命令要熟练掌握：<code>build</code>、<code>pull</code>、<code>push</code>、<code>rmi</code>、<code>tag</code>、<code>history</code></li>
+<li>优化镜像大小要用 slim 基础镜像、合并命令、清理缓存</li>
+</ul>
+<h2 id="✨-增补内容：镜像的高级技能与实战应用"><a href="#✨-增补内容：镜像的高级技能与实战应用" class="headerlink" title="✨ 增补内容：镜像的高级技能与实战应用"></a>✨ 增补内容：镜像的高级技能与实战应用</h2><hr>
+<h3 id="🧪-多阶段构建：精致分工，极限瘦身"><a href="#🧪-多阶段构建：精致分工，极限瘦身" class="headerlink" title="🧪 多阶段构建：精致分工，极限瘦身"></a>🧪 多阶段构建：精致分工，极限瘦身</h3><p>有一次，小李需要构建一个使用 <code>npm</code> 打包前端、Python 启动后端的项目。打包工具很多、依赖也重，他担心镜像太大。</p>
+<p>老周说：“你要学会<strong>多阶段构建（multi-stage build）</strong>，把构建阶段和运行阶段分开。”</p>
+<blockquote>
+<p>多阶段构建的目标是：<strong>编译用谁都行，最终镜像要最小。</strong></p>
+</blockquote>
+<h4 id="示例：Node-构建-nginx-托管"><a href="#示例：Node-构建-nginx-托管" class="headerlink" title="示例：Node 构建 + nginx 托管"></a>示例：Node 构建 + nginx 托管</h4><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一阶段：使用 node 构建前端</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span> AS builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install &amp;&amp; npm run build</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二阶段：用 nginx 托管打包后的静态文件</span></span><br><span class="line"><span class="keyword">FROM</span> nginx:alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=builder /app/dist /usr/share/nginx/html</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一阶段装依赖、打包代码</li>
+<li>第二阶段只取编译结果，<strong>不用带上 node&#x2F;npm 等工具</strong></li>
+</ul>
+<p>小李一测试，镜像体积从 300MB 降到 25MB，部署速度快了 10 倍！</p>
+<hr>
+<h3 id="🧩-使用-dockerignore：镜像防垃圾机制"><a href="#🧩-使用-dockerignore：镜像防垃圾机制" class="headerlink" title="🧩 使用 .dockerignore：镜像防垃圾机制"></a>🧩 使用 <code>.dockerignore</code>：镜像防垃圾机制</h3><p>构建时，小李发现镜像中夹杂了 <code>.git</code>、<code>node_modules</code>、<code>__pycache__</code>……</p>
+<p>老周摇头道：“你忘了 <code>.dockerignore</code> 文件。”</p>
+<p>就像 <code>.gitignore</code> 一样，<code>.dockerignore</code> 告诉 Docker 哪些文件在构建镜像时要排除。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__pycache__/</span><br><span class="line">.git/</span><br><span class="line">node_modules/</span><br><span class="line">.env</span><br><span class="line">*.log</span><br></pre></td></tr></table></figure>
+
+<p>这个文件放在 Dockerfile 同目录下，<strong>能显著加快构建速度和减小镜像大小</strong>。</p>
+<hr>
+<h3 id="📦-自建私有镜像仓库（Registry）"><a href="#📦-自建私有镜像仓库（Registry）" class="headerlink" title="📦 自建私有镜像仓库（Registry）"></a>📦 自建私有镜像仓库（Registry）</h3><p>当公司禁止使用 Docker Hub 时，小李开始尝试搭建自己的镜像库。</p>
+<p>老周带他部署了一个本地私有镜像仓库（基于 Docker 官方镜像）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:5000 --restart=always --name registry registry:2</span><br></pre></td></tr></table></figure>
+
+<p>现在他可以：</p>
+<ul>
+<li><p>推送到私库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag myapp localhost:5000/myapp</span><br><span class="line">docker push localhost:5000/myapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull localhost:5000/myapp</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>适合公司内部使用，搭配 Nexus、Harbor 可实现更完善的权限、审计、镜像管理等功能。（比如懒猫的 copy-image）</p>
+<h3 id="🧠-镜像调试技巧：如何从镜像中探查问题？"><a href="#🧠-镜像调试技巧：如何从镜像中探查问题？" class="headerlink" title="🧠 镜像调试技巧：如何从镜像中探查问题？"></a>🧠 镜像调试技巧：如何从镜像中探查问题？</h3><p>如果小李的镜像出错了，他可以通过两种方式“探测”镜像内部：</p>
+<h4 id="方法-1：运行一个交互式-shell-容器"><a href="#方法-1：运行一个交互式-shell-容器" class="headerlink" title="方法 1：运行一个交互式 shell 容器"></a>方法 1：运行一个交互式 shell 容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it myapp /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>（如果 bash 不存在，可以用 <code>/bin/sh</code>）</p>
+<h4 id="方法-2：打开已有容器的终端"><a href="#方法-2：打开已有容器的终端" class="headerlink" title="方法 2：打开已有容器的终端"></a>方法 2：打开已有容器的终端</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_id /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>ls</code>、<code>cat</code>、<code>which</code>、<code>env</code> 命令，可以检查：</p>
+<ul>
+<li>文件有没有 COPY 进去？</li>
+<li><code>pip install</code> 是否安装成功？</li>
+<li>环境变量是否丢失？</li>
+</ul>
+<hr>
+<h3 id="🔐-镜像安全：不要把密码打包进镜像！"><a href="#🔐-镜像安全：不要把密码打包进镜像！" class="headerlink" title="🔐 镜像安全：不要把密码打包进镜像！"></a>🔐 镜像安全：不要把密码打包进镜像！</h3><p>小李曾在 Dockerfile 里写了：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENV</span> DB_PASSWORD=<span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
+<p>老周当场拍桌：“你这是把钥匙写死进容器了！”</p>
+<p>最佳做法：</p>
+<ul>
+<li>在容器运行时注入环境变量（例如使用 <code>.env</code> 文件 + <code>--env</code> 参数）</li>
+<li>使用 <code>docker secret</code> 或 KMS 管理</li>
+<li>使用 BuildKit 的 <code>--secret</code> 机制加密构建时参数（高级用法）</li>
+</ul>
+<hr>
+<h3 id="🧾-镜像标签管理规范建议"><a href="#🧾-镜像标签管理规范建议" class="headerlink" title="🧾 镜像标签管理规范建议"></a>🧾 镜像标签管理规范建议</h3><p>小李准备上线，他开始给镜像打各种 tag：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t myapp:1.0.0 .</span><br><span class="line">docker tag myapp:1.0.0 myapp:latest</span><br></pre></td></tr></table></figure>
+
+<p>老周说：</p>
+<blockquote>
+<p>“tag 是镜像的版本名，不要用 <code>latest</code> 作为生产环境唯一标识。”</p>
+</blockquote>
+<p>推荐命名规范：</p>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>myapp:1.0.0</code></td>
+<td>语义化版本控制</td>
+</tr>
+<tr>
+<td><code>myapp:20240324</code></td>
+<td>构建时间戳</td>
+</tr>
+<tr>
+<td><code>myapp:prod</code></td>
+<td>环境标识</td>
+</tr>
+<tr>
+<td><code>myapp:feature-login</code></td>
+<td>功能分支测试</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🔁-镜像缓存失效调试技巧"><a href="#🔁-镜像缓存失效调试技巧" class="headerlink" title="🔁 镜像缓存失效调试技巧"></a>🔁 镜像缓存失效调试技巧</h3><p>有时候构建镜像时，小李发现修改了某个文件，Docker 却好像没更新。</p>
+<p>老周点拨他：“那是缓存搞的鬼。”</p>
+<h4 id="方法一：强制跳过缓存"><a href="#方法一：强制跳过缓存" class="headerlink" title="方法一：强制跳过缓存"></a>方法一：强制跳过缓存</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build --no-cache -t myapp .</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法二：注意-COPY-顺序影响缓存命中"><a href="#方法二：注意-COPY-顺序影响缓存命中" class="headerlink" title="方法二：注意 COPY 顺序影响缓存命中"></a>方法二：注意 COPY 顺序影响缓存命中</h4><p>Docker 会从上到下按顺序缓存。如果把变化频繁的文件 COPY 太早，就会导致缓存失效：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="language-bash"> requirements.txt .      <span class="comment"># OK，变动少，适合先复制</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .                     <span class="comment"># 后复制代码，避免频繁无效重建</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✨ 技巧：越是稳定的文件，越早 COPY，利于缓存复用。</p>
+</blockquote>
+<hr>
+<h2 id="📘-第二章-·-补充总结更新版"><a href="#📘-第二章-·-补充总结更新版" class="headerlink" title="📘 第二章 · 补充总结更新版"></a>📘 第二章 · 补充总结更新版</h2><table>
+<thead>
+<tr>
+<th>技术点</th>
+<th>命令 &#x2F; 说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多阶段构建</td>
+<td><code>FROM ... AS builder</code> + <code>COPY --from=builder</code></td>
+</tr>
+<tr>
+<td>忽略文件</td>
+<td><code>.dockerignore</code> 文件</td>
+</tr>
+<tr>
+<td>镜像上传私库</td>
+<td><code>docker push localhost:5000/myapp</code></td>
+</tr>
+<tr>
+<td>开启 BuildKit</td>
+<td><code>DOCKER_BUILDKIT=1 docker build ...</code></td>
+</tr>
+<tr>
+<td>进入镜像内调试</td>
+<td><code>docker run -it 镜像 /bin/bash</code></td>
+</tr>
+<tr>
+<td>镜像版本管理建议</td>
+<td>避免乱用 <code>latest</code>，使用语义化 tag</td>
+</tr>
+<tr>
+<td>跳过缓存构建</td>
+<td><code>docker build --no-cache ...</code></td>
+</tr>
+</tbody></table>
+<hr>
+<p>小李站在镜像旅馆的屋顶，看着一层层高楼像乐高积木一样堆叠而起。</p>
+<p>他感到激动——他已经不再为“部署”苦恼，而是拥有了一个随时可打包、可还原的开发宇宙。</p>
+<p>老周说：“你的旅程才刚刚开始，容器的世界比镜像更复杂。”</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.100Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">17 分钟读完 (大约2549个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E3%80%8A%E5%AE%B9%E5%99%A8%E9%83%A8%E8%90%BD%E7%94%9F%E6%B4%BB%E3%80%8B/">写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》</a></p><div class="content"><h1 id="《容器部落生活》讲的是-容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作"><a href="#《容器部落生活》讲的是-容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作" class="headerlink" title="《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作"></a>《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作</h1><blockquote>
+<p>一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。</p>
+</blockquote>
+<p>镜像旅馆的旅途告一段落，小李的下一站是<strong>容器部落</strong>。</p>
+<p>老周牵着他走过一条闪烁着数字光芒的通道，一排排运行中的应用像帐篷一样排列着。有人在调试日志，有人在重启服务，还有人用 <code>bash</code> 正在某个容器里“打补丁”。</p>
+<p>老周说：</p>
+<blockquote>
+<p>“镜像只是静态的模板，<strong>容器才是它们的生命</strong>。容器是镜像运行出来的真实世界。”</p>
+</blockquote>
+<hr>
+<h2 id="🧠-技术基础：容器-vs-镜像"><a href="#🧠-技术基础：容器-vs-镜像" class="headerlink" title="🧠 技术基础：容器 vs 镜像"></a>🧠 技术基础：容器 vs 镜像</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>镜像（Image）</th>
+<th>容器（Container）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类比</td>
+<td>模板、配方</td>
+<td>实际的运行实例</td>
+</tr>
+<tr>
+<td>特性</td>
+<td>只读</td>
+<td>可读写</td>
+</tr>
+<tr>
+<td>作用</td>
+<td>用来创建容器</td>
+<td>实际运行中的程序环境</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>不运行</td>
+<td>可运行、停止、销毁</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🛫-第一节：容器的启动方式"><a href="#🛫-第一节：容器的启动方式" class="headerlink" title="🛫 第一节：容器的启动方式"></a>🛫 第一节：容器的启动方式</h2><p>小李想运行他的 Flask 应用镜像。</p>
+<p>老周告诉他：</p>
+<blockquote>
+<p>“运行镜像的命令是 <code>docker run</code>，容器就像是用镜像盖起来的一顶帐篷。”</p>
+</blockquote>
+<h3 id="1-最常见方式（临时-前台）："><a href="#1-最常见方式（临时-前台）：" class="headerlink" title="1. 最常见方式（临时 + 前台）："></a>1. 最常见方式（临时 + 前台）：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>但程序一执行完就退出了。小李困惑。</p>
+<p>老周解释：</p>
+<blockquote>
+<p>“容器会在主进程结束后自动退出，比如 <code>CMD [&quot;python&quot;, &quot;main.py&quot;]</code> 一旦结束，容器就结束了。”</p>
+</blockquote>
+<hr>
+<h3 id="2-保持后台运行（常用）"><a href="#2-保持后台运行（常用）" class="headerlink" title="2. 保持后台运行（常用）"></a>2. 保持后台运行（常用）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name flask-app -p 5000:5000 my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li><code>-d</code>：detached 模式，后台运行</li>
+<li><code>--name</code>：给容器取个名字，方便管理</li>
+<li><code>-p 宿主端口:容器端口</code>：端口映射，把容器内部 5000 暴露到外部</li>
+</ul>
+<blockquote>
+<p>小李可以在浏览器里访问 <code>http://localhost:5000</code>，服务在跑！</p>
+</blockquote>
+<hr>
+<h3 id="3-设置环境变量"><a href="#3-设置环境变量" class="headerlink" title="3. 设置环境变量"></a>3. 设置环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -e ENV=production my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>在容器内可通过 <code>os.environ[&#39;ENV&#39;]</code> 访问。</p>
+<hr>
+<h3 id="4-设置自动重启策略（生产强烈建议）"><a href="#4-设置自动重启策略（生产强烈建议）" class="headerlink" title="4. 设置自动重启策略（生产强烈建议）"></a>4. 设置自动重启策略（生产强烈建议）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>可选策略：</p>
+<table>
+<thead>
+<tr>
+<th>策略名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>no</code></td>
+<td>不自动重启（默认）</td>
+</tr>
+<tr>
+<td><code>on-failure</code></td>
+<td>出错时重启</td>
+</tr>
+<tr>
+<td><code>always</code></td>
+<td>永远重启</td>
+</tr>
+<tr>
+<td><code>unless-stopped</code></td>
+<td>除非人为停止</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧭-第二节：查看容器状态"><a href="#🧭-第二节：查看容器状态" class="headerlink" title="🧭 第二节：查看容器状态"></a>🧭 第二节：查看容器状态</h2><p>老周说：“运行中的容器就像是火堆，你得学会看它们是否还在烧。”</p>
+<h3 id="查看运行中容器："><a href="#查看运行中容器：" class="headerlink" title="查看运行中容器："></a>查看运行中容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>如果想看所有容器（包括已退出的）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID   IMAGE           STATUS         NAMES</span><br><span class="line">f123abc456     my-flask-app    Up 3 minutes   flask-app</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔄-第三节：容器的停止与重启"><a href="#🔄-第三节：容器的停止与重启" class="headerlink" title="🔄 第三节：容器的停止与重启"></a>🔄 第三节：容器的停止与重启</h2><h3 id="停止容器："><a href="#停止容器：" class="headerlink" title="停止容器："></a>停止容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop flask-app</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动容器："><a href="#启动容器：" class="headerlink" title="启动容器："></a>启动容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start flask-app</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启容器："><a href="#重启容器：" class="headerlink" title="重启容器："></a>重启容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart flask-app</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ 容器停止后并不会删除，除非显式用 <code>docker rm</code></p>
+</blockquote>
+<hr>
+<h2 id="🧰-第四节：进入容器内“远程调试”"><a href="#🧰-第四节：进入容器内“远程调试”" class="headerlink" title="🧰 第四节：进入容器内“远程调试”"></a>🧰 第四节：进入容器内“远程调试”</h2><p>有一次小李发现容器里缺了个配置文件，他想进去看看。</p>
+<h3 id="使用-exec-进入运行中的容器："><a href="#使用-exec-进入运行中的容器：" class="headerlink" title="使用 exec 进入运行中的容器："></a>使用 exec 进入运行中的容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it flask-app /bin/bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-i</code>：保持输入</li>
+<li><code>-t</code>：分配终端</li>
+<li><code>/bin/bash</code>：使用 bash shell（Alpine 镜像可能要用 <code>/bin/sh</code>）</li>
+</ul>
+<blockquote>
+<p>现在他能像 SSH 进服务器一样，在容器里操作文件、日志、环境变量。</p>
+</blockquote>
+<hr>
+<h2 id="📜-第五节：查看容器日志"><a href="#📜-第五节：查看容器日志" class="headerlink" title="📜 第五节：查看容器日志"></a>📜 第五节：查看容器日志</h2><p>某天应用崩溃了，小李要调日志。</p>
+<p>老周提醒他：“容器日志直接走标准输出和错误输出。”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs flask-app</span><br></pre></td></tr></table></figure>
+
+<p>可以加参数看最近内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs --<span class="built_in">tail</span> 100 flask-app</span><br></pre></td></tr></table></figure>
+
+<p>实时滚动输出（调试很有用）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f flask-app</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧽-第六节：删除容器"><a href="#🧽-第六节：删除容器" class="headerlink" title="🧽 第六节：删除容器"></a>🧽 第六节：删除容器</h2><p>小李尝试重建容器时，系统提示名字重复。</p>
+<p>老周告诉他要先删除原来的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> flask-app</span><br></pre></td></tr></table></figure>
+
+<p>如果容器还在运行，先 <code>stop</code> 再 <code>rm</code>，或直接强制：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> -f flask-app</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔄-第七节：容器生命周期一览表"><a href="#🔄-第七节：容器生命周期一览表" class="headerlink" title="🔄 第七节：容器生命周期一览表"></a>🔄 第七节：容器生命周期一览表</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建 + 运行容器</td>
+<td><code>docker run</code></td>
+</tr>
+<tr>
+<td>后台运行</td>
+<td><code>docker run -d</code></td>
+</tr>
+<tr>
+<td>设置名字</td>
+<td><code>docker run --name name</code></td>
+</tr>
+<tr>
+<td>设置端口映射</td>
+<td><code>-p 外:内</code></td>
+</tr>
+<tr>
+<td>查看容器</td>
+<td><code>docker ps [-a]</code></td>
+</tr>
+<tr>
+<td>停止容器</td>
+<td><code>docker stop name</code></td>
+</tr>
+<tr>
+<td>启动容器</td>
+<td><code>docker start name</code></td>
+</tr>
+<tr>
+<td>重启容器</td>
+<td><code>docker restart name</code></td>
+</tr>
+<tr>
+<td>删除容器</td>
+<td><code>docker rm [-f] name</code></td>
+</tr>
+<tr>
+<td>查看日志</td>
+<td><code>docker logs [-f] name</code></td>
+</tr>
+<tr>
+<td>进入容器</td>
+<td><code>docker exec -it name /bin/bash</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧪-小李的实战练习任务"><a href="#🧪-小李的实战练习任务" class="headerlink" title="🧪 小李的实战练习任务"></a>🧪 小李的实战练习任务</h2><p>老周布置了一个练习：</p>
+<blockquote>
+<p>“请你写一个脚本，构建镜像，运行容器，设置环境变量和端口，再用日志确认 Flask 成功启动。”</p>
+</blockquote>
+<p>小李完成如下步骤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build -t flask-test .</span><br><span class="line">docker run -d --name flask-run -p 8080:5000 -e MODE=debug flask-test</span><br><span class="line">docker logs -f flask-run</span><br><span class="line">docker <span class="built_in">exec</span> -it flask-run /bin/bash</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧬-衍生补充：容器的状态码解释"><a href="#🧬-衍生补充：容器的状态码解释" class="headerlink" title="🧬 衍生补充：容器的状态码解释"></a>🧬 衍生补充：容器的状态码解释</h2><p>容器退出时，可以用 <code>docker ps -a</code> 查看 <code>STATUS</code> 栏：</p>
+<ul>
+<li><code>Exited (0)</code>：正常退出</li>
+<li><code>Exited (1)</code>：出错退出</li>
+<li><code>Up</code>：正在运行</li>
+</ul>
+<p>调试时很有用。</p>
+<hr>
+<h2 id="🎬-尾声：容器部落里的秩序"><a href="#🎬-尾声：容器部落里的秩序" class="headerlink" title="🎬 尾声：容器部落里的秩序"></a>🎬 尾声：容器部落里的秩序</h2><p>小李现在已经能够用容器完成：</p>
+<ul>
+<li>应用部署</li>
+<li>环境隔离</li>
+<li>日志查看</li>
+<li>重启容错</li>
+<li>在线修复问题</li>
+</ul>
+<p>他看着容器部落中灯火通明的帐篷，知道自己终于从一个“只会打包镜像”的新人，成长为能驾驭容器生命周期的工程师。</p>
+<p>老周拍拍他肩膀说：</p>
+<blockquote>
+<p>“你已经能掌控容器的生死了，下一步——掌控它们的数据。”</p>
+</blockquote>
+<p>好嘞，我们来拓展<strong>第三章《容器部落生活》</strong>，新增三大实战内容：</p>
+<blockquote>
+<p>🚀 Nginx 容器部署<br>🔗 多个容器配合运行（应用 + 数据库）<br>🩺 容器的服务探针（健康检查）</p>
+</blockquote>
+<p>这部分会继续以<strong>故事+实战命令+讲解</strong>的方式展开，帮助你更贴近真实工作中的容器部署流程。</p>
+<hr>
+<h2 id="🧱-实战一：Nginx-容器部署小站点"><a href="#🧱-实战一：Nginx-容器部署小站点" class="headerlink" title="🧱 实战一：Nginx 容器部署小站点"></a>🧱 实战一：Nginx 容器部署小站点</h2><p>小李想搭个静态站点测试，老周给他出了一个练习：</p>
+<blockquote>
+<p>“用 Nginx 容器部署一个 HTML 网站，只通过 Docker 完成。”</p>
+</blockquote>
+<h3 id="1-准备文件结构："><a href="#1-准备文件结构：" class="headerlink" title="1. 准备文件结构："></a>1. 准备文件结构：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx-site/</span><br><span class="line">├── index.html</span><br><span class="line">└── Dockerfile</span><br></pre></td></tr></table></figure>
+
+<p><code>index.html</code> 示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello from Nginx<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Docker + Nginx!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Dockerfile-内容（基于官方-Nginx）："><a href="#2-Dockerfile-内容（基于官方-Nginx）：" class="headerlink" title="2. Dockerfile 内容（基于官方 Nginx）："></a>2. Dockerfile 内容（基于官方 Nginx）：</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx:alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> index.html /usr/share/nginx/html/index.html</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ 把自己的网页文件覆盖掉默认首页。</p>
+</blockquote>
+<h3 id="3-构建-运行："><a href="#3-构建-运行：" class="headerlink" title="3. 构建 + 运行："></a>3. 构建 + 运行：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx-site .</span><br><span class="line">docker run -d --name my-nginx -p 8080:80 nginx-site</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器访问 <code>http://localhost:8080</code>，小李看到页面显示成功，笑得像个孩子。</p>
+<hr>
+<h2 id="🔗-实战二：应用容器-数据库容器组合运行"><a href="#🔗-实战二：应用容器-数据库容器组合运行" class="headerlink" title="🔗 实战二：应用容器 + 数据库容器组合运行"></a>🔗 实战二：应用容器 + 数据库容器组合运行</h2><p>接着老周出了第二个任务：</p>
+<blockquote>
+<p>“把你的 Flask 应用和一个 MySQL 数据库用两个容器跑起来，实现数据连接。”</p>
+</blockquote>
+<h3 id="方法一：手动网络-多容器连接"><a href="#方法一：手动网络-多容器连接" class="headerlink" title="方法一：手动网络 + 多容器连接"></a>方法一：手动网络 + 多容器连接</h3><h4 id="1-创建网络（容器间通信）："><a href="#1-创建网络（容器间通信）：" class="headerlink" title="1. 创建网络（容器间通信）："></a>1. 创建网络（容器间通信）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create flask-net</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-启动-MySQL-容器："><a href="#2-启动-MySQL-容器：" class="headerlink" title="2. 启动 MySQL 容器："></a>2. 启动 MySQL 容器：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name my-mysql \</span><br><span class="line">  --network flask-net \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=root123 \</span><br><span class="line">  -e MYSQL_DATABASE=mydb \</span><br><span class="line">  mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-启动-Flask-应用容器（连接到-MySQL）："><a href="#3-启动-Flask-应用容器（连接到-MySQL）：" class="headerlink" title="3. 启动 Flask 应用容器（连接到 MySQL）："></a>3. 启动 Flask 应用容器（连接到 MySQL）：</h4><p>假设 Flask 连接数据库时使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host = <span class="string">&#x27;my-mysql&#x27;</span>  <span class="comment"># 容器名就是主机名</span></span><br></pre></td></tr></table></figure>
+
+<p>启动命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name flask-app \</span><br><span class="line">  --network flask-net \</span><br><span class="line">  -e DB_HOST=my-mysql \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  my-flask-app</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔗 容器间在同一个网络中，通过名字直接通信，像局域网一样！</p>
+</blockquote>
+<hr>
+<h3 id="方法二：使用-docker-compose（下一章会详细讲）"><a href="#方法二：使用-docker-compose（下一章会详细讲）" class="headerlink" title="方法二：使用 docker-compose（下一章会详细讲）"></a>方法二：使用 <code>docker-compose</code>（下一章会详细讲）</h3><hr>
+<h2 id="🩺-实战三：为容器添加“健康探针”"><a href="#🩺-实战三：为容器添加“健康探针”" class="headerlink" title="🩺 实战三：为容器添加“健康探针”"></a>🩺 实战三：为容器添加“健康探针”</h2><p>老周问小李：“如果你的服务挂了，但容器还在运行，你怎么知道？”</p>
+<blockquote>
+<p>小李摇头：这不就是“僵尸容器”吗？</p>
+</blockquote>
+<p>老周笑了：</p>
+<blockquote>
+<p>“那就给它<strong>加一个健康探针（HEALTHCHECK）</strong>，定期检测服务状态。”</p>
+</blockquote>
+<h3 id="为-Flask-容器加健康检查："><a href="#为-Flask-容器加健康检查：" class="headerlink" title="为 Flask 容器加健康检查："></a>为 Flask 容器加健康检查：</h3><p>修改 <code>Dockerfile</code>：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">HEALTHCHECK</span><span class="language-bash"> --interval=30s --<span class="built_in">timeout</span>=5s --start-period=5s --retries=3 \</span></span><br><span class="line"><span class="language-bash">  CMD curl -f http://localhost:5000/health || <span class="built_in">exit</span> 1</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Flask 代码中添加一个健康检查路由：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/health&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">health</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>, <span class="number">200</span></span><br></pre></td></tr></table></figure>
+
+<p>构建镜像，运行容器后，通过命令查看健康状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect flask-app | grep -i health</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;Health&quot;: &#123;</span><br><span class="line">  &quot;Status&quot;: &quot;healthy&quot;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>/health</code> 接口返回失败状态码，容器会标记为 <code>&quot;unhealthy&quot;</code>，可配合自动重启策略联动修复。</p>
+<hr>
+<h2 id="🧭-实战拓展总结表"><a href="#🧭-实战拓展总结表" class="headerlink" title="🧭 实战拓展总结表"></a>🧭 实战拓展总结表</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>命令 &#x2F; 技术</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>部署静态站点</td>
+<td>Nginx + COPY index.html</td>
+</tr>
+<tr>
+<td>容器间通信</td>
+<td><code>docker network create</code> + <code>--network</code> 参数</td>
+</tr>
+<tr>
+<td>多容器组合</td>
+<td>应用容器连接数据库容器</td>
+</tr>
+<tr>
+<td>服务探针</td>
+<td>Dockerfile 添加 <code>HEALTHCHECK</code>，应用实现 <code>/health</code></td>
+</tr>
+<tr>
+<td>探针状态查看</td>
+<td>&#96;docker inspect 容器名</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎬-尾声-·-容器集群的微光"><a href="#🎬-尾声-·-容器集群的微光" class="headerlink" title="🎬 尾声 · 容器集群的微光"></a>🎬 尾声 · 容器集群的微光</h2><p>小李站在容器部落的山丘上，看着成百上千个容器像城市灯火一样运转。</p>
+<p>Nginx 做前端代理，Flask 作为后端逻辑，MySQL 管理数据，每个服务都是一块积木，有秩序、有协作。</p>
+<p>老周淡淡说：</p>
+<blockquote>
+<p>“这只是单机的容器调度，真正的战场——在云上。”</p>
+</blockquote>
+<p>小李的眼里闪起光芒：“那我下次要学的就是——Compose，K8s，还有 CI&#x2F;CD，对吧？”</p>
+<p>老周点头：“没错，下一站——数据卷与共享、Compose 编排，再之后……你就要去打云原生的战了。”</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.100Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">16 分钟读完 (大约2428个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6docker%E7%AF%87%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E3%80%8A%E5%A4%9A%E5%AE%B9%E5%99%A8%E4%BA%A4%E5%93%8D%E6%9B%B2%EF%BC%9Adocker-compose-%E4%B8%8A%E5%9C%BA%E3%80%8B/">写给懒猫微服玩家的容器小书Docker篇（五）：《多容器交响曲：Docker Compose 上场》</a></p><div class="content"><blockquote>
+<p>一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。</p>
+</blockquote>
+<h1 id="《多容器交响曲：Docker-Compose-上场》讲的是使用-Docker-Compose-统一编排多容器服务，理解-YAML-配置结构、服务依赖、网络、挂载、构建策略、变量管理、Compose-vs-K8s-初探等"><a href="#《多容器交响曲：Docker-Compose-上场》讲的是使用-Docker-Compose-统一编排多容器服务，理解-YAML-配置结构、服务依赖、网络、挂载、构建策略、变量管理、Compose-vs-K8s-初探等" class="headerlink" title="《多容器交响曲：Docker Compose 上场》讲的是使用 Docker Compose 统一编排多容器服务，理解 YAML 配置结构、服务依赖、网络、挂载、构建策略、变量管理、Compose vs K8s 初探等"></a>《多容器交响曲：Docker Compose 上场》讲的是使用 Docker Compose 统一编排多容器服务，理解 YAML 配置结构、服务依赖、网络、挂载、构建策略、变量管理、Compose vs K8s 初探等</h1><hr>
+<h3 id="🎼-开篇：服务之间的管弦乐团"><a href="#🎼-开篇：服务之间的管弦乐团" class="headerlink" title="🎼 开篇：服务之间的管弦乐团"></a>🎼 开篇：服务之间的管弦乐团</h3><p>随着项目日益复杂，小李的服务已经不再是一个容器就能承载的了。</p>
+<p>前端、后端、数据库、缓存、日志系统……像一个交响乐团，需要统一调度、和谐配合。</p>
+<p>老周递给他一个新的工具：“<strong>Docker Compose</strong>——它是你的指挥棒。”</p>
+<hr>
+<h2 id="🎻-第一节：什么是-Docker-Compose？"><a href="#🎻-第一节：什么是-Docker-Compose？" class="headerlink" title="🎻 第一节：什么是 Docker Compose？"></a>🎻 第一节：什么是 Docker Compose？</h2><p>老周解释：</p>
+<blockquote>
+<p>“Docker Compose 是 Docker 的多容器编排工具，用一份 <code>docker-compose.yml</code> 文件，就能同时启动、停止、构建多个服务。”</p>
+</blockquote>
+<p>Compose 帮你解决：</p>
+<ul>
+<li>多个服务启动顺序</li>
+<li>多容器共享网络</li>
+<li>统一管理环境变量</li>
+<li>配置简洁、开发者友好</li>
+<li>跨平台部署一致</li>
+</ul>
+<hr>
+<h2 id="📄-第二节：写出你的第一个-docker-compose-yml"><a href="#📄-第二节：写出你的第一个-docker-compose-yml" class="headerlink" title="📄 第二节：写出你的第一个 docker-compose.yml"></a>📄 第二节：写出你的第一个 <code>docker-compose.yml</code></h2><p>小李的项目结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">myapp/</span><br><span class="line">├── backend/      # Flask 应用</span><br><span class="line">│   ├── app.py</span><br><span class="line">│   └── Dockerfile</span><br><span class="line">├── frontend/     # 静态页面</span><br><span class="line">│   ├── index.html</span><br><span class="line">│   └── Dockerfile</span><br><span class="line">└── docker-compose.yml</span><br></pre></td></tr></table></figure>
+
+<h3 id="docker-compose-yml-示例："><a href="#docker-compose-yml-示例：" class="headerlink" title="docker-compose.yml 示例："></a><code>docker-compose.yml</code> 示例：</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.9&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">./backend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;5000:5000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./backend:/app</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_HOST=db</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">./frontend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:80&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql:5.7</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MYSQL_ROOT_PASSWORD=123456</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MYSQL_DATABASE=mydb</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">dbdata:/var/lib/mysql</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">dbdata:</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔧 每个 <code>service</code> 就是一个容器定义，Compose 会为它们创建默认网络，自动 DNS 互通。</p>
+</blockquote>
+<hr>
+<h2 id="🧪-第三节：Compose-命令实战速查"><a href="#🧪-第三节：Compose-命令实战速查" class="headerlink" title="🧪 第三节：Compose 命令实战速查"></a>🧪 第三节：Compose 命令实战速查</h2><p>小李在项目目录下运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>后台启动所有服务！</p>
+<p>其他常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>构建镜像</td>
+<td><code>docker-compose build</code></td>
+</tr>
+<tr>
+<td>后台启动</td>
+<td><code>docker-compose up -d</code></td>
+</tr>
+<tr>
+<td>前台启动 + 日志输出</td>
+<td><code>docker-compose up</code></td>
+</tr>
+<tr>
+<td>停止服务</td>
+<td><code>docker-compose down</code></td>
+</tr>
+<tr>
+<td>查看容器日志</td>
+<td><code>docker-compose logs [服务名]</code></td>
+</tr>
+<tr>
+<td>重启某个服务</td>
+<td><code>docker-compose restart 服务名</code></td>
+</tr>
+<tr>
+<td>进入某个容器</td>
+<td><code>docker-compose exec 服务名 bash</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="📦-第四节：Compose-的网络与数据共享机制"><a href="#📦-第四节：Compose-的网络与数据共享机制" class="headerlink" title="📦 第四节：Compose 的网络与数据共享机制"></a>📦 第四节：Compose 的网络与数据共享机制</h2><p>老周介绍：</p>
+<blockquote>
+<p>“Compose 默认创建一个网络，<strong>所有服务能通过服务名互相访问</strong>。”</p>
+</blockquote>
+<p>在上面的例子中：</p>
+<ul>
+<li><code>backend</code> 容器可以用 <code>db:3306</code> 连接 MySQL</li>
+<li><code>frontend</code> 可通过 <code>backend:5000</code> 访问后端 API</li>
+</ul>
+<blockquote>
+<p>小李不再需要手动 <code>docker network create</code> 和 <code>--network</code> 参数，Compose 一切自动打通。</p>
+</blockquote>
+<h3 id="Volume-的挂载："><a href="#Volume-的挂载：" class="headerlink" title="Volume 的挂载："></a>Volume 的挂载：</h3><p>Compose 中的 volume 显式声明（如 <code>dbdata:</code>）会自动创建、管理。</p>
+<p>支持：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">./data:/data</span> <span class="comment"># Bind mount</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">myvolume:/data</span> <span class="comment"># Named volume</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">/custom/path:/data:ro</span> <span class="comment"># 带权限控制</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🌐-第五节：使用-env-管理配置变量"><a href="#🌐-第五节：使用-env-管理配置变量" class="headerlink" title="🌐 第五节：使用 .env 管理配置变量"></a>🌐 第五节：使用 <code>.env</code> 管理配置变量</h2><p>Compose 支持使用 <code>.env</code> 文件集中管理变量：</p>
+<p><code>.env</code> 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DB_PASSWORD=123456</span><br><span class="line">DB_NAME=mydb</span><br></pre></td></tr></table></figure>
+
+<p>Compose 文件中使用方式：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">environment:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">MYSQL_ROOT_PASSWORD=$&#123;DB_PASSWORD&#125;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">MYSQL_DATABASE=$&#123;DB_NAME&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🚀 配合 CI&#x2F;CD 时 <code>.env</code> 可由流水线动态生成，便于多环境切换（dev&#x2F;stage&#x2F;prod）。</p>
+</blockquote>
+<hr>
+<h2 id="🧬-第六节：高级配置技巧"><a href="#🧬-第六节：高级配置技巧" class="headerlink" title="🧬 第六节：高级配置技巧"></a>🧬 第六节：高级配置技巧</h2><h3 id="1-统一重启策略："><a href="#1-统一重启策略：" class="headerlink" title="1. 统一重启策略："></a>1. 统一重启策略：</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+
+<p>确保服务宕机时能自动重启。</p>
+<hr>
+<h3 id="2-多阶段构建支持："><a href="#2-多阶段构建支持：" class="headerlink" title="2. 多阶段构建支持："></a>2. 多阶段构建支持：</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line">  <span class="attr">context:</span> <span class="string">./backend</span></span><br><span class="line">  <span class="attr">dockerfile:</span> <span class="string">Dockerfile.prod</span></span><br></pre></td></tr></table></figure>
+
+<p>可指定构建路径、Dockerfile 文件、构建参数等。</p>
+<hr>
+<h3 id="3-Healthcheck-健康检查："><a href="#3-Healthcheck-健康检查：" class="headerlink" title="3. Healthcheck 健康检查："></a>3. Healthcheck 健康检查：</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">healthcheck:</span></span><br><span class="line">  <span class="attr">test:</span> [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;curl&quot;</span>, <span class="string">&quot;-f&quot;</span>, <span class="string">&quot;http://localhost:5000/health&quot;</span>]</span><br><span class="line">  <span class="attr">interval:</span> <span class="string">30s</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="string">10s</span></span><br><span class="line">  <span class="attr">retries:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🆚-第七节：Docker-Compose-vs-Kubernetes-简析"><a href="#🆚-第七节：Docker-Compose-vs-Kubernetes-简析" class="headerlink" title="🆚 第七节：Docker Compose vs Kubernetes 简析"></a>🆚 第七节：Docker Compose vs Kubernetes 简析</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Compose</th>
+<th>Kubernetes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动容器</td>
+<td>简单</td>
+<td>标准化</td>
+</tr>
+<tr>
+<td>配置语言</td>
+<td>YAML</td>
+<td>YAML</td>
+</tr>
+<tr>
+<td>网络</td>
+<td>自动共享</td>
+<td>需显式配置</td>
+</tr>
+<tr>
+<td>存储</td>
+<td>Volume</td>
+<td>PVC + SC</td>
+</tr>
+<tr>
+<td>服务发现</td>
+<td>服务名互通</td>
+<td>DNS&#x2F;ClusterIP</td>
+</tr>
+<tr>
+<td>用途</td>
+<td>本地开发 &#x2F; CI</td>
+<td>集群部署 &#x2F; 云原生</td>
+</tr>
+<tr>
+<td>高可用 &#x2F; 伸缩</td>
+<td>❌</td>
+<td>✅ 内建</td>
+</tr>
+<tr>
+<td>社区生态</td>
+<td>中小项目广泛使用</td>
+<td>大型平台标准方案</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>小李理解了：Compose 是“轻量乐队指挥”，K8s 是“交响级 AI 指挥系统”。</p>
+</blockquote>
+<hr>
+<h2 id="🔁-第八节：Compose-CI-CD-集成发布"><a href="#🔁-第八节：Compose-CI-CD-集成发布" class="headerlink" title="🔁 第八节：Compose + CI&#x2F;CD 集成发布"></a>🔁 第八节：Compose + CI&#x2F;CD 集成发布</h2><p>小李将 Compose 整合进 GitLab CI 流程：</p>
+<p><code>.gitlab-ci.yml</code> 示例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">docker:dind</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">build</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">build</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker-compose</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">deploy</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker-compose</span> <span class="string">up</span> <span class="string">-d</span></span><br></pre></td></tr></table></figure>
+
+<p>CI 构建完镜像后，直接用 Compose 部署，既省事又稳定。</p>
+<hr>
+<h2 id="🧠-小李-Compose-使用技巧总结"><a href="#🧠-小李-Compose-使用技巧总结" class="headerlink" title="🧠 小李 Compose 使用技巧总结"></a>🧠 小李 Compose 使用技巧总结</h2><table>
+<thead>
+<tr>
+<th>目标</th>
+<th>技巧</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务隔离</td>
+<td>每个项目单独一个 Compose 文件</td>
+</tr>
+<tr>
+<td>共享网络</td>
+<td>不用写 <code>network</code>，服务名即 DNS</td>
+</tr>
+<tr>
+<td>跨环境配置</td>
+<td>使用 <code>.env</code> 动态切换变量</td>
+</tr>
+<tr>
+<td>状态排查</td>
+<td><code>docker-compose logs</code> &#x2F; <code>ps</code> &#x2F; <code>exec</code></td>
+</tr>
+<tr>
+<td>多环境文件</td>
+<td>使用 <code>docker-compose.override.yml</code></td>
+</tr>
+<tr>
+<td>CI&#x2F;CD 联动</td>
+<td>编排命令嵌入流水线任务中</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎬-尾声：指挥容器交响曲的时刻"><a href="#🎬-尾声：指挥容器交响曲的时刻" class="headerlink" title="🎬 尾声：指挥容器交响曲的时刻"></a>🎬 尾声：指挥容器交响曲的时刻</h2><p>当小李敲下 <code>docker-compose up</code> 的回车键，前端、后端、数据库同时启动，日志齐鸣，服务稳定运行。</p>
+<blockquote>
+<p>“这就是我梦想的微服务协奏曲啊。”</p>
+</blockquote>
+<p>老周拍了拍他肩膀：</p>
+<blockquote>
+<p>“你已经能用 Compose 驾驭服务之海，下一步，是把它们部署上云、扩展弹性、自动滚动升级。”</p>
+</blockquote>
+<p>小李点头，望向远方的集群编排系统——Kubernetes，眼中闪着新的渴望。</p>
+<p>好！那我们就在<strong>第五章《多容器交响曲》</strong>中，继续深入补充这四大实战技能：</p>
+<hr>
+<h2 id="🧩-补充一：Compose-的多环境部署实践（开发、测试、生产）"><a href="#🧩-补充一：Compose-的多环境部署实践（开发、测试、生产）" class="headerlink" title="🧩 补充一：Compose 的多环境部署实践（开发、测试、生产）"></a>🧩 补充一：Compose 的多环境部署实践（开发、测试、生产）</h2><p>小李希望同一套服务，在开发、测试、生产环境下分别使用不同的配置，比如：</p>
+<ul>
+<li>数据库密码不同</li>
+<li>是否挂载本地代码</li>
+<li>是否启用调试模式</li>
+</ul>
+<p>老周教他使用 Compose 的<strong>多文件配置机制</strong>：</p>
+<hr>
+<h3 id="✅-方案一：使用-docker-compose-override-yml"><a href="#✅-方案一：使用-docker-compose-override-yml" class="headerlink" title="✅ 方案一：使用 docker-compose.override.yml"></a>✅ 方案一：使用 <code>docker-compose.override.yml</code></h3><p>Docker Compose 默认会<strong>自动加载 <code>docker-compose.override.yml</code></strong> 并与主文件合并。</p>
+<h4 id="文件结构："><a href="#文件结构：" class="headerlink" title="文件结构："></a>文件结构：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker-compose.yml</span><br><span class="line">docker-compose.override.yml</span><br><span class="line">.env.dev</span><br><span class="line">.env.prod</span><br></pre></td></tr></table></figure>
+
+<h4 id="主配置（docker-compose-yml）："><a href="#主配置（docker-compose-yml）：" class="headerlink" title="主配置（docker-compose.yml）："></a>主配置（docker-compose.yml）：</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">web:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">.</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8000:8000&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ENV_MODE=$&#123;MODE&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="开发环境覆盖文件（docker-compose-override-yml）："><a href="#开发环境覆盖文件（docker-compose-override-yml）：" class="headerlink" title="开发环境覆盖文件（docker-compose.override.yml）："></a>开发环境覆盖文件（docker-compose.override.yml）：</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">web:</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./src:/app/src</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DEBUG=true</span></span><br></pre></td></tr></table></figure>
+
+<p>运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MODE=development docker-compose up</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="✅-方案二：按环境拆分多个-Compose-文件"><a href="#✅-方案二：按环境拆分多个-Compose-文件" class="headerlink" title="✅ 方案二：按环境拆分多个 Compose 文件"></a>✅ 方案二：按环境拆分多个 Compose 文件</h3><p>适合 CI&#x2F;CD 或部署多个 stage。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><ul>
+<li><code>docker-compose.dev.yml</code></li>
+<li><code>docker-compose.prod.yml</code></li>
+</ul>
+<p>运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d</span><br></pre></td></tr></table></figure>
+
+<p>多个 <code>-f</code> 会按顺序合并，后面覆盖前面。</p>
+<blockquote>
+<p>📦 建议主文件写“公共配置”，子文件按环境细化。</p>
+</blockquote>
+<hr>
+<h2 id="🎯-补充二：优化服务依赖启动顺序"><a href="#🎯-补充二：优化服务依赖启动顺序" class="headerlink" title="🎯 补充二：优化服务依赖启动顺序"></a>🎯 补充二：优化服务依赖启动顺序</h2><p>小李发现，即使写了 <code>depends_on</code>，后端有时候也连不上数据库。</p>
+<p>老周摇头说：</p>
+<blockquote>
+<p>“<code>depends_on</code> 只是控制启动<strong>顺序</strong>，<strong>不是等服务就绪</strong>。数据库可能还没监听端口就已被标记为 ‘up’。”</p>
+</blockquote>
+<hr>
+<h3 id="✅-正确姿势：服务内设置“等待就绪”"><a href="#✅-正确姿势：服务内设置“等待就绪”" class="headerlink" title="✅ 正确姿势：服务内设置“等待就绪”"></a>✅ 正确姿势：服务内设置“等待就绪”</h3><p>比如 Flask 等数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">until</span> nc -z db 3306; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;Waiting for db...&quot;</span></span><br><span class="line">  <span class="built_in">sleep</span> 1</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">python app.py</span><br></pre></td></tr></table></figure>
+
+<p>或者使用工具包如 <a target="_blank" rel="noopener" href="https://github.com/vishnubob/wait-for-it"><code>wait-for-it.sh</code></a>：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="language-bash"> wait-for-it.sh /wait-for-it.sh</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;/wait-for-it.sh&quot;</span>, <span class="string">&quot;db:3306&quot;</span>, <span class="string">&quot;--&quot;</span>, <span class="string">&quot;python&quot;</span>, <span class="string">&quot;app.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🩺 推荐结合容器健康检查，判断服务是否真正 ready。</p>
+</blockquote>
+<hr>
+<h2 id="🛠-补充三：Docker-Compose-V1-➜-V2-迁移技巧"><a href="#🛠-补充三：Docker-Compose-V1-➜-V2-迁移技巧" class="headerlink" title="🛠 补充三：Docker Compose V1 ➜ V2 迁移技巧"></a>🛠 补充三：Docker Compose V1 ➜ V2 迁移技巧</h2><p>小李的 CI 工具用的是 Compose v1，项目准备升级。</p>
+<p>老周提醒：</p>
+<blockquote>
+<p>“Docker Compose v2 使用的是 <code>docker compose</code>（空格），而非 <code>docker-compose</code>（短横线）。”</p>
+</blockquote>
+<hr>
+<h3 id="✅-主要变化："><a href="#✅-主要变化：" class="headerlink" title="✅ 主要变化："></a>✅ 主要变化：</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>v1 (<code>docker-compose</code>)</th>
+<th>v2 (<code>docker compose</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>命令格式</td>
+<td><code>docker-compose up</code></td>
+<td><code>docker compose up</code></td>
+</tr>
+<tr>
+<td>安装方式</td>
+<td>独立二进制</td>
+<td>集成于 Docker CLI</td>
+</tr>
+<tr>
+<td>文件格式</td>
+<td><code>v2</code>, <code>v3</code></td>
+<td>推荐统一 <code>v3.9</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="✅-迁移建议："><a href="#✅-迁移建议：" class="headerlink" title="✅ 迁移建议："></a>✅ 迁移建议：</h3><ul>
+<li>删除旧的 <code>docker-compose</code> 二进制</li>
+<li>使用 <code>docker compose</code> CLI</li>
+<li>更新脚本、CI 工具调用方式</li>
+<li>移除 legacy 字段（如 <code>links</code>）</li>
+<li>检查 <code>.env</code> 是否兼容（v2 更严格）</li>
+</ul>
+<hr>
+<h2 id="☸️-补充四：Compose-与-Helm-的映射关系对照"><a href="#☸️-补充四：Compose-与-Helm-的映射关系对照" class="headerlink" title="☸️ 补充四：Compose 与 Helm 的映射关系对照"></a>☸️ 补充四：Compose 与 Helm 的映射关系对照</h2><p>当小李进入 Kubernetes 世界，他问老周：</p>
+<blockquote>
+<p>“Compose 文件和 K8s 的 YAML 有啥对应关系？”</p>
+</blockquote>
+<p>老周说：“很好理解，Compose 是开发者的 K8s 简化版本。”</p>
+<hr>
+<h3 id="对照表："><a href="#对照表：" class="headerlink" title="对照表："></a>对照表：</h3><table>
+<thead>
+<tr>
+<th>Compose</th>
+<th>Kubernetes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>services:</code></td>
+<td><code>Deployment + Pod</code></td>
+</tr>
+<tr>
+<td><code>volumes:</code></td>
+<td><code>PersistentVolumeClaim</code></td>
+</tr>
+<tr>
+<td><code>ports:</code></td>
+<td><code>Service</code>（NodePort &#x2F; ClusterIP）</td>
+</tr>
+<tr>
+<td><code>depends_on:</code></td>
+<td><code>initContainers</code> 或 readinessProbe</td>
+</tr>
+<tr>
+<td><code>.env</code></td>
+<td>ConfigMap &#x2F; Secret</td>
+</tr>
+<tr>
+<td><code>docker-compose.yml</code></td>
+<td>Helm Chart (values.yaml + templates)</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="示例：Compose-转-Helm-构思"><a href="#示例：Compose-转-Helm-构思" class="headerlink" title="示例：Compose 转 Helm 构思"></a>示例：Compose 转 Helm 构思</h3><h4 id="Compose-配置："><a href="#Compose-配置：" class="headerlink" title="Compose 配置："></a>Compose 配置：</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">web:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">myapp:latest</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:80&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DEBUG=true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Helm-values-yaml："><a href="#Helm-values-yaml：" class="headerlink" title="Helm values.yaml："></a>Helm <code>values.yaml</code>：</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">myapp</span></span><br><span class="line">  <span class="attr">tag:</span> <span class="string">latest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">DEBUG</span></span><br><span class="line">    <span class="attr">value:</span> <span class="string">&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">service:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">targetPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Helm-deployment-yaml（模板）："><a href="#Helm-deployment-yaml（模板）：" class="headerlink" title="Helm deployment.yaml（模板）："></a>Helm <code>deployment.yaml</code>（模板）：</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">    <span class="attr">image:</span> &#123;&#123; <span class="string">.Values.image.repository</span> &#125;&#125;<span class="string">:&#123;&#123;</span> <span class="string">.Values.image.tag</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">      &#123;&#123;<span class="bullet">-</span> <span class="string">range</span> <span class="string">.Values.env</span> &#125;&#125;</span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> &#123;&#123; <span class="string">.name</span> &#125;&#125;</span><br><span class="line">        <span class="attr">value:</span> &#123;&#123; <span class="string">.value</span> &#125;&#125;</span><br><span class="line">      &#123;&#123;<span class="bullet">-</span> <span class="string">end</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ 小李意识到，Helm 是“模板化 + 分层管理”的 Compose 超集，是云原生部署的标准组件管理器。</p>
+</blockquote>
+<hr>
+<h2 id="🎬-尾声：Compose-是微服务上云的跳板"><a href="#🎬-尾声：Compose-是微服务上云的跳板" class="headerlink" title="🎬 尾声：Compose 是微服务上云的跳板"></a>🎬 尾声：Compose 是微服务上云的跳板</h2><p>小李已经用 Docker Compose 实现了：</p>
+<ul>
+<li>开发环境热更新</li>
+<li>测试环境集成数据库</li>
+<li>生产环境独立配置</li>
+<li>CI&#x2F;CD 自动部署服务</li>
+<li>为 Kubernetes 迁移打下基础</li>
+</ul>
+<p>他明白了：</p>
+<blockquote>
+<p>“Compose 就像舞台排练，Kubernetes 才是真正的大型音乐厅。但有了排练，登台才不会慌。”</p>
+</blockquote>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.099Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">4 分钟读完 (大约555个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A-%E4%BB%8E%E5%BC%80%E5%90%AFssh%E5%88%B0%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%95%99%E4%BD%A0%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/">懒猫微服实战入门（一）： 从开启SSH到免密登录，一步步教你搞定远程管理</a></p><div class="content"><p>对于很多资深的 NAS 玩家来说，拿到一台机器首先要配置远程登录和环境依赖。懒猫上其实可以实现云计算讲的 Iass - Pass -Sass 这三个层级，不过对于资深玩家而言，肯定是要从 Infra 这个级别入手的。</p>
 <p>官方文档如下：<br><a target="_blank" rel="noopener" href="https://developer.lazycat.cloud/ssh.html">https://developer.lazycat.cloud/ssh.html</a></p>
 <p>安装懒猫开发者工具，然后再右上角能够看到 sshd 服务的状态。<br>然后点击开启，之后我们才可以使用 ssh 登录，在写这篇文章测试的时候，我关闭了这个按钮，再去 ssh 直接就报错了。</p>
 <p><img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/823b1afe-fb70-4866-8303-aa051e9b65bc.png" alt="image.png" title="image.png"></p>
@@ -52,7 +1056,7 @@
 
 <p>注意：要开着懒猫微服 APP ，否则无法使用 heiyu.space 提供的穿透服务。</p>
 <p><img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/a303adbb-d3f5-4fa2-9a6d-6d3b25abbe34.png" alt="image.png" title="image.png"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">8 分钟读完 (大约1168个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E4%B8%80%E9%94%AE%E6%8D%A2%E6%BA%90%E6%8C%87%E5%8D%97%EF%BC%9A%E7%94%A8-chsrc-%E5%BC%80%E5%90%AF%E4%B8%9D%E6%BB%91%E4%BD%93%E9%AA%8C/">懒猫微服实战入门（十一）：一键换源指南：用 chsrc 开启丝滑体验</a></p><div class="content"><p>最近懒猫微服的系统固件进行了更新，默认的软件源重新指向了国际源。估计是为了方便海外用户，但对于国内开发者来说，访问速度顿时大打折扣，软件安装和更新频繁卡在连接阶段，着实是一个问题。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.099Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">8 分钟读完 (大约1168个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E4%B8%80%E9%94%AE%E6%8D%A2%E6%BA%90%E6%8C%87%E5%8D%97%EF%BC%9A%E7%94%A8-chsrc-%E5%BC%80%E5%90%AF%E4%B8%9D%E6%BB%91%E4%BD%93%E9%AA%8C/">懒猫微服实战入门（十一）：一键换源指南：用 chsrc 开启丝滑体验</a></p><div class="content"><p>最近懒猫微服的系统固件进行了更新，默认的软件源重新指向了国际源。估计是为了方便海外用户，但对于国内开发者来说，访问速度顿时大打折扣，软件安装和更新频繁卡在连接阶段，着实是一个问题。</p>
 <p>正巧群友推荐了一个神器 —— <a target="_blank" rel="noopener" href="https://gitee.com/RubyMetric/chsrc"><code>chsrc</code></a>。这个工具支持一键切换系统、Python、conda 等多个主流组件的源，简洁高效，非常适合懒猫微服这样的轻量环境使用。</p>
 <h2 id="下载并安装-chsrc"><a href="#下载并安装-chsrc" class="headerlink" title="下载并安装 chsrc"></a>下载并安装 chsrc</h2><p>chsrc 项目在 Gitee 上提供了预编译的可执行文件，适用于不同架构的 Linux 设备。我当前使用的是 x86_64 架构，因此只需运行以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o chsrc</span><br><span class="line"><span class="built_in">chmod</span> +x ./chsrc</span><br></pre></td></tr></table></figure>
@@ -90,7 +1094,7 @@
 </ul>
 <p>如果你也在用懒猫微服、或者在其他 Debian 系的轻量服务器上摸索开发环境，强烈推荐你试试这个工具和脚本组合。毕竟，“懒得配置”不应该成为“卡在配置”的理由。</p>
 <p><img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/e5fc8b99-2220-4a5a-8327-38da7b93456f.png" alt="image.png" title="image.png"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">6 分钟读完 (大约943个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%94%A8-iventoy-%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-pxe-%E6%9C%8D%E5%8A%A1%E5%99%A8/">懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器</a></p><div class="content"><p>很多介绍 Linux 的书籍都会在结尾推荐 PXE 装机方式，尤其是经典的 TFTP + Kickstart 自动部署方案。但在普通家庭或轻量办公环境中，这种方式显得有些繁琐。在 U 盘装机的环境中，我一般使用的 <strong>Ventoy</strong>多合一 。不过 Ventoy 团队又推出了一个支持 PXE 的装机版本，名为 <strong>iVentoy</strong>，和 WDS 类似，不过更加省心，这个应用已经上架懒猫微服的应用商店，非常适合内网多机装系统的场景。终于不用再琢磨 WDS 了。还有就是之前不小心用店家带的 U 盘把主机的所有数据都格式化了，这种手残也一去不复返了。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.099Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">6 分钟读完 (大约943个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%94%A8-iventoy-%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-pxe-%E6%9C%8D%E5%8A%A1%E5%99%A8/">懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器</a></p><div class="content"><p>很多介绍 Linux 的书籍都会在结尾推荐 PXE 装机方式，尤其是经典的 TFTP + Kickstart 自动部署方案。但在普通家庭或轻量办公环境中，这种方式显得有些繁琐。在 U 盘装机的环境中，我一般使用的 <strong>Ventoy</strong>多合一 。不过 Ventoy 团队又推出了一个支持 PXE 的装机版本，名为 <strong>iVentoy</strong>，和 WDS 类似，不过更加省心，这个应用已经上架懒猫微服的应用商店，非常适合内网多机装系统的场景。终于不用再琢磨 WDS 了。还有就是之前不小心用店家带的 U 盘把主机的所有数据都格式化了，这种手残也一去不复返了。</p>
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250601202019460.png" alt="iVentoy商店界面"></p>
 <h3 id="什么是-PXE-无盘装机？"><a href="#什么是-PXE-无盘装机？" class="headerlink" title="什么是 PXE 无盘装机？"></a>什么是 PXE 无盘装机？</h3><p>PXE，全称 <strong>Preboot eXecution Environment</strong>，是一种允许电脑在没有本地操作系统、光盘或 U 盘的情况下，通过网络从服务器下载引导程序并完成系统安装的机制。</p>
 <p><strong>PXE 装机简化流程如下：</strong></p>
@@ -121,7 +1125,7 @@
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/8a1dc12c14c27fdc02a39db103994f5a.jpg" alt="成功进入系统桌面"></p>
 <hr>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>这个办法还是适合炫技，把电脑接上网线，然后不用 U 盘，凭空装好系统，不过还是没有 U 盘那么丝滑，有时候不能打满千兆带宽。不过假如手头 U 盘不够用，或者要在多个系统反复装机测试就很方便了。</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">4 分钟读完 (大约617个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%EF%BC%9A%E5%A4%A7%E7%96%86pocket3-%E7%B4%A0%E6%9D%90%E5%AF%BC%E5%85%A5%E6%87%92%E7%8C%AB%E7%BD%91%E7%9B%98/">懒猫微服实战入门（十五）：大疆Pocket3 素材导入懒猫网盘</a></p><div class="content"><p>日常使用 Pocket3 拍摄视频，就是共享比较麻烦，不然就得每个手机安装一个 app，然后再导出。突发奇想可以把素材传到懒猫网盘中，这样就解决了这个痛点。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.099Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">4 分钟读完 (大约617个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%EF%BC%9A%E5%A4%A7%E7%96%86pocket3-%E7%B4%A0%E6%9D%90%E5%AF%BC%E5%85%A5%E6%87%92%E7%8C%AB%E7%BD%91%E7%9B%98/">懒猫微服实战入门（十五）：大疆Pocket3 素材导入懒猫网盘</a></p><div class="content"><p>日常使用 Pocket3 拍摄视频，就是共享比较麻烦，不然就得每个手机安装一个 app，然后再导出。突发奇想可以把素材传到懒猫网盘中，这样就解决了这个痛点。</p>
 <p>大疆的机器每次连接都要走这个流程，不得不说真的很麻烦。这个 Wi-Fi 的记忆功能比较鸡肋。</p>
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250624122938093.png" alt="image-20250624122938093"></p>
 <p>连接之后需要右上角先把视频下载到手机本地，然后点击分享。</p>
@@ -148,7 +1152,7 @@
 <li>Apple 的 lighting 原生不支持 OTG，需要买转接头。</li>
 </ol>
 </blockquote>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">6 分钟读完 (大约829个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89%EF%BC%9A%E6%8A%8A%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%BD%93%E4%BD%9C-24-%C3%97-7-%E5%9C%A8%E7%BA%BF%E5%BC%80%E5%8F%91%E6%9C%BA/">懒猫微服实战入门（十六）：把懒猫微服当作 24 × 7 在线开发机</a></p><div class="content"><p>最近和极限科技沟通，将 <strong>INFINI Console</strong> 上架到懒猫微服。可以当作随时可用、不关机的 <strong>远程开发机</strong>。比如连接自己部署的 ES，中间件，数据库什么的。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.099Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">6 分钟读完 (大约829个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89%EF%BC%9A%E6%8A%8A%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%BD%93%E4%BD%9C-24-%C3%97-7-%E5%9C%A8%E7%BA%BF%E5%BC%80%E5%8F%91%E6%9C%BA/">懒猫微服实战入门（十六）：把懒猫微服当作 24 × 7 在线开发机</a></p><div class="content"><p>最近和极限科技沟通，将 <strong>INFINI Console</strong> 上架到懒猫微服。可以当作随时可用、不关机的 <strong>远程开发机</strong>。比如连接自己部署的 ES，中间件，数据库什么的。</p>
 <h2 id="1-应用商店一键安装-INFINI-Console"><a href="#1-应用商店一键安装-INFINI-Console" class="headerlink" title="1. 应用商店一键安装 INFINI Console"></a>1. 应用商店一键安装 INFINI Console</h2><p>从懒猫微服应用商店搜索 <strong>Console</strong>，点击“安装”即可：</p>
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/a8de38c1a8d6cb8bf34ae697256ad230.png" alt="应用商店界面"></p>
 <h2 id="2-初始化与登录"><a href="#2-初始化与登录" class="headerlink" title="2. 初始化与登录"></a>2. 初始化与登录</h2><p>初始化之后登录：</p>
@@ -218,7 +1222,7 @@
 </ol>
 <p>适合：<br>👉 想要随时随地调试项目的开发者<br>👉 不想在本地装一堆环境的轻量用户<br>👉 有多端共享、协作需求的远程开发场景</p>
 <p>整套流程走下来，你只需一台浏览器，就能获得 <strong>24 × 7 不关机的云端开发环境</strong>。如果你也是 Mac M-芯片用户、经常出差或需要多端协作，不妨试试用懒猫微服托管自己的 DevBox。</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">4 分钟读完 (大约666个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89%EF%BC%9A%E6%8A%8A-steam-%E6%B8%B8%E6%88%8F%E5%AD%98%E5%88%B0%E6%87%92%E7%8C%AB%E7%BD%91%E7%9B%98/">懒猫微服实战入门（十七）：把 Steam 游戏存到懒猫网盘</a></p><div class="content"><p>懒猫微服的网盘基本可以替代一些公有的网盘，还有一个好处是可以自动挂载，只要打开懒猫微服的客户端，然后自动把网盘就能自动挂载到 Finder，十分方便。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.099Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">4 分钟读完 (大约666个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89%EF%BC%9A%E6%8A%8A-steam-%E6%B8%B8%E6%88%8F%E5%AD%98%E5%88%B0%E6%87%92%E7%8C%AB%E7%BD%91%E7%9B%98/">懒猫微服实战入门（十七）：把 Steam 游戏存到懒猫网盘</a></p><div class="content"><p>懒猫微服的网盘基本可以替代一些公有的网盘，还有一个好处是可以自动挂载，只要打开懒猫微服的客户端，然后自动把网盘就能自动挂载到 Finder，十分方便。</p>
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250627201448767.png" alt="image-20250627201448767"></p>
 <p>网盘的挂载是支持了 WebDAV 和 Sambda。这是常见的两种远程访问的协议。</p>
 <p><strong>WebDAV（Web Distributed Authoring and Versioning）</strong>主要用于 <strong>HTTP&#x2F;HTTPS 协议</strong> 的文件共享，适合 <strong>远程访问、云存储</strong>。基于 HTTP&#x2F;HTTPS<strong>，可在浏览器中直接访问（如 <code>http://server/webdav</code>）。</strong></p>
@@ -244,7 +1248,7 @@
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250627202118461.png" alt="image-20250627202118461"></p>
 <p>如果哪天不再需要写入懒猫网盘，用这个办法删除。网上吐槽挺多的。</p>
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/788d94c0cb77ec7c66aa3de73f414462.png" alt="788d94c0cb77ec7c66aa3de73f414462"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">7 分钟读完 (大约1055个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%89%EF%BC%89-%E6%87%92%E7%8C%AB%E6%99%BA%E6%85%A7%E5%B1%8F%EF%BC%8C%E4%BB%A5%E4%B8%BA%E6%98%AF%E5%9C%B0%E8%A1%A8%E6%9C%80%E5%BC%BA%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%EF%BC%8C%E7%BB%93%E6%9E%9C%E6%98%AF%E9%97%BA%E8%9C%9C%E6%9C%BA/">懒猫微服实战入门（三）:懒猫智慧屏，以为是地表最强电视盒子，结果是闺蜜机</a></p><div class="content"><p>过年那阵子，为了看春晚不卡顿，打算换一个当贝盒子，尽管这些年刷过矿机当盒子或者 Armbian，但是仍然对当贝系列情有独钟，而时过境迁，最后发现在当年风靡市场的网红盒子，不过 RK3566 而已，根据不同的 RAM+ROM 的组合来卖到更高的价格，实在是没有什么性价比。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:23:37.099Z" title="6/30/2025, 5:23:37 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">7 分钟读完 (大约1055个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%89%EF%BC%89-%E6%87%92%E7%8C%AB%E6%99%BA%E6%85%A7%E5%B1%8F%EF%BC%8C%E4%BB%A5%E4%B8%BA%E6%98%AF%E5%9C%B0%E8%A1%A8%E6%9C%80%E5%BC%BA%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%EF%BC%8C%E7%BB%93%E6%9E%9C%E6%98%AF%E9%97%BA%E8%9C%9C%E6%9C%BA/">懒猫微服实战入门（三）:懒猫智慧屏，以为是地表最强电视盒子，结果是闺蜜机</a></p><div class="content"><p>过年那阵子，为了看春晚不卡顿，打算换一个当贝盒子，尽管这些年刷过矿机当盒子或者 Armbian，但是仍然对当贝系列情有独钟，而时过境迁，最后发现在当年风靡市场的网红盒子，不过 RK3566 而已，根据不同的 RAM+ROM 的组合来卖到更高的价格，实在是没有什么性价比。</p>
 <p>于是想到 X86 能性能会更加好一些，比如 Android TV 这种固件，不过这种基本都是海外版本，纯净的基本什么都要自己捣鼓，而 B 站评论的第三方链接又很担心安全问题。</p>
 <p>这问题一直持续到我购买了懒猫微服，高性能的 X86 主机，还带 HDMI（目前 Typec 不支持供电和视频传输），和飞牛的原生 Gnome 输出不同的是懒猫智慧屏其实是商店里面一个独立的 APP，本质上相当于客户端，需要手机扫码授权才能使用</p>
 <p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250512090024831.png" alt="image-20250512090024831"></p>
@@ -273,106 +1277,7 @@
 </ol>
 <p>市面上的闺蜜机动辄大几千，配置又差强人意，还不如买懒猫微服，还有专业的售后陪玩，探索无限可能！</p>
 <p>什么？你说闺蜜机还得有语音助手， AI 美颜，娱乐互动？快登懒猫微服用 Docker 来部署吧，还有机会上架懒猫商店哦～</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">4 分钟读完 (大约622个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%87%92%E7%8C%AB%E7%BD%91%E7%9B%98%EF%BC%8Csmb-%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E8%A7%82%E5%BD%B1/">懒猫微服实战入门（五）：文件上传到懒猫网盘，SMB 电视盒子观影</a></p><div class="content"><p>作为一个合格的 NAS，肯定要有文件共享的功能，一般我们常用的是 SMB，NFS 和 WebDav 这三种，然后需要设置共享目录和用户权限。</p>
-<p>懒猫网盘提供了一个开箱即用的方案，直接通过 APP 把网盘的文件夹映射自动挂载到本地，不需要像 Linux 那样 mount，也不需像 window 一样新建磁盘映射：</p>
-<p>我们看看以前要挂载一个盘有多麻烦:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Debian/Ubuntu</span><br><span class="line">sudo apt install cifs-utils</span><br><span class="line">sudo mkdir /mnt/smb_share</span><br><span class="line">sudo mount -t cifs //SERVER_IP_OR_NAME/SHARE_NAME /mnt/smb_share -o username=SMB_USER,password=SMB_PASSWORD,domain=WORKGROUP</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>如果需要开机自动挂载，还得改&#x2F;etc&#x2F;fstab 里面的条目。但是，懒猫网盘可以开箱即用，不管你是用浏览器，APP，还是用访达挂载 SMB 都访问都可以。属实是解放了 Mac 党的电脑空间。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514104946937.png" alt="image-20250514104946937"></p>
-<p>在网盘中点击自己的头像，然后<strong>设置</strong> - <strong>网络服务</strong>这里，可以看到设置。甚至点击起开内网服务，还会给一个 IP 地址的 SMB 地址：</p>
-<p><code>smb://ip/user-name</code>，电视盒子不能安装懒猫 app，但是有了 IP 地址之后就可以连接 SMB 了～</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514105241675.png"></p>
-<p>然后就是当贝盒子这里啦，如果你是小米盒子或者其他的盒子，只要文件管理器支持 SMB 就 OK</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514113806260.png" alt="image-20250514113806260"></p>
-<p>进入文件管理器，选择 <strong>局域网共享连接</strong>。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514113737029.png" alt="image-20250514113737029"></p>
-<p>然后输入懒猫微服的 IP 地址，用户名密码就是微服 APP 的， 这一套有点 AD 域的感觉了。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514113708677.png" alt="image-20250514113708677"></p>
-<p>如果你的文件管理器默认没有 SMB 也没有关系，还可以使用第三方应用进行 SMB 连接，比如这个 Github 项目，可以从 release 中下载 APK 进行安装。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514113634937.png" alt="image-20250514113634937"></p>
-<p>连接成功后，可对文件进行扫描和管理。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514113612422.png" alt="图片"></p>
-<p>通过以上配置，就可以在电视盒子上通过 SMB 连接 NAS，开心的观看的 4K 电影了。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250514113307833.png" alt="image-20250514113307833"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">8 分钟读完 (大约1160个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BD%BF%E7%94%A82fauth%E5%85%B1%E4%BA%AB%E4%BD%A0%E7%9A%84mfa/">懒猫微服实战入门（六）：使用2fauth共享你的MFA</a></p><div class="content"><p>标题有点绕口，甚至听起来有点反直觉。</p>
-<p>故事的背景是这样的，去参加了 AWS 的活动给的账户强制开 MFA，但是我们还想团队内部 share 使用，于是产生了这个需求。</p>
-<p>登录到 AWS 的控制台强制开了 MFA，而且在第一次注册的时候强制绑定多因子验证。这也就意味着，其他人如果想登录这个账户就得随时 call 我，然后我去发给他数据验证码，这实在很不方便，所以想到了共享的 MFA 的需求。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516164159950.png" alt="image-20250516164159950"></p>
-<p>头几天逛商店看到的，觉得项目有点意思就下载了，没想到这么快用到了。懒猫商店，一键部署很方便，当成 Saas 服务来用，完全不考虑部署运维的事情。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516163824579.png" alt="image-20250516163824579"></p>
-<p>之前给小伙伴开了懒猫微服的账户，共享了 planka 来看项目进度，这次把 2fauth 的权限也添加给他。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516163911970.png" alt="image-20250516163911970"></p>
-<p>首先我这边先注册管理员的账户，默认是登录页面，需要切换一下。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516164749502.png" alt="image-20250516164749502"></p>
-<p>登录之后会提示绑定一下这个账户的 MFA，我就是为了不在手机上安装 MFA 软件才用这个的，就不要套娃了。反正外面还有懒猫的验证系统，那个还有 TLS 加密，安全码验证。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516164845425.png" alt="image-20250516164845425"></p>
-<p>选择不绑定设备之后，在这里导入需要设置的 MFA，这可以用摄像头或者导入二维码文件。我用的电脑端，所以直接在应用处截图，然后导入到这里了。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516164821161.png" alt="image-20250516164821161"></p>
-<p>点击最下面的导入，然后选择二维码 - 上传 就可以了。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516165311672.png" alt="image-20250516165311672"></p>
-<p>导入之后是这样的，可以二次确认签发机构。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516165259782.png" alt="image-20250516165259782"></p>
-<p>然后把生成的 6 位数字填写到 aws 控制台上，就可以成功验证了。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516165435265.png" alt="image-20250516165435265"></p>
-<p>在 2fauth 控制台上是这样的，点开就可以查看 6 位数字验证码。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516165711375.png" alt="image-20250516165711375"></p>
-<p>那么回到一开始的话题，怎么共享给其他账户呢？点击下方 - 管理员 - 用户 ，然后我们来新建一个普通用户。步骤基本和前面的一致。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516165543137.png" alt="image-20250516165543137"></p>
-<p>本来以为有用户组一类的概念，把两个用户和 MFA 放在一个组里达到 share 的目的，结果发现这个分组完全是用来区分的 TAG。也没有找到把用户加到组里的操作。那就从管理员导出，再从下一个用户导入吧。</p>
-<p>首先试了二维码，但是导入的时候就提示 server error。于是查了了 wiki，都是其他 MFA 软件导入 2fauth 的。无奈只能只能导出配置文件。名字叫做 2fauth_export.json</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516170143799.png" alt="image-20250516170143799"></p>
-<p>登录新用户的时候新建，然后选择文本文件。导入刚才的配置文件就可以了。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250516165311672.png" alt="image-20250516165311672"></p>
-<p>配置文件基本长这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;app&quot;: &quot;2fauth_v5.3.2&quot;,</span><br><span class="line">  &quot;schema&quot;: 1,</span><br><span class="line">  &quot;datetime&quot;: &quot;2025-05-16T08:35:07.676665Z&quot;,</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;otp_type&quot;: &quot;totp&quot;,</span><br><span class="line">      &quot;account&quot;: &quot;Q&quot;,</span><br><span class="line">      &quot;service&quot;: &quot;AWS SSO&quot;,</span><br><span class="line">      &quot;icon&quot;: null,</span><br><span class="line">      &quot;icon_mime&quot;: null,</span><br><span class="line">      &quot;icon_file&quot;: null,</span><br><span class="line">      &quot;secret&quot;: &quot;secretsss&quot;,</span><br><span class="line">      &quot;digits&quot;: 6,</span><br><span class="line">      &quot;algorithm&quot;: &quot;sha1&quot;,</span><br><span class="line">      &quot;period&quot;: 30,</span><br><span class="line">      &quot;counter&quot;: null,</span><br><span class="line">      &quot;legacy_uri&quot;: &quot;otpauth://totp/&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>整个过程有点绕，有人说每个人手机安装 google authenticator 扫一下不就好了吗？</p>
-<p><strong>为什么采取这个方案？</strong></p>
-<ol>
-<li><p>之前用手机安装类似软件，每次去三里屯维修的时候都说返厂要把数据抹掉，下次还得重新绑定，还有一些软件只认 MFA 不认人。</p>
-<p>这过程不光折腾的够呛，而且 Apple 本身的问题还要 MFA 来买单。</p>
-</li>
-<li><p>起初是想做一个类似于团队共享 MFA 的场景的，类似于 RBAC，控制起来很灵活，但是实际体验下来是没有达到的。</p>
-</li>
-<li><p>把最早的 MFA 二维码截图 share 出去也能扫，但是不确定有效时间。</p>
-</li>
-</ol>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.698Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">6 分钟读完 (大约865个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%85%AB%EF%BC%89%EF%BC%9A%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D-%C3%97-ssh-remote%EF%BC%9A%E6%89%93%E9%80%A0%E9%9A%8F%E6%97%B6%E9%9A%8F%E5%9C%B0%E7%9A%84%E4%BA%91%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">懒猫微服实战入门（八）：懒猫微服 × SSH Remote：打造随时随地的云端开发环境</a></p><div class="content"><p>Apple 开始换了 ARM 芯片之后，我们还处于 X86 和 ARM 交叉的阶段。所以有时候还得有一台 X86 的开发环境来测试一些兼容性问题。一开始手里面只有低配置的软路由，后来入手了懒猫微服，这个 11 代 i5 的 CPU 终于能够编译一些重型的任务了。</p>
-<p>下面演示如何把懒猫微服配置成一台云端开发机，并分别用 <strong>VS Code</strong> 与 <strong>PyCharm</strong> 进行远程开发。</p>
-<p>虽然懒猫微服的商店已经上架了 code-sever 可以开箱即用，除此之外我们也来探索下其他的方案。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529163903393.png" alt="image-20250529163903393"></p>
-<hr>
-<h2 id="1-·-准备-SSH-免密登录"><a href="#1-·-准备-SSH-免密登录" class="headerlink" title="1 · 准备 SSH 免密登录"></a>1 · 准备 SSH 免密登录</h2><p>修改 <code>~/.ssh/config</code>（若无自行创建）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host lzc</span><br><span class="line">    HostName server.heiyu.space      # 服务器域名 / IP</span><br><span class="line">    User root                        # 默认用户名</span><br><span class="line">    IdentityFile ~/.ssh/id_ed25519   # 私钥路径</span><br><span class="line">    Port 22                          # 默认端口</span><br><span class="line">    ServerAliveInterval 60           # 60 秒保活</span><br><span class="line">    TCPKeepAlive yes                 # TCP 保持连接</span><br><span class="line">    ForwardAgent yes                 # 允许代理转发</span><br><span class="line">    IdentitiesOnly yes               # 只尝试显式钥匙</span><br></pre></td></tr></table></figure>
-
-<p>终端测试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh lzc          <span class="comment"># 应直接登录而不再提示密码</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="2-·-VS-Code-：一键-Remote"><a href="#2-·-VS-Code-：一键-Remote" class="headerlink" title="2 · VS Code ：一键 Remote"></a>2 · VS Code ：一键 Remote</h2><blockquote>
-<p>需要 <strong>Remote Development</strong> 三件套插件（SSH &#x2F; WSL &#x2F; Containers）。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529161722643.png" alt="VS Code 插件"></p>
-<ol>
-<li>安装完成后，点击左下角 <strong>棕黄色</strong>的 Remote 图标。</li>
-<li>VS Code 自动读取 <code>~/.ssh/config</code>，显示刚才的 <strong>lzc</strong> 主机。<br><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529161700856.png" alt="选择主机"></li>
-<li>选择需要打开的文件夹，我们是 root 登录，所以基本上所有的路径都有访问权限，由于懒猫微服的设置，除了 root 目录外，其他的目标可能会被清空，所以我们尽量把代码留在 root 目录下就好。<br><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529162340274.png" alt="选择目录"></li>
-<li>打开之后我们就可以看到代码了，剩下的就和本地差不多了，这也就是偷懒不学 VIM 的原因吧。<br><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529161829107.png" alt="远程工作区"></li>
-</ol>
-<hr>
-<h2 id="3-·-PyCharm-：Gateway-秒连"><a href="#3-·-PyCharm-：Gateway-秒连" class="headerlink" title="3 · PyCharm ：Gateway 秒连"></a>3 · PyCharm ：Gateway 秒连</h2><p>我们再来看 Pycharm，默认提供了远程开发的功能。记得最早 Jetbrains 的是这么实现的，把本地代码推送到远端的&#x2F;tmp 文件夹然后调用远端编译器执行。现在用了 Gateway 基本可以达到实时的效果了。</p>
-<p><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529161730354.png" alt="PyCharm Remote 入口"></p>
-<ol>
-<li>依次点击 <strong>New SSH Configuration → Add</strong>，填入主机、端口、用户名，并选择 <strong>私钥</strong> 或 <strong>密码</strong>。<br><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529161741726.png" alt="配置 SSH"></li>
-<li>连接成功后，选择需要打开的服务器目录（同样建议用 <code>/root/...</code>）。<br><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529161748708.png" alt="选择工程目录"></li>
-<li>首次连接时 PyCharm 会在服务器端安装一个 <strong>IDE Agent</strong>。<br><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529163010706.png" alt="安装 Agent"></li>
-<li>安装完毕即可像本地一样运行、调试、补全。<br><img src="https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250529161803751.png" alt="远程编辑器"></li>
-</ol>
-<hr>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>apple 的 M 芯片用来开发，而懒微服就作为上线环境之前的测试环境，当需要 X86 环境的时候，随时切换过去。</p>
-<p><img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/31aa8fe0-4d90-4b1a-948f-c97288f47c64.png" alt="77dea8a6a38817c503c379dd946fc9e4.png" title="77dea8a6a38817c503c379dd946fc9e4.png"></p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="page/0/">上一页</a></div><div class="pagination-next"><a href="page/2/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="">1</a></li><li><a class="pagination-link" href="page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="../../images/me.png" alt="Xu"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Xu</p><p class="is-size-6 is-block">随手记</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>BEI JING</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="../../archives/"><p class="title">101</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="../../categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="../../tags/"><p class="title">29</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Xu-Hardy/Xu-Hardy.github.io" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Home" href="https://xu-hardy.github.io/"><i class="fa fa-home"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="AWS" href="https://xu-hardy.github.io/aws"><i class="fab fa-aws"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="archives" href="https://xu-hardy.github.io/archives"><i class="fa fa-calendar"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Tags" href="https://xu-hardy.github.io/tags"><i class="fa fa-tags"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="../../atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://liarlee.site/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Liarlee</span></span><span class="level-right"><span class="level-item tag">liarlee.site</span></span></a></li><li><a class="level is-mobile" href="https://easyhexo.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">easyhexo</span></span><span class="level-right"><span class="level-item tag">easyhexo.com</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">hexo-theme-icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li><li><a class="level is-mobile" href="https://ctext.org/histories/zhs" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">中国哲学书电子化计划</span></span><span class="level-right"><span class="level-item tag">ctext.org</span></span></a></li><li><a class="level is-mobile" href="http://mahacashiaba.blogspot.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">五个五百年前</span></span><span class="level-right"><span class="level-item tag">mahacashiaba.blogspot.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../categories/%E5%90%83%E8%B4%A7/"><span class="level-start"><span class="level-item">吃货</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E5%A4%96%E8%AE%BE/"><span class="level-start"><span class="level-item">外设</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"><span class="level-start"><span class="level-item">懒猫微服</span></span><span class="level-end"><span class="level-item tag">42</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">读书笔记</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"><span class="level-start"><span class="level-item">远程访问</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E9%9A%8F%E7%AC%94/"><span class="level-start"><span class="level-item">随笔</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%85%A5%E9%97%A8%E7%AF%87%EF%BC%88%E9%9B%B6%EF%BC%89%EF%BC%9A%E5%BC%80%E7%AE%B1%E5%88%9D%E6%8E%A2%EF%BC%8C%E7%A1%AC%E4%BB%B6%E4%BA%AE%E7%9B%B8/">懒猫微服入门篇（零）：开箱初探，硬件亮相</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A-%E4%BB%8E%E5%BC%80%E5%90%AFssh%E5%88%B0%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%95%99%E4%BD%A0%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/">懒猫微服实战入门（一）： 从开启SSH到免密登录，一步步教你搞定远程管理</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E9%80%9A%E8%BF%87-nmtui-%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81-ip%EF%BC%8C%E6%8E%A5%E5%85%A5%E6%97%81%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">懒猫微服实战入门（十）：通过 nmtui 设置静态 IP，接入旁路由实现科学上网</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E4%B8%80%E9%94%AE%E6%8D%A2%E6%BA%90%E6%8C%87%E5%8D%97%EF%BC%9A%E7%94%A8-chsrc-%E5%BC%80%E5%90%AF%E4%B8%9D%E6%BB%91%E4%BD%93%E9%AA%8C/">懒猫微服实战入门（十一）：一键换源指南：用 chsrc 开启丝滑体验</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%94%A8-iventoy-%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-pxe-%E6%9C%8D%E5%8A%A1%E5%99%A8/">懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../archives/2025/07/"><span class="level-start"><span class="level-item">七月 2025</span></span><span class="level-end"><span class="level-item tag">41</span></span></a></li><li><a class="level is-mobile" href="../../archives/2025/06/"><span class="level-start"><span class="level-item">六月 2025</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/05/"><span class="level-start"><span class="level-item">五月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/03/"><span class="level-start"><span class="level-item">三月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/02/"><span class="level-start"><span class="level-item">二月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/06/"><span class="level-start"><span class="level-item">六月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/05/"><span class="level-start"><span class="level-item">五月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/11/"><span class="level-start"><span class="level-item">十一月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/10/"><span class="level-start"><span class="level-item">十月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/06/"><span class="level-start"><span class="level-item">六月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2021/01/"><span class="level-start"><span class="level-item">一月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../../archives/2020/01/"><span class="level-start"><span class="level-item">一月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2018/10/"><span class="level-start"><span class="level-item">十月 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2018/02/"><span class="level-start"><span class="level-item">二月 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2017/10/"><span class="level-start"><span class="level-item">十月 2017</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../../archives/2017/03/"><span class="level-start"><span class="level-item">三月 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="../DIY/"><span class="tag">DIY</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../Docker/"><span class="tag">Docker</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../Linux/"><span class="tag">Linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../MFA/"><span class="tag">MFA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../NAS/"><span class="tag">NAS</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../PWA/"><span class="tag">PWA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E4%BB%A3%E7%90%86/"><span class="tag">代理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%8C%97%E6%BC%82/"><span class="tag">北漂</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"><span class="tag">单点登录</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%8F%8D%E6%8A%97/"><span class="tag">反抗</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%A4%96%E8%AE%BE/"><span class="tag">外设</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%AE%B6%E6%9C%89%E5%90%83%E8%B4%A7/"><span class="tag">家有吃货</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href=""><span class="tag">懒猫微服</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%95%88%E7%8E%87/"><span class="tag">效率</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/"><span class="tag">极限科技</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%A2%A6/"><span class="tag">梦</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%B8%B8%E8%AE%B0/"><span class="tag">游记</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%94%9F%E6%B4%BB/"><span class="tag">生活</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%94%9F%E6%B4%BB%E5%B0%8F%E5%A6%99%E6%8B%9B/"><span class="tag">生活小妙招</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%94%B5%E5%AD%90%E6%9E%81%E5%AE%A2/"><span class="tag">电子极客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%A4%96%E8%AE%BE/"><span class="tag">硬件与外设</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%A7%9F%E6%88%BF/"><span class="tag">租房</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%A3%85%E4%BF%AE%E6%97%A5%E8%AE%B0/"><span class="tag">装修日记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%A3%85%E6%9C%BA/"><span class="tag">装机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%AF%97/"><span class="tag">诗</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%AF%BB%E4%B9%A6/"><span class="tag">读书</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">2</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="../../index.html"><img src="../../img/favicon.svg" alt="镜湖" height="28"></a><p class="is-size-7"><span>&copy; 2025 Xu</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="page/0/">上一页</a></div><div class="pagination-next"><a href="page/2/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="">1</a></li><li><a class="pagination-link" href="page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="../../images/me.png" alt="Xu"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Xu</p><p class="is-size-6 is-block">随手记</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>BEI JING</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="../../archives/"><p class="title">101</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="../../categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="../../tags/"><p class="title">29</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Xu-Hardy/Xu-Hardy.github.io" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Home" href="https://xu-hardy.github.io/"><i class="fa fa-home"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="AWS" href="https://xu-hardy.github.io/aws"><i class="fab fa-aws"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="archives" href="https://xu-hardy.github.io/archives"><i class="fa fa-calendar"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Tags" href="https://xu-hardy.github.io/tags"><i class="fa fa-tags"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="../../atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://liarlee.site/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Liarlee</span></span><span class="level-right"><span class="level-item tag">liarlee.site</span></span></a></li><li><a class="level is-mobile" href="https://easyhexo.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">easyhexo</span></span><span class="level-right"><span class="level-item tag">easyhexo.com</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">hexo-theme-icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li><li><a class="level is-mobile" href="https://ctext.org/histories/zhs" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">中国哲学书电子化计划</span></span><span class="level-right"><span class="level-item tag">ctext.org</span></span></a></li><li><a class="level is-mobile" href="http://mahacashiaba.blogspot.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">五个五百年前</span></span><span class="level-right"><span class="level-item tag">mahacashiaba.blogspot.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../categories/%E5%90%83%E8%B4%A7/"><span class="level-start"><span class="level-item">吃货</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E5%A4%96%E8%AE%BE/"><span class="level-start"><span class="level-item">外设</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"><span class="level-start"><span class="level-item">懒猫微服</span></span><span class="level-end"><span class="level-item tag">42</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">读书笔记</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"><span class="level-start"><span class="level-item">远程访问</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../categories/%E9%9A%8F%E7%AC%94/"><span class="level-start"><span class="level-item">随笔</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E3%80%8A%E6%97%A0%E6%B3%95%E9%83%A8%E7%BD%B2%E7%9A%84%E8%AF%85%E5%92%92%E3%80%8B/">写给懒猫微服玩家的容器小书 Docker篇（一）：《无法部署的诅咒》</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E3%80%8A%E9%95%9C%E5%83%8F%E6%97%85%E9%A6%86%E7%9A%84%E7%A7%98%E5%AF%86%E3%80%8B/">写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E3%80%8A%E5%AE%B9%E5%99%A8%E9%83%A8%E8%90%BD%E7%94%9F%E6%B4%BB%E3%80%8B/">写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E3%80%8A%E6%95%B0%E6%8D%AE%E4%B9%8B%E5%B2%9B%E4%B8%8E%E6%8C%81%E4%B9%85%E5%8C%96%E5%8D%B7%E3%80%8B/">写给懒猫微服玩家的容器小书 Docker篇（四）：《数据之岛与持久化卷》</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6docker%E7%AF%87%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E3%80%8A%E5%A4%9A%E5%AE%B9%E5%99%A8%E4%BA%A4%E5%93%8D%E6%9B%B2%EF%BC%9Adocker-compose-%E4%B8%8A%E5%9C%BA%E3%80%8B/">写给懒猫微服玩家的容器小书Docker篇（五）：《多容器交响曲：Docker Compose 上场》</a></p><p class="categories"><a href="../../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../archives/2025/07/"><span class="level-start"><span class="level-item">七月 2025</span></span><span class="level-end"><span class="level-item tag">41</span></span></a></li><li><a class="level is-mobile" href="../../archives/2025/06/"><span class="level-start"><span class="level-item">六月 2025</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/05/"><span class="level-start"><span class="level-item">五月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/03/"><span class="level-start"><span class="level-item">三月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/02/"><span class="level-start"><span class="level-item">二月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/06/"><span class="level-start"><span class="level-item">六月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/05/"><span class="level-start"><span class="level-item">五月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/11/"><span class="level-start"><span class="level-item">十一月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/10/"><span class="level-start"><span class="level-item">十月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/06/"><span class="level-start"><span class="level-item">六月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2021/01/"><span class="level-start"><span class="level-item">一月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../../archives/2020/01/"><span class="level-start"><span class="level-item">一月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2018/10/"><span class="level-start"><span class="level-item">十月 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../archives/2018/02/"><span class="level-start"><span class="level-item">二月 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../archives/2017/10/"><span class="level-start"><span class="level-item">十月 2017</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../../archives/2017/03/"><span class="level-start"><span class="level-item">三月 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="../DIY/"><span class="tag">DIY</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../Docker/"><span class="tag">Docker</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../Linux/"><span class="tag">Linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../MFA/"><span class="tag">MFA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../NAS/"><span class="tag">NAS</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../PWA/"><span class="tag">PWA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E4%BB%A3%E7%90%86/"><span class="tag">代理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%8C%97%E6%BC%82/"><span class="tag">北漂</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"><span class="tag">单点登录</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%8F%8D%E6%8A%97/"><span class="tag">反抗</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%A4%96%E8%AE%BE/"><span class="tag">外设</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%AE%B6%E6%9C%89%E5%90%83%E8%B4%A7/"><span class="tag">家有吃货</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href=""><span class="tag">懒猫微服</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%95%88%E7%8E%87/"><span class="tag">效率</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/"><span class="tag">极限科技</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%A2%A6/"><span class="tag">梦</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E6%B8%B8%E8%AE%B0/"><span class="tag">游记</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%94%9F%E6%B4%BB/"><span class="tag">生活</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%94%9F%E6%B4%BB%E5%B0%8F%E5%A6%99%E6%8B%9B/"><span class="tag">生活小妙招</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%94%B5%E5%AD%90%E6%9E%81%E5%AE%A2/"><span class="tag">电子极客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%A4%96%E8%AE%BE/"><span class="tag">硬件与外设</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E7%A7%9F%E6%88%BF/"><span class="tag">租房</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%A3%85%E4%BF%AE%E6%97%A5%E8%AE%B0/"><span class="tag">装修日记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%A3%85%E6%9C%BA/"><span class="tag">装机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%AF%97/"><span class="tag">诗</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../%E8%AF%BB%E4%B9%A6/"><span class="tag">读书</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">2</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="../../index.html"><img src="../../img/favicon.svg" alt="镜湖" height="28"></a><p class="is-size-7"><span>&copy; 2025 Xu</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
