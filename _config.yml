@@ -1,10 +1,10 @@
 title: 镜湖
-subtitle: ''
-description: ''
+subtitle: ""
+description: ""
 keywords: null
 author: Xu
 language: zh-CN
-timezone: 'Asia/Shanghai'
+timezone: "Asia/Shanghai"
 url: https://xu-hardy.github.io/
 permalink: :post_title/
 # abbrlink:
@@ -19,15 +19,15 @@ tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: ':lang'
+i18n_dir: ":lang"
 skip_render: null
-new_post_name: ':title.md'
+new_post_name: ":title.md"
 default_layout: post
 titlecase: false
 external_link:
   enable: true
   field: site
-  exclude: ''
+  exclude: ""
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
@@ -37,18 +37,18 @@ highlight:
   enable: true
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: ""
   wrap: true
   hljs: false
 prismjs:
   enable: false
   preprocess: true
   line_number: true
-  tab_replace: ''
+  tab_replace: ""
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
-  order_by: '-date'
+  order_by: "-date"
 default_category: uncategorized
 category_map: null
 tag_map: null
@@ -63,10 +63,10 @@ exclude: null
 ignore: null
 theme: icarus
 deploy:
-  type: ''
+  type: ""
 feed:
-    type: atom
-    path: atom.xml
-    limit: 20
+  type: atom
+  path: atom.xml
+  limit: 20
 sitemap:
-    path: sitemap.xml
+  path: sitemap.xml

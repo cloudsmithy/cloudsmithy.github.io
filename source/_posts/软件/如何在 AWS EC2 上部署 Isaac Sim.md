@@ -3,7 +3,7 @@ title: 如何在 AWS EC2 上部署 Isaac Sim
 tags: Isaac
 toc: true
 categories: AWS
-date: 2025-07-02 00:00:00
+date: 2025-06-12 00:00:00
 ---
 
 网上已经有一些关于在阿里云和腾讯云上部署 Isaac Sim 的教程，本文将带大家了解如何在 **AWS EC2 上部署 NVIDIA Isaac Sim 仿真平台**，并以 **A10G GPU（g5.2xlarge 实例）**为例进行实战操作。
