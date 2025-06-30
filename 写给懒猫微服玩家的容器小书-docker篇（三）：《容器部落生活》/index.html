@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》 - 镜湖</title><link rel="manifest" href="../manifest.json"><meta name="application-name" content="镜湖"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="镜湖"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作 一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上"><meta property="og:type" content="blog"><meta property="og:title" content="写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》"><meta property="og:url" content="https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E3%80%8A%E5%AE%B9%E5%99%A8%E9%83%A8%E8%90%BD%E7%94%9F%E6%B4%BB%E3%80%8B/"><meta property="og:site_name" content="镜湖"><meta property="og:description" content="《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作 一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://xu-hardy.github.io/img/og_image.png"><meta property="article:published_time" content="2025-07-01T16:00:00.000Z"><meta property="article:modified_time" content="2025-06-30T05:19:54.699Z"><meta property="article:author" content="Xu"><meta property="article:tag" content="懒猫微服"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://xu-hardy.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E3%80%8A%E5%AE%B9%E5%99%A8%E9%83%A8%E8%90%BD%E7%94%9F%E6%B4%BB%E3%80%8B/"},"headline":"写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》","image":["https://xu-hardy.github.io/img/og_image.png"],"datePublished":"2025-07-01T16:00:00.000Z","dateModified":"2025-06-30T05:19:54.699Z","author":{"@type":"Person","name":"Xu"},"publisher":{"@type":"Organization","name":"镜湖","logo":{"@type":"ImageObject","url":"https://xu-hardy.github.io/img/favicon.svg"}},"description":"《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作 一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上"}</script><link rel="canonical" href="https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E3%80%8A%E5%AE%B9%E5%99%A8%E9%83%A8%E8%90%BD%E7%94%9F%E6%B4%BB%E3%80%8B/"><link rel="icon" href="../img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="../css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="atom.xml" title="镜湖" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="../index.html"><img src="../img/favicon.svg" alt="镜湖" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="../index.html">镜湖</a><a class="navbar-item" href="../archives">时光线</a><a class="navbar-item" href="../tags">标签</a><a class="navbar-item" href="../categories">分类</a><a class="navbar-item" href="../quotes">语录</a><a class="navbar-item" href="../vue_blog">CS Core</a><a class="navbar-item" href="../aws">AWS</a><a class="navbar-item" href="../note">备注</a><a class="navbar-item" href="../about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.699Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">17 分钟读完 (大约2549个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》</h1><div class="content"><h1 id="《容器部落生活》讲的是-容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作"><a href="#《容器部落生活》讲的是-容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作" class="headerlink" title="《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作"></a>《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作</h1><blockquote>
+<p>一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。</p>
+</blockquote>
+<p>镜像旅馆的旅途告一段落，小李的下一站是<strong>容器部落</strong>。</p>
+<p>老周牵着他走过一条闪烁着数字光芒的通道，一排排运行中的应用像帐篷一样排列着。有人在调试日志，有人在重启服务，还有人用 <code>bash</code> 正在某个容器里“打补丁”。</p>
+<p>老周说：</p>
+<blockquote>
+<p>“镜像只是静态的模板，<strong>容器才是它们的生命</strong>。容器是镜像运行出来的真实世界。”</p>
+</blockquote>
+<hr>
+<h2 id="🧠-技术基础：容器-vs-镜像"><a href="#🧠-技术基础：容器-vs-镜像" class="headerlink" title="🧠 技术基础：容器 vs 镜像"></a>🧠 技术基础：容器 vs 镜像</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>镜像（Image）</th>
+<th>容器（Container）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类比</td>
+<td>模板、配方</td>
+<td>实际的运行实例</td>
+</tr>
+<tr>
+<td>特性</td>
+<td>只读</td>
+<td>可读写</td>
+</tr>
+<tr>
+<td>作用</td>
+<td>用来创建容器</td>
+<td>实际运行中的程序环境</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>不运行</td>
+<td>可运行、停止、销毁</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🛫-第一节：容器的启动方式"><a href="#🛫-第一节：容器的启动方式" class="headerlink" title="🛫 第一节：容器的启动方式"></a>🛫 第一节：容器的启动方式</h2><p>小李想运行他的 Flask 应用镜像。</p>
+<p>老周告诉他：</p>
+<blockquote>
+<p>“运行镜像的命令是 <code>docker run</code>，容器就像是用镜像盖起来的一顶帐篷。”</p>
+</blockquote>
+<h3 id="1-最常见方式（临时-前台）："><a href="#1-最常见方式（临时-前台）：" class="headerlink" title="1. 最常见方式（临时 + 前台）："></a>1. 最常见方式（临时 + 前台）：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>但程序一执行完就退出了。小李困惑。</p>
+<p>老周解释：</p>
+<blockquote>
+<p>“容器会在主进程结束后自动退出，比如 <code>CMD [&quot;python&quot;, &quot;main.py&quot;]</code> 一旦结束，容器就结束了。”</p>
+</blockquote>
+<hr>
+<h3 id="2-保持后台运行（常用）"><a href="#2-保持后台运行（常用）" class="headerlink" title="2. 保持后台运行（常用）"></a>2. 保持后台运行（常用）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name flask-app -p 5000:5000 my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li><code>-d</code>：detached 模式，后台运行</li>
+<li><code>--name</code>：给容器取个名字，方便管理</li>
+<li><code>-p 宿主端口:容器端口</code>：端口映射，把容器内部 5000 暴露到外部</li>
+</ul>
+<blockquote>
+<p>小李可以在浏览器里访问 <code>http://localhost:5000</code>，服务在跑！</p>
+</blockquote>
+<hr>
+<h3 id="3-设置环境变量"><a href="#3-设置环境变量" class="headerlink" title="3. 设置环境变量"></a>3. 设置环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -e ENV=production my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>在容器内可通过 <code>os.environ[&#39;ENV&#39;]</code> 访问。</p>
+<hr>
+<h3 id="4-设置自动重启策略（生产强烈建议）"><a href="#4-设置自动重启策略（生产强烈建议）" class="headerlink" title="4. 设置自动重启策略（生产强烈建议）"></a>4. 设置自动重启策略（生产强烈建议）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>可选策略：</p>
+<table>
+<thead>
+<tr>
+<th>策略名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>no</code></td>
+<td>不自动重启（默认）</td>
+</tr>
+<tr>
+<td><code>on-failure</code></td>
+<td>出错时重启</td>
+</tr>
+<tr>
+<td><code>always</code></td>
+<td>永远重启</td>
+</tr>
+<tr>
+<td><code>unless-stopped</code></td>
+<td>除非人为停止</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧭-第二节：查看容器状态"><a href="#🧭-第二节：查看容器状态" class="headerlink" title="🧭 第二节：查看容器状态"></a>🧭 第二节：查看容器状态</h2><p>老周说：“运行中的容器就像是火堆，你得学会看它们是否还在烧。”</p>
+<h3 id="查看运行中容器："><a href="#查看运行中容器：" class="headerlink" title="查看运行中容器："></a>查看运行中容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>如果想看所有容器（包括已退出的）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID   IMAGE           STATUS         NAMES</span><br><span class="line">f123abc456     my-flask-app    Up 3 minutes   flask-app</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔄-第三节：容器的停止与重启"><a href="#🔄-第三节：容器的停止与重启" class="headerlink" title="🔄 第三节：容器的停止与重启"></a>🔄 第三节：容器的停止与重启</h2><h3 id="停止容器："><a href="#停止容器：" class="headerlink" title="停止容器："></a>停止容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop flask-app</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动容器："><a href="#启动容器：" class="headerlink" title="启动容器："></a>启动容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start flask-app</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启容器："><a href="#重启容器：" class="headerlink" title="重启容器："></a>重启容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart flask-app</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ 容器停止后并不会删除，除非显式用 <code>docker rm</code></p>
+</blockquote>
+<hr>
+<h2 id="🧰-第四节：进入容器内“远程调试”"><a href="#🧰-第四节：进入容器内“远程调试”" class="headerlink" title="🧰 第四节：进入容器内“远程调试”"></a>🧰 第四节：进入容器内“远程调试”</h2><p>有一次小李发现容器里缺了个配置文件，他想进去看看。</p>
+<h3 id="使用-exec-进入运行中的容器："><a href="#使用-exec-进入运行中的容器：" class="headerlink" title="使用 exec 进入运行中的容器："></a>使用 exec 进入运行中的容器：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it flask-app /bin/bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-i</code>：保持输入</li>
+<li><code>-t</code>：分配终端</li>
+<li><code>/bin/bash</code>：使用 bash shell（Alpine 镜像可能要用 <code>/bin/sh</code>）</li>
+</ul>
+<blockquote>
+<p>现在他能像 SSH 进服务器一样，在容器里操作文件、日志、环境变量。</p>
+</blockquote>
+<hr>
+<h2 id="📜-第五节：查看容器日志"><a href="#📜-第五节：查看容器日志" class="headerlink" title="📜 第五节：查看容器日志"></a>📜 第五节：查看容器日志</h2><p>某天应用崩溃了，小李要调日志。</p>
+<p>老周提醒他：“容器日志直接走标准输出和错误输出。”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs flask-app</span><br></pre></td></tr></table></figure>
+
+<p>可以加参数看最近内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs --<span class="built_in">tail</span> 100 flask-app</span><br></pre></td></tr></table></figure>
+
+<p>实时滚动输出（调试很有用）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f flask-app</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧽-第六节：删除容器"><a href="#🧽-第六节：删除容器" class="headerlink" title="🧽 第六节：删除容器"></a>🧽 第六节：删除容器</h2><p>小李尝试重建容器时，系统提示名字重复。</p>
+<p>老周告诉他要先删除原来的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> flask-app</span><br></pre></td></tr></table></figure>
+
+<p>如果容器还在运行，先 <code>stop</code> 再 <code>rm</code>，或直接强制：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> -f flask-app</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔄-第七节：容器生命周期一览表"><a href="#🔄-第七节：容器生命周期一览表" class="headerlink" title="🔄 第七节：容器生命周期一览表"></a>🔄 第七节：容器生命周期一览表</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建 + 运行容器</td>
+<td><code>docker run</code></td>
+</tr>
+<tr>
+<td>后台运行</td>
+<td><code>docker run -d</code></td>
+</tr>
+<tr>
+<td>设置名字</td>
+<td><code>docker run --name name</code></td>
+</tr>
+<tr>
+<td>设置端口映射</td>
+<td><code>-p 外:内</code></td>
+</tr>
+<tr>
+<td>查看容器</td>
+<td><code>docker ps [-a]</code></td>
+</tr>
+<tr>
+<td>停止容器</td>
+<td><code>docker stop name</code></td>
+</tr>
+<tr>
+<td>启动容器</td>
+<td><code>docker start name</code></td>
+</tr>
+<tr>
+<td>重启容器</td>
+<td><code>docker restart name</code></td>
+</tr>
+<tr>
+<td>删除容器</td>
+<td><code>docker rm [-f] name</code></td>
+</tr>
+<tr>
+<td>查看日志</td>
+<td><code>docker logs [-f] name</code></td>
+</tr>
+<tr>
+<td>进入容器</td>
+<td><code>docker exec -it name /bin/bash</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧪-小李的实战练习任务"><a href="#🧪-小李的实战练习任务" class="headerlink" title="🧪 小李的实战练习任务"></a>🧪 小李的实战练习任务</h2><p>老周布置了一个练习：</p>
+<blockquote>
+<p>“请你写一个脚本，构建镜像，运行容器，设置环境变量和端口，再用日志确认 Flask 成功启动。”</p>
+</blockquote>
+<p>小李完成如下步骤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build -t flask-test .</span><br><span class="line">docker run -d --name flask-run -p 8080:5000 -e MODE=debug flask-test</span><br><span class="line">docker logs -f flask-run</span><br><span class="line">docker <span class="built_in">exec</span> -it flask-run /bin/bash</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧬-衍生补充：容器的状态码解释"><a href="#🧬-衍生补充：容器的状态码解释" class="headerlink" title="🧬 衍生补充：容器的状态码解释"></a>🧬 衍生补充：容器的状态码解释</h2><p>容器退出时，可以用 <code>docker ps -a</code> 查看 <code>STATUS</code> 栏：</p>
+<ul>
+<li><code>Exited (0)</code>：正常退出</li>
+<li><code>Exited (1)</code>：出错退出</li>
+<li><code>Up</code>：正在运行</li>
+</ul>
+<p>调试时很有用。</p>
+<hr>
+<h2 id="🎬-尾声：容器部落里的秩序"><a href="#🎬-尾声：容器部落里的秩序" class="headerlink" title="🎬 尾声：容器部落里的秩序"></a>🎬 尾声：容器部落里的秩序</h2><p>小李现在已经能够用容器完成：</p>
+<ul>
+<li>应用部署</li>
+<li>环境隔离</li>
+<li>日志查看</li>
+<li>重启容错</li>
+<li>在线修复问题</li>
+</ul>
+<p>他看着容器部落中灯火通明的帐篷，知道自己终于从一个“只会打包镜像”的新人，成长为能驾驭容器生命周期的工程师。</p>
+<p>老周拍拍他肩膀说：</p>
+<blockquote>
+<p>“你已经能掌控容器的生死了，下一步——掌控它们的数据。”</p>
+</blockquote>
+<p>好嘞，我们来拓展<strong>第三章《容器部落生活》</strong>，新增三大实战内容：</p>
+<blockquote>
+<p>🚀 Nginx 容器部署<br>🔗 多个容器配合运行（应用 + 数据库）<br>🩺 容器的服务探针（健康检查）</p>
+</blockquote>
+<p>这部分会继续以<strong>故事+实战命令+讲解</strong>的方式展开，帮助你更贴近真实工作中的容器部署流程。</p>
+<hr>
+<h2 id="🧱-实战一：Nginx-容器部署小站点"><a href="#🧱-实战一：Nginx-容器部署小站点" class="headerlink" title="🧱 实战一：Nginx 容器部署小站点"></a>🧱 实战一：Nginx 容器部署小站点</h2><p>小李想搭个静态站点测试，老周给他出了一个练习：</p>
+<blockquote>
+<p>“用 Nginx 容器部署一个 HTML 网站，只通过 Docker 完成。”</p>
+</blockquote>
+<h3 id="1-准备文件结构："><a href="#1-准备文件结构：" class="headerlink" title="1. 准备文件结构："></a>1. 准备文件结构：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx-site/</span><br><span class="line">├── index.html</span><br><span class="line">└── Dockerfile</span><br></pre></td></tr></table></figure>
+
+<p><code>index.html</code> 示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello from Nginx<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Docker + Nginx!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Dockerfile-内容（基于官方-Nginx）："><a href="#2-Dockerfile-内容（基于官方-Nginx）：" class="headerlink" title="2. Dockerfile 内容（基于官方 Nginx）："></a>2. Dockerfile 内容（基于官方 Nginx）：</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx:alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> index.html /usr/share/nginx/html/index.html</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ 把自己的网页文件覆盖掉默认首页。</p>
+</blockquote>
+<h3 id="3-构建-运行："><a href="#3-构建-运行：" class="headerlink" title="3. 构建 + 运行："></a>3. 构建 + 运行：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx-site .</span><br><span class="line">docker run -d --name my-nginx -p 8080:80 nginx-site</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器访问 <code>http://localhost:8080</code>，小李看到页面显示成功，笑得像个孩子。</p>
+<hr>
+<h2 id="🔗-实战二：应用容器-数据库容器组合运行"><a href="#🔗-实战二：应用容器-数据库容器组合运行" class="headerlink" title="🔗 实战二：应用容器 + 数据库容器组合运行"></a>🔗 实战二：应用容器 + 数据库容器组合运行</h2><p>接着老周出了第二个任务：</p>
+<blockquote>
+<p>“把你的 Flask 应用和一个 MySQL 数据库用两个容器跑起来，实现数据连接。”</p>
+</blockquote>
+<h3 id="方法一：手动网络-多容器连接"><a href="#方法一：手动网络-多容器连接" class="headerlink" title="方法一：手动网络 + 多容器连接"></a>方法一：手动网络 + 多容器连接</h3><h4 id="1-创建网络（容器间通信）："><a href="#1-创建网络（容器间通信）：" class="headerlink" title="1. 创建网络（容器间通信）："></a>1. 创建网络（容器间通信）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create flask-net</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-启动-MySQL-容器："><a href="#2-启动-MySQL-容器：" class="headerlink" title="2. 启动 MySQL 容器："></a>2. 启动 MySQL 容器：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name my-mysql \</span><br><span class="line">  --network flask-net \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=root123 \</span><br><span class="line">  -e MYSQL_DATABASE=mydb \</span><br><span class="line">  mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-启动-Flask-应用容器（连接到-MySQL）："><a href="#3-启动-Flask-应用容器（连接到-MySQL）：" class="headerlink" title="3. 启动 Flask 应用容器（连接到 MySQL）："></a>3. 启动 Flask 应用容器（连接到 MySQL）：</h4><p>假设 Flask 连接数据库时使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host = <span class="string">&#x27;my-mysql&#x27;</span>  <span class="comment"># 容器名就是主机名</span></span><br></pre></td></tr></table></figure>
+
+<p>启动命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name flask-app \</span><br><span class="line">  --network flask-net \</span><br><span class="line">  -e DB_HOST=my-mysql \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  my-flask-app</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔗 容器间在同一个网络中，通过名字直接通信，像局域网一样！</p>
+</blockquote>
+<hr>
+<h3 id="方法二：使用-docker-compose（下一章会详细讲）"><a href="#方法二：使用-docker-compose（下一章会详细讲）" class="headerlink" title="方法二：使用 docker-compose（下一章会详细讲）"></a>方法二：使用 <code>docker-compose</code>（下一章会详细讲）</h3><hr>
+<h2 id="🩺-实战三：为容器添加“健康探针”"><a href="#🩺-实战三：为容器添加“健康探针”" class="headerlink" title="🩺 实战三：为容器添加“健康探针”"></a>🩺 实战三：为容器添加“健康探针”</h2><p>老周问小李：“如果你的服务挂了，但容器还在运行，你怎么知道？”</p>
+<blockquote>
+<p>小李摇头：这不就是“僵尸容器”吗？</p>
+</blockquote>
+<p>老周笑了：</p>
+<blockquote>
+<p>“那就给它<strong>加一个健康探针（HEALTHCHECK）</strong>，定期检测服务状态。”</p>
+</blockquote>
+<h3 id="为-Flask-容器加健康检查："><a href="#为-Flask-容器加健康检查：" class="headerlink" title="为 Flask 容器加健康检查："></a>为 Flask 容器加健康检查：</h3><p>修改 <code>Dockerfile</code>：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">HEALTHCHECK</span><span class="language-bash"> --interval=30s --<span class="built_in">timeout</span>=5s --start-period=5s --retries=3 \</span></span><br><span class="line"><span class="language-bash">  CMD curl -f http://localhost:5000/health || <span class="built_in">exit</span> 1</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Flask 代码中添加一个健康检查路由：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/health&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">health</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>, <span class="number">200</span></span><br></pre></td></tr></table></figure>
+
+<p>构建镜像，运行容器后，通过命令查看健康状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect flask-app | grep -i health</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;Health&quot;: &#123;</span><br><span class="line">  &quot;Status&quot;: &quot;healthy&quot;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>/health</code> 接口返回失败状态码，容器会标记为 <code>&quot;unhealthy&quot;</code>，可配合自动重启策略联动修复。</p>
+<hr>
+<h2 id="🧭-实战拓展总结表"><a href="#🧭-实战拓展总结表" class="headerlink" title="🧭 实战拓展总结表"></a>🧭 实战拓展总结表</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>命令 &#x2F; 技术</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>部署静态站点</td>
+<td>Nginx + COPY index.html</td>
+</tr>
+<tr>
+<td>容器间通信</td>
+<td><code>docker network create</code> + <code>--network</code> 参数</td>
+</tr>
+<tr>
+<td>多容器组合</td>
+<td>应用容器连接数据库容器</td>
+</tr>
+<tr>
+<td>服务探针</td>
+<td>Dockerfile 添加 <code>HEALTHCHECK</code>，应用实现 <code>/health</code></td>
+</tr>
+<tr>
+<td>探针状态查看</td>
+<td>&#96;docker inspect 容器名</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎬-尾声-·-容器集群的微光"><a href="#🎬-尾声-·-容器集群的微光" class="headerlink" title="🎬 尾声 · 容器集群的微光"></a>🎬 尾声 · 容器集群的微光</h2><p>小李站在容器部落的山丘上，看着成百上千个容器像城市灯火一样运转。</p>
+<p>Nginx 做前端代理，Flask 作为后端逻辑，MySQL 管理数据，每个服务都是一块积木，有秩序、有协作。</p>
+<p>老周淡淡说：</p>
+<blockquote>
+<p>“这只是单机的容器调度，真正的战场——在云上。”</p>
+</blockquote>
+<p>小李的眼里闪起光芒：“那我下次要学的就是——Compose，K8s，还有 CI&#x2F;CD，对吧？”</p>
+<p>老周点头：“没错，下一站——数据卷与共享、Compose 编排，再之后……你就要去打云原生的战了。”</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》</p><p><a href="https://xu-hardy.github.io/写给懒猫微服玩家的容器小书-docker篇（三）：《容器部落生活》/">https://xu-hardy.github.io/写给懒猫微服玩家的容器小书-docker篇（三）：《容器部落生活》/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Xu</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-07-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2025-06-30</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="../tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="../images/ali.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="../images/wechat.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E3%80%8A%E9%95%9C%E5%83%8F%E6%97%85%E9%A6%86%E7%9A%84%E7%A7%98%E5%AF%86%E3%80%8B/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E3%80%8A%E6%95%B0%E6%8D%AE%E4%B9%8B%E5%B2%9B%E4%B8%8E%E6%8C%81%E4%B9%85%E5%8C%96%E5%8D%B7%E3%80%8B/"><span class="level-item">写给懒猫微服玩家的容器小书 Docker篇（四）：《数据之岛与持久化卷》</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card" id="comments"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E3%80%8A%E5%AE%B9%E5%99%A8%E9%83%A8%E8%90%BD%E7%94%9F%E6%B4%BB%E3%80%8B/';
+            this.page.identifier = '写给懒猫微服玩家的容器小书-docker篇（三）：《容器部落生活》/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'my' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="../images/me.png" alt="Xu"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Xu</p><p class="is-size-6 is-block">随手记</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>BEI JING</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="../archives/"><p class="title">101</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="../categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="../tags/"><p class="title">29</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Xu-Hardy/Xu-Hardy.github.io" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Home" href="https://xu-hardy.github.io/"><i class="fa fa-home"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="AWS" href="https://xu-hardy.github.io/aws"><i class="fab fa-aws"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="archives" href="https://xu-hardy.github.io/archives"><i class="fa fa-calendar"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Tags" href="https://xu-hardy.github.io/tags"><i class="fa fa-tags"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="../atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#《容器部落生活》讲的是-容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作"><span class="level-left"><span class="level-item">1</span><span class="level-item">《容器部落生活》讲的是 容器生命周期管理，包括容器的启动、停止、查看、交互、日志、后台运行、重启策略等操作</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#🧠-技术基础：容器-vs-镜像"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">🧠 技术基础：容器 vs 镜像</span></span></a></li><li><a class="level is-mobile" href="#🛫-第一节：容器的启动方式"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">🛫 第一节：容器的启动方式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-最常见方式（临时-前台）："><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">1. 最常见方式（临时 + 前台）：</span></span></a></li><li><a class="level is-mobile" href="#2-保持后台运行（常用）"><span class="level-left"><span class="level-item">1.2.2</span><span class="level-item">2. 保持后台运行（常用）</span></span></a></li><li><a class="level is-mobile" href="#3-设置环境变量"><span class="level-left"><span class="level-item">1.2.3</span><span class="level-item">3. 设置环境变量</span></span></a></li><li><a class="level is-mobile" href="#4-设置自动重启策略（生产强烈建议）"><span class="level-left"><span class="level-item">1.2.4</span><span class="level-item">4. 设置自动重启策略（生产强烈建议）</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🧭-第二节：查看容器状态"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">🧭 第二节：查看容器状态</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#查看运行中容器："><span class="level-left"><span class="level-item">1.3.1</span><span class="level-item">查看运行中容器：</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🔄-第三节：容器的停止与重启"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">🔄 第三节：容器的停止与重启</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#停止容器："><span class="level-left"><span class="level-item">1.4.1</span><span class="level-item">停止容器：</span></span></a></li><li><a class="level is-mobile" href="#启动容器："><span class="level-left"><span class="level-item">1.4.2</span><span class="level-item">启动容器：</span></span></a></li><li><a class="level is-mobile" href="#重启容器："><span class="level-left"><span class="level-item">1.4.3</span><span class="level-item">重启容器：</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🧰-第四节：进入容器内“远程调试”"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">🧰 第四节：进入容器内“远程调试”</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#使用-exec-进入运行中的容器："><span class="level-left"><span class="level-item">1.5.1</span><span class="level-item">使用 exec 进入运行中的容器：</span></span></a></li></ul></li><li><a class="level is-mobile" href="#📜-第五节：查看容器日志"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">📜 第五节：查看容器日志</span></span></a></li><li><a class="level is-mobile" href="#🧽-第六节：删除容器"><span class="level-left"><span class="level-item">1.7</span><span class="level-item">🧽 第六节：删除容器</span></span></a></li><li><a class="level is-mobile" href="#🔄-第七节：容器生命周期一览表"><span class="level-left"><span class="level-item">1.8</span><span class="level-item">🔄 第七节：容器生命周期一览表</span></span></a></li><li><a class="level is-mobile" href="#🧪-小李的实战练习任务"><span class="level-left"><span class="level-item">1.9</span><span class="level-item">🧪 小李的实战练习任务</span></span></a></li><li><a class="level is-mobile" href="#🧬-衍生补充：容器的状态码解释"><span class="level-left"><span class="level-item">1.10</span><span class="level-item">🧬 衍生补充：容器的状态码解释</span></span></a></li><li><a class="level is-mobile" href="#🎬-尾声：容器部落里的秩序"><span class="level-left"><span class="level-item">1.11</span><span class="level-item">🎬 尾声：容器部落里的秩序</span></span></a></li><li><a class="level is-mobile" href="#🧱-实战一：Nginx-容器部署小站点"><span class="level-left"><span class="level-item">1.12</span><span class="level-item">🧱 实战一：Nginx 容器部署小站点</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-准备文件结构："><span class="level-left"><span class="level-item">1.12.1</span><span class="level-item">1. 准备文件结构：</span></span></a></li><li><a class="level is-mobile" href="#2-Dockerfile-内容（基于官方-Nginx）："><span class="level-left"><span class="level-item">1.12.2</span><span class="level-item">2. Dockerfile 内容（基于官方 Nginx）：</span></span></a></li><li><a class="level is-mobile" href="#3-构建-运行："><span class="level-left"><span class="level-item">1.12.3</span><span class="level-item">3. 构建 + 运行：</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🔗-实战二：应用容器-数据库容器组合运行"><span class="level-left"><span class="level-item">1.13</span><span class="level-item">🔗 实战二：应用容器 + 数据库容器组合运行</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#方法一：手动网络-多容器连接"><span class="level-left"><span class="level-item">1.13.1</span><span class="level-item">方法一：手动网络 + 多容器连接</span></span></a></li><li><a class="level is-mobile" href="#方法二：使用-docker-compose（下一章会详细讲）"><span class="level-left"><span class="level-item">1.13.2</span><span class="level-item">方法二：使用 docker-compose（下一章会详细讲）</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🩺-实战三：为容器添加“健康探针”"><span class="level-left"><span class="level-item">1.14</span><span class="level-item">🩺 实战三：为容器添加“健康探针”</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#为-Flask-容器加健康检查："><span class="level-left"><span class="level-item">1.14.1</span><span class="level-item">为 Flask 容器加健康检查：</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🧭-实战拓展总结表"><span class="level-left"><span class="level-item">1.15</span><span class="level-item">🧭 实战拓展总结表</span></span></a></li><li><a class="level is-mobile" href="#🎬-尾声-·-容器集群的微光"><span class="level-left"><span class="level-item">1.16</span><span class="level-item">🎬 尾声 · 容器集群的微光</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="../js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://liarlee.site/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Liarlee</span></span><span class="level-right"><span class="level-item tag">liarlee.site</span></span></a></li><li><a class="level is-mobile" href="https://easyhexo.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">easyhexo</span></span><span class="level-right"><span class="level-item tag">easyhexo.com</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">hexo-theme-icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li><li><a class="level is-mobile" href="https://ctext.org/histories/zhs" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">中国哲学书电子化计划</span></span><span class="level-right"><span class="level-item tag">ctext.org</span></span></a></li><li><a class="level is-mobile" href="http://mahacashiaba.blogspot.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">五个五百年前</span></span><span class="level-right"><span class="level-item tag">mahacashiaba.blogspot.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="../categories/%E5%90%83%E8%B4%A7/"><span class="level-start"><span class="level-item">吃货</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../categories/%E5%A4%96%E8%AE%BE/"><span class="level-start"><span class="level-item">外设</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"><span class="level-start"><span class="level-item">懒猫微服</span></span><span class="level-end"><span class="level-item tag">42</span></span></a></li><li><a class="level is-mobile" href="../categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">读书笔记</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="../categories/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"><span class="level-start"><span class="level-item">远程访问</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../categories/%E9%9A%8F%E7%AC%94/"><span class="level-start"><span class="level-item">随笔</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%85%A5%E9%97%A8%E7%AF%87%EF%BC%88%E9%9B%B6%EF%BC%89%EF%BC%9A%E5%BC%80%E7%AE%B1%E5%88%9D%E6%8E%A2%EF%BC%8C%E7%A1%AC%E4%BB%B6%E4%BA%AE%E7%9B%B8/">懒猫微服入门篇（零）：开箱初探，硬件亮相</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A-%E4%BB%8E%E5%BC%80%E5%90%AFssh%E5%88%B0%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%95%99%E4%BD%A0%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/">懒猫微服实战入门（一）： 从开启SSH到免密登录，一步步教你搞定远程管理</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E9%80%9A%E8%BF%87-nmtui-%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81-ip%EF%BC%8C%E6%8E%A5%E5%85%A5%E6%97%81%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">懒猫微服实战入门（十）：通过 nmtui 设置静态 IP，接入旁路由实现科学上网</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E4%B8%80%E9%94%AE%E6%8D%A2%E6%BA%90%E6%8C%87%E5%8D%97%EF%BC%9A%E7%94%A8-chsrc-%E5%BC%80%E5%90%AF%E4%B8%9D%E6%BB%91%E4%BD%93%E9%AA%8C/">懒猫微服实战入门（十一）：一键换源指南：用 chsrc 开启丝滑体验</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%94%A8-iventoy-%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-pxe-%E6%9C%8D%E5%8A%A1%E5%99%A8/">懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="../archives/2025/07/"><span class="level-start"><span class="level-item">七月 2025</span></span><span class="level-end"><span class="level-item tag">41</span></span></a></li><li><a class="level is-mobile" href="../archives/2025/06/"><span class="level-start"><span class="level-item">六月 2025</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/05/"><span class="level-start"><span class="level-item">五月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/03/"><span class="level-start"><span class="level-item">三月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/02/"><span class="level-start"><span class="level-item">二月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/06/"><span class="level-start"><span class="level-item">六月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/05/"><span class="level-start"><span class="level-item">五月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/11/"><span class="level-start"><span class="level-item">十一月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/10/"><span class="level-start"><span class="level-item">十月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/06/"><span class="level-start"><span class="level-item">六月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2021/01/"><span class="level-start"><span class="level-item">一月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../archives/2020/01/"><span class="level-start"><span class="level-item">一月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2018/10/"><span class="level-start"><span class="level-item">十月 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2018/02/"><span class="level-start"><span class="level-item">二月 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2017/10/"><span class="level-start"><span class="level-item">十月 2017</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../archives/2017/03/"><span class="level-start"><span class="level-item">三月 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="../tags/DIY/"><span class="tag">DIY</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/Docker/"><span class="tag">Docker</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../tags/Linux/"><span class="tag">Linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/MFA/"><span class="tag">MFA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/NAS/"><span class="tag">NAS</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../tags/PWA/"><span class="tag">PWA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E4%BB%A3%E7%90%86/"><span class="tag">代理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%8C%97%E6%BC%82/"><span class="tag">北漂</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"><span class="tag">单点登录</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%8F%8D%E6%8A%97/"><span class="tag">反抗</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%A4%96%E8%AE%BE/"><span class="tag">外设</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%AE%B6%E6%9C%89%E5%90%83%E8%B4%A7/"><span class="tag">家有吃货</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"><span class="tag">懒猫微服</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%95%88%E7%8E%87/"><span class="tag">效率</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/"><span class="tag">极限科技</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%A2%A6/"><span class="tag">梦</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%B8%B8%E8%AE%B0/"><span class="tag">游记</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%94%9F%E6%B4%BB/"><span class="tag">生活</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E5%A6%99%E6%8B%9B/"><span class="tag">生活小妙招</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%94%B5%E5%AD%90%E6%9E%81%E5%AE%A2/"><span class="tag">电子极客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%A4%96%E8%AE%BE/"><span class="tag">硬件与外设</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%A7%9F%E6%88%BF/"><span class="tag">租房</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%A3%85%E4%BF%AE%E6%97%A5%E8%AE%B0/"><span class="tag">装修日记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%A3%85%E6%9C%BA/"><span class="tag">装机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%AF%97/"><span class="tag">诗</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%AF%BB%E4%B9%A6/"><span class="tag">读书</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">2</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="../index.html"><img src="../img/favicon.svg" alt="镜湖" height="28"></a><p class="is-size-7"><span>&copy; 2025 Xu</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="../js/column.js"></script><script src="../js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="../js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script data-pjax src="../js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="../js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"../content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

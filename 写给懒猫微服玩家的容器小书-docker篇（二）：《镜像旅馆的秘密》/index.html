@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》 - 镜湖</title><link rel="manifest" href="../manifest.json"><meta name="application-name" content="镜湖"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="镜湖"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。  《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Do"><meta property="og:type" content="blog"><meta property="og:title" content="写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》"><meta property="og:url" content="https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E3%80%8A%E9%95%9C%E5%83%8F%E6%97%85%E9%A6%86%E7%9A%84%E7%A7%98%E5%AF%86%E3%80%8B/"><meta property="og:site_name" content="镜湖"><meta property="og:description" content="一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。  《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Do"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://xu-hardy.github.io/img/og_image.png"><meta property="article:published_time" content="2025-07-01T16:00:00.000Z"><meta property="article:modified_time" content="2025-06-30T05:19:54.699Z"><meta property="article:author" content="Xu"><meta property="article:tag" content="懒猫微服"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://xu-hardy.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E3%80%8A%E9%95%9C%E5%83%8F%E6%97%85%E9%A6%86%E7%9A%84%E7%A7%98%E5%AF%86%E3%80%8B/"},"headline":"写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》","image":["https://xu-hardy.github.io/img/og_image.png"],"datePublished":"2025-07-01T16:00:00.000Z","dateModified":"2025-06-30T05:19:54.699Z","author":{"@type":"Person","name":"Xu"},"publisher":{"@type":"Organization","name":"镜湖","logo":{"@type":"ImageObject","url":"https://xu-hardy.github.io/img/favicon.svg"}},"description":"一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。  《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Do"}</script><link rel="canonical" href="https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E3%80%8A%E9%95%9C%E5%83%8F%E6%97%85%E9%A6%86%E7%9A%84%E7%A7%98%E5%AF%86%E3%80%8B/"><link rel="icon" href="../img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="../css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="atom.xml" title="镜湖" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="../index.html"><img src="../img/favicon.svg" alt="镜湖" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="../index.html">镜湖</a><a class="navbar-item" href="../archives">时光线</a><a class="navbar-item" href="../tags">标签</a><a class="navbar-item" href="../categories">分类</a><a class="navbar-item" href="../quotes">语录</a><a class="navbar-item" href="../vue_blog">CS Core</a><a class="navbar-item" href="../aws">AWS</a><a class="navbar-item" href="../note">备注</a><a class="navbar-item" href="../about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-07-01T16:00:00.000Z" title="7/1/2025, 4:00:00 PM">2025-07-02</time>发表</span><span class="level-item"><time dateTime="2025-06-30T05:19:54.699Z" title="6/30/2025, 5:19:54 AM">2025-06-30</time>更新</span><span class="level-item"><a class="link-muted" href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></span><span class="level-item">19 分钟读完 (大约2902个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》</h1><div class="content"><blockquote>
+<p>一直想写一本容器小书，真好懒猫基本都做了容器化，所以把这部分分享出来。不同的是，懒猫微服中使用 pg-docker 来替代 docker 命令，使用 dockge 来执行 docker-compose。以下讲解以标准 docker 为主，这样子既学会了 docker 知识，也能够在懒猫微服上启动 Docker 服务。</p>
+</blockquote>
+<h1 id="《镜像旅馆的秘密》讲的是-Docker-镜像的原理、分层结构、生命周期、Docker-Hub-上传与下载、常见镜像命令详解"><a href="#《镜像旅馆的秘密》讲的是-Docker-镜像的原理、分层结构、生命周期、Docker-Hub-上传与下载、常见镜像命令详解" class="headerlink" title="《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Docker Hub 上传与下载、常见镜像命令详解"></a>《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Docker Hub 上传与下载、常见镜像命令详解</h1><h3 id="🏰-开篇：进入镜像旅馆"><a href="#🏰-开篇：进入镜像旅馆" class="headerlink" title="🏰 开篇：进入镜像旅馆"></a>🏰 开篇：进入镜像旅馆</h3><p>自从小李用 Docker 成功打包并运行了自己的 Flask 项目，他的开发效率飞快提高。</p>
+<p>某天，老周带他来到一座巨大的数字建筑——<strong>Docker 镜像旅馆</strong>。</p>
+<p>“这是你所有镜像的家，”老周说，“也是全球程序员共享旅程资源的中转站。”</p>
+<p>镜像旅馆里，层层叠叠地存放着成千上万个镜像，就像一栋模块化的高楼大厦。</p>
+<hr>
+<h3 id="🧱-镜像的本质：一层一层搭起来的文件系统"><a href="#🧱-镜像的本质：一层一层搭起来的文件系统" class="headerlink" title="🧱 镜像的本质：一层一层搭起来的文件系统"></a>🧱 镜像的本质：一层一层搭起来的文件系统</h3><p>老周告诉小李：</p>
+<blockquote>
+<p>“镜像（Image）其实是一个<strong>只读的分层文件系统</strong>。你写的每一条 Dockerfile 指令，都会构成一层 Layer。”</p>
+</blockquote>
+<p>比如这个简单的 Dockerfile：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.11</span>-slim</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /app</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;main.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>对应的镜像层如下：</p>
+<ol>
+<li><code>FROM</code> → 拉了一个基础镜像层（Python 3.11）</li>
+<li><code>WORKDIR</code> → 添加一个设置工作目录的 Layer</li>
+<li><code>COPY</code> → 拷贝代码文件的 Layer</li>
+<li><code>RUN</code> → 安装依赖的新 Layer</li>
+<li><code>CMD</code> → 容器入口（不是 Layer，但存配置）</li>
+</ol>
+<blockquote>
+<p>💡 小知识：Docker 会尽量缓存和复用前面的 Layer，节省时间和存储。</p>
+</blockquote>
+<hr>
+<h3 id="🧪-镜像命令全攻略"><a href="#🧪-镜像命令全攻略" class="headerlink" title="🧪 镜像命令全攻略"></a>🧪 镜像命令全攻略</h3><p>小李打开终端，开始探索这些镜像的日常操作。</p>
+<h4 id="1-查看本地镜像："><a href="#1-查看本地镜像：" class="headerlink" title="1. 查看本地镜像："></a>1. 查看本地镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY     TAG        IMAGE ID       CREATED          SIZE</span><br><span class="line">my-flask-app   latest     123abc456def   2 minutes ago    125MB</span><br><span class="line">python         3.11-slim  789xyz654hij   3 days ago       40MB</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li><code>REPOSITORY</code>：镜像名</li>
+<li><code>TAG</code>：标签（版本号）</li>
+<li><code>IMAGE ID</code>：镜像唯一标识符</li>
+<li><code>SIZE</code>：镜像大小</li>
+</ul>
+<h4 id="2-查看镜像历史构建过程（看每层）："><a href="#2-查看镜像历史构建过程（看每层）：" class="headerlink" title="2. 查看镜像历史构建过程（看每层）："></a>2. 查看镜像历史构建过程（看每层）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">history</span> my-flask-app</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-删除镜像："><a href="#3-删除镜像：" class="headerlink" title="3. 删除镜像："></a>3. 删除镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi my-flask-app</span><br></pre></td></tr></table></figure>
+
+<p>（⚠️ 若有容器在运行该镜像，需先停止并删除容器）</p>
+<hr>
+<h3 id="🗂-镜像仓库：Docker-Hub"><a href="#🗂-镜像仓库：Docker-Hub" class="headerlink" title="🗂 镜像仓库：Docker Hub"></a>🗂 镜像仓库：Docker Hub</h3><p>老周指了指旅馆大堂里的一个巨大电梯：</p>
+<blockquote>
+<p>“这是 Docker Hub，全球最大的镜像共享仓库。”</p>
+</blockquote>
+<p>在这里，小李能下载成千上万的开源镜像，也能上传自己的。</p>
+<h4 id="登录-Docker-Hub："><a href="#登录-Docker-Hub：" class="headerlink" title="登录 Docker Hub："></a>登录 Docker Hub：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
+
+<p>（需要先注册账号）</p>
+<h4 id="下载镜像："><a href="#下载镜像：" class="headerlink" title="下载镜像："></a>下载镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
+
+<p>这会从 Docker Hub 拉取最新版本的 <code>nginx</code> 镜像</p>
+<h4 id="指定版本拉取："><a href="#指定版本拉取：" class="headerlink" title="指定版本拉取："></a>指定版本拉取：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis:6.2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果 docker run&#x2F;pull 有问题，那么可以通过<code>lzc-cli appstore copy-image your-images</code>来使用懒猫的镜像仓库。</p>
+</blockquote>
+<p>（相当于拉取 <code>redis</code> 仓库中 tag 为 <code>6.2</code> 的镜像）</p>
+<h4 id="上传镜像（先打标签）："><a href="#上传镜像（先打标签）：" class="headerlink" title="上传镜像（先打标签）："></a>上传镜像（先打标签）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag my-flask-app yourdockerhubname/my-flask-app:1.0</span><br><span class="line">docker push yourdockerhubname/my-flask-app:1.0</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="📦-镜像-Tag-与版本控制"><a href="#📦-镜像-Tag-与版本控制" class="headerlink" title="📦 镜像 Tag 与版本控制"></a>📦 镜像 Tag 与版本控制</h3><p>老周问：“小李，你知道为什么镜像都有个 <code>:latest</code> 吗？”</p>
+<p>小李说：“这是默认版本号吧？”</p>
+<p>“对，但我们不能依赖它。<strong>开发、测试、生产应使用明确版本号，比如 1.0、20240321 等</strong>。”</p>
+<p>Docker 镜像是通过 <code>tag</code> 来区分版本的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t myapp:1.0 .</span><br><span class="line">docker build -t myapp:latest .</span><br></pre></td></tr></table></figure>
+
+<p>你可以为同一个镜像打多个标签，对应不同场景使用。</p>
+<hr>
+<h3 id="🔍-镜像体积优化技巧"><a href="#🔍-镜像体积优化技巧" class="headerlink" title="🔍 镜像体积优化技巧"></a>🔍 镜像体积优化技巧</h3><p>小李注意到镜像越来越大了，占了很多硬盘空间。</p>
+<p>老周给了他几点建议：</p>
+<ol>
+<li><p>使用轻量级基础镜像：</p>
+<ul>
+<li>比如 <code>python:3.11-slim</code> 代替 <code>python:3.11</code></li>
+</ul>
+</li>
+<li><p>合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN</span><br></pre></td></tr></table></figure>
+
+<p>命令，减少层数：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt update &amp;&amp; apt install -y git &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除临时文件：</p>
+<ul>
+<li>安装后清理缓存，避免垃圾文件残留</li>
+</ul>
+</li>
+<li><p>多阶段构建（进阶）：</p>
+<ul>
+<li>构建和运行使用不同的镜像阶段</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="📂-镜像保存与迁移"><a href="#📂-镜像保存与迁移" class="headerlink" title="📂 镜像保存与迁移"></a>📂 镜像保存与迁移</h3><p>后来小李想把自己的镜像传给另一位没有 Docker Hub 的同事。</p>
+<p>他用到了镜像导出与导入：</p>
+<h4 id="导出镜像为-tar-文件："><a href="#导出镜像为-tar-文件：" class="headerlink" title="导出镜像为 .tar 文件："></a>导出镜像为 <code>.tar</code> 文件：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save my-flask-app &gt; myapp.tar</span><br></pre></td></tr></table></figure>
+
+<h4 id="导入镜像："><a href="#导入镜像：" class="headerlink" title="导入镜像："></a>导入镜像：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; myapp.tar</span><br></pre></td></tr></table></figure>
+
+<p>镜像打包成离线文件，便于携带与备份。</p>
+<hr>
+<h3 id="🔍-深入-Layer-实战：查看镜像内容"><a href="#🔍-深入-Layer-实战：查看镜像内容" class="headerlink" title="🔍 深入 Layer 实战：查看镜像内容"></a>🔍 深入 Layer 实战：查看镜像内容</h3><p>小李很好奇，镜像到底长什么样？</p>
+<p>老周教他运行容器并进到里面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --<span class="built_in">rm</span> my-flask-app /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>这样他就能直接进入容器的 Linux 环境，像在服务器上一样查看文件结构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br><span class="line"><span class="built_in">cd</span> /app</span><br><span class="line"><span class="built_in">cat</span> requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>他终于明白，每个镜像就像是一个“静态快照”，而容器才是“它的动态运行副本”。</p>
+<hr>
+<h3 id="📊-镜像生命周期总结表"><a href="#📊-镜像生命周期总结表" class="headerlink" title="📊 镜像生命周期总结表"></a>📊 镜像生命周期总结表</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看本地镜像</td>
+<td><code>docker images</code></td>
+</tr>
+<tr>
+<td>构建新镜像</td>
+<td><code>docker build -t name .</code></td>
+</tr>
+<tr>
+<td>删除镜像</td>
+<td><code>docker rmi 镜像名</code></td>
+</tr>
+<tr>
+<td>下载镜像</td>
+<td><code>docker pull 镜像名[:tag]</code></td>
+</tr>
+<tr>
+<td>上传镜像</td>
+<td><code>docker push 镜像名[:tag]</code></td>
+</tr>
+<tr>
+<td>镜像打包导出</td>
+<td><code>docker save &gt; xxx.tar</code></td>
+</tr>
+<tr>
+<td>镜像导入还原</td>
+<td><code>docker load &lt; xxx.tar</code></td>
+</tr>
+<tr>
+<td>镜像历史层查看</td>
+<td><code>docker history 镜像名</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🎬-尾声：镜像旅馆的门票"><a href="#🎬-尾声：镜像旅馆的门票" class="headerlink" title="🎬 尾声：镜像旅馆的门票"></a>🎬 尾声：镜像旅馆的门票</h3><p>小李现在拥有了多个镜像，搭配不同的版本、依赖、语言，像积木一样可以快速组合各种环境。</p>
+<p>“这就像 Minecraft 的世界地图，每张都是一个镜像。”小李说。</p>
+<p>老周点点头：“没错，镜像只是开始，真正的冒险——是容器运行起来后的世界。”</p>
+<hr>
+<h2 id="🧭-第二章小结"><a href="#🧭-第二章小结" class="headerlink" title="🧭 第二章小结"></a>🧭 第二章小结</h2><ul>
+<li>镜像是构建环境的基础模板，支持版本控制、缓存加速、快速构建</li>
+<li>可以上传到 Docker Hub 或导出 <code>.tar</code> 进行离线传输</li>
+<li>管理命令要熟练掌握：<code>build</code>、<code>pull</code>、<code>push</code>、<code>rmi</code>、<code>tag</code>、<code>history</code></li>
+<li>优化镜像大小要用 slim 基础镜像、合并命令、清理缓存</li>
+</ul>
+<h2 id="✨-增补内容：镜像的高级技能与实战应用"><a href="#✨-增补内容：镜像的高级技能与实战应用" class="headerlink" title="✨ 增补内容：镜像的高级技能与实战应用"></a>✨ 增补内容：镜像的高级技能与实战应用</h2><hr>
+<h3 id="🧪-多阶段构建：精致分工，极限瘦身"><a href="#🧪-多阶段构建：精致分工，极限瘦身" class="headerlink" title="🧪 多阶段构建：精致分工，极限瘦身"></a>🧪 多阶段构建：精致分工，极限瘦身</h3><p>有一次，小李需要构建一个使用 <code>npm</code> 打包前端、Python 启动后端的项目。打包工具很多、依赖也重，他担心镜像太大。</p>
+<p>老周说：“你要学会<strong>多阶段构建（multi-stage build）</strong>，把构建阶段和运行阶段分开。”</p>
+<blockquote>
+<p>多阶段构建的目标是：<strong>编译用谁都行，最终镜像要最小。</strong></p>
+</blockquote>
+<h4 id="示例：Node-构建-nginx-托管"><a href="#示例：Node-构建-nginx-托管" class="headerlink" title="示例：Node 构建 + nginx 托管"></a>示例：Node 构建 + nginx 托管</h4><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一阶段：使用 node 构建前端</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span> AS builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install &amp;&amp; npm run build</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二阶段：用 nginx 托管打包后的静态文件</span></span><br><span class="line"><span class="keyword">FROM</span> nginx:alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=builder /app/dist /usr/share/nginx/html</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一阶段装依赖、打包代码</li>
+<li>第二阶段只取编译结果，<strong>不用带上 node&#x2F;npm 等工具</strong></li>
+</ul>
+<p>小李一测试，镜像体积从 300MB 降到 25MB，部署速度快了 10 倍！</p>
+<hr>
+<h3 id="🧩-使用-dockerignore：镜像防垃圾机制"><a href="#🧩-使用-dockerignore：镜像防垃圾机制" class="headerlink" title="🧩 使用 .dockerignore：镜像防垃圾机制"></a>🧩 使用 <code>.dockerignore</code>：镜像防垃圾机制</h3><p>构建时，小李发现镜像中夹杂了 <code>.git</code>、<code>node_modules</code>、<code>__pycache__</code>……</p>
+<p>老周摇头道：“你忘了 <code>.dockerignore</code> 文件。”</p>
+<p>就像 <code>.gitignore</code> 一样，<code>.dockerignore</code> 告诉 Docker 哪些文件在构建镜像时要排除。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__pycache__/</span><br><span class="line">.git/</span><br><span class="line">node_modules/</span><br><span class="line">.env</span><br><span class="line">*.log</span><br></pre></td></tr></table></figure>
+
+<p>这个文件放在 Dockerfile 同目录下，<strong>能显著加快构建速度和减小镜像大小</strong>。</p>
+<hr>
+<h3 id="📦-自建私有镜像仓库（Registry）"><a href="#📦-自建私有镜像仓库（Registry）" class="headerlink" title="📦 自建私有镜像仓库（Registry）"></a>📦 自建私有镜像仓库（Registry）</h3><p>当公司禁止使用 Docker Hub 时，小李开始尝试搭建自己的镜像库。</p>
+<p>老周带他部署了一个本地私有镜像仓库（基于 Docker 官方镜像）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:5000 --restart=always --name registry registry:2</span><br></pre></td></tr></table></figure>
+
+<p>现在他可以：</p>
+<ul>
+<li><p>推送到私库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag myapp localhost:5000/myapp</span><br><span class="line">docker push localhost:5000/myapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull localhost:5000/myapp</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>适合公司内部使用，搭配 Nexus、Harbor 可实现更完善的权限、审计、镜像管理等功能。（比如懒猫的 copy-image）</p>
+<h3 id="🧠-镜像调试技巧：如何从镜像中探查问题？"><a href="#🧠-镜像调试技巧：如何从镜像中探查问题？" class="headerlink" title="🧠 镜像调试技巧：如何从镜像中探查问题？"></a>🧠 镜像调试技巧：如何从镜像中探查问题？</h3><p>如果小李的镜像出错了，他可以通过两种方式“探测”镜像内部：</p>
+<h4 id="方法-1：运行一个交互式-shell-容器"><a href="#方法-1：运行一个交互式-shell-容器" class="headerlink" title="方法 1：运行一个交互式 shell 容器"></a>方法 1：运行一个交互式 shell 容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it myapp /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>（如果 bash 不存在，可以用 <code>/bin/sh</code>）</p>
+<h4 id="方法-2：打开已有容器的终端"><a href="#方法-2：打开已有容器的终端" class="headerlink" title="方法 2：打开已有容器的终端"></a>方法 2：打开已有容器的终端</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_id /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>ls</code>、<code>cat</code>、<code>which</code>、<code>env</code> 命令，可以检查：</p>
+<ul>
+<li>文件有没有 COPY 进去？</li>
+<li><code>pip install</code> 是否安装成功？</li>
+<li>环境变量是否丢失？</li>
+</ul>
+<hr>
+<h3 id="🔐-镜像安全：不要把密码打包进镜像！"><a href="#🔐-镜像安全：不要把密码打包进镜像！" class="headerlink" title="🔐 镜像安全：不要把密码打包进镜像！"></a>🔐 镜像安全：不要把密码打包进镜像！</h3><p>小李曾在 Dockerfile 里写了：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENV</span> DB_PASSWORD=<span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
+<p>老周当场拍桌：“你这是把钥匙写死进容器了！”</p>
+<p>最佳做法：</p>
+<ul>
+<li>在容器运行时注入环境变量（例如使用 <code>.env</code> 文件 + <code>--env</code> 参数）</li>
+<li>使用 <code>docker secret</code> 或 KMS 管理</li>
+<li>使用 BuildKit 的 <code>--secret</code> 机制加密构建时参数（高级用法）</li>
+</ul>
+<hr>
+<h3 id="🧾-镜像标签管理规范建议"><a href="#🧾-镜像标签管理规范建议" class="headerlink" title="🧾 镜像标签管理规范建议"></a>🧾 镜像标签管理规范建议</h3><p>小李准备上线，他开始给镜像打各种 tag：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t myapp:1.0.0 .</span><br><span class="line">docker tag myapp:1.0.0 myapp:latest</span><br></pre></td></tr></table></figure>
+
+<p>老周说：</p>
+<blockquote>
+<p>“tag 是镜像的版本名，不要用 <code>latest</code> 作为生产环境唯一标识。”</p>
+</blockquote>
+<p>推荐命名规范：</p>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>myapp:1.0.0</code></td>
+<td>语义化版本控制</td>
+</tr>
+<tr>
+<td><code>myapp:20240324</code></td>
+<td>构建时间戳</td>
+</tr>
+<tr>
+<td><code>myapp:prod</code></td>
+<td>环境标识</td>
+</tr>
+<tr>
+<td><code>myapp:feature-login</code></td>
+<td>功能分支测试</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🔁-镜像缓存失效调试技巧"><a href="#🔁-镜像缓存失效调试技巧" class="headerlink" title="🔁 镜像缓存失效调试技巧"></a>🔁 镜像缓存失效调试技巧</h3><p>有时候构建镜像时，小李发现修改了某个文件，Docker 却好像没更新。</p>
+<p>老周点拨他：“那是缓存搞的鬼。”</p>
+<h4 id="方法一：强制跳过缓存"><a href="#方法一：强制跳过缓存" class="headerlink" title="方法一：强制跳过缓存"></a>方法一：强制跳过缓存</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build --no-cache -t myapp .</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法二：注意-COPY-顺序影响缓存命中"><a href="#方法二：注意-COPY-顺序影响缓存命中" class="headerlink" title="方法二：注意 COPY 顺序影响缓存命中"></a>方法二：注意 COPY 顺序影响缓存命中</h4><p>Docker 会从上到下按顺序缓存。如果把变化频繁的文件 COPY 太早，就会导致缓存失效：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="language-bash"> requirements.txt .      <span class="comment"># OK，变动少，适合先复制</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .                     <span class="comment"># 后复制代码，避免频繁无效重建</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✨ 技巧：越是稳定的文件，越早 COPY，利于缓存复用。</p>
+</blockquote>
+<hr>
+<h2 id="📘-第二章-·-补充总结更新版"><a href="#📘-第二章-·-补充总结更新版" class="headerlink" title="📘 第二章 · 补充总结更新版"></a>📘 第二章 · 补充总结更新版</h2><table>
+<thead>
+<tr>
+<th>技术点</th>
+<th>命令 &#x2F; 说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多阶段构建</td>
+<td><code>FROM ... AS builder</code> + <code>COPY --from=builder</code></td>
+</tr>
+<tr>
+<td>忽略文件</td>
+<td><code>.dockerignore</code> 文件</td>
+</tr>
+<tr>
+<td>镜像上传私库</td>
+<td><code>docker push localhost:5000/myapp</code></td>
+</tr>
+<tr>
+<td>开启 BuildKit</td>
+<td><code>DOCKER_BUILDKIT=1 docker build ...</code></td>
+</tr>
+<tr>
+<td>进入镜像内调试</td>
+<td><code>docker run -it 镜像 /bin/bash</code></td>
+</tr>
+<tr>
+<td>镜像版本管理建议</td>
+<td>避免乱用 <code>latest</code>，使用语义化 tag</td>
+</tr>
+<tr>
+<td>跳过缓存构建</td>
+<td><code>docker build --no-cache ...</code></td>
+</tr>
+</tbody></table>
+<hr>
+<p>小李站在镜像旅馆的屋顶，看着一层层高楼像乐高积木一样堆叠而起。</p>
+<p>他感到激动——他已经不再为“部署”苦恼，而是拥有了一个随时可打包、可还原的开发宇宙。</p>
+<p>老周说：“你的旅程才刚刚开始，容器的世界比镜像更复杂。”</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>写给懒猫微服玩家的容器小书 Docker篇（二）：《镜像旅馆的秘密》</p><p><a href="https://xu-hardy.github.io/写给懒猫微服玩家的容器小书-docker篇（二）：《镜像旅馆的秘密》/">https://xu-hardy.github.io/写给懒猫微服玩家的容器小书-docker篇（二）：《镜像旅馆的秘密》/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Xu</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-07-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2025-06-30</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="../tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="../images/ali.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="../images/wechat.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E3%80%8A%E6%97%A0%E6%B3%95%E9%83%A8%E7%BD%B2%E7%9A%84%E8%AF%85%E5%92%92%E3%80%8B/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">写给懒猫微服玩家的容器小书 Docker篇（一）：《无法部署的诅咒》</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="../%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E3%80%8A%E5%AE%B9%E5%99%A8%E9%83%A8%E8%90%BD%E7%94%9F%E6%B4%BB%E3%80%8B/"><span class="level-item">写给懒猫微服玩家的容器小书 Docker篇（三）：《容器部落生活》</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card" id="comments"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://xu-hardy.github.io/%E5%86%99%E7%BB%99%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E7%8E%A9%E5%AE%B6%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B0%8F%E4%B9%A6-docker%E7%AF%87%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E3%80%8A%E9%95%9C%E5%83%8F%E6%97%85%E9%A6%86%E7%9A%84%E7%A7%98%E5%AF%86%E3%80%8B/';
+            this.page.identifier = '写给懒猫微服玩家的容器小书-docker篇（二）：《镜像旅馆的秘密》/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'my' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="../images/me.png" alt="Xu"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Xu</p><p class="is-size-6 is-block">随手记</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>BEI JING</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="../archives/"><p class="title">101</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="../categories/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="../tags/"><p class="title">29</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Xu-Hardy/Xu-Hardy.github.io" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Home" href="https://xu-hardy.github.io/"><i class="fa fa-home"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="AWS" href="https://xu-hardy.github.io/aws"><i class="fab fa-aws"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="archives" href="https://xu-hardy.github.io/archives"><i class="fa fa-calendar"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Tags" href="https://xu-hardy.github.io/tags"><i class="fa fa-tags"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="../atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#《镜像旅馆的秘密》讲的是-Docker-镜像的原理、分层结构、生命周期、Docker-Hub-上传与下载、常见镜像命令详解"><span class="level-left"><span class="level-item">1</span><span class="level-item">《镜像旅馆的秘密》讲的是 Docker 镜像的原理、分层结构、生命周期、Docker Hub 上传与下载、常见镜像命令详解</span></span></a><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#🏰-开篇：进入镜像旅馆"><span class="level-left"><span class="level-item">1.1.1</span><span class="level-item">🏰 开篇：进入镜像旅馆</span></span></a></li><li><a class="level is-mobile" href="#🧱-镜像的本质：一层一层搭起来的文件系统"><span class="level-left"><span class="level-item">1.1.2</span><span class="level-item">🧱 镜像的本质：一层一层搭起来的文件系统</span></span></a></li><li><a class="level is-mobile" href="#🧪-镜像命令全攻略"><span class="level-left"><span class="level-item">1.1.3</span><span class="level-item">🧪 镜像命令全攻略</span></span></a></li><li><a class="level is-mobile" href="#🗂-镜像仓库：Docker-Hub"><span class="level-left"><span class="level-item">1.1.4</span><span class="level-item">🗂 镜像仓库：Docker Hub</span></span></a></li><li><a class="level is-mobile" href="#📦-镜像-Tag-与版本控制"><span class="level-left"><span class="level-item">1.1.5</span><span class="level-item">📦 镜像 Tag 与版本控制</span></span></a></li><li><a class="level is-mobile" href="#🔍-镜像体积优化技巧"><span class="level-left"><span class="level-item">1.1.6</span><span class="level-item">🔍 镜像体积优化技巧</span></span></a></li><li><a class="level is-mobile" href="#📂-镜像保存与迁移"><span class="level-left"><span class="level-item">1.1.7</span><span class="level-item">📂 镜像保存与迁移</span></span></a></li><li><a class="level is-mobile" href="#🔍-深入-Layer-实战：查看镜像内容"><span class="level-left"><span class="level-item">1.1.8</span><span class="level-item">🔍 深入 Layer 实战：查看镜像内容</span></span></a></li><li><a class="level is-mobile" href="#📊-镜像生命周期总结表"><span class="level-left"><span class="level-item">1.1.9</span><span class="level-item">📊 镜像生命周期总结表</span></span></a></li><li><a class="level is-mobile" href="#🎬-尾声：镜像旅馆的门票"><span class="level-left"><span class="level-item">1.1.10</span><span class="level-item">🎬 尾声：镜像旅馆的门票</span></span></a></li></ul><li><a class="level is-mobile" href="#🧭-第二章小结"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">🧭 第二章小结</span></span></a></li><li><a class="level is-mobile" href="#✨-增补内容：镜像的高级技能与实战应用"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">✨ 增补内容：镜像的高级技能与实战应用</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#🧪-多阶段构建：精致分工，极限瘦身"><span class="level-left"><span class="level-item">1.3.1</span><span class="level-item">🧪 多阶段构建：精致分工，极限瘦身</span></span></a></li><li><a class="level is-mobile" href="#🧩-使用-dockerignore：镜像防垃圾机制"><span class="level-left"><span class="level-item">1.3.2</span><span class="level-item">🧩 使用 .dockerignore：镜像防垃圾机制</span></span></a></li><li><a class="level is-mobile" href="#📦-自建私有镜像仓库（Registry）"><span class="level-left"><span class="level-item">1.3.3</span><span class="level-item">📦 自建私有镜像仓库（Registry）</span></span></a></li><li><a class="level is-mobile" href="#🧠-镜像调试技巧：如何从镜像中探查问题？"><span class="level-left"><span class="level-item">1.3.4</span><span class="level-item">🧠 镜像调试技巧：如何从镜像中探查问题？</span></span></a></li><li><a class="level is-mobile" href="#🔐-镜像安全：不要把密码打包进镜像！"><span class="level-left"><span class="level-item">1.3.5</span><span class="level-item">🔐 镜像安全：不要把密码打包进镜像！</span></span></a></li><li><a class="level is-mobile" href="#🧾-镜像标签管理规范建议"><span class="level-left"><span class="level-item">1.3.6</span><span class="level-item">🧾 镜像标签管理规范建议</span></span></a></li><li><a class="level is-mobile" href="#🔁-镜像缓存失效调试技巧"><span class="level-left"><span class="level-item">1.3.7</span><span class="level-item">🔁 镜像缓存失效调试技巧</span></span></a></li></ul></li><li><a class="level is-mobile" href="#📘-第二章-·-补充总结更新版"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">📘 第二章 · 补充总结更新版</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="../js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://liarlee.site/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Liarlee</span></span><span class="level-right"><span class="level-item tag">liarlee.site</span></span></a></li><li><a class="level is-mobile" href="https://easyhexo.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">easyhexo</span></span><span class="level-right"><span class="level-item tag">easyhexo.com</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">hexo-theme-icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li><li><a class="level is-mobile" href="https://ctext.org/histories/zhs" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">中国哲学书电子化计划</span></span><span class="level-right"><span class="level-item tag">ctext.org</span></span></a></li><li><a class="level is-mobile" href="http://mahacashiaba.blogspot.com/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">五个五百年前</span></span><span class="level-right"><span class="level-item tag">mahacashiaba.blogspot.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="../categories/%E5%90%83%E8%B4%A7/"><span class="level-start"><span class="level-item">吃货</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../categories/%E5%A4%96%E8%AE%BE/"><span class="level-start"><span class="level-item">外设</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"><span class="level-start"><span class="level-item">懒猫微服</span></span><span class="level-end"><span class="level-item tag">42</span></span></a></li><li><a class="level is-mobile" href="../categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">读书笔记</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="../categories/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"><span class="level-start"><span class="level-item">远程访问</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../categories/%E9%9A%8F%E7%AC%94/"><span class="level-start"><span class="level-item">随笔</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%85%A5%E9%97%A8%E7%AF%87%EF%BC%88%E9%9B%B6%EF%BC%89%EF%BC%9A%E5%BC%80%E7%AE%B1%E5%88%9D%E6%8E%A2%EF%BC%8C%E7%A1%AC%E4%BB%B6%E4%BA%AE%E7%9B%B8/">懒猫微服入门篇（零）：开箱初探，硬件亮相</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A-%E4%BB%8E%E5%BC%80%E5%90%AFssh%E5%88%B0%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%95%99%E4%BD%A0%E6%90%9E%E5%AE%9A%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/">懒猫微服实战入门（一）： 从开启SSH到免密登录，一步步教你搞定远程管理</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E9%80%9A%E8%BF%87-nmtui-%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81-ip%EF%BC%8C%E6%8E%A5%E5%85%A5%E6%97%81%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">懒猫微服实战入门（十）：通过 nmtui 设置静态 IP，接入旁路由实现科学上网</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E4%B8%80%E9%94%AE%E6%8D%A2%E6%BA%90%E6%8C%87%E5%8D%97%EF%BC%9A%E7%94%A8-chsrc-%E5%BC%80%E5%90%AF%E4%B8%9D%E6%BB%91%E4%BD%93%E9%AA%8C/">懒猫微服实战入门（十一）：一键换源指南：用 chsrc 开启丝滑体验</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-07-01T16:00:00.000Z">2025-07-02</time></p><p class="title"><a href="../%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%94%A8-iventoy-%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-pxe-%E6%9C%8D%E5%8A%A1%E5%99%A8/">懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器</a></p><p class="categories"><a href="../categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/">懒猫微服</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="../archives/2025/07/"><span class="level-start"><span class="level-item">七月 2025</span></span><span class="level-end"><span class="level-item tag">41</span></span></a></li><li><a class="level is-mobile" href="../archives/2025/06/"><span class="level-start"><span class="level-item">六月 2025</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/05/"><span class="level-start"><span class="level-item">五月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/03/"><span class="level-start"><span class="level-item">三月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/02/"><span class="level-start"><span class="level-item">二月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/06/"><span class="level-start"><span class="level-item">六月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/05/"><span class="level-start"><span class="level-item">五月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/11/"><span class="level-start"><span class="level-item">十一月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/10/"><span class="level-start"><span class="level-item">十月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/06/"><span class="level-start"><span class="level-item">六月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2021/01/"><span class="level-start"><span class="level-item">一月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="../archives/2020/01/"><span class="level-start"><span class="level-item">一月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2018/10/"><span class="level-start"><span class="level-item">十月 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../archives/2018/02/"><span class="level-start"><span class="level-item">二月 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../archives/2017/10/"><span class="level-start"><span class="level-item">十月 2017</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="../archives/2017/03/"><span class="level-start"><span class="level-item">三月 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="../tags/DIY/"><span class="tag">DIY</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/Docker/"><span class="tag">Docker</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../tags/Linux/"><span class="tag">Linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/MFA/"><span class="tag">MFA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/NAS/"><span class="tag">NAS</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../tags/PWA/"><span class="tag">PWA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E4%BB%A3%E7%90%86/"><span class="tag">代理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%8C%97%E6%BC%82/"><span class="tag">北漂</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"><span class="tag">单点登录</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%8F%8D%E6%8A%97/"><span class="tag">反抗</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%A4%96%E8%AE%BE/"><span class="tag">外设</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%AE%B6%E6%9C%89%E5%90%83%E8%B4%A7/"><span class="tag">家有吃货</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"><span class="tag">懒猫微服</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%95%88%E7%8E%87/"><span class="tag">效率</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/"><span class="tag">极限科技</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%A2%A6/"><span class="tag">梦</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E6%B8%B8%E8%AE%B0/"><span class="tag">游记</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%94%9F%E6%B4%BB/"><span class="tag">生活</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E5%A6%99%E6%8B%9B/"><span class="tag">生活小妙招</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%94%B5%E5%AD%90%E6%9E%81%E5%AE%A2/"><span class="tag">电子极客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%A4%96%E8%AE%BE/"><span class="tag">硬件与外设</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E7%A7%9F%E6%88%BF/"><span class="tag">租房</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%A3%85%E4%BF%AE%E6%97%A5%E8%AE%B0/"><span class="tag">装修日记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%A3%85%E6%9C%BA/"><span class="tag">装机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%AF%97/"><span class="tag">诗</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E8%AF%BB%E4%B9%A6/"><span class="tag">读书</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">2</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="../index.html"><img src="../img/favicon.svg" alt="镜湖" height="28"></a><p class="is-size-7"><span>&copy; 2025 Xu</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/cloudsmithy/cloudsmithy.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="../js/column.js"></script><script src="../js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="../js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script data-pjax src="../js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="../js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"../content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
