@@ -22,6 +22,8 @@ Server listening on 5201 (test #1)
 
 ```
 
+<!-- more -->
+
 在 Mac 上测速，iperf3 -c 和
 
 ![image-20250615184708521](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250615184708521.png)
