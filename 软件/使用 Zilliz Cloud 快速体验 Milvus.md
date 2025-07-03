@@ -8,7 +8,7 @@ date: 2025-07-03 00:00:00
 
 在学习 Milvus 向量数据库时，除了本地 Milvus Lite、单机版 Milvus Standalone 或 Milvus on K8s 之外，还可以选择 **Zilliz Cloud** —— 一种无需部署服务器、零成本上手的托管方案。下面将演示如何申请 Zilliz Cloud 中国区免费套餐并运行官方示例代码。
 
-## 一、注册并创建免费集群
+### 注册并创建免费集群
 
 1. 打开官网
 
@@ -38,7 +38,7 @@ date: 2025-07-03 00:00:00
 
 ---
 
-## 二、连接
+### 二、连接
 
 安装 milvus-cli：
 
@@ -208,7 +208,7 @@ for i in range(5):
 
 ```
 
-## 四、配置连接信息
+### 配置连接信息
 
 在 `config.ini` 中填入你的集群信息（务必保持格式），⚠️ 切勿把 API Key 提交到公开仓库。
 
@@ -219,7 +219,7 @@ token = <your-api-key>
 
 ---
 
-## 五、运行示例脚本
+### 运行示例脚本
 
 ```bash
 python3 hello_zilliz_vectordb.py
