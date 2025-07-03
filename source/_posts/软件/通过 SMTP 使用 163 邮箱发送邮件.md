@@ -15,7 +15,7 @@ date: 2025-07-01 00:00:00
   1. 登录 [163 邮箱](https://mail.163.com/)。
 
   2. 进入 **设置 → POP3/SMTP/IMAP**。
-
+  <!--more-->
   3. 开启 **SMTP 服务**，系统会提示你设置授权码（类似 `ABCDEFG123456`，不是你的登录密码）。
 
   4. 复制这个授权码，替换代码中的 `your_authorization_code`。

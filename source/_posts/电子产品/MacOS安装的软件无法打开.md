@@ -1,6 +1,11 @@
 ---
 title: MacOS安装的软件无法打开
+tags: Apple
+toc: true
+categories: Apple
+date: 2024-02-02 00:00:00
 ---
+
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20240225081805.png)
 
  <!--more-->
