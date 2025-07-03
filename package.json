@@ -43,6 +43,10 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
-    "babel-plugin-inferno": "^6.8.4"
+    "babel-plugin-inferno": "^6.8.4",
+    "hexo-filter-nofollow": "^2.0.2",
+    "hexo-generator-robotstxt": "^0.2.0",
+    "hexo-indexnow": "^1.2.0",
+    "hexo-seo-submit": "^1.8.0"
   }
 }
