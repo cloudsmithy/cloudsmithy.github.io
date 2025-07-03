@@ -6,7 +6,6 @@ tags:
 date: 2023-9-27
 categories: 外设
 toc: 'true'
-abbrlink: b893f77b
 ---
 
 如果你固定了公网IP，那么这几个结果都是一样的，如果你是二级运营商，那么可能出口IP不一样，需要向运营商索要动态公网IP。
