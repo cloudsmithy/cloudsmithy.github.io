@@ -77,3 +77,9 @@ robotstxt:
   allow:
     - /
   sitemap: /sitemap.xml
+
+nofollow:
+  enable: true # 是否启用
+  field: site #site全站,post仅文章
+  exclude:
+    - "www.kaitaku.xyz" #例外网站
