@@ -11,22 +11,15 @@ tags:
 
 如果你的系统是稳定版的话，可能需要先降级回到开发版
 
-
 ### 0. unlock and image zip download
-
-
 
 You can use SD card or OTG USB as your image zip storage.
 
-
-
 - [ ] mokee MK-${version}.zip (system zip)
 - [ ] Magisk-v21.0.zip (ROOT solution & Universal Systemless Interface provided by John Wu)
-- [ ] open_gapps         (GSM services)
+- [ ] open_gapps (GSM services)
 
 <!-- more -->
-
-
 
 ### 1. [twrp](https://twrp.me/xiaomi/xiaomimi8.html)
 
@@ -54,15 +47,11 @@ after flash twrp rec
 fastboot reboot
 ```
 
-
-
 ### 2. use image to flash device
 
 ```bash
 fastboot flash recovery twrp-x.x.x-x-x.img
 ```
-
-
 
 2023 年 mokee 已经停更了
 
