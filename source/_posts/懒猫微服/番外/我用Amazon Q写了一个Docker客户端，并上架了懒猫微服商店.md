@@ -3,7 +3,7 @@ title: 我用Amazon Q写了一个Docker客户端，并上架了懒猫微服商�
 tags: Docker
 toc: true
 categories: 懒猫微服
-date: 2025-07-02 00:00:00
+date: 2025-06-08 00:00:00
 ---
 
 https://appstore.lazycat.cloud/#/shop/detail/xu.deploy.containly
