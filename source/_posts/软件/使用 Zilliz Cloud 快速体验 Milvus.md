@@ -19,6 +19,8 @@ date: 2025-07-03 00:00:00
 
 ![a508309b90c710ffd1d9e998626c47f9](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/a508309b90c710ffd1d9e998626c47f9.png)
 
+<!-- more -->
+
 2. 选择 **手机号码** 或 **邮箱** 登录/注册。
 
    ![image-20250626212403361](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250626212403361.png)
