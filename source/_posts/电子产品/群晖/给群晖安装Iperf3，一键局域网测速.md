@@ -3,7 +3,7 @@ title: 给群晖安装Iperf3，一键局域网测速
 tags: 家庭网络
 toc: true
 categories: 群晖
-date: 2025-07-02 00:00:00
+date: 2025-06-15 00:00:00
 ---
 
 群晖默认不带 iperf3，所以需要套件来安装：
