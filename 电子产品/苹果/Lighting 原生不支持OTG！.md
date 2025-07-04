@@ -3,7 +3,7 @@ title: Lighting 原生不支持OTG！
 tags: Apple
 toc: true
 categories: Apple
-date: 2025-07-02 00:00:00
+date: 2025-06-26 00:00:00
 ---
 
 我还留着 Lighting 的设备，由于大疆 pocket3 最近更新了直连手机文件管理器的功能，所以试试。
