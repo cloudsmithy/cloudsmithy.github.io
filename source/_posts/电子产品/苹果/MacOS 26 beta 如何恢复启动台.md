@@ -3,7 +3,7 @@ title: MacOS 26 beta 如何恢复启动台
 tags: Apple
 toc: true
 categories: Apple
-date: 2025-07-02 00:00:00
+date: 2025-06-22 00:00:00
 ---
 
 苹果最新版的系统使用了年份命名，主要是毛玻璃风格，虽然毛玻璃用了几天慢慢习惯了。

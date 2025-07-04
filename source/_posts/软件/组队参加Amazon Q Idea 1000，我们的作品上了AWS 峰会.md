@@ -3,7 +3,7 @@ title: 组队参加 Amazon Q Idea 1000，我们的作品上了 AWS 峰会
 tags: AWS
 toc: true
 categories: AWS
-date: 2025-07-02 00:00:00
+date: 2025-06-20 00:00:00
 ---
 
 最近生成式 AI 的比赛很多，也报名了 AWS Idea1000 的比赛，作品登录上了 AWS 的峰会。
