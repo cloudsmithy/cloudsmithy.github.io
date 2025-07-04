@@ -3,7 +3,7 @@ title: 给传统 NAS 玩家介绍一下懒猫微服
 tags: NAS
 toc: true
 categories: 懒猫微服
-date: 2025-07-02 00:00:00
+date: 2025-07-10 00:00:00
 ---
 
 玩过不少 NAS，从最早的黑群晖，威联通开始，后面陆陆续续接触了飞牛，绿联，极空间，UNRAID，EXSI，Proxmox VE，也算有点话语权。
