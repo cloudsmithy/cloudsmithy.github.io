@@ -3,7 +3,7 @@ title: Typora 和Obsidian 自动使用 Github 做在线图床
 tags: NAS
 toc: true
 categories: 电脑外设
-date: 2025-05-11 00:00:00
+date: 2025-02-15 00:00:00
 ---
 
 从前写 Markdown 使用使用相对路径，后来上了 Vuepres/Hexo 之后图床迁移一直有问题，最后采用了在线图床的办法，虽然在国内访问 Github 并不完美，但是毕竟都是都是一些折腾的记忆，如果放在不一直续费的公有云或者一些免费的小厂商，倘若有一天数据丢失那也是一个伤心的事情。
