@@ -1,9 +1,11 @@
 ---
 title: 使用 Nginx 获取并返回客户端的公网 IP 地址.md
-tags: 网关
+tags:
+  - 网关
+  - Nginx
 toc: true
 categories: 运维
-date: 2025-07-01 00:00:00
+date: 2025-04-24 00:00:00
 ---
 
 在某些场景下，我们需要快速获取客户端的公网 IP 地址。虽然有许多在线服务（如 IP Address Lookup、IPv4/IPv6 检测工具或https://checkip.amazonaws.com/）可以提供此功能，但通过自建Nginx服务来实现这一需求，不仅灵活可控，还能更好地满足个性化需求。
