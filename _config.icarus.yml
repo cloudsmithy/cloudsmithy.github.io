@@ -111,20 +111,20 @@ widgets:
     avatar: "/images/me.png"
     avatar_rounded: true
     gravatar:
-    follow_link: https://github.com/Xu-Hardy/Xu-Hardy.github.io
+    follow_link: /
     social_links:
       Home:
         icon: fa fa-home
-        url: https://xu-hardy.github.io/
+        url: /
       AWS:
         icon: fab fa-aws
-        url: https://xu-hardy.github.io/aws
+        url: /aws
       archives:
         icon: fa fa-calendar
-        url: https://xu-hardy.github.io/archives
+        url: /archives
       Tags:
         icon: fa fa-tags
-        url: https://xu-hardy.github.io/tags
+        url: /tags
       RSS:
         icon: fas fa-rss
         url: "atom.xml"
