@@ -1,4 +1,10 @@
-# 懒猫微服开发篇（五）：懒猫微服如何使用 OpenID Connect （OIDC）？（下）
+---
+title: 懒猫微服开发篇（五）：懒猫微服如何使用 OpenID Connect （OIDC）？（下）
+tags: 单点登录
+toc: true
+categories: 懒猫微服
+date: 2025-07-05 00:00:00
+---
 
 先决条件：
 
