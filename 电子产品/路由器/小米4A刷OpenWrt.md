@@ -1,7 +1,7 @@
 ---
 title: 小米4A刷OpenWrt
-tags:
-  - 外设
+tags: 路由器
+categories: 电脑外设
 toc: true
 date: 2023-06-22 00:00:00
 ---
