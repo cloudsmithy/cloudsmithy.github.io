@@ -192,9 +192,9 @@ plugins:
     tracking_id:
   hotjar:
     site_id:
-  katex: false
-  mathjax: false
-  outdated_browser: false
+  katex: true
+  mathjax: true
+  outdated_browser: true
   progressbar: true
   statcounter:
     project:
