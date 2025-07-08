@@ -52,6 +52,9 @@ toc: true
 
 ## 懒猫微服专辑
 
+![懒猫官网专栏](https://developer.lazycat.cloud/wangjishanren-lazycat-developer-startup.html)
+---
+
 - [自带内网穿透,懒猫微服治好了我的 NAS 焦虑](https://mp.weixin.qq.com/s/4nN5NyYl0m5LS3V4wNhrMA)
 - [快速检索懒猫商店 1000+应用，微服秒变 Mac 原生 APP](https://mp.weixin.qq.com/s/FmFbblqZlg2ToUymw8sB5g)
 - [轻松管理 ES 集群: 我把 Infinilabs Console 上架了懒猫微服，默认支持外网访问、TLS 加密和 OIDC 登录](https://mp.weixin.qq.com/s/fcUbP3EmtgmlOmZFy9Ix6w)
