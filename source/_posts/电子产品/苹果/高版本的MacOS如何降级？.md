@@ -1,6 +1,6 @@
 ---
 title: 高版本的MacOS如何降级？
-date: 2024-05-12
+date: 2024-07-08
 categories: Apple
 tags:
   - Apple
