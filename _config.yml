@@ -6,6 +6,7 @@ author: Xu
 language: zh-CN
 timezone: "Asia/Shanghai"
 url: https://xu-hardy.github.io/
+root: /
 permalink: :post_title/
 # abbrlink:
 #   alg: crc32  #算法: crc16(default) and crc32
