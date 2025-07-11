@@ -136,15 +136,15 @@ widgets:
   - position: left
     type: links
     links:
-      Hexo: https://hexo.io
       Bulma: https://bulma.io
       Liarlee: https://liarlee.site/
       九思学舍: https://www.asfor.cn/
       easyhexo: https://easyhexo.com/
+      rockylinux: https://www.rockylinux.cn
       hexo-theme-icarus: https://ppoffice.github.io/hexo-theme-icarus/
       中国哲学书电子化计划: https://ctext.org/histories/zhs
       五个五百年前: http://mahacashiaba.blogspot.com/
-      kennychen: https://kennychen.frontiertechcap.com/
+
   - position: left
     type: categories
   - position: right
