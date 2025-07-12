@@ -90,6 +90,8 @@ comment:
   type: disqus
   shortname: "my"
 donates:
+  - type: wechat
+    qrcode: "/images/gongzhonghao.png"
   - type: alipay
     qrcode: "/images/ali.jpg"
   - type: wechat
