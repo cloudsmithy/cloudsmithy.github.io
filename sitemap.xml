@@ -2,24 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://cloudsmithy.github.io/note/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/quotes/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cloudsmithy.github.io/reward/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -38,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/eae9c1f1/</loc>
+    <loc>https://cloudsmithy.github.io/note/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -47,34 +29,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/b97d7b57/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/d14ad726/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/cd8d8984/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/7a47d12b/</loc>
+    <loc>https://cloudsmithy.github.io/quotes/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -84,33 +39,6 @@
   
   <url>
     <loc>https://cloudsmithy.github.io/about/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/8d2ea5f5/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/e51b087c/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/938aef4d/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -173,7 +101,34 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/56bb1eb7/</loc>
+    <loc>https://cloudsmithy.github.io/posts/eae9c1f1/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/b97d7b57/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/d14ad726/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/cd8d8984/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -209,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/75eceee6/</loc>
+    <loc>https://cloudsmithy.github.io/posts/512ddea4/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -218,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/512ddea4/</loc>
+    <loc>https://cloudsmithy.github.io/posts/75eceee6/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -246,6 +201,15 @@
   
   <url>
     <loc>https://cloudsmithy.github.io/posts/29d0960/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/7a47d12b/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -326,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/1fc7f9f5/</loc>
+    <loc>https://cloudsmithy.github.io/posts/8d2ea5f5/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -335,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/450f2bc0/</loc>
+    <loc>https://cloudsmithy.github.io/posts/e51b087c/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -344,34 +308,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/da62ad7a/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/a8322290/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/c39ca3b5/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/6cc0c7dd/</loc>
+    <loc>https://cloudsmithy.github.io/posts/938aef4d/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -398,7 +335,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/4533e9f8/</loc>
+    <loc>https://cloudsmithy.github.io/posts/10d4e175/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -407,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/10d4e175/</loc>
+    <loc>https://cloudsmithy.github.io/posts/4533e9f8/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -425,34 +362,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/cf8e3176/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/6f08b777/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/79388b04/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/6fcedbb0/</loc>
+    <loc>https://cloudsmithy.github.io/posts/56bb1eb7/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -488,7 +398,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/c40f7be/</loc>
+    <loc>https://cloudsmithy.github.io/posts/c67acea7/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -497,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/c67acea7/</loc>
+    <loc>https://cloudsmithy.github.io/posts/c40f7be/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -569,6 +479,15 @@
   </url>
   
   <url>
+    <loc>https://cloudsmithy.github.io/posts/84c20813/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudsmithy.github.io/posts/fc9b2cf2/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -578,7 +497,52 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/84c20813/</loc>
+    <loc>https://cloudsmithy.github.io/posts/1fc7f9f5/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/450f2bc0/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/da62ad7a/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/a8322290/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/c39ca3b5/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/6cc0c7dd/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -632,7 +596,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/3608dae8/</loc>
+    <loc>https://cloudsmithy.github.io/posts/cf8e3176/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -641,7 +605,16 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/13af016a/</loc>
+    <loc>https://cloudsmithy.github.io/posts/6f08b777/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/3608dae8/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -704,7 +677,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/7acb32ac/</loc>
+    <loc>https://cloudsmithy.github.io/posts/79388b04/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -713,16 +686,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/f2e07cac/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/e70dd7d7/</loc>
+    <loc>https://cloudsmithy.github.io/posts/6fcedbb0/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -776,42 +740,6 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/e3691a5b/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/8b29e69c/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/361d01a9/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/86ef0187/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cloudsmithy.github.io/posts/eb0b4c83/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -830,7 +758,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/b126c84d/</loc>
+    <loc>https://cloudsmithy.github.io/posts/3d90967f/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -839,7 +767,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/3d90967f/</loc>
+    <loc>https://cloudsmithy.github.io/posts/b126c84d/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -857,15 +785,6 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/df454c34/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cloudsmithy.github.io/posts/9eab63c2/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -875,7 +794,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/e32dbde5/</loc>
+    <loc>https://cloudsmithy.github.io/posts/df454c34/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -893,6 +812,15 @@
   </url>
   
   <url>
+    <loc>https://cloudsmithy.github.io/posts/e32dbde5/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudsmithy.github.io/posts/271ab503/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -902,7 +830,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/af48f3e/</loc>
+    <loc>https://cloudsmithy.github.io/posts/13af016a/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -911,7 +839,25 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/cba11cdd/</loc>
+    <loc>https://cloudsmithy.github.io/posts/7acb32ac/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/f2e07cac/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/e70dd7d7/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -921,15 +867,6 @@
   
   <url>
     <loc>https://cloudsmithy.github.io/posts/ebd08f3f/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/5a5307d/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1001,6 +938,177 @@
   </url>
   
   <url>
+    <loc>https://cloudsmithy.github.io/posts/8b29e69c/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/e3691a5b/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/361d01a9/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/86ef0187/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/fb8d6bf1/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/5102820d/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/13ca4a36/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/d5a28fff/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/8c820eb6/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/eab170f2/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/719d7034/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/8d9611a5/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/1f7436df/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/c50511c4/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/7a296932/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/af48f3e/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/cba11cdd/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/5a5307d/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/b4d03554/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudsmithy.github.io/posts/8f3221dd/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -1038,159 +1146,6 @@
   
   <url>
     <loc>https://cloudsmithy.github.io/posts/cc35fe6/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/fb8d6bf1/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/5102820d/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/13ca4a36/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/8c820eb6/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/d5a28fff/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/eab170f2/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/8d9611a5/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/719d7034/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/1f7436df/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/7a296932/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/c50511c4/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/b4d03554/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/0/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/8f0212bf/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/d6c5e7b2/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/47885d90/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/b1e8232f/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1271,15 +1226,6 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/e8e61ce7/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://cloudsmithy.github.io/posts/86ab1d7c/</loc>
     
     <lastmod>2025-07-12</lastmod>
@@ -1289,7 +1235,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/c7acbc13/</loc>
+    <loc>https://cloudsmithy.github.io/posts/e8e61ce7/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1298,7 +1244,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/2c167bb4/</loc>
+    <loc>https://cloudsmithy.github.io/posts/c20c194c/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1307,25 +1253,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/ec579c86/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/5e5f8aaa/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/dcc47393/</loc>
+    <loc>https://cloudsmithy.github.io/posts/cf7f5d3/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1344,24 +1272,6 @@
   
   <url>
     <loc>https://cloudsmithy.github.io/posts/300338c6/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/cf7f5d3/</loc>
-    
-    <lastmod>2025-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/posts/c20c194c/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1406,7 +1316,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/51800531/</loc>
+    <loc>https://cloudsmithy.github.io/posts/0/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1415,7 +1325,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/9fd148d9/</loc>
+    <loc>https://cloudsmithy.github.io/posts/8f0212bf/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1424,7 +1334,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/4d17c8d/</loc>
+    <loc>https://cloudsmithy.github.io/posts/d6c5e7b2/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1433,7 +1343,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/c5298d72/</loc>
+    <loc>https://cloudsmithy.github.io/posts/47885d90/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1442,7 +1352,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/5a9099c0/</loc>
+    <loc>https://cloudsmithy.github.io/posts/b1e8232f/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1451,7 +1361,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/36782d5f/</loc>
+    <loc>https://cloudsmithy.github.io/posts/effe7a9a/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1460,7 +1370,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/b62d86a5/</loc>
+    <loc>https://cloudsmithy.github.io/posts/e0565a55/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1469,7 +1379,25 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/b6b74923/</loc>
+    <loc>https://cloudsmithy.github.io/posts/5517bd46/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/8b5626cb/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/61cfcd24/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1505,7 +1433,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/e0565a55/</loc>
+    <loc>https://cloudsmithy.github.io/posts/c7acbc13/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1514,7 +1442,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/effe7a9a/</loc>
+    <loc>https://cloudsmithy.github.io/posts/ec579c86/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1523,7 +1451,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/5517bd46/</loc>
+    <loc>https://cloudsmithy.github.io/posts/2c167bb4/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1532,7 +1460,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/8b5626cb/</loc>
+    <loc>https://cloudsmithy.github.io/posts/5e5f8aaa/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1541,7 +1469,7 @@
   </url>
   
   <url>
-    <loc>https://cloudsmithy.github.io/posts/61cfcd24/</loc>
+    <loc>https://cloudsmithy.github.io/posts/dcc47393/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1641,6 +1569,78 @@
   
   <url>
     <loc>https://cloudsmithy.github.io/posts/ffc71b6/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/51800531/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/9fd148d9/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/4d17c8d/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/c5298d72/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/5a9099c0/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/36782d5f/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/b62d86a5/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudsmithy.github.io/posts/b6b74923/</loc>
     
     <lastmod>2025-07-12</lastmod>
     
@@ -1800,6 +1800,13 @@
   </url>
   
   <url>
+    <loc>https://cloudsmithy.github.io/tags/Docker/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudsmithy.github.io/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -1878,13 +1885,6 @@
   
   <url>
     <loc>https://cloudsmithy.github.io/tags/RDP/</loc>
-    <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://cloudsmithy.github.io/tags/Docker/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
