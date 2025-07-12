@@ -3,6 +3,7 @@ title: 老式打印机改 Airprint 之 cups
 tags: 打印机
 categories: 打印机
 toc: true
+abbrlink: 6fcedbb0
 date: 2025-01-20 00:00:00
 ---
 

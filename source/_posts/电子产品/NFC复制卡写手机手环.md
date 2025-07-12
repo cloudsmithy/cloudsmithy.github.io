@@ -3,6 +3,7 @@ title: NFC复制卡写手机手环
 tags: 外设
 toc: true
 categories: 外设
+abbrlink: 5ce15c7a
 date: 2024-01-02 00:00:00
 ---
 

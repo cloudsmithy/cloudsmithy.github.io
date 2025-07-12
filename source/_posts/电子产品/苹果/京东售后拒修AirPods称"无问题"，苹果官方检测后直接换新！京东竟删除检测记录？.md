@@ -1,9 +1,10 @@
 ---
 title: 京东售后拒修 AirPods 称"无问题"，苹果官方检测后直接换新！京东竟删除检测记录？
-date: 2025-07-09
 categories: Apple
 tags:
   - Apple
+abbrlink: c67acea7
+date: 2025-07-09 00:00:00
 ---
 
 去年在京东买的 Airpod Pro2 售后记录，以前都是在官网买的，还是图省事了。结果闹了个哭笑不得。

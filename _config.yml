@@ -7,13 +7,18 @@ language: zh-CN
 timezone: "Asia/Shanghai"
 url: https://cloudsmithy.github.io/
 root: /
-permalink: :post_title/
-# abbrlink:
-#   alg: crc32  #算法: crc16(default) and crc32
-#   rep: hex    #进制: dec(default) and hex
+permalink: posts/:abbrlink/
+abbrlink:
+  alg: crc32 # 算法：crc16(default) or crc32
+  rep: hex # 进制：dec(default) or hex
 pretty_urls:
   trailing_index: false
   trailing_html: false
+  drafts: false # 是否为草稿生成 abbrlink
+  # 从 Front Matter 中获取 abbrlink
+  enable_category: false
+  enable_title: false
+  enable_date: false
 source_dir: source
 public_dir: public
 tag_dir: tags
