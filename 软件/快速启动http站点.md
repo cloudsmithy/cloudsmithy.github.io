@@ -1,9 +1,9 @@
 ---
-title: 快速启动 http 站点.md
+title: 快速启动 http 站点
 tags: 开发
 toc: true
 categories: 开发
-date: 2025-03-02 00:00:00
+date: 2025-07-12 00:00:00
 ---
 
 以下是 Python 内置 HTTP 服务器的几种常用启动方式：
