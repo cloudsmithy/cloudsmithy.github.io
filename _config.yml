@@ -69,6 +69,18 @@ include: null
 exclude: null
 ignore: null
 theme: icarus
+hexo_seo_integrated_submit:
+  generate_workflow_file: true # 如果仅使用纯命令行工具进行，可无需生成，如需自动化可按命令行工具自行配置，也可使用本工具所生成的workflow文件
+  date: created
+  count: 10
+  cron: 0 4 * * *
+  baidu:
+    enable: false # 开启百度搜索引擎主动推送
+  bing:
+    enable: true # 开启必应搜索引擎主动推送
+  google:
+    enable: true # 开启谷歌搜索引擎主动推送
+
 deploy:
   type: ""
 feed:
@@ -83,8 +95,6 @@ robotstxt:
     - /drafts/
   allow:
     - /
-  sitemap: /sitemap.xml
-
 nofollow:
   enable: true # 是否启用
   field: site #site全站,post仅文章
