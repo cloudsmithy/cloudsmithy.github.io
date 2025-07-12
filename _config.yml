@@ -11,6 +11,7 @@ permalink: posts/:abbrlink/
 abbrlink:
   alg: crc32 # 算法：crc16(default) or crc32
   rep: hex # 进制：dec(default) or hex
+  use_map: true
 pretty_urls:
   trailing_index: false
   trailing_html: false
