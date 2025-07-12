@@ -3,6 +3,7 @@ title: MacOS 26 beta 如何恢复启动台
 tags: Apple
 toc: true
 categories: Apple
+abbrlink: 83eb1399
 date: 2025-06-22 00:00:00
 ---
 

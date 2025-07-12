@@ -3,6 +3,7 @@ title: PXE 装机：iventoy 聊胜于无
 tags: 电脑外设
 toc: true
 categories: 装机
+abbrlink: 3ff07059
 date: 2025-04-02 00:00:00
 ---
 

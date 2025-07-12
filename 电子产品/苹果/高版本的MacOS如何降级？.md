@@ -1,9 +1,10 @@
 ---
 title: 高版本的MacOS如何降级？
-date: 2025-07-08
 categories: Apple
 tags:
   - Apple
+abbrlink: 5b6f9bd
+date: 2025-07-08 00:00:00
 ---
 
 很早问过Apple客服MacOS的降级机制，半天也没说明白。但是M芯片的Macbook经常崩溃，如果说windows的蓝屏时，那我这个MacBook就能崩溃出彩虹色。

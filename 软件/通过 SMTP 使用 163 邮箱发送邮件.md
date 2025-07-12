@@ -3,6 +3,7 @@ title: 通过 SMTP 使用 163 邮箱发送邮件
 tags: Python
 toc: true
 categories: SMTP
+abbrlink: 5dfd4b8a
 date: 2025-07-01 00:00:00
 ---
 

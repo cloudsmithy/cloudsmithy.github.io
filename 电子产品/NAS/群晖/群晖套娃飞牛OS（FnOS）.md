@@ -3,6 +3,7 @@ title: 群晖套娃飞牛OS（FnOS
 tags: 家庭网络
 toc: true
 categories: 群晖
+abbrlink: 6908b37e
 date: 2025-02-02 00:00:00
 ---
 
