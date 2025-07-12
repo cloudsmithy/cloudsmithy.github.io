@@ -1,6 +1,7 @@
 ---
 title: 使用ipad 串流 MacOS
 categories: 远程访问
+abbrlink: 474f606e
 date: 2024-03-24 00:00:00
 ---
 

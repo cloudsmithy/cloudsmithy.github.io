@@ -3,6 +3,7 @@ title: Home Assistant 实现米家设备接入 HomeKit，圆梦苹果全家桶
 tags: 外设
 toc: true
 categories: 外设
+abbrlink: aec4a8fe
 date: 2024-01-02 00:00:00
 ---
 

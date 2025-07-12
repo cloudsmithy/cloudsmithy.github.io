@@ -3,6 +3,7 @@ title: 《每个人的OKR》书摘
 tags: 效率
 toc: true
 categories: 读书笔记
+abbrlink: 54f71ff9
 date: 2024-05-02 00:00:00
 ---
 

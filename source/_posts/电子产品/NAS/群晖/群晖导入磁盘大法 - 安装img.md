@@ -3,6 +3,7 @@ title: 群晖导入磁盘大法 - 安装img.md
 tags: 家庭网络
 toc: true
 categories: 群晖
+abbrlink: 8c366e49
 date: 2025-03-02 00:00:00
 ---
 

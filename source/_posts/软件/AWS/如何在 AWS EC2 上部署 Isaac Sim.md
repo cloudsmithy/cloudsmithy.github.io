@@ -3,6 +3,7 @@ title: 如何在 AWS EC2 上部署 Isaac Sim
 tags: Isaac
 toc: true
 categories: AWS
+abbrlink: 10d4e175
 date: 2025-06-12 00:00:00
 ---
 

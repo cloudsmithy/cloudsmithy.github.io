@@ -3,6 +3,7 @@ title: 使用 Zilliz Cloud 快速体验 Milvus
 tags: 向量数据库
 toc: true
 categories: Milvus
+abbrlink: 938aef4d
 date: 2025-07-03 00:00:00
 ---
 

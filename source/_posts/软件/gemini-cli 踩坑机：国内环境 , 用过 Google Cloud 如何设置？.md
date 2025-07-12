@@ -1,8 +1,9 @@
 ---
-title: Gemini-cli 踩坑机：国内环境 , 用过 Google Cloud 如何设置？
+title: 'Gemini-cli 踩坑机：国内环境 , 用过 Google Cloud 如何设置？'
 tags: LLM
 toc: true
 categories: LLM
+abbrlink: 8d2ea5f5
 date: 2025-07-02 00:00:00
 ---
 

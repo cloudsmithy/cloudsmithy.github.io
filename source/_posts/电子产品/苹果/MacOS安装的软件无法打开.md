@@ -3,6 +3,7 @@ title: MacOS安装的软件无法打开
 tags: Apple
 toc: true
 categories: Apple
+abbrlink: 3ab0fe4d
 date: 2024-02-02 00:00:00
 ---
 

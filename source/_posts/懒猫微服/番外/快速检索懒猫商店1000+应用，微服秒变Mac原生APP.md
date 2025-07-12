@@ -3,6 +3,7 @@ titile: 快速检索懒猫商店1000+应用，微服秒变Mac原生APP
 tags: PWA
 toc: true
 categories: 懒猫微服
+abbrlink: '0'
 date: 2025-05-07 00:00:00
 ---
 

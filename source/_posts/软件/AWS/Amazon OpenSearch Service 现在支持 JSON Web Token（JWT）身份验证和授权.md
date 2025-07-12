@@ -3,6 +3,7 @@ title: Amazon OpenSearch Service 现在支持 JSON Web Token（JWT）身份验�
 tags: AWS
 toc: true
 categories: AWS
+abbrlink: '330e574'
 date: 2025-06-20 00:00:00
 ---
 

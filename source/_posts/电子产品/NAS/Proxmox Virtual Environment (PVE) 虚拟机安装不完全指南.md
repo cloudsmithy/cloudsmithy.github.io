@@ -3,6 +3,7 @@ title: Proxmox Virtual Environment (PVE) 虚拟机安装不完全指南
 tags: NAS
 toc: true
 categories: 电脑外设
+abbrlink: 13af016a
 date: 2025-05-11 00:00:00
 ---
 
