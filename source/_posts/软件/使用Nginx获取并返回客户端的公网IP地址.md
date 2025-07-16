@@ -1,5 +1,5 @@
 ---
-title: 使用 Nginx 获取并返回客户端的公网 IP 地址.md
+title: 使用 Nginx 获取并返回客户端的公网 IP 地址
 tags:
   - 网关
   - Nginx
