@@ -48,7 +48,6 @@ navbar:
     语录: /quotes
     打赏: /reward
     CS Core: /vue_blog
-    AWS: /aws
     备注: /note
     关于我: /about
   links:
@@ -118,9 +117,6 @@ widgets:
       Home:
         icon: fa fa-home
         url: /
-      AWS:
-        icon: fab fa-aws
-        url: /aws
       archives:
         icon: fa fa-calendar
         url: /archives
@@ -130,6 +126,9 @@ widgets:
       RSS:
         icon: fas fa-rss
         url: "atom.xml"
+      Sitemap:
+        icon: fas fa-sitemap
+        url: "sitemap.xml"
   - position: left
     type: toc
     index: true
