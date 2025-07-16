@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /drafts/
 Allow: /
+Sitemap: https://airag.click/sitemap.xml
