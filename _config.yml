@@ -96,3 +96,8 @@ robotstxt:
   allow:
     - /
   sitemap: https://airag.click/sitemap.xml
+
+nofollow:
+  enable: true
+  exclude: # 例外链接
+    - https://airag.click/
