@@ -1,0 +1,63 @@
+# 买了懒猫微服之后，我拆掉了蒲公英组网 - 家庭网络详解
+
+这个是我买懒猫微服之前的网络规划，起码还是挺折腾的。
+
+
+
+1. 总体使用AC + AP的方式组网，AC用来拨号，AP用来发射无线信号
+
+2. 使用阿里云SDK做DDNS
+
+3. 常开一个rdp当作跳板机
+
+4. linux做proxy http 代理
+
+5. server 托管Wiki
+
+6. 小主机能否POE供电？
+
+7. qnap router 无线中继
+
+![637cfccd0aea30a5c6cadacc99960cf8](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/637cfccd0aea30a5c6cadacc99960cf8.png)
+
+
+
+这个是之后的
+
+
+
+
+
+WIKI：
+
+MEMOS：
+
+清单：
+
+DDNS：
+
+端口转发：
+
+CF的tunnel
+
+
+
+
+
+![634ca0c376746c3d5f0f57a8472fb8af](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/634ca0c376746c3d5f0f57a8472fb8af.png)
+
+
+
+机柜特写：
+
+
+
+![IMG_5547](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/IMG_5547.JPG)
+
+
+
+再给懒猫来个特写：（使用大疆Pocket3）
+
+
+
+![f45e0f7a635aedcd5c859b247cd9efce](../Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_neghhff72jo721_cb5c/temp/2025-07/RWTemp/9e20f478899dc29eb19741386f9343c8/f45e0f7a635aedcd5c859b247cd9efce.jpg)
