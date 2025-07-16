@@ -1,12 +1,13 @@
 ---
 title: Filebeat 输出日志到 Opensearch
 category: Docker
-date: 2023-12-08 13:57:57
 tags:
   - AWS
   - ELK
   - OpenSearch
   - LogAgent
+abbrlink: 8924813e
+date: 2023-12-08 13:57:57
 ---
 
 原文链接，当时一起折腾的，抄个作业。
