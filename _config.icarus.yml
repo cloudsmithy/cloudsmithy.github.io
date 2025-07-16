@@ -106,9 +106,9 @@ sidebar: # 固定左右边栏
 widgets:
   - position: left
     type: profile
-    author: Xu
+    author: 忘机山人
     author_title: 随手记
-    location: BEI JING
+    location: Cloud
     avatar: "/images/me.png"
     avatar_rounded: true
     gravatar:
