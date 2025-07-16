@@ -5,7 +5,7 @@ keywords: null
 author: Xu
 language: zh-CN
 timezone: "Asia/Shanghai"
-url: https://cloudsmithy.github.io/
+url: https://airag.click/
 root: /
 permalink: posts/:abbrlink/
 abbrlink:
@@ -77,9 +77,9 @@ hexo_seo_integrated_submit:
   baidu:
     enable: false # 开启百度搜索引擎主动推送
   bing:
-    enable: true # 开启必应搜索引擎主动推送
+    enable: false # 开启必应搜索引擎主动推送
   google:
-    enable: true # 开启谷歌搜索引擎主动推送
+    enable: false # 开启谷歌搜索引擎主动推送
 
 deploy:
   type: ""
@@ -95,8 +95,4 @@ robotstxt:
     - /drafts/
   allow:
     - /
-nofollow:
-  enable: true # 是否启用
-  field: site #site全站,post仅文章
-  exclude:
-    - "www.kaitaku.xyz" #例外网站
+  sitemap: https://airag.click/sitemap.xml
