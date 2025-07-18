@@ -43,8 +43,6 @@ navbar:
   menu:
     镜湖: /
     时光线: /archives
-    分类: /categories
-    标签: /tags
     语录: /quotes
     打赏: /reward
     CS Core: /vue_blog
