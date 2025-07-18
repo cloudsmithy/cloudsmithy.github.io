@@ -1,9 +1,9 @@
 ---
-titile: 快速检索懒猫商店1000+应用，微服秒变Mac原生APP
+title: "快速检索懒猫商店1000+应用,微服秒变Mac原生APP"
+categories: 懒猫微服
 tags: PWA
 toc: true
-categories: 懒猫微服
-abbrlink: '0'
+abbrlink: ce3905e3
 date: 2025-05-07 00:00:00
 ---
 
@@ -71,8 +71,6 @@ ONLYOFFICE Docs.app/ 懒猫网盘.app/
 ```
 
 ![应用存放目录](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506145210451.png)
-
----
 
 ### 如何通过 Safari 中把懒猫应用添加为 APP
 
