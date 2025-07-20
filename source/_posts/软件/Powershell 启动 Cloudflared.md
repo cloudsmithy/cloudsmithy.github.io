@@ -1,10 +1,66 @@
 ---
-title: Powershell 启动 Cloudflared
+title: 懒猫微服买硬件送服务，刚学的计算机知识顺便接了个单
 tags: Cloudflared
 toc: true
 categories: Cloudflared
 date: 2025-07-19 00:00:00
 ---
+
+> 事先声明，懒猫微服不提供接单服务，但是可以通过贡献攻略和移植应用赚取激励。
+
+挺有意思的一个事，头几天刚刚找过懒猫微服的技术帮我配置 cloudflare 相关操作，顺便学习了一下基本使用，把自己在 AWS 的 Route53 上购买的域名迁移过去了，然后代理到了博客，AWS EC2 服务器，甚至家里的机器。
+
+偶然间在微信群看到这样一个需求，这不就是前两天懒猫微服的技术人员手把手教我做的。cloudflare 有很多操作，之前周围的人还有使用 cloudflare 反向代理到家里的 NAS，然后 obsidian 实时同步笔记连回家的。
+
+<!-- more -->
+
+![image-20250720131125114](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720131125114.png)
+
+于是我给了他三个方案：
+
+1. 最省心的：cloudflare 只做域名解析，应用无缝迁移到 Linux 服务器上。
+2. 全托管的：cloudflare 做域名解析，然后利用 cloudflare 的 Worker 部署后端
+3. 最日常的：使用 cloudflare tunnel 反向代理到家里电脑。
+
+客户选择了方案 3，然后接下来就是配置 cloudflare tunnel，甚至不用再配置 A 记录。
+
+## 🌐 Cloudflare Tunnel 能干什么？
+
+- 把本地 Web 服务（如网站、应用、API、NAS）通过 Cloudflare 安全暴露到公网
+- **无需公网 IP**，不管你是在家庭宽带、NAT、内网还是 IPv6-only 网络都能跑
+- 通过 Cloudflare 的全球 CDN 加速和防护（DDoS 保护、TLS、WAF）
+- 支持访问控制（如 Zero Trust）
+- 支持反向代理多服务（如 `/app1`, `/app2`）或多个子域名绑定
+
+首先登录到https://dash.cloudflare.com/首页。点击Zero-Trust。
+
+![image-20250720132333168](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720132333168.png)
+
+然后选择 网络 - Tunnels ，然后新建隧道来内网穿透。
+
+![image-20250720144304637](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720144304637.png)
+
+选择创建隧道，这个哥们是 Windows 的环境，所以隧道类型使用 Cloudflared。
+
+![image-20250720144329817](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720144329817.png)
+
+然后选择新建隧道，然后输入隧道名称。
+
+![image-20250720144350889](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720144350889.png)
+
+这个时候选择安装 cloudflared 引擎，需要安装一个 agent，基本是全平台都有，甚至还有 Docker 版本的。
+
+![image-20250720144633620](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720144633620.png)
+
+然后把 test 子域代理本地的 localhost:8000。
+
+![image-20250720145038577](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720145038577.png)
+
+然后通过域名访问就可以了。
+
+![image-20250720145308297](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250720145308297.png)
+
+这哥们还有一个额外的要求，要开启启动天  Cloudflared ，然后 GPT 了一下
 
 直接启动已安装的  Cloudflared  服务
 
@@ -17,3 +73,7 @@ date: 2025-07-19 00:00:00
 运行 Set-Service cloudflared -StartupType Automatic 将
 
 Cloudflared 设置为自动启动
+
+> 结语
+>
+> 买 NAS 学的是网络技术，虽然可能是别人眼中的野路子。但是多一分趣味嘛。切身感受到技术的意义。
