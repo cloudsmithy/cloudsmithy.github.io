@@ -2,7 +2,7 @@
 title: TrackWeight, 把 Macbook 的触控板当作电子秤
 tags: 外设
 categories: 外设
-date: 2022-06-19 14:43:24
+date: 2025-07-27 14:43:24
 ---
 
 大数据推送的，地址在这里 https://github.com/KrishKrosh/TrackWeight/
