@@ -86,6 +86,7 @@ deploy:
 feed:
   type: atom
   path: atom.xml
+  limit: 0
 sitemap:
   path: sitemap.xml
 robotstxt:
