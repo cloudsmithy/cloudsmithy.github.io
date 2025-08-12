@@ -18,8 +18,6 @@ toc: true
 
 日常斜杠：写文章拿过奖，修过电脑，家电，写过代码，玩过硬件，3D 设计，做过课程讲师，公开演讲，上架过小程序和微信表情包。
 
----
-
 ## 🌐 技术主页 & 平台链接
 
 - 🎨 [拓竹社区 3D 打印模型](https://makerworld.com.cn/zh/@cloud9/upload)
@@ -29,16 +27,12 @@ toc: true
 - 📚 [InfoQ 技术征文主页](https://www.infoq.cn/u/awscom/)
 - [懒猫论坛文集](https://playground.lazycat.cloud/#/user-profile/459/dynamic?routerAction=replace****)
 
----
-
 ## 🎤 社区演讲与活动
 
 - 🧑‍🤝‍🧑 [AWS 用户组 Meetup 分享](https://dev.amazoncloud.cn/activity/activityDetail/meetup?id=6768e9f6ac1c0261e67a8d2a)
 - 🏙️ [AWS Summit 技术演讲页面](https://dev.amazoncloud.cn/activity/activityDetail/techtalk?id=66546017b21b48067e5632c5)
 - 🎨 [设计实验《灵魂画手》：基于 Amazon Bedrock 的动图生成与风格迁移](https://dev.amazoncloud.cn/experience/cloudlab?id=6711c3da04dffe0cb28f976b)
 - [亚麻拉松 - 12 小时极客说](https://www.infoq.cn/article/oFeG5OrUAAaP9jLMIqVO)
-
----
 
 ## 🧪 极限科技专题供稿（INFINI Labs）
 
@@ -53,8 +47,6 @@ toc: true
 ## 懒猫微服专辑
 
 - [懒猫官网专栏](https://developer.lazycat.cloud/wangjishanren-lazycat-developer-startup.html)
-
----
 
 ##### 文章汇总
 
@@ -88,8 +80,6 @@ toc: true
 - [懒猫微服故事篇（一）：服务器宕机之后，我和前端靠懒猫微服结对编程](https://mp.weixin.qq.com/s/QFhTT-HGQ4If7jqrEeDwVA)
 - [懒猫微服故事篇（二）：西湖邂逅后，我手把手教她玩转 NAS](https://mp.weixin.qq.com/s/60qatSMkkKLnip19l-vCNQ)
 - [懒猫微服炫技篇（二）：使用懒猫微服倒推停电时间](https://mp.weixin.qq.com/s/uwnkkRVbjBDpv6qbP_y-0g)
-
----
 
 ## 📮 微信公众号文章精选
 
@@ -139,14 +129,10 @@ toc: true
 
 - [杀死谷歌搜索的那个人](https://www.infoq.cn/article/5uQIKhvWhuIAD5OiI52R)
 
----
-
 用 GPT 搜索我:
 ![image-20250426215435440](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250426215435440.png)
 
 ![技术演讲封面](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250401143152394.png)
-
----
 
 Easysearch 文章一栏：
 ![image-20250401203242359](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250401203242359.png)
