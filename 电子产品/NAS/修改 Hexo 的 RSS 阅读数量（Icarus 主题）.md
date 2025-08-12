@@ -3,6 +3,7 @@ title: 修改 Hexo 的 RSS 阅读数量（Icarus 主题）
 tags: Hexo
 toc: true
 categories: NAS
+abbrlink: 2d0d3922
 date: 2025-08-08 00:00:00
 ---
 
