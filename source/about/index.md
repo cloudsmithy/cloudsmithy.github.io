@@ -102,13 +102,15 @@ toc: true
 - [快照兼容对比：Easysearch vs Elasticsearch vs OpenSearch](https://mp.weixin.qq.com/s/eRBc9lkCUAJEL4y8zkz5A)
 - [玩转 Easysearch 查询语法｜征文系列](https://mp.weixin.qq.com/s/Ayd-ZlkCw7yssdpD02vYWw)
 - [INFINI Console 使用介绍｜可视化管理平台](https://mp.weixin.qq.com/s/4JuN2xFLv8nrtbBiRG3-kw)
-- [Coco-AI 支持嵌入，让你的网站拥有 AI 搜索力](https://mp.weixin.qq.com/s/TKRu46c1ippQIP3hOjqTqw)
+- [Coco AI 支持嵌入，让你的网站拥有 AI 搜索力](https://mp.weixin.qq.com/s/TKRu46c1ippQIP3hOjqTqw)
 - [Coco AI 如何接入自定义数据源](https://mp.weixin.qq.com/s/218ozutc8kMmpyZBfKBJPg)
 - [MySQL 数据实时接入 Easysearch，零代码迁移全流程](https://mp.weixin.qq.com/s/YaB6fpqbLBhLQOzfpCUiGQ)
 - [从认证到透传：用 Nginx 为 Easysearch 构建一体化认证网关](https://mp.weixin.qq.com/s/NdXtEMM3mshyn-Au-3Zeyg)
 - [Easysearch 基础运维扫盲指南：从 HTTP 到 HTTPS、认证与安全访问全解析](https://mp.weixin.qq.com/s/HR7E7HAfS4ntpSkD_r5_Zw)
 
 ### 📌 亚马逊云科技公众号转载
+
+2024
 
 - [Easysearch、Elasticsearch、OpenSearch 快照兼容性解析](https://mp.weixin.qq.com/s/KKOHxl_Ubi7FgthExm7Gbg)
 - [超越官方：在 EC2 上部署 PopOS](https://mp.weixin.qq.com/s/H4h1Zin4csNbx7x7_RjdDA)
@@ -117,6 +119,13 @@ toc: true
 - [基于 Lambda 获取实时天气预报推送](https://mp.weixin.qq.com/s/e1X1xJfIyzoS-4LPLkEgBQ)
 - [快速部署 WordPress 到云端](https://mp.weixin.qq.com/s/Ncp5iBHc-9Jsrd_MX8uCPQ)
 - [使用 es-dump 快速备份 ES 数据](https://mp.weixin.qq.com/s/wHthVxwoqyWWz6aUpuaCWw)
+
+2025
+
+- [使用 Amazon Q 开发容器管理工具](https://mp.weixin.qq.com/s/rJvu2wxRvFsPEoKNQDCm_A)
+- [DDNS 域名解析](https://mp.weixin.qq.com/s/wsYsVmIc1Q3UTYQ1vFeK3g)
+- [使用 openlist 访问 S3](https://mp.weixin.qq.com/s/yLgGtR0nhTDlSspC2D7dJQ)
+- [AWS DMS 把 MySQL 迁移到 ES](https://mp.weixin.qq.com/s/-DdGNHJdK2tkPLq8E3aNAg)
 
 ### GPUS(Nvidia)
 
