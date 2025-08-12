@@ -1,7 +1,8 @@
 ---
-title: TrackWeight, 把 Macbook 的触控板当作电子秤
+title: 'TrackWeight, 把 Macbook 的触控板当作电子秤'
 tags: 外设
 categories: 外设
+abbrlink: 10473fce
 date: 2025-07-27 14:43:24
 ---
 
