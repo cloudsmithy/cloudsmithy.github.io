@@ -1,5 +1,5 @@
 ---
-title: 群晖导入磁盘大法 - 安装img.md
+title: 群晖导入磁盘大法 - 安装img
 tags: 家庭网络
 toc: true
 categories: 群晖

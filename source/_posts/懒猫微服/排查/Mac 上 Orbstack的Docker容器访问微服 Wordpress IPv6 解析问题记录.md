@@ -3,6 +3,7 @@ title: Mac 上 Orbstack的Docker容器访问微服 Wordpress IPv6 解析问题�
 tags: Docker
 toc: true
 categories: 懒猫微服
+abbrlink: 2ad973ba
 date: 2025-08-08 00:00:00
 ---
 
