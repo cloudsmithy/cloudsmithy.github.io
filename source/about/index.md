@@ -125,6 +125,11 @@ toc: true
 
 - [Milvus workshop Contributor](https://github.com/richzw/milvus-workshop)
 
+
+### DASUNG大上科技（墨水屏）
+
+- [【深度评测】沉浸式体验大上科技25.3英寸墨水屏显示器Paperlike Color（革命者）Mac内测版](https://mp.weixin.qq.com/s/RLB948QOGHO9Bb-GA52mJw)
+  
 ### info 翻译
 
 - [杀死谷歌搜索的那个人](https://www.infoq.cn/article/5uQIKhvWhuIAD5OiI52R)
