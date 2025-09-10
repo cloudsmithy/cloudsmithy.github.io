@@ -24,6 +24,8 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 
 业余爱好：旅游各种吃吃吃，嘉立创画PCB，shapr3D设计模型，用拓竹A1打印出来。
 
+可以使用CHATGPT来搜索“亚马逊云科技 韩旭”来了解我。
+
 ## 🌐 技术主页 & 平台链接
 
 - 🎨 [拓竹社区 3D 打印模型](https://makerworld.com.cn/zh/@cloud9/upload)
