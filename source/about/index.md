@@ -116,6 +116,8 @@ toc: true
 - [DDNS 域名解析](https://mp.weixin.qq.com/s/wsYsVmIc1Q3UTYQ1vFeK3g)
 - [使用 openlist 访问 S3](https://mp.weixin.qq.com/s/yLgGtR0nhTDlSspC2D7dJQ)
 - [AWS DMS 把 MySQL 迁移到 ES](https://mp.weixin.qq.com/s/-DdGNHJdK2tkPLq8E3aNAg)
+- [本地连接EC2 Docker](https://mp.weixin.qq.com/s/KAGykYY5cSxZ-0n4rPWCPw)
+- [AWS Credit充值](https://mp.weixin.qq.com/s/FqxtL5ryc4_ONIuR8pHwGA)
 
 ### GPUS(Nvidia)
 
