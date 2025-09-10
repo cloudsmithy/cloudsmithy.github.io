@@ -2,6 +2,7 @@
 title: 记一次iphone的死机
 tags: 外设
 categories: 外设
+abbrlink: b81a6bca
 date: 2025-07-27 14:43:24
 ---
 
