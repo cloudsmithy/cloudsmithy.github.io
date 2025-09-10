@@ -6,13 +6,17 @@ toc: true
 仍然在折腾路上的不断探索。
 人在江湖，又岂能笑傲江湖？
 
-亚马逊云科技（AWS） Community Builders（AI）、亚马逊云科技（AWS）中国技领云博主、极限科技技术博主、Milvus 北辰使者，懒猫微服专栏作家。
+亚马逊云科技（AWS） Community Builders（AI）、亚马逊云科技（AWS）中国技领云博主，曾在亚马逊云科技（AWS）上海 Summit 及 User Group 活动中担任讲师，积极推动技术传播与开发者社区建设。
 
-专注于 Python 后端开发与 AI 服务部署，熟练掌握亚马逊云科技（AWS）核心服务，包括 Lambda、API Gateway、SageMaker、Bedrock、OpenSearch 等，具备扎实的工程实践能力与系统架构经验。
+极限科技技术博主，为极限科技提供介绍国产ES(Easysearch)，以及Coco AI相关优质文章。
+
+Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/milvus-workshop)。
+
+懒猫微服专栏作家，作为社区技术作者长期为懒猫微服长期提供技术稿件，包括但不限于NAS的使用，Docker容器使用以及排查。OpenConnect ID理论讲解。
+
+专注于 Python 后端开发与 AI 服务部署，前AWS技术支持，熟练掌握亚马逊云科技（AWS）核心服务，包括 Lambda、API Gateway、SageMaker、Bedrock、OpenSearch 等，具备扎实的工程实践能力与系统架构经验。
 
 热衷于开发效率工具与自动化脚本，常年在本地构建 Homelab 环境，部署自研工具与开源项目，深入探索大模型的本地推理、私有化部署与性能优化路径。
-
-曾在亚马逊云科技（AWS）上海 Summit 及 User Group 活动中担任讲师，积极推动技术传播与开发者社区建设。
 
 步入职场后，笔耕不辍，曾为 Udacity 中国、InfoQ、亚马逊云科技、Milvus 社区，极限科技、懒猫微服等多个知名平台输出高质量内容，在技术传播与行业洞察方面持续深耕。
 
