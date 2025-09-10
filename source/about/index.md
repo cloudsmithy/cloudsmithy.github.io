@@ -22,6 +22,8 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 
 日常斜杠：写文章拿过奖，修过电脑，家电，写过代码，玩过硬件，3D 设计，做过课程讲师，公开演讲，上架过小程序和微信表情包。
 
+业余爱好：旅游各种吃吃吃，嘉立创画PCB，shapr3D设计模型，用拓竹A1打印出来。
+
 ## 🌐 技术主页 & 平台链接
 
 - 🎨 [拓竹社区 3D 打印模型](https://makerworld.com.cn/zh/@cloud9/upload)
