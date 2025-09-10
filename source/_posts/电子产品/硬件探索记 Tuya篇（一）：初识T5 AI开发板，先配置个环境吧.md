@@ -2,6 +2,7 @@
 title: 硬件探索记 Tuya 篇（一）：初识 T5 AI 开发板，先配置个环境吧
 tags: 外设
 categories: 外设
+abbrlink: ab7870f7
 date: 2025-08-27 14:43:24
 ---
 
