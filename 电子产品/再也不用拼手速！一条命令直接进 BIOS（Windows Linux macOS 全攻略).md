@@ -2,6 +2,7 @@
 title: 再也不用拼手速！一条命令直接进 BIOS（Windows/Linux/macOS 全攻略)
 tags: 外设
 categories: 外设
+abbrlink: a0b67926
 date: 2025-07-27 14:43:24
 ---
 
