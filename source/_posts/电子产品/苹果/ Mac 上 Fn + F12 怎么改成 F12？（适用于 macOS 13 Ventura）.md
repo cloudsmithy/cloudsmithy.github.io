@@ -3,6 +3,7 @@ title: Mac 上 Fn + F12 怎么改成 F12？（适用于 macOS 13 Ventura）
 categories: Apple
 tags:
   - Apple
+abbrlink: 18eac60e
 date: 2025-07-08 00:00:00
 ---
 

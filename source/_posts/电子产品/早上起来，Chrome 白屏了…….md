@@ -2,6 +2,7 @@
 title: 早上起来，Chrome 白屏了……
 tags: 外设
 categories: 外设
+abbrlink: a3db028b
 date: 2025-09-07 14:43:24
 ---
 
