@@ -3,30 +3,29 @@ title: 关于我
 toc: true
 ---
 
-仍然在折腾路上的不断探索。
-人在江湖，又岂能笑傲江湖？
+仍然在折腾路上的不断探索。人在江湖，又岂能笑傲江湖？
 
 亚马逊云科技（AWS） Community Builders（AI）、亚马逊云科技（AWS）中国技领云博主，曾在亚马逊云科技（AWS）上海 Summit 及 User Group 活动中担任讲师，积极推动技术传播与开发者社区建设,[点击阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4142813963182358545#wechat_redirect)。
 
-极限科技技术博主，为极限科技提供介绍国产ES(Easysearch)，以及Coco AI相关优质文章, [在此阅读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=3927471106541436935#wechat_redirect)。
+极限科技技术博主，为极限科技提供介绍国产 ES(Easysearch)，以及 Coco AI 相关优质文章, [在此阅读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=3927471106541436935#wechat_redirect)。
 
 Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/milvus-workshop)。
 
-懒猫微服专栏作家，作为社区技术作者长期为懒猫微服长期提供技术稿件，包括但不限于NAS的使用，Docker容器使用以及排查。OpenConnect ID理论讲解，有[懒猫微服专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4010832321455538176#wechat_redirect)。
+懒猫微服专栏作家，作为社区技术作者长期为懒猫微服长期提供技术稿件，包括但不限于 NAS 的使用，Docker 容器使用以及排查。OpenConnect ID 理论讲解，有[懒猫微服专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4010832321455538176#wechat_redirect)。
 
-专注于 Python 后端开发与 AI 服务部署，前AWS技术支持，熟练掌握亚马逊云科技（AWS）核心服务，包括 Lambda、API Gateway、SageMaker、Bedrock、OpenSearch 等，具备扎实的工程实践能力与系统架构经验。
+专注于 Python 后端开发与 AI 服务部署，前 AWS 技术支持，熟练掌握亚马逊云科技（AWS）核心服务，包括 Lambda、API Gateway、SageMaker、Bedrock、OpenSearch 等，具备扎实的工程实践能力与系统架构经验。
 
 热衷于开发效率工具与自动化脚本，常年在本地构建 Homelab 环境，部署自研工具与开源项目，深入探索大模型的本地推理、私有化部署与性能优化路径。
 
 步入职场后，笔耕不辍，曾为 Udacity 中国、InfoQ、亚马逊云科技、Milvus 社区，极限科技、懒猫微服等多个知名平台输出高质量内容，在技术传播与行业洞察方面持续深耕。
 
-另外也是刷机爱好者，玩过黑苹果，原生安卓，路由器刷过梅林，padavan，斐讯K2，K3 电视盒子刷过 N1， T1
+另外也是刷机爱好者，玩过黑苹果，原生安卓，路由器刷过梅林，padavan，斐讯 K2，K3 电视盒子刷过 N1， T1。
 
 日常斜杠：写文章拿过奖，修过电脑，家电，写过代码，玩过硬件，3D 设计，做过课程讲师，公开演讲，上架过小程序和微信表情包。
 
-业余爱好：旅游各种吃吃吃，嘉立创画PCB，shapr3D设计模型，用拓竹A1打印出来。
+业余爱好：旅游各种吃吃吃，嘉立创画 PCB，shapr3D 设计模型，用拓竹 A1 打印出来。
 
-可以使用CHATGPT来搜索“亚马逊云科技 韩旭”来了解我。
+可以使用 CHATGPT 来搜索“亚马逊云科技 韩旭”来了解我。
 
 ## 🌐 技术主页 & 平台链接
 
@@ -126,8 +125,8 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 - [DDNS 域名解析](https://mp.weixin.qq.com/s/wsYsVmIc1Q3UTYQ1vFeK3g)
 - [使用 openlist 访问 S3](https://mp.weixin.qq.com/s/yLgGtR0nhTDlSspC2D7dJQ)
 - [AWS DMS 把 MySQL 迁移到 ES](https://mp.weixin.qq.com/s/-DdGNHJdK2tkPLq8E3aNAg)
-- [本地连接EC2 Docker](https://mp.weixin.qq.com/s/KAGykYY5cSxZ-0n4rPWCPw)
-- [AWS Credit充值](https://mp.weixin.qq.com/s/FqxtL5ryc4_ONIuR8pHwGA)
+- [本地连接 EC2 Docker](https://mp.weixin.qq.com/s/KAGykYY5cSxZ-0n4rPWCPw)
+- [AWS Credit 充值](https://mp.weixin.qq.com/s/FqxtL5ryc4_ONIuR8pHwGA)
 
 ### GPUS(Nvidia)
 
@@ -137,11 +136,10 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 
 - [Milvus workshop Contributor](https://github.com/richzw/milvus-workshop)
 
+### DASUNG 大上科技（墨水屏）
 
-### DASUNG大上科技（墨水屏）
+- [【深度评测】沉浸式体验大上科技 25.3 英寸墨水屏显示器 Paperlike Color（革命者）Mac 内测版](https://mp.weixin.qq.com/s/RLB948QOGHO9Bb-GA52mJw)
 
-- [【深度评测】沉浸式体验大上科技25.3英寸墨水屏显示器Paperlike Color（革命者）Mac内测版](https://mp.weixin.qq.com/s/RLB948QOGHO9Bb-GA52mJw)
-  
 ### info 翻译
 
 - [杀死谷歌搜索的那个人](https://www.infoq.cn/article/5uQIKhvWhuIAD5OiI52R)
