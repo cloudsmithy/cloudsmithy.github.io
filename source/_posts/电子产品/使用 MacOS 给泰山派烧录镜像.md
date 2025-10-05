@@ -3,6 +3,7 @@ title: 使用 MacOS 给泰山派烧录镜像
 tags: 硬件
 toc: true
 categories: 硬件
+abbrlink: 89eeed1
 date: 2025-08-09 00:00:00
 ---
 
