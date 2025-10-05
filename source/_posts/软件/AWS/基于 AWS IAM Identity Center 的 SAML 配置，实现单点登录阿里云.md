@@ -3,6 +3,7 @@ title: 基于 AWS IAM Identity Center 的 SAML 配置，实现单点登录阿里
 tags: AWS
 toc: true
 categories: AWS
+abbrlink: 511c83d9
 date: 2025-06-20 00:00:00
 ---
 
