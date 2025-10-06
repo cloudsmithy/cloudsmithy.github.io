@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://airag.click/note/</loc>
+    <loc>https://airag.click/quotes/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/quotes/</loc>
+    <loc>https://airag.click/todo/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/todo/</loc>
+    <loc>https://airag.click/note/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/eae9c1f1/</loc>
+    <loc>https://airag.click/posts/ff4866a6/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/ff4866a6/</loc>
+    <loc>https://airag.click/posts/eae9c1f1/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -101,15 +101,6 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/512ddea4/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://airag.click/posts/45c86e6c/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -137,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/29d0960/</loc>
+    <loc>https://airag.click/posts/7a47d12b/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -146,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/7a47d12b/</loc>
+    <loc>https://airag.click/posts/29d0960/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -182,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/e51b087c/</loc>
+    <loc>https://airag.click/posts/fa9f211a/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -191,7 +182,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/fa9f211a/</loc>
+    <loc>https://airag.click/posts/e51b087c/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -236,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/404bc04b/</loc>
+    <loc>https://airag.click/posts/32308110/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -245,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/32308110/</loc>
+    <loc>https://airag.click/posts/404bc04b/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -290,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/26314a8/</loc>
+    <loc>https://airag.click/posts/512ddea4/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -353,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/330e574/</loc>
+    <loc>https://airag.click/posts/369cde6d/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -362,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/369cde6d/</loc>
+    <loc>https://airag.click/posts/330e574/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -380,7 +371,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/ac23bcf7/</loc>
+    <loc>https://airag.click/posts/21efda6/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -389,7 +380,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/21efda6/</loc>
+    <loc>https://airag.click/posts/ac23bcf7/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -452,7 +443,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/9ff7e5aa/</loc>
+    <loc>https://airag.click/posts/c8aadcda/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -461,7 +452,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/c8aadcda/</loc>
+    <loc>https://airag.click/posts/9ff7e5aa/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -506,6 +497,15 @@
   </url>
   
   <url>
+    <loc>https://airag.click/posts/26314a8/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://airag.click/posts/3e1838df/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -542,7 +542,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/fc9b2cf2/</loc>
+    <loc>https://airag.click/posts/1fc7f9f5/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -551,7 +551,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/1fc7f9f5/</loc>
+    <loc>https://airag.click/posts/fc9b2cf2/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -650,7 +650,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/ab7870f7/</loc>
+    <loc>https://airag.click/posts/6f08b777/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -659,7 +659,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/6f08b777/</loc>
+    <loc>https://airag.click/posts/ab7870f7/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -695,7 +695,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/6fcedbb0/</loc>
+    <loc>https://airag.click/posts/de1fd60a/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -704,7 +704,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/de1fd60a/</loc>
+    <loc>https://airag.click/posts/6fcedbb0/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -731,7 +731,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/3ab0fe4d/</loc>
+    <loc>https://airag.click/posts/83eb1399/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -740,7 +740,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/83eb1399/</loc>
+    <loc>https://airag.click/posts/3ab0fe4d/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -821,6 +821,15 @@
   </url>
   
   <url>
+    <loc>https://airag.click/posts/63cca403/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://airag.click/posts/89eeed1/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -840,15 +849,6 @@
   
   <url>
     <loc>https://airag.click/posts/a0b67926/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/63cca403/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -911,7 +911,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/2e34d332/</loc>
+    <loc>https://airag.click/posts/5821c3b8/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -920,7 +920,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/5821c3b8/</loc>
+    <loc>https://airag.click/posts/2e34d332/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -948,15 +948,6 @@
   
   <url>
     <loc>https://airag.click/posts/a7aa5f43/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/1eb7a4c5/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1019,15 +1010,6 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/3d90967f/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://airag.click/posts/b126c84d/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -1055,7 +1037,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/df454c34/</loc>
+    <loc>https://airag.click/posts/e32dbde5/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1064,7 +1046,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/e32dbde5/</loc>
+    <loc>https://airag.click/posts/df454c34/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1145,6 +1127,15 @@
   </url>
   
   <url>
+    <loc>https://airag.click/posts/1eb7a4c5/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://airag.click/posts/eb0b4c83/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -1217,6 +1208,15 @@
   </url>
   
   <url>
+    <loc>https://airag.click/posts/3d90967f/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://airag.click/posts/c41993b0/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -1244,7 +1244,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/8b29e69c/</loc>
+    <loc>https://airag.click/posts/e3691a5b/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1253,7 +1253,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/e3691a5b/</loc>
+    <loc>https://airag.click/posts/8b29e69c/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1397,24 +1397,6 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/b4d03554/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/e1677cc4/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://airag.click/posts/cc35fe6/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -1433,7 +1415,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/5102820d/</loc>
+    <loc>https://airag.click/posts/13ca4a36/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1442,7 +1424,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/13ca4a36/</loc>
+    <loc>https://airag.click/posts/5102820d/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1568,7 +1550,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/8f725a10/</loc>
+    <loc>https://airag.click/posts/b4d03554/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1577,34 +1559,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/806d38a3/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/78d33cb9/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/5018903b/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/93c9e4e6/</loc>
+    <loc>https://airag.click/posts/e1677cc4/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1685,7 +1640,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/ce3905e3/</loc>
+    <loc>https://airag.click/posts/8f725a10/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1694,7 +1649,25 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/cb1ae078/</loc>
+    <loc>https://airag.click/posts/e7ef5dac/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/806d38a3/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/78d33cb9/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1766,7 +1739,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/7419d0c1/</loc>
+    <loc>https://airag.click/posts/2f8bfee6/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1775,7 +1748,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/2f8bfee6/</loc>
+    <loc>https://airag.click/posts/7419d0c1/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1820,7 +1793,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/c20c194c/</loc>
+    <loc>https://airag.click/posts/5018903b/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1829,7 +1802,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/2ad973ba/</loc>
+    <loc>https://airag.click/posts/93c9e4e6/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1838,16 +1811,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/cf7f5d3/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/48285dc8/</loc>
+    <loc>https://airag.click/posts/7ac076b/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1865,7 +1829,25 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/7ac076b/</loc>
+    <loc>https://airag.click/posts/c20c194c/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/cf7f5d3/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/2ad973ba/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -1955,6 +1937,24 @@
   </url>
   
   <url>
+    <loc>https://airag.click/posts/ce3905e3/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/cb1ae078/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://airag.click/posts/effe7a9a/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -2000,15 +2000,6 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/8e360f7e/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://airag.click/posts/c7acbc13/</loc>
     
     <lastmod>2025-10-06</lastmod>
@@ -2046,6 +2037,78 @@
   
   <url>
     <loc>https://airag.click/posts/dcc47393/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/48285dc8/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/778337f4/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/8e360f7e/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/9fd148d9/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/4d17c8d/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/c5298d72/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/6f97c31a/</loc>
+    
+    <lastmod>2025-10-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/posts/6031f818/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -2180,7 +2243,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/778337f4/</loc>
+    <loc>https://airag.click/posts/7556ae54/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -2225,7 +2288,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/eef881d4/</loc>
+    <loc>https://airag.click/posts/9d1544e0/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -2234,7 +2297,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/posts/9d1544e0/</loc>
+    <loc>https://airag.click/posts/eef881d4/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -2289,60 +2352,6 @@
   
   <url>
     <loc>https://airag.click/posts/51800531/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/9fd148d9/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/4d17c8d/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/c5298d72/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/6f97c31a/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/6031f818/</loc>
-    
-    <lastmod>2025-10-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/posts/7556ae54/</loc>
     
     <lastmod>2025-10-06</lastmod>
     
@@ -2460,14 +2469,14 @@
   </url>
   
   <url>
-    <loc>https://airag.click/tags/%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://airag.click/tags/GIT/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://airag.click/tags/GIT/</loc>
+    <loc>https://airag.click/tags/%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2537,6 +2546,20 @@
   </url>
   
   <url>
+    <loc>https://airag.click/tags/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/tags/%E4%BB%A3%E7%90%86/</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://airag.click/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -2559,13 +2582,6 @@
   
   <url>
     <loc>https://airag.click/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2025-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://airag.click/tags/%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2628,13 +2644,6 @@
   </url>
   
   <url>
-    <loc>https://airag.click/tags/RDP/</loc>
-    <lastmod>2025-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://airag.click/tags/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -2642,7 +2651,7 @@
   </url>
   
   <url>
-    <loc>https://airag.click/tags/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</loc>
+    <loc>https://airag.click/tags/RDP/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2663,13 +2672,6 @@
   </url>
   
   <url>
-    <loc>https://airag.click/tags/%E6%91%98%E6%8A%84/</loc>
-    <lastmod>2025-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://airag.click/tags/Linux/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -2678,6 +2680,13 @@
   
   <url>
     <loc>https://airag.click/tags/%E8%A3%85%E6%9C%BA/</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://airag.click/tags/%E6%91%98%E6%8A%84/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2882,14 +2891,14 @@
   </url>
   
   <url>
-    <loc>https://airag.click/categories/%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://airag.click/categories/GIT/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://airag.click/categories/GIT/</loc>
+    <loc>https://airag.click/categories/%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
