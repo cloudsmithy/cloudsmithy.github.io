@@ -121,6 +121,10 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 
 2025
 
+- [快照备份新策略，一键存储无忧](https://mp.weixin.qq.com/s/ZF94s4bzRxylojmfC17Zsw)
+
+- [教你使用国内 API，获取更精准实时天气预报推送](https://mp.weixin.qq.com/s/VsLuQ8-wM9rL6AAQ4PygIg)
+
 - [使用 Amazon Q 开发容器管理工具](https://mp.weixin.qq.com/s/rJvu2wxRvFsPEoKNQDCm_A)
 - [DDNS 域名解析](https://mp.weixin.qq.com/s/wsYsVmIc1Q3UTYQ1vFeK3g)
 - [使用 openlist 访问 S3](https://mp.weixin.qq.com/s/yLgGtR0nhTDlSspC2D7dJQ)
