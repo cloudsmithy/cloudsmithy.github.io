@@ -31,7 +31,7 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 
 - 🎨 [拓竹社区 3D 打印模型](https://makerworld.com.cn/zh/@cloud9/upload)
 - ✍️ [CSDN 博客主页](https://blog.csdn.net/weixin_38781498)
-- 🛠️ [GitHub 项目主页](https://github.com/Xu-Hardy)
+- 🛠️ [GitHub 项目主页](https://github.com/cloudsmithy)
 - [dockerhub](https://hub.docker.com/u/cloudsmithy)
 - 📚 [InfoQ 技术征文主页](https://www.infoq.cn/u/awscom/)
 - [懒猫论坛文集](https://playground.lazycat.cloud/#/user-profile/459/dynamic?routerAction=replace****)
