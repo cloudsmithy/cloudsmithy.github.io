@@ -5,4 +5,4 @@ date: 2025-10-20 10:06:28
 
 - [嘉立创开源广场](https://oshwhub.com/)
 
-- []()
+- [立创开发板技术文档中心](https://wiki.lckfb.com/zh-hans/)
