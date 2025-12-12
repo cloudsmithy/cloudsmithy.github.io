@@ -1,3 +1,10 @@
+---
+title: Milvus Workshop Web 版上线：4 万 Star 项目的官方实战教程，在手机上也能直接学了.md
+tags: 向量数据库
+toc: true
+categories: Milvus
+date: 2025-12-12 00:00:00
+---
 Milvus 作为全球最受欢迎的开源向量数据库，GitHub Star 数已突破 **4 万**。
 
 向量数据库已经成为 AI 应用的核心基础设施。RAG 需要它存储知识库，Agent 需要它实现记忆，推荐系统需要它计算相似度，多模态搜索需要它做特征检索。从实验室到生产环境，向量检索已经是 AI 应用的标配能力。
