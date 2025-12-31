@@ -92,6 +92,12 @@ function generateCategorySidebar(category) {
 export function generateSidebar() {
   const allCategories = []
 
+  // 先加入"序：缘起"
+  allCategories.push({
+    text: '📖 缘起',
+    link: '/序'
+  })
+
   for (const { dir, name } of categoryOrder) {
     const items = generateCategorySidebar(dir)
     if (items.length > 0) {
@@ -102,6 +108,12 @@ export function generateSidebar() {
       })
     }
   }
+
+  // 最后加入"后记"
+  allCategories.push({
+    text: '📝 后记',
+    link: '/后记'
+  })
 
   // 所有页面都显示完整侧边栏
   return allCategories

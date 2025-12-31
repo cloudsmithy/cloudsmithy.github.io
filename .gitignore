@@ -8,3 +8,7 @@ public/
 _multiconfig.yml
 .obsidian/
 **/.obsidian/
+
+# VitePress
+docs/.vitepress/cache
+docs/.vitepress/dist
