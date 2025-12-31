@@ -10,6 +10,9 @@ export default defineConfig({
   
   // 部署到 Cloudflare Pages 时的 base 路径
   base: '/',
+
+  // 自动从 frontmatter 生成 h1 标题
+  appearance: true,
   
   themeConfig: {
     nav: [
@@ -51,6 +54,14 @@ export default defineConfig({
         src = src.replace(/<!--\s*more\s*-->/gi, '')
         return defaultRender(src, env)
       }
+    }
+  },
+
+  // 在页面内容前插入标题
+  async transformPageData(pageData) {
+    // 设置页面标题
+    if (pageData.frontmatter?.title) {
+      pageData.title = pageData.frontmatter.title
     }
   }
 })
