@@ -3,31 +3,15 @@
     <div class="footer-divider"></div>
     <div class="footer-content">
       <h3>🎉 感谢阅读</h3>
-      <p>如果这篇文章对你有帮助，欢迎关注公众号或打赏支持～</p>
+      <p>如果这篇文章对你有帮助，欢迎关注公众号获取更多内容～</p>
       
-      <div class="qrcode-row">
-        <!-- 公众号 -->
-        <div class="qrcode-card">
-          <div class="card-inner">
-            <img 
-              src="https://dl.playground.lazycat.cloud/guidelines/459/9d64a5fd-8d84-4834-849b-21d5372dc2a5.jpg" 
-              alt="关注公众号"
-              class="qrcode-img"
-            />
-          </div>
-          <span class="qrcode-label">📱 关注公众号</span>
-        </div>
-        
-        <!-- 打赏 -->
-        <div class="qrcode-card">
-          <div class="card-inner reward-card">
-            <img 
-              src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/948f4e54-c591-479e-93d6-d177e992d0d2.png" 
-              alt="打赏支持"
-              class="qrcode-img"
-            />
-          </div>
-          <span class="qrcode-label">☕ 打赏支持</span>
+      <div class="qrcode-wrapper">
+        <div class="card-inner">
+          <img 
+            src="https://dl.playground.lazycat.cloud/guidelines/459/9d64a5fd-8d84-4834-849b-21d5372dc2a5.jpg" 
+            alt="关注公众号"
+            class="qrcode-img"
+          />
         </div>
       </div>
     </div>
@@ -68,14 +52,7 @@
   font-size: 0.95rem;
 }
 
-.qrcode-row {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-
-.qrcode-card {
+.qrcode-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,18 +60,12 @@
 }
 
 .card-inner {
-  width: 240px;
-  height: 280px;
   padding: 1rem;
   background: var(--vp-c-bg);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   border: 1px solid var(--vp-c-divider);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 }
 
 .card-inner:hover {
@@ -102,14 +73,8 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.reward-card {
-  background: linear-gradient(135deg, #fff9e6 0%, #fff 100%);
-}
-
 .qrcode-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 300px;
   border-radius: 8px;
   display: block;
 }
@@ -122,13 +87,8 @@
 
 /* 响应式 */
 @media (max-width: 640px) {
-  .qrcode-row {
-    gap: 2rem;
-  }
-  
-  .card-inner {
-    width: 180px;
-    height: 210px;
+  .qrcode-img {
+    width: 200px;
   }
   
   .footer-content {
