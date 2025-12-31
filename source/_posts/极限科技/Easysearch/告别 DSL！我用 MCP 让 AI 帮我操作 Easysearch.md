@@ -1,4 +1,10 @@
-# 告别 DSL！我用 MCP 让 AI 帮我操作 Easysearch
+---
+title: 告别 DSL！我用 MCP 让 AI 帮我操作 Easysearch
+tags: 搜索引擎（ES）
+toc: true
+categories: 极限科技
+date: 2025-12-31 00:00:00
+---
 
 还在为记不住 Elasticsearch DSL 语法发愁？`match` 和 `term` 傻傻分不清？聚合查询写半天还报错？
 
@@ -21,7 +27,7 @@
 }
 ```
 🟢 集群很健康！状态 green，1 个节点，2 个活跃分片，100% 健康。
-
+<!-- more -->
 **我**：创建一个产品索引，有名称、价格、分类、描述字段
 
 **Kiro**：
