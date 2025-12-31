@@ -103,7 +103,8 @@ export function generateSidebar() {
     if (items.length > 0) {
       allCategories.push({
         text: name,
-        collapsed: true,  // 默认折叠
+        link: `/${dir}/`,  // 点击分类标题跳转到 index.md
+        collapsed: true,   // 默认折叠
         items
       })
     }
