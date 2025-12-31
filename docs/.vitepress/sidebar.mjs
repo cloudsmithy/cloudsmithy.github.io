@@ -24,8 +24,26 @@ function extractOrder(filename) {
   return match ? parseInt(match[1], 10) : 999
 }
 
-// 中文数字映射
-const numMap = { '零': 0, '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9, '十': 10 }
+// 中文数字转阿拉伯数字
+function chineseToNumber(str) {
+  const numMap = { '零': 0, '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9, '十': 10 }
+  
+  // 纯数字直接返回
+  if (/^\d+$/.test(str)) return parseInt(str, 10)
+  
+  // 单个中文数字
+  if (numMap[str] !== undefined) return numMap[str]
+  
+  // 处理 十一、十二、二十、二十一 等
+  if (str.includes('十')) {
+    const parts = str.split('十')
+    const tens = parts[0] ? (numMap[parts[0]] || 1) : 1
+    const ones = parts[1] ? (numMap[parts[1]] || 0) : 0
+    return tens * 10 + ones
+  }
+  
+  return str
+}
 
 // 从 frontmatter 或文件名提取标题，并简化显示
 function extractTitle(filePath, filename) {
@@ -37,9 +55,7 @@ function extractTitle(filePath, filename) {
       // 简化标题：提取括号后的内容作为短标题
       const shortMatch = title.match(/[（(]([^）)]+)[）)][：:]\s*(.+)/)
       if (shortMatch) {
-        const numStr = shortMatch[1]
-        // 转换中文数字
-        const num = numMap[numStr] !== undefined ? numMap[numStr] : numStr
+        const num = chineseToNumber(shortMatch[1])
         return `${num}. ${shortMatch[2]}`
       }
       return title

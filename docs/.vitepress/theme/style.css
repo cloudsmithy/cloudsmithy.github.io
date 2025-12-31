@@ -1,0 +1,7 @@
+/* 文章标题样式 */
+.doc-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
