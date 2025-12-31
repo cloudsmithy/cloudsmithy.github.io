@@ -13,7 +13,10 @@
     "draft": "hexo new draft",
     "cm": "git add . && git commit -m",
     "dp": "yarn sp && git push -v",
-    "sp": "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+    "sp": "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "hexo": {
     "version": "7.3.0"
@@ -46,6 +49,7 @@
     "babel-plugin-inferno": "^6.8.4",
     "hexo-filter-nofollow": "^2.0.2",
     "hexo-generator-robotstxt": "^0.2.0",
-    "hexo-seo-submit": "^1.8.0"
+    "hexo-seo-submit": "^1.8.0",
+    "vitepress": "^1.6.4"
   }
 }
