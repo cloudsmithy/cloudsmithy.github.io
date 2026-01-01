@@ -1,5 +1,7 @@
 ---
 layout: home
+title: 懒猫微服专栏
+date: 1970-01-01
 hero:
   name: 懒猫微服专栏
   text: 手把手拆解懒猫微服的底层逻辑与迁移秘诀
