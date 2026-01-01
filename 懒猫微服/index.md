@@ -2,8 +2,11 @@
 layout: home
 hero:
   name: 懒猫微服专栏
-  text: 顶级开发者的实战手记
-  tagline: 80+ 篇连载，手把手拆解懒猫微服的底层逻辑与迁移秘诀
+  text: 手把手拆解懒猫微服的底层逻辑与迁移秘诀
+  tagline: 有没有兼顾技术底层和爱好者的文章系列呢？于是便有了这个。
+  image:
+    src: https://raw.githubusercontent.com/Xu-Hardy/image-host/master/rabbit.png
+    alt: 懒猫微服
   actions:
     - theme: brand
       text: 开始阅读
@@ -17,10 +20,6 @@ features:
     title: 入门篇
     details: 从开箱到 SSH 配置，一步步带你上手懒猫微服
     link: /入门/0. 懒猫微服入门篇（零）：开箱初探，硬件亮相
-  - icon: 📦
-    title: 容器篇
-    details: Docker 基础知识，写给懒猫玩家的容器小书
-    link: /容器/1. 写给懒猫微服玩家的容器小书 Docker篇（一）：《无法部署的诅咒》
   - icon: ⚡
     title: 进阶篇
     details: 深入懒猫微服，解锁更多高级玩法
@@ -29,6 +28,18 @@ features:
     title: 开发篇
     details: 上架应用全流程，从打包到发布
     link: /开发/0.懒猫微服开发篇（零）：上架应用需要哪些知识
+  - icon: 📦
+    title: 容器篇
+    details: Docker 基础知识，写给懒猫玩家的容器小书
+    link: /容器/1. 写给懒猫微服玩家的容器小书 Docker篇（一）：《无法部署的诅咒》
+  - icon: ✨
+    title: 炫技篇
+    details: 解锁懒猫微服的花式玩法
+    link: /炫技/1. 懒猫微服炫技篇（一）：使用懒猫微服的穿透服务，车机使用DS music 远程听歌，黑群晖不用再洗白
+  - icon: 📖
+    title: 故事篇
+    details: 懒猫微服使用中的真实故事
+    link: /故事/1. 懒猫微服故事篇（一）：服务器宕机之后，我和前端靠懒猫微服结对编程
 ---
 
 <div class="custom-block tip" style="margin-top: 2rem;">
@@ -62,5 +73,7 @@ features:
 一个人的经验有限，一群人的分享才有力量。愿大家在折腾与学习中不断积累，把经验沉淀下来，分享出去，共同推动这个生态更稳、更强。
 
 **所有文章已整理在公众号，扫码就能看到～**
+
+![公众号二维码](https://developer.lazycat.cloud/assets/wangjishanren-qrcode.5584303a.jpg)
 
 </div>
