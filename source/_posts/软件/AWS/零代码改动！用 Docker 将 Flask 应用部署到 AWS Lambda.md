@@ -1,5 +1,12 @@
-# 零代码改动！用 Docker 将 Flask 应用部署到 AWS Lambda
-
+---
+title: 零代码改动！用 Docker 将 Flask 应用部署到 AWS Lambda
+tags:
+  - AWS
+  - Docker
+toc: true
+categories: AWS
+date: 2025-05-20 00:00:00
+---
 你有一个现成的 Flask API，想部署到 AWS Lambda 享受 Serverless 的好处，但又不想改代码？AWS Lambda Web Adapter 可以帮你实现。
 
 本文将手把手教你如何使用 Docker + Gunicorn + Lambda Web Adapter，将 Flask 应用部署到 Lambda，并通过 API Gateway 对外提供服务。
