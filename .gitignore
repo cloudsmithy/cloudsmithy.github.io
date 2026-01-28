@@ -10,5 +10,18 @@ _multiconfig.yml
 **/.obsidian/
 
 # VitePress
-docs/.vitepress/cache
-docs/.vitepress/dist
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Lock files (keep pnpm-lock.yaml only)
+yarn.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
