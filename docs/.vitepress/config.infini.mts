@@ -6,6 +6,7 @@ export default defineConfig({
   ...sharedConfig,
   
   srcDir: '../source/_posts/极限科技',
+  srcExclude: ['极限科技稿件数据.md'],
   title: '极限科技专栏',
   description: 'Easysearch 与 Coco AI 实战教程',
   
