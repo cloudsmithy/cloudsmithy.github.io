@@ -16,7 +16,10 @@
     "sp": "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "infini:dev": "SITE=infini vitepress dev docs",
+    "infini:build": "SITE=infini vitepress build docs",
+    "infini:preview": "SITE=infini vitepress preview docs"
   },
   "hexo": {
     "version": "7.3.0"
