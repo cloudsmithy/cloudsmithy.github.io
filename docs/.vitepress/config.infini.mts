@@ -10,6 +10,12 @@ export default defineConfig({
   title: '极限科技专栏',
   description: 'Easysearch 与 Coco AI 实战教程',
   
+  // 忽略 localhost 示例链接的死链检查
+  ignoreDeadLinks: [
+    /^http:\/\/localhost/,
+    /^https:\/\/localhost/
+  ],
+  
   themeConfig: {
     ...sharedThemeConfig,
     
