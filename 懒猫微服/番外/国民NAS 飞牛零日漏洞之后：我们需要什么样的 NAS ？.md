@@ -1,5 +1,5 @@
 ---
-title: 国民NAS 飞牛零日漏洞之后：我们需要什么样的 NAS ？.md
+title: 国民NAS 飞牛零日漏洞之后：我们需要什么样的 NAS ？
 tags: NAS
 toc: true
 categories: 懒猫微服
