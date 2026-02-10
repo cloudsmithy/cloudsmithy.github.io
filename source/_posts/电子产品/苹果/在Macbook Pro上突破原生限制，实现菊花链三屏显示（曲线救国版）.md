@@ -1,5 +1,5 @@
 ---
-在Macbook Pro上突破原生限制，实现菊花链三屏显示（曲线救国版）
+title: 在Macbook Pro上突破原生限制，实现菊花链三屏显示（曲线救国版）
 categories: Apple
 tags:
   - Apple
