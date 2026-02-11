@@ -28,7 +28,7 @@ date: 1970-01-01 08:00:00
 - [懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器](https://mp.weixin.qq.com/s/cbNDmoDYcKnAiCXjC_po1A)
 - [懒猫微服实战入门（十三）：懒猫穿透不只图形化，纯命令行服务器也可以](https://mp.weixin.qq.com/s/23TmEqH4rAPpm0Gt5ZTRcg)
 - [懒猫微服实战入门（十四）：不登录客户端，如何用 Samba 挂载懒猫微服网盘？](https://mp.weixin.qq.com/s/Jc0zVlU_t3VZ3IIPMerE6Q)
-- [懒猫微服实战入门（十五）：大疆 Pocket3 素材导入懒猫网盘](https://mp.weixin.qq.com/s/DtEgU5lSHpEDSzYXhKF3LA)
+- [懒猫微服实战入门（十五）：大疆 Pocket3 素材导入懒猫网盘](https://mp.weixin.qq.com/s/aRywBmL9iZAjLq2SZTSCBg)
 - [懒猫微服实战入门（十六）：把懒猫微服当作 24 × 7 在线开发机](https://mp.weixin.qq.com/s/fGGf4Rx9bZpdtu54eMYE0g)
 - [懒猫微服实战入门（十七）： 用懒猫微服的网盘挂载功能存储 steam 游戏](https://mp.weixin.qq.com/s/HsTwO6h4GBN-huZrIubjUg)
 
