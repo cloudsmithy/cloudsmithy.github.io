@@ -7,7 +7,7 @@ abbrlink: cb0bcf1b
 date: 2026-02-09 00:00:00
 ---
 
-Macbook Pro 原生只支持外接两个4K显示器，接第三个显示器就黑屏，意外在网上看到了display link的方案。于是买回来突破了原生的MacOS的限制。
+M芯片的Macbook Pro 原生只支持外接两个4K显示器，接第三个显示器就黑屏，意外在网上看到了display link的方案。于是买回来突破了原生的MacOS的限制。
 
 
 ![](https://fastly.jsdelivr.net/gh/bucketio/img9@main/2026/02/09/1770635368544-93b0e056-1749-4693-9b45-8c88258c7930.png)
