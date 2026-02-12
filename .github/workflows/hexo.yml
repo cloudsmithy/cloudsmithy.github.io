@@ -14,27 +14,35 @@ jobs:
     env:
       TZ: Asia/Shanghai # 设置为你的时区，例如 Asia/Shanghai
     steps:
-      # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: install and build
-        run: npm install && npm run build
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-      # 部署到 GitHub markdown BOOK
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install and build
+        run: pnpm install && pnpm build
+
       - name: Deploy markdown Book
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.acc }}
-          BRANCH: docs
-          FOLDER: ./source/_posts/
+          token: ${{ secrets.acc }}
+          branch: docs
+          folder: ./source/_posts/
 
-      # 部署到 GitHub Pages
       - name: Deploy Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.acc }}
-          BRANCH: gh-pages
-          FOLDER: ./public
+          token: ${{ secrets.acc }}
+          branch: gh-pages
+          folder: ./public
