@@ -27,7 +27,11 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: ":lang"
-skip_render: null
+skip_render:
+  - "_posts/**/Readme.md"
+  - "_posts/**/index.md"
+  - "_posts/**/后记.md"
+  - "_posts/**/序.md"
 new_post_name: ":title.md"
 default_layout: post
 titlecase: false
