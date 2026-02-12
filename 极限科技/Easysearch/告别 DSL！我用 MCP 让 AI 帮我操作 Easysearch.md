@@ -3,6 +3,7 @@ title: 告别 DSL！我用 MCP 让 AI 帮我操作 Easysearch
 tags: 搜索引擎（ES）
 toc: true
 categories: 极限科技
+abbrlink: 9ca6531a
 date: 2025-12-31 00:00:00
 ---
 

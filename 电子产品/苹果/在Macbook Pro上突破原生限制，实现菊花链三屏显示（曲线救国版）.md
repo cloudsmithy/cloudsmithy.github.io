@@ -3,6 +3,7 @@ title: 在Macbook Pro上突破原生限制，实现菊花链三屏显示（曲�
 categories: Apple
 tags:
   - Apple
+abbrlink: cb0bcf1b
 date: 2026-02-09 00:00:00
 ---
 

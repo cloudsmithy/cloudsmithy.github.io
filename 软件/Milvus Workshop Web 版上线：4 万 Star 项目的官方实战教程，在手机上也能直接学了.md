@@ -3,6 +3,7 @@ title: Milvus Workshop Web 版上线：4 万 Star 项目的官方实战教程，
 tags: 向量数据库
 toc: true
 categories: Milvus
+abbrlink: 581baa02
 date: 2025-12-12 00:00:00
 ---
 Milvus 作为全球最受欢迎的开源向量数据库，GitHub Star 数已突破 **4 万**。

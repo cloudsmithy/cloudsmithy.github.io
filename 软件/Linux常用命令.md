@@ -1,8 +1,9 @@
 ---
-title: 'Linux常用命令'
+title: Linux常用命令
 tags: Linux
 toc: true
 categories: LLM
+abbrlink: d0edc1ed
 date: 2024-07-02 00:00:00
 ---
 

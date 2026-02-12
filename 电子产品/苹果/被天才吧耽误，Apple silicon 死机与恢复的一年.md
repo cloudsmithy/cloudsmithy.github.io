@@ -3,6 +3,7 @@ title: 被天才吧耽误，Apple silicon 死机与恢复的一年
 tags: Apple
 toc: true
 categories: Apple
+abbrlink: d5918d57
 date: 2025-12-22 00:00:00
 ---
 
