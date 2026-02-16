@@ -23,7 +23,7 @@ docker run -d --name cocoserver \
 ```
 
 ![image-20260216121827526](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260216121827526.png)
-
+<!-- more -->
 启动之后，可以使用 netstat 看到容器端口的情况。换句话说，这个自带的 Easysearch 把 `9200` 和 `9300` 的端口确实启动起来了，但默认只绑定在 `127.0.0.1` 上，所以外部访问不到——即使你已经加了 `-p 9200` 也不行。
 
 ```bash
