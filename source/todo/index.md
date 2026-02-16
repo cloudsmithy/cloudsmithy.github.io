@@ -44,6 +44,7 @@ title: 博客feature 计划（不一定修
 - [ ] 使用懒猫微服加速Docker images下载（上） AMD tag arm sha265
 - [ ] 使用懒猫微服加速Docker images下载（下） 结合代码修改
 - [ ] 写一个OIDC调试器
+- [ ] OIDC调试器使用文章
 - [ ] OIDC套壳 Cognito
 - [ ] ODIC 在DEX新增APP
 - [ ] KVM虚拟机
