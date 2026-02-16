@@ -3,7 +3,7 @@ title: Docker启动Coco AI Server后，如何访问内置Easysearch?
 tags: Coco-AI
 toc: true
 categories: 极限科技
-date: 2026-03-17 00:00:00
+date: 2026-02-17 00:00:00
 ---
 
 使用 Docker 启动 Coco AI 的时候会自带一个 Easysearch，我们使用连接器连接外部数据源的时候，就会把这个数据解析到 Easysearch 里。
