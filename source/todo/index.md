@@ -53,10 +53,11 @@ title: 博客feature 计划（不一定修
 
 ### 极限科技
 
-- [ ] 怎么打包image传给别人
+- [ ] 怎么打包image传给别人 混合架构下载sha256
 - [ ] 嵌入式开发板使用coco AI
 - [ ] Macvlan easysearch cocoAI
 - [ ] Console 上传快照到S3
+- [ ] 卷和bind
 
 ### 其他
 
