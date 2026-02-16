@@ -46,6 +46,7 @@ title: 博客feature 计划（不一定修
 - [ ] 写一个OIDC调试器
 - [ ] OIDC套壳 Cognito
 - [ ] ODIC 在DEX新增APP
+- [ ] KVM虚拟机
 
 ### 极限科技
 
