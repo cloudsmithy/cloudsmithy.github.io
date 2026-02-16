@@ -24,17 +24,19 @@ docker run -d --name cocoserver \
 ```
 
 ![image-20260216121827526](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260216121827526.png)
+
 <!-- more -->
+
 启动之后，可以使用 netstat 看到容器端口的情况。换句话说，这个自带的 Easysearch 把 `9200` 和 `9300` 的端口确实启动起来了，但默认只绑定在 `127.0.0.1` 上，所以外部访问不到——即使你已经加了 `-p 9200` 也不行。
 
 ```bash
 docker exec -it cocoserver sh -lc "netstat -lnt | egrep ':9000|:9200|:9300' || true"
 ```
 
-```text
-tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN     
-tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN     
-tcp6       0      0 :::9000                 :::*                    LISTEN     
+```
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN
+tcp6       0      0 :::9000                 :::*                    LISTEN
 ```
 
 ![image-20260216122129558](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260216122129558.png)
@@ -62,10 +64,10 @@ docker restart cocoserver
 (base) lzcbox-029c588e ~ # docker exec -it cocoserver sh -lc "netstat -lnt | egrep ':9000|:9200|:9300' || true"
 ```
 
-```text
-tcp6       0      0 :::9300                 :::*                    LISTEN     
-tcp6       0      0 :::9200                 :::*                    LISTEN     
-tcp6       0      0 :::9000                 :::*                    LISTEN    
+```
+tcp6       0      0 :::9300                 :::*                    LISTEN
+tcp6       0      0 :::9200                 :::*                    LISTEN
+tcp6       0      0 :::9000                 :::*                    LISTEN
 ```
 
 Easysearch 的进程会先起来，Coco Sever 会慢一些。这时候可以通过 `http://ip:9000` 访问 Coco Server，也可以通过 `https://IP:9200` 访问 Easysearch 和 Easysearch 的 UI。密码还是老样子去 log 里找。
@@ -102,6 +104,6 @@ curl -k -u 'admin:Coco-Server-6dsxtGXhD+MUNhPBKf1hug==' https://127.0.0.1:9200
 
 日常用法也很简单：
 
-* 连接器同步进来的数据会实时写进这台 Easysearch 里；
-* 自己用 API 写进去的数据也会被 Coco Server 索引；
-* 遇到“数据到底进没进、字段长啥样、索引有没有建对”这种问题，直接打开 Easysearch UI 看一眼就能确认，再也不用抓瞎！
+- 连接器同步进来的数据会实时写进这台 Easysearch 里；
+- 自己用 API 写进去的数据也会被 Coco Server 索引；
+- 遇到“数据到底进没进、字段长啥样、索引有没有建对”这种问题，直接打开 Easysearch UI 看一眼就能确认，再也不用抓瞎！
