@@ -88,7 +88,7 @@ powercfg /x monitor-timeout-dc 10
 ### iPhone 打印
 
 iPhone 这边基本是“傻瓜式”：
-只要手机和 Win10 在同一网络里，你在任意支持打印的 App（备忘录、照片、文件、微信/钉钉里某些文档预览等）里点“打印”，就能看到你发布出来的打印机名称，选中即可打印。
+只要手机和 Win10 在同一网络里，你在任意支持打印的 App（备忘录、照片、文件）里点“打印”，就能看到你发布出来的打印机名称，选中即可打印。
 
 ![image-20260217103054171](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260217103054171.png)
 
