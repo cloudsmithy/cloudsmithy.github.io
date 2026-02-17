@@ -69,4 +69,5 @@ title: 博客feature 计划（不一定修
 
 - [ ] 编译OpenWRT
 - [ ] nodejs源码编译
-- [ ] 打印机折腾记+windows禁止休眠
+- [x] 打印机折腾记+windows禁止休眠
+- [ ] CC接bedrock
