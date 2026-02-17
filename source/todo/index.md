@@ -51,6 +51,7 @@ title: 博客feature 计划（不一定修
 - [ ] langfuse 教程
 - [ ] KVM虚拟机
 - [ ] Docker自带仓库API 讲解
+- [ ] potplayer LLM翻译
 - [ ] 自带API封装成APP(+前端下载tar包) 列出仓库+查看镜像信息+删除，manifest+下载
 - [ ] 带你玩懒猫微服
   - [ ] 爱好者篇
