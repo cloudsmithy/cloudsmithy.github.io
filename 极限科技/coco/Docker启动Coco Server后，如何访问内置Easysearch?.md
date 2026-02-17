@@ -1,9 +1,9 @@
 ---
-title: Docker启动Coco AI Server后，如何访问内置Easysearch?
+title: Docker启动Coco AI Server后，如何访问内置Easysearch
 tags: Coco-AI
 toc: true
 categories: 极限科技
-abbrlink: e6db8277
+abbrlink: b7b40656
 date: 2026-02-17 00:00:00
 ---
 
