@@ -50,6 +50,11 @@ title: 博客feature 计划（不一定修
 - [ ] Supase 教程
 - [ ] langfuse 教程
 - [ ] KVM虚拟机
+- [ ] Docker自带仓库API 讲解
+- [ ] 自带API封装成APP(+前端下载tar包)
+- [ ] 带你玩懒猫微服
+  - [ ] 爱好者篇
+  - [ ] 开发者篇
 
 ### 极限科技
 
@@ -57,10 +62,10 @@ title: 博客feature 计划（不一定修
 - [ ] 嵌入式开发板使用coco AI
 - [ ] Macvlan easysearch cocoAI
 - [ ] Console 上传快照到S3
-- [ ] 卷和bind
+- [ ] 卷和bind 503的故事
 
 ### 其他
 
 - [ ] 编译OpenWRT
 - [ ] nodejs源码编译
-- [ ] 打印机
+- [ ] 打印机折腾记+windows禁止休眠
