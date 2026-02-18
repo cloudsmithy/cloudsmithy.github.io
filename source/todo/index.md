@@ -50,6 +50,9 @@ title: 博客feature 计划（不一定修
 - [ ] OIDC套壳 Cognito
 - [ ] ODIC 在DEX新增APP
 - [ ] KVM虚拟机
+  - UEFI支持
+  - ARM支持
+  - ARM安卓
 - [ ] Docker自带仓库API 讲解
 - [ ] potplayer LLM翻译
 - [ ] QEMU使用办法
@@ -79,3 +82,4 @@ title: 博客feature 计划（不一定修
 - [x] 打印机折腾记+windows禁止休眠
 - [ ] CC接bedrock
 - [ ] 常开一个ES和Opensearch和 easysearch做比较
+- [ ] 继续完善TODO
