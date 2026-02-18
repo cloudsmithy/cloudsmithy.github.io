@@ -63,9 +63,11 @@ title: 博客feature 计划（不一定修
 ### 极限科技
 
 - [ ] 怎么打包image传给别人 混合架构下载sha256
-- [ ] 嵌入式开发板使用coco AI
+- [x] 嵌入式开发板使用coco AI
 - [ ] Macvlan easysearch cocoAI
 - [ ] Console 上传快照到S3
+- [ ] 快照复制到文件系统
+- [ ] 快照复制到NFS？SMB？
 - [ ] 卷和bind 503的故事
 
 ### 其他
@@ -74,3 +76,4 @@ title: 博客feature 计划（不一定修
 - [ ] nodejs源码编译
 - [x] 打印机折腾记+windows禁止休眠
 - [ ] CC接bedrock
+- [ ] 常开一个ES和Opensearch和 easysearch做比较
