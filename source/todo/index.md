@@ -49,6 +49,7 @@ title: 博客feature 计划（不一定修
 - [ ] OIDC调试器使用文章
 - [ ] OIDC套壳 Cognito
 - [ ] ODIC 在DEX新增APP
+- [ ] Easysearch移植中遇到的问题
 - [ ] KVM虚拟机
   - UEFI支持
   - ARM支持
