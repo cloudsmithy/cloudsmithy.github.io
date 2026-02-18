@@ -31,7 +31,7 @@ title: 博客feature 计划（不一定修
 - [ ] 我与儒释道
 - [ ] 工作台打造计划
 - [ ] 我的工具们
-- [ ] potplayer的aws实时翻译插
+- [x] potplayer的aws实时翻译插
 - [ ] 视频字幕提取
 - [ ] mokee刷机
 - [ ] QNAP
