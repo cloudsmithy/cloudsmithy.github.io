@@ -7,8 +7,7 @@ title: 博客feature 计划（不一定修
 - [x] 目录页
 - [x] markdown高亮
 - [x] 友链
-- [x] 和aws页面，vuepress 连调
-- [x] 评论功能
+- [ ] 评论功能
 - [x] 打赏二维码
 - [x] 社交链接
 - [x] 改log
