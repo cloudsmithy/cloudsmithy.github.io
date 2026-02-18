@@ -3,7 +3,7 @@ title: RK3566嵌入式开发板运行Coco AI Sever
 tags: Coco-AI
 toc: true
 categories: 极限科技
-date: 2027-02-18 00:00:00
+date: 2026-02-18 00:00:00
 ---
 
 之前在泰山派上运行了Easysearch，这次也想着是不是可以在泰山派开发板RK3566上运行Coco server，毕竟这板子功耗小，适合常开。
