@@ -41,6 +41,8 @@ title: 博客feature 计划（不一定修
 
 - [ ] pg-docker 使用Macvlan
 - [ ] 多容器访问？
+- [ ] 访问商店应用端口的几种办法（ingress，端口映射）
+- [ ] 虚拟机安卓如何使用IP adb安装APK
 - [ ] 容器访问主机？
 - [ ] 双猫互联 复制文件
 - [ ] 使用懒猫微服加速Docker images下载（上） AMD tag arm sha265
@@ -49,7 +51,7 @@ title: 博客feature 计划（不一定修
 - [ ] OIDC调试器使用文章
 - [ ] OIDC套壳 Cognito
 - [ ] ODIC 在DEX新增APP
-- [ ] Easysearch移植中遇到的问题
+- [ ] Easysearch移植中遇到的问题（容器商店的生命周期）
 - [ ] KVM虚拟机
   - UEFI支持
   - ARM支持
@@ -57,6 +59,10 @@ title: 博客feature 计划（不一定修
 - [ ] Docker自带仓库API 讲解
 - [ ] potplayer LLM翻译
 - [ ] QEMU使用办法
+  - [ ] 安卓
+  - [ ] TRUENAS
+  - [ ] WINDOWS
+  - [ ] Linux
 - [ ] 自带API封装成APP(+前端下载tar包) 列出仓库+查看镜像信息+删除，manifest+下载
 - [ ] 专栏作家带你玩懒猫微服
   - [ ] 爱好者篇
