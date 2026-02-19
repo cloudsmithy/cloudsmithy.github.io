@@ -52,7 +52,7 @@ title: 博客feature 计划（不一定修
 - [ ] OIDC套壳 Cognito
 - [ ] ODIC 在DEX新增APP
 - [ ] Easysearch移植中遇到的问题（容器商店的生命周期）
-- [ ] KVM虚拟机
+- [ ] KVM虚拟机上架
   - UEFI支持
   - ARM支持
   - ARM安卓
@@ -90,3 +90,4 @@ title: 博客feature 计划（不一定修
 - [ ] CC接bedrock
 - [ ] 常开一个ES和Opensearch和 easysearch做比较
 - [ ] 继续完善TODO
+- [ ] 常开一个ec2编译Docker
