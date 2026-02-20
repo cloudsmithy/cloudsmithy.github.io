@@ -21,6 +21,8 @@ brew install android-platform-tools
 adb version
 ```
 
+ <!--more-->
+
 X300的ADB用的不是常用的5555端口，所以需要在这里找到配对码和配对端口（port1）。
 
 ![image-20260220230044192](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260220230044192.png)
