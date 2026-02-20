@@ -4,7 +4,7 @@ tags: Coco-AI
 toc: true
 categories: 极限科技
 abbrlink: ce955007
-date: 2027-02-18 00:00:00
+date: 2026-02-18 00:00:00
 ---
 
 之前在泰山派上运行了Easysearch，这次也想着是不是可以在泰山派开发板RK3566上运行Coco server，毕竟这板子功耗小，适合常开。
@@ -16,13 +16,15 @@ docker save -o cocoai-arm_test.tar cocoai-arm:test
 ```
 
 然后通过SCP上传到RK3566的开发板
+
 <!-- more -->
+
 ```
-scp cocoai-arm_test.tar lckfb@192.168.5.36:~ 
+scp cocoai-arm_test.tar lckfb@192.168.5.36:~
 ** WARNING: connection is not using a post-quantum key exchange algorithm.
 ** This session may be vulnerable to "store now, decrypt later" attacks.
 ** The server may need to be upgraded. See https://openssh.com/pq.html
-lckfb@192.168.5.36's password: 
+lckfb@192.168.5.36's password:
 cocoai-arm_test.tar                            14%  125MB   5.6MB/s   02:14 ETA^cocoai-arm_test.tar                            16%  143MB   5.7MB/s   02:10 ETA^cocoai-arm_test.tar                            38%  337MB   5.7MB/s   01:35 ETA
 cocoai-arm_test.tar                            44%  391MB   5.5MB/s   01:29 ETA
 ```
@@ -49,7 +51,6 @@ infinilabs/easysearch   1.15.0    295014c1f959   5 months ago   697MB
 
 > 顺手可以记一下：板子上镜像多了以后，存储空间会很快见底，后续最好固定一个清理策略（比如只留当前版本）。
 
-
 然后使用这个命令启动，然后使用Docker PS查看。
 
 ```
@@ -65,27 +66,25 @@ docker run -d --name cocoserver -p 9000:9000 \
 **图：容器已经跑起来，端口映射也生效。**
 **我当时会顺手确认几个问题：**
 
-* `STATUS` 是不是一直 `Up`，有没有出现反复重启（`Restarting`）？
-* `PORTS` 是否显示 `0.0.0.0:9000->9000/tcp`（如果只绑到 `127.0.0.1`，局域网其他设备就访问不到）
-* 容器名 `cocoserver` 固定后，后续排查日志/重启都更方便：`docker logs -f cocoserver`
-开发板的性能有限，所以初始化的时候需要多等一会。
+- `STATUS` 是不是一直 `Up`，有没有出现反复重启（`Restarting`）？
+- `PORTS` 是否显示 `0.0.0.0:9000->9000/tcp`（如果只绑到 `127.0.0.1`，局域网其他设备就访问不到）
+- 容器名 `cocoserver` 固定后，后续排查日志/重启都更方便：`docker logs -f cocoserver`
+  开发板的性能有限，所以初始化的时候需要多等一会。
 
 ![image-20260217221617329](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260217221617329.png)
 
 **图：初始化日志在跑，说明服务在“慢慢起身”。**
 **这张图我会重点盯两类信息：**
 
-* 有没有明显的报错关键词：`error / exception / failed / oom / killed`
-* 有没有持续输出（哪怕很慢）——只要日志还在动，一般就不是卡死
+- 有没有明显的报错关键词：`error / exception / failed / oom / killed`
+- 有没有持续输出（哪怕很慢）——只要日志还在动，一般就不是卡死
   **补充一个小习惯：** 如果你怀疑卡住了，可以开另一个窗口 `docker stats` 看 CPU/内存是否还有波动；也可以 `docker logs --tail 200 cocoserver` 快速看最近输出。
-
 
 漫长的等待之后，CPU很清闲，不过内存快用满了。
 
 ![image-20260217225210333](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260217225210333.png)
 
-  **补充：** 这种“CPU 很闲、内存紧张”的状态，在小板跑 Java/搜索组件/AI 服务时很常见，能跑起来不奇怪，关键是别被 OOM 一刀带走。
-
+**补充：** 这种“CPU 很闲、内存紧张”的状态，在小板跑 Java/搜索组件/AI 服务时很常见，能跑起来不奇怪，关键是别被 OOM 一刀带走。
 
 ![image-20260217225343990](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260217225343990.png)
 
