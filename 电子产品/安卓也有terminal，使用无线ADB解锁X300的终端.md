@@ -11,6 +11,8 @@ date: 2026-02-20 00:00:00
 
 我的手机上安装甲壳虫ADB一直闪退，所以使用无线ADB，开启之后效果大概这样子。
 
+ <!--more-->
+
 ![image-20260220225346095](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260220225346095.png)
 
 ### 无线ADB
@@ -21,8 +23,6 @@ date: 2026-02-20 00:00:00
 brew install android-platform-tools
 adb version
 ```
-
- <!--more-->
 
 X300的ADB用的不是常用的5555端口，所以需要在这里找到配对码和配对端口（port1）。
 
