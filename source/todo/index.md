@@ -74,13 +74,14 @@ title: 博客feature 计划（不一定修
 
 ### 极限科技
 
-- [ ] 怎么打包image传给别人 混合架构下载sha256
+- [ ] 怎么打包image传给别人 + 混合架构下载sha256
 - [x] 嵌入式开发板使用coco AI
 - [ ] Macvlan easysearch cocoAI
 - [ ] Console 上传快照到S3
 - [ ] 快照复制到文件系统
 - [ ] 快照复制到NFS？SMB？
 - [ ] 卷和bind 503的故事
+- [ ] 官网的搜索
 
 ### 其他
 
