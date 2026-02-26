@@ -58,7 +58,7 @@ title: 博客feature 计划（不一定修
   - ARM安卓
 - [ ] Docker自带仓库API 讲解
 - [ ] potplayer LLM翻译
-- [ ] QEMU使用办法
+- [x] QEMU使用办法
   - [ ] 安卓
   - [ ] TRUENAS
   - [ ] WINDOWS
