@@ -13,7 +13,7 @@ S3 (HTML模板) → Python脚本 → SES → 收件人
 
 ## 核心代码
 
-python
+```python
 #!/usr/bin/env python3
 """从 S3 读取 HTML 模板并通过 SES 发送邮件"""
 import boto3
@@ -48,7 +48,7 @@ def send_html_email(to: str, subject: str, html_content: str):
 if __name__ == '__main__':
     html = get_html_from_s3(BUCKET, TEMPLATE_KEY)
     send_html_email('<recipient-email>', '测试邮件', html)
-
+```
 
 ## 关键点说明
 
