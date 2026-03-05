@@ -5,7 +5,7 @@ keywords: null
 author: Xu
 language: zh-CN
 timezone: "Asia/Shanghai"
-url: https://airag.click/
+url: https://cloudsmithy.github.io/
 root: /
 permalink: posts/:abbrlink/
 abbrlink:
@@ -99,9 +99,4 @@ robotstxt:
     - /drafts/
   allow:
     - /
-  sitemap: https://airag.click/sitemap.xml
-
-nofollow:
-  enable: true
-  exclude: # 例外链接
-    - https://airag.click/
+  # sitemap: https://airag.click/sitemap.xml
