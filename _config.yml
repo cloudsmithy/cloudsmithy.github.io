@@ -99,4 +99,4 @@ robotstxt:
     - /drafts/
   allow:
     - /
-  # sitemap: https://airag.click/sitemap.xml
+  sitemap: https://cloudsmithy.github.io/sitemap.xml
