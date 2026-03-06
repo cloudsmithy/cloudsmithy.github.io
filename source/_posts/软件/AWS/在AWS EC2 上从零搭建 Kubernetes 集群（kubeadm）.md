@@ -1,3 +1,12 @@
+---
+title: 在AWS EC2 上从零搭建 Kubernetes 集群（kubeadm）
+tags:
+  - AWS
+toc: true
+categories:
+  - AWS
+date: 2026-03-06 00:00:00
+---
 今天讲解在AWS EC2 上使用kubeadm搭建Kubernetes 集群。
 
 kubeadm 是 Kubernetes 官方提供的集群引导工具，用来快速创建符合最佳实践的 K8s 集群。除了初始化集群，它还能做节点的升级、降级等生命周期管理。用 kubeadm 建集群是学习 K8s 的推荐方式，也适合搭建小规模集群或作为更复杂企业级方案的基础组件。
@@ -9,6 +18,10 @@ kubeadm 是 Kubernetes 官方提供的集群引导工具，用来快速创建符
 我们会在 Master 节点上从头安装 kubeadm 及其依赖，然后初始化集群，最后把 Worker 节点加入进来。
 
 ![](https://fastly.jsdelivr.net/gh/bucketio/img18@main/2026/03/06/1772810713484-31955c25-1962-4513-af60-01cd0d1f9a4e.png)
+
+这几台 EC2 使用同一个安全组，入站规则只放行VPC网段和终端访问地址。
+
+![](https://fastly.jsdelivr.net/gh/bucketio/img11@main/2026/03/06/1772811257345-c40eeeab-4627-4793-a84c-45abd2232b12.png)
 
 
 
