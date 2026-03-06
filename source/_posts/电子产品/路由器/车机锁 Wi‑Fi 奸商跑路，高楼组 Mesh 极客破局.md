@@ -2,7 +2,9 @@
 title: 车机锁 Wi‑Fi 奸商跑路，高楼组 Mesh 极客破局
 tags: 车载
 toc: true
-categories: 硬件
+categories:
+  - 电子产品
+  - 路由器
 abbrlink: fc9b2cf2
 date: 2025-05-11 00:00:00
 ---
