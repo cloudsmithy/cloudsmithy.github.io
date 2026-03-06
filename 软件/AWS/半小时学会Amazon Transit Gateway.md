@@ -2,7 +2,9 @@
 title: 组队参加 Amazon Q Idea 1000，我们的作品上了 AWS 峰会
 tags: AWS
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 abbrlink: ac23bcf7
 date: 2025-06-20 00:00:00
 ---

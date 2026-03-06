@@ -2,7 +2,7 @@
 title: Milvus Workshop Web 版上线：4 万 Star 项目的官方实战教程，在手机上也能直接学了
 tags: 向量数据库
 toc: true
-categories: Milvus
+categories: 软件
 abbrlink: 581baa02
 date: 2025-12-12 00:00:00
 ---

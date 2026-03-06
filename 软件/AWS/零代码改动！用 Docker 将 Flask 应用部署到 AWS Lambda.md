@@ -4,7 +4,9 @@ tags:
   - AWS
   - Docker
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 abbrlink: '79854e67'
 date: 2025-11-20 00:00:00
 ---
