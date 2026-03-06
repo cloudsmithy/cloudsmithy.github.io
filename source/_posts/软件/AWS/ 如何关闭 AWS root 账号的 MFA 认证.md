@@ -4,7 +4,9 @@ tags:
   - AWS
   - MFA
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 abbrlink: f4ce40dc
 date: 2025-05-20 00:00:00
 ---

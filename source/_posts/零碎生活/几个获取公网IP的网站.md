@@ -4,7 +4,7 @@ tags:
   - 租房
   - 生活
 date: 2023-9-27
-categories: 外设
+categories: 零碎生活
 toc: "true"
 abbrlink: b893f77b
 ---

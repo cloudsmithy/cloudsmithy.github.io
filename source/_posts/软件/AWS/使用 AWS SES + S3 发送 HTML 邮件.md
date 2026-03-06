@@ -2,7 +2,9 @@
 title: 使用 AWS SES + S3 发送 HTML 邮件
 tags: AWS
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 date: 2026-02-02 00:00:00
 ---
 

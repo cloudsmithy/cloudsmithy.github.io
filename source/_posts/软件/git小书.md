@@ -2,7 +2,7 @@
 title: GIT小书
 tags: GIT
 toc: true
-categories: GIT
+categories: 软件
 abbrlink: fa9f211a
 date: 2025-07-18 00:00:00
 ---

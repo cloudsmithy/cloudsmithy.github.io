@@ -2,7 +2,7 @@
 title: Google SEO 技巧
 tags: SEO
 toc: true
-categories: SEO
+categories: 软件
 abbrlink: 3d393e74
 date: 2025-08-09 00:00:00
 ---
