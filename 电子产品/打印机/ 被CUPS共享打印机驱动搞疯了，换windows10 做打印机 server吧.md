@@ -2,7 +2,9 @@
 title: 被CUPS共享打印机驱动搞疯了，换windows10 做打印机 server吧
 tags:
   - 外设
-categories: 硬件
+categories:
+  - 电子产品
+  - 打印机
 abbrlink: 7cc2eba9
 date: 2026-02-17 14:43:24
 ---

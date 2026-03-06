@@ -2,6 +2,9 @@
 title: 安卓ADB提取APK安装包
 tags:
   - 手机
+categories:
+  - 电子产品
+  - 软件技巧
 abbrlink: 17adb539
 date: 2026-02-22 00:00:00
 ---
