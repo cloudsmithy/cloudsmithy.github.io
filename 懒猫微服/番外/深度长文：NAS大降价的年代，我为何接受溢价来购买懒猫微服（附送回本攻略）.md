@@ -1,8 +1,12 @@
 ---
 title: 深度长文：NAS大降价的年代，我为何接受溢价来购买懒猫微服（附送回本攻略）
-tags: NAS
+tags:
+  - NAS
+  - 懒猫微服
 toc: true
-categories: 懒猫微服
+categories:
+  - 懒猫微服
+  - 番外
 abbrlink: d6c5e7b2
 date: 2025-05-16 00:00:00
 ---

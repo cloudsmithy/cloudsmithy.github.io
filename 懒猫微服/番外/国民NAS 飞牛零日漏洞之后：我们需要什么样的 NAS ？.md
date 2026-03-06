@@ -1,8 +1,12 @@
 ---
 title: 国民NAS 飞牛零日漏洞之后：我们需要什么样的 NAS ？
-tags: NAS
+tags:
+  - NAS
+  - 懒猫微服
 toc: true
-categories: 懒猫微服
+categories:
+  - 懒猫微服
+  - 番外
 abbrlink: 75d5cfe5
 date: 2026-02-07 00:00:00
 ---
