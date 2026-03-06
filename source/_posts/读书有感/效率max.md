@@ -2,7 +2,7 @@
 title: 效率（忘记哪里摘抄的了
 tags: 读书
 toc: true
-categories: 读书笔记
+categories: 读书有感
 abbrlink: 26314a8
 date: 2021-01-22 00:00:00
 ---

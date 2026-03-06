@@ -4,7 +4,9 @@ tags:
   - AWS
   - Docker
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 date: 2025-11-20 00:00:00
 ---
 你有一个现成的 Flask API，想部署到 AWS Lambda 享受 Serverless 的好处，但又不想改代码？AWS Lambda Web Adapter 可以帮你实现。

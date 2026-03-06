@@ -2,7 +2,7 @@
 title: 一次拿trace把langfuse打挂的修复
 tags: LLM
 toc: true
-categories: SMTP
+categories: 软件
 date: 2026-02-01 00:00:00
 ---
 

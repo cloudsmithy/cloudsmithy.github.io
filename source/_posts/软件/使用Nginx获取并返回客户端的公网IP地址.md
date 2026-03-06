@@ -4,7 +4,7 @@ tags:
   - 网关
   - Nginx
 toc: true
-categories: 运维
+categories: 软件
 abbrlink: 92ab0084
 date: 2025-04-24 00:00:00
 ---

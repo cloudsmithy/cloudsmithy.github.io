@@ -2,7 +2,9 @@
 title: EC2 没有绑定 EIP，重启后 IP 会变？DDNS-GO 自动更新你的域名
 tags: AWS
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 abbrlink: 369cde6d
 date: 2025-07-15 00:00:00
 ---

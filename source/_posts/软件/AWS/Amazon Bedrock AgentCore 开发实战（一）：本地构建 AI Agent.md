@@ -2,7 +2,9 @@
 title: Amazon Bedrock AgentCore 开发实战（一）：本地构建 AI Agent
 tags: AWS
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 date: 2025-12-15 00:00:00
 ---
 

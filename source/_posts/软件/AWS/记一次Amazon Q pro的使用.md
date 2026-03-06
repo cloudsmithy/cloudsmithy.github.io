@@ -2,7 +2,9 @@
 title: 记一次Amazon Q pro的使用
 tags: AWS
 toc: true
-categories: AWS
+categories:
+  - 软件
+  - AWS
 abbrlink: 56bb1eb7
 date: 2025-06-02 00:00:00
 ---
