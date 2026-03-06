@@ -1,3 +1,11 @@
+---
+title: 使用 AWS SES + S3 发送 HTML 邮件
+tags: AWS
+toc: true
+categories: AWS
+date: 2026-02-02 00:00:00
+---
+
 在营销、通知等场景中，我们经常需要发送格式丰富的 HTML 邮件。本文介绍如何用 Python + boto3，从 S3 读取 HTML 模板并通过 SES 发送邮件。
 
 ## 架构
