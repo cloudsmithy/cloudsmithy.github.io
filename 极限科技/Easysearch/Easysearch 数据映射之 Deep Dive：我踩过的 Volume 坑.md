@@ -1,8 +1,12 @@
 ---
 title: Easysearch 数据映射之 Deep Dive：我踩过的 Volume 坑
-tags: 搜索引擎（ES）
+tags:
+  - 搜索引擎（ES）
+  - 极限科技
 toc: true
-categories: 极限科技
+categories:
+  - 极限科技
+  - Easysearch
 abbrlink: 65e472bd
 date: 2026-02-26 00:00:00
 ---

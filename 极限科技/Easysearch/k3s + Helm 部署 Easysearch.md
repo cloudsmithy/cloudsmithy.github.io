@@ -1,8 +1,12 @@
 ---
 title: k3s + Helm 部署 Easysearch
-tags: 搜索引擎（ES）
+tags:
+  - 搜索引擎（ES）
+  - 极限科技
 toc: true
-categories: 极限科技
+categories:
+  - 极限科技
+  - Easysearch
 abbrlink: 1dba38bc
 date: 2026-03-03 00:00:00
 ---
