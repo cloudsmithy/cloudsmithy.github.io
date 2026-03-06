@@ -1,8 +1,12 @@
 ---
 title: 记一次硬盘满了导致 Coco Server 无法启动的排查
-tags: Coco-AI
+tags:
+  - Coco-AI
+  - 极限科技
 toc: true
-categories: 极限科技
+categories:
+  - 极限科技
+  - Coco
 date: 2026-02-21 00:00:00
 ---
 

@@ -1,8 +1,12 @@
 ---
 title: Easysearch 更新后日志中看不到密码？一文带你搞清楚原因与解决方案
-tags: 搜索引擎（ES）
+tags:
+  - 搜索引擎（ES）
+  - 极限科技
 toc: true
-categories: 极限科技
+categories:
+  - 极限科技
+  - Easysearch
 date: 2025-10-20 00:00:00
 ---
 

@@ -1,8 +1,12 @@
 ---
 title: RK3566嵌入式开发板运行Coco AI Sever
-tags: Coco-AI
+tags:
+  - Coco-AI
+  - 极限科技
 toc: true
-categories: 极限科技
+categories:
+  - 极限科技
+  - Coco
 date: 2026-02-18 00:00:00
 ---
 
