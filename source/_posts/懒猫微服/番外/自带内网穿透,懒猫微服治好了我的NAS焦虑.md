@@ -1,8 +1,12 @@
 ---
 title: '自带内网穿透,懒猫微服治好了我的NAS焦虑'
-tags: NAS
+tags:
+  - NAS
+  - 懒猫微服
 toc: true
-categories: 懒猫微服
+categories:
+  - 懒猫微服
+  - 番外
 abbrlink: b1e8232f
 date: 2025-05-04 00:00:00
 ---

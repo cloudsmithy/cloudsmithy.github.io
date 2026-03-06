@@ -1,8 +1,12 @@
 ---
 title: 懒猫微服：不只是 NAS，更适合云计算宝宝体质
-tags: NAS
+tags:
+  - NAS
+  - 懒猫微服
 toc: true
-categories: 懒猫微服
+categories:
+  - 懒猫微服
+  - 番外
 date: 2026-1-17 00:00:00
 ---
 
