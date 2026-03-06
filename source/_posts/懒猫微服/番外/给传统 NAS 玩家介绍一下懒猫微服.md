@@ -1,8 +1,12 @@
 ---
 title: 给传统 NAS 玩家介绍一下懒猫微服
-tags: NAS
+tags:
+  - NAS
+  - 懒猫微服
 toc: true
-categories: 懒猫微服
+categories:
+  - 懒猫微服
+  - 番外
 abbrlink: 47885d90
 date: 2025-07-10 00:00:00
 ---

@@ -1,8 +1,12 @@
 ---
 title: 我用Amazon Q写了一个Docker客户端，并上架了懒猫微服商店
-tags: Docker
+tags:
+  - Docker
+  - 懒猫微服
 toc: true
-categories: 懒猫微服
+categories:
+  - 懒猫微服
+  - 番外
 abbrlink: 8f0212bf
 date: 2025-06-08 00:00:00
 ---
