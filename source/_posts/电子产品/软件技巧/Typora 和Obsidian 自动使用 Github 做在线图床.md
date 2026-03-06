@@ -2,7 +2,9 @@
 title: Typora 和Obsidian 自动使用 Github 做在线图床
 tags: NAS
 toc: true
-categories: 电脑外设
+categories:
+  - 电子产品
+  - 软件技巧
 abbrlink: 1fc7f9f5
 date: 2025-02-15 00:00:00
 ---
