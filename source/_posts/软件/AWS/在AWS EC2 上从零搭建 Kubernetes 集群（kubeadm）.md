@@ -17,6 +17,8 @@ kubeadm 是 Kubernetes 官方提供的集群引导工具，用来快速创建符
 
 我们会在 Master 节点上从头安装 kubeadm 及其依赖，然后初始化集群，最后把 Worker 节点加入进来。
 
+ <!--more-->
+
 ![](https://fastly.jsdelivr.net/gh/bucketio/img18@main/2026/03/06/1772810713484-31955c25-1962-4513-af60-01cd0d1f9a4e.png)
 
 这几台 EC2 使用同一个安全组，入站规则只放行VPC网段和终端访问地址。
