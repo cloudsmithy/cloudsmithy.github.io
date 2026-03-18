@@ -53,7 +53,7 @@ spec:
     ports:
       - containerPort: 80
 ```
-
+<!-- more -->
 相比 1.1 新增了 `ports.containerPort: 80`。如果不声明端口，`kubectl describe` 中端口显示为 none，外部无法知道容器监听哪个端口。声明端口是让 Kubernetes 知道容器对外提供服务的方式。
 
 注意：即使声明了端口，从集群外部仍然无法直接访问 Pod IP（Pod IP 在容器网络内），需要通过 Service 暴露。
