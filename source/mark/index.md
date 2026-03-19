@@ -18,3 +18,6 @@ https://csdiy.wiki/
 https://www.docker.com/
 
 https://quickref.me/
+
+MDN:
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/Cookies
