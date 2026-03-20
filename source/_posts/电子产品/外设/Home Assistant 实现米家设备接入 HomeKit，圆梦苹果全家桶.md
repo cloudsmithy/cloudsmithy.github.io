@@ -1,5 +1,6 @@
 ---
 title: Home Assistant 实现米家设备接入 HomeKit，圆梦苹果全家桶
+description: 用 Home Assistant 将米家智能设备接入 Apple HomeKit
 tags: 外设
 toc: true
 categories:

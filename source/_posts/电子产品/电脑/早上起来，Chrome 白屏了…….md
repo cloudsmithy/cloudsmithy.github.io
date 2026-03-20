@@ -1,5 +1,6 @@
 ---
 title: 早上起来，Chrome 白屏了……
+description: Chrome 浏览器突然白屏的排查与修复过程记录
 tags: 外设
 categories:
   - 电子产品

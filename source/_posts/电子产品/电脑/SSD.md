@@ -1,5 +1,6 @@
 ---
 title: SSD介绍
+description: SSD 固态硬盘基础知识介绍，了解 SLC/MLC/TLC 闪存颗粒区别
 toc: true
 categories:
   - 电子产品

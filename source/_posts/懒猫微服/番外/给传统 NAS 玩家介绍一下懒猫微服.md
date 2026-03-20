@@ -1,5 +1,6 @@
 ---
 title: 给传统 NAS 玩家介绍一下懒猫微服
+description: 面向传统 NAS 用户，介绍懒猫微服的特色与优势
 tags:
   - NAS
   - 懒猫微服

@@ -1,5 +1,6 @@
 ---
 title: 使用 MacOS 给泰山派烧录镜像
+description: 在 macOS 上为泰山派 RK3568 开发板烧录系统镜像的详细教程
 tags: 硬件
 toc: true
 categories:

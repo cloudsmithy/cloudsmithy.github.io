@@ -1,5 +1,6 @@
 ---
 title: 如何关闭 AWS root 账号的 MFA 认证
+description: 详解如何关闭 AWS root 账号的 MFA 多因素认证
 tags:
   - AWS
   - MFA

@@ -1,5 +1,6 @@
 ---
 title: 高版本的MacOS如何降级？
+description: macOS 高版本降级到低版本的方法与注意事项。
 categories:
   - 电子产品
   - 电脑

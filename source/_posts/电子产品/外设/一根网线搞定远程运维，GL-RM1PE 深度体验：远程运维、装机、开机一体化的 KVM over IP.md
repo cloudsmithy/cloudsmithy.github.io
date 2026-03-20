@@ -1,5 +1,6 @@
 ---
 title: 一根网线搞定远程运维，GL-RM1PE 深度体验：远程运维、装机、开机一体化的 KVM over IP
+description: GL-RM1PE KVM over IP 深度体验，一根网线实现远程运维与装机
 tags: 外设
 toc: true
 categories:

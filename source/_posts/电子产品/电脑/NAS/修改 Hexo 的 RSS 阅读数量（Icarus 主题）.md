@@ -1,5 +1,6 @@
 ---
 title: 修改 Hexo 的 RSS 阅读数量（Icarus 主题）
+description: 修改 Hexo Icarus 主题的 RSS 输出文章数量配置。
 tags: Hexo
 toc: true
 categories:

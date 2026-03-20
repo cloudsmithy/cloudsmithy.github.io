@@ -1,5 +1,6 @@
 ---
 title: PXE 装机：iventoy 聊胜于无
+description: 使用 iVentoy 搭建 PXE 网络装机环境的体验记录。
 tags: 电脑外设
 toc: true
 categories:

@@ -1,5 +1,6 @@
 ---
 title: NFC复制卡写手机手环
+description: 使用 NFC 工具复制加密 IC 卡并写入手机手环的教程
 tags: 外设
 toc: true
 categories:

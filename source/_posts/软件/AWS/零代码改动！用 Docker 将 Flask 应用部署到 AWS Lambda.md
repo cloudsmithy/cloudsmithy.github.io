@@ -1,5 +1,6 @@
 ---
 title: 零代码改动！用 Docker 将 Flask 应用部署到 AWS Lambda
+description: 用 Docker 和 Lambda Web Adapter 零改动部署 Flask 到 AWS Lambda
 tags:
   - AWS
   - Docker

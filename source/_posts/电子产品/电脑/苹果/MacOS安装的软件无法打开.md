@@ -1,5 +1,6 @@
 ---
 title: MacOS安装的软件无法打开
+description: macOS 安装第三方软件提示无法打开的解决方法。
 tags: Apple
 toc: true
 categories:

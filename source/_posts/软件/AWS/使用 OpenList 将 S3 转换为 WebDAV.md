@@ -1,5 +1,6 @@
 ---
 title: 使用 OpenList 将 S3 转换为 WebDAV
+description: 通过 OpenList 将 Amazon S3 存储转换为 WebDAV 协议访问
 tags: AWS
 toc: true
 categories:

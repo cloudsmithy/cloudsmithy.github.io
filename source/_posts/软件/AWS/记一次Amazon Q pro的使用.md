@@ -1,5 +1,6 @@
 ---
 title: 记一次Amazon Q pro的使用
+description: 记录 Amazon Q Pro 的申请与实际使用体验
 tags: AWS
 toc: true
 categories:

@@ -1,5 +1,6 @@
 ---
 title: MacOS 26 beta 如何恢复启动台
+description: macOS 26 beta 升级后启动台异常的恢复方法。
 tags: Apple
 toc: true
 categories:

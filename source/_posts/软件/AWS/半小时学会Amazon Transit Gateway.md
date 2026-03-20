@@ -1,5 +1,6 @@
 ---
 title: 组队参加 Amazon Q Idea 1000，我们的作品上了 AWS 峰会
+description: 半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置
 tags: AWS
 toc: true
 categories:

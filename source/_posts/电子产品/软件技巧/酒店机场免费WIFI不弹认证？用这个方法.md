@@ -1,5 +1,6 @@
 ---
 title: 酒店机场免费WIFI不弹认证？用这个方法
+description: 解决酒店机场免费 WiFi 连接后不弹出认证页面的方法
 tags: 外设
 toc: true
 categories:

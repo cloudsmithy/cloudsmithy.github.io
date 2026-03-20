@@ -1,5 +1,6 @@
 ---
 title: 找到了一个wedav的项目
+description: 发现一个 WebDAV 开源项目，可用于 NAS 文件远程访问。
 tags: NAS
 toc: true
 categories:

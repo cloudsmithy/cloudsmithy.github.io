@@ -1,5 +1,6 @@
 ---
 title: DSM 外接磁盘挂载记录
+description: 群晖 DSM 外接 USB 磁盘的挂载方法与踩坑记录。
 tags: 家庭网络
 toc: true
 categories:

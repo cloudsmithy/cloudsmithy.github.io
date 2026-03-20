@@ -1,5 +1,6 @@
 ---
 title: 群晖导入磁盘大法 - 安装img
+description: 群晖通过导入磁盘镜像安装系统的方法记录。
 tags: 家庭网络
 toc: true
 categories:

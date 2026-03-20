@@ -43,6 +43,7 @@
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
+      "esbuild",
       "hexo-util",
       "inferno"
     ]

@@ -1,5 +1,6 @@
 ---
 title: Mac 上 Orbstack的Docker容器访问微服 Wordpress IPv6 解析问题记录
+description: 记录 Mac 上 Orbstack 容器访问懒猫微服 WordPress 时 IPv6 解析异常的排查
 tags:
   - Docker
   - 懒猫微服

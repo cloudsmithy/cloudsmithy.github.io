@@ -1,5 +1,6 @@
 ---
 title: Proxmox Virtual Environment (PVE) 虚拟机安装不完全指南
+description: PVE 虚拟化平台安装指南，从零搭建家庭虚拟化环境。
 tags: NAS
 toc: true
 categories:

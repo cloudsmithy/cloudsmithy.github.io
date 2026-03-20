@@ -1,5 +1,6 @@
 ---
 title: EC2 没有绑定 EIP，重启后 IP 会变？DDNS-GO 自动更新你的域名
+description: 用 DDNS-GO 解决 EC2 无 EIP 重启后 IP 变化的动态域名解析方案
 tags: AWS
 toc: true
 categories:

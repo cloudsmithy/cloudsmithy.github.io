@@ -1,5 +1,6 @@
 ---
 title: 我用Amazon Q写了一个Docker客户端，并上架了懒猫微服商店
+description: 使用 Amazon Q 开发 Docker 客户端并上架懒猫微服商店的全过程
 tags:
   - Docker
   - 懒猫微服

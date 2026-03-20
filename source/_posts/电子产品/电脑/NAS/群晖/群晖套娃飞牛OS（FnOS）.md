@@ -1,5 +1,6 @@
 ---
 title: 群晖套娃飞牛OS（FnOS）
+description: 在群晖虚拟机中套娃安装飞牛 NAS 系统的实践记录。
 tags: 家庭网络
 toc: true
 categories:

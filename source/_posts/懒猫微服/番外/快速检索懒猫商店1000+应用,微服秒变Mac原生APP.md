@@ -1,5 +1,6 @@
 ---
 title: "快速检索懒猫商店1000+应用,微服秒变Mac原生APP"
+description: 用 PWA 将懒猫商店变成 Mac 原生应用，快速检索上千款应用
 categories:
   - 懒猫微服
   - 番外

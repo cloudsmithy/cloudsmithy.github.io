@@ -1,5 +1,6 @@
 ---
 title: Amazon OpenSearch Service 现在支持 JSON Web Token（JWT）身份验证和授权
+description: 介绍 Amazon OpenSearch Service 新增的 JWT 身份验证与授权功能
 tags: AWS
 toc: true
 categories:

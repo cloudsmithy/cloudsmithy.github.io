@@ -1,5 +1,6 @@
 ---
 title: 等了半年的 POE 系统，铭凡 S100 不完全测评
+description: 铭凡 S100 POE 供电小主机开箱测评与使用体验
 tags: 电脑外设
 toc: true
 categories:

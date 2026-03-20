@@ -1,5 +1,6 @@
 ---
 title: 组队参加 Amazon Q Idea 1000，我们的作品上了 AWS 峰会
+description: 参加 Amazon Q Idea 1000 比赛，作品登上 AWS 峰会的经历分享
 tags: AWS
 toc: true
 categories:

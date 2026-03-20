@@ -1,5 +1,6 @@
 ---
 title: 使用ipad 串流 MacOS
+description: 用 Sunshine + Moonlight 实现 iPad 串流 macOS，把 iPad 变成副屏。
 categories:
   - 电子产品
   - 电脑

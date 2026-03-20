@@ -1,5 +1,6 @@
 ---
 title: 再也不用拼手速！一条命令直接进 BIOS（Windows/Linux/macOS 全攻略)
+description: 一条命令直接进入 BIOS，Windows/Linux/macOS 全平台方法汇总
 tags: 外设
 categories:
   - 电子产品

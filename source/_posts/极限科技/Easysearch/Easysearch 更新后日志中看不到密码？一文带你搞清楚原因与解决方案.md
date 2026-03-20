@@ -1,5 +1,6 @@
 ---
 title: Easysearch 更新后日志中看不到密码？一文带你搞清楚原因与解决方案
+description: 解析 Easysearch 更新后日志中不再显示密码的原因及解决方案
 tags:
   - 搜索引擎（ES）
   - 极限科技

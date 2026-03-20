@@ -1,5 +1,6 @@
 ---
 title: intel 12代CPU折腾记
+description: Intel 12 代 CPU 与 NUC 小主机的折腾记录
 tags: 外设
 abbrlink: 5821c3b8
 date: 2023-02-06 00:00:00
