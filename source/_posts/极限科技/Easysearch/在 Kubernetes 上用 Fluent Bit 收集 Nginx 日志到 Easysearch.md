@@ -1,5 +1,6 @@
 ---
 title: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 Easysearch
+description: 基于 k3s + Easysearch 2.0.3 实测，从零搭建 Fluent Bit 日志收集方案，将 Nginx 日志转发到 Easysearch。
 tags:
   - 搜索引擎（ES）
   - 极限科技

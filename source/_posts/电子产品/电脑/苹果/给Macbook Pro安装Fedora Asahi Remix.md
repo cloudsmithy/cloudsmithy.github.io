@@ -1,5 +1,6 @@
 ---
 title: 给Macbook Pro安装Fedora Asahi Remix
+description: 16G MacBook Pro 内存不够用，安装 Fedora Asahi Remix 做双系统的完整过程。
 categories:
   - 电子产品
   - 电脑

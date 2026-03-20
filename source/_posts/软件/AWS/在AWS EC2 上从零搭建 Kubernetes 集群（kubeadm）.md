@@ -1,5 +1,6 @@
 ---
 title: 在AWS EC2 上从零搭建 Kubernetes 集群（kubeadm）
+description: 使用 kubeadm 在 AWS EC2 Ubuntu 实例上搭建 Kubernetes 集群，一台 Master 两台 Worker 的完整教程。
 tags:
   - AWS
 toc: true

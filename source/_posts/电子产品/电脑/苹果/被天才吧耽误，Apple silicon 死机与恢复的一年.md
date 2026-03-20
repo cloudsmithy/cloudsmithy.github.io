@@ -1,5 +1,6 @@
 ---
 title: 被天才吧耽误，Apple silicon 死机与恢复的一年
+description: 十年黑苹果玩家入手 Apple Silicon 后频繁死机，被天才吧耽误一年的维修经历。
 tags: Apple
 toc: true
 categories:

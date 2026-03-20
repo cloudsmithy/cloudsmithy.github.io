@@ -1,5 +1,6 @@
 ---
 title: 安卓ADB提取APK安装包
+description: 通过无线 ADB 连接安卓设备，使用命令行提取已安装应用的 APK 安装包。
 tags:
   - 手机
 date: 2026-02-22

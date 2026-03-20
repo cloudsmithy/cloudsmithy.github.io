@@ -1,5 +1,6 @@
 ---
 title: 记一次硬盘满了导致 Coco Server 无法启动的排查
+description: Coco Server 启动失败的排查过程，最终定位到磁盘空间不足导致服务无法正常运行。
 tags:
   - Coco-AI
   - 极限科技

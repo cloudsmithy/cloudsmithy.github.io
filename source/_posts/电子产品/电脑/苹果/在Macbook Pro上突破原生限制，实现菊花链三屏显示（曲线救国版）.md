@@ -1,5 +1,6 @@
 ---
 title: 在Macbook Pro上突破原生限制，实现菊花链三屏显示（曲线救国版）
+description: M 芯片 MacBook Pro 原生只支持双外接显示器，通过 DisplayLink 方案突破限制实现三屏显示。
 categories:
   - 电子产品
   - 电脑

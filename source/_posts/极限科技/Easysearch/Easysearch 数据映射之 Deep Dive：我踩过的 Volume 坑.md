@@ -1,5 +1,6 @@
 ---
 title: Easysearch 数据映射之 Deep Dive：我踩过的 Volume 坑
+description: Docker 部署 Easysearch 时遇到的数据持久化问题，具名卷与绑定挂载的区别，以及 503 错误的排查过程。
 tags:
   - 搜索引擎（ES）
   - 极限科技

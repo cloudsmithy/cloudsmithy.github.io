@@ -1,5 +1,6 @@
 ---
 title: Macbook Pro 虚拟机安装ARM飞牛
+description: 在 MacBook Pro 上通过虚拟机安装 ARM 版飞牛 NAS 系统的教程。
 tags: NAS
 toc: true
 categories:

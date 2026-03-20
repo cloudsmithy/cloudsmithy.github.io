@@ -1,5 +1,6 @@
 ---
 title: 被CUPS共享打印机驱动搞疯了，换windows10 做打印机 server吧
+description: CUPS 对联想打印机兼容性差，改用 Windows 10 做打印服务器，原生驱动更稳定还能 RDP 远程管理。
 tags:
   - 外设
 categories:

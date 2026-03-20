@@ -1,5 +1,6 @@
 ---
 title: 安卓也有terminal，使用无线ADB解锁X300的终端
+description: 通过无线 ADB 解锁 X300 设备隐藏的终端功能，让安卓设备也能用命令行。
 tags: 外设
 toc: true
 categories:
