@@ -15,13 +15,13 @@ head:
         sizes: ""
         type:
   open_graph:
-    title:
+    title: 镜湖
     type: blog
-    url:
-    image:
-    site_name:
-    author:
-    description:
+    url: https://cloudsmithy.github.io/
+    image: /images/me.png
+    site_name: 镜湖
+    author: 忘机山人
+    description: 镜湖 - 忘机山人的个人博客，记录技术、生活与思考
     twitter_card:
     twitter_id:
     twitter_site:
@@ -29,13 +29,13 @@ head:
     fb_admins:
     fb_app_id:
   structured_data:
-    title:
-    description:
-    url:
-    author:
-    publisher:
-    publisher_logo:
-    image:
+    title: 镜湖
+    description: 镜湖 - 忘机山人的个人博客，记录技术、生活与思考
+    url: https://cloudsmithy.github.io/
+    author: 忘机山人
+    publisher: 忘机山人
+    publisher_logo: /images/me.png
+    image: /images/me.png
   meta:
     - ""
   rss:

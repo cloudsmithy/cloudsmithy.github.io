@@ -1,7 +1,13 @@
 title: 镜湖
-subtitle: ""
-description: ""
-keywords: null
+subtitle: "随手记"
+description: "镜湖 - 忘机山人的个人博客，记录技术、生活与思考"
+keywords:
+  - 博客
+  - 技术
+  - 生活
+  - NAS
+  - 懒猫微服
+  - Linux
 author: Xu
 language: zh-CN
 timezone: "Asia/Shanghai"
@@ -32,6 +38,7 @@ skip_render:
   - "_posts/**/index.md"
   - "_posts/**/后记.md"
   - "_posts/**/序.md"
+  - "googlea37b65ccf0f77745.html"
 new_post_name: ":title.md"
 default_layout: post
 titlecase: false
