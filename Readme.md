@@ -27,3 +27,12 @@
 苏轼说：“惟愿孩儿愚且鲁，无灾无难到公卿”。
 
 几千年来如是而已。
+
+
+## Clone
+
+由于 `gh-pages` 分支包含大量构建产物历史（~800MB），建议只拉 `master` 分支：
+
+```bash
+git clone --single-branch --branch master git@github.com:cloudsmithy/cloudsmithy.github.io.git
+```

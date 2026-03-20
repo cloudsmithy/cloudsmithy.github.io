@@ -39,6 +39,8 @@ jobs:
           token: ${{ secrets.acc }}
           branch: docs
           folder: ./source/_posts/
+          force: true
+          single-commit: true
 
       - name: Deploy Pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -46,3 +48,5 @@ jobs:
           token: ${{ secrets.acc }}
           branch: gh-pages
           folder: ./public
+          force: true
+          single-commit: true
