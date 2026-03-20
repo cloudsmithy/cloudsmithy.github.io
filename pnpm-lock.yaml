@@ -51,7 +51,7 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       hexo-theme-icarus:
-        specifier: ^6.0.0
+        specifier: ^6.1.1
         version: 6.1.1(chokidar@3.6.0)
     devDependencies:
       '@babel/preset-env':
