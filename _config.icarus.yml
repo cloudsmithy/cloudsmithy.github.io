@@ -85,8 +85,11 @@ search:
   type: insight
   index_pages: true
 comment:
-  type: disqus
-  shortname: "my"
+  type: utterances
+  repo: cloudsmithy/blog-comments
+  issue_term: pathname
+  label: Comment
+  theme: github-light
 donates:
   - type: wechat
     qrcode: "/images/gongzhonghao.png"
