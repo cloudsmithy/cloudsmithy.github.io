@@ -1,5 +1,6 @@
 ---
 title: 'Gemini-cli 踩坑机：国内环境 , 用过 Google Cloud 如何设置？'
+description: 国内环境使用 Gemini CLI 的踩坑记录，Google Cloud 账号配置与免费额度说明。
 tags: LLM
 toc: true
 categories: 软件

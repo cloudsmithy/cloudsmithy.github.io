@@ -1,5 +1,6 @@
 ---
 title: GIT小书
+description: 以故事形式讲解 Git 版本管理，从新手入职到项目协作的 Git 学习之路。
 tags: GIT
 toc: true
 categories: 软件

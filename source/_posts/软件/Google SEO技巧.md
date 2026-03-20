@@ -1,5 +1,6 @@
 ---
 title: Google SEO 技巧
+description: Google SEO 实用技巧，包括 NCR 入口、搜索优化等提升网站排名的方法。
 tags: SEO
 toc: true
 categories: 软件

@@ -1,5 +1,6 @@
 ---
 title: 通过 SMTP 使用 163 邮箱发送邮件
+description: Python 通过 SMTP 协议使用 163 邮箱发送邮件，含授权码获取和 smtplib 代码示例。
 tags: Python
 toc: true
 categories: 软件

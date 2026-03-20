@@ -1,5 +1,6 @@
 ---
 title: 'Linux常用命令'
+description: Linux 常用命令速查，涵盖别名设置、文件操作等日常运维实用命令。
 tags: Linux
 toc: true
 categories: 软件

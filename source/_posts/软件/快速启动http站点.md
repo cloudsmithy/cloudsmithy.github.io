@@ -1,5 +1,6 @@
 ---
 title: 快速启动 http 站点
+description: Python 内置 HTTP 服务器的几种启动方式，一行命令快速搭建本地静态站点。
 tags: 开发
 toc: true
 categories: 软件

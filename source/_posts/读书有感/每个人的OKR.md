@@ -1,5 +1,6 @@
 ---
 title: 《每个人的OKR》书摘
+description: 《每个人的OKR》书摘，物质激励的副作用与时间管理术语整理。
 tags: 效率
 toc: true
 categories: 读书有感

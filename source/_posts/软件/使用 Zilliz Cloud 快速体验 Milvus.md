@@ -1,5 +1,6 @@
 ---
 title: 使用 Zilliz Cloud 快速体验 Milvus
+description: 零部署体验 Milvus 向量数据库，注册 Zilliz Cloud 免费套餐并运行官方示例代码。
 tags: 向量数据库
 toc: true
 categories: 软件
