@@ -31,8 +31,8 @@
 
 ## Clone
 
-由于 `gh-pages` 分支包含大量构建产物历史（~800MB），建议只拉 `master` 分支：
+开发只需要 `master` 分支，加 `--depth 1` 只拉最新 commit，速度最快：
 
 ```bash
-git clone --single-branch --branch master git@github.com:cloudsmithy/cloudsmithy.github.io.git
+git clone --single-branch --branch master --depth 1 git@github.com:cloudsmithy/cloudsmithy.github.io.git
 ```
