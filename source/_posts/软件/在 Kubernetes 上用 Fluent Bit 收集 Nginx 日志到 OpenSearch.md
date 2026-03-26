@@ -1,3 +1,12 @@
+---
+title: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch
+description: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch
+  - Kubernetes
+  - OpenSearch
+toc: true
+categories: OpenSearch
+date: 2026-03-24 00:00:00
+---
 上一篇我们用 Helm 部署了 OpenSearch 集群和 Dashboards，这篇接着讲怎么用 Fluent Bit 把 Kubernetes 中 Nginx 的日志采集到 OpenSearch，并在 Dashboards 里查看和过滤。
 
 本文假设你已经有一个运行中的 OpenSearch 集群，如果没有可以参考上一篇文章。
@@ -19,7 +28,7 @@ kubectl expose deployment nginx --port=80
 helm repo add fluent https://fluent.github.io/helm-charts
 helm repo update
 ```
-
+<!-- more -->
 Fluent Bit 的配置比较长，建议用 values 文件管理。创建 `fluent-bit-values.yaml`：
 
 ```yaml
