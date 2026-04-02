@@ -625,8 +625,8 @@ giscus:
   repo: cloudsmithy/cloudsmithy.github.io
   repo_id: R_kgDOI0u9iQ
   category_id: DIC_kwDOI0u9ic4C43GJ
-  light_theme: light
-  dark_theme: dark
+  light_theme: preferred_color_scheme
+  dark_theme: preferred_color_scheme
   js:
   option:
 
