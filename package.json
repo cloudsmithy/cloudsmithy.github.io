@@ -12,8 +12,7 @@
     "post": "hexo new post",
     "draft": "hexo new draft",
     "cm": "git add . && git commit -m",
-    "dp": "yarn sp && git push -v",
-    "sp": "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890",
+    "dp": "git push -v",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
@@ -22,15 +21,16 @@
     "infini:preview": "SITE=infini vitepress preview docs"
   },
   "hexo": {
-    "version": "7.3.0"
+    "version": "8.1.1"
   },
   "dependencies": {
-    "hexo": "^7.1.1",
+    "hexo": "^8.1.1",
     "hexo-abbrlink": "^2.2.1",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^3.0.0",
+    "hexo-generator-searchdb": "^1.5.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
     "hexo-mermaid-lastest": "^1.1.1",
@@ -39,6 +39,7 @@
     "hexo-renderer-marked": "^6.2.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
+    "hexo-theme-butterfly": "github:jerryc127/hexo-theme-butterfly",
     "hexo-theme-icarus": "^6.1.1"
   },
   "pnpm": {

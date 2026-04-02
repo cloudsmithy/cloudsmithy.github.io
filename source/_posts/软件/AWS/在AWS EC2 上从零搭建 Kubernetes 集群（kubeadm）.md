@@ -6,6 +6,7 @@ tags:
 toc: true
 categories:
   - AWS
+abbrlink: 7e9d67ce
 date: 2026-03-06 00:00:00
 ---
 今天讲解在AWS EC2 上使用kubeadm搭建Kubernetes 集群。

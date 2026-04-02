@@ -3,10 +3,11 @@ title: 安卓ADB提取APK安装包
 description: 通过无线 ADB 连接安卓设备，使用命令行提取已安装应用的 APK 安装包。
 tags:
   - 手机
-date: 2026-02-22
 categories:
   - 电子产品
   - 软件技巧
+abbrlink: 17adb539
+date: 2026-02-22 00:00:00
 ---
 
 之前的文章写了如何使用无线调试ADB，那么我们就可以用adb提取安装包了。

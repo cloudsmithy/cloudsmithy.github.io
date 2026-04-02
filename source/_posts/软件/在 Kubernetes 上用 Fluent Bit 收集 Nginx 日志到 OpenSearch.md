@@ -1,10 +1,9 @@
 ---
 title: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch
-description: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch
-  - Kubernetes
-  - OpenSearch
+description: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch - Kubernetes - OpenSearch
 toc: true
 categories: OpenSearch
+abbrlink: 3c76c368
 date: 2026-03-24 00:00:00
 ---
 上一篇我们用 Helm 部署了 OpenSearch 集群和 Dashboards，这篇接着讲怎么用 Fluent Bit 把 Kubernetes 中 Nginx 的日志采集到 OpenSearch，并在 Dashboards 里查看和过滤。

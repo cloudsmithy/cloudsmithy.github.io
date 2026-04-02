@@ -1,0 +1,219 @@
+# Butterfly Theme Configuration
+# 基于 Icarus 配置迁移
+
+# 导航栏
+nav:
+  logo: /img/favicon.svg
+  display_title: true
+  fixed: false
+
+menu:
+  镜湖: / || fas fa-home
+  时光线: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  语录: /quotes/ || fas fa-quote-left
+  赞赏: /reward/ || fas fa-heart
+  收藏: /mark/ || fas fa-bookmark
+  备注: /note/ || fas fa-sticky-note
+  关于我: /about/ || fas fa-user
+
+# 代码高亮
+highlight_theme: light
+highlight_copy: true
+highlight_lang: true
+highlight_shrink: false
+
+# 社交链接
+social:
+  fab fa-github: https://github.com/cloudsmithy/cloudsmithy.github.io || GitHub
+
+# 头像
+avatar:
+  img: /images/me.png
+  effect: false
+
+# 顶部图
+index_img: false
+default_top_img: false
+archive_img: false
+tag_img: false
+category_img: false
+
+# 文章封面
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  default_cover: false
+
+# 文章元信息
+post_meta:
+  page:
+    date_type: both
+    date_format: YYYY-MM-DD
+    categories: true
+    tags: true
+    label: true
+  post:
+    date_type: both
+    date_format: YYYY-MM-DD
+    categories: true
+    tags: true
+    label: true
+
+# 文章版权
+post_copyright:
+  enable: true
+  decode: false
+  author_href: https://cloudsmithy.github.io/
+  license: CC BY-NC 4.0
+  license_url: https://creativecommons.org/licenses/by-nc/4.0/
+
+# 目录
+toc:
+  post: true
+  page: false
+  number: false
+  expand: false
+  style_simple: false
+  scroll_percent: true
+
+# 侧边栏
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: 随手记
+    button:
+      enable: true
+      icon: fab fa-github
+      text: GitHub
+      link: https://github.com/cloudsmithy/cloudsmithy.github.io
+  card_announcement:
+    enable: false
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+    sort_order:
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+    sort_order:
+  card_tags:
+    enable: true
+    limit: 40
+    color: true
+    orderby: random
+    order: 1
+    sort_order:
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+    sort_order:
+
+# 底部
+footer:
+  owner:
+    enable: true
+    since: 2022
+  custom_text:
+  copyright: true
+
+# 搜索
+search:
+  use: local_search
+  placeholder: 搜索文章
+
+local_search:
+  enable: true
+  preload: false
+  CDN:
+
+# 评论 - Utterances (从 Icarus 迁移)
+comments:
+  use: Utterances
+  text: true
+  lazyload: true
+  count: true
+  card_post_count: false
+
+utterances:
+  repo: cloudsmithy/blog-comments
+  issue_term: pathname
+  light_theme: github-light
+  dark_theme: github-dark
+
+# 分析
+google_analytics: G-G67E7S9287
+
+# 不蒜子统计
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
+# 数学公式
+katex:
+  enable: true
+  per_page: false
+  hide_scrollbar: true
+
+# Mermaid 图表
+mermaid:
+  enable: true
+  theme:
+    light: default
+    dark: dark
+
+# 暗色模式
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: false
+
+# 阅读模式
+readmode: true
+
+# 页面加载动画
+preloader:
+  enable: true
+  source: 1
+
+# 回到顶部
+rightside_bottom:
+
+# 自动摘要
+index_post_content:
+  method: 2
+  length: 500
+
+# Open Graph & SEO
+open_graph:
+  enable: true
+  twitter_card: summary
+  twitter_image:
+  twitter_id:
+  twitter_site:
+  google_plus:
+  fb_admins:
+  fb_app_id:
+
+# 友情链接
+flink_style: flexcard
+
+# CDN
+CDN:
+  option: false

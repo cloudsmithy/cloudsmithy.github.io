@@ -79,7 +79,7 @@ pagination_dir: page
 include: null
 exclude: null
 ignore: null
-theme: icarus
+theme: butterfly
 hexo_seo_integrated_submit:
   generate_workflow_file: true # 如果仅使用纯命令行工具进行，可无需生成，如需自动化可按命令行工具自行配置，也可使用本工具所生成的workflow文件
   date: created
@@ -112,3 +112,10 @@ robotstxt:
   allow:
     - /
   sitemap: https://cloudsmithy.github.io/sitemap.xml
+
+# Local search (for Butterfly theme)
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
