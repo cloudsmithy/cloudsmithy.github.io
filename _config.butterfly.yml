@@ -3,7 +3,7 @@
 
 # 导航栏
 nav:
-  logo: /img/favicon.svg
+  logo:
   display_title: true
   fixed: false
 
@@ -213,6 +213,64 @@ open_graph:
 
 # 友情链接
 flink_style: flexcard
+
+# 友链数据 (对应 Icarus 的 links widget)
+# 需要创建 source/_data/link.yml 文件来配置友链
+
+# 字数统计
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
+
+# 图片懒加载
+lazyload:
+  enable: true
+  field: site
+  placeholder:
+  blur: false
+
+# 页面锚点
+anchor:
+  auto_update: false
+  click:
+    enable: false
+    always_show: false
+
+# 图片灯箱 (对应 Icarus 的 gallery)
+fancybox: true
+
+# 页面美化
+beautify:
+  enable: true
+  field: post
+  title-prefix-icon: '\f0c1'
+  title-prefix-icon-color: '#F47466'
+
+# 字体
+font:
+  global-font-size:
+  code-font-size:
+  font-family:
+  code-font-family:
+
+# 网站副标题
+subtitle:
+  enable: true
+  effect: true
+  typed_option:
+    loop: true
+    typeSpeed: 100
+    backSpeed: 70
+  source: 1
+  sub:
+    - 镜湖元自属闲人，又何必、君恩赐与
+    - 记录技术、生活与思考
+
+# 页面过渡动画
+pjax:
+  enable: true
 
 # CDN
 CDN:

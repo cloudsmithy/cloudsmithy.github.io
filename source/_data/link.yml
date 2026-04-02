@@ -1,0 +1,27 @@
+- class_name: 友情链接
+  class_desc:
+  link_list:
+    - name: Liarlee
+      link: https://liarlee.site/
+      avatar: https://liarlee.site/favicon.ico
+      descr: Liarlee's Blog
+    - name: 九思学舍
+      link: https://www.asfor.cn/
+      avatar: https://www.asfor.cn/favicon.ico
+      descr: 九思学舍
+    - name: yuxingxin
+      link: https://www.yuxingxin.com/
+      avatar: https://www.yuxingxin.com/favicon.ico
+      descr: yuxingxin's Blog
+    - name: 懒猫微服专栏
+      link: https://lazycat-docs.netlify.app/
+      avatar: https://lazycat-docs.netlify.app/favicon.ico
+      descr: 懒猫微服文档
+    - name: Linus Shyu
+      link: https://linusshyu.dev/
+      avatar: https://linusshyu.dev/favicon.ico
+      descr: Linus Shyu's Blog
+    - name: 喵喵博客
+      link: https://www.mmio.cn/
+      avatar: https://www.mmio.cn/favicon.ico
+      descr: 喵喵博客
