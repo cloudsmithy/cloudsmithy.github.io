@@ -39,7 +39,7 @@ code_blocks:
 
   # Toolbar
   copy: true
-  language: true
+  language: false
   # true: shrink the code blocks | false: expand the code blocks | none: expand code blocks and hide the button
   shrink: false
   fullpage: false
