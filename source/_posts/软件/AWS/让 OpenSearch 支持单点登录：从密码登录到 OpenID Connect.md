@@ -1,5 +1,5 @@
 ---
-title: 让 OpenSearch 支持 SSO：接入 OpenID Connect 认证
+title: 让 OpenSearch 支持单点登录：从密码登录到 OpenID Connect
 description: 让 OpenSearch 支持 SSO：接入 OpenID Connect 认证
 tags:
   - AWS
