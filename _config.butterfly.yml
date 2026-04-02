@@ -525,7 +525,7 @@ comments:
   # Leave it empty if you don't need comments
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # Format of two comments system : Disqus,Waline
-  use: Utterances
+  use: Giscus
   # Display the comment name next to the button
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
@@ -622,9 +622,9 @@ twikoo:
 # Giscus
 # https://giscus.app/
 giscus:
-  repo:
-  repo_id:
-  category_id:
+  repo: cloudsmithy/cloudsmithy.github.io
+  repo_id: R_kgDOI0u9iQ
+  category_id: DIC_kwDOI0u9ic4C43GJ
   light_theme: light
   dark_theme: dark
   js:
