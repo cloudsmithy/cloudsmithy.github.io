@@ -15,6 +15,8 @@ date: 2026-04-02 00:00:00
 
 OpenID Connect 的提供商我选择了 Amazon 的 Cognito，然后对应的Dashboards（前端跳转）和 OpenSearch Security（后端验证）都要单独来做集成。
 
+OIDC 是通用协议，Cognito 只是本文选的提供商，换 Keycloak、Okta、Auth0 都一样
+<!-- more -->
 
 ###  第一步：创建 Cognito App Client
 
