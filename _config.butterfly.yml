@@ -32,10 +32,10 @@ menu:
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
   theme: light
-  macStyle: false
+  macStyle: true
   # Code block height limit (unit: px)
   height_limit: false
-  word_wrap: false
+  word_wrap: true
 
   # Toolbar
   copy: true
@@ -49,6 +49,9 @@ code_blocks:
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/cloudsmithy/cloudsmithy.github.io || GitHub || '#24292e'
+  fas fa-rss: /atom.xml || RSS || '#FFA500'
+  fas fa-sitemap: /sitemap.xml || Sitemap || '#4CAF50'
+  fas fa-envelope: mailto:deep.work.max@gmail.com || Email || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
