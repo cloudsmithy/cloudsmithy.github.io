@@ -221,7 +221,7 @@ reward:
 # Easily browse and edit blog source code online.
 post_edit:
   enable: true
-  url: https://github.com/cloudsmithy/cloudsmithy.github.io/edit/master/
+  url: https://github.com/cloudsmithy/cloudsmithy.github.io/edit/master/source/
 
 # Related Articles
 related_post:
