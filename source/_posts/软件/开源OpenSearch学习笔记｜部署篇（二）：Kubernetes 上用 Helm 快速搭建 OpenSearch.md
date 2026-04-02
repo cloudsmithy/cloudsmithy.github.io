@@ -1,5 +1,6 @@
 ---
 title: K8S 部署OpenSearch
+abbrlink: 1e02510f
 ---
 
 OpenSearch 是一个开源的分布式搜索和分析引擎，适用于日志分析、全文检索、应用监控等场景。本文将介绍如何使用 Helm 在 Kubernetes 集群上快速部署 OpenSearch 及 OpenSearch Dashboards，并通过 Secret 管理密码，避免将敏感信息硬编码在配置文件中。本文的 K8S 环境基于 Amazon EKS，部分步骤涉及 EBS CSI Driver 的配置，如果你使用其他 K8S 发行版可以跳过相关内容。

@@ -59,6 +59,9 @@ importers:
       hexo-theme-icarus:
         specifier: ^6.1.1
         version: 6.1.1(chokidar@3.6.0)
+      hexo-wordcount:
+        specifier: ^6.0.1
+        version: 6.0.1
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.27.2
@@ -1868,6 +1871,9 @@ packages:
   hexo-util@4.0.0:
     resolution: {integrity: sha512-oXKXBs1HZ2Wu/eq0paAVqtCmAEcqJPZ4xxSVRuwAplm1hFU41Ul53WA5bmYMEz9Dp+OJ/SdchjXRmYlbGJdt3w==}
     engines: {node: '>=18'}
+
+  hexo-wordcount@6.0.1:
+    resolution: {integrity: sha512-tbo2P9xRWEKQmRf7+XuPjx9It1MnaE26nA+EEb2DN39gK1x+26W7Nm4Iyp4AugQjBWYYDx7OLn4gp1WFxQpQew==}
 
   hexo@7.3.0:
     resolution: {integrity: sha512-dOe8mzBKrvjubW5oBmyhcnQDpC+M2xmAMLae5K+o+SkHxyvAhShkS2VQZoTsOLIJKY6xilv7dzCjCvE7ol/NHQ==}
@@ -4906,6 +4912,8 @@ snapshots:
       htmlparser2: 10.1.0
       prismjs: 1.30.0
       strip-indent: 3.0.0
+
+  hexo-wordcount@6.0.1: {}
 
   hexo@7.3.0(chokidar@3.6.0):
     dependencies:
