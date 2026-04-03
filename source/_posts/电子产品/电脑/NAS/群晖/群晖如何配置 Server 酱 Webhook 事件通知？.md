@@ -1,11 +1,13 @@
 ---
 title: 群晖如何配置 Server 酱 Webhook 事件通知？
 description: 群晖 DSM 配置 Server 酱 Webhook，实现系统事件微信推送通知。
-tags: 家庭网络
+tags: 
+  - 家庭网络
+  - NAS
+  - 群晖
 toc: true
 categories:
   - 电子产品
-  - 电脑
   - NAS
   - 群晖
 abbrlink: e70dd7d7
