@@ -1,13 +1,13 @@
 ---
 title: DSM 外接磁盘挂载记录
 description: 群晖 DSM 外接 USB 磁盘的挂载方法与踩坑记录。
-tags: 家庭网络
+tags: 
+  - NAS
+  - 群晖
 toc: true
 categories:
   - 电子产品
-  - 电脑
   - NAS
-  - 群晖
 abbrlink: f2e07cac
 date: 2025-02-15 00:00:00
 ---
