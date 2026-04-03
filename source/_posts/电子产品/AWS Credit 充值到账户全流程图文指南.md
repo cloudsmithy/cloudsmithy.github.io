@@ -1,7 +1,7 @@
 ---
 title: AWS Credit 充值到账户全流程图文指南
 description: 图文详解 AWS Credit 代金券充值到账户的完整操作流程
-tags: 外设
+tags: AWS
 toc: true
 categories: 电子产品
 abbrlink: '11273243'
@@ -9,8 +9,6 @@ date: 2025-07-26 00:00:00
 ---
 
 在云计算的世界里，**AWS Credit（代金券）** 就像是给大家的一张“云上优惠券”。很多朋友可能是在参加 **黑客松、社区活动、竞赛** 时拿到的，也有的是通过 **AWS Educate、Activate 初创企业计划** 领取的。无论来源如何，这些 Credit 都能在你使用 AWS 服务时抵扣费用，帮大家节省真金白银。
-
-<!--more-->
 
 但是，Credit 拿到手之后，如何把它“充值”到自己的 AWS 账户里？下面我结合实际操作截图，为大家做一个完整的图文教程。
 
