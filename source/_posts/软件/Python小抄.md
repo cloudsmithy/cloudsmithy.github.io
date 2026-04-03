@@ -1,5 +1,5 @@
 ---
-title: 小抄们
+title: Python小抄们
 description: 开发常用命令速查，涵盖 Git 浅克隆、Python 技巧等实用小抄合集。
 tags: Python
 toc: true
