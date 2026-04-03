@@ -1,7 +1,9 @@
 ---
 title: 一次拿trace把langfuse打挂的修复
 description: Langfuse 拉 trace 数据导致 Node.js OOM 502，从发现问题到安全导出标注数据的完整排查过程。
-tags: LLM
+tags: 
+  - LLM
+  - Langfuse
 toc: true
 categories: 软件
 abbrlink: c4eda619
