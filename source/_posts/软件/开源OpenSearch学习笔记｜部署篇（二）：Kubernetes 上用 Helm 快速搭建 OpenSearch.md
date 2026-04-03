@@ -1,5 +1,10 @@
 ---
 title: K8S 部署OpenSearch
+description: Linux 常用命令速查，涵盖别名设置、文件操作等日常运维实用命令。
+tags: Kubernetes
+toc: true
+categories: Kubernetes
+date: 2026-03-02 00:00:00
 abbrlink: 1e02510f
 ---
 
