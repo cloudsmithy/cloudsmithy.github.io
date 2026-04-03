@@ -1,7 +1,7 @@
 ---
 title: 早上起来，Chrome 白屏了……
 description: Chrome 浏览器突然白屏的排查与修复过程记录
-tags: 外设
+tags: 软件
 categories:
   - 电子产品
   - 电脑
@@ -18,7 +18,6 @@ date: 2025-09-07 14:43:24
 
 ![c207a233d51a7dc81f1a54c15230b678](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/c207a233d51a7dc81f1a54c15230b678.png)
 
- <!--more-->
 
 当时整个人都愣住了，Chrome 好像一夜之间“失魂落魄”。
 
