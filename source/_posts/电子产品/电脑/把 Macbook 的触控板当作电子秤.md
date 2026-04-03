@@ -1,7 +1,7 @@
 ---
 title: 'TrackWeight, 把 Macbook 的触控板当作电子秤'
 description: 用 TrackWeight 将 MacBook 触控板变成电子秤的趣味体验
-tags: 外设
+tags: MacOS
 categories:
   - 电子产品
   - 电脑
@@ -16,8 +16,6 @@ date: 2025-07-27 14:43:24
 ![image-20250727151730910](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250727151730910.png)
 
 然后给作者留言，修复了 MacOS13 上不能运行的问题。（不到 10 分钟作者就改好了 release）
-
- <!--more-->
 
 ![c5f42ac2-9d88-4106-88b9-1f423a87de83](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/c5f42ac2-9d88-4106-88b9-1f423a87de83.png)
 
