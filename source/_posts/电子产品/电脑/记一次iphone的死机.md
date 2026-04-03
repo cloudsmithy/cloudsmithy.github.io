@@ -1,7 +1,9 @@
 ---
 title: 记一次iphone的死机
 description: 记录一次 iPhone 屏幕失灵死机的排查与解决过程
-tags: 手机
+tags: 
+  - 手机
+  - Apple
 categories:
   - 电子产品
   - 电脑
