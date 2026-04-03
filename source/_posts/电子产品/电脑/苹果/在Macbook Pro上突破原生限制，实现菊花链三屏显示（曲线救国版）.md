@@ -4,9 +4,8 @@ description: >-
   M 芯片 MacBook Pro 原生只支持双外接显示器，第三块屏接上就黑屏。通过 DisplayLink 扩展坞 + USB
   直连显示器，曲线实现菊花链三屏 4K@60Hz 输出，桌面走线也更清爽。
 categories:
-  - 电子产品
-  - 电脑
-  - 苹果
+  - MacOS
+  - Apple
 tags:
   - Apple
 abbrlink: cb0bcf1b
