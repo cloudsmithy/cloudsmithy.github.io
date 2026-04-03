@@ -8,8 +8,6 @@ tags:
 toc: true
 categories:
   - 电子产品
-  - NAS
-  - 群晖
 abbrlink: e70dd7d7
 date: 2025-09-14 00:00:00
 ---
