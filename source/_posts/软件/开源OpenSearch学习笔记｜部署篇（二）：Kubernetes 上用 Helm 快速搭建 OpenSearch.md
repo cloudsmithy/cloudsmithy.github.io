@@ -1,6 +1,6 @@
 ---
-title: K8S 部署OpenSearch
-description: Linux 常用命令速查，涵盖别名设置、文件操作等日常运维实用命令。
+title: 开源OpenSearch学习笔记｜部署篇（二）：Kubernetes 上用 Helm 快速搭建 OpenSearch.
+description: 开源OpenSearch学习笔记｜部署篇（二）：Kubernetes 上用 Helm 快速搭建 OpenSearch.
 tags: Kubernetes
 toc: true
 categories: Kubernetes
