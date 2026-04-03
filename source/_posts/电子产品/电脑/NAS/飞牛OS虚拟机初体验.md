@@ -3,7 +3,7 @@ title: 飞牛OS虚拟机初体验
 description: 飞牛 NAS 系统虚拟机安装初体验，上手感受与基本配置。
 tags:
   - NAS
-  - 虚拟机
+  - 飞牛OS
 toc: true
 categories:
   - 电子产品
