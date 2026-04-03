@@ -2,7 +2,6 @@
 title: 铁威马：被忽视的中坚NAS玩家，为何在群晖阴影下沉默？
 tags:
   - NAS
-  - 虚拟机
 toc: true
 categories:
   - 电子产品
