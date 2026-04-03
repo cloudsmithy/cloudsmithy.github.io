@@ -6,12 +6,12 @@ tags:
   - AWS
   - ELK
   - OpenSearch
-  - LogAgent
+  - Filebeat
 abbrlink: 8924813e
 date: 2023-12-08 13:57:57
 categories:
-  - 软件
   - AWS
+  - OpenSearch
 ---
 
 原文链接，当时一起折腾的，抄个作业。
