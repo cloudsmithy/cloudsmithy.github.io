@@ -1,7 +1,9 @@
 ---
 title: 硬件探索记 Tuya 篇（一）：初识 T5 AI 开发板，先配置个环境吧
 description: Tuya T5 AI 开发板开箱与开发环境配置入门
-tags: 外设
+tags: 
+ - 单片机
+ - Tuya
 categories:
   - 电子产品
   - 纯硬件
