@@ -1,7 +1,9 @@
 ---
 title: 安卓也有terminal，使用无线ADB解锁X300的终端
 description: 通过无线 ADB 解锁 X300 设备隐藏的终端功能，让安卓设备也能用命令行。
-tags: 外设
+tags: 
+ - 手机
+ - ADB
 toc: true
 categories:
   - 电子产品
@@ -14,7 +16,6 @@ date: 2026-02-20 00:00:00
 
 我的手机上安装甲壳虫ADB一直闪退，所以使用无线ADB，开启之后效果大概这样子。
 
- <!--more-->
 
 ![image-20260220225346095](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260220225346095.png)
 
