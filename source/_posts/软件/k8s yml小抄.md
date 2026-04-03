@@ -1,7 +1,7 @@
 ---
 title: k8s yml小抄
 description: Kubernetes 常用 YAML 配置速查，涵盖 Pod、Service、Deployment 等资源定义，基于 cloudacademy 源码整理。
-tags: K8S
+tags: Kubernetes
 categories: 软件
 abbrlink: e2ac0d70
 date: 2026-03-02 00:00:00
