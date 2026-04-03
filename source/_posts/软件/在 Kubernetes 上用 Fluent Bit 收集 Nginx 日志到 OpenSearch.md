@@ -1,6 +1,6 @@
 ---
 title: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch
-description: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch - Kubernetes - OpenSearch
+description: 在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch
 toc: true
 tags:
  - OpenSearch
