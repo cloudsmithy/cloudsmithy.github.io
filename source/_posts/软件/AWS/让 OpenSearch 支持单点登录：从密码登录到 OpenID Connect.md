@@ -3,11 +3,11 @@ title: 让 OpenSearch 支持单点登录：从密码登录到 OpenID Connect
 description: 让 OpenSearch 支持 SSO：接入 OpenID Connect 认证
 tags:
   - AWS
-  - MFA
+  - OpenSearch
 toc: true
 categories:
-  - 软件
   - AWS
+  - OpenSearch
 abbrlink: 37c6815d
 date: 2026-04-02 00:00:00
 ---
