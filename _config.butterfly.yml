@@ -289,10 +289,10 @@ aside:
       text: GitHub
       link: https://github.com/cloudsmithy/cloudsmithy.github.io
   card_announcement:
-    enable: false
-    content:
-  card_recent_post:
     enable: true
+    content: 欢迎来到 CloudSmithy 的博客！记录技术折腾与生活感悟。
+  card_recent_post:
+    enable: false
     # If set 0 will show all
     limit: 5
     # Sort: date / updated

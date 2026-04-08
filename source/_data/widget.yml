@@ -1,4 +1,4 @@
-bottom:
+top:
   - name: 友链
     icon: fas fa-link
     order: 1
