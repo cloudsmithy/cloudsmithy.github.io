@@ -14,6 +14,9 @@ importers:
       hexo-abbrlink:
         specifier: ^2.2.1
         version: 2.2.1
+      hexo-filter-date-from-git:
+        specifier: ^0.2.0
+        version: 0.2.0
       hexo-generator-archive:
         specifier: ^2.0.0
         version: 2.0.0
@@ -1698,6 +1701,9 @@ packages:
   hexo-component-inferno@3.1.2:
     resolution: {integrity: sha512-AdZKn0C/ss288/sLCri9nGl6bM8m32L2gtP8tATAtIPdS0HVKwmtyA+myGmh5GReTtCJ9fucHvKQTu6s06k20Q==}
     engines: {node: '>=14'}
+
+  hexo-filter-date-from-git@0.2.0:
+    resolution: {integrity: sha512-wfy12bhJPpTpKrjq8+mlk3m78TSkHgtwQWF1XzB9M4fF3ttVy4cNpCnQMbvxm+QViLf+4/DRxaWwSGMLXrZdtw==}
 
   hexo-filter-nofollow@2.0.2:
     resolution: {integrity: sha512-roIkEIkGOR22EPMoy8iKrufDoAH25LOT5ZeVXVLavEpM757Y96kfUhyathryMLXr326EURffgkZAKsVf3EDl0A==}
@@ -4520,6 +4526,10 @@ snapshots:
       semver: 7.7.2
     transitivePeerDependencies:
       - chokidar
+
+  hexo-filter-date-from-git@0.2.0:
+    dependencies:
+      moment-timezone: 0.5.48
 
   hexo-filter-nofollow@2.0.2: {}
 
