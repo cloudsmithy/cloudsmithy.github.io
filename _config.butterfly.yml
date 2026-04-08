@@ -290,7 +290,7 @@ aside:
       link: https://github.com/cloudsmithy/cloudsmithy.github.io
   card_announcement:
     enable: true
-    content: 欢迎来到 CloudSmithy 的博客！记录技术折腾与生活感悟。
+    content: 欢迎来到我的小站，这里是我的第二大脑和生活日常。
   card_recent_post:
     enable: false
     # If set 0 will show all
