@@ -337,11 +337,11 @@ aside:
   card_post_series:
     enable: true
     # The title shows the series name
-    series_title: false
+    series_title: true
     # Order by title or date
     orderBy: 'date'
     # Sort of order. 1, asc for ascending; -1, desc for descending
-    order: -1
+    order: 1
   card_webinfo:
     enable: true
     post_count: true
