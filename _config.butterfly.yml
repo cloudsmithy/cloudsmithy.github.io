@@ -1024,7 +1024,7 @@ pwa:
 Open_Graph_meta:
   enable: true
   option:
-    # twitter_card:
+    twitter_card: summary_large_image
     # twitter_image:
     # twitter_id:
     # twitter_site:
