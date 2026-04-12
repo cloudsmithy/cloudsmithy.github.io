@@ -5,7 +5,7 @@ toc: true
 
 仍然在折腾路上的不断探索。人在江湖，又岂能笑傲江湖？
 
-亚马逊云科技（AWS） Community Builders（AI）、亚马逊云科技（AWS）中国技领云博主，曾在亚马逊云科技（AWS）上海 Summit 及 User Group 活动中担任讲师，UG公众号韩叔精选主理人，积极推动技术传播与开发者社区建设,[点击阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4142813963182358545#wechat_redirect)。
+亚马逊云科技（AWS） Community Builders（AI），曾在亚马逊云科技（AWS）上海 Summit 及 User Group 活动中担任讲师，UG公众号韩叔精选主理人，积极推动技术传播与开发者社区建设,[点击阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4142813963182358545#wechat_redirect)。
 
 为极限科技提供介绍国产 ES(Easysearch)，以及 Coco AI 相关优质文章, [在此阅读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=3927471106541436935#wechat_redirect)。
 
