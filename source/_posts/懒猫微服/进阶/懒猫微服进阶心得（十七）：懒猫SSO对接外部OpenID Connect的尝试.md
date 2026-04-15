@@ -37,20 +37,20 @@ AWS Cognito 支持添加第三方 OIDC IDP。首先，我们需要在懒猫 SSO 
 ```
 这样我们就配置好了Congito的回调，当然还有本地的localhost和127.0.0.1的回调。
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/add138a7-86da-4a33-97c5-f632ec224ce1.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/add138a7-86da-4a33-97c5-f632ec224ce1.png)
 
 随后，在 AWS Cognito 控制台中新建一个 OIDC 提供商，填入对应的 `client_id` 和 `secret`。此时，Cognito 实际上成了懒猫 SSO 的一个“客户端”。
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/3f1a773a-00f7-4ee7-9b72-6494765f9da2.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/3f1a773a-00f7-4ee7-9b72-6494765f9da2.png)
 
 配置的时候Cognito提示无法解析懒猫域名，所以这里把URL分开来填写：
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/54b4fa53-7a0c-4063-b884-1b85662af926.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/54b4fa53-7a0c-4063-b884-1b85662af926.png)
 
 ### 渐入：深入联邦身份原理
 然后尝试代码如下,因为Cognito做了中间层，所以这里的信息是Cognito的，然后登陆的页面有一个选项可以跳转到懒猫SSO。
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/203cd540-899d-48e3-96e1-9817fee43db7.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/203cd540-899d-48e3-96e1-9817fee43db7.png)
 
 
 理想很丰满，现实很骨感。当我尝试通过 Cognito 页面跳转懒猫 SSO 登录时，程序报错了。
@@ -126,7 +126,7 @@ if __name__ == '__main__':
 经过数天的排查，我定位到了问题的核心：**网络隔离与双向通信。**
 Cognito 作为一个公有云服务，在执行 OIDC 协商的时需要访问懒猫 SSO 的接口才能够正常工作。
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/7f07fa20-01e5-464a-9a16-19d9f73f52bf.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/7f07fa20-01e5-464a-9a16-19d9f73f52bf.png)
 
 但由于懒猫 SSO 部署在私有微服环境下，虽然我的懒猫微服能够访问互联网，但是Cognito 的服务器缺无法解析我的私有域名，更无法穿透内网进行通信，导致请求超时，最终我在日志中翻到了HTTP 400。
 
@@ -225,15 +225,15 @@ if __name__ == '__main__':
 
 别急，如果你看到了这个页面只能说是域名跳转成功，并不是OIDC的凭证交换。
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/46bcb057-90ac-483c-a434-b0c72c0c7a4e.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/46bcb057-90ac-483c-a434-b0c72c0c7a4e.png)
 
 输入用户名和密码之后出现这个页面就对了：
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/d741b625-f163-48ad-8366-c999780dd899.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/d741b625-f163-48ad-8366-c999780dd899.png)
 
 登陆之后就换到claim信息了，可以看到打印出来了邮箱。
 
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/f0c47b39-825c-4977-bbd0-0e2aa8c26ebb.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/f0c47b39-825c-4977-bbd0-0e2aa8c26ebb.png)
 
 ### 总结
 没白折腾，确实还挺抽象的，抽空又复习了Oauth和OpenID Connect的底层原理，通过使用懒猫SSO，我的技术栈又升级了。
