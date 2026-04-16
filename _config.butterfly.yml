@@ -23,7 +23,6 @@ menu:
   赞赏: /reward/ || fas fa-heart
   收藏: /mark/ || fas fa-bookmark
   备注: /note/ || fas fa-sticky-note
-  友链: /links/ || fas fa-link
   关于我: /about/ || fas fa-user
 
 # --------------------------------------
@@ -247,8 +246,8 @@ noticeOutdate:
   limit_day: 365
   # Position: top / bottom
   position: top
-  message_prev: It has been
-  message_next: days since the last update, the content of the article may be outdated.
+  message_prev: 本文最后更新于
+  message_next: 天前，内容可能已过时，请注意甄别。
 
 # --------------------------------------
 # Footer Settings
@@ -306,16 +305,16 @@ aside:
     storage: 10
     avatar: true
   card_categories:
-    enable: false
+    enable: true
     # If set 0 will show all
     limit: 8
     # Choose: none / true / false
-    expand: none
+    expand: true
     sort_order:
   card_tags:
-    enable: false
+    enable: true
     # If set 0 will show all
-    limit: 40
+    limit: 30
     color: true
     custom_colors:
     # Order of tags, random/name/length
@@ -412,9 +411,9 @@ rightside_config_animation: true
 
 anchor:
   # When you scroll, the URL will update according to header id.
-  auto_update: false
+  auto_update: true
   # Click the headline to scroll and update the anchor
-  click_to_scroll: false
+  click_to_scroll: true
 
 photofigcaption: false
 
@@ -531,7 +530,7 @@ comments:
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
-  lazyload: false
+  lazyload: true
   # Display comment count in post's top_img
   count: false
   # Display comment count in Home Page
@@ -591,12 +590,10 @@ waline:
 # Utterances
 # https://utteranc.es/
 utterances:
-  repo: cloudsmithy/blog-comments
-  # Issue Mapping: pathname/url/title/og:title
-  issue_term: pathname
-  # Theme: github-light/github-dark/github-dark-orange/icy-dark/dark-blue/photon-dark
-  light_theme: github-light
-  dark_theme: github-dark
+  repo:
+  issue_term:
+  light_theme:
+  dark_theme:
   js:
   option:
 
@@ -833,9 +830,9 @@ hr_icon:
 # Typewriter Effect
 # https://github.com/disjukr/activate-power-mode
 activate_power_mode:
-  enable: false
+  enable: true
   colorful: true
-  shake: true
+  shake: false
   mobile: false
 
 # Background effects
@@ -865,11 +862,11 @@ canvas_nest:
   # Color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
   color: '0,0,255'
   # The opacity of line (0~1)
-  opacity: 0.7
+  opacity: 0.5
   # The z-index property of the background
   zIndex: -1
   # The number of lines
-  count: 99
+  count: 80
   mobile: false
 
 # Mouse click effects: fireworks
@@ -887,11 +884,12 @@ click_heart:
 clickShowText:
   enable: false
   text:
-    # - I
-    # - LOVE
-    # - YOU
+    - 好好吃饭
+    - 好好生活
+    - 好好写代码
+    - 镜湖元自属闲人
   fontSize: 15px
-  random: false
+  random: true
   mobile: false
 
 # --------------------------------------
@@ -987,7 +985,7 @@ aplayerInject:
 # https://github.com/polonel/SnackBar
 # position: top-left / top-center / top-right / bottom-left / bottom-center / bottom-right
 snackbar:
-  enable: false
+  enable: true
   position: bottom-left
   # The background color of Toast Notification in light mode and dark mode
   bg_light: '#49b1f5'

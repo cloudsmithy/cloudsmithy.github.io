@@ -31,8 +31,18 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - name: Install and build
-        run: pnpm install && pnpm build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Cache Hexo public
+        uses: actions/cache@v4
+        with:
+          path: public
+          key: hexo-public-${{ hashFiles('source/**') }}
+          restore-keys: hexo-public-
+
+      - name: Build
+        run: pnpm build
 
       - name: Deploy markdown Book
         uses: JamesIves/github-pages-deploy-action@v4

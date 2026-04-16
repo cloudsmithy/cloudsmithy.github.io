@@ -31,31 +31,24 @@
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^3.0.0",
-    "hexo-generator-searchdb": "^1.5.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
-    "hexo-mermaid-lastest": "^1.1.1",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-inferno": "^1.0.2",
     "hexo-renderer-marked": "^6.2.0",
     "hexo-renderer-stylus": "^3.0.1",
-    "hexo-server": "^3.0.0",
     "hexo-theme-butterfly": "github:jerryc127/hexo-theme-butterfly",
-    "hexo-theme-icarus": "^6.1.1",
     "hexo-wordcount": "^6.0.1"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
       "esbuild",
-      "hexo-util",
-      "inferno"
+      "hexo-util"
     ]
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.27.2",
-    "babel-plugin-inferno": "^6.8.4",
     "hexo-filter-nofollow": "^2.0.2",
     "hexo-generator-robotstxt": "^0.2.0",
+    "hexo-server": "^3.0.0",
     "vitepress": "^1.6.4"
   }
 }

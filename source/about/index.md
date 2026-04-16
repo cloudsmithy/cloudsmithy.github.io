@@ -3,38 +3,40 @@ title: 关于我
 toc: true
 ---
 
-仍然在折腾路上的不断探索。人在江湖，又岂能笑傲江湖？
+仍然在折腾路上的不断探索。
 
-亚马逊云科技（AWS） Community Builders（AI），曾在亚马逊云科技（AWS）上海 Summit 及 User Group 活动中担任讲师，UG公众号韩叔精选主理人，积极推动技术传播与开发者社区建设,[点击阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4142813963182358545#wechat_redirect)。
+## 👨‍💻 技术背景
 
-为极限科技提供介绍国产 ES(Easysearch)，以及 Coco AI 相关优质文章, [在此阅读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=3927471106541436935#wechat_redirect)。
+后端开发与 AI 工程化，前 AWS 技术支持，熟练掌握AWS核心服务，涵盖开发、搜索引擎优化、AI 工程化等领域，具备扎实的工程实践能力与系统架构经验。
 
-Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/milvus-workshop)。
+Homelab 爱好者，家里自建 DC，Kubernetes 狂热玩家。
 
-懒猫微服专栏作家，作为社区技术作者长期为懒猫微服长期提供技术稿件，包括但不限于 NAS 的使用，Docker 容器使用以及排查。OpenConnect ID 理论讲解，有[懒猫微服专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4010832321455538176#wechat_redirect)。
+## 🏅 社区身份
 
-专注于 Python 后端开发与 AI 服务部署，前 AWS 技术支持，熟练掌握亚马逊云科技（AWS）核心服务，包括 Lambda、API Gateway、SageMaker、Bedrock、OpenSearch 等，具备扎实的工程实践能力与系统架构经验。
+- **AWS Community Builder**（AI 方向）
+- **AWS Summit / User Group 讲师**，AWS UG 公众号「韩叔精选」主理人 — [阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4142813963182358545#wechat_redirect)
+- **极限科技供稿作者**，撰写国产 Easysearch 及 Coco AI 相关文章 — [阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=3927471106541436935#wechat_redirect)
+- **Milvus 北辰使者**，参与贡献 [Milvus Workshop](https://github.com/richzw/milvus-workshop)
+- **懒猫微服专栏作家**，长期提供 NAS、Docker、OpenID Connect 等技术稿件 — [阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4010832321455538176#wechat_redirect) | [懒猫文档站](https://lazycat-docs.netlify.app/)
 
-热衷于开发效率工具与自动化脚本，常年在本地构建 Homelab 环境，部署自研工具与开源项目，深入探索大模型的本地推理、私有化部署与性能优化路径。
+## ✍️ 内容输出
 
-步入职场后，笔耕不辍，曾为 Udacity 中国、InfoQ、亚马逊云科技、Milvus 社区，极限科技、懒猫微服等多个知名平台输出高质量内容，在技术传播与行业洞察方面持续深耕。
+笔耕不辍，曾为 Udacity 中国、InfoQ、亚马逊云科技、Milvus 社区、极限科技、懒猫微服等多个平台输出高质量内容，在技术传播与行业洞察方面持续深耕。
 
-另外也是刷机爱好者，玩过黑苹果，原生安卓，路由器刷过梅林，padavan，斐讯 K2，K3 电视盒子刷过 N1， T1。
+## 🔧 折腾日常
 
-日常斜杠：写文章拿过奖，修过电脑，家电，写过代码，玩过硬件，3D 设计，做过课程讲师，公开演讲，上架过小程序和微信表情包。
-
-业余爱好：旅游各种吃吃吃，嘉立创画 PCB，shapr3D 设计模型，用拓竹 A1 打印出来。
-
-可以使用 CHATGPT 来搜索“亚马逊云科技 韩旭”来了解我。
+- **刷机**：黑苹果、原生安卓、路由器（梅林、Padavan、斐讯 K2/K3）、电视盒子（N1、T1）
+- **斜杠**：写文章拿过奖、修过电脑家电、3D 设计、课程讲师、公开演讲、上架过小程序和微信表情包
+- **爱好**：旅游吃吃吃、嘉立创画 PCB、Shapr3D 建模、拓竹 A1 打印
 
 ## 🌐 技术主页 & 平台链接
 
 - 🎨 [拓竹社区 3D 打印模型](https://makerworld.com.cn/zh/@cloud9/upload)
 - ✍️ [CSDN 博客主页](https://blog.csdn.net/weixin_38781498)
 - 🛠️ [GitHub 项目主页](https://github.com/cloudsmithy)
-- [dockerhub](https://hub.docker.com/u/cloudsmithy)
+- 🐳 [Docker Hub](https://hub.docker.com/u/cloudsmithy)
 - 📚 [InfoQ 技术征文主页](https://www.infoq.cn/u/awscom/)
-- [懒猫论坛文集](https://playground.lazycat.cloud/#/user-profile/459/dynamic?routerAction=replace****)
+- 🐱 [懒猫论坛文集](https://playground.lazycat.cloud/#/user-profile/459/dynamic)
 
 ## 🎤 社区演讲与活动
 
@@ -51,13 +53,13 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 - [Easysearch、Elasticsearch、Amazon OpenSearch 快照兼容对比](https://infinilabs.cn/blog/2024/comparison-of-snapshot-compatibility-between-easysearch-elasticsearch-and-opensearch/)
 - [玩转 Easysearch 查询语法](https://infinilabs.cn/blog/2024/mastering-easysearch-syntax/)
 
-📁 [👉 CSDN 专辑汇总](https://blog.csdn.net/weixin_38781498/category_12715439.html)
+📁 [CSDN 专辑汇总](https://blog.csdn.net/weixin_38781498/category_12715439.html)
 
-## 懒猫微服专辑
+## 🐱 懒猫微服专辑
 
 - [懒猫官网专栏](https://developer.lazycat.cloud/wangjishanren-lazycat-developer-startup.html)
 
-##### 文章汇总
+### 文章汇总
 
 - [自带内网穿透,懒猫微服治好了我的 NAS 焦虑](https://mp.weixin.qq.com/s/4nN5NyYl0m5LS3V4wNhrMA)
 - [快速检索懒猫商店 1000+应用，微服秒变 Mac 原生 APP](https://mp.weixin.qq.com/s/FmFbblqZlg2ToUymw8sB5g)
@@ -109,7 +111,7 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 
 ### 📌 亚马逊云科技公众号转载
 
-2024
+#### 2024
 
 - [Easysearch、Elasticsearch、OpenSearch 快照兼容性解析](https://mp.weixin.qq.com/s/KKOHxl_Ubi7FgthExm7Gbg)
 - [超越官方：在 EC2 上部署 PopOS](https://mp.weixin.qq.com/s/H4h1Zin4csNbx7x7_RjdDA)
@@ -119,12 +121,10 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 - [快速部署 WordPress 到云端](https://mp.weixin.qq.com/s/Ncp5iBHc-9Jsrd_MX8uCPQ)
 - [使用 es-dump 快速备份 ES 数据](https://mp.weixin.qq.com/s/wHthVxwoqyWWz6aUpuaCWw)
 
-2025
+#### 2025
 
 - [快照备份新策略，一键存储无忧](https://mp.weixin.qq.com/s/ZF94s4bzRxylojmfC17Zsw)
-
 - [教你使用国内 API，获取更精准实时天气预报推送](https://mp.weixin.qq.com/s/VsLuQ8-wM9rL6AAQ4PygIg)
-
 - [使用 Amazon Q 开发容器管理工具](https://mp.weixin.qq.com/s/rJvu2wxRvFsPEoKNQDCm_A)
 - [DDNS 域名解析](https://mp.weixin.qq.com/s/wsYsVmIc1Q3UTYQ1vFeK3g)
 - [使用 openlist 访问 S3](https://mp.weixin.qq.com/s/yLgGtR0nhTDlSspC2D7dJQ)
@@ -132,29 +132,19 @@ Milvus 北辰使者，参加贡献 [Milvus workshop](https://github.com/richzw/m
 - [本地连接 EC2 Docker](https://mp.weixin.qq.com/s/KAGykYY5cSxZ-0n4rPWCPw)
 - [AWS Credit 充值](https://mp.weixin.qq.com/s/FqxtL5ryc4_ONIuR8pHwGA)
 
-### GPUS(Nvidia)
+### 📌 其他平台
 
-- [如何在 AWS EC2 上部署 Isaac Sim](https://mp.weixin.qq.com/s/5pwNlGVet_f3rRVasEUrmA)
+- [如何在 AWS EC2 上部署 Isaac Sim](https://mp.weixin.qq.com/s/5pwNlGVet_f3rRVasEUrmA)（Nvidia GPU）
+- [Milvus Workshop Contributor](https://github.com/richzw/milvus-workshop)（Milvus）
+- [沉浸式体验大上科技 25.3 英寸墨水屏显示器 Paperlike Color（革命者）Mac 内测版](https://mp.weixin.qq.com/s/RLB948QOGHO9Bb-GA52mJw)（DASUNG 大上科技）
+- [杀死谷歌搜索的那个人](https://www.infoq.cn/article/5uQIKhvWhuIAD5OiI52R)（InfoQ 翻译）
 
-### Milvus
+## 📸 相关截图
 
-- [Milvus workshop Contributor](https://github.com/richzw/milvus-workshop)
+![GPT 搜索结果](https://cdn.jsdelivr.net/gh/cloudsmithy/picgo-imh@master/image-20250426215435440.png)
 
-### DASUNG 大上科技（墨水屏）
+![技术演讲封面](https://cdn.jsdelivr.net/gh/cloudsmithy/picgo-imh@master/image-20250401143152394.png)
 
-- [【深度评测】沉浸式体验大上科技 25.3 英寸墨水屏显示器 Paperlike Color（革命者）Mac 内测版](https://mp.weixin.qq.com/s/RLB948QOGHO9Bb-GA52mJw)
+![Easysearch 文章一栏](https://cdn.jsdelivr.net/gh/cloudsmithy/picgo-imh@master/image-20250401203242359.png)
 
-### info 翻译
-
-- [杀死谷歌搜索的那个人](https://www.infoq.cn/article/5uQIKhvWhuIAD5OiI52R)
-
-用 GPT 搜索我:
-![image-20250426215435440](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250426215435440.png)
-
-![技术演讲封面](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250401143152394.png)
-
-Easysearch 文章一栏：
-![image-20250401203242359](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250401203242359.png)
-
-OpenSearch 文章一栏：
-![image-20250401203306337](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250401203306337.png)
+![OpenSearch 文章一栏](https://cdn.jsdelivr.net/gh/cloudsmithy/picgo-imh@master/image-20250401203306337.png)

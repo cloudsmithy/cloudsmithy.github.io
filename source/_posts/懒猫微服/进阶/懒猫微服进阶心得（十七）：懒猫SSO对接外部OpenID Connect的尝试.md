@@ -10,6 +10,7 @@ series: 懒猫微服进阶
 categories:
   - 懒猫微服
   - 进阶
+abbrlink: 172c9f9a
 date: 2026-04-15 00:00:00
 ---
 
