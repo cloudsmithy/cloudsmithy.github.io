@@ -1,0 +1,22 @@
+{
+  "name": "镜湖 - 忘机山人的博客",
+  "short_name": "镜湖",
+  "description": "专注 AWS 云计算、Docker 容器、NAS、Python 后端开发、AI 部署与 Homelab 实践",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#49B1F5",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/images/me.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/me.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

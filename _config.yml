@@ -49,6 +49,7 @@ skip_render:
   - "_posts/**/后记.md"
   - "_posts/**/序.md"
   - "googlea37b65ccf0f77745.html"
+  - "sw.js"
 new_post_name: ":title.md"
 default_layout: post
 titlecase: false

@@ -298,7 +298,7 @@ aside:
     sort: date
     sort_order:
   card_newest_comments:
-    enable: false
+    enable: true
     sort_order:
     limit: 6
     # Unit: mins, save data to localStorage
@@ -484,7 +484,7 @@ search:
     unescape: false
     # Enable pagination for search results
     pagination:
-      enable: false
+      enable: true
       # Number of search results per page
       hitsPerPage: 8
     CDN:
@@ -810,15 +810,15 @@ beautify:
 # Global font settings
 # Don't modify the following settings unless you know how they work
 font:
-  global_font_size:
-  code_font_size:
-  font_family:
-  code_font_family:
+  global_font_size: 17px
+  code_font_size: 15px
+  font_family: "'LXGW WenKai', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+  code_font_family: "'LXGW WenKai Mono', 'Fira Code', monospace"
 
 # Font settings for the site title and site subtitle
 blog_title_font:
   font_link:
-  font_family:
+  font_family: "'LXGW WenKai', serif"
 
 # The setting of divider icon
 hr_icon:
@@ -830,7 +830,7 @@ hr_icon:
 # Typewriter Effect
 # https://github.com/disjukr/activate-power-mode
 activate_power_mode:
-  enable: true
+  enable: false
   colorful: true
   shake: false
   mobile: false
@@ -1010,12 +1010,12 @@ lazyload:
 # See https://github.com/JLHwung/hexo-offline
 # ---------------
 pwa:
-  enable: false
-  manifest:
-  apple_touch_icon:
-  favicon_32_32:
-  favicon_16_16:
-  mask_icon:
+  enable: true
+  manifest: /manifest.json
+  apple_touch_icon: /images/me.png
+  favicon_32_32: /images/me.png
+  favicon_16_16: /images/me.png
+  mask_icon: /images/me.png
 
 # Open graph meta tags
 # https://hexo.io/docs/helpers#open-graph
@@ -1045,9 +1045,13 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"镜湖","alternateName":["CloudSmithy Blog"],"url":"https://cloudsmithy.github.io/","description":"忘机山人的个人博客，专注 AWS 云计算、Docker 容器、NAS、Python 后端开发、AI 部署与 Homelab 实践","author":{"@type":"Person","name":"忘机山人","url":"https://cloudsmithy.github.io/about/"},"publisher":{"@type":"Person","name":"忘机山人","image":{"@type":"ImageObject","url":"https://cloudsmithy.github.io/images/me.png"}},"potentialAction":{"@type":"SearchAction","target":"https://cloudsmithy.github.io/?s={search_term_string}","query-input":"required name=search_term_string"},"inLanguage":"zh-CN","copyrightYear":"2022"}</script>'
+    # 霞鹜文楷 CDN（正文 + 等宽）
+    - '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />'
+    - '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-mono-webfont@1.7.0/style.css" />'
   bottom:
-    # - <script src="xxxx"></script>
+    # 注册 Service Worker
+    - '<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(function(e){console.log("SW registration failed:",e)})}</script>'
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
