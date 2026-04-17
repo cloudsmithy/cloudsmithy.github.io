@@ -1,6 +1,6 @@
 ---
-title: ViVO 日历导入Apple日历
-description: ViVO 日历导入Apple日历
+title: ViVO 日历导入Apple日程
+description: ViVO 日历导入Apple日程
 tags: 
  - 外设
 toc: true
@@ -43,4 +43,4 @@ VIVO日历点击 **日程导入和管理**：
 
 ![image-20260416223346592](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260416223346592.png)
 
-使用下来，总体能打通，但是还有丢数据的情况，那就和Apple watch互补一下吧。
+使用下来，总体能打通，但是还有丢数据的情况，那就和Apple watch互补一下吧。不过在VIVO端是只读的，没办法修改。
