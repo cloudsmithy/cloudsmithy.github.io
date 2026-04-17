@@ -9,7 +9,7 @@ categories:
 date: 2026-04-17 00:00:00
 ---
 
-Claude Code 的限制越来越多了，正好Amazon和Claude有合作，所以我们能够让claude接入Amazon Bedrock，然后从Amazon Web Services走账单。
+Claude Code 的限制越来越多了，Amazon Bedrock 提供 Claude 模型，Claude Code 官方支持走 Bedrock 调用，所以我们能够让claude接入Amazon Bedrock，然后从Amazon Web Services走账单。
 
 
 ```
