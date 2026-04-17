@@ -13,7 +13,6 @@ Homelab 爱好者，家里自建 DC，Kubernetes 狂热玩家。
 
 ## 🏅 社区身份
 
-- **AWS Community Builder**（AI 方向）
 - **AWS Summit / User Group 讲师**，AWS UG 公众号「韩叔精选」主理人 — [阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=4142813963182358545#wechat_redirect)
 - **极限科技供稿作者**，撰写国产 Easysearch 及 Coco AI 相关文章 — [阅读专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3NTY4MjcxNg==&action=getalbum&album_id=3927471106541436935#wechat_redirect)
 - **Milvus 北辰使者**，参与贡献 [Milvus Workshop](https://github.com/richzw/milvus-workshop)
