@@ -9,7 +9,7 @@ toc: true
 
 后端开发与 AI 工程化，前 AWS 技术支持，熟练掌握AWS核心服务，涵盖开发、搜索引擎优化、AI 工程化等领域，具备扎实的工程实践能力与系统架构经验。
 
-Homelab 爱好者，家里自建 DC，Kubernetes 狂热玩家。
+Homelab 爱好者，家里自建 DC，Kubernetes 狂热玩家，OpenID Connect 爱好者。
 
 ## 🏅 社区身份
 
