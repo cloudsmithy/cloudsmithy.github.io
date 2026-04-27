@@ -117,3 +117,31 @@ search:
   content: true
   format: html
 
+# hexo-minify: 压缩 HTML/CSS/JS/SVG
+minify:
+  preview: false
+  exclude: ["*.min.*"]
+  js:
+    enable: true
+    sourceMap:
+      enable: false
+    options: {}
+  css:
+    enable: true
+    options: {}
+  html:
+    enable: true
+    options:
+      minifyJS: true
+      minifyCSS: true
+      removeComments: true
+      collapseWhitespace: true
+      removeAttributeQuotes: true
+  svg:
+    enable: true
+    options: {}
+  image:
+    enable: false
+  font:
+    enable: false
+

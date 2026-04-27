@@ -49,6 +49,7 @@
   "devDependencies": {
     "hexo-filter-nofollow": "^2.0.2",
     "hexo-generator-robotstxt": "^0.2.0",
+    "hexo-minify": "^1.8.1",
     "hexo-server": "^3.0.0",
     "vitepress": "^1.6.4"
   }
