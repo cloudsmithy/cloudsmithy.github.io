@@ -6,6 +6,7 @@ toc: true
 categories:
   - Bedrock
   - AWS
+abbrlink: 4dbc8277
 date: 2026-04-17 00:00:00
 ---
 
