@@ -1,11 +1,12 @@
 ---
 title: ViVO 日历导入Apple日程
 description: ViVO 日历导入Apple日程
-tags: 
- - 外设
+tags:
+  - 外设
 toc: true
 categories:
   - 电子产品
+abbrlink: f3e6ab16
 date: 2026-04-16 00:00:00
 ---
 

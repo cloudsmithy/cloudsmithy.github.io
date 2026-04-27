@@ -9,6 +9,7 @@ series: Easysearch
 categories:
   - 极限科技
   - Easysearch
+abbrlink: e2d3ed1a
 date: 2026-04-22 00:00:00
 ---
 
