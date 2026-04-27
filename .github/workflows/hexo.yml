@@ -62,3 +62,14 @@ jobs:
           folder: ./public
           force: true
           single-commit: true
+
+      - name: Wait for GitHub Pages deployment
+        run: sleep 30
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://cloudsmithy.github.io/
+          uploadArtifacts: true
+          temporaryPublicStorage: true
