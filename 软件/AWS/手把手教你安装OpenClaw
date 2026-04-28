@@ -1,0 +1,221 @@
+---
+title: 手把手教你安装OpenClaw
+toc: true
+categories:
+  - 软件
+date: 2026-03-15 00:00:00
+---
+
+在开始之前，重要的事情说三遍!!!!
+
+1. 不要在生产环境使用OpenClaw
+2. OpenClaw 有可能会删除数据
+3. 可能会绕过模型限制获取隐私
+
+### 准备工作
+
+安装Openclaw 需要nodejs 22+的版本，所以我们要先初始化一些环境，当然最好你的环境里还需要`git`, `curl` 这些软件。
+
+
+
+NVM是一个NodeJS的多版本控制器，对于开发人员来说更加需要这个，我们可以在GitHub上边找到这个软件的安装方法。
+
+![image-20260317081039781](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317081039781.png)
+
+
+<!-- more -->
+我们可以使用命令行工具来安装NVM：
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+```
+
+当然用wget也可以：
+
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+```
+
+然后安装并且切换到最新的NodeJS 的 TLS版本。
+
+```
+nvm install 24
+nvm use 24
+```
+
+然后使用如下命令来进行验证是否安装成功：
+
+```
+node -v
+npn -v
+```
+
+或者你页可以下载NodeJS的离线安装版本，不过从图中看起来他们似乎也推崇nvm的安装办法。
+
+![image-20260317081237353](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317081237353.png)
+
+### 安装Openclaw
+
+openclaw的官网推荐了源码编译的办法，我们来试一试。文档在此：
+
+https://docs.openclaw.ai/start/getting-started#windows-powershell
+
+![image-20260317081339372](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317081339372.png)
+
+如果你的windows或者linux，可以使用curl来执行。
+
+```
+curl -fsSL https://openclaw.ai/install.sh | bash
+```
+
+windows用户可以使用Powershell来进行安装。
+
+```
+iwr -useb https://openclaw.ai/install.ps1 | iex
+```
+
+这是我在MacOS下的安装过程，可以作为参考：
+
+![image-20260317081625550](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317081625550.png)
+
+执行完安装命令之后会自动拉起来`openclaw onboard`这个命令，然后我们跟随着指引做一些quickstart的操作：
+
+![image-20260317081935481](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317081935481.png)
+
+模型方面我选择了Kimi 2.5，因为账户里恰好还有点钱。
+
+![image-20260317081747968](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317081747968.png)
+
+我这里选择kimi的国内版本，然后输入API KEY进行设置。
+
+![image-20260317082010323](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317082010323.png)
+
+通知渠道的话，这里先都SKIP，后面使用飞书官方的插件进行设置，很简单。
+
+![image-20260317082222725](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317082222725.png)
+
+
+
+后面的websearch和skill 都先不设置，等后面还有时间再继续探索，今天知识保证openclaw可以先启动起来。
+
+![image-20260317082344993](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317082344993.png)
+
+所有设置都搞定之后，后面会让我们重启OpenClaw的Gateway，同时提供了Web UI和TUI，所谓TUI就是terminal UI，有点claude code那味了。
+
+![image-20260317082445373](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317082445373.png)
+
+当然你想使用网页版本，可以使用localhost:18789进行访问，这里需要用到一个token，应该是考虑到Web网页放在公共互联网上有被黑掉的风险，所以做了一层认证。
+
+![image-20260317082507406](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317082507406.png)
+
+所以我们需要从本地文件获取这个token。
+在`~/.openclaw/openclaw.json` 这个文件里面，如下：
+
+![image-20260317082625436](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317082625436.png)
+
+
+填写这个token之后我们就可以进入Web UI了，能够看到刚才在TUI的聊天也都同步过来了。
+
+![image-20260317082653408](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317082653408.png)
+
+
+我们可以看一下这个对比，后面的聊天也是实时同步的。
+
+![image-20260317083040412](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317083040412.png)
+
+
+接下来就是配置飞书聊天渠道，这个是飞书官方的插件教程。
+
+![image-20260317084002288](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317084002288.png)
+
+```
+npx -y @larksuite/openclaw-lark-tools install
+```
+
+跑完这个命令之后我们可以安装飞书的插件，然后就可以得到一个二维码，扫码之后飞书会自动帮我们创建一个Bot，然后设置好对应的权限。
+
+![image-20260317083315244](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317083315244.png)
+
+手机飞书扫码之后，我们跳转到这个页面，先设置Bot的名字。
+
+![image-20260317083357456](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317083357456.png)
+
+然后等待飞书创建。
+
+![image-20260317083409829](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317083409829.png)
+
+创建成功之后我们就可以使用了。
+
+![image-20260317083420611](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317083420611.png)
+
+我会先使用`/feishu start`试探一下。然后就可以和openclaw在飞书里聊天了。
+
+![image-20260317083822298](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317083822298.png)
+
+
+至此我们已经完成对Openclaw的配置，只要准备一个API token，那么Openclaw就可以掏空你的钱包（不是
+
+
+### 如何卸载
+
+（这个是我在MacOS下的环境，其他的系统需要酌情修改）
+
+openclaw 除了一个一件卸载功能，不过这个和用杀毒软件卸载自己差不多。
+
+```
+openclaw uninstall --all --yes --non-interactive
+```
+
+如果你看到下面这个文字，大致意思 OpenClaw 已经大体卸载干净了，但全局 CLI 还留在系统里。
+
+🦞 OpenClaw 2026.3.13 (61d171a) — If you're lost, run doctor; if you're brave, run prod; if you're wise, run tests.
+
+Recommended first: openclaw backup create
+Gateway service not loaded.
+Removed ~/.openclaw
+Removed ~/.openclaw/workspace
+Removed /Applications/OpenClaw.app
+CLI still installed. Remove via npm/pnpm if desired.
+
+你这次卸载结果里，已经删掉了这些东西：
+
+~/.openclaw
+~/.openclaw/workspace
+/Applications/OpenClaw.app
+
+同时这句：
+
+Gateway service not loaded.
+
+通常表示当时网关服务本来就没在运行，所以没有可停/可卸载的已加载服务；这不一定是报错。官方/社区卸载说明里本来也会先尝试 stop/uninstall gateway，再删除状态目录和 App。
+
+真正还没删的是这部分：
+
+CLI still installed. Remove via npm/pnpm if desired.
+
+也就是你系统 PATH 里的 openclaw 命令大概率还在
+
+用这个检查下进程确认不再运行：
+```
+ ps aux | grep -i openclaw
+```
+
+然后在补上这几个命令：
+```
+npm uninstall -g openclaw    
+rm -rf ~/.openclaw 
+rm -rf /tmp/openclaw/
+```
+
+
+好了，我帮你节省了装虾的五百块，又节省了卸载的299。
+快来给小编打赏或者点个赞吧～
+
+
+
+最后，玩虾有风险。重要的事情说三遍!!!!
+
+1. 不要在生产环境使用OpenClaw
+2. OpenClaw 有可能会删除数据
+3. 可能会绕过模型限制获取隐私
+
