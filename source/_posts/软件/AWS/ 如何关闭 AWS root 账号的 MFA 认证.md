@@ -32,3 +32,9 @@ date: 2025-05-20 00:00:00
 然后会收到邮件提醒：
 
 ![image-20250716105716435](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250716105716435.png)
+
+如果遇到这个报错，那么重新登陆之后再重复前面的步骤：
+
+```
+To complete this action, please ensure that you are authenticated with an MFA device that is enabled for this user.
+```
