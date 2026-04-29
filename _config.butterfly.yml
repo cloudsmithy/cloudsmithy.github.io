@@ -22,6 +22,8 @@ menu:
   语录: /quotes/ || fas fa-quote-left
   赞赏: /reward/ || fas fa-heart
   阅读: /reading/ || fas fa-book
+  日记: /daily/ || fas fa-calendar-day
+  月报: /monthly/ || fas fa-calendar-alt
   收藏: /mark/ || fas fa-bookmark
   备注: /note/ || fas fa-sticky-note
   关于我: /about/ || fas fa-user

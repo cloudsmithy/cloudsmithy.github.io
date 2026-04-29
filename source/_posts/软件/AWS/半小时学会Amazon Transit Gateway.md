@@ -1,12 +1,12 @@
 ---
-title: 组队参加 Amazon Q Idea 1000，我们的作品上了 AWS 峰会
+title: 半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置
 description: 半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置
 tags: AWS
 toc: true
 categories:
-  - 软件
+  - 网络
   - AWS
-abbrlink: ac23bcf7
+abbrlink: b9af2b64
 date: 2025-06-20 00:00:00
 ---
 
