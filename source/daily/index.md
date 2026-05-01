@@ -7,7 +7,14 @@ date: 2026-04-29 10:00:00
 
 ---
 
+
 {% timeline 2026-04 %}
+
+<!-- timeline 04-30 -->
+
+接通了Google Oauth, 还有Firebase
+
+<!-- endtimeline -->
 
 <!-- timeline 04-29 -->
 
