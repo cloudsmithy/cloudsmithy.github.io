@@ -3,8 +3,8 @@ title: 日记
 date: 2026-04-29 10:00:00
 ---
 
-每天一句话，按月倒序。想看阶段性复盘请移步 [月报](/monthly/)。
-在这里[编辑](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/daily/index.md)
+每天一句话，按月倒序。在这里[编辑](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/daily/index.md)。想看阶段性复盘请移步 [月报](/monthly/)。
+
 
 {% timeline 2026-05 %}
 
