@@ -1,5 +1,5 @@
 ---
-title: LLM时代，密码也能日抛了.md
+title: LLM时代，密码也能日抛了
 description: 解析 Easysearch 
 tags:
   - 搜索引擎（ES）
