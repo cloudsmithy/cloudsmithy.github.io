@@ -8,6 +8,10 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-06 -->
+跑通了Nginx + Oauth2-proxy + flask，后面需要deep dive
+<!-- endtimeline -->
+
 <!-- timeline 05-05 -->
 温榆河公园初探，真实太大了，看到了满眼的油菜花
 <!-- endtimeline -->
