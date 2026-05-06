@@ -1,3 +1,16 @@
+---
+title: LLM时代，密码也能日抛了.md
+description: 解析 Easysearch 
+tags:
+  - 搜索引擎（ES）
+  - 极限科技
+toc: true
+series: Easysearch
+categories:
+  - 极限科技
+  - Easysearch
+date: 2026-05-06 00:00:00
+---
 
 装好了Easysearch，刚想去日志里面找默认密码，然后发现Orbstack的输出竟然不像以前一样有用户名和密码，于是不死心,用`docker logs`继续看，所以也没有。
 
