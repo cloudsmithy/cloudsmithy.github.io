@@ -117,10 +117,18 @@ search:
   content: true
   format: html
 
+# URL
+## If your site is put in a subdirectory, set url as 'http://example.com/project' and root as '/project/'
+url: https://blog.no-claw.com
+root: /
+permalink: posts/:abbrlink.html # 配合 hexo-abbrlink 使用
+
 # hexo-minify: 压缩 HTML/CSS/JS/SVG
 minify:
   preview: false
-  exclude: ["*.min.*"]
+  exclude: 
+    - "*.min.*"
+    - "docs/*"
   js:
     enable: true
     sourceMap:
