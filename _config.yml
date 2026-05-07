@@ -21,9 +21,12 @@ keywords:
 author: 忘机山人
 language: zh-CN
 timezone: "Asia/Shanghai"
-url: https://cloudsmithy.github.io/
+url: https://blog.no-claw.com
 root: /
-permalink: posts/:abbrlink/
+permalink: posts/:abbrlink
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://example.com/project' and root as '/project/'
 abbrlink:
   alg: crc32 # 算法：crc16(default) or crc32
   rep: hex # 进制：dec(default) or hex
@@ -117,11 +120,7 @@ search:
   content: true
   format: html
 
-# URL
-## If your site is put in a subdirectory, set url as 'http://example.com/project' and root as '/project/'
-url: https://blog.no-claw.com
-root: /
-permalink: posts/:abbrlink.html # 配合 hexo-abbrlink 使用
+
 
 # hexo-minify: 压缩 HTML/CSS/JS/SVG
 minify:
