@@ -8,6 +8,10 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-07 -->
+Git page迁移到了Cloudflare Page, 接了Google SEO，终于抓到sitemap了（看来之前抓不到是github.io的反爬机制）
+<!-- endtimeline -->
+
 <!-- timeline 05-06 -->
 跑通了Nginx + Oauth2-proxy + flask，后面需要deep dive
 <!-- endtimeline -->
