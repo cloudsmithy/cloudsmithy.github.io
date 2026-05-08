@@ -8,6 +8,11 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
+
+<!-- timeline 05-08 -->
+感受了早起的美好。给博客加了llm.txt和llms-full.txt，自己的todo项目终于上线了Cloudflare Page + Worker + D1，还集成了Google 登陆。
+<!-- endtimeline -->
+
 <!-- timeline 05-07 -->
 Git page迁移到了Cloudflare Page, 接了Google SEO，终于抓到sitemap了（看来之前抓不到是github.io的反爬机制）
 <!-- endtimeline -->
