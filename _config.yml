@@ -104,7 +104,7 @@ nofollow:
   enable: true
   field: site
   exclude:
-    - cloudsmithy.github.io
+    - blog.no-claw.com
 robotstxt:
   useragent: "*"
   disallow:
