@@ -111,7 +111,7 @@ robotstxt:
     - /drafts/
   allow:
     - /
-  sitemap: https://cloudsmithy.github.io/sitemap.xml
+  sitemap: https://blog.no-claw.com/sitemap.xml
 
 # Local search
 search:
