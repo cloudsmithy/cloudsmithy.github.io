@@ -1,6 +1,6 @@
 ---
 title: LLM时代，密码也能日抛了
-description: 解析 Easysearch 
+description: 解析 Easysearch
 tags:
   - 搜索引擎（ES）
   - 极限科技
@@ -9,6 +9,7 @@ series: Easysearch
 categories:
   - 极限科技
   - Easysearch
+abbrlink: 3da9c2fb
 date: 2026-05-06 00:00:00
 ---
 
