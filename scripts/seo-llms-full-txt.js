@@ -10,18 +10,33 @@ hexo.extend.generator.register('llms_full_txt', function (locals) {
   const title = config.title || ''
   const description = config.description || ''
 
-  const stripHtml = (s) =>
-    String(s || '')
-      .replace(/<script[\s\S]*?<\/script>/gi, '')
-      .replace(/<style[\s\S]*?<\/style>/gi, '')
-      .replace(/<[^>]+>/g, '')
+  const decodeEntities = (s) =>
+    String(s)
+      .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => {
+        try { return String.fromCodePoint(parseInt(h, 16)) } catch (e) { return _ }
+      })
+      .replace(/&#(\d+);/g, (_, d) => {
+        try { return String.fromCodePoint(parseInt(d, 10)) } catch (e) { return _ }
+      })
       .replace(/&nbsp;/g, ' ')
-      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&apos;/g, "'")
       .replace(/&lt;/g, '<')
       .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
+      .replace(/&amp;/g, '&')
+
+  const stripHtml = (s) =>
+    decodeEntities(
+      String(s || '')
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<\/(p|div|li|h[1-6]|tr|pre|blockquote|figure|figcaption|section|article)>/gi, '\n')
+        .replace(/<\/(td|th)>/gi, '\t')
+        .replace(/<[^>]+>/g, '')
+    )
       .replace(/\r\n/g, '\n')
+      .replace(/[ \t]+\n/g, '\n')
       .replace(/\n{3,}/g, '\n\n')
       .trim()
 
