@@ -16,6 +16,7 @@ docs/.vitepress/dist/
 
 # Lock files (keep pnpm-lock.yaml only)
 yarn.lock
+package-lock.json
 
 # IDE
 .idea/
@@ -26,6 +27,37 @@ yarn.lock
 # Claude Code
 .claude/
 
+# Kiro
+.kiro/
+
 # Environment
 .env
 .env.local
+.env.*.local
+
+# Hexo build artifacts
+build/
+.deploy_git/
+
+# Cache
+.cache/
+.tmp/
+.temp/
+
+# OS
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Editor backups
+*~
+*.bak
+*.orig
+
+# npm/pnpm/yarn debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

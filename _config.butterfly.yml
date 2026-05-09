@@ -52,6 +52,7 @@ social:
   fas fa-envelope: mailto:deep.work.max@gmail.com || Email || '#4a7dbe'
   fas fa-sitemap: /sitemap.xml || Sitemap || '#4CAF50'
   fas fa-robot: /llms.txt || llms.txt || '#6366f1'
+  fas fa-brain: /llms-full.txt || llms-full.txt || '#8b5cf6'
   fas fa-rss: /atom.xml || RSS || '#FFA500'
 
 # --------------------------------------
