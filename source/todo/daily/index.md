@@ -8,8 +8,16 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-10 -->
+
+后端的放在cloudflare worker上的时候，前端主页不要直接检测Oauth的URL 联通是否报错，有时候会因为Serverless冷启动直接报错。所以，先call一下个healthy的API再检测登录吧。
+
+<!-- endtimeline -->
+
+
 <!-- timeline 05-09 -->
-被AI开启了新大门。后端接入Google Oauth的时候还能直接Set Cookie，然后前端直接herf跳转就行，走完登录流程之后会给后端域名set Cookie，然后前段请求用户信息的时候会带这个头，解决完CORS问题之后，会把你前端的Cookiee 显示在前端域名的Cookiee下。
+被AI开启了新大门。Web部署在Cloudflare上，Page + Woker使用不同的域名，所以没办法使用反向代替，就需要自己解决CORS问题，这是一个因为前端多带了X-Client倒是CORS，然后无法种Cookiee的排查。
+后端接入Google Oauth的时候还能直接Set Cookie，然后前端直接herf跳转就行，走完登录流程之后会给后端域名set Cookie，然后前段请求用户信息的时候会带这个头，解决完CORS问题之后，会把你前端的Cookiee 显示在前端域名的Cookiee下。
 
 
 1. style.ootira.com 页面里
