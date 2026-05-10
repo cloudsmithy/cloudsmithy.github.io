@@ -8,9 +8,14 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
-<!-- timeline 05-10 -->
+<!-- timeline 05-11 -->
 
-后端的放在cloudflare worker上的时候，前端主页不要直接检测Oauth的URL 联通是否报错，有时候会因为Serverless冷启动直接报错。所以，先call一下个healthy的API再检测登录吧。
+
+<!-- endtimeline -->
+
+<!-- timeline 05-10 -->
+时隔十年，终于看完了张纯如大陆版的《南京大屠杀》，总体比较客观，前半部分讲述日本的暴行，后半部分对38-45年在日本统治下的人民的生活描写也比较客观，结尾收集了大量事实阐述了日本官方不认账但是民间有忏悔的行为。
+
 
 <!-- endtimeline -->
 
@@ -34,6 +39,11 @@ date: 2026-04-29 10:00:00
 
 需要补一补网络安全了：https://portswigger.net/web-security 这就是黑客攻防技术宝典：Web实战篇（第2版）这个系列
 朋友也推荐了这个：https://www.securecodewarrior.com/zh
+
+
+----
+后端的放在cloudflare worker上的时候，前端主页不要直接检测Oauth的URL 联通是否报错，有时候会因为Serverless冷启动直接报错。所以，先call一下个healthy的API再检测登录吧。
+
 <!-- endtimeline -->
 
 
