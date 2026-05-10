@@ -8,6 +8,26 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-09 -->
+被AI开启了新大门。后端接入Google Oauth的时候还能直接Set Cookie，然后前端直接herf跳转就行，走完登录流程之后会给后端域名set Cookie，然后前段请求用户信息的时候会带这个头，解决完CORS问题之后，会把你前端的Cookiee 显示在前端域名的Cookiee下。
+
+
+1. style.ootira.com 页面里
+2. fetch('https://api.ootira.com/auth/me',{ credentials:'include'})
+3. 浏览器看请求目标是 api.ootira.com
+4. 查自己 cookie jar,找到 api.ootira.com 下的 token cookie，需要credentials:include' 
+5. 自动附到请求头里发出去
+6. 后端收到 cookie,验证,返回 user
+7. 前端收到 user.对象,渲染
+8. 前段回显Cookie
+
+
+调试这里可以取消Google 授权：https://myaccount.google.com/permissions
+
+需要补一补网络安全了：https://portswigger.net/web-security 这就是黑客攻防技术宝典：Web实战篇（第2版）这个系列
+朋友也推荐了这个：https://www.securecodewarrior.com/zh
+<!-- endtimeline -->
+
 
 <!-- timeline 05-08 -->
 感受了早起的美好。给博客加了llm.txt和llms-full.txt，自己的todo项目终于上线了Cloudflare Page + Worker + D1，还集成了Google 登陆。
