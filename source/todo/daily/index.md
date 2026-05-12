@@ -8,7 +8,7 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
-<!-- timeline 05-11 -->
+<!-- timeline 05-12 -->
 接了cloudflare的AI Gateway，有OpenAI的，也有CF SDK。
 <!-- endtimeline -->
 
