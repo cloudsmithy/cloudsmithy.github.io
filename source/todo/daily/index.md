@@ -9,6 +9,10 @@ date: 2026-04-29 10:00:00
 {% timeline 2026-05 %}
 
 <!-- timeline 05-11 -->
+接了cloudflare的AI Gateway，有OpenAI的，也有CF SDK。
+<!-- endtimeline -->
+
+<!-- timeline 05-11 -->
 好好学英语是一本万利，你技术不差，后面再学都来得及，不能让英语成为绊脚石，这个不是技术债。
 
 <!-- endtimeline -->
