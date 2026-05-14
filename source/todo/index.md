@@ -1,5 +1,6 @@
 ---
 title: 博客feature 计划（不一定修
+sitemap: false
 ---
 
 ## Blog 功能
