@@ -9,6 +9,10 @@ sitemap: false
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-14 -->
+优化了blog的sitemap，整理了之前[CRC32的哈希碰撞的情况](https://blog.no-claw.com/428cc28c/)，也是比较活久见。
+<!-- endtimeline -->
+
 <!-- timeline 05-13 -->
 这个季节的藕汤感觉没有冬天那么好喝了，粉藕也没有那么软糯了，应该是到时候了，等冬天吧。
 <!-- endtimeline -->
