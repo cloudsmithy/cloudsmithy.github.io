@@ -8,6 +8,10 @@ date: 2026-04-29 10:00:00
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-13 -->
+这个季节的藕汤感觉没有冬天那么好喝了，粉藕也没有那么软糯了，应该是到时候了，等冬天吧。
+<!-- endtimeline -->
+
 <!-- timeline 05-12 -->
 接了cloudflare的AI Gateway，有OpenAI的，也有CF SDK。
 <!-- endtimeline -->
