@@ -23,7 +23,7 @@ language: zh-CN
 timezone: "Asia/Shanghai"
 url: https://blog.no-claw.com
 root: /
-permalink: posts/:abbrlink
+permalink: :abbrlink/
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/project' and root as '/project/'
@@ -53,6 +53,7 @@ skip_render:
   - "_posts/**/序.md"
   - "googlea37b65ccf0f77745.html"
   - "sw.js"
+  - "manifest.json"
 new_post_name: ":title.md"
 default_layout: post
 titlecase: false
@@ -100,6 +101,8 @@ feed:
   limit: 0
 sitemap:
   path: sitemap.xml
+  tags: false
+  categories: false
 nofollow:
   enable: true
   field: site
