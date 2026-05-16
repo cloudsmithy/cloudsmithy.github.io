@@ -10,6 +10,10 @@ sitemap: false
 {% timeline 2026-05 %}
 
 <!-- timeline 05-14 -->
+日出拉面搬迁到望京之后还是第一次来吃，汤感觉不像原来那么糊嘴了，汤不错不过面煮软了之后会影响汤。望京小街跟上几年前比有些烟火气了，但是也仅仅是那些热门的店。
+<!-- endtimeline -->
+
+<!-- timeline 05-14 -->
 优化了blog的sitemap，整理了之前[CRC32的哈希碰撞的情况](https://blog.no-claw.com/428cc28c/)，也是比较活久见。
 <!-- endtimeline -->
 
