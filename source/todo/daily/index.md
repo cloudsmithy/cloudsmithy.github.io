@@ -9,7 +9,16 @@ sitemap: false
 
 {% timeline 2026-05 %}
 
-<!-- timeline 05-17 -->
+<!-- timeline 05-20 -->
+人家过520 我跑医院，早上针灸，下午花20元被骂了一顿。收到医院的问卷评价，算了，没发写。
+<!-- endtimeline -->
+
+
+<!-- timeline 05-19 -->
+今天十点半就早睡了，睡了八小时第二天6点半起来还没睡够。
+<!-- endtimeline -->
+
+<!-- timeline 05-18 -->
 开始Wagas吃轻食，晚上尽量不吃饭。
 <!-- endtimeline -->
 
