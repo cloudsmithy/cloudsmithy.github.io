@@ -30,6 +30,12 @@ package-lock.json
 # Kiro
 .kiro/
 
+# Cursor
+.cursor/
+
+# Aider
+.aider*
+
 # Environment
 .env
 .env.local
