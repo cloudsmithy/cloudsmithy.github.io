@@ -54,6 +54,7 @@ skip_render:
   - "googlea37b65ccf0f77745.html"
   - "sw.js"
   - "manifest.json"
+  - "daily-routine.html"
 new_post_name: ":title.md"
 default_layout: post
 titlecase: false
@@ -101,8 +102,8 @@ feed:
   limit: 0
 sitemap:
   path: sitemap.xml
-  tags: false
-  categories: false
+  tags: true
+  categories: true
 nofollow:
   enable: true
   field: site

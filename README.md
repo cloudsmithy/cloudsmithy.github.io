@@ -35,3 +35,10 @@ pnpm install
 # 本地预览
 pnpm dev
 ```
+
+## 许可协议
+
+本仓库采用双协议：
+
+- **代码**（主题配置、构建脚本、CI 等）以 [MIT](LICENSE) 协议授权
+- **博客内容**（`source/_posts/`、`source/_pages/` 下的文章、图片等）以 [CC BY 4.0](LICENSE-CONTENT) 协议授权，转载请注明出处
