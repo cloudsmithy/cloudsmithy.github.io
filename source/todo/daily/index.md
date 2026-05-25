@@ -9,6 +9,14 @@ sitemap: false
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-25 -->
+配置了飞书ws 链接Claude Code。当商业APP用吧。
+<!-- endtimeline -->
+
+<!-- timeline 05-24 -->
+汽锅鱼挺好吃的，好像有点少，汤很好喝。
+<!-- endtimeline -->
+
 <!-- timeline 05-20 -->
 人家过520 我跑医院，早上针灸，下午其他科室花20元被骂了一顿。收到医院的问卷评价，算了，没法写。
 <!-- endtimeline -->
