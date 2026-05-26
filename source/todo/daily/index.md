@@ -9,6 +9,10 @@ sitemap: false
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-26 -->
+配置了SAML集成Amazon Grafana，SAML果然是技术债，不同的软件的SAML断言字段都不一样，这是一个不通用的情况，如果断言不对，那么就是SSO登陆过了但是cookie种不到后端Service，然后401报错。看了Grafana for beginner。基本就是链接数据源，然后画图，使用SQL过滤，然后监控警报，RBAC。
+<!-- endtimeline -->
+
 <!-- timeline 05-25 -->
 配置了飞书ws 链接Claude Code。当商业APP用吧。
 <!-- endtimeline -->
