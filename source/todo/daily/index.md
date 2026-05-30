@@ -9,15 +9,15 @@ sitemap: false
 
 {% timeline 2026-05 %}
 
-<!-- timeline 05-28 -->
+<!-- timeline 05-29 -->
 找公司电工问了跳闸几种极端情况，火线裸露有水汽可能短路，铁片松动导致短接，零火接反也能偶发，后面待验证。
 <!-- endtimeline -->
 
-<!-- timeline 05-27 -->
+<!-- timeline 05-28 -->
 看了Datawhale的Langgraph教程，很清晰。用state在图中流转，然后还有save point啥的。后面A2A的范式估计还得找AgentCore的workshop了。
 <!-- endtimeline -->
 
-<!-- timeline 05-26 -->
+<!-- timeline 05-27 -->
 看了一晚倪海厦的人纪 - 针灸大成，正好最近也在中医院针灸，主要看了内脏和五行的关系，以及和颜色的关系。然后针灸穴位导论。
 <!-- endtimeline -->
 
