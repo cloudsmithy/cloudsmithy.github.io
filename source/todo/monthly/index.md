@@ -10,9 +10,24 @@ sitemap: false
 
 {% timeline 2026 %}
 
+<!-- timeline 📅 2026-07 月度 -->
+Todo:继续6月没看完的
+<!-- endtimeline -->
+
+<!-- timeline 📅 2026-06 月度 -->
+
+Todo1: 把庄子内七篇 前5篇看完，总结每个章节的大概主旨
+Todo2: [倪海厦《针灸》全](https://www.bilibili.com/video/BV1bd4y1F7Zo/) 能看多少看多少
+
+<!-- endtimeline -->
+
 <!-- timeline 📅 2026-05 月度 -->
 
 TBD...
+<!-- endtimeline -->
+
+<!-- timeline 🗓️ W20 (05-24 ~ 05-30) -->
+前同事定期聚餐，然后也看了新房子，最近周围人跟我说的最多的就是年轻真好，他们都上有老下有小活在樊笼里。这一周过的很快。针灸+LLM 框架 + 运维 + 电工 跨度有点大。
 <!-- endtimeline -->
 
 <!-- timeline 🗓️ W20 (05-10 ~ 05-16) -->
