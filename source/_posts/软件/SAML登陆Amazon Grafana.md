@@ -1,5 +1,15 @@
 ---
 title: SAML登陆Amazon Grafana
+description: SAML登陆Amazon Grafana
+tags:
+  - SAML
+  - Grafana
+  - APM
+  - SSO
+toc: true
+categories:
+  - Grafana
+date: 2026-06-01 00:00:00
 ---
 
 现在很多古老的系统还是使用SAML协议进行单点登录，
