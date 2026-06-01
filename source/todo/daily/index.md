@@ -9,6 +9,11 @@ sitemap: false
 
 {% timeline 2026-05 %}
 
+<!-- timeline 05-31 -->
+1.吃了苏帮袁，葱油拌面，盐水鸭，but 蟹粉小笼包有点闹着玩。
+2.睡觉的时候把注意力放在关元，还能睡好一点。
+<!-- endtimeline -->
+
 <!-- timeline 05-30 -->
 晚上吃了麻六记，太久晚上不吃饭了，吃不动了。
 <!-- endtimeline -->
