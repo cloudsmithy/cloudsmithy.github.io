@@ -10,7 +10,10 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-02 -->
-使用Cohere Embed v3 和 v4 做了 Embedding 把向量写到OpenSearch里，使用神经搜索。
+使用Cohere Embed v3 和 v4 做了 Embedding 把向量写到OpenSearch OSS里，使用神经搜索，做了文本RAG和以文搜图。
+OpenSearch OSS 不支持 ML pipeline，甚至大多数Milvus的使用也是用脚本做向量化之后再做RAG，然后ES里存图片的地址。
+Recall 常用的是Bi-encoder，粗筛，Rerank 是 cross-encoder，然后每个召回的结果都要和query做一个排序。（cross-encoder 是文本对文本的,搜不了图）
+
 <!-- endtimeline -->
 
 <!-- timeline 06-01 -->
