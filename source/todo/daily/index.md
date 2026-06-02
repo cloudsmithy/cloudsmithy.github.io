@@ -9,8 +9,12 @@ sitemap: false
 
 {% timeline 2026-06 %}
 
-<!-- timeline 06-01 -->
+<!-- timeline 06-02 -->
 使用Cohere Embed v3 和 v4 做了 Embedding 把向量写到OpenSearch里，使用神经搜索。
+<!-- endtimeline -->
+
+<!-- timeline 06-01 -->
+胡思乱想一天。
 <!-- endtimeline -->
 
 {% endtimeline %}
