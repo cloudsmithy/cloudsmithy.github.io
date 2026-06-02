@@ -1,12 +1,44 @@
 ---
 title: 文本向量化写到 OpenSearch OSS
-description: 向量化写到 OpenSearchOSS
-tags: Python
+description: 向量化写到 OpenSearch OSS
+tags: OpenSearch
 toc: true
 categories: OpenSearch
 date: 2026-06-02 00:00:00
 ---
 
+先看OpenSearch的KNN索引mappping
+
+```json
+{
+  "vector-index": {
+    "mappings": {
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "enabled": false
+        },
+        "text": {
+          "type": "text"
+        },
+        "vector": {
+          "type": "knn_vector",
+          "dimension": 1024,
+          "method": {
+            "engine": "faiss",
+            "space_type": "cosinesimil",
+            "name": "hnsw",
+            "parameters": {
+              "ef_construction": 512,
+              "m": 16
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
 
 ```python
 #!/usr/bin/env python3
