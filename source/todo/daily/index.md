@@ -7,6 +7,14 @@ sitemap: false
 每天一句话，按月倒序。在这里[编辑日报](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/todo/daily/index.md)。想看阶段性复盘请移步 [月报](/todo/monthly/)。
 
 
+{% timeline 2026-06 %}
+
+<!-- timeline 06-01 -->
+使用Cohere Embed v3 和 v4 做了 Embedding 把向量写到OpenSearch里，使用神经搜索。
+<!-- endtimeline -->
+
+{% endtimeline %}
+
 {% timeline 2026-05 %}
 
 <!-- timeline 05-31 -->
