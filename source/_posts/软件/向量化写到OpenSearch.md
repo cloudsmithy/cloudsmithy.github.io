@@ -40,6 +40,23 @@ date: 2026-06-02 00:00:00
 }
 ```
 
+
+生成图片的索引是这样
+```
+{
+  "settings": { "index.knn": true },
+  "mappings": { "properties": {
+    "image_vec": {
+      "type": "knn_vector",
+      "dimension": 1536,
+      "method": { "name": "hnsw", "engine": "faiss", "space_type": "cosinesimil" }
+    },
+    "filename": { "type": "keyword" },
+    "path":     { "type": "keyword" }
+  }}
+}
+```
+
 ```python
 #!/usr/bin/env python3
 """
