@@ -6,7 +6,7 @@ toc: true
 categories:
   - Bedrock
   - AWS
-date: 2026-06-02 00:00:00
+date: 2026-06-03 00:00:00
 ---
 
 昨天开始 Bedrock 可以使用，而mantle API终于支持了开源LLM以外的模型。这次的Model 是 no-streaming，在Bedrock的 playground 也看不到。
