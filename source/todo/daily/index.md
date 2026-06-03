@@ -10,7 +10,7 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-03 -->
-在使用AWS Role的情况下，可以接入了Claude Desktop和[Codex](https://blog.no-claw.com/e7117226/)。
+在使用 AWS IAM Role 短期凭证的情况下，可以接入了Claude Desktop和[Codex](https://blog.no-claw.com/e7117226/)。
 
 另外吐槽Gitee：真是草台班子，提完PR之后，才想起来忘记了拉起其他文件的更新了。然后拉了一下更新防止对方合并有冲突。Sync之后任何更新都找不到了，Code commit改动没了，pr也没了。
 
