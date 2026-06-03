@@ -34,3 +34,8 @@ export AWS_BEARER_TOKEN_BEDROCK=<token>
 
 
 然后就可以了，VS Code和Kiro也能安装Claude的插件使用Chat。
+
+
+6月更新，终于可以读到本地AWS凭证了。
+
+![](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/b21401ba6489e2da8eebe1a6bcaa2e57a264e369/Snipaste_2026-06-03_15-17-27.png)

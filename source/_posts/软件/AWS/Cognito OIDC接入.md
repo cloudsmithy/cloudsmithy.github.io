@@ -1,13 +1,12 @@
 ---
-title: Python + Cognito
-description: Python + Cognito
+title: Cognito OIDC接入
+description: Cognito OIDC接入
 tags:
   - AWS
 toc: true
 categories:
   - AWS
   - SSO
-abbrlink: b0e681b2
 date: 2026-04-29 00:00:00
 ---
 
