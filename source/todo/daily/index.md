@@ -9,6 +9,13 @@ sitemap: false
 
 {% timeline 2026-06 %}
 
+<!-- timeline 06-03 -->
+在使用AWS Role的情况下，可以接入了Claude Desktop和[Codex](https://blog.no-claw.com/e7117226/)。
+
+另外吐槽Gitee：真是草台班子，提完PR之后，才想起来忘记了拉起其他文件的更新了。然后拉了一下更新防止对方合并有冲突。Sync之后任何更新都找不到了，Code commit改动没了，pr也没了。
+
+<!-- endtimeline -->
+
 <!-- timeline 06-02 -->
 使用Cohere Embed v3 和 v4 做了 Embedding 把向量写到OpenSearch OSS里，使用神经搜索，做了文本RAG和以文搜图。
 OpenSearch OSS 不支持 ML pipeline，甚至大多数Milvus的使用也是用脚本做向量化之后再做RAG，然后ES里存图片的地址。
