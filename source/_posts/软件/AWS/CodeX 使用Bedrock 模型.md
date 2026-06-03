@@ -31,7 +31,9 @@ print(response.output_text)
 
 ```
 
+如果你是其他区域可能会有这个报错：
 
+openai.NotFoundError: Error code: 404 - {'error': {'code': 'not_found_error', 'message': "The model 'openai.gpt-5.5' does not exist", 'param': None, 'type': 'invalid_request_error'}}
 ```
 vim ~/.codex/config.toml
 
