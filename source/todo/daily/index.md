@@ -9,6 +9,16 @@ sitemap: false
 
 {% timeline 2026-06 %}
 
+<!-- timeline 06-04 -->
+
+1. 搬家。搬家的小孩还挺能干的，这么实诚的孩子不多了。
+2. 重新看了浏览器访问网站的时候DNS的解析的流程。之前面试SA的时候答的不好。
+应该是本地先找DNS的缓存（浏览器 - OS cache - Host 文件 - 上级DNS（路由器））
+没有缓存的话就先找到根域名（也就是.）,然后. 会跳转到com.，然后google.com.
+
+<!-- endtimeline -->
+
+
 <!-- timeline 06-03 -->
 在使用 AWS IAM Role 短期凭证的情况下，可以接入了Claude Desktop和[Codex](https://blog.no-claw.com/e7117226/)。
 
