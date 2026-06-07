@@ -3,7 +3,7 @@ title: 关于我
 toc: true
 ---
 
-仍然在折腾路上的不断探索。[点击编辑。](https://github.com/cloudsmithy/cloudsmithy.github.io/tree/master/source)
+仍然在折腾路上的不断探索。[点击编辑](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/about/index.md)。
 
 ## 👨‍💻 技术背景
 
