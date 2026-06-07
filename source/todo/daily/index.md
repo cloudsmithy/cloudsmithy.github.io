@@ -10,7 +10,8 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-07 -->
-网站重构，RDS serverless 竟然比RDS t4g还贵，DDB不支持聚合查询是一个很痛的点，给关系型数据库的迁移带来很大的麻烦。
+1. 网站重构，RDS serverless 竟然比RDS t4g还贵，DDB不支持聚合查询是一个很痛的点，给关系型数据库的迁移带来很大的麻烦。
+2. 吃了清水亭（国贸店）。现在脆藕的时节藕汤没有那么好喝，店里用了鸡油压了下，真是一个好主意。
 <!-- endtimeline -->
 
 <!-- timeline 06-06 -->
