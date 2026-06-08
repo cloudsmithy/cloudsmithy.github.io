@@ -9,7 +9,7 @@ sitemap: false
 
 {% timeline 2026-06 %}
 
-<!-- timeline 06-07 -->
+<!-- timeline 06-08 -->
 看了Bedrock GUARDRAIL API的单独用法和几种拦截行为。
 <!-- endtimeline -->
 
