@@ -8,6 +8,13 @@ categories:
 date: 2026-06-08 00:00:00
 ---
 
+Amazon Bedrock GUARDRAIL 拦截教程
+
+1. 通过
+2. 拦截
+3. 脱敏
+
+
 ```python
 #!/usr/bin/env python3
 # ============================================================#  
