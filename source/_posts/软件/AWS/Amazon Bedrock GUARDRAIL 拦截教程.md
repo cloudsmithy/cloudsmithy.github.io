@@ -190,3 +190,9 @@ if __name__ == "__main__":
     show("You are a fucking asshole.")
 
 ```
+
+![](https://fastly.jsdelivr.net/gh/bucketio/img4@main/2026/06/08/1780910697946-1448868a-f3bc-4dab-a8ca-51e1c8576302.png)
+
+![](https://fastly.jsdelivr.net/gh/bucketio/img19@main/2026/06/08/1780910704818-48c5da35-f768-41aa-9e25-a6645a80ceb7.png)
+
+![](https://fastly.jsdelivr.net/gh/bucketio/img17@main/2026/06/08/1780910706663-f661ff03-ebca-42e0-849e-21a1cdac7379.png)
