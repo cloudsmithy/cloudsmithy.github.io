@@ -4,7 +4,7 @@ description: 用 pikepdf 去除 PDF 的"禁止复制"限制
 tags: PDF
 toc: true
 categories: 软件
-date: 2025-06-09 00:00:00
+date: 2026-06-09 00:00:00
 ---
 
 ## 一、先搞清楚:PDF 加密有两种
