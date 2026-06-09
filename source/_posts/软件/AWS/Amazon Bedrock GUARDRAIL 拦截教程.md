@@ -14,6 +14,13 @@ Amazon Bedrock GUARDRAIL 拦截教程
 2. 拦截
 3. 脱敏
 
+   | 状态       | action                 | actionReason           | outputs          | 规则内 action  | detected |
+|------------|-----------------------|-----------------------|-----------------|----------------|----------|
+| ✅ 通过/放行 | NONE                  | No action.            | []               | —(assessments 空) | 无       |
+| 🔵 只检测   | NONE                  | No action.            | []               | NONE           | true     |
+| 🔴 拦截    | GUARDRAIL_INTERVENED  | Guardrail blocked.    | 换成拦截提示       | BLOCKED        | true     |
+| 🟡 脱敏    | GUARDRAIL_INTERVENED  | Guardrail masked.     | 敏感词换占位符     | ANONYMIZED     | true     |
+
 
 ```python
 #!/usr/bin/env python3
