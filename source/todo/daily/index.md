@@ -10,7 +10,7 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-08 -->
-看了Bedrock GUARDRAIL API的单独用法和几种拦截行为。
+看了Bedrock GUARDRAIL API的单独用法和几种拦截行为。放行，检测和拦截。
 <!-- endtimeline -->
 
 <!-- timeline 06-07 -->
