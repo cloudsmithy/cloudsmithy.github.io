@@ -9,7 +9,7 @@ sitemap: false
 
 {% timeline 2026-06 %}
 
-<!-- timeline 06-08 -->
+<!-- timeline 06-09 -->
 Cloudflare 的IP节点在IPCN会显示为泛播，不知道是不是适用所有的CDN。
 <!-- endtimeline -->
 
