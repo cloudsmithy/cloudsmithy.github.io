@@ -14,7 +14,7 @@ Amazon Bedrock GUARDRAIL 拦截教程
 2. 拦截
 3. 脱敏
 
-   | 状态       | action                 | actionReason           | outputs          | 规则内 action  | detected |
+| 状态       | action                 | actionReason           | outputs          | 规则内 action  | detected |
 |------------|-----------------------|-----------------------|-----------------|----------------|----------|
 | ✅ 通过/放行 | NONE                  | No action.            | []               | —(assessments 空) | 无       |
 | 🔵 只检测   | NONE                  | No action.            | []               | NONE           | true     |
