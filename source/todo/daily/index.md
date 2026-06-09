@@ -10,6 +10,10 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-08 -->
+Cloudflare 的IP节点在IPCN会显示为泛播，不知道是不是适用所有的CDN。
+<!-- endtimeline -->
+
+<!-- timeline 06-08 -->
 看了Bedrock GUARDRAIL API的单独用法和几种拦截行为。放行，检测和拦截。
 <!-- endtimeline -->
 
