@@ -267,4 +267,15 @@ Git page迁移到了Cloudflare Page, 接了Google SEO，终于抓到sitemap了�
 先吃了成都驻京办，蒜泥白肉不如望京，逛了景山公园，走了北中轴线，写了游记。太原驻京办收尾。驻京办+6
 <!-- endtimeline -->
 
+<!-- timeline 03-31 -->
+打卡襄阳驻京办，吃了牛肉面和三鲜豆皮。结论是不如武汉山海关路菜市场。
+<!-- endtimeline -->
+
+<!-- timeline 03-22 -->
+打卡西安驻京办，水盆可以，泡馍一般，套餐糊弄人，态度一般。
+<!-- endtimeline -->
+
+<!-- timeline 03-14 -->
+打卡新疆驻京办，天花板！
+<!-- endtimeline -->
 {% endtimeline %}
