@@ -10,7 +10,7 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-10 -->
-看了《站点可靠性工作手册》，SRE要搭监控，oncall，救火，写工单，复盘，简直再说SRE狗都不干。
+看了《站点可靠性工作手册》，SRE要搭监控，oncall，救火，写工单，复盘，简直在说SRE狗都不干。
 <!-- endtimeline -->
 
 <!-- timeline 06-09 -->
