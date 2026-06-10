@@ -259,7 +259,7 @@ Git page迁移到了Cloudflare Page, 接了Google SEO，终于抓到sitemap了�
 雨天漫步中轴线，​闲时俯瞰北京城。
 <!-- endtimeline -->
 
-<!-- timeline 04-19 -->
+<!-- timeline 04-18 -->
 参加ES中国峰会，吃牛杂煲，鸟巢外场听张杰演唱会，全损音质。
 <!-- endtimeline -->
 
