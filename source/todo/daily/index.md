@@ -10,7 +10,8 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-10 -->
-看了《站点可靠性工作手册》，SRE要搭监控，oncall，救火，写工单，复盘，简直在说SRE狗都不干。
+1. 看了《站点可靠性工作手册》，SRE要搭监控，oncall，救火，写工单，复盘疑难杂症，甚至百年难遇的问题，简直在说SRE狗都不干。还是SA有全局意识吧。
+2. ALB -> NLB 是为了加七层转发，NLB -> ALB 为了固定IP
 <!-- endtimeline -->
 
 <!-- timeline 06-09 -->
