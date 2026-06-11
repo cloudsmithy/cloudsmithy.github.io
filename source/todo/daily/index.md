@@ -6,8 +6,11 @@ sitemap: false
 
 每天一句话，按月倒序。在这里[编辑日报](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/todo/daily/index.md)。想看阶段性复盘请移步 [月报](/todo/monthly/)。
 
-
 {% timeline 2026-06 %}
+
+<!-- timeline 06-11 -->
+go tour: https://go.dev/tour
+<!-- endtimeline -->
 
 <!-- timeline 06-10 -->
 1. 看了《站点可靠性工作手册》，SRE要搭监控，oncall，救火，写工单，复盘疑难杂症，甚至百年难遇的问题，简直在说SRE狗都不干。还是SA有全局意识吧。
