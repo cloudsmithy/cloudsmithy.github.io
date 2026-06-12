@@ -9,7 +9,8 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-11 -->
-go tour: https://go.dev/tour
+1. go tour: https://go.dev/tour
+2. 晚上吃了海胆刺身 * 2，海胆蒸蛋 * 1，挺甜的，其他的没有感觉。九两的生蚝也就两三口的事，虽然看着很大。
 <!-- endtimeline -->
 
 <!-- timeline 06-10 -->
