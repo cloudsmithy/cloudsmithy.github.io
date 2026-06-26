@@ -9,7 +9,8 @@ sitemap: false
 {% timeline 2026-06 %}
 
 <!-- timeline 06-25 -->
-跟着朝阳团委做了小马扎手工。
+1. 跟着朝阳团委做了小马扎手工。
+2. 初步看了把脉。
 <!-- endtimeline -->
 
 <!-- timeline 06-24 -->
