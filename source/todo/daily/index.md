@@ -8,6 +8,19 @@ sitemap: false
 
 {% timeline 2026-06 %}
 
+<!-- timeline 06-29 -->
+1. 配置了Rime + 万象拼音配置双拼。
+2. 看完了《程序员健康指南》
+<!-- endtimeline -->
+
+<!-- timeline 06-28 -->
+吃了三分熟牛肉，just so so
+<!-- endtimeline -->
+
+<!-- timeline 06-27 -->
+去酒吧就为了打包白葡萄酒回家做菜
+<!-- endtimeline -->
+
 <!-- timeline 06-26 -->
 这几天断断续续用双拼，差不多有小成，能够基本覆盖正常打字了。
 <!-- endtimeline -->
