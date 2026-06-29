@@ -19,3 +19,8 @@ https://amzxyz.github.io/
 
 这里是配置文档：
 https://amzxyz.github.io/doc/squirrel/
+
+
+中文模式下输入 /flypy    切换到→小鹤双拼
+
+然后重新部署
