@@ -14,11 +14,12 @@ sitemap: false
 <!-- endtimeline -->
 
 <!-- timeline 06-28 -->
-吃了三分熟牛肉，just so so
+开始尝试了虚实步，联系累了去了三分熟牛肉，just so so
 <!-- endtimeline -->
 
 <!-- timeline 06-27 -->
-去酒吧就为了打包白葡萄酒回家做菜
+1. 吃了一个不太地道的水盆羊肉
+2. 去酒吧就为了打包白葡萄酒回家做菜
 <!-- endtimeline -->
 
 <!-- timeline 06-26 -->
