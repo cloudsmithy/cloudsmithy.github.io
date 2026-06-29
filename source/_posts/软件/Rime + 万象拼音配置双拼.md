@@ -1,6 +1,6 @@
 ---
-title: Rime + 万象拼音配置双拼.md
-description: Rime + 万象拼音配置双拼.md
+title: Rime + 万象拼音配置双拼
+description: Rime + 万象拼音配置双拼
 tags: 双拼
 toc: true
 categories:
