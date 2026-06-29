@@ -14,7 +14,8 @@ sitemap: false
 <!-- endtimeline -->
 
 <!-- timeline 06-28 -->
-开始尝试了虚实步，联系累了去了三分熟牛肉，just so so
+1. 开始尝试了虚实步，联系累了去了三分熟牛肉，just so so
+2. 原来半夜3点半准时热醒是因为没开空调
 <!-- endtimeline -->
 
 <!-- timeline 06-27 -->
