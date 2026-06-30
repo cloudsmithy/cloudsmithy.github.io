@@ -1,10 +1,11 @@
 ---
 title: CodeX 使用Bedrock 模型
 description: CodeX 使用Bedrock 模型
-tags: AWS
+tags:
+  - AWS
+  - Bedrock
 toc: true
 categories:
-  - Bedrock
   - AWS
 date: 2026-06-03 08:00:00
 ---

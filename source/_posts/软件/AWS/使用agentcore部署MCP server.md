@@ -1,10 +1,11 @@
 ---
 title: 使用agentcore部署MCP server
 description: 使用agentcore部署MCP server
-tags: AWS
+tags:
+  - AWS
+  - MCP
 toc: true
 categories:
-  - MCP
   - AWS
 abbrlink: 56feb9d1
 date: 2025-12-15 00:00:00

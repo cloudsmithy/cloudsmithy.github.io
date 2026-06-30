@@ -1,7 +1,8 @@
 ---
 title: MacOS的LWScreenShot，锁屏以后还能截图
 description: MacOS的LWScreenShot，锁屏以后还能截图
-categories: MacOS
+categories:
+  - 苹果
 date: 2026-04-17 00:00:00
 ---
 

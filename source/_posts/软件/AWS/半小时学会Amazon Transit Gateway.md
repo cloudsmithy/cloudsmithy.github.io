@@ -1,10 +1,11 @@
 ---
 title: 半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置
 description: 半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置
-tags: AWS
+tags:
+  - AWS
+  - 家庭网络
 toc: true
 categories:
-  - 网络
   - AWS
 abbrlink: b9af2b64
 date: 2025-06-20 00:00:00

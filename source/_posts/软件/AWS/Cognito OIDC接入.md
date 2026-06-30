@@ -3,10 +3,10 @@ title: Cognito OIDC接入
 description: Cognito OIDC接入
 tags:
   - AWS
+  - SSO
 toc: true
 categories:
   - AWS
-  - SSO
 date: 2026-04-29 00:00:00
 ---
 

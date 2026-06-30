@@ -1,7 +1,7 @@
 ---
 title: 如何在 AWS EC2 上部署 Isaac Sim
 description: 在 AWS EC2 G5 实例上部署 NVIDIA Isaac Sim 仿真平台的实战教程
-tags: Isaac
+tags:
 toc: true
 categories:
   - 软件

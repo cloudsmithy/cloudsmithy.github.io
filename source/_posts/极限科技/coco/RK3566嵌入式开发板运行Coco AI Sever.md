@@ -2,7 +2,7 @@
 title: RK3566嵌入式开发板运行Coco AI Sever
 description: 在 RK3566 嵌入式开发板上部署运行 Coco AI Server 的实践记录。
 tags:
-  - Coco-AI
+  - Coco AI
   - 极限科技
 toc: true
 categories:
