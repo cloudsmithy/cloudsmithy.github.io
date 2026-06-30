@@ -1,10 +1,11 @@
 ---
 title: Claude Code 额度不够用？走 Bedrock 账单
 description: Claude Code 额度不够用？走 Bedrock 账单
-tags: AWS
+tags:
+  - AWS
+  - Bedrock
 toc: true
 categories:
-  - Bedrock
   - AWS
 abbrlink: 4dbc8277
 date: 2026-04-17 00:00:00
