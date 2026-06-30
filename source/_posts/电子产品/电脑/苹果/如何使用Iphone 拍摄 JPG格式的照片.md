@@ -1,7 +1,8 @@
 ---
 title: 如何使用 Iphone 拍摄 JPG 格式的照片
 description: iPhone 默认拍 HEIC 格式，如何设置直接拍摄 JPG 格式照片。
-tags: 电脑外设
+tags:
+  - 外设
 toc: true
 categories:
   - 电子产品

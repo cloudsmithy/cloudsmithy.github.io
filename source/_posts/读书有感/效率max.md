@@ -1,9 +1,11 @@
 ---
 title: 效率（忘记哪里摘抄的了
 description: 效率提升技巧摘抄，两分钟法则、五分钟法则等实用时间管理方法。
-tags: 读书
+tags:
+  - 读书有感
 toc: true
-categories: 读书有感
+categories:
+  - 读书有感
 abbrlink: 26314a8
 date: 2021-01-22 00:00:00
 ---

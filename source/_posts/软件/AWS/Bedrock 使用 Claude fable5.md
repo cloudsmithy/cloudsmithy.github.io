@@ -1,9 +1,11 @@
 ---
 title: Bedrock 使用 Claude fable5
 description: 
-tags: Bedrock
+tags:
+  - Bedrock
 toc: true
-categories: Bedrock
+categories:
+  - AWS
 date: 2026-06-11 00:00:00
 ---
 参考：https://aws.amazon.com/cn/blogs/aws/anthropic-claude-fable-5-on-aws-mythos-class-capabilities-with-built-in-safeguards-now-available/

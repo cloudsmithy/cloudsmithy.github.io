@@ -3,9 +3,9 @@ title: Quick Suite 链接 Oauth 认证的 AgentCore runtime 部署的  MCP
 description: Quick Suite 链接 Oauth 认证的 AgentCore runtime 部署的  MCP
 tags:
   - AWS
+  - MCP
 toc: true
 categories:
-  - MCP
   - AWS
 abbrlink: 57053bb7
 date: 2026-04-17 00:00:00

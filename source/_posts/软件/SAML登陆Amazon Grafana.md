@@ -4,11 +4,10 @@ description: SAML登陆Amazon Grafana
 tags:
   - SAML
   - Grafana
-  - APM
   - SSO
 toc: true
 categories:
-  - Grafana
+  - 软件
 date: 2026-06-01 00:00:00
 ---
 

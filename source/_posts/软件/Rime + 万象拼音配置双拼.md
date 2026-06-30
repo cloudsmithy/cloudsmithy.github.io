@@ -1,10 +1,11 @@
 ---
 title: Rime + 万象拼音配置双拼
 description: Rime + 万象拼音配置双拼
-tags: 双拼
+tags:
+  - 双拼
 toc: true
 categories:
-  - 双拼
+  - 软件
 date: 2026-06-29 00:00:00
 ---
 
