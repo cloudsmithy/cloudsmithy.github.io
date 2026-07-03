@@ -6,7 +6,24 @@ sitemap: false
 
 每天一句话，按月倒序。在这里[编辑日报](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/todo/daily/index.md)。想看阶段性复盘请移步 [月报](/todo/monthly/)。
 
+{% timeline 2026-07 %}
+
+<!-- timeline 07-02 -->
+1. 采购卫生间插座防水盒。
+2. 开始进入高蛋白 + 粗粮的饮食模式
+<!-- endtimeline -->
+
+<!-- timeline 07-01 -->
+给空调安装了机械定时器，目前能用机械的坚决不用IOT方案。
+<!-- endtimeline -->
+
+{% endtimeline %}
+
 {% timeline 2026-06 %}
+
+<!-- timeline 06-30 -->
+写字楼请了儿童文学作家来讲中中轴线文化，实际也是推销自己的书 哈哈哈哈哈。和她争论地安门拆没拆的话题有10秒钟。
+<!-- endtimeline -->
 
 <!-- timeline 06-29 -->
 1. 配置了Rime + 万象拼音配置双拼。
