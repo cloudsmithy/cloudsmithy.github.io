@@ -8,6 +8,23 @@ sitemap: false
 
 {% timeline 2026-07 %}
 
+<!-- timeline 07-06 -->
+腰背委中求，一日身轻。
+<!-- endtimeline -->
+
+<!-- timeline 07-05 -->
+国图一日游，然后紫竹院。
+《解爱》没看完，每章前半部分讲情诗，后半部分用庄子来开解。
+<!-- endtimeline -->
+
+<!-- timeline 07-04 -->
+水煮了大虾，很好吃。
+<!-- endtimeline -->
+
+<!-- timeline 07-03 -->
+改善饮食模式，蛋白为主，粗粮为辅。
+<!-- endtimeline -->
+
 <!-- timeline 07-02 -->
 1. 采购卫生间插座防水盒。
 2. 开始进入高蛋白 + 粗粮的饮食模式
