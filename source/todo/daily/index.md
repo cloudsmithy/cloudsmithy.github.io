@@ -18,7 +18,8 @@ sitemap: false
 <!-- endtimeline -->
 
 <!-- timeline 07-04 -->
-水煮了大虾，很好吃。
+1. 水煮了大虾，很好吃。
+2. 第9次针灸
 <!-- endtimeline -->
 
 <!-- timeline 07-03 -->
@@ -54,7 +55,8 @@ sitemap: false
 
 <!-- timeline 06-27 -->
 1. 吃了一个不太地道的水盆羊肉
-2. 去酒吧就为了打包白葡萄酒回家做菜
+2. 第8次针灸
+3. 去酒吧就为了打包白葡萄酒回家做菜
 <!-- endtimeline -->
 
 <!-- timeline 06-26 -->
