@@ -1,13 +1,14 @@
 ---
 title: 给群晖安装Iperf3，一键局域网测速
 description: 在群晖上安装 Iperf3，一条命令测试局域网带宽速度。
-tags: 家庭网络
+tags:
+  - 家庭网络
+  - 群晖
 toc: true
 categories:
   - 电子产品
   - 电脑
   - NAS
-  - 群晖
 abbrlink: e70dd7d7
 date: 2025-06-15 00:00:00
 ---

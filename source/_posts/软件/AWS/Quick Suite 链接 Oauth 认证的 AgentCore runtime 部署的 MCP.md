@@ -6,6 +6,7 @@ tags:
   - MCP
 toc: true
 categories:
+  - 软件
   - AWS
 abbrlink: 57053bb7
 date: 2026-04-17 00:00:00

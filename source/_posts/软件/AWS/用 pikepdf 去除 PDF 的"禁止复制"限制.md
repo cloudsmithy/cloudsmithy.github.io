@@ -1,9 +1,11 @@
 ---
 title: 用 pikepdf 去除 PDF 的"禁止复制"限制
 description: 用 pikepdf 去除 PDF 的"禁止复制"限制
-tags: PDF
+tags:
 toc: true
-categories: 软件
+categories:
+  - 软件
+abbrlink: 11cd0ca9
 date: 2026-06-09 00:00:00
 ---
 

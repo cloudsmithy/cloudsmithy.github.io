@@ -6,7 +6,9 @@ tags:
   - Bedrock
 toc: true
 categories:
+  - 软件
   - AWS
+abbrlink: e7117226
 date: 2026-06-03 08:00:00
 ---
 

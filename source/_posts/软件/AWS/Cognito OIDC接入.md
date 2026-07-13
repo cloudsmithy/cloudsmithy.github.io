@@ -6,7 +6,9 @@ tags:
   - SSO
 toc: true
 categories:
+  - 软件
   - AWS
+abbrlink: 6d999d73
 date: 2026-04-29 00:00:00
 ---
 

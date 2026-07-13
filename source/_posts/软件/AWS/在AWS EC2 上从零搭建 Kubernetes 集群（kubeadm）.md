@@ -5,6 +5,7 @@ tags:
   - AWS
 toc: true
 categories:
+  - 软件
   - AWS
 abbrlink: 7e9d67ce
 date: 2026-03-06 00:00:00

@@ -4,7 +4,6 @@ description: 懒猫微服进阶心得（十七）：懒猫SSO对接外部OpenID 
 tags:
   - SSO
   - 懒猫微服
-  - OIDC
 toc: true
 series: 懒猫微服进阶
 categories:

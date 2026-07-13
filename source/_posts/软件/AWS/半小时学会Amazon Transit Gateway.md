@@ -6,6 +6,7 @@ tags:
   - 家庭网络
 toc: true
 categories:
+  - 软件
   - AWS
 abbrlink: b9af2b64
 date: 2025-06-20 00:00:00

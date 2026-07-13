@@ -1,11 +1,12 @@
 ---
 title: Socket 模拟木马程序笔记(合规demo版)
-description: 
-tags: Socket
+tags:
 toc: true
 categories:
   - 软件
+abbrlink: '97358423'
 date: 2026-06-06 00:00:00
+description:
 ---
 
 前几天在看日系图书《网络是怎么连接的》，今天就遇到了 Socket 的问题。算是浏览器连接的最基本的问题。
