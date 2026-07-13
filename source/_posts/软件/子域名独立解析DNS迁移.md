@@ -1,10 +1,11 @@
 ---
 title: 子域名独立解析DNS迁移
 description: 通过NS委派实现子域名跨服务商独立管理
-tags: DNS
+tags:
 toc: true
 categories:
   - 软件
+abbrlink: 13d4e54c
 date: 2026-07-03 00:00:00
 ---
 

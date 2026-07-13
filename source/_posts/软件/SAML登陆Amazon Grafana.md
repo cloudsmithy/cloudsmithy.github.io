@@ -2,12 +2,11 @@
 title: SAML登陆Amazon Grafana
 description: SAML登陆Amazon Grafana
 tags:
-  - SAML
-  - Grafana
   - SSO
 toc: true
 categories:
   - 软件
+abbrlink: 98b752fe
 date: 2026-06-01 00:00:00
 ---
 

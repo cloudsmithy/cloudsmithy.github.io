@@ -1,11 +1,14 @@
 ---
 title: Amazon Bedrock GUARDRAIL 拦截教程
-description: 
-tags: AWS
+tags:
+  - AWS
 toc: true
 categories:
+  - 软件
   - AWS
+abbrlink: ba3e7018
 date: 2026-06-08 00:00:00
+description:
 ---
 
 Amazon Bedrock GUARDRAIL 拦截教程

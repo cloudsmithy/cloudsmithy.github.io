@@ -7,7 +7,6 @@ toc: true
 categories:
   - 电子产品
   - 电脑
-  - 装机
 abbrlink: 3ff07059
 date: 2025-04-02 00:00:00
 ---
