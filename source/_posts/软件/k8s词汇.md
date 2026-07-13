@@ -4,6 +4,7 @@ description: Kubernetes 系列课程 · 术语去重词典（按课程 > 节 分
 tags: Kubernetes
 toc: true
 categories: 软件
+abbrlink: 7845f1d8
 date: 2026-07-13 00:00:00
 ---
 
@@ -607,7 +608,7 @@ date: 2026-07-13 00:00:00
 | substitute out | 词组 | 替换掉 | 硬编码值被替换 |
 | built-in / inbuilt object | 词组 | 内置对象 | Release/Values 等 |
 | template directive | 词组 | 模板指令 | 双花括号内的指令 |
-| double curly braces | 词组 | 双花括号 | {{ }} |
+| double curly braces | 词组 | 双花括号 | {% raw %}{{ }}{% endraw %} |
 | evaluate | /ɪˈvæljueɪt/ v. | 求值 | 引擎求值花括号内指令 |
 | as is | 习语 | 原样地 | 花括号外原样渲染 |
 | dot notation | 词组 | 点号表示法 | .Values.a.b |
