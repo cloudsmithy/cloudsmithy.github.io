@@ -8,6 +8,16 @@ sitemap: false
 
 {% timeline 2026-07 %}
 
+
+<!-- timeline 07-12 -->
+走了十几公里，看了《活着》和《心流》
+<!-- endtimeline -->
+
+<!-- timeline 07-11 -->
+1. 《庄子》的书到了，开始做德充符的笔记
+2. 吃了福建驻京办的佛跳墙。 just so so
+<!-- endtimeline -->
+
 <!-- timeline 07-10 -->
 唐山驻京办吃了鸭蛋豆角
 <!-- endtimeline -->
