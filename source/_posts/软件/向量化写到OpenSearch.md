@@ -1,9 +1,12 @@
 ---
 title: 文本向量化写到 OpenSearch OSS
 description: 向量化写到 OpenSearch OSS
-tags: OpenSearch
+tags:
+  - OpenSearch
 toc: true
-categories: OpenSearch
+categories:
+  - 软件
+abbrlink: 43237a4a
 date: 2026-06-02 00:00:00
 ---
 

@@ -11,41 +11,36 @@ const cp = require('child_process');
 
 const APPLY = process.argv.includes('--apply');
 
-// ---- 分类映射：把 key 替换为 value（value 可为多值数组，用于降级为父类）----
+// ---- 路径映射：完整分类路径精确匹配 → 替换为新路径，可附带补标签 ----
+// （2026-07 第二轮清洗：统一多层级重复节点、拆掉单篇碎片叶子）
+const CAT_PATH_MAP = [
+  { from: ['苹果'],                            to: ['电子产品', '电脑', '苹果'] },
+  { from: ['AWS'],                             to: ['软件', 'AWS'] },
+  { from: ['AWS', 'OpenSearch'],               to: ['软件', 'AWS'], addTags: ['OpenSearch'] },
+  { from: ['OpenSearch'],                      to: ['软件'], addTags: ['OpenSearch'] },
+  { from: ['电子产品', 'NAS'],                 to: ['电子产品', '电脑', 'NAS'] },
+  { from: ['电子产品', '电脑', 'NAS', '群晖'], to: ['电子产品', '电脑', 'NAS'], addTags: ['群晖'] },
+  { from: ['电子产品', '电脑', 'NAS', 'QNAP'], to: ['电子产品', '电脑', 'NAS'], addTags: ['NAS'] },
+  { from: ['电子产品', '电脑', '装机'],        to: ['电子产品', '电脑'] },
+  { from: ['电子产品', '软件技巧'],            to: ['软件'] },
+];
+
+// ---- 分类映射：单个分类名替换（不影响层级）----
 const CAT_MAP = {
-  '随笔': '散文随笔',
-  '零碎': '零碎生活',
-  '碎碎念': '零碎生活',
-  'Apple': '苹果',
-  'MacOS': '苹果',
-};
-// 这些分类“降级”为标签：从 categories 移除，并保证作为 tag 存在；同时给文章补上父分类（避免孤儿）
-const CAT_DEMOTE = {
-  '双拼':       { parent: '软件',  tag: '双拼' },
-  'Kubernetes': { parent: '软件',  tag: 'Kubernetes' },
-  'Grafana':    { parent: '软件',  tag: 'Grafana' },
-  'Blog':       { parent: '软件',  tag: 'Blog' },
-  'Bedrock':    { parent: 'AWS',   tag: 'Bedrock' },
-  '网络':       { parent: 'AWS',   tag: '网络' },
-  'MCP':        { parent: 'AWS',   tag: 'MCP' },
-  'SSO':        { parent: 'AWS',   tag: 'SSO' },
+  'Coco': 'Coco AI',
 };
 
 // ---- 标签映射 ----
 const TAG_MAP = {
-  'Coco-AI': 'Coco AI',
-  '电脑外设': '外设',
-  '硬件': '外设',
-  '网络': '家庭网络',
-  '组网': '家庭网络',
-  '单点登录': 'SSO',
-  '读书': '读书有感',
+  'MacOS': 'Apple',
+  'SAML': 'SSO',
+  'OIDC': 'SSO',
 };
-// 删除这些碎片标签（只出现一次、且无体系价值）
+// 删除这些标签：与分类重复（摘抄/读书有感/路由器/打印机），或只出现一次且标题已含关键词
 const TAG_DROP = new Set([
-  '飞牛OS','软件','车载','装修日记','ADB','POE','显示器','Tuya','装机',
-  '电视盒子','Cloudflared','LWScreenShot','网关','APM','ELK','Filebeat',
-  'Isaac','梦','诗','龙珠','RDP','远程开发','随笔','KVM','POE','Tuya',
+  '摘抄', '读书有感', '路由器', '打印机',
+  'Socket', 'PDF', 'DNS', 'Nginx', 'Fluent Bit', 'Langfuse',
+  'Go', '1Password', 'Vaultwarden', 'Grafana', 'Hexo',
 ]);
 
 function parseField(lines, startIdx, key) {
@@ -91,12 +86,12 @@ for (const f of files) {
   let tags = tagBlock ? tagBlock.vals.slice() : [];
   const origCats = cats.slice(), origTags = tags.slice();
 
-  // 分类降级
-  for (const [k, info] of Object.entries(CAT_DEMOTE)) {
-    if (cats.includes(k)) {
-      cats = cats.filter(c => c !== k);
-      if (info.parent && !cats.includes(info.parent)) cats.push(info.parent);
-      if (info.tag) tags.push(info.tag);
+  // 路径精确替换
+  for (const { from, to, addTags } of CAT_PATH_MAP) {
+    if (cats.length === from.length && cats.every((c, i) => c === from[i])) {
+      cats = to.slice();
+      if (addTags) tags.push(...addTags);
+      break;
     }
   }
   // 分类同义合并

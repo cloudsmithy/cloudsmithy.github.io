@@ -4,7 +4,6 @@ description: >-
   记录博客 sitemap 中出现重复 URL 的排查过程，根因是 hexo-abbrlink 插件使用 CRC32 产生了哈希碰撞，最终通过
   postinstall patch 替换为 MD5 解决。
 tags:
-  - Hexo
   - SEO
 toc: true
 author: Claude Code

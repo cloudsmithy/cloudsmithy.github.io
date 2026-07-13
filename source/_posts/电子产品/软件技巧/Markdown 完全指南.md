@@ -1,11 +1,11 @@
 ---
 title: Markdown 完全指南
 description: Markdown 语法完全指南，从基础到进阶用法全面覆盖
-tags: NAS
+tags:
+  - NAS
 toc: true
 categories:
-  - 电子产品
-  - 软件技巧
+  - 软件
 abbrlink: 84c20813
 date: 2024-09-16 00:00:00
 ---

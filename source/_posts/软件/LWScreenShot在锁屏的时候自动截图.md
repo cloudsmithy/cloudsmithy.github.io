@@ -1,11 +1,12 @@
 ---
 title: LWScreenShot在锁屏的时候自动截图
 description: LWScreenShot
-tags:
 toc: true
 categories:
   - 软件
+abbrlink: ce2cfd16
 date: 2025-06-10 00:00:00
+tags:
 ---
 
 

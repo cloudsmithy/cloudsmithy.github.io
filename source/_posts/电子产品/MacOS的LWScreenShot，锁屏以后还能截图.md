@@ -2,7 +2,10 @@
 title: MacOS的LWScreenShot，锁屏以后还能截图
 description: MacOS的LWScreenShot，锁屏以后还能截图
 categories:
+  - 电子产品
+  - 电脑
   - 苹果
+abbrlink: 5b230ad0
 date: 2026-04-17 00:00:00
 ---
 

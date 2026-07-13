@@ -1,7 +1,7 @@
 ---
 title: 老式打印机改 Airprint 之 cups
 description: 用 CUPS 将老式打印机改造为支持 AirPrint 的无线打印机
-tags: 打印机
+tags:
 categories:
   - 电子产品
   - 打印机

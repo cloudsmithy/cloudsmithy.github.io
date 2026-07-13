@@ -1,11 +1,11 @@
 ---
 title: ventoy引导wtg
 description: 使用 Ventoy 引导 Windows To Go，实现 U 盘启动 Windows 系统。
-tags: 外设
+tags:
+  - 外设
 categories:
   - 电子产品
   - 电脑
-  - 装机
 abbrlink: 874b576b
 date: 2023-02-10 00:00:00
 ---
