@@ -99,7 +99,10 @@ deploy:
 feed:
   type: atom
   path: atom.xml
-  limit: 0
+  limit: 20
+  content: false
+  content_limit: 140
+  content_limit_delim: " "
 sitemap:
   path: sitemap.xml
   tags: true
