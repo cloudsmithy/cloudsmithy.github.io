@@ -8,6 +8,9 @@ sitemap: false
 
 {% timeline 2026-07 %}
 
+<!-- timeline 07-13 -->
+卸载了全拼输入法。一个月熟练喽~
+<!-- endtimeline -->
 
 <!-- timeline 07-12 -->
 走了十几公里，看了《活着》和《心流》
