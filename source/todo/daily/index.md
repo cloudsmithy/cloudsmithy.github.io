@@ -17,7 +17,7 @@ sitemap: false
 <!-- endtimeline -->
 
 <!-- timeline 07-12 -->
-走了十几公里，看了《活着》和《心流》
+走了十几公里，在双井PageOne看了《活着》和《心流》
 <!-- endtimeline -->
 
 <!-- timeline 07-11 -->
