@@ -8,6 +8,10 @@ sitemap: false
 
 {% timeline 2026-07 %}
 
+<!-- timeline 07-14 -->
+发现了别人总结的人纪 - [针灸大成的笔记](https://www.yuanjuechan.com/2022-11-03-renjixiliezhenjiudachengshangpian.html#_bookmark71)
+<!-- endtimeline -->
+
 <!-- timeline 07-13 -->
 卸载了全拼输入法。一个月熟练喽~
 <!-- endtimeline -->
