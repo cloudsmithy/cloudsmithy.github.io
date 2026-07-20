@@ -8,6 +8,23 @@ sitemap: false
 
 {% timeline 2026-07 %}
 
+<!-- timeline 07-18 -->
+二刷隆福寺夜市，吃牛肉丸，福建小吃，月盛斋。
+<!-- endtimeline -->
+
+<!-- timeline 07-17 -->
+初探隆福寺夜市，吃烤牛舌。
+<!-- endtimeline -->
+
+<!-- timeline 07-16 -->
+挑战一次牛肉火锅霸王餐，只吃了一半
+<!-- endtimeline -->
+
+<!-- timeline 07-15 -->
+1. 第11次针灸
+2. PageOne 继续看书
+<!-- endtimeline -->
+
 <!-- timeline 07-14 -->
 发现了别人总结的人纪 - [针灸大成的笔记](https://www.yuanjuechan.com/2022-11-03-renjixiliezhenjiudachengshangpian.html#_bookmark71)
 <!-- endtimeline -->
@@ -23,6 +40,7 @@ sitemap: false
 <!-- timeline 07-11 -->
 1. 《庄子》的书到了，开始做德充符的笔记
 2. 吃了福建驻京办的佛跳墙。 just so so
+3. 第10次针灸
 <!-- endtimeline -->
 
 <!-- timeline 07-10 -->
