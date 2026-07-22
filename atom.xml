@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>镜湖</title>
+  
+  <subtitle>忘机山人的技术随手记 · AWS · Docker · 懒猫微服 · Homelab</subtitle>
+  <link href="https://blog.no-claw.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.no-claw.com/"/>
+  <updated>2026-07-20T16:00:00.000Z</updated>
+  <id>https://blog.no-claw.com/</id>
+  
+  <author>
+    <name>忘机山人</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>经济学原理 摘录</title>
+    <link href="https://blog.no-claw.com/b353a576/"/>
+    <id>https://blog.no-claw.com/b353a576/</id>
+    <published>2026-07-20T16:00:00.000Z</published>
+    <updated>2026-07-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">经济学原理 摘录</summary>
+    
+    
+    
+    <category term="摘抄" scheme="https://blog.no-claw.com/categories/%E6%91%98%E6%8A%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Podcasts 订阅折腾记录</title>
+    <link href="https://blog.no-claw.com/752e409a/"/>
+    <id>https://blog.no-claw.com/752e409a/</id>
+    <published>2026-07-19T16:00:00.000Z</published>
+    <updated>2026-07-19T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">Podcasts 订阅记录</summary>
+    
+    
+    
+    <category term="Podcasts" scheme="https://blog.no-claw.com/categories/Podcasts/"/>
+    
+    
+    <category term="Podcasts" scheme="https://blog.no-claw.com/tags/Podcasts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes 系列课程 · 术语去重词典（按课程 &gt; 节 分组）</title>
+    <link href="https://blog.no-claw.com/7845f1d8/"/>
+    <id>https://blog.no-claw.com/7845f1d8/</id>
+    <published>2026-07-12T16:00:00.000Z</published>
+    <updated>2026-07-12T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">Kubernetes 系列课程 · 术语去重词典（按课程 &gt; 节 分组）</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="Kubernetes" scheme="https://blog.no-claw.com/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4个月减肥20斤后，我悟到的这几件事</title>
+    <link href="https://blog.no-claw.com/3930b15c/"/>
+    <id>https://blog.no-claw.com/3930b15c/</id>
+    <published>2026-07-02T16:00:00.000Z</published>
+    <updated>2026-07-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">4个月减肥20斤后，我悟到的这几件事</summary>
+    
+    
+    
+    <category term="零碎生活" scheme="https://blog.no-claw.com/categories/%E9%9B%B6%E7%A2%8E%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="减肥" scheme="https://blog.no-claw.com/tags/%E5%87%8F%E8%82%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>子域名独立解析DNS迁移</title>
+    <link href="https://blog.no-claw.com/13d4e54c/"/>
+    <id>https://blog.no-claw.com/13d4e54c/</id>
+    <published>2026-07-02T16:00:00.000Z</published>
+    <updated>2026-07-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">通过NS委派实现子域名跨服务商独立管理</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Rime + 万象拼音配置双拼</title>
+    <link href="https://blog.no-claw.com/c1342edf/"/>
+    <id>https://blog.no-claw.com/c1342edf/</id>
+    <published>2026-06-28T16:00:00.000Z</published>
+    <updated>2026-06-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">Rime + 万象拼音配置双拼</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="双拼" scheme="https://blog.no-claw.com/tags/%E5%8F%8C%E6%8B%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《程序员健康指南》读后感</title>
+    <link href="https://blog.no-claw.com/93a77f57/"/>
+    <id>https://blog.no-claw.com/93a77f57/</id>
+    <published>2026-06-28T16:00:00.000Z</published>
+    <updated>2026-06-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">《程序员健康指南》读后感</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>我是如何学会双拼的</title>
+    <link href="https://blog.no-claw.com/89081682/"/>
+    <id>https://blog.no-claw.com/89081682/</id>
+    <published>2026-06-25T16:00:00.000Z</published>
+    <updated>2026-06-25T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">我是如何学会双拼的</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="双拼" scheme="https://blog.no-claw.com/tags/%E5%8F%8C%E6%8B%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>减肥攻略</title>
+    <link href="https://blog.no-claw.com/768f5303/"/>
+    <id>https://blog.no-claw.com/768f5303/</id>
+    <published>2026-06-24T16:00:00.000Z</published>
+    <updated>2026-06-24T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">减肥攻略</summary>
+    
+    
+    
+    <category term="零碎生活" scheme="https://blog.no-claw.com/categories/%E9%9B%B6%E7%A2%8E%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生活" scheme="https://blog.no-claw.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>冷酷的杀手恋上一个姑娘</title>
+    <link href="https://blog.no-claw.com/d3892c56/"/>
+    <id>https://blog.no-claw.com/d3892c56/</id>
+    <published>2026-06-15T16:00:00.000Z</published>
+    <updated>2026-06-15T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">冷酷的杀手恋上一个姑娘</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://blog.no-claw.com/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Bedrock 使用 Claude fable5</title>
+    <link href="https://blog.no-claw.com/5303808f/"/>
+    <id>https://blog.no-claw.com/5303808f/</id>
+    <published>2026-06-10T16:00:00.000Z</published>
+    <updated>2026-06-10T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">参考：https://aws.amazon.com/cn/blogs/aws/anthropic-claude-fable-5-on-aws-mythos-class-capabilities-with-built-in-safeguards-now-available/ 开启数据保留： 12345</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="AWS" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/AWS/"/>
+    
+    
+    <category term="Bedrock" scheme="https://blog.no-claw.com/tags/Bedrock/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 pikepdf 去除 PDF 的&quot;禁止复制&quot;限制</title>
+    <link href="https://blog.no-claw.com/11cd0ca9/"/>
+    <id>https://blog.no-claw.com/11cd0ca9/</id>
+    <published>2026-06-08T16:00:00.000Z</published>
+    <updated>2026-06-08T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">用 pikepdf 去除 PDF 的&quot;禁止复制&quot;限制</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Amazon Bedrock GUARDRAIL 拦截教程</title>
+    <link href="https://blog.no-claw.com/ba3e7018/"/>
+    <id>https://blog.no-claw.com/ba3e7018/</id>
+    <published>2026-06-07T16:00:00.000Z</published>
+    <updated>2026-06-07T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">Amazon Bedrock GUARDRAIL 拦截教程 通过 拦截 脱敏 状态 action actionReason outputs 规则内 action detected ✅ 通过&amp;#x2F;放行 NONE No action. [] —(assessments 空) 无 🔵 只检测 NO</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="AWS" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/AWS/"/>
+    
+    
+    <category term="AWS" scheme="https://blog.no-claw.com/tags/AWS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>地铁上耳机被其他人偷偷连了，苹果售后这样说....</title>
+    <link href="https://blog.no-claw.com/57fccc9b/"/>
+    <id>https://blog.no-claw.com/57fccc9b/</id>
+    <published>2026-06-06T16:00:00.000Z</published>
+    <updated>2026-06-06T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">地铁上耳机被其他人偷偷连了，苹果售后这样说....</summary>
+    
+    
+    
+    <category term="电子产品" scheme="https://blog.no-claw.com/categories/%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81/"/>
+    
+    
+    <category term="Apple" scheme="https://blog.no-claw.com/tags/Apple/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>潇洒姐《山洞四律》摘抄和感受</title>
+    <link href="https://blog.no-claw.com/b1ff342a/"/>
+    <id>https://blog.no-claw.com/b1ff342a/</id>
+    <published>2026-06-06T16:00:00.000Z</published>
+    <updated>2026-06-06T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">潇洒姐《山洞四律》摘抄和感受</summary>
+    
+    
+    
+    <category term="读书有感" scheme="https://blog.no-claw.com/categories/%E8%AF%BB%E4%B9%A6%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="效率" scheme="https://blog.no-claw.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Socket 模拟木马程序笔记(合规demo版)</title>
+    <link href="https://blog.no-claw.com/97358423/"/>
+    <id>https://blog.no-claw.com/97358423/</id>
+    <published>2026-06-05T16:00:00.000Z</published>
+    <updated>2026-06-05T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">前几天在看日系图书《网络是怎么连接的》，今天就遇到了 Socket 的问题。算是浏览器连接的最基本的问题。 服务端（控制端）accept() 是一个阻塞方法，等待客户端的连接，有程序连进来就可以使用 socket 发送指令了。 12345678910111213141516171819from so</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CodeX 使用Bedrock 模型</title>
+    <link href="https://blog.no-claw.com/e7117226/"/>
+    <id>https://blog.no-claw.com/e7117226/</id>
+    <published>2026-06-03T00:00:00.000Z</published>
+    <updated>2026-06-03T00:00:00.000Z</updated>
+    
+    
+    <summary type="html">CodeX 使用Bedrock 模型</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="AWS" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/AWS/"/>
+    
+    
+    <category term="AWS" scheme="https://blog.no-claw.com/tags/AWS/"/>
+    
+    <category term="Bedrock" scheme="https://blog.no-claw.com/tags/Bedrock/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文本向量化写到 OpenSearch OSS</title>
+    <link href="https://blog.no-claw.com/43237a4a/"/>
+    <id>https://blog.no-claw.com/43237a4a/</id>
+    <published>2026-06-01T16:00:00.000Z</published>
+    <updated>2026-06-01T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">向量化写到 OpenSearch OSS</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="OpenSearch" scheme="https://blog.no-claw.com/tags/OpenSearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SAML登陆Amazon Grafana</title>
+    <link href="https://blog.no-claw.com/98b752fe/"/>
+    <id>https://blog.no-claw.com/98b752fe/</id>
+    <published>2026-05-31T16:00:00.000Z</published>
+    <updated>2026-05-31T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">SAML登陆Amazon Grafana</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="SSO" scheme="https://blog.no-claw.com/tags/SSO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo Sitemap 踩坑复盘：CRC32 哈希碰撞导致重复 URL</title>
+    <link href="https://blog.no-claw.com/428cc28c/"/>
+    <id>https://blog.no-claw.com/428cc28c/</id>
+    <published>2026-05-13T16:00:00.000Z</published>
+    <updated>2026-05-13T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">记录博客 sitemap 中出现重复 URL 的排查过程，根因是 hexo-abbrlink 插件使用 CRC32 产生了哈希碰撞，最终通过 postinstall patch 替换为 MD5 解决。</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="SEO" scheme="https://blog.no-claw.com/tags/SEO/"/>
+    
+  </entry>
+  
+</feed>
