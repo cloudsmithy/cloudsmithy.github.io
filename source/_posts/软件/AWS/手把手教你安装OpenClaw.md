@@ -3,6 +3,7 @@ title: 手把手教你安装OpenClaw
 toc: true
 categories:
   - 软件
+abbrlink: 8e9b51fc
 date: 2026-03-15 00:00:00
 ---
 
