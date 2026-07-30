@@ -3,6 +3,7 @@ title: 大学霸TCPIP协议教程笔记
 description: 大学霸TCPIP协议教程笔记
 toc: true
 categories: 软件
+abbrlink: 50be5030
 date: 2026-07-27 00:00:00
 tags:
 ---
