@@ -25,12 +25,18 @@ sitemap: false
 
 {% timeline 2026-07 %}
 
+<!-- timeline 07-31 -->
+看完了《大学霸TCP IP》，跳过了所有的协议验证。
+<!-- endtimeline -->
+
 <!-- timeline 07-30 -->
 吃王府井寻味顺德菜
 <!-- endtimeline -->
 
 <!-- timeline 07-29 -->
 二刷鱼肉火锅
+
+看完了《搞定》三部曲
 <!-- endtimeline -->
 
 <!-- timeline 07-23 -->
