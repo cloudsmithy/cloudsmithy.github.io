@@ -6,7 +6,36 @@ sitemap: false
 
 每天一句话，按月倒序。在这里[编辑日报](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/todo/daily/index.md)。想看阶段性复盘请移步 [月报](/todo/monthly/)。
 
+
 {% timeline 2026-07 %}
+
+<!-- timeline 08-31 -->
+<!-- endtimeline -->
+
+<!-- timeline 08-02 -->
+1. 吃阳坊涮肉
+2. 看《人间世》石匠之齐
+<!-- endtimeline -->
+
+<!-- timeline 08-01 -->
+蘑菇汤复刻灵谷素面
+<!-- endtimeline -->
+
+{% endtimeline %}
+
+{% timeline 2026-07 %}
+
+<!-- timeline 07-30 -->
+吃王府井寻味顺德菜
+<!-- endtimeline -->
+
+<!-- timeline 07-29 -->
+二刷鱼肉火锅
+<!-- endtimeline -->
+
+<!-- timeline 07-23 -->
+吃鱼肉火锅
+<!-- endtimeline -->
 
 <!-- timeline 07-19 -->
 用AI写了一个mp4播放器和天气APP
