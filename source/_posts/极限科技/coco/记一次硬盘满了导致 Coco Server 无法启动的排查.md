@@ -25,7 +25,6 @@ date: 2026-02-21 00:00:00
   - `coco_data_vol:/app/easysearch/data`
   - `coco_config_vol:/app/easysearch/config`
   - `coco_logs_vol:/app/easysearch/logs`
-    <!-- more -->
     一开始看到的现象是：
 
 - `docker logs -f` 输出大量初始化日志

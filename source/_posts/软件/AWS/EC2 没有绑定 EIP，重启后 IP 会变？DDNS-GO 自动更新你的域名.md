@@ -23,8 +23,6 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-<!-- more -->
-
 设置 Docker 开机自启并立即启动：
 
 ```bash

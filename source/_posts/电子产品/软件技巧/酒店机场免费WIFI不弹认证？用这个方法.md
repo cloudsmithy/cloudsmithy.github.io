@@ -16,8 +16,6 @@ date: 2025-01-15 00:00:00
 
 t.cn: 实测桔子酒店和重庆机场都能用
 
-<!--more-->
-
 1.1.1.1:iphone 在重庆机场也能用
 
 captive.apple.com:适用于 Apple 设备

@@ -21,8 +21,6 @@ date: 2025-02-15 00:00:00
 
 可在“控制面板 - 外接设备”中查看磁盘详情：
 
- <!--more-->
-
 ![控制面板识别磁盘](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250326121751756.png)
 
 ## 2. exFAT 支持插件提示

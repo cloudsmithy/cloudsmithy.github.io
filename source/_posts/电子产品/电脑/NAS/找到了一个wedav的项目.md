@@ -19,8 +19,6 @@ https://github.com/mar10/wsgidav
 
 `WsgiDAV` 是一个支持 SSL 的独立 WebDAV 服务器，可以在 Linux、OSX 和 Windows 上作为 Python 命令行脚本运行。它的主要功能包括：
 
- <!--more-->
-
 ### 主要功能：
 
 1. **WebDAV 支持**：它提供完整的 WebDAV 协议实现，用于通过 HTTP 协议远程访问、管理和编辑文件。

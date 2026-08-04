@@ -14,8 +14,6 @@ date: 2025-06-20 00:00:00
 
 **AWS IAM Identity Center**（身份中心，原 AWS SSO）作为 AWS 官方提供的集中式身份认证与访问管理服务，可以作为企业的 **主身份提供商（IdP）**。通过 **SAML 2.0 协议**，它能够将认证结果传递给其他云服务商（如阿里云），让用户在 AWS 完成一次身份验证后，直接进入阿里云控制台，而无需再次登录。这就是所谓的 **跨云单点登录（Single Sign-On, SSO）**。
 
-<!-- more -->
-
 本文将结合详细步骤与截图，完整演示如何配置 **AWS IAM Identity Center 与阿里云 RAM 的 SAML 对接**。
 
 ### 在 AWS IAM Identity Center 新建用户

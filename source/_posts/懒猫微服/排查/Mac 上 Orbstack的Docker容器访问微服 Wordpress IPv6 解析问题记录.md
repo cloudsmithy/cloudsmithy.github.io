@@ -22,8 +22,6 @@ https://appstore.lazycat.cloud/#/shop/detail/dev.beiyu.wordpress
 - `dig` 查询正常，能返回 IPv6 结果。
 - 但容器内访问（`curl`、`ping6`）失败，提示网络不可达。
 
-<!-- more -->
-
 ### 原因排查
 
 查询后发现：

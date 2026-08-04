@@ -16,8 +16,6 @@ MacOS 单系统单系统一直用了这么多年，最近捡起来硬件，也�
 官方文档参考链接：
 [泰山派烧录镜像说明（官方 Wiki）](https://wiki.lckfb.com/zh-hans/tspi-rk3566/system-usage/img-download.html)
 
- <!--more-->
-
 ### 准备工具
 
 嘉立创网盘提供了烧录工具 `upgrade_tool`，Mac 上直接下载即可。

@@ -14,8 +14,6 @@ date: 2024-01-02 00:00:00
 
 ### 读原来的卡
 
- <!--more-->
-
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20240225075543.png)
 
 ### 仅复制卡号

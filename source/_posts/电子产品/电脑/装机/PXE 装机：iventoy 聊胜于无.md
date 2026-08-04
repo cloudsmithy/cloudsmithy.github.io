@@ -17,8 +17,6 @@ ventoy 是装机神器，iventoy 便是其网络版。只需将 ISO 文件放入
 
 这里的 DHCP 池是上级路由器的一小部分，一是为了防止 IP 冲突，而是免费版只能 20 个客户端
 
- <!--more-->
-
 ![](https://fastly.jsdelivr.net/gh/bucketio/img10@main/2025/02/09/1739112541687-5e9ef8b8-546b-4df0-8c0c-99cb2beba8be.png)
 
 首先要在 BIOS 上开启 PXE 启动，由于我的机器比较老，所以只能支持 legacy 的方式，启动之后是这样的：

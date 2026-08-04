@@ -14,8 +14,6 @@ abbrlink: b893f77b
 
 speedtest： https://api-v3.speedtest.cn/ip
 
-<!--more-->
-
 ```json
 {
   "code": 0,

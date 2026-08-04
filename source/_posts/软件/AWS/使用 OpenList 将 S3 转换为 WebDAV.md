@@ -14,8 +14,6 @@ Amazon S3 是一种高可扩展、低延迟的对象存储服务，广泛用于�
 
 本文将引导你通过 Docker Compose 启动 OpenList，并将其与 Amazon S3 配置，以便通过 WebDAV 协议进行访问。
 
-<!-- more -->
-
 ### 步骤 1：使用 Docker Compose 启动 OpenList
 
 首先，我们需要通过 Docker Compose 来启动 OpenList 服务。以下是一个示例 `docker-compose.yml` 配置文件：

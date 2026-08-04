@@ -17,8 +17,6 @@ date: 2026-02-23 00:00:00
 
 起码目前阶段对我的M2 Macbook 兼容还不错，打算尝尝鲜。
 
-<!-- more -->
-
 ![image-20260222132234359](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260222132234359.png)
 
 没找到图形化安装或者ISO，只找到这个命令来做安装。

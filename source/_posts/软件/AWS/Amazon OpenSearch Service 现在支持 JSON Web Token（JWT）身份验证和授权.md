@@ -12,8 +12,6 @@ date: 2025-06-20 00:00:00
 
 最近，Amazon OpenSearch 推出了一个新功能，支持 JWT 认证和授权。虽然这个功能在开源的 OpenSearch 中早已存在，但在托管的 Amazon OpenSearch 中的实现一直不够理想。
 
-<!-- more -->
-
 ### 此前的授权方式
 
 #### 控制台登录

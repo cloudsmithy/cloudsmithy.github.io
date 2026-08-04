@@ -21,8 +21,6 @@ You can use SD card or OTG USB as your image zip storage.
 - [ ] Magisk-v21.0.zip (ROOT solution & Universal Systemless Interface provided by John Wu)
 - [ ] open_gapps (GSM services)
 
-<!-- more -->
-
 ### 1. [twrp](https://twrp.me/xiaomi/xiaomimi8.html)
 
 ###### find your android device

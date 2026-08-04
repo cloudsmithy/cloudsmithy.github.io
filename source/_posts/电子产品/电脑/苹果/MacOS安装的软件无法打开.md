@@ -13,8 +13,6 @@ date: 2024-02-02 00:00:00
 
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20240225081805.png)
 
- <!--more-->
-
 ![image.png](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20240225081826.png)
 
 因为 PicGo 没有签名，所以会被 macOS 的安全检查所拦下。

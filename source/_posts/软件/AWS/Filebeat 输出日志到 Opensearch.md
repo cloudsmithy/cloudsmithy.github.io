@@ -27,8 +27,6 @@ https://liarlee.site/2023/12/08/Other/Opensearch_Filebeat%20%E8%BE%93%E5%87%BA%E
 
 现在想要用 ECS Fargate， 然后依旧还是这个模式， 尽可能新的变动之前的架构， ES 替换成 OpenSearch。
 
-<!-- more -->
-
 按照这个路数测试。
 
 ## 创建 Opensearch

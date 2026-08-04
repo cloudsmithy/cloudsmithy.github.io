@@ -20,8 +20,6 @@ brew tap LizardByte/homebrew                        
 brew install sunshine
 ```
 
-<!-- more -->
-
 这个服务会启动在 47990 端口，进入网页是这个样子
 
 ![](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/202403241746043.png)

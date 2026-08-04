@@ -14,8 +14,6 @@ date: 2025-08-27 14:43:24
 
 ![image-20250827231911572](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250827231911572.png)
 
-<!--more-->
-
 玩硬件，其实也是在找回一些失去的记忆。
 
 ### TuyaOpen SDK 简介

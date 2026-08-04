@@ -16,8 +16,6 @@ date: 2025-09-14 00:00:00
 
 ![cd9625571e708b7d07967c4489126c15](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/cd9625571e708b7d07967c4489126c15.jpg)
 
- <!--more-->
-
 ### 1. 开启 Webhook 通知
 
 进入 **控制面板 → 通知设置**，在通知服务里选择 **Webhook**。这样群晖就能通过 Webhook 推送消息到 Server 酱。

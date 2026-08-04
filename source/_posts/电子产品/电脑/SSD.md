@@ -20,9 +20,7 @@ SLC = Single-Level Cell
 MLC = Multi-Level
 Cell，即 2bit/cell，速度一般寿命一般，价格一般，约 3000---10000 次擦写寿命
 
-<!-- more -->
-
-TLC =Trinary-Level Cell，即 3bit/cell，也有 Flash 厂家叫 8LC，速度慢寿命短，价格便宜，约 500-1000 次擦写寿命。 <!-- more -->
+TLC =Trinary-Level Cell，即 3bit/cell，也有 Flash 厂家叫 8LC，速度慢寿命短，价格便宜，约 500-1000 次擦写寿命。
 
 ##### 1.速度最快，寿命最长，价格最贵的 SLC 颗粒
 
