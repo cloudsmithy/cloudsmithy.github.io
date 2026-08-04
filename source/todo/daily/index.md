@@ -9,7 +9,9 @@ sitemap: false
 
 {% timeline 2026-07 %}
 
-<!-- timeline 08-31 -->
+<!-- timeline 08-03 -->
+读完了程序员的45个习惯，文笔化，版本控制，以及小步快跑。
+
 <!-- endtimeline -->
 
 <!-- timeline 08-02 -->
