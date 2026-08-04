@@ -16,8 +16,6 @@ date: 2025-02-15 00:00:00
 
 先新建 Github 的图床目标仓库：
 
- <!--more-->
-
 ![image-20250215103303802](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250215103303802.png)
 
 ![image-20250215103206785](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250215103206785.png)

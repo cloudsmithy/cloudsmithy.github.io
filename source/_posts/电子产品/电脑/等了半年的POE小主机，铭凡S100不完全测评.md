@@ -15,8 +15,6 @@ date: 2025-04-02 00:00:00
 
 ![image-20250505113735318](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250505113735318.png)
 
- <!--more-->
-
 **先写吐槽**
 
 1. 原来店家宣传的是 16G 内存，后来改成 8G，之前还经常断货

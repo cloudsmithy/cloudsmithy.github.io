@@ -23,8 +23,6 @@ date: 2025-03-02 00:00:00
 
 选中上传的 img 文件上传到磁盘映像。
 
- <!--more-->
-
 ![image-20250322110125732.png](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250322110125732.png)
 
 然后可以观察到群晖根据这个 img 正在创建卷文件。

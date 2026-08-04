@@ -14,8 +14,6 @@ date: 2025-04-02 00:00:00
 
 据说是出口转内销，不过我的这个是纯中文版本。成品长这样，和 MT3000 很像 。
 
- <!--more-->
-
 ![image-20250310224500782](https://raw.githubusercontent.com/Xu-Hardy/picgo-imh/master/image-20250310224500782.png)
 
 一下是刷了论坛上大分区的版本，如果想刷原版的 Openwrt，可以找客服要。

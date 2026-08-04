@@ -34,8 +34,6 @@ def hello():
     return "Hello from multi-arch Flask Docker in production mode!"
 ```
 
-<!-- more -->
-
 ### `requirements.txt`
 
 ```text

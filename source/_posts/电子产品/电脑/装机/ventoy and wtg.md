@@ -22,8 +22,6 @@ https://bbs.luobotou.org/thread-761-1-1.html
 
 我的系统是 CZ880 的 256G 版本,读写均可达到 400MB/S 左右，这个速度已经很接近 Sata3 固态硬盘了。
 
-<!--more-->
-
 ![Disk mark](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/image-20230210161015798.png)
 
 ![atto benchmark](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/image-20230210160038389.png)

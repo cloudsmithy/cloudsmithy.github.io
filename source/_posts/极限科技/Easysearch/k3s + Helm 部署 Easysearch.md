@@ -27,7 +27,6 @@ helm repo update
 ```
 kubectl create namespace es
 ```
-<!-- more -->
 Easysearch 依赖 `cert-manager` 来处理证书。使用这个命令来安装。
 
 ```

@@ -21,8 +21,6 @@ date: 2025-10-20 00:00:00
 
 ![acb195d6923a17d3f8714735fad78f9a](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/acb195d6923a17d3f8714735fad78f9a.png)
 
-  <!-- more -->
-
 但在新版中，这条日志记录已经消失。
 我平常习惯用 Dockage 来拉起 docker-compose，但由于日志滚动过快，输出信息一多也容易被覆盖。
 

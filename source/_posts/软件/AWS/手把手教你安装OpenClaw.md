@@ -24,7 +24,6 @@ NVM是一个NodeJS的多版本控制器，对于开发人员来说更加需要�
 ![image-20260317081039781](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260317081039781.png)
 
 
-<!-- more -->
 我们可以使用命令行工具来安装NVM：
 
 ```

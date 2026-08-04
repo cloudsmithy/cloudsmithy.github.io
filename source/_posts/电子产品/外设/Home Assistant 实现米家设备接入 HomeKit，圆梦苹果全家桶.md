@@ -10,11 +10,9 @@ abbrlink: aec4a8fe
 date: 2024-01-02 00:00:00
 ---
 
- <!--more-->
-
 最近终于把软路由搞定，群晖上也顺利安装好了 Docker，于是立马安排上迟到了好几年的 Home Assistant（简称 HA）。这篇文章就分享一下如何用 HA 把米家设备接入 Apple 的 HomeKit，真正实现“苹果家庭全自动”的梦想！
 
-## <!--more-->
+##
 
 ## Step 1：用 Docker 部署 Home Assistant
 

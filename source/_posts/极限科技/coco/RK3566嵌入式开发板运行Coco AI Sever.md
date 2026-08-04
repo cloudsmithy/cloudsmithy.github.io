@@ -22,8 +22,6 @@ docker save -o cocoai-arm_test.tar cocoai-arm:test
 
 然后通过SCP上传到RK3566的开发板
 
-<!-- more -->
-
 ```
 scp cocoai-arm_test.tar lckfb@192.168.5.36:~
 ** WARNING: connection is not using a post-quantum key exchange algorithm.

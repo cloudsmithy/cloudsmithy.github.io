@@ -36,8 +36,6 @@ date: 2026-01-17 00:00:00
 
 ![1e5eea3caa005a7025b6b988190374c1.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/984eb45a-7d48-4f94-aa47-0018f8e511fc.png "1e5eea3caa005a7025b6b988190374c1.png")
 
-<!-- more -->
-
 更重要的是，我们在商店里内置了大量预配置的系统镜像。你不需要到处找 ISO 文件，不需要手动配置，就像安装手机 App 一样点击安装，虚拟机就跑起来了。这才是真正的开箱即用。
 
 ![12285a4a0e1edbb4ae5ac5a6a2af15a6.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/59ed09b8-f44c-4bbb-a138-fc25d40493c0.png "12285a4a0e1edbb4ae5ac5a6a2af15a6.png")

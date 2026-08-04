@@ -39,7 +39,6 @@ INPUT → FILTER → OUTPUT
 本文用 Sidecar 模式部署 Fluent Bit：把它和 Nginx 放在同一个 Pod 里，共享日志目录。
 
 另一种常见方式是 DaemonSet 模式：在每个节点上跑一个 Fluent Bit，收集该节点上所有 Pod 的 stdout 日志。DaemonSet 适合收集所有 Pod 的日志，Sidecar 适合收集特定应用的日志文件。
-<!-- more -->
 
 ```
 Nginx Pod

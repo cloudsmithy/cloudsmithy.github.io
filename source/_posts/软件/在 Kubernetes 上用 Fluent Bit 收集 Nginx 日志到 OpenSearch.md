@@ -31,7 +31,6 @@ kubectl expose deployment nginx --port=80
 helm repo add fluent https://fluent.github.io/helm-charts
 helm repo update
 ```
-<!-- more -->
 Fluent Bit 的配置比较长，建议用 values 文件管理。创建 `fluent-bit-values.yaml`：
 
 ```yaml

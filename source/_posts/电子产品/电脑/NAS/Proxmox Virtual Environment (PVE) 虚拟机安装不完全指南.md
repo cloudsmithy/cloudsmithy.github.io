@@ -19,8 +19,6 @@ date: 2025-05-11 00:00:00
 
 ![Ventoy引导界面](https://fastly.jsdelivr.net/gh/bucketio/img14@main/2025/02/14/1739495708950-8ff5ad67-a79d-4c77-b0c0-5e02f5acd091.png)
 
- <!--more-->
-
 ## 系统安装
 
 1. **启动安装程序**

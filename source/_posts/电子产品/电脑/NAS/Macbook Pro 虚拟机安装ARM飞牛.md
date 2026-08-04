@@ -17,7 +17,6 @@ date: 2026-02-15 00:00:00
 我本来想给泰山派也刷一个：[https://www.fnnas.com/download-arm](https://www.fnnas.com/download-arm) 不过我看这里没有镜像了，估计是和OEC的关系影响到了RK3566的适配。
 
 ![image-20260215105650976](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260215105650976.png)
- <!--more-->
 不用UTM的原因是大家都觉得很难用，所以还是选择了Parallel Desktop，安装很丝滑，几分钟就完成了。
 
 ![image-20260215112004395](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260215112004395.png)

@@ -13,15 +13,13 @@ categories:
 
 ## 大小核的问题
 
-12 核 16 线程其实是 4 大核 8 小盒，所谓大小核问题，就是在以 vmware 为首的很软件，经常出现小核跑满大核限制的情况，然而在任务管理器中还显示 CPU 占用 100%。 <!--more-->
+12 核 16 线程其实是 4 大核 8 小盒，所谓大小核问题，就是在以 vmware 为首的很软件，经常出现小核跑满大核限制的情况，然而在任务管理器中还显示 CPU 占用 100%。
 
 ![大核围观](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/226d7d36d7d81004813969549ca17af.jpg)
 
 需要在电源模式中开启性能模式，然后才能解开大小核的显示，后续的时候没有发现特别不适应的地方。
 
 ![开启性能模式](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/20230206090754.png)
-
-<!-- more -->
 
 ![修复之后的大小核](https://raw.githubusercontent.com/Xu-Hardy/image-host/master/image-20230206090907348.png)
 
