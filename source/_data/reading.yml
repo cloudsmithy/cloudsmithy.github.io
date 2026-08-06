@@ -9,7 +9,7 @@
 #   notes    读书笔记链接（可多条），无则省略
 #     - { label: 笔记, url: https://... }
 
-- title: 程序员的思维修炼
+- title: 程序员的思维修炼——开发认知潜能的九堂课
   category: 成长·自我
   status: done
   date: "2026-08-06"
@@ -26,6 +26,12 @@
   status: reading
   date: "2026-08-04"
   reason: 林语堂著，看一个旷达灵魂如何安顿起落人生
+
+- title: 程序员修炼之道：通向务实的最高境界（第 2 版）
+  category: 成长·自我
+  status: done
+  date: "2026-08-03"
+  reason: 务实哲学：DRY、正交性、曳光弹、破窗理论
 
 - title: 高效程序员的 45 个习惯
   category: 成长·自我
