@@ -1,5 +1,6 @@
 # 阅读单一数据源 —— 每本书只写一次，页面的「概览 / 分类书架 / 月度时间线」全部由此自动生成。
-# 加书 / 改状态只需改这里一处。字段说明：
+# 加书 / 改状态只需改这里一处（顺序不影响渲染，脚本会自动按时间排序；这里按记录时间从新到旧排列，方便编辑）。
+# 字段说明：
 #   title    书名（不带书名号，模板自动加《》）
 #   category 分类：技术 / 哲学·道家 / 中医·养生 / 人文社科 / 成长·自我 / 文学
 #   status   状态：done 读完 / reading 在读 / half 读了一半 / want 想读
@@ -8,7 +9,32 @@
 #   notes    读书笔记链接（可多条），无则省略
 #     - { label: 笔记, url: https://... }
 
-# ── 技术 ──────────────────────────────────────────────
+- title: 程序员的思维修炼
+  category: 成长·自我
+  status: done
+  date: "2026-08-06"
+  reason: 安迪·亨特著，德雷福斯模型与大脑的两种思维模式
+
+- title: 庄子·内七篇
+  category: 哲学·道家
+  status: reading
+  date: "2026-08-04"
+  reason: 逍遥自在的生命哲学。《养生主》《人间世》已读完，德充符做笔记中
+
+- title: 苏东坡传
+  category: 文学
+  status: reading
+  date: "2026-08-04"
+  reason: 林语堂著，看一个旷达灵魂如何安顿起落人生
+
+- title: 高效程序员的 45 个习惯
+  category: 成长·自我
+  status: done
+  date: "2026-08-03"
+  reason: 文笔化、版本控制、小步快跑
+  notes:
+    - { label: 笔记, url: https://blog.no-claw.com/8f11a70d/ }
+
 - title: 大学霸 TCP/IP 协议教程
   category: 技术
   status: done
@@ -17,17 +43,95 @@
   notes:
     - { label: 笔记, url: https://blog.no-claw.com/50be5030/ }
 
-- title: 站点可靠性工作手册
-  category: 技术
+- title: 搞定三部曲
+  category: 成长·自我
   status: done
-  date: "2026-06-10"
-  reason: SRE 的监控、oncall、救火、复盘全流程
+  date: "2026-07-29"
+  reason: 'GTD：横向五步流程、纵向自然式计划、每周回顾'
+  notes:
+    - { label: Ⅰ, url: https://blog.no-claw.com/723111cd/ }
+    - { label: Ⅱ, url: https://blog.no-claw.com/ff723111/ }
+    - { label: Ⅲ, url: https://blog.no-claw.com/88750187/ }
+
+- title: 活着
+  category: 人文社科
+  status: done
+  date: "2026-07-13"
+  reason: 时代的眼泪
+
+- title: 心流
+  category: 成长·自我
+  status: done
+  date: "2026-07-12"
+  reason: 人生快乐 SOP
 
 - title: 数据库系统内幕
   category: 技术
   status: want
   date: "2026-06-30"
   reason: 深入存储引擎与分布式数据库原理
+
+- title: 程序员健康指南
+  category: 成长·自我
+  status: done
+  date: "2026-06-29"
+  reason: 现在你能做的事情 AI 都能做，用健康来换不值得
+  notes:
+    - { label: 读后感, url: https://blog.no-claw.com/93a77f57/ }
+
+- title: 解爱
+  category: 哲学·道家
+  status: half
+  date: "2026-06-27"
+  reason: 唯有诗人能解爱，每章前半讲情诗、后半用庄子开解
+
+- title: 老残游记
+  category: 文学
+  status: reading
+  date: "2026-06-23"
+  reason: 清官比贪官更可恨，照见社会与人心
+
+- title: 学会用情：当老庄遇到黄帝内经 2
+  category: 中医·养生
+  status: half
+  date: "2026-06-17"
+  reason: 先成为本身就很好的人
+
+- title: 站点可靠性工作手册
+  category: 技术
+  status: done
+  date: "2026-06-10"
+  reason: SRE 的监控、oncall、救火、复盘全流程
+
+- title: 山洞四律
+  category: 成长·自我
+  status: done
+  date: "2026-06-07"
+  reason: 王潇著，写下、具身、戒屏、做事
+  notes:
+    - { label: 感受, url: https://blog.no-claw.com/b1ff342a/ }
+
+- title: 南京大屠杀
+  category: 人文社科
+  status: done
+  date: "2026-05-10"
+  reason: 张纯如著，记录日军暴行与日治下的众生，铭记不应被遗忘的历史
+
+- title: 每日正念
+  category: 成长·自我
+  status: done
+  date: "2026-05-07"
+  reason: 杰克·康菲尔德 & 塔拉·布拉克，40 天正念练习
+  notes:
+    - { label: 摘抄, url: https://blog.no-claw.com/6130ae25/ }
+
+- title: 五种时间
+  category: 成长·自我
+  status: done
+  date: "2026-05-07"
+  reason: 王潇著，重新定义时间的分配方式
+  notes:
+    - { label: 摘抄, url: https://blog.no-claw.com/c0512844/ }
 
 - title: 深入理解计算机系统
   category: 技术
@@ -77,115 +181,11 @@
   date: "2026-04-27"
   reason: 图灵图解系列，从浏览器到服务器的全链路
 
-- title: 代码之髓
-  category: 技术
-  status: done
-  date: "2021-01-22"
-  reason: 西尾泰和，从概念理解语言为何这样设计
-  notes:
-    - { label: 笔记, url: https://blog.no-claw.com/fc64123d/ }
-
-# ── 哲学·道家 ─────────────────────────────────────────
-- title: 庄子·内七篇
-  category: 哲学·道家
-  status: reading
-  date: "2026-08-04"
-  reason: 逍遥自在的生命哲学。《养生主》《人间世》已读完，德充符做笔记中
-
-- title: 解爱
-  category: 哲学·道家
-  status: half
-  date: "2026-06-27"
-  reason: 唯有诗人能解爱，每章前半讲情诗、后半用庄子开解
-
-# ── 中医·养生 ─────────────────────────────────────────
-- title: 学会用情：当老庄遇到黄帝内经 2
-  category: 中医·养生
-  status: half
-  date: "2026-06-17"
-  reason: 先成为本身就很好的人
-
-# ── 人文社科 ─────────────────────────────────────────
-- title: 南京大屠杀
-  category: 人文社科
-  status: done
-  date: "2026-05-10"
-  reason: 张纯如著，记录日军暴行与日治下的众生，铭记不应被遗忘的历史
-
-- title: 活着
-  category: 人文社科
-  status: done
-  date: "2026-07-13"
-  reason: 时代的眼泪
-
 - title: 人类简史
   category: 人文社科
   status: want
   date: "2026-04-27"
   reason: 用宏观视角理解人类文明
-
-# ── 成长·自我 ─────────────────────────────────────────
-- title: 程序员的思维修炼
-  category: 成长·自我
-  status: done
-  date: "2026-08-06"
-  reason: 安迪·亨特著，德雷福斯模型与大脑的两种思维模式
-
-- title: 高效程序员的 45 个习惯
-  category: 成长·自我
-  status: done
-  date: "2026-08-03"
-  reason: 文笔化、版本控制、小步快跑
-  notes:
-    - { label: 笔记, url: https://blog.no-claw.com/8f11a70d/ }
-
-- title: 搞定三部曲
-  category: 成长·自我
-  status: done
-  date: "2026-07-29"
-  reason: 'GTD：横向五步流程、纵向自然式计划、每周回顾'
-  notes:
-    - { label: Ⅰ, url: https://blog.no-claw.com/723111cd/ }
-    - { label: Ⅱ, url: https://blog.no-claw.com/ff723111/ }
-    - { label: Ⅲ, url: https://blog.no-claw.com/88750187/ }
-
-- title: 心流
-  category: 成长·自我
-  status: done
-  date: "2026-07-12"
-  reason: 人生快乐 SOP
-
-- title: 程序员健康指南
-  category: 成长·自我
-  status: done
-  date: "2026-06-29"
-  reason: 现在你能做的事情 AI 都能做，用健康来换不值得
-  notes:
-    - { label: 读后感, url: https://blog.no-claw.com/93a77f57/ }
-
-- title: 山洞四律
-  category: 成长·自我
-  status: done
-  date: "2026-06-07"
-  reason: 王潇著，写下、具身、戒屏、做事
-  notes:
-    - { label: 感受, url: https://blog.no-claw.com/b1ff342a/ }
-
-- title: 每日正念
-  category: 成长·自我
-  status: done
-  date: "2026-05-07"
-  reason: 杰克·康菲尔德 & 塔拉·布拉克，40 天正念练习
-  notes:
-    - { label: 摘抄, url: https://blog.no-claw.com/6130ae25/ }
-
-- title: 五种时间
-  category: 成长·自我
-  status: done
-  date: "2026-05-07"
-  reason: 王潇著，重新定义时间的分配方式
-  notes:
-    - { label: 摘抄, url: https://blog.no-claw.com/c0512844/ }
 
 - title: 三观易碎
   category: 成长·自我
@@ -214,6 +214,14 @@
   reason: 用 OKR 给个人目标做对齐与拆解
   notes:
     - { label: 书摘, url: https://blog.no-claw.com/54f71ff9/ }
+
+- title: 代码之髓
+  category: 技术
+  status: done
+  date: "2021-01-22"
+  reason: 西尾泰和，从概念理解语言为何这样设计
+  notes:
+    - { label: 笔记, url: https://blog.no-claw.com/fc64123d/ }
 
 - title: 关键 20 小时
   category: 成长·自我
@@ -246,16 +254,3 @@
   reason: 看清拖延的本能，驯服分心的大脑
   notes:
     - { label: 笔记, url: https://blog.no-claw.com/101d9cf0/ }
-
-# ── 文学 ──────────────────────────────────────────────
-- title: 苏东坡传
-  category: 文学
-  status: reading
-  date: "2026-08-04"
-  reason: 林语堂著，看一个旷达灵魂如何安顿起落人生
-
-- title: 老残游记
-  category: 文学
-  status: reading
-  date: "2026-06-23"
-  reason: 清官比贪官更可恨，照见社会与人心
