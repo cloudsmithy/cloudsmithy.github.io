@@ -26,17 +26,17 @@ const CATEGORY_ICON = {
 
 const STYLE = `<style>
 .reading-overview{margin:1rem 0 1.6rem}
-.reading-overview .reading-line{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .5rem;margin:.55rem 0}
+.reading-overview .reading-line{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .7rem;margin:.7rem 0}
 .reading-overview .reading-label{font-weight:600;opacity:.7;margin-right:.15rem}
 .reading-overview .reading-total{font-size:1.05rem;font-weight:600;margin-right:.35rem}
 .reading-overview .reading-total b{font-size:1.35rem;color:var(--btn-bg,#49b1f5)}
-.reading-chip{display:inline-flex;align-items:baseline;padding:.15rem .65rem;border-radius:999px;
+.reading-chip{display:inline-flex;align-items:baseline;padding:.2rem .8rem;border-radius:999px;
   background:rgba(128,128,128,.12);font-size:.85rem;line-height:1.7;white-space:nowrap;
   text-decoration:none;color:inherit;transition:all .2s ease}
 a.reading-chip:hover{background:var(--btn-bg,#49b1f5);color:var(--btn-color,#fff);transform:translateY(-2px);
   box-shadow:0 4px 10px rgba(0,0,0,.12)}
-.reading-chip .reading-num{margin-left:.15em;font-weight:700;opacity:.7}
-a.reading-chip:hover .reading-num{opacity:.9}
+.reading-chip .reading-num{margin-left:.55em;font-weight:700;opacity:.7}
+a.reading-chip:hover .reading-num{opacity:.95}
 .reading-chip.st-done{background:rgba(76,175,80,.16)}
 .reading-chip.st-reading{background:rgba(73,177,245,.16)}
 .reading-chip.st-half{background:rgba(255,152,0,.16)}
@@ -61,6 +61,18 @@ function yearId (y) {
 }
 function monthId (m) {
   return `reading-month-${m}`
+}
+
+// 药丸里的计数：读完 / 在读 分开显示（读了一半并入在读侧，想读不计）。
+// 只显示非零项，避免出现 ✅0 或 📚0。
+function countBadge (list) {
+  const done = list.filter(b => b.status === 'done').length
+  const reading = list.filter(b => b.status === 'reading' || b.status === 'half').length
+  const parts = []
+  if (done) parts.push(`✅ ${done}`)
+  if (reading) parts.push(`📚 ${reading}`)
+  if (!parts.length) parts.push(`📖 ${list.length}`) // 全是想读时，退化为想读数
+  return `<span class="reading-num">${parts.join(' ')}</span>`
 }
 
 function statusCell (status) {
@@ -163,7 +175,8 @@ hexo.extend.tag.register('reading', function () {
     .map(
       c =>
         `<a class="reading-chip" href="#${catId(catIndex[c])}">${CATEGORY_ICON[c] || '📚'} ${esc(c)}` +
-        `<span class="reading-num">（${byCat[c].length}）</span></a>`
+        countBadge(byCat[c]) +
+        '</a>'
     )
     .join('')
   out.push(`<div class="reading-line"><span class="reading-label">按分类</span>${catChips}</div>`)
@@ -172,7 +185,8 @@ hexo.extend.tag.register('reading', function () {
     .map(
       y =>
         `<a class="reading-chip" href="#${yearId(y)}">${esc(y)} 年` +
-        `<span class="reading-num">（${byYear[y].length}）</span></a>`
+        countBadge(byYear[y]) +
+        '</a>'
     )
     .join('')
   out.push(`<div class="reading-line"><span class="reading-label">按年份</span>${yearChips}</div>`)
@@ -181,7 +195,8 @@ hexo.extend.tag.register('reading', function () {
     .map(
       m =>
         `<a class="reading-chip" href="#${monthId(m)}">${esc(m)}` +
-        `<span class="reading-num">（${byMonth[m].length}）</span></a>`
+        countBadge(byMonth[m]) +
+        '</a>'
     )
     .join('')
   out.push(`<div class="reading-line"><span class="reading-label">按月份</span>${monthChips}</div>`)
