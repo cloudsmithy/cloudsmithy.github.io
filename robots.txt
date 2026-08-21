@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /drafts/
+Allow: /
+Sitemap: https://blog.no-claw.com/sitemap.xml

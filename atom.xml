@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>镜湖</title>
+  
+  <subtitle>忘机山人的技术随手记 · AWS · Docker · 懒猫微服 · Homelab</subtitle>
+  <link href="https://blog.no-claw.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.no-claw.com/"/>
+  <updated>2026-08-20T16:00:00.000Z</updated>
+  <id>https://blog.no-claw.com/</id>
+  
+  <author>
+    <name>忘机山人</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>连接 Easysearch 的新方式：使用 DBX 把索引当成表来浏览</title>
+    <link href="https://blog.no-claw.com/c16f9938/"/>
+    <id>https://blog.no-claw.com/c16f9938/</id>
+    <published>2026-08-20T16:00:00.000Z</published>
+    <updated>2026-08-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">DBX 已原生支持 Easysearch，可以通过图形界面连接集群、浏览索引，并使用 DSL 和 SQL 查询数据。</summary>
+    
+    
+    
+    <category term="极限科技" scheme="https://blog.no-claw.com/categories/%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/"/>
+    
+    <category term="Easysearch" scheme="https://blog.no-claw.com/categories/%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/Easysearch/"/>
+    
+    
+    <category term="Easysearch" scheme="https://blog.no-claw.com/tags/Easysearch/"/>
+    
+    <category term="DBX" scheme="https://blog.no-claw.com/tags/DBX/"/>
+    
+    <category term="Elasticsearch" scheme="https://blog.no-claw.com/tags/Elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>懒猫微服比其他 NAS 好在哪里？</title>
+    <link href="https://blog.no-claw.com/6bb40475/"/>
+    <id>https://blog.no-claw.com/6bb40475/</id>
+    <published>2026-08-20T16:00:00.000Z</published>
+    <updated>2026-08-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">用过群晖、威联通、飞牛、UNRAID 和 PVE 之后，再谈懒猫微服真正领先的地方：不是单纯拼硬件，而是远程访问、应用生态、账号体系和技术服务组成的完整体验。</summary>
+    
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="番外" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/%E7%95%AA%E5%A4%96/"/>
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="NAS" scheme="https://blog.no-claw.com/tags/NAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我不会代码，可以给懒猫贡献软件吗？</title>
+    <link href="https://blog.no-claw.com/de707059/"/>
+    <id>https://blog.no-claw.com/de707059/</id>
+    <published>2026-08-20T16:00:00.000Z</published>
+    <updated>2026-08-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">从 Lazycat Skills 入手，看看不会写代码的普通用户，如何借助 AI 移植 Docker 应用、测试 LPK，并为懒猫微服应用生态做贡献。</summary>
+    
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="开发" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="开发" scheme="https://blog.no-claw.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="AI 编程" scheme="https://blog.no-claw.com/tags/AI-%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>给开发者的 NAS 小书：我们需要什么样的 NAS？</title>
+    <link href="https://blog.no-claw.com/49e2197c/"/>
+    <id>https://blog.no-claw.com/49e2197c/</id>
+    <published>2026-08-20T16:00:00.000Z</published>
+    <updated>2026-08-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">从系统分层、数据持久化、三套 Docker、远程网络、OIDC、应用开发和 HDMI 桌面等角度，聊聊开发者真正需要什么样的 NAS。</summary>
+    
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="番外" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/%E7%95%AA%E5%A4%96/"/>
+    
+    
+    <category term="开发" scheme="https://blog.no-claw.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Docker" scheme="https://blog.no-claw.com/tags/Docker/"/>
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="NAS" scheme="https://blog.no-claw.com/tags/NAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二十八岁的七夕 --记一次水晶疗愈</title>
+    <link href="https://blog.no-claw.com/cceefc55/"/>
+    <id>https://blog.no-claw.com/cceefc55/</id>
+    <published>2026-08-19T16:00:00.000Z</published>
+    <updated>2026-08-19T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">二十八岁的七夕 --记一次水晶疗愈</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://blog.no-claw.com/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="体验" scheme="https://blog.no-claw.com/tags/%E4%BD%93%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>当手艺变成符号，美食博主夜访全聚德</title>
+    <link href="https://blog.no-claw.com/6b735ca0/"/>
+    <id>https://blog.no-claw.com/6b735ca0/</id>
+    <published>2026-08-15T16:00:00.000Z</published>
+    <updated>2026-08-15T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">当手艺变成符号，美食博主夜访全聚德</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://blog.no-claw.com/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="美食" scheme="https://blog.no-claw.com/tags/%E7%BE%8E%E9%A3%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日常行为模式</title>
+    <link href="https://blog.no-claw.com/fae03579/"/>
+    <id>https://blog.no-claw.com/fae03579/</id>
+    <published>2026-08-05T16:00:00.000Z</published>
+    <updated>2026-08-05T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">日常行为模式</summary>
+    
+    
+    
+    <category term="日常行为模式" scheme="https://blog.no-claw.com/categories/%E6%97%A5%E5%B8%B8%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>高效程序员的45个习惯</title>
+    <link href="https://blog.no-claw.com/8f11a70d/"/>
+    <id>https://blog.no-claw.com/8f11a70d/</id>
+    <published>2026-08-03T16:00:00.000Z</published>
+    <updated>2026-08-03T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">《高效程序员的45个习惯》的精髓是对结果负责、小步获得反馈、持续修正，顺手把版本控制、纯文本、可回滚这些工程习惯搬到生活管理上。</summary>
+    
+    
+    
+    <category term="读书有感" scheme="https://blog.no-claw.com/categories/%E8%AF%BB%E4%B9%A6%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="效率" scheme="https://blog.no-claw.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>这是心目中我极客风的AI 摄像头 - 开箱配置手记</title>
+    <link href="https://blog.no-claw.com/b3747d80/"/>
+    <id>https://blog.no-claw.com/b3747d80/</id>
+    <published>2026-08-02T16:00:00.000Z</published>
+    <updated>2026-08-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">懒猫微服摄像头体验，硬件外观、接口配置与初印象。</summary>
+    
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="摄像头" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/%E6%91%84%E5%83%8F%E5%A4%B4/"/>
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="外设" scheme="https://blog.no-claw.com/tags/%E5%A4%96%E8%AE%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大学霸TCPIP协议教程笔记</title>
+    <link href="https://blog.no-claw.com/50be5030/"/>
+    <id>https://blog.no-claw.com/50be5030/</id>
+    <published>2026-07-26T16:00:00.000Z</published>
+    <updated>2026-07-26T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">大学霸TCPIP协议教程笔记</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>经济学原理 摘录</title>
+    <link href="https://blog.no-claw.com/b353a576/"/>
+    <id>https://blog.no-claw.com/b353a576/</id>
+    <published>2026-07-20T16:00:00.000Z</published>
+    <updated>2026-07-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">经济学原理 摘录</summary>
+    
+    
+    
+    <category term="摘抄" scheme="https://blog.no-claw.com/categories/%E6%91%98%E6%8A%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Podcasts 订阅折腾记录</title>
+    <link href="https://blog.no-claw.com/752e409a/"/>
+    <id>https://blog.no-claw.com/752e409a/</id>
+    <published>2026-07-19T16:00:00.000Z</published>
+    <updated>2026-07-19T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">Podcasts 订阅记录</summary>
+    
+    
+    
+    <category term="Podcasts" scheme="https://blog.no-claw.com/categories/Podcasts/"/>
+    
+    
+    <category term="Podcasts" scheme="https://blog.no-claw.com/tags/Podcasts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes 系列课程 · 术语去重词典（按课程 &gt; 节 分组）</title>
+    <link href="https://blog.no-claw.com/7845f1d8/"/>
+    <id>https://blog.no-claw.com/7845f1d8/</id>
+    <published>2026-07-12T16:00:00.000Z</published>
+    <updated>2026-07-12T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">Kubernetes 系列课程 · 术语去重词典（按课程 &gt; 节 分组）</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="Kubernetes" scheme="https://blog.no-claw.com/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4个月减肥20斤后，我悟到的这几件事</title>
+    <link href="https://blog.no-claw.com/3930b15c/"/>
+    <id>https://blog.no-claw.com/3930b15c/</id>
+    <published>2026-07-02T16:00:00.000Z</published>
+    <updated>2026-07-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">4个月减肥20斤后，我悟到的这几件事</summary>
+    
+    
+    
+    <category term="零碎生活" scheme="https://blog.no-claw.com/categories/%E9%9B%B6%E7%A2%8E%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="减肥" scheme="https://blog.no-claw.com/tags/%E5%87%8F%E8%82%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>子域名独立解析DNS迁移</title>
+    <link href="https://blog.no-claw.com/13d4e54c/"/>
+    <id>https://blog.no-claw.com/13d4e54c/</id>
+    <published>2026-07-02T16:00:00.000Z</published>
+    <updated>2026-07-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">通过NS委派实现子域名跨服务商独立管理</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Rime + 万象拼音配置双拼</title>
+    <link href="https://blog.no-claw.com/c1342edf/"/>
+    <id>https://blog.no-claw.com/c1342edf/</id>
+    <published>2026-06-28T16:00:00.000Z</published>
+    <updated>2026-06-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">Rime + 万象拼音配置双拼</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="双拼" scheme="https://blog.no-claw.com/tags/%E5%8F%8C%E6%8B%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《程序员健康指南》读后感</title>
+    <link href="https://blog.no-claw.com/93a77f57/"/>
+    <id>https://blog.no-claw.com/93a77f57/</id>
+    <published>2026-06-28T16:00:00.000Z</published>
+    <updated>2026-06-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">《程序员健康指南》读后感</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>我是如何学会双拼的</title>
+    <link href="https://blog.no-claw.com/89081682/"/>
+    <id>https://blog.no-claw.com/89081682/</id>
+    <published>2026-06-25T16:00:00.000Z</published>
+    <updated>2026-06-25T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">我是如何学会双拼的</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="双拼" scheme="https://blog.no-claw.com/tags/%E5%8F%8C%E6%8B%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>减肥攻略</title>
+    <link href="https://blog.no-claw.com/768f5303/"/>
+    <id>https://blog.no-claw.com/768f5303/</id>
+    <published>2026-06-24T16:00:00.000Z</published>
+    <updated>2026-06-24T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">减肥攻略</summary>
+    
+    
+    
+    <category term="零碎生活" scheme="https://blog.no-claw.com/categories/%E9%9B%B6%E7%A2%8E%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生活" scheme="https://blog.no-claw.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Bedrock 使用 Claude fable5</title>
+    <link href="https://blog.no-claw.com/5303808f/"/>
+    <id>https://blog.no-claw.com/5303808f/</id>
+    <published>2026-06-10T16:00:00.000Z</published>
+    <updated>2026-06-10T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">参考：https://aws.amazon.com/cn/blogs/aws/anthropic-claude-fable-5-on-aws-mythos-class-capabilities-with-built-in-safeguards-now-available/ 开启数据保留： 12345</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="AWS" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/AWS/"/>
+    
+    
+    <category term="Bedrock" scheme="https://blog.no-claw.com/tags/Bedrock/"/>
+    
+  </entry>
+  
+</feed>
