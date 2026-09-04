@@ -78,3 +78,14 @@ date: 2026-02-07 00:00:00
 如果一定要给这次零日漏洞事件一个更有价值的意义，那可能不是提醒我们“哪个厂商不安全”，而是提醒我们：家用 NAS 这条路，本身就存在一个被长期忽视的安全天花板。这个天花板不是靠换品牌能突破的，也不是靠多加几层认证能突破的，它是由“公网暴露”这个基本架构决定的。
 
 这大概是这次事件教给我的最重要一课：安全这件事，靠补洞永远是被动的，靠架构才是主动的。选 NAS 不是在选品牌，而是在选默认风险模型。
+
+---
+
+<!-- wangjishanren-qrcode:start -->
+<p align="center">
+  <a href="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg">
+    <img src="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg" alt="忘机山人二维码" width="240">
+  </a>
+</p>
+<p align="center">扫码关注「忘机山人」</p>
+<!-- wangjishanren-qrcode:end -->

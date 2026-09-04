@@ -61,3 +61,14 @@ PING micro.heiyu.space(fc03:1136:384f:313:a637:437:d22b:0) 56 data bytes
 
 **总结**
 在 Mac 上运行的 Docker 容器默认不分配 IPv6 地址，需要在 Orbstack 设置中手动开启 IPv6 支持。开启后无需额外配置，容器即可正常解析并访问 IPv6 目标。
+
+---
+
+<!-- wangjishanren-qrcode:start -->
+<p align="center">
+  <a href="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg">
+    <img src="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg" alt="忘机山人二维码" width="240">
+  </a>
+</p>
+<p align="center">扫码关注「忘机山人」</p>
+<!-- wangjishanren-qrcode:end -->

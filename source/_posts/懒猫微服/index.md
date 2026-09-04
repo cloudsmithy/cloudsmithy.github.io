@@ -76,6 +76,6 @@ features:
 
 **所有文章已整理在公众号，扫码就能看到～**
 
-![公众号二维码](https://developer.lazycat.cloud/assets/wangjishanren-qrcode.5584303a.jpg)
+![公众号二维码](https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg)
 
 </div>

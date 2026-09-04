@@ -67,3 +67,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# 生成物（PDF / 临时产物）
+output/
+*.tmp
+tmp/

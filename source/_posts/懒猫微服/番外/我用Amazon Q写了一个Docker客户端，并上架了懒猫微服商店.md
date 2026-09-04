@@ -111,3 +111,14 @@ services:
 与 GPT 相比，Q 的优势在于它可以直接操作本地文件，用户可以直接在文件夹中生成工程文件，极大提升了开发效率。
 
 ![image-20250606191616025](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250606191616025.png)
+
+---
+
+<!-- wangjishanren-qrcode:start -->
+<p align="center">
+  <a href="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg">
+    <img src="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg" alt="忘机山人二维码" width="240">
+  </a>
+</p>
+<p align="center">扫码关注「忘机山人」</p>
+<!-- wangjishanren-qrcode:end -->
