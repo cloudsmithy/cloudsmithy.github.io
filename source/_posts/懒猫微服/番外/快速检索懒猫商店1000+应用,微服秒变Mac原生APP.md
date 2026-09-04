@@ -114,3 +114,14 @@ webbrowser.open("https://www.apple.com")  # 打开网页
 通过以上方法，我们就可以把常用的懒猫 APP 变成 Mac 的桌面应用，随时一键直达，告别繁琐的搜索过程，体验飞跃式提升！
 
 ![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/b551e149-48d5-4b6c-b570-65f295961d4b.png "image.png")
+
+---
+
+<!-- wangjishanren-qrcode:start -->
+<p align="center">
+  <a href="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg">
+    <img src="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg" alt="忘机山人二维码" width="240">
+  </a>
+</p>
+<p align="center">扫码关注「忘机山人」</p>
+<!-- wangjishanren-qrcode:end -->

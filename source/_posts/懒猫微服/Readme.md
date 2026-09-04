@@ -1,5 +1,6 @@
 ---
 title: 懒猫微服专栏汇总
+description: 懒猫微服专栏的全部文章目录，按入门、进阶、开发、炫技、故事、算力仓、番外分类，附微信公众号原文链接。
 tags: 大纲
 toc: true
 categories: 懒猫微服

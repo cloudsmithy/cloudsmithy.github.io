@@ -55,6 +55,10 @@ AWS Cognito 支持添加第三方 OIDC IDP。首先，我们需要在懒猫 SSO 
 
 理想很丰满，现实很骨感。当我尝试通过 Cognito 页面跳转懒猫 SSO 登录时，程序报错了。
 
+> **仅供本地调试**
+>
+> 下面这段失败过程中的 Demo 沿用了上一篇的 `/profile` 调试路由，会把 `Access Token`、`ID Token` 放进 Flask `session` 并返回浏览器。它只用于观察 OIDC 协商结果，不是生产写法；正式应用应把 Token 留在服务端，只返回经过筛选的用户资料。
+
 ```
 from flask import Flask, redirect, url_for, session, jsonify
 from authlib.integrations.flask_client import OAuth
@@ -99,6 +103,7 @@ def login():
 def authorize():
     token = oauth.dex.authorize_access_token()
     session['user'] = token.get('userinfo')
+    # 仅供本地调试：生产环境不要把原始 Token 放进客户端 Session
     session['token_info'] = {
         'access_token': token.get('access_token'),
         'id_token': token.get('id_token'),
@@ -110,6 +115,7 @@ def authorize():
 @app.route('/profile')
 @login_required
 def profile():
+    # 仅供本地调试：生产环境只返回筛选后的 userinfo
     return jsonify(userinfo=session['user'], token=session.get('token_info'))
 
 @app.route('/logout')
@@ -237,3 +243,14 @@ if __name__ == '__main__':
 
 ### 总结
 没白折腾，确实还挺抽象的，抽空又复习了Oauth和OpenID Connect的底层原理，通过使用懒猫SSO，我的技术栈又升级了。
+
+---
+
+<!-- wangjishanren-qrcode:start -->
+<p align="center">
+  <a href="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg">
+    <img src="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg" alt="忘机山人二维码" width="240">
+  </a>
+</p>
+<p align="center">扫码关注「忘机山人」</p>
+<!-- wangjishanren-qrcode:end -->

@@ -255,3 +255,14 @@ OIDC 解决的是“你是谁”，HTTP 路由解决的是“请求去哪儿”�
 也许我们真正需要的 NAS，本来就不应该只是一个会联网的硬盘盒。
 
 它应该是一台以数据为中心、以应用为边界、允许用户继续创造的个人计算平台。
+
+---
+
+<!-- wangjishanren-qrcode:start -->
+<p align="center">
+  <a href="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg">
+    <img src="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg" alt="忘机山人二维码" width="240">
+  </a>
+</p>
+<p align="center">扫码关注「忘机山人」</p>
+<!-- wangjishanren-qrcode:end -->

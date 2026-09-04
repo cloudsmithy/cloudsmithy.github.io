@@ -52,6 +52,10 @@ https://github.com/fullstorydev/grpcurl/releases
 
 注册之后我们把这些信息放到authlib代码里面，把SSO串起来。
 
+> **仅供本地调试**
+>
+> 下面的最小 Demo 会把 `Access Token`、`ID Token` 写入 Flask `session`，并通过 `/profile` 原样返回浏览器，目的是观察 OIDC 的完整响应。Flask 默认 Session 是客户端 Cookie，只做签名而不是加密，不适合保存原始 Token。不要把这个调试路由部署到公网；生产环境应在服务端保存必要状态，只向浏览器返回最小化的用户资料。
+
 ```
 from flask import Flask, redirect, url_for, session, jsonify
 from authlib.integrations.flask_client import OAuth
@@ -93,6 +97,7 @@ def login():
 def authorize():
     token = oauth.dex.authorize_access_token()
     session['user'] = token.get('userinfo')
+    # 仅供本地调试：生产环境不要把原始 Token 放进客户端 Session
     session['token_info'] = {
         'access_token': token.get('access_token'),
         'id_token': token.get('id_token'),
@@ -104,6 +109,7 @@ def authorize():
 @app.route('/profile')
 @login_required
 def profile():
+    # 仅供本地调试：生产环境只返回筛选后的 userinfo
     return jsonify(userinfo=session['user'], token=session.get('token_info'))
 
 @app.route('/logout')
@@ -123,7 +129,7 @@ if __name__ == '__main__':
 - login_required 装饰器做路由守卫，未登录自动跳转登录
 - /login 发起 OAuth2 授权码流程，跳转到 懒猫 SSO 登录页
 - /auth/callback 接收 懒猫 SSO 回调，用授权码换取 access_token 和用户信息，存入 session
-- /profile 展示当前登录用户的 userinfo 和 token 信息
+- /profile 在本地调试时展示当前登录用户的 userinfo 和 token 信息
 - /logout 清除 session 登出
 
 整个流程就是标准的 OAuth2 Authorization Code Flow：用户点登录 → 跳 懒猫 SSO → 认证通过 → 回调拿 token → 存
@@ -138,7 +144,7 @@ session → 完成登录。
 ![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/e81d2287-cf12-470a-9c7f-3b29a7e5a165.png "image.png")
 
 
-登录之后我们可以查看profile信息，以及登录之后token，这样就抓到了OIDC的去全部信息：
+登录之后可以在本地调试页面查看 profile 和 Token，这样就抓到了 OIDC 的完整返回信息。这里展示 Token 只是为了排查协议流程，截图和日志也要注意脱敏；正式应用不要向浏览器暴露这些字段。
 
 ![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/a040c5d5-3fee-4a2e-96e8-10baeec4936d.png "image.png")
 
@@ -149,3 +155,14 @@ session → 完成登录。
 好了，以上就是如何超越系统注册，使用API建立自己的懒猫SSO应用了，这样我们就可以不必再依赖三方的IDP了。
 
 Less is more。
+
+---
+
+<!-- wangjishanren-qrcode:start -->
+<p align="center">
+  <a href="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg">
+    <img src="https://developer.lazycat.cloud/assets/wangjishanren-qrcode.Bx4A1xuG.jpg" alt="忘机山人二维码" width="240">
+  </a>
+</p>
+<p align="center">扫码关注「忘机山人」</p>
+<!-- wangjishanren-qrcode:end -->
