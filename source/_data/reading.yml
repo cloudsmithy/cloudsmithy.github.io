@@ -9,6 +9,14 @@
 #   notes    读书笔记链接（可多条），无则省略
 #     - { label: 笔记, url: https://... }
 
+- title: 时间看得见
+  category: 成长·自我
+  status: done
+  date: "2026-09-04"
+  reason: 王潇著，复盘四步法与 CXN 归因，本质是个人尺度的 PDCA
+  notes:
+    - { label: 感受, url: https://blog.no-claw.com/7c4ae2d1/ }
+
 - title: 程序员的思维修炼——开发认知潜能的九堂课
   category: 成长·自我
   status: done
@@ -198,12 +206,6 @@
   status: done
   date: "2026-04-27"
   reason: 怎么处理世俗价值，还有不主动就找不到女朋友
-
-- title: 时间看得见
-  category: 成长·自我
-  status: want
-  date: "2026-04-27"
-  reason: 王潇著，用时间管理塑造人生
 
 - title: 超效率手册
   category: 成长·自我
