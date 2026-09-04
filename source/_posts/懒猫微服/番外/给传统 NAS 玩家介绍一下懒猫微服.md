@@ -42,7 +42,7 @@ date: 2025-07-10 00:00:00
 >
 > 我的开发/移植软件也有非常多的懒猫用户在使用。
 
-![6c12c920-1fd4-4300-b9cf-7918026d7c8f](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/6c12c920-1fd4-4300-b9cf-7918026d7c8f.png)
+![Dockge 中 Easysearch 容器的运行状态、终端日志与 compose.yaml 配置](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/6c12c920-1fd4-4300-b9cf-7918026d7c8f.png)
 
 而开源 NAS 基本上还是围绕虚拟机和 Docker 展开，通常没有面向普通用户的应用包管理工具，所以安装软件会受到一些限制。如果真的想移植应用，开发者文档也不一定好读，至少对普通玩家来说确实比较劝退。
 
