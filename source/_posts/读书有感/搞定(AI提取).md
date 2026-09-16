@@ -1,7 +1,9 @@
 ---
 title: 搞定(AI提取)
 description: 以线上《搞定》《搞定II》《搞定III》三篇旧稿为底稿，对照三本原书补齐章节、原理、例子和实践方法。
-tags: 效率
+tags:
+  - 效率
+  - 搞定三部曲
 toc: true
 categories: 读书有感
 abbrlink: 6220a80a

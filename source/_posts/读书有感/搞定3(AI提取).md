@@ -1,7 +1,9 @@
 ---
 title: 《搞定Ⅲ：平衡工作与生活的艺术》全书提炼
 description: 提炼《搞定Ⅲ》的掌控与视角模型：五个掌控步骤、六个视角高度、自我管理矩阵，以及系统回顾方法。
-tags: 效率
+tags:
+  - 效率
+  - 搞定三部曲
 toc: true
 categories: 读书有感
 abbrlink: 9eb50d25
