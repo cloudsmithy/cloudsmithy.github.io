@@ -1,7 +1,9 @@
 ---
 title: 《搞定》个人工作流 SOP
 description: 将《搞定》三部曲压缩成可重复执行的标准流程，覆盖捕捉、明确、组织、执行、回顾和失控恢复。
-tags: 效率
+tags:
+  - 效率
+  - 搞定三部曲
 toc: true
 categories: 读书有感
 abbrlink: db9df156

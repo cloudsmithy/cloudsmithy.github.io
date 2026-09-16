@@ -1,7 +1,9 @@
 ---
 title: 《搞定Ⅰ：无压工作的艺术》全书提炼
 description: 提炼《搞定Ⅰ》的完整 GTD 方法：横向五步工作流、纵向自然计划法、六层次检视，以及三个关键原则。
-tags: 效率
+tags:
+  - 效率
+  - 搞定三部曲
 toc: true
 categories: 读书有感
 abbrlink: b3483798

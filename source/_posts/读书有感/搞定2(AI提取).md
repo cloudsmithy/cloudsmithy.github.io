@@ -1,7 +1,9 @@
 ---
 title: 《搞定Ⅱ：提升工作与生活效率的 52 项原则》全书提炼
 description: 提炼《搞定Ⅱ》的 52 项效率原则，以及书末的工作流程、自然式计划模式和每周回顾核查清单。
-tags: 效率
+tags:
+  - 效率
+  - 搞定三部曲
 toc: true
 categories: 读书有感
 abbrlink: 6a72b0c5

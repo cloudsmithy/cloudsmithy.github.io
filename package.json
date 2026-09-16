@@ -23,10 +23,10 @@
     "infini:preview": "SITE=infini vitepress preview docs"
   },
   "hexo": {
-    "version": "8.1.1"
+    "version": "8.1.2"
   },
   "dependencies": {
-    "hexo": "^8.1.1",
+    "hexo": "^8.1.2",
     "hexo-abbrlink": "^2.2.1",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -38,7 +38,7 @@
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^6.2.0",
     "hexo-renderer-stylus": "^3.0.1",
-    "hexo-theme-butterfly": "github:jerryc127/hexo-theme-butterfly",
+    "hexo-theme-butterfly": "github:jerryc127/hexo-theme-butterfly#5.7.0",
     "hexo-wordcount": "^6.0.1"
   },
   "devDependencies": {
