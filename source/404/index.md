@@ -3,8 +3,13 @@ title: 404
 date: 2023-12-23
 permalink: /404
 sitemap: false
+comments: false
+aside: false
+toc: false
 ---
 
-# 好好吃饭，好好生活。
+## 好好吃饭，好好生活。
 
 网页找不到了，但是你还在。
+
+[回到首页](/) · [浏览归档](/archives/)

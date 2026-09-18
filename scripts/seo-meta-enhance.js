@@ -1,5 +1,7 @@
 'use strict'
 
+const { unescapeHTML } = require('hexo-util')
+
 // Runs before hexo-minify (priority 10), so we operate on pretty HTML.
 // Adjusts: <title>, homepage <h1>, JSON-LD blocks, twitter card, meta robots.
 
@@ -9,7 +11,7 @@ const SITE_ALT = ['CloudSmithy Blog', '忘机山人']
 const SITE_DESC = '忘机山人的个人博客，专注 AWS 云计算、Docker 容器、NAS 与懒猫微服、Easysearch、Python 后端开发、AI 部署与 Homelab 实践，记录技术、生活与思考'
 const AUTHOR = '忘机山人'
 const AUTHOR_URL = SITE_URL + '/about/'
-const LOGO_URL = SITE_URL + '/images/me.png'
+const LOGO_URL = SITE_URL + '/images/icon-512.png'
 const HOME_H1 = '镜湖 — 忘机山人的云计算与 Homelab 笔记'
 const HOME_OG_TITLE = '镜湖 — 忘机山人的云计算与 Homelab 笔记'
 
@@ -29,11 +31,6 @@ const websiteJsonLd = {
     '@type': 'Person',
     name: AUTHOR,
     image: { '@type': 'ImageObject', url: LOGO_URL }
-  },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: SITE_URL + '/?s={search_term_string}',
-    'query-input': 'required name=search_term_string'
   }
 }
 
@@ -48,11 +45,13 @@ function stripEmptyJsonLd(html) {
   )
 }
 
-function ensureMetaRobots(html) {
-  if (/<meta\s+name="robots"/i.test(html)) return html
+function ensureMetaRobots(html, isNotFound) {
+  const robots = /<meta\s+name="robots"[^>]*>/i
+  const tag = `<meta name="robots" content="${isNotFound ? 'noindex,follow' : 'index,follow'}">`
+  if (robots.test(html)) return isNotFound ? html.replace(robots, tag) : html
   return html.replace(
     /(<meta\s+name="viewport"[^>]*>)/i,
-    '$1<meta name="robots" content="index,follow">'
+    '$1' + tag
   )
 }
 
@@ -67,7 +66,7 @@ function fillTwitterCard(html, { title, description }) {
   if (!inserts.length) return html
   return html.replace(
     /(<meta\s+name="twitter:card"[^>]*>)/i,
-    '$1' + inserts.join('')
+    (_, card) => card + inserts.join('')
   )
 }
 
@@ -83,13 +82,13 @@ function pickMeta(html, names) {
   for (const n of names) {
     const re = new RegExp(`<meta\\s+(?:name|property)="${n}"\\s+content="([^"]*)"`, 'i')
     const m = html.match(re)
-    if (m) return m[1]
+    if (m) return unescapeHTML(m[1])
   }
   return ''
 }
 
 function rewriteHomeJsonLd(html) {
-  const next = `<script type="application/ld+json">${JSON.stringify(websiteJsonLd)}</script>`
+  const next = `<script type="application/ld+json">${JSON.stringify(websiteJsonLd).replace(/</g, '\\u003c')}</script>`
   // Replace the first WebSite block if present; otherwise inject before </head>.
   const re = /<script\s+type="application\/ld\+json">\s*\{[^<]*?"@type"\s*:\s*"WebSite"[\s\S]*?<\/script>/i
   if (re.test(html)) return html.replace(re, next)
@@ -115,7 +114,7 @@ function preloadFontAwesome(html) {
     return html
   }
   if (html.indexOf(FONTAWESOME_HREF) === -1) return html
-  const tag = `<link rel="preload" as="style" href="${FONTAWESOME_HREF}" crossorigin>`
+  const tag = `<link rel="preload" as="style" href="${FONTAWESOME_HREF}">`
   return html.replace(/<\/head>/i, tag + '</head>')
 }
 
@@ -137,7 +136,8 @@ function enrichPostJsonLd(html, ctx) {
     logo: { '@type': 'ImageObject', url: LOGO_URL }
   }
 
-  return html.replace(re, `<script type="application/ld+json">${JSON.stringify(data)}</script>`)
+  const json = JSON.stringify(data).replace(/</g, '\\u003c')
+  return html.replace(re, () => `<script type="application/ld+json">${json}</script>`)
 }
 
 hexo.extend.filter.register('after_render:html', function (html, data) {
@@ -146,6 +146,7 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
 
   const path = data && data.path ? data.path : ''
   const isHome = isRootHome(path)
+  const isNotFound = /^\/?404(?:\.html|\/(?:index\.html)?)?$/.test(path)
 
   // Read description/og:title from the rendered HTML, then mutate.
   const desc = pickMeta(html, ['description', 'og:description'])
@@ -153,7 +154,7 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
 
   let out = html
   out = stripEmptyJsonLd(out)
-  out = ensureMetaRobots(out)
+  out = ensureMetaRobots(out, isNotFound)
   out = preloadFontAwesome(out)
 
   if (isHome) {
@@ -170,7 +171,7 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
     const tags = []
     const tagRe = /<meta\s+property="article:tag"\s+content="([^"]*)"/g
     let tm
-    while ((tm = tagRe.exec(out)) !== null) tags.push(tm[1])
+    while ((tm = tagRe.exec(out)) !== null) tags.push(unescapeHTML(tm[1]))
     out = enrichPostJsonLd(out, { description: desc, keywords: tags })
   }
 

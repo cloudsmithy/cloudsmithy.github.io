@@ -101,7 +101,7 @@ hexo.extend.generator.register('llms_txt', function (locals) {
       !pg.hidden &&
       pg.published !== false &&
       pg.title &&
-      !/^404\//.test(pg.path || '')
+      !/^\/?404(?:\.html|\/(?:index\.html)?)?$/.test(pg.path || '')
     )
     .sort((a, b) => String(a.title).localeCompare(String(b.title), 'zh-CN'))
 
