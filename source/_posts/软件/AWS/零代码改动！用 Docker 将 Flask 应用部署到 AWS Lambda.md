@@ -4,6 +4,7 @@ description: 用 Docker 和 Lambda Web Adapter 零改动部署 Flask 到 AWS Lam
 tags:
   - AWS
   - Docker
+  - Python
 toc: true
 categories:
   - 软件

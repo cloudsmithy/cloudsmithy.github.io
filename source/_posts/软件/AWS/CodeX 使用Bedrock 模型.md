@@ -4,6 +4,9 @@ description: CodeX 使用Bedrock 模型
 tags:
   - AWS
   - Bedrock
+  - AI
+  - LLM
+  - AI 编程
 toc: true
 categories:
   - 软件

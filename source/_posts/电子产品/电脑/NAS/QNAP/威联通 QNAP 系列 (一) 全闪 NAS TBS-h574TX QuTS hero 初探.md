@@ -1,7 +1,6 @@
 ---
 title: 威联通 QNAP 系列 (一) 全闪 NAS TBS-h574TX QuTS hero 初探
 tags:
-  - 搜索引擎（ES）
   - NAS
 toc: true
 categories:

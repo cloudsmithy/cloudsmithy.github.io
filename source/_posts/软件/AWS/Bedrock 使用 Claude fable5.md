@@ -2,6 +2,9 @@
 title: Bedrock 使用 Claude fable5
 tags:
   - Bedrock
+  - AWS
+  - AI
+  - LLM
 toc: true
 categories:
   - 软件

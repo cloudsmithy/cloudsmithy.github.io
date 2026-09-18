@@ -5,6 +5,9 @@ categories:
   - 软件
 abbrlink: 8e9b51fc
 date: 2026-03-15 00:00:00
+tags:
+  - AI
+  - LLM
 ---
 
 在开始之前，重要的事情说三遍!!!!

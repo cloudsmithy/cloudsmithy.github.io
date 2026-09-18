@@ -2,8 +2,11 @@
 title: 告别 DSL！我用 MCP 让 AI 帮我操作 Easysearch
 description: 通过 MCP 协议让 AI 直接操作 Easysearch，告别复杂的 DSL 查询语法。
 tags:
-  - 搜索引擎（ES）
+  - 搜索引擎
   - 极限科技
+  - Easysearch
+  - AI
+  - MCP
 toc: true
 categories:
   - 极限科技

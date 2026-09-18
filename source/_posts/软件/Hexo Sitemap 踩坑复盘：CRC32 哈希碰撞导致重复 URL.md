@@ -5,6 +5,8 @@ description: >-
   postinstall patch 替换为 MD5 解决。
 tags:
   - SEO
+  - Hexo
+  - Blog
 toc: true
 author: Claude Code
 categories:

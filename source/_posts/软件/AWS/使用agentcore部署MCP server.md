@@ -4,6 +4,9 @@ description: 使用agentcore部署MCP server
 tags:
   - AWS
   - MCP
+  - AI
+  - AgentCore
+  - Bedrock
 toc: true
 categories:
   - 软件

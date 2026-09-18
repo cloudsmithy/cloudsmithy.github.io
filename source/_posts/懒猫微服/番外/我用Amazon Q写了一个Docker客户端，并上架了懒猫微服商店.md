@@ -4,6 +4,9 @@ description: 使用 Amazon Q 开发 Docker 客户端并上架懒猫微服商店�
 tags:
   - Docker
   - 懒猫微服
+  - AI
+  - AI 编程
+  - AWS
 toc: true
 categories:
   - 懒猫微服

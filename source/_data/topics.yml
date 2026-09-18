@@ -162,8 +162,8 @@
   summary: 向量检索、RAG、Agent 与 MCP
   intro: 先体验向量数据库，再把检索接到本地问答中。对 Agent 感兴趣，可以继续看本地开发和 MCP 工具接入。
   more:
-    label: 浏览 LLM 相关文章
-    url: /tags/LLM/
+    label: 浏览 AI 相关文章
+    url: /tags/AI/
   steps:
     - title: 用 Zilliz Cloud 体验 Milvus
       url: /938aef4d/

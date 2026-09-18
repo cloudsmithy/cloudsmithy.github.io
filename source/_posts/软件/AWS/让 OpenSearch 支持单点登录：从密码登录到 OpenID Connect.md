@@ -4,6 +4,8 @@ description: 让 OpenSearch 支持 SSO：接入 OpenID Connect 认证
 tags:
   - AWS
   - OpenSearch
+  - SSO
+  - 搜索引擎
 toc: true
 categories:
   - 软件

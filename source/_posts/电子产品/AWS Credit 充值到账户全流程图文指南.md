@@ -3,7 +3,9 @@ title: AWS Credit 充值到账户全流程图文指南
 description: 图文详解 AWS Credit 代金券充值到账户的完整操作流程
 tags: AWS
 toc: true
-categories: 电子产品
+categories:
+  - 软件
+  - AWS
 abbrlink: '11273243'
 date: 2025-07-26 00:00:00
 ---

@@ -1,7 +1,9 @@
 ---
 title: 基于 AWS IAM Identity Center 的 SAML 配置，实现单点登录阿里云
 description: 配置 AWS IAM Identity Center SAML 实现单点登录阿里云的教程
-tags: AWS
+tags:
+  - AWS
+  - SSO
 toc: true
 categories:
   - 软件

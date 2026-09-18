@@ -1,7 +1,8 @@
 ---
 title: GIT技巧
 description: GIT技巧
-tags: GIT
+tags:
+  - Git
 toc: true
 categories: 软件
 abbrlink: 27bf94ea

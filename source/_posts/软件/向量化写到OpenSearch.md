@@ -3,6 +3,11 @@ title: 文本向量化写到 OpenSearch OSS
 description: 向量化写到 OpenSearch OSS
 tags:
   - OpenSearch
+  - AI
+  - 向量数据库
+  - AWS
+  - Bedrock
+  - 搜索引擎
 toc: true
 categories:
   - 软件

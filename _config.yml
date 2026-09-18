@@ -82,7 +82,10 @@ index_generator:
   order_by: "-date"
 default_category: uncategorized
 category_map: null
-tag_map: null
+# 显示名称统一后保留旧标签 URL，兼容收藏和站外链接。
+tag_map:
+  Git: GIT
+  搜索引擎: 搜索引擎（ES）
 meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
@@ -158,4 +161,3 @@ minify:
     enable: false
   font:
     enable: false
-

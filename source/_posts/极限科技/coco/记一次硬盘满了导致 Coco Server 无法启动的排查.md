@@ -4,6 +4,7 @@ description: Coco Server 启动失败的排查过程，最终定位到磁盘空�
 tags:
   - Coco AI
   - 极限科技
+  - AI
 toc: true
 categories:
   - 极限科技

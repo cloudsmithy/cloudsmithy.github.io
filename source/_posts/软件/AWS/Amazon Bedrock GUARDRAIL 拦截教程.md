@@ -2,6 +2,9 @@
 title: Amazon Bedrock GUARDRAIL 拦截教程
 tags:
   - AWS
+  - AI
+  - LLM
+  - Bedrock
 toc: true
 categories:
   - 软件

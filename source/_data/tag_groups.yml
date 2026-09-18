@@ -1,0 +1,83 @@
+# 只维护分组和显示顺序；文章数量、标签地址由 Hexo 读取。
+# 新标签未分组时自动显示在“其他标签”，不会从目录中消失。
+- id: ai
+  title: AI 与知识检索
+  description: 从模型使用到 RAG、Agent 和知识库。
+  tags:
+    - AI
+    - LLM
+    - RAG
+    - MCP
+    - AgentCore
+    - Bedrock
+    - Coco AI
+    - 向量数据库
+    - Milvus
+    - AI 编程
+
+- id: search
+  title: 搜索引擎
+  description: 部署、查询、数据接入与集群管理。
+  tags:
+    - Easysearch
+    - OpenSearch
+    - Elasticsearch
+    - 搜索引擎
+    - DBX
+    - 极限科技
+
+- id: infrastructure
+  title: 云计算与运维
+  description: 云服务、容器、Linux 与身份认证。
+  tags:
+    - AWS
+    - Docker
+    - Kubernetes
+    - Linux
+    - SSH
+    - SSO
+    - MFA
+    - 代理
+
+- id: development
+  title: 开发与写作
+  description: 编程、版本管理、博客搭建与效率工具。
+  tags:
+    - 开发
+    - Python
+    - Git
+    - Hexo
+    - Blog
+    - Markdown
+    - SEO
+    - 效率
+    - 双拼
+
+- id: devices
+  title: 设备与家庭网络
+  description: 微服、NAS、桌面设备与家里的网络。
+  tags:
+    - 懒猫微服
+    - NAS
+    - 家庭网络
+    - 群晖
+    - Apple
+    - 外设
+    - 手机
+    - Samba
+    - 单片机
+
+- id: life
+  title: 生活与阅读
+  description: 日常经历、旅行、美食与阅读记录。
+  tags:
+    - 生活
+    - 游记
+    - 北漂
+    - 租房
+    - 家有吃货
+    - 美食
+    - 减肥
+    - 体验
+    - Podcasts
+    - 搞定三部曲

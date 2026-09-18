@@ -5,6 +5,7 @@ toc: true
 tags:
   - OpenSearch
   - Kubernetes
+  - 搜索引擎
 categories:
   - 软件
 abbrlink: 3c76c368
