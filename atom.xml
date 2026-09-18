@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>镜湖</title>
+  
+  <subtitle>忘机山人的技术随手记 · AWS · Docker · 懒猫微服 · Homelab</subtitle>
+  <link href="https://blog.no-claw.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.no-claw.com/"/>
+  <updated>2026-09-16T07:35:00.000Z</updated>
+  <id>https://blog.no-claw.com/</id>
+  
+  <author>
+    <name>忘机山人</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《搞定》个人工作流 SOP</title>
+    <link href="https://blog.no-claw.com/db9df156/"/>
+    <id>https://blog.no-claw.com/db9df156/</id>
+    <published>2026-09-16T07:35:00.000Z</published>
+    <updated>2026-09-16T07:35:00.000Z</updated>
+    
+    
+    <summary type="html">将《搞定》三部曲压缩成可重复执行的标准流程，覆盖捕捉、明确、组织、执行、回顾和失控恢复。</summary>
+    
+    
+    
+    <category term="读书有感" scheme="https://blog.no-claw.com/categories/%E8%AF%BB%E4%B9%A6%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="效率" scheme="https://blog.no-claw.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+    <category term="搞定三部曲" scheme="https://blog.no-claw.com/tags/%E6%90%9E%E5%AE%9A%E4%B8%89%E9%83%A8%E6%9B%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不要让别人轻易使用你的时间</title>
+    <link href="https://blog.no-claw.com/84c2f014/"/>
+    <id>https://blog.no-claw.com/84c2f014/</id>
+    <published>2026-09-04T08:00:00.000Z</published>
+    <updated>2026-09-04T08:00:00.000Z</updated>
+    
+    
+    <summary type="html">从周六下午的一句&quot;在吗&quot;说起，聊人情、时间和那句说不清出处的乡谚——斗米养恩，担米养仇。</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://blog.no-claw.com/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>潇洒姐《时间看得见》摘抄和感受</title>
+    <link href="https://blog.no-claw.com/7c4ae2d1/"/>
+    <id>https://blog.no-claw.com/7c4ae2d1/</id>
+    <published>2026-09-03T16:00:00.000Z</published>
+    <updated>2026-09-03T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">王潇《时间看得见》读书笔记，一天的八项时间配额、复盘四步法与 CXN 归因，以及富兰克林的十三条戒律和手账表格法。</summary>
+    
+    
+    
+    <category term="读书有感" scheme="https://blog.no-claw.com/categories/%E8%AF%BB%E4%B9%A6%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="效率" scheme="https://blog.no-claw.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《搞定》实践清单手册</title>
+    <link href="https://blog.no-claw.com/f009420a/"/>
+    <id>https://blog.no-claw.com/f009420a/</id>
+    <published>2026-08-28T06:10:00.000Z</published>
+    <updated>2026-08-28T06:10:00.000Z</updated>
+    
+    
+    <summary type="html">把《搞定》三部曲的方法整理成可以直接执行的清单：系统初始化、工作篮处理、每日运行、每周回顾、项目计划、委派与六层视角。</summary>
+    
+    
+    
+    <category term="读书有感" scheme="https://blog.no-claw.com/categories/%E8%AF%BB%E4%B9%A6%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="效率" scheme="https://blog.no-claw.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+    <category term="搞定三部曲" scheme="https://blog.no-claw.com/tags/%E6%90%9E%E5%AE%9A%E4%B8%89%E9%83%A8%E6%9B%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我不会代码，可以给懒猫贡献软件吗？</title>
+    <link href="https://blog.no-claw.com/de707059/"/>
+    <id>https://blog.no-claw.com/de707059/</id>
+    <published>2026-08-20T16:00:00.000Z</published>
+    <updated>2026-08-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">从 Lazycat Skills 入手，看看不会写代码的普通用户，如何借助 AI 移植 Docker 应用、测试 LPK，并为懒猫微服应用生态做贡献。</summary>
+    
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="开发" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="AI" scheme="https://blog.no-claw.com/tags/AI/"/>
+    
+    <category term="开发" scheme="https://blog.no-claw.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="AI 编程" scheme="https://blog.no-claw.com/tags/AI-%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>给开发者的 NAS 小书：我们需要什么样的 NAS？</title>
+    <link href="https://blog.no-claw.com/49e2197c/"/>
+    <id>https://blog.no-claw.com/49e2197c/</id>
+    <published>2026-08-20T16:00:00.000Z</published>
+    <updated>2026-08-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">从系统分层、数据持久化、三套 Docker、远程网络、OIDC、应用开发和 HDMI 桌面等角度，聊聊开发者真正需要什么样的 NAS。</summary>
+    
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="番外" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/%E7%95%AA%E5%A4%96/"/>
+    
+    
+    <category term="开发" scheme="https://blog.no-claw.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Docker" scheme="https://blog.no-claw.com/tags/Docker/"/>
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="NAS" scheme="https://blog.no-claw.com/tags/NAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>连接 Easysearch 的新方式：使用 DBX 把索引当成表来浏览</title>
+    <link href="https://blog.no-claw.com/c16f9938/"/>
+    <id>https://blog.no-claw.com/c16f9938/</id>
+    <published>2026-08-20T16:00:00.000Z</published>
+    <updated>2026-08-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">DBX 已原生支持 Easysearch，可以通过图形界面连接集群、浏览索引，并使用 DSL 和 SQL 查询数据。</summary>
+    
+    
+    
+    <category term="极限科技" scheme="https://blog.no-claw.com/categories/%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/"/>
+    
+    <category term="Easysearch" scheme="https://blog.no-claw.com/categories/%E6%9E%81%E9%99%90%E7%A7%91%E6%8A%80/Easysearch/"/>
+    
+    
+    <category term="搜索引擎" scheme="https://blog.no-claw.com/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%88ES%EF%BC%89/"/>
+    
+    <category term="Easysearch" scheme="https://blog.no-claw.com/tags/Easysearch/"/>
+    
+    <category term="Elasticsearch" scheme="https://blog.no-claw.com/tags/Elasticsearch/"/>
+    
+    <category term="DBX" scheme="https://blog.no-claw.com/tags/DBX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二十八岁的七夕 --记一次水晶疗愈</title>
+    <link href="https://blog.no-claw.com/cceefc55/"/>
+    <id>https://blog.no-claw.com/cceefc55/</id>
+    <published>2026-08-19T16:00:00.000Z</published>
+    <updated>2026-08-19T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">28岁的七夕，约了一次水晶疗愈，一方面是出于好奇，一方面是生活需要有这样灵性的插曲。洪都百炼生曾说，灵性生感情，感情生哭泣。当然此刻我只想要好的一面，至于很多人在冥想中出现流泪哭泣，那就是另外的话题了。 疗愈师是一位比我年长几岁的姐姐。我们以谈话治疗开始，她询问我想咨询的困扰，我说问题有点多，于是她</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://blog.no-claw.com/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="体验" scheme="https://blog.no-claw.com/tags/%E4%BD%93%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>当手艺变成符号，美食博主夜访全聚德</title>
+    <link href="https://blog.no-claw.com/6b735ca0/"/>
+    <id>https://blog.no-claw.com/6b735ca0/</id>
+    <published>2026-08-15T16:00:00.000Z</published>
+    <updated>2026-08-15T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">北京的烤鸭有很多，比如近来大家推荐的四季民福，小大董等。对于全聚德，好像只存在于语文课本的传说里，果木的香气，肥而不腻，瘦而不柴。每次路过这家店，耳边总会响起他人的评价，不好吃且贵。这次不信邪，然后有了这个夜访全聚德。 忙碌了一天后去吃饭，先是电话里被告诉现在没啥人，不接受线上预订，意思是来现场排队</summary>
+    
+    
+    
+    <category term="散文随笔" scheme="https://blog.no-claw.com/categories/%E6%95%A3%E6%96%87%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="美食" scheme="https://blog.no-claw.com/tags/%E7%BE%8E%E9%A3%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日常行为模式</title>
+    <link href="https://blog.no-claw.com/fae03579/"/>
+    <id>https://blog.no-claw.com/fae03579/</id>
+    <published>2026-08-05T16:00:00.000Z</published>
+    <updated>2026-08-05T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">我们从历史总结得到的教训，成功的第一个要件是无论何时何地，请把你的理智摆在感情之上。 锻炼好吃好 睡好，心情就容易好，没有念头，没有负面情绪 一种始终健康的状态 需要对生活做记录和追踪。 清单 - 每天check - 每两周回顾 缘督以为经，虚实步 好好吃饭 好好睡 锻炼心的习惯 每天的固定时间，手</summary>
+    
+    
+    
+    <category term="日常行为模式" scheme="https://blog.no-claw.com/categories/%E6%97%A5%E5%B8%B8%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>高效程序员的45个习惯</title>
+    <link href="https://blog.no-claw.com/8f11a70d/"/>
+    <id>https://blog.no-claw.com/8f11a70d/</id>
+    <published>2026-08-03T16:00:00.000Z</published>
+    <updated>2026-08-03T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">《高效程序员的45个习惯》的精髓是对结果负责、小步获得反馈、持续修正，顺手把版本控制、纯文本、可回滚这些工程习惯搬到生活管理上。</summary>
+    
+    
+    
+    <category term="读书有感" scheme="https://blog.no-claw.com/categories/%E8%AF%BB%E4%B9%A6%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="效率" scheme="https://blog.no-claw.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>这是心目中我极客风的AI 摄像头 - 开箱配置手记</title>
+    <link href="https://blog.no-claw.com/b3747d80/"/>
+    <id>https://blog.no-claw.com/b3747d80/</id>
+    <published>2026-08-02T16:00:00.000Z</published>
+    <updated>2026-08-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">懒猫微服摄像头体验，硬件外观、接口配置与初印象。</summary>
+    
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="摄像头" scheme="https://blog.no-claw.com/categories/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/%E6%91%84%E5%83%8F%E5%A4%B4/"/>
+    
+    
+    <category term="懒猫微服" scheme="https://blog.no-claw.com/tags/%E6%87%92%E7%8C%AB%E5%BE%AE%E6%9C%8D/"/>
+    
+    <category term="外设" scheme="https://blog.no-claw.com/tags/%E5%A4%96%E8%AE%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大学霸TCPIP协议教程笔记</title>
+    <link href="https://blog.no-claw.com/50be5030/"/>
+    <id>https://blog.no-claw.com/50be5030/</id>
+    <published>2026-07-26T16:00:00.000Z</published>
+    <updated>2026-07-26T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">网络体系 IEEE 802.3（以太网） IEEE 802.11（无线网络） ·IEEE 802.16（WiMAX） 目前还没见过 ·点到点协议（PPP） 家用的PPPOE 是这种？？ MAC 地址 “MAC地址拥有自己的格式。它采用十六进制数表示，共6个字节（48位），长度为48bit。整个地址可</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>搞定(AI提取)</title>
+    <link href="https://blog.no-claw.com/6220a80a/"/>
+    <id>https://blog.no-claw.com/6220a80a/</id>
+    <published>2026-07-23T04:45:00.000Z</published>
+    <updated>2026-07-23T04:45:00.000Z</updated>
+    
+    
+    <summary type="html">以线上《搞定》《搞定II》《搞定III》三篇旧稿为底稿，对照三本原书补齐章节、原理、例子和实践方法。</summary>
+    
+    
+    
+    <category term="读书有感" scheme="https://blog.no-claw.com/categories/%E8%AF%BB%E4%B9%A6%E6%9C%89%E6%84%9F/"/>
+    
+    
+    <category term="效率" scheme="https://blog.no-claw.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+    <category term="搞定三部曲" scheme="https://blog.no-claw.com/tags/%E6%90%9E%E5%AE%9A%E4%B8%89%E9%83%A8%E6%9B%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>经济学原理 摘录</title>
+    <link href="https://blog.no-claw.com/b353a576/"/>
+    <id>https://blog.no-claw.com/b353a576/</id>
+    <published>2026-07-20T16:00:00.000Z</published>
+    <updated>2026-07-20T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">曼昆《经济学原理》里最常用的 14 个思维工具，按「个人决策 → 市场协调 → 市场边界 → 政府角色 → 整体经济」五个层次由内向外排列。每个概念给出：一句话定义、关键、例子、误区、口诀。 一、个人决策：稀缺下如何理性选择 1. 权衡取舍（Trade-off） 一句话：凡事有代价，得到某样就得放弃</summary>
+    
+    
+    
+    <category term="摘抄" scheme="https://blog.no-claw.com/categories/%E6%91%98%E6%8A%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Podcasts 订阅折腾记录</title>
+    <link href="https://blog.no-claw.com/752e409a/"/>
+    <id>https://blog.no-claw.com/752e409a/</id>
+    <published>2026-07-19T16:00:00.000Z</published>
+    <updated>2026-07-19T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">买了一些课程，是MP3格式的，意外发现提供了 Podcasts 的订阅记录，是XML格式的。Apple 的 Podcasts 可以直接订阅（文件 - 通过URL订阅）有人推荐 小宇宙APP ，不过只接受 OPML 格式的，不过用AI 转码没成功。MacOS的Pocket Casts 也黑屏了。意外发</summary>
+    
+    
+    
+    <category term="Podcasts" scheme="https://blog.no-claw.com/categories/Podcasts/"/>
+    
+    
+    <category term="Podcasts" scheme="https://blog.no-claw.com/tags/Podcasts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes 系列课程 · 术语去重词典（按课程 &gt; 节 分组）</title>
+    <link href="https://blog.no-claw.com/7845f1d8/"/>
+    <id>https://blog.no-claw.com/7845f1d8/</id>
+    <published>2026-07-12T16:00:00.000Z</published>
+    <updated>2026-07-12T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">从「术语表汇总.md」去重而来：跨全局去重，一个词只出现在它首次登场的那一节下（忽略大小写）。共 765 条唯一术语。本文件由 gen-glossary-dedup.sh 自动生成；含出处重复的完整版见「术语表汇总.md」。 第一门课-Kubernetes入门 Lesson 00 — Course </summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="Kubernetes" scheme="https://blog.no-claw.com/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>子域名独立解析DNS迁移</title>
+    <link href="https://blog.no-claw.com/13d4e54c/"/>
+    <id>https://blog.no-claw.com/13d4e54c/</id>
+    <published>2026-07-02T16:00:00.000Z</published>
+    <updated>2026-07-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">通过NS委派实现子域名跨服务商独立管理</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>4个月减肥20斤后，我悟到的这几件事</title>
+    <link href="https://blog.no-claw.com/3930b15c/"/>
+    <id>https://blog.no-claw.com/3930b15c/</id>
+    <published>2026-07-02T16:00:00.000Z</published>
+    <updated>2026-07-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">减肥的目的是为了有一个健康的身体，健康的生活习惯，所以不要太拘泥于数字 不饿的时候晚可以不吃饭，但是另外两顿要保证时间和质量，确保大脑不宕机 周末偶尔可以吃顿好的开心一下，工作日吃饭请恢复正常 市面可以吃的东西太多了，大多不健康，存在的意义大多是因为猎奇。 好吃是多巴胺在作祟，假装自己吃了没啥影响 </summary>
+    
+    
+    
+    <category term="零碎生活" scheme="https://blog.no-claw.com/categories/%E9%9B%B6%E7%A2%8E%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="减肥" scheme="https://blog.no-claw.com/categories/%E9%9B%B6%E7%A2%8E%E7%94%9F%E6%B4%BB/%E5%87%8F%E8%82%A5/"/>
+    
+    
+    <category term="减肥" scheme="https://blog.no-claw.com/tags/%E5%87%8F%E8%82%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rime + 万象拼音配置双拼</title>
+    <link href="https://blog.no-claw.com/c1342edf/"/>
+    <id>https://blog.no-claw.com/c1342edf/</id>
+    <published>2026-06-28T16:00:00.000Z</published>
+    <updated>2026-06-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">下载Rime的PKG进行安装： https://rime.im/download/ 下载万象拼音： https://amzxyz.github.io/ 这里是配置文档：https://amzxyz.github.io/doc/squirrel/ 中文模式下输入 &amp;#x2F;flypy 切换到→小鹤双</summary>
+    
+    
+    
+    <category term="软件" scheme="https://blog.no-claw.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="双拼" scheme="https://blog.no-claw.com/tags/%E5%8F%8C%E6%8B%BC/"/>
+    
+  </entry>
+  
+</feed>
