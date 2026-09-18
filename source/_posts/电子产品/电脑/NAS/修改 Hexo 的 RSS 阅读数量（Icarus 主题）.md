@@ -6,9 +6,7 @@ tags:
   - Hexo
 toc: true
 categories:
-  - 电子产品
-  - 电脑
-  - NAS
+  - 软件
 abbrlink: 2d0d3922
 date: 2025-08-08 00:00:00
 ---

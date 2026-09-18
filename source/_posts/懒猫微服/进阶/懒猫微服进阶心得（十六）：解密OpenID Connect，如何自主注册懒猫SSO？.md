@@ -3,6 +3,7 @@ title: 懒猫微服进阶心得（十六）：解密OpenID Connect，如何自�
 description: 懒猫微服进阶心得（十六）：解密OpenID Connect，如何自主注册懒猫SSO？
 tags:
   - 懒猫微服
+  - SSO
 toc: true
 series: 懒猫微服进阶
 categories:

@@ -3,6 +3,7 @@ title: SAML登陆Amazon Grafana
 description: SAML登陆Amazon Grafana
 tags:
   - SSO
+  - AWS
 toc: true
 categories:
   - 软件
