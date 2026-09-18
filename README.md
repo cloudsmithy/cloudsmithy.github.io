@@ -36,6 +36,13 @@ pnpm install
 pnpm dev
 ```
 
+## 内容导览
+
+- 首页专题入口和技术专题页共用 `source/_data/topics.yml`，在这里维护专题介绍、推荐阅读顺序和文章链接。
+- 完整技术分类在 `source/_data/technical_categories.yml` 中指定根分类与补充标签；子分类和文章数量自动读取，新增子分类后会自动出现。
+- 主导航在 `_config.butterfly.yml` 的 `menu` 下配置；日记、月报、阅读等入口汇总在 `source/life/index.md`。
+- 首页优先使用文章的 `description`；缺失、不足 15 字或重复标题时，自动截取正文，长度为 150 字。
+
 ## 许可协议
 
 本仓库采用双协议：

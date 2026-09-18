@@ -5,6 +5,7 @@
   "scripts": {
     "postinstall": "node tools/patch-abbrlink.js",
     "build": "hexo clean && hexo generate",
+    "test": "node --test tools/test-site-behavior.js",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
@@ -39,6 +40,7 @@
     "hexo-renderer-marked": "^6.2.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-theme-butterfly": "github:jerryc127/hexo-theme-butterfly#5.7.0",
+    "hexo-util": "4.0.0",
     "hexo-wordcount": "^6.0.1"
   },
   "devDependencies": {

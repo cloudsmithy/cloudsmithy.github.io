@@ -1,0 +1,262 @@
+.home-topics {
+  margin-bottom: 20px;
+  padding: 24px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+}
+
+.topics-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 16px;
+}
+
+.topics-heading h2 {
+  margin: 0;
+  color: var(--text-highlight-color);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.topics-heading p {
+  margin: 4px 0 0;
+  font-size: .95rem;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Scope article overrides to the guide so ordinary article links keep their style. */
+.topic-grid .topic-card,
+#article-container .topic-grid .topic-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--hr-border);
+  border-radius: 6px;
+  color: var(--font-color);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: border-color .18s ease, background-color .18s ease;
+}
+
+.topic-card > i {
+  margin-bottom: 2px;
+  color: var(--text-highlight-color);
+  font-size: 1.2rem;
+}
+
+.topic-card > strong {
+  color: var(--text-highlight-color);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.topic-card-summary {
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.home-topics .topic-grid .topic-card {
+  min-height: 60px;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.home-topics .topic-card > i {
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.home-topics .topic-card > strong {
+  overflow-wrap: normal;
+}
+
+.home-topics .topic-card-summary {
+  display: none;
+}
+
+.topic-grid .topic-card:hover,
+#article-container .topic-grid .topic-card:hover {
+  border-color: var(--font-color);
+  background: var(--blockquote-bg);
+}
+
+.home-topics a:focus-visible,
+.topic-guide a:focus-visible,
+.topic-guide summary:focus-visible {
+  outline: 2px solid var(--text-highlight-color);
+  outline-offset: 4px;
+}
+
+.topics-more,
+#article-container .topics-more {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 6px;
+  color: var(--font-color);
+  font-size: .95rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+#article-container .topic-section {
+  margin-top: 32px;
+  padding-top: 8px;
+  border-top: 1px solid var(--hr-border);
+}
+
+#article-container .topic-section h2 {
+  scroll-margin-top: 90px;
+}
+
+#technical-categories {
+  scroll-margin-top: 90px;
+}
+
+.category-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px;
+}
+
+.category-group {
+  min-width: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--hr-border);
+  border-radius: 6px;
+}
+
+.category-group summary {
+  min-height: 44px;
+  cursor: pointer;
+  line-height: 44px;
+}
+
+.category-count {
+  flex-shrink: 0;
+  margin-left: 12px;
+  color: var(--font-color);
+  font-size: .9rem;
+}
+
+#article-container .category-tree,
+#article-container .category-tree ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#article-container .category-tree ul {
+  padding-left: 16px;
+}
+
+#article-container .category-tree li {
+  margin: 0;
+  padding: 0;
+}
+
+#article-container .category-tree a,
+#article-container .category-all,
+#article-container .technical-tags a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--font-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.technical-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 16px;
+}
+
+#article-container .topic-steps {
+  padding-left: 1.5em;
+}
+
+#article-container .topic-steps li {
+  margin: 0;
+  padding: 0 0 0 4px;
+}
+
+#article-container .topic-step {
+  display: block;
+  padding: 12px 0;
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+.topic-step strong {
+  display: block;
+  color: var(--text-highlight-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.topic-step span {
+  display: block;
+  margin-top: 4px;
+  line-height: 1.7;
+}
+
+#article-container .topic-step:hover strong {
+  text-decoration-thickness: 2px;
+}
+
+@media (max-width: 768px) {
+  .home-topics {
+    padding: 20px;
+  }
+
+  .home-topics .topics-heading p {
+    display: none;
+  }
+
+  .topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topic-grid .topic-card,
+  #article-container .topic-grid .topic-card {
+    padding: 12px;
+  }
+
+  .topic-guide .topic-card-summary {
+    display: none;
+  }
+
+  .category-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 359px) {
+  .topic-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-grid .topic-card {
+    transition: none;
+  }
+}

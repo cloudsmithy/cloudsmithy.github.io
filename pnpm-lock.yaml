@@ -47,6 +47,9 @@ importers:
       hexo-theme-butterfly:
         specifier: github:jerryc127/hexo-theme-butterfly#5.7.0
         version: https://codeload.github.com/jerryc127/hexo-theme-butterfly/tar.gz/f223b1888b42b2b336068e6c959ed90a3cd7c8f3
+      hexo-util:
+        specifier: 4.0.0
+        version: 4.0.0
       hexo-wordcount:
         specifier: ^6.0.1
         version: 6.0.1

@@ -46,6 +46,9 @@ jobs:
             hexo-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', '_config.yml', '_config.butterfly.yml') }}-
             hexo-${{ runner.os }}-
 
+      - name: Test
+        run: pnpm test
+
       - name: Build
         run: pnpm build
 
