@@ -2,7 +2,8 @@
 title: Typora 和Obsidian 自动使用 Github 做在线图床
 description: 配置 Typora 和 Obsidian 自动上传图片到 GitHub 图床
 tags:
-  - NAS
+  - Blog
+  - Markdown
 toc: true
 categories:
   - 软件

@@ -1,7 +1,12 @@
 ---
 title: Amazon Bedrock AgentCore 开发实战（一）：本地构建 AI Agent
 description: 使用 Amazon Bedrock AgentCore 在本地构建和调试 AI Agent 的实战教程
-tags: AWS
+tags:
+  - AWS
+  - AI
+  - LLM
+  - Bedrock
+  - AgentCore
 toc: true
 categories:
   - 软件

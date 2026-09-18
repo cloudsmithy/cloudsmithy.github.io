@@ -2,8 +2,10 @@
 title: LLM时代，密码也能日抛了
 description: 解析 Easysearch
 tags:
-  - 搜索引擎（ES）
+  - 搜索引擎
   - 极限科技
+  - Easysearch
+  - Docker
 toc: true
 series: Easysearch
 categories:

@@ -1,7 +1,9 @@
 ---
 title: VS code+linux子系统打造开发环境
 description: Linux
-tags: GIT
+tags:
+  - Linux
+  - 开发
 toc: true
 categories: 软件
 abbrlink: 7225c876

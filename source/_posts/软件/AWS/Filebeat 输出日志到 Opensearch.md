@@ -5,6 +5,7 @@ category: Docker
 tags:
   - AWS
   - OpenSearch
+  - 搜索引擎
 abbrlink: 8924813e
 date: 2023-12-08 13:57:57
 categories:

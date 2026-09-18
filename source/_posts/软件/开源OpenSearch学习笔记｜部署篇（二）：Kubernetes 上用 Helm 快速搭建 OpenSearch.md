@@ -3,6 +3,8 @@ title: 开源OpenSearch学习笔记｜部署篇（二）：Kubernetes 上用 Hel
 description: 开源OpenSearch学习笔记｜部署篇（二）：Kubernetes 上用 Helm 快速搭建 OpenSearch.
 tags:
   - Kubernetes
+  - OpenSearch
+  - 搜索引擎
 toc: true
 categories:
   - 软件

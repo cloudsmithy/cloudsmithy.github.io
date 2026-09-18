@@ -2,8 +2,10 @@
 title: k3s + Helm 部署 Easysearch
 description: 在 k3s 集群上使用 Helm 快速部署 Easysearch 搜索引擎的实战记录。
 tags:
-  - 搜索引擎（ES）
+  - 搜索引擎
   - 极限科技
+  - Easysearch
+  - Kubernetes
 toc: true
 categories:
   - 极限科技

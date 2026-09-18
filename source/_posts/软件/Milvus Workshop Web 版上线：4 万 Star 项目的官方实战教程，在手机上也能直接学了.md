@@ -1,7 +1,10 @@
 ---
 title: Milvus Workshop Web 版上线：4 万 Star 项目的官方实战教程，在手机上也能直接学了
 description: Milvus 官方实战教程 Web 版上线，4 万 Star 向量数据库从入门到生产环境的完整学习路径。
-tags: 向量数据库
+tags:
+  - 向量数据库
+  - AI
+  - Milvus
 toc: true
 categories: 软件
 abbrlink: 581baa02

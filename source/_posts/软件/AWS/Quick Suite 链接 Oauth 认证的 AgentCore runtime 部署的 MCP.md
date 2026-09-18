@@ -4,6 +4,9 @@ description: Quick Suite 链接 Oauth 认证的 AgentCore runtime 部署的  MCP
 tags:
   - AWS
   - MCP
+  - AI
+  - AgentCore
+  - Bedrock
 toc: true
 categories:
   - 软件

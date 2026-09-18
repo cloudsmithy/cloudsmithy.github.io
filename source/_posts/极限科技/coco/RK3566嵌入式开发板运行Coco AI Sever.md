@@ -4,6 +4,7 @@ description: 在 RK3566 嵌入式开发板上部署运行 Coco AI Server 的实�
 tags:
   - Coco AI
   - 极限科技
+  - AI
 toc: true
 categories:
   - 极限科技

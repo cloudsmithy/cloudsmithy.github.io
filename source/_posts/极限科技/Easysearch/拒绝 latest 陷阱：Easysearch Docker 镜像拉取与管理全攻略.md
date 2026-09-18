@@ -2,8 +2,10 @@
 title: 拒绝 latest 陷阱：Easysearch Docker 镜像拉取与管理全攻略
 description: 拒绝 latest 陷阱：Easysearch Docker 镜像拉取与管理全攻略
 tags:
-  - 搜索引擎（ES）
+  - 搜索引擎
   - 极限科技
+  - Easysearch
+  - Docker
 toc: true
 series: Easysearch
 categories:

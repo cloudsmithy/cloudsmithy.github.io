@@ -316,9 +316,9 @@ aside:
     color: true
     custom_colors:
     # Order of tags, random/name/length
-    orderby: random
+    orderby: length
     # Sort of order. 1, asc for ascending; -1, desc for descending
-    order: 1
+    order: -1
     sort_order:
   card_archives:
     enable: true

@@ -1,7 +1,10 @@
 ---
 title: 从 Flask 项目打包为多平台 Docker 镜像并上传 Docker Hub（含 GitHub Actions）
 description: Flask 项目打包为多平台 Docker 镜像的完整流程，含 GitHub Actions 自动构建与推送 Docker Hub。
-tags: 开发
+tags:
+  - 开发
+  - Docker
+  - Python
 toc: true
 categories: 软件
 abbrlink: e51b087c
