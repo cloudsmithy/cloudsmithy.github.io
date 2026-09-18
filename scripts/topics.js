@@ -5,6 +5,7 @@ const { escapeHTML, url_for } = require('hexo-util')
 const esc = value => escapeHTML(String(value || ''))
 const href = value => esc(url_for.call(hexo, value))
 const topics = () => hexo.locals.get('data').topics || []
+const categoryCount = item => `<span class="category-count">${item.posts.length} 篇</span>`
 
 function topicCards(base) {
   return topics().map(topic =>
@@ -15,10 +16,8 @@ function topicCards(base) {
   ).join('')
 }
 
-function technicalCategories() {
-  const config = hexo.locals.get('data').technical_categories || {}
+function categoryGroups(rootNames, expanded = false) {
   const categories = hexo.locals.get('categories').toArray()
-  const tags = hexo.locals.get('tags').toArray()
   const children = new Map()
   for (const category of categories) {
     if (!children.has(category.parent)) children.set(category.parent, [])
@@ -26,33 +25,72 @@ function technicalCategories() {
   }
   const sortedChildren = category => (children.get(category._id) || [])
     .slice().sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name, 'zh-CN'))
-  const count = item => `<span class="category-count">${item.posts.length} 篇</span>`
   const categoryLink = category =>
-    `<a href="${href(category.path)}"><span>${esc(category.name)}</span>${count(category)}</a>`
+    `<a href="${href(category.path)}"><span>${esc(category.name)}</span>${categoryCount(category)}</a>`
   const branch = category => {
     const nested = sortedChildren(category)
     return `<li>${categoryLink(category)}` +
       (nested.length ? `<ul>${nested.map(branch).join('')}</ul>` : '') + '</li>'
   }
-  const groups = (config.roots || []).map(name => {
+  return rootNames.map(name => {
     const root = categories.find(category => category.name === name && !category.parent)
-    if (!root) throw new Error(`Technical category not found: ${name}`)
-    return '<details class="category-group">' +
-      `<summary><strong>${esc(root.name)}</strong>${count(root)}</summary>` +
+    if (!root) throw new Error(`Category not found: ${name}`)
+    if (!sortedChildren(root).length) {
+      return `<a class="category-group category-leaf" href="${href(root.path)}">` +
+        `<strong>${esc(root.name)}</strong>${categoryCount(root)}</a>`
+    }
+    return `<details class="category-group"${expanded ? ' open' : ''}>` +
+      `<summary><strong>${esc(root.name)}</strong>${categoryCount(root)}</summary>` +
       `<a class="category-all" href="${href(root.path)}">浏览${esc(root.name)}全部文章</a>` +
       `<ul class="category-tree">${sortedChildren(root).map(branch).join('')}</ul></details>`
   }).join('')
+}
+
+// Override the theme helper after scripts load. Native details preserve keyboard
+// access, and the optional limit applies to roots rather than consuming children.
+hexo.on('generateBefore', () => {
+  hexo.extend.helper.register('aside_categories', function (options = {}) {
+    const categories = hexo.locals.get('categories').toArray()
+    const preferred = hexo.locals.get('data').technical_categories?.roots || []
+    const remaining = categories.filter(category => !category.parent && !preferred.includes(category.name))
+      .sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name, 'zh-CN'))
+      .map(category => category.name)
+    const roots = [...preferred, ...remaining]
+    const shown = options.limit > 0 ? roots.slice(0, options.limit) : roots
+    return '<div class="item-headline"><i class="fas fa-folder-open" aria-hidden="true"></i><span>分类</span></div>' +
+      `<div class="category-groups sidebar-category-groups">${categoryGroups(shown, options.expand === true)}</div>` +
+      `<a class="all-categories-link" href="${href('/categories/')}">全部 ${categories.length} 个分类 <span aria-hidden="true">→</span></a>`
+  })
+})
+
+function technicalCategories() {
+  const config = hexo.locals.get('data').technical_categories || {}
+  const tags = hexo.locals.get('tags').toArray()
   const tagLinks = (config.tags || []).map(name => {
     const tag = tags.find(item => item.name === name)
     if (!tag) throw new Error(`Technical tag not found: ${name}`)
-    return `<a href="${href(tag.path)}">${esc(tag.name)}${count(tag)}</a>`
+    return `<a href="${href(tag.path)}">${esc(tag.name)}${categoryCount(tag)}</a>`
   }).join('')
   return '<section class="technical-categories" aria-labelledby="technical-categories">' +
     '<h2 id="technical-categories">完整技术分类</h2>' +
     '<p>展开分类查看全部文章，或按下面的技术标签继续查找。</p>' +
-    `<div class="category-groups">${groups}</div>` +
+    `<div class="category-groups">${categoryGroups(config.roots || [])}</div>` +
     `<nav class="technical-tags" aria-label="更多技术方向">${tagLinks}</nav></section>`
 }
+
+hexo.extend.tag.register('category_directory', () => {
+  const categories = hexo.locals.get('categories').toArray()
+  const technicalRoots = hexo.locals.get('data').technical_categories?.roots || []
+  const otherRoots = categories.filter(category => !category.parent && !technicalRoots.includes(category.name))
+    .sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name, 'zh-CN'))
+    .map(category => category.name)
+  return '<div class="category-directory">' +
+    `<p>共 ${categories.length} 个分类</p>` +
+    '<section aria-labelledby="categories-technical"><h2 id="categories-technical">技术与设备</h2>' +
+    `<div class="category-groups">${categoryGroups(technicalRoots)}</div></section>` +
+    '<section aria-labelledby="categories-life"><h2 id="categories-life">生活与阅读</h2>' +
+    `<div class="category-groups">${categoryGroups(otherRoots)}</div></section></div>`
+})
 
 // Keep the topic entry points in the rendered HTML, including on PJAX navigation.
 // Priority 6 runs before hexo-minify (10); only the first homepage gets this panel.
@@ -65,6 +103,50 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
     `<a class="topics-more" href="${href('/topics/')}">全部专题 <span aria-hidden="true">→</span></a></div>` +
     '<nav class="topic-grid" aria-label="技术专题">' + topicCards('/topics/') + '</nav></section>'
   return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
+}, 6)
+
+hexo.extend.filter.register('after_render:html', (html, data) => {
+  const post = data?.page
+  if (post?.layout !== 'post' || html.includes('id="post-topic-nav"')) return html
+  const tags = new Set(post.tags?.map(tag => tag.name) || [])
+  const categories = new Set(post.categories?.map(category => category.name) || [])
+  const currentPath = '/' + String(post.path || '').replace(/^\/+/, '').replace(/index\.html$/, '')
+  const related = topics().filter(topic =>
+    topic.match?.tags?.some(tag => tags.has(tag)) ||
+    topic.match?.categories?.some(category => categories.has(category)) ||
+    topic.steps.some(step => step.url === currentPath)
+  )
+  if (!related.length) return html
+  const links = related.map(topic =>
+    `<a href="${href('/topics/#' + topic.id)}">${esc(topic.title)}专题</a>`
+  ).join('')
+  const navigation = '<nav class="post-topic-nav" id="post-topic-nav" aria-label="文章相关专题">' +
+    '<strong>继续按专题阅读</strong><div class="post-topic-links">' + links +
+    `<a href="${href('/tags/')}">全部标签</a></div></nav>`
+  return html.replace(/<\/article>/i, end => end + navigation)
+}, 6)
+
+hexo.extend.filter.register('after_render:html', (html, data) => {
+  if (!data?.page?.category || html.includes('id="category-archive-nav"')) return html
+  const categories = hexo.locals.get('categories').toArray()
+  const current = categories.filter(category => data.path.startsWith(category.path))
+    .sort((a, b) => b.path.length - a.path.length)[0]
+  const ancestors = []
+  let parent = current?.parent
+  while (parent) {
+    const category = categories.find(item => item._id === parent)
+    if (!category) break
+    ancestors.unshift(category)
+    parent = category.parent
+  }
+  const parentLinks = ancestors.map(category =>
+    `<a href="${href(category.path)}">${esc(category.name)}</a>`
+  ).join('<span aria-hidden="true">›</span>')
+  const navigation = '<nav class="category-archive-nav" id="category-archive-nav" aria-label="分类导航">' +
+    `<a href="${href('/categories/')}">全部分类</a>` +
+    (parentLinks ? '<span aria-hidden="true">›</span>' + parentLinks : '') +
+    `<a href="${href('/topics/')}">技术专题</a><a href="${href('/tags/')}">全部标签</a></nav>`
+  return html.replace(/(<div\b[^>]*\bid="category"[^>]*>)/i, (_, start) => start + navigation)
 }, 6)
 
 hexo.extend.tag.register('topic_guide', () => {

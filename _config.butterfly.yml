@@ -305,15 +305,16 @@ aside:
   card_categories:
     enable: true
     # If set 0 will show all
-    limit: 8
+    # Keep every root visible; children use collapsible groups.
+    limit: 0
     # Choose: none / true / false
-    expand: true
+    expand: false
     sort_order:
   card_tags:
     enable: true
     # If set 0 will show all
     limit: 30
-    color: true
+    color: false
     custom_colors:
     # Order of tags, random/name/length
     orderby: length
@@ -329,7 +330,7 @@ aside:
     # Sort of order. 1, asc for ascending; -1, desc for descending
     order: -1
     # If set 0 will show all
-    limit: 20
+    limit: 6
     sort_order:
   card_post_series:
     enable: true

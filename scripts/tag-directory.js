@@ -43,9 +43,16 @@ hexo.extend.tag.register('tag_directory', () => {
 
 // Include navigation in the HTML so it also works after PJAX navigation.
 hexo.extend.filter.register('after_render:html', (html, data) => {
-  if (!data?.tag || html.includes('id="tag-archive-nav"')) return html
-  const relatedAI = data.tag !== 'AI' &&
-    tagGroups().find(group => group.id === 'ai')?.tags.includes(data.tag)
+  if (!html.includes('class="all-tags-link"')) {
+    const count = hexo.locals.get('tags').length
+    html = html.replace(/(<div class="card-tag-cloud">[\s\S]*?<\/div>)/i, cloud =>
+      cloud + `<a class="all-tags-link" href="${href('/tags/')}">全部 ${count} 个标签 <span aria-hidden="true">→</span></a>`
+    )
+  }
+  const currentTag = data?.page?.tag
+  if (!currentTag || html.includes('id="tag-archive-nav"')) return html
+  const relatedAI = currentTag !== 'AI' &&
+    tagGroups().find(group => group.id === 'ai')?.tags.includes(currentTag)
   const ai = relatedAI && hexo.locals.get('tags').toArray().find(tag => tag.name === 'AI')
   const navigation = '<nav class="tag-archive-nav" id="tag-archive-nav" aria-label="标签导航">' +
     `<a href="${href('/tags/')}">全部标签</a>` +

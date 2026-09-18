@@ -1,6 +1,9 @@
 # 首页入口与技术专题页共用这份目录；文章使用已有的固定短链接。
 - id: lazycat
   title: 懒猫微服
+  match:
+    tags: [懒猫微服]
+    categories: [懒猫微服]
   icon: fas fa-server
   summary: 开箱、远程管理与应用开发
   intro: 刚拿到微服，可以先熟悉硬件和远程登录，再配置家人的账户。准备移植应用时，从开发知识清单开始。
@@ -23,6 +26,9 @@
 
 - id: easysearch
   title: Easysearch
+  match:
+    tags: [Easysearch]
+    categories: [Easysearch]
   icon: fas fa-database
   summary: 部署、查询、运维与快照备份
   intro: 从搭建学习环境开始，再使用 Console 管理集群、理解认证和 HTTPS 配置，最后练习快照备份与恢复。
@@ -45,6 +51,9 @@
 
 - id: coco
   title: Coco AI
+  match:
+    tags: [Coco AI]
+    categories: [Coco AI]
   icon: fas fa-magnifying-glass
   summary: 服务部署、连接器与知识检索
   intro: 先了解 Coco AI 的使用方式，再通过 RSS 实践服务端部署和内容接入，继续探索自定义数据源及底层数据存储。
@@ -67,11 +76,13 @@
 
 - id: opensearch
   title: OpenSearch
+  match:
+    tags: [OpenSearch]
   icon: fas fa-magnifying-glass-chart
   summary: 集群部署、日志采集与单点登录
   intro: 从 Helm 部署 OpenSearch 和 Dashboards 开始，接入日志，再配置单点登录；使用 Filebeat 时，可以参考单独的兼容性排查记录。
   more:
-    label: 浏览 OpenSearch 标签文章
+    label: 浏览 OpenSearch 相关文章
     url: /tags/OpenSearch/
   steps:
     - title: 用 Helm 部署 OpenSearch 与 Dashboards
@@ -89,11 +100,13 @@
 
 - id: kubernetes
   title: Kubernetes
+  match:
+    tags: [Kubernetes]
   icon: fas fa-diagram-project
   summary: 集群搭建、Helm 部署与日志采集
   intro: 先用 kubeadm 熟悉集群的搭建过程，再在 k3s 上使用 Helm 部署应用，最后接入日志采集。遇到术语时可以查阅词典。
   more:
-    label: 浏览 Kubernetes 标签文章
+    label: 浏览 Kubernetes 相关文章
     url: /tags/Kubernetes/
   steps:
     - title: 在 EC2 上从零搭建 Kubernetes 集群
@@ -111,6 +124,9 @@
 
 - id: cloud
   title: AWS 与云计算
+  match:
+    tags: [AWS]
+    categories: [AWS]
   icon: fas fa-cloud
   summary: 云服务器、存储、网络与部署
   intro: 从一台云服务器的访问问题入手，再接入对象存储、部署 Web 应用，最后理解多个 VPC 之间的网络连接。
@@ -133,6 +149,8 @@
 
 - id: containers
   title: Docker 与 Homelab
+  match:
+    tags: [Docker]
   icon: fas fa-cubes
   summary: 从第一个容器到多服务部署
   intro: 容器小书可以按顺序读：先理解部署问题，再认识镜像和容器，最后处理数据持久化与多服务编排。
@@ -158,6 +176,8 @@
 
 - id: ai
   title: AI 实践
+  match:
+    tags: [AI]
   icon: fas fa-microchip
   summary: 向量检索、RAG、Agent 与 MCP
   intro: 先体验向量数据库，再把检索接到本地问答中。对 Agent 感兴趣，可以继续看本地开发和 MCP 工具接入。
