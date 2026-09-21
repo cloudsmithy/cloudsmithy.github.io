@@ -27,10 +27,23 @@
 }
 
 .home-topics-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   color: var(--home-muted);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .06em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+
+.home-topics-label::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7daba0;
+  box-shadow: 0 0 0 4px rgba(125, 171, 160, .1);
+  content: "";
 }
 
 .home-topic-links {
@@ -163,28 +176,75 @@
   scale: .97;
 }
 
-.home-topics-actions,
-.home-motion-control {
+.home-topics-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  flex-shrink: 0;
+  padding: 0 3px;
+  border: 1px solid var(--home-border);
+  border-radius: 999px;
+  background: var(--card-bg);
 }
 
-.home-topics-actions {
-  gap: 16px;
+.home-topics-actions svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .home-motion-control {
-  min-height: 44px;
+  display: grid;
+  position: relative;
+  place-items: center;
+  width: 44px;
+  height: 44px;
   color: var(--home-muted);
   cursor: pointer;
-  font-size: 12px;
-  white-space: nowrap;
+}
+
+.home-motion-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: background-color .18s ease, color .18s ease;
 }
 
 .home-motion-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  accent-color: var(--home-muted);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.home-motion-control:hover .home-motion-icon,
+.home-motion-toggle:checked + .home-motion-icon {
+  background: var(--home-border);
+  color: var(--font-color);
+}
+
+.home-topics-actions .home-motion-play,
+.home-motion-toggle:checked + .home-motion-icon .home-motion-pause {
+  display: none;
+}
+
+.home-motion-toggle:checked + .home-motion-icon .home-motion-play {
+  display: block;
+}
+
+.home-motion-control:has(:focus-visible) {
+  border-radius: 999px;
+  outline: 2px solid var(--text-highlight-color);
+  outline-offset: 2px;
 }
 
 .home-topics:has(.home-motion-toggle:checked) .topic-bubble {
@@ -202,12 +262,27 @@
 }
 
 .home-topics .home-topics-all {
+  position: relative;
+  gap: 8px;
+  padding: 0 12px;
+  border-radius: 999px;
   color: var(--home-muted);
   font-size: 12px;
+  font-weight: 400;
 }
 
-.home-topics-all:hover {
-  color: var(--text-highlight-color);
+.home-topics-all::before {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 14px;
+  background: var(--home-border);
+  content: "";
+}
+
+.home-topics .home-topics-all:hover {
+  background: var(--home-border);
+  color: var(--font-color);
 }
 
 /* Text-only posts should take the height of their content, not an empty cover. */
@@ -287,10 +362,6 @@
   .home-topic-link {
     width: min(var(--bubble-size), 94px);
     height: min(var(--bubble-size), 94px);
-  }
-
-  .home-topics-actions {
-    gap: 12px;
   }
 
   #recent-posts .recent-post-item > .recent-post-info.no-cover {
@@ -1040,6 +1111,7 @@
 @media (prefers-reduced-motion: reduce) {
   .nav-dropdown-trigger > .fa-chevron-down,
   .home-topics a,
+  .home-motion-icon,
   .topic-grid .topic-card {
     transition: none;
   }
@@ -1056,6 +1128,10 @@
   }
 
   .home-motion-control {
+    display: none;
+  }
+
+  .home-topics-all::before {
     display: none;
   }
 }
