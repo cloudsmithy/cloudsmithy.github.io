@@ -212,3 +212,38 @@ test('dropdown injection preserves HTML snippets inside existing scripts', () =>
   scripts.forEach(([, source]) => assert.doesNotThrow(() => new vm.Script(source)))
   assert.equal(renderNavigation(result), result)
 })
+
+test('homepage bubbles separate play buttons from reading links and preserve HTML safety', () => {
+  const filters = []
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/topics.js'), 'utf8'), {
+    require,
+    hexo: {
+      config: { root: '/', url: origin },
+      on() {},
+      locals: { get() { return { topics: [
+        { id: 'easysearch', title: 'Easysearch', icon: 'fas fa-database' },
+        { id: 'example', title: 'A "quote" <tag> & B', icon: 'fas fa-code' }
+      ] } } },
+      extend: {
+        helper: { register() {} },
+        tag: { register() {} },
+        filter: { register(name, callback) { filters.push(callback) } }
+      }
+    }
+  })
+  const html = '<html><body><div id="recent-posts"><div class="recent-post-item">Article</div></div></body></html>'
+  const render = filters.find(callback => callback(html, { path: 'index.html' }).includes('id="home-topics"'))
+  assert.ok(render)
+  const result = render(html, { path: 'index.html' })
+  assert.equal((result.match(/class="topic-bubble-play"/g) || []).length, 2)
+  assert.equal((result.match(/class="topic-bubble-label"/g) || []).length, 2)
+  assert.match(result, /<button class="topic-bubble-play" type="button"/)
+  assert.match(require('hexo-util').unescapeHTML(result), /class="topic-bubble-label" href="\/topics\/#easysearch"/)
+  assert.ok(result.includes('A &quot;quote&quot; &lt;tag&gt; &amp; B'))
+  assert.doesNotMatch(result, /<a\b[^>]*>[^<]*<button/)
+  const scripts = [...result.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)]
+  assert.equal(scripts.length, 1)
+  assert.doesNotThrow(() => new vm.Script(scripts[0][1]))
+  assert.equal(render(result, { path: 'index.html' }), result)
+  assert.equal(render(html, { path: 'page/2/index.html' }), html)
+})

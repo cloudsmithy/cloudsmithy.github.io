@@ -96,21 +96,134 @@ hexo.extend.tag.register('category_directory', () => {
     `<div class="category-groups">${categoryGroups(otherRoots)}</div></section></div>`
 })
 
+// This function runs in the browser; keeping it here ties the interaction to
+// the generated homepage markup, including when PJAX returns to the homepage.
+function initTopicBubbles() {
+  const nav = document.getElementById('home-topics')
+  if (!nav || nav.dataset.bubblesReady) return
+  nav.dataset.bubblesReady = 'true'
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+  nav.querySelectorAll('.topic-bubble-play').forEach(button => {
+    const motion = button.closest('.topic-bubble-motion')
+    let animation
+    let pointer
+    let frame
+    let suppressClick = false
+    let feedbackTimer
+
+    const clearFrame = () => {
+      if (frame) cancelAnimationFrame(frame)
+      frame = null
+    }
+    const settle = (x = 0, y = 0) => {
+      clearFrame()
+      animation?.cancel()
+      motion.style.transform = ''
+      motion.classList.remove('is-grabbed')
+      if (reducedMotion.matches || !motion.animate) {
+        motion.classList.add('is-tapped')
+        clearTimeout(feedbackTimer)
+        feedbackTimer = setTimeout(() => motion.classList.remove('is-tapped'), 180)
+        return
+      }
+      motion.classList.add('is-playing')
+      const current = motion.animate([
+        { transform: `translate(${x}px, ${y}px) rotate(${x / 8}deg) scale(.95, 1.04)`, offset: 0 },
+        { transform: `translate(${-x * .22}px, ${-y * .22 - 18}px) rotate(${-x / 12}deg) scale(1.04, .97)`, offset: .3 },
+        { transform: `translate(${x * .1}px, ${y * .1 + 6}px) scale(.98, 1.02)`, offset: .56 },
+        { transform: 'translate(0, -3px) scale(1.01, .99)', offset: .78 },
+        { transform: 'translate(0, 0) rotate(0) scale(1)', offset: 1 }
+      ], { duration: 720, easing: 'ease-out' })
+      animation = current
+      current.finished.catch(() => {}).finally(() => {
+        if (animation === current) {
+          motion.classList.remove('is-playing')
+          animation = null
+        }
+      })
+    }
+    button.addEventListener('click', () => {
+      if (suppressClick) {
+        suppressClick = false
+        return
+      }
+      settle()
+    })
+    button.addEventListener('pointerdown', event => {
+      // Touch keeps native scrolling; tapping still plays the bounce.
+      if (event.button !== 0 || event.pointerType === 'touch' || reducedMotion.matches) return
+      animation?.cancel()
+      motion.style.transform = ''
+      const bounds = motion.getBoundingClientRect()
+      const inRail = window.matchMedia('(min-width: 1100px)').matches
+      const articleEdge = document.getElementById('recent-posts').getBoundingClientRect().left
+      pointer = {
+        id: event.pointerId, startX: event.clientX, startY: event.clientY,
+        x: 0, y: 0, moved: false,
+        minX: Math.max(-36, 12 - bounds.left),
+        maxX: Math.max(0, Math.min(36, window.innerWidth - bounds.right - 12,
+          inRail ? articleEdge - bounds.right - 12 : 36))
+      }
+      suppressClick = false
+      motion.classList.add('is-grabbed')
+      button.setPointerCapture(event.pointerId)
+      event.preventDefault()
+    })
+    button.addEventListener('pointermove', event => {
+      if (!pointer || pointer.id !== event.pointerId) return
+      const dx = event.clientX - pointer.startX
+      const dy = event.clientY - pointer.startY
+      if (Math.hypot(dx, dy) > 5) pointer.moved = true
+      if (!pointer.moved) return
+      pointer.x = Math.max(pointer.minX, Math.min(pointer.maxX, dx))
+      pointer.y = Math.max(-40, Math.min(40, dy))
+      if (!frame) frame = requestAnimationFrame(() => {
+        frame = null
+        if (pointer) motion.style.transform =
+          `translate(${pointer.x}px, ${pointer.y}px) rotate(${pointer.x / 8}deg)`
+      })
+    })
+    const release = event => {
+      if (!pointer || pointer.id !== event.pointerId) return
+      const drag = pointer
+      pointer = null
+      clearFrame()
+      motion.classList.remove('is-grabbed')
+      if (button.hasPointerCapture(event.pointerId)) button.releasePointerCapture(event.pointerId)
+      if (drag.moved) {
+        suppressClick = event.type === 'pointerup'
+        if (suppressClick) setTimeout(() => { suppressClick = false }, 0)
+        settle(drag.x, drag.y)
+      }
+    }
+    button.addEventListener('pointerup', release)
+    button.addEventListener('pointercancel', release)
+    button.addEventListener('lostpointercapture', release)
+  })
+}
+
 // Keep every topic accessible without a large block above the article list.
 // Priority 6 runs before hexo-minify (10); only the first homepage gets this nav.
 hexo.extend.filter.register('after_render:html', (html, data) => {
   if (!/^\/?index\.html$/.test(data?.path || '') || !topics().length) return html
   if (html.includes('id="home-topics"')) return html
   const links = topics().map(topic =>
-    `<a class="home-topic-link" href="${href('/topics/#' + topic.id)}" aria-label="${esc(topic.title)}专题">` +
-    `<span class="topic-bubble"><i class="${esc(topic.icon)}" aria-hidden="true"></i>` +
-    `<span class="topic-bubble-label">${esc(topic.home_title || topic.title)}</span></span></a>`
+    '<div class="home-topic-link"><div class="topic-bubble-motion"><div class="topic-bubble">' +
+    `<button class="topic-bubble-play" type="button" aria-label="晃一晃${esc(topic.title)}气泡" ` +
+    'aria-describedby="topic-play-hint" title="点击弹跳，拖动后回弹">' +
+    `<i class="${esc(topic.icon)}" aria-hidden="true"></i></button>` +
+    `<a class="topic-bubble-label" href="${href('/topics/#' + topic.id)}" aria-label="阅读${esc(topic.title)}专题">` +
+    `${esc(topic.home_title || topic.title)}</a></div></div></div>`
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
     '<div class="home-topics-heading">' +
     `<a class="home-topics-all" href="${href('/topics/')}" aria-label="More · 查看全部专题"><span lang="en">More</span> ` +
     '<span class="home-topics-arrow" aria-hidden="true">》</span></a></div>' +
-    `<div class="home-topic-links">${links}</div></nav>`
+    '<p class="topic-play-hint" id="topic-play-hint">点气泡玩，点文字读</p>' +
+    `<div class="home-topic-links">${links}</div></nav>` +
+    `<script>if(!window.jinghuTopicBubbles){window.jinghuTopicBubbles=${initTopicBubbles.toString()};` +
+    "document.addEventListener('pjax:complete',window.jinghuTopicBubbles)}window.jinghuTopicBubbles();</script>"
   return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
 }, 6)
 
