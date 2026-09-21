@@ -21,29 +21,9 @@
 .home-topics-heading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   margin-bottom: 4px;
-}
-
-.home-topics-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--home-muted);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: .03em;
-  white-space: nowrap;
-}
-
-.home-topics-label::before {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #7daba0;
-  box-shadow: 0 0 0 4px rgba(125, 171, 160, .1);
-  content: "";
 }
 
 .home-topic-links {

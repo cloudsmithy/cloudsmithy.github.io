@@ -107,7 +107,7 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
     `<span class="topic-bubble-label">${esc(topic.home_title || topic.title)}</span></span></a>`
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
-    '<div class="home-topics-heading"><span class="home-topics-label">按专题阅读</span>' +
+    '<div class="home-topics-heading">' +
     `<a class="home-topics-all" href="${href('/topics/')}"><span>全部专题</span>` +
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>' +
     `<div class="home-topic-links">${links}</div></nav>`
