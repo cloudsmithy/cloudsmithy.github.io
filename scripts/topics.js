@@ -108,13 +108,8 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
     '<div class="home-topics-heading"><span class="home-topics-label">按专题阅读</span>' +
-    '<div class="home-topics-actions"><label class="home-motion-control" title="暂停 / 继续动画">' +
-    '<input class="home-motion-toggle" type="checkbox" aria-label="暂停专题动画">' +
-    '<span class="home-motion-icon" aria-hidden="true">' +
-    '<svg class="home-motion-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg>' +
-    '<svg class="home-motion-play" viewBox="0 0 24 24"><path d="m9 5 10 7-10 7Z"/></svg></span></label>' +
     `<a class="home-topics-all" href="${href('/topics/')}"><span>全部专题</span>` +
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>' +
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>' +
     `<div class="home-topic-links">${links}</div></nav>`
   return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
 }, 6)
