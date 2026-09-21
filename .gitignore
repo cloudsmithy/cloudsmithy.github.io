@@ -72,3 +72,6 @@ pnpm-debug.log*
 output/
 *.tmp
 tmp/
+
+# Local-only content audit script
+/tools/lint-description.js
