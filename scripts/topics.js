@@ -109,7 +109,8 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
     '<div class="home-topics-heading">' +
     `<a class="home-topics-all" href="${href('/topics/')}"><span>全部专题</span>` +
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>' +
+    '<span class="home-topics-arrow" aria-hidden="true"><svg viewBox="0 0 24 24">' +
+    '<path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></div>' +
     `<div class="home-topic-links">${links}</div></nav>`
   return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
 }, 6)
