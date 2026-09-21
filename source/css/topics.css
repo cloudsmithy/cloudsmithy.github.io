@@ -606,6 +606,16 @@
   color: var(--font-color);
 }
 
+#nav .nav-dropdown-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 5px;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .nav-dropdown-trigger > .fa-chevron-down {
   margin-left: 3px;
   font-size: 10px;

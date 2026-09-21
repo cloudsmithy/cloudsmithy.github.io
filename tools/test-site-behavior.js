@@ -198,13 +198,15 @@ test('dropdown injection preserves HTML snippets inside existing scripts', () =>
     hexo: { extend: { filter: { register(name, callback) { renderNavigation = callback } } } }
   })
   const existingScript = 'const viewer = "<html><body>SVG</body></html>"'
-  const html = '<html><body><nav><div class="menus_item">' +
-    '<span class="site-page group"><i></i><span>生活</span><i></i></span>' +
-    '<ul class="menus_item_child"><li><a href="/reading/">书单</a></li></ul>' +
+  const group = '<span class="site-page group"><i></i><span>生活</span><i class="fas fa-chevron-down"></i></span>' +
+    '<ul class="menus_item_child"><li><a href="/life/">生活总览</a></li><li><a href="/reading/">书单</a></li></ul>'
+  const html = '<html><body><div id="sidebar-menus">' + group + '</div><nav id="nav"><div class="menus_item">' + group +
     '</div></nav><script>' + existingScript + '</script></body></html>'
   const result = renderNavigation(html)
   assert.ok(result.includes('<script>' + existingScript + '</script>'))
   assert.match(result, /<details class="nav-dropdown"/)
+  assert.equal((result.match(/class="nav-dropdown-link"/g) || []).length, 1)
+  assert.match(result, /<a class="nav-dropdown-link" href="\/life\/"><i><\/i><span>生活<\/span><\/a><i class="fas fa-chevron-down">/)
   const scripts = [...result.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)]
   assert.equal(scripts.length, 2)
   scripts.forEach(([, source]) => assert.doesNotThrow(() => new vm.Script(source)))
