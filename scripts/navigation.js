@@ -7,7 +7,7 @@ const interactions = `<script id="nav-dropdown-interactions">
   if (window.blogDropdownsReady) return
   window.blogDropdownsReady = true
   // Allow time to cross the gap or correct the pointer before dismissing.
-  const closeDelay = 3000
+  const closeDelay = 1000
   const closeTimers = new WeakMap()
   const cancelClose = menu => clearTimeout(closeTimers.get(menu))
   const close = menu => {
