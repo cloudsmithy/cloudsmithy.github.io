@@ -1,7 +1,7 @@
 ---
 title: Filebeat 输出日志到 Opensearch
-description: 配置 Filebeat 将日志输出到 Amazon OpenSearch 的实践教程
-category: Docker
+description: 在 ECS Fargate 场景下尝试用 Filebeat 向 OpenSearch 发送日志，记录容器配置、兼容性报错和仍会重启的问题。
+
 tags:
   - AWS
   - OpenSearch

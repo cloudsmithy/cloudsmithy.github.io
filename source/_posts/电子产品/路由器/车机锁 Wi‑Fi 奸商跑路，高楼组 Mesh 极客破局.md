@@ -2,6 +2,7 @@
 title: 车机锁 Wi‑Fi 奸商跑路，高楼组 Mesh 极客破局
 description: 车机锁 WiFi 与高楼 Mesh 组网的极客解决方案
 tags:
+  - 家庭网络
 toc: true
 categories:
   - 电子产品

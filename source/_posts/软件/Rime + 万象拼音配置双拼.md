@@ -1,6 +1,6 @@
 ---
 title: Rime + 万象拼音配置双拼
-description: Rime + 万象拼音配置双拼
+description: 在 Mac 上安装 Rime 与万象拼音，通过 /flypy 切换小鹤双拼，并重新部署输入法配置。
 tags:
   - 双拼
 toc: true

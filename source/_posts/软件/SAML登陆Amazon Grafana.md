@@ -1,6 +1,6 @@
 ---
 title: SAML登陆Amazon Grafana
-description: SAML登陆Amazon Grafana
+description: 用 SAML-tracer 查看登录断言，记录 Amazon Grafana 中用户名、邮箱、组与角色的映射配置。
 tags:
   - SSO
   - AWS

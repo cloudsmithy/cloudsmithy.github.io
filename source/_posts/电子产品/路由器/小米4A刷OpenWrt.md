@@ -2,6 +2,7 @@
 title: 小米4A刷OpenWrt
 description: 小米路由器 4A 刷入 OpenWrt 固件的完整教程
 tags:
+  - 家庭网络
 categories:
   - 电子产品
   - 路由器

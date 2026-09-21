@@ -1,8 +1,9 @@
 ---
-title: ViVO 日历导入Apple日程
-description: ViVO 日历导入Apple日程
+title: 将 Apple 日历同步到 vivo 日历
+description: 换用安卓后，通过 App 专用密码和 CalDAV 把 Apple 日历接入 vivo，记录配置过程，以及只读和部分日程缺失的情况。
 tags:
-  - 外设
+  - Apple
+  - 手机
 toc: true
 categories:
   - 电子产品

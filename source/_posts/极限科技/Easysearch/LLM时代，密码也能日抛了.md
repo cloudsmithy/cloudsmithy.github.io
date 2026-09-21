@@ -1,6 +1,6 @@
 ---
 title: LLM时代，密码也能日抛了
-description: 解析 Easysearch
+description: 部署 Easysearch 2.1.2 后在容器日志里找不到初始密码，改用 reset_admin_password.sh 完成重置，记录这次安装中的变化。
 tags:
   - 搜索引擎
   - 极限科技

@@ -1,6 +1,6 @@
 ---
 title: Quick Suite 链接 Oauth 认证的 AgentCore runtime 部署的  MCP
-description: Quick Suite 链接 Oauth 认证的 AgentCore runtime 部署的  MCP
+description: 连接 Quick Suite 与带 OAuth 认证的 AgentCore MCP 服务时，记录把 Runtime ARN 编码并拼接成 HTTPS 调用地址的做法。
 tags:
   - AWS
   - MCP

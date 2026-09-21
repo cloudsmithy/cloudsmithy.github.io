@@ -1,6 +1,6 @@
 ---
 title: VS code+linux子系统打造开发环境
-description: Linux
+description: 记录 2019 年搭建 VS Code 与 Windows Linux 子系统开发环境的步骤，包括编译工具、GCC 升级和 Anaconda 安装。
 tags:
   - Linux
   - 开发

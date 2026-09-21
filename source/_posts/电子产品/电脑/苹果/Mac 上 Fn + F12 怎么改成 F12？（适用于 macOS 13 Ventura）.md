@@ -8,6 +8,7 @@ tags:
   - Apple
 abbrlink: 18eac60e
 date: 2025-07-08 00:00:00
+description: 记录 macOS 13 Ventura 中标准功能键的设置入口，把 F12 的默认行为从音量调节切回功能键，方便日常使用快捷键。
 ---
 
 很多刚换到 Mac 的用户会遇到一个小困扰：

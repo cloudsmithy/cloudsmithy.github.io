@@ -1,11 +1,12 @@
 ---
 title: 大学霸TCPIP协议教程笔记
-description: 大学霸TCPIP协议教程笔记
+description: 读《大学霸 TCP/IP 协议教程》时留下的笔记，整理 MAC 与 IP 地址、TCP、DHCP、DNS 和 WHOIS 的概念与交互过程。
 toc: true
 categories: 软件
 abbrlink: 50be5030
 date: 2026-07-27 00:00:00
 tags:
+  - 开发
 ---
 
 

@@ -1,12 +1,13 @@
 ---
 title: LWScreenShot在锁屏的时候自动截图
-description: LWScreenShot
+description: 记录 Mac 锁屏或登录界面生成 LWScreenShot 文件的现象，以及它与截图快捷键的关系，留作排查时的备忘。
 toc: true
 categories:
   - 软件
 abbrlink: ce2cfd16
 date: 2025-06-10 00:00:00
 tags:
+  - Apple
 ---
 
 

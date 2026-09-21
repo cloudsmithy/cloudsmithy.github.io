@@ -149,7 +149,8 @@ post_meta:
     # Choose: left / center
     position: left
     # Choose: created / updated / both
-    date_type: both
+    # 未填写 updated 时仅展示发布日期，避免空值被主题显示为构建当天。
+    date_type: created
     # Choose: date / relative
     date_format: date
     categories: true

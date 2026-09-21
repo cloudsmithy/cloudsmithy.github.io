@@ -11,7 +11,7 @@ categories:
   - AWS
 abbrlink: ba3e7018
 date: 2026-06-08 00:00:00
-description:
+description: 用 Python 调用 Bedrock Guardrails，整理放行、只检测、拦截和脱敏时的返回字段，并记录命中规则的分类与输出。
 ---
 
 Amazon Bedrock GUARDRAIL 拦截教程

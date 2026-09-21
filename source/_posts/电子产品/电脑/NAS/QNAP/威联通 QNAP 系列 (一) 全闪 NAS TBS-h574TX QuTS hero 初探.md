@@ -9,6 +9,7 @@ categories:
   - NAS
 abbrlink: 7acb32ac
 date: 2025-04-24 00:00:00
+description: 从 Qfinder Pro 发现设备到安装 QuTS hero，记录 TBS-h574TX 的初始化、存储池设置、监控与日志功能，以及风扇噪声的初步体验。
 ---
 
 > 字数 1371，阅读大约需 7 分钟

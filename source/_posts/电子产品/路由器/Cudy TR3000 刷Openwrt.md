@@ -3,6 +3,7 @@ title: Cudy TR3000 刷 Openwrt
 description: Cudy TR3000 路由器刷入 OpenWrt 固件的详细教程
 toc: true
 tags:
+  - 家庭网络
 categories:
   - 电子产品
   - 路由器

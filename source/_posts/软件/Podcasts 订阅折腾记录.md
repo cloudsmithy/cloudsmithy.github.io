@@ -1,6 +1,6 @@
 ---
 title: Podcasts 订阅折腾记录
-description: Podcasts 订阅记录
+description: 尝试把课程音频订阅到 Apple Podcasts，记录 XML、OPML 格式的差别，以及小宇宙转码和 Pocket Casts 使用中遇到的问题。
 tags: Podcasts
 toc: true
 categories: Podcasts

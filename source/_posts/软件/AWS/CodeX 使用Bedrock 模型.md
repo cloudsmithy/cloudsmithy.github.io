@@ -1,6 +1,6 @@
 ---
 title: CodeX 使用Bedrock 模型
-description: CodeX 使用Bedrock 模型
+description: 记录通过 Bedrock Mantle 接口调用模型的测试代码，以及 Codex 的模型提供方配置和区域不匹配时遇到的报错。
 tags:
   - AWS
   - Bedrock

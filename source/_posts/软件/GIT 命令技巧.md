@@ -1,6 +1,6 @@
 ---
-title: GIT技巧
-description: GIT技巧
+title: Git 命令技巧
+description: 用 git config --local 为当前仓库单独设置提交用户名和邮箱，留作切换项目时的命令备忘。
 tags:
   - Git
 toc: true

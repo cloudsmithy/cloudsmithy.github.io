@@ -11,7 +11,7 @@ categories:
   - AWS
 abbrlink: 5303808f
 date: 2026-06-11 00:00:00
-description:
+description: 记录在 Bedrock 中调用 Claude fable5 的示例，包含数据保留设置、SigV4 签名请求和 Converse 调用代码。
 ---
 参考：https://aws.amazon.com/cn/blogs/aws/anthropic-claude-fable-5-on-aws-mythos-class-capabilities-with-built-in-safeguards-now-available/
 

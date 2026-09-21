@@ -1,6 +1,6 @@
 ---
 title: 拒绝 latest 陷阱：Easysearch Docker 镜像拉取与管理全攻略
-description: 拒绝 latest 陷阱：Easysearch Docker 镜像拉取与管理全攻略
+description: 整理下载和管理 Easysearch Docker 镜像时用到的命令，涵盖版本标签、digest 校验、多架构选择和离线导入导出。
 tags:
   - 搜索引擎
   - 极限科技

@@ -1,6 +1,6 @@
 ---
 title: 懒猫微服进阶心得（十七）：懒猫SSO对接外部OpenID Connect的尝试
-description: 懒猫微服进阶心得（十七）：懒猫SSO对接外部OpenID Connect的尝试
+description: 尝试把懒猫 SSO 接入 Cognito，记录私有域名和网络可达性导致的失败，以及改为浏览器回退直连 Dex 的实验。
 tags:
   - SSO
   - 懒猫微服

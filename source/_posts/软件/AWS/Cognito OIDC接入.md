@@ -1,6 +1,6 @@
 ---
 title: Cognito OIDC接入
-description: Cognito OIDC接入
+description: 用 Flask 和 Authlib 接入 Cognito OIDC，整理用户池、回调与登出配置，附登录示例和常见报错的排查线索。
 tags:
   - AWS
   - SSO

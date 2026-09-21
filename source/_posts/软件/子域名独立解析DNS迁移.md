@@ -2,6 +2,7 @@
 title: 子域名独立解析DNS迁移
 description: 通过NS委派实现子域名跨服务商独立管理
 tags:
+  - AWS
 toc: true
 categories:
   - 软件

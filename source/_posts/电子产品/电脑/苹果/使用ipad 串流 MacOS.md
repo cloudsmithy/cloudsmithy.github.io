@@ -1,12 +1,15 @@
 ---
 title: 使用ipad 串流 MacOS
-description: 用 Sunshine + Moonlight 实现 iPad 串流 macOS，把 iPad 变成副屏。
+description: 在 Mac 上安装 Sunshine，再用 iPad 的 Moonlight 配对连接，记录网页配置、PIN 验证和录屏权限的设置过程。
 categories:
   - 电子产品
   - 电脑
   - 苹果
 abbrlink: 474f606e
 date: 2024-03-24 00:00:00
+tags:
+  - Apple
+  - 家庭网络
 ---
 
 服务端是 sunshine，客户端叫做 moonlight

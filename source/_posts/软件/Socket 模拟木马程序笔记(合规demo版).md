@@ -1,12 +1,14 @@
 ---
 title: Socket 模拟木马程序笔记(合规demo版)
 tags:
+  - Python
+  - 开发
 toc: true
 categories:
   - 软件
 abbrlink: '97358423'
 date: 2026-06-06 00:00:00
-description:
+description: 用 Python Socket 写一个本机通信示例，记录监听、连接、发送和接收的流程，并用打印消息模拟指令执行。
 ---
 
 前几天在看日系图书《网络是怎么连接的》，今天就遇到了 Socket 的问题。算是浏览器连接的最基本的问题。

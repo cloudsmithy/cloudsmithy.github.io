@@ -1,7 +1,9 @@
 ---
 title: 用 pikepdf 去除 PDF 的"禁止复制"限制
-description: 用 pikepdf 去除 PDF 的"禁止复制"限制
+description: 用 pikepdf 重新保存可打开但限制复制的 PDF，记录单文件与批量处理示例，并区分权限限制和打开密码。
 tags:
+  - Python
+  - 效率
 toc: true
 categories:
   - 软件

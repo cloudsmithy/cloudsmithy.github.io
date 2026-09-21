@@ -1,6 +1,6 @@
 ---
 title: Kubernetes 系列课程 · 术语去重词典（按课程 > 节 分组）
-description: Kubernetes 系列课程 · 术语去重词典（按课程 > 节 分组）
+description: 整理 Kubernetes 入门、CKAD、Helm 和集群管理课程中的英语词汇，附音标、中文释义与课程语境，方便听课时查阅。
 tags: Kubernetes
 toc: true
 categories: 软件

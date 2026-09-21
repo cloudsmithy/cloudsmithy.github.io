@@ -1,6 +1,6 @@
 ---
 title: 使用agentcore部署MCP server
-description: 使用agentcore部署MCP server
+description: 整理在 AgentCore 上部署 MCP 服务的初步笔记，涉及 Runtime、Gateway、调用地址和 Bearer Token，示例代码仍待补充。
 tags:
   - AWS
   - MCP

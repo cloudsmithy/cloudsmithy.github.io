@@ -1,6 +1,6 @@
 ---
 title: 开源OpenSearch学习笔记｜部署篇（二）：Kubernetes 上用 Helm 快速搭建 OpenSearch.
-description: 开源OpenSearch学习笔记｜部署篇（二）：Kubernetes 上用 Helm 快速搭建 OpenSearch.
+description: 在 Amazon EKS 上用 Helm 部署 OpenSearch 与 Dashboards，记录 Secret 密码配置、存储问题、副本调整和端口转发验证。
 tags:
   - Kubernetes
   - OpenSearch

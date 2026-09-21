@@ -1,7 +1,8 @@
 ---
-title: 效率（忘记哪里摘抄的了
+title: 效率技巧摘抄（出处待考）
 description: 效率提升技巧摘抄，两分钟法则、五分钟法则等实用时间管理方法。
 tags:
+  - 效率
 toc: true
 categories:
   - 读书有感

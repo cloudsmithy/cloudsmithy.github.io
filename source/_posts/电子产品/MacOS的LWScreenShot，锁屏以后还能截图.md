@@ -1,12 +1,14 @@
 ---
 title: MacOS的LWScreenShot，锁屏以后还能截图
-description: MacOS的LWScreenShot，锁屏以后还能截图
+description: 早上发现 Mac 上多了一张 LWScreenShot 截图，一度担心电脑被入侵，后来才弄清它与登录窗口、锁屏截图的关系。
 categories:
   - 电子产品
   - 电脑
   - 苹果
 abbrlink: 5b230ad0
 date: 2026-04-17 00:00:00
+tags:
+  - Apple
 ---
 
 早上起来，发现自己的屏幕多出来了LWScreenShot页面，甚至一度以为电脑被别人黑了， 后来查询发现是MacOS自己的机制。

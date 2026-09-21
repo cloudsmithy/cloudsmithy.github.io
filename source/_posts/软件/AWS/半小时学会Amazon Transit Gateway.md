@@ -1,9 +1,8 @@
 ---
 title: 半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置
-description: 半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置
+description: 记录用 Transit Gateway 连接多个 VPC 的配置过程，包括挂载点、TGW 与子网路由表，以及通过 RAM 跨账户共享。
 tags:
   - AWS
-  - 家庭网络
 toc: true
 categories:
   - 软件

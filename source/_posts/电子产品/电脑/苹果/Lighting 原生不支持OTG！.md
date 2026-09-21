@@ -8,6 +8,7 @@ categories:
   - 苹果
 abbrlink: d969a069
 date: 2025-06-26 00:00:00
+description: 尝试用原装线把 Pocket 3 和移动硬盘接到旧款 iPhone，记录无响应、与 iPad 对比，以及寻找转接方案的过程。
 ---
 
 我还留着 Lighting 的设备，由于大疆 pocket3 最近更新了直连手机文件管理器的功能，所以试试。

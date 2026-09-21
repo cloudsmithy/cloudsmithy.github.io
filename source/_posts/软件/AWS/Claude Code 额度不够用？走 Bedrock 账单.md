@@ -1,6 +1,6 @@
 ---
 title: Claude Code 额度不够用？走 Bedrock 账单
-description: Claude Code 额度不够用？走 Bedrock 账单
+description: 记录让 Claude Code 通过 Amazon Bedrock 调用模型的环境变量配置，以及后续使用本地 AWS 凭证的更新。
 tags:
   - AWS
   - Bedrock

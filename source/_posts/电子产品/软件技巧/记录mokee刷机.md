@@ -1,12 +1,13 @@
 ---
 title: 记录mokee刷机
-description: 记录为手机刷入 MoKee 魔趣 ROM 的完整过程
+description: 记录早期刷入 MoKee 的镜像准备与 TWRP、fastboot 操作，文末保留了 2023 年项目停更的备注。
 toc: true
 categories:
   - 软件
 abbrlink: a8322290
 date: 2021-01-22 00:00:00
 tags:
+  - 手机
 ---
 
 ## How does flash mokee as Android System?

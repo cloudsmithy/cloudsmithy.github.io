@@ -1,7 +1,10 @@
 ---
 title: 老式打印机改 Airprint 之 cups
-description: 用 CUPS 将老式打印机改造为支持 AirPrint 的无线打印机
+description: 把老式联想打印机接到群晖，用 Docker 运行 CUPS 实现 AirPrint，记录驱动选择、跨设备测试和重启容器的小工具。
 tags:
+  - Docker
+  - 群晖
+  - Apple
 categories:
   - 电子产品
   - 打印机

@@ -2,6 +2,7 @@
 title: 使用 Nginx 获取并返回客户端的公网 IP 地址
 description: 自建 Nginx 服务返回客户端公网 IP，简单配置实现个性化 IP 查询接口。
 tags:
+  - 开发
 toc: true
 categories:
   - 软件

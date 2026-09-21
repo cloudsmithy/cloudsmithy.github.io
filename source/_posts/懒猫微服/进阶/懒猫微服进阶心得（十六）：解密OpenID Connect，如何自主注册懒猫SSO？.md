@@ -1,6 +1,6 @@
 ---
 title: 懒猫微服进阶心得（十六）：解密OpenID Connect，如何自主注册懒猫SSO？
-description: 懒猫微服进阶心得（十六）：解密OpenID Connect，如何自主注册懒猫SSO？
+description: 通过 gRPC 注册懒猫 SSO 客户端，再用 Flask 与 Authlib 验证 OIDC 登录，记录回调地址和重启后注册信息丢失的问题。
 tags:
   - 懒猫微服
   - SSO
