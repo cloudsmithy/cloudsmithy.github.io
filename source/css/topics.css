@@ -208,12 +208,13 @@
 
 .home-topics .home-topics-all {
   flex-shrink: 0;
-  gap: 10px;
+  gap: 8px;
   padding: 0 4px 0 10px;
   border-radius: 8px;
   color: var(--home-muted);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
+  letter-spacing: .04em;
 }
 
 .home-topics-arrow {
