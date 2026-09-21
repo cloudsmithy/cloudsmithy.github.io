@@ -73,6 +73,7 @@ output/
 *.tmp
 tmp/
 
-# Local-only content audit script
+# Removed one-off audit and migration tools
 /tools/lint-description.js
 /scripts/lint-description.js
+/tools/consolidate-taxonomy.js
