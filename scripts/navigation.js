@@ -6,6 +6,8 @@ const interactions = `<script id="nav-dropdown-interactions">
 (() => {
   if (window.blogDropdownsReady) return
   window.blogDropdownsReady = true
+  // Allow time to cross the gap or correct the pointer before dismissing.
+  const closeDelay = 3000
   const closeTimers = new WeakMap()
   const cancelClose = menu => clearTimeout(closeTimers.get(menu))
   const close = menu => {
@@ -27,7 +29,7 @@ const interactions = `<script id="nav-dropdown-interactions">
     cancelClose(menu)
     closeTimers.set(menu, setTimeout(() => {
       if (!menu.matches(':hover') && !menu.contains(document.activeElement)) close(menu)
-    }, 220))
+    }, closeDelay))
   })
   document.addEventListener('click', event => {
     document.querySelectorAll('.nav-dropdown[open]').forEach(menu => {
