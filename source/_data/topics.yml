@@ -124,6 +124,7 @@
 
 - id: cloud
   title: AWS 与云计算
+  home_title: AWS
   match:
     tags: [AWS]
     categories: [AWS]
@@ -149,6 +150,7 @@
 
 - id: containers
   title: Docker 与 Homelab
+  home_title: Docker
   match:
     tags: [Docker]
   icon: fas fa-cubes

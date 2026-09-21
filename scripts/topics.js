@@ -92,16 +92,18 @@ hexo.extend.tag.register('category_directory', () => {
     `<div class="category-groups">${categoryGroups(otherRoots)}</div></section></div>`
 })
 
-// Keep the topic entry points in the rendered HTML, including on PJAX navigation.
-// Priority 6 runs before hexo-minify (10); only the first homepage gets this panel.
+// Keep every topic accessible without a large block above the article list.
+// Priority 6 runs before hexo-minify (10); only the first homepage gets this nav.
 hexo.extend.filter.register('after_render:html', (html, data) => {
   if (!/^\/?index\.html$/.test(data?.path || '') || !topics().length) return html
   if (html.includes('id="home-topics"')) return html
-  const panel = '<section class="home-topics" id="home-topics" aria-labelledby="home-topics-title">' +
-    '<div class="topics-heading"><div><h2 id="home-topics-title">按主题阅读</h2>' +
-    '<p>从入门到实践，选一条阅读路线。</p></div>' +
-    `<a class="topics-more" href="${href('/topics/')}">全部专题 <span aria-hidden="true">→</span></a></div>` +
-    '<nav class="topic-grid" aria-label="技术专题">' + topicCards('/topics/') + '</nav></section>'
+  const links = topics().map(topic =>
+    `<a class="home-topic-link" href="${href('/topics/#' + topic.id)}" aria-label="${esc(topic.title)}专题">` +
+    `${esc(topic.home_title || topic.title)}</a>`
+  ).join('')
+  const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
+    '<span class="home-topics-label">专题</span>' + links +
+    `<a class="home-topics-all" href="${href('/topics/')}">全部专题 <span aria-hidden="true">→</span></a></nav>`
   return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
 }, 6)
 
