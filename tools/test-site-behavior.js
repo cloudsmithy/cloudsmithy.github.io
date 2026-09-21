@@ -191,3 +191,22 @@ test('code examples in descriptions cannot close a JSON-LD script element', () =
   const json = JSON.parse(result.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])
   assert.equal(json.description, '示例 </script> 和 $&')
 })
+
+test('dropdown injection preserves HTML snippets inside existing scripts', () => {
+  let renderNavigation
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/navigation.js'), 'utf8'), {
+    hexo: { extend: { filter: { register(name, callback) { renderNavigation = callback } } } }
+  })
+  const existingScript = 'const viewer = "<html><body>SVG</body></html>"'
+  const html = '<html><body><nav><div class="menus_item">' +
+    '<span class="site-page group"><i></i><span>生活</span><i></i></span>' +
+    '<ul class="menus_item_child"><li><a href="/reading/">书单</a></li></ul>' +
+    '</div></nav><script>' + existingScript + '</script></body></html>'
+  const result = renderNavigation(html)
+  assert.ok(result.includes('<script>' + existingScript + '</script>'))
+  assert.match(result, /<details class="nav-dropdown"/)
+  const scripts = [...result.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)]
+  assert.equal(scripts.length, 2)
+  scripts.forEach(([, source]) => assert.doesNotThrow(() => new vm.Script(source)))
+  assert.equal(renderNavigation(result), result)
+})

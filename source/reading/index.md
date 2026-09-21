@@ -1,9 +1,9 @@
 ---
-title: 阅读
+title: 书单与课程
 date: 2026-04-27 10:00:00
 sitemap: false
 ---
 
-读书是和作者跨越时空的对话。这里记录我读过和想读的书，附上选书的理由与读后的感悟，希望也能给你一些启发。 点击[编辑](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/_data/reading.yml)
+这里记录读过、在读和想读的书，也记录看过的课程与讲座。保留当时的阅读状态、日期和感受。点击[编辑](https://github.com/cloudsmithy/cloudsmithy.github.io/blob/master/source/_data/reading.yml)。
 
 {% reading %}

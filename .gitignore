@@ -75,3 +75,4 @@ tmp/
 
 # Local-only content audit script
 /tools/lint-description.js
+/scripts/lint-description.js

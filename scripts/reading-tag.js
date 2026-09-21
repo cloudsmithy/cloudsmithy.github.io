@@ -75,9 +75,14 @@ function countBadge (list) {
   return `<span class="reading-num">${parts.join(' ')}</span>`
 }
 
-function statusCell (status) {
+function statusCell (status, type) {
   const s = STATUS[status] || { icon: '❓', label: esc(status) }
-  return `${s.icon} ${s.label}`
+  const courseLabels = { done: '看完', reading: '在看', half: '看了一半', want: '想看' }
+  return `${s.icon} ${type === 'course' ? (courseLabels[status] || s.label) : s.label}`
+}
+
+function quantity (items) {
+  return `${items.length} ${items.some(item => item.type === 'course') ? '项' : '本'}`
 }
 
 function notesCell (notes) {
@@ -92,8 +97,9 @@ function bookRows (books) {
   return books
     .map(
       b =>
-        `<tr><td>《${esc(b.title)}》</td><td>${statusCell(b.status)}</td>` +
-        `<td>${esc(b.date)}</td><td>${esc(b.reason)}</td><td>${notesCell(b.notes)}</td></tr>`
+        `<tr><td>${b.type === 'course' ? `课程 · ${esc(b.title)}` : `《${esc(b.title)}》`}</td>` +
+        `<td>${statusCell(b.status, b.type)}</td>` +
+        `<td>${esc(b.date)}</td><td>${esc(b.reason) || '-'}</td><td>${notesCell(b.notes)}</td></tr>`
     )
     .join('')
 }
@@ -101,7 +107,7 @@ function bookRows (books) {
 function bookTable (books) {
   return (
     '<table class="reading-table"><thead><tr>' +
-    '<th>书名</th><th>状态</th><th>记录时间</th><th>理由</th><th>感悟</th>' +
+    '<th>书名 / 课程</th><th>状态</th><th>记录时间</th><th>记录</th><th>感悟</th>' +
     `</tr></thead><tbody>${bookRows(books)}</tbody></table>`
   )
 }
@@ -110,6 +116,7 @@ hexo.extend.tag.register('reading', function () {
   const data = (this.site && this.site.data) || (hexo.locals.get('data') || {})
   const books = (data.reading || []).slice()
   if (!books.length) return '<p>书单数据缺失（source/_data/reading.yml）。</p>'
+  const courseCount = books.filter(book => book.type === 'course').length
 
   // 记录时间倒序：新读的排前面
   books.sort((a, b) => String(b.date).localeCompare(String(a.date)))
@@ -163,13 +170,14 @@ hexo.extend.tag.register('reading', function () {
     .filter(k => byStatus[k])
     .map(
       k =>
-        `<span class="reading-chip st-${STATUS[k].cls}">${STATUS[k].icon} ${STATUS[k].label}` +
+        `<span class="reading-chip st-${STATUS[k].cls}">${STATUS[k].icon} ${{ done: '已完成', reading: '进行中', half: '完成一半', want: '计划中' }[k]}` +
         `<span class="reading-num">（${byStatus[k]}）</span></span>`
     )
     .join('')
   out.push(
-    `<div class="reading-line"><span class="reading-total">共 <b>${books.length}</b> 本</span>${statusChips}</div>`
+    `<div class="reading-line"><span class="reading-total">共 <b>${books.length}</b> ${courseCount ? '项' : '本'}</span>${statusChips}</div>`
   )
+  if (courseCount) out.push(`<p>书籍 ${books.length - courseCount} 本 · 课程与讲座 ${courseCount} 项</p>`)
 
   const catChips = cats
     .map(
@@ -213,10 +221,10 @@ hexo.extend.tag.register('reading', function () {
   // ③ 时间线（年 → 月 嵌套，一套表格同时承载「按年份」「按月份」两种跳转）
   out.push('<h3 class="reading-h">🗓️ 时间线</h3>')
   years.forEach(y => {
-    out.push(`<h4 id="${yearId(y)}" class="reading-h">${esc(y)} 年（${byYear[y].length} 本）</h4>`)
+    out.push(`<h4 id="${yearId(y)}" class="reading-h">${esc(y)} 年（${quantity(byYear[y])}）</h4>`)
     ;(monthsOfYear[y] || []).forEach(m => {
       const list = byMonth[m]
-      out.push(`<h5 id="${monthId(m)}" class="reading-h">${esc(m)}（${list.length} 本）</h5>`)
+      out.push(`<h5 id="${monthId(m)}" class="reading-h">${esc(m)}（${quantity(list)}）</h5>`)
       out.push(bookTable(list))
     })
   })

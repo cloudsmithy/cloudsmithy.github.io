@@ -41,8 +41,8 @@ function categoryGroups(rootNames, expanded = false) {
     }
     return `<details class="category-group"${expanded ? ' open' : ''}>` +
       `<summary><strong>${esc(root.name)}</strong>${categoryCount(root)}</summary>` +
-      `<a class="category-all" href="${href(root.path)}">浏览${esc(root.name)}全部文章</a>` +
-      `<ul class="category-tree">${sortedChildren(root).map(branch).join('')}</ul></details>`
+      `<ul class="category-tree">${sortedChildren(root).map(branch).join('')}</ul>` +
+      `<a class="category-all" href="${href(root.path)}">浏览全部文章 <span aria-hidden="true">→</span></a></details>`
   }).join('')
 }
 
@@ -84,10 +84,14 @@ hexo.extend.tag.register('category_directory', () => {
   const otherRoots = categories.filter(category => !category.parent && !technicalRoots.includes(category.name))
     .sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name, 'zh-CN'))
     .map(category => category.name)
-  return '<div class="category-directory">' +
-    `<p>共 ${categories.length} 个分类</p>` +
+  return '<div class="taxonomy-directory category-directory">' +
+    '<div class="directory-toolbar"><nav class="directory-tabs" aria-label="内容目录">' +
+    `<a href="${href('/categories/')}" aria-current="page">分类</a><a href="${href('/tags/')}">标签</a>` +
+    `<a href="${href('/topics/')}">技术专题</a></nav>` +
+    `<span class="directory-total">${categories.length} 个分类</span></div>` +
+    '<p class="directory-intro">按内容归档查找文章。主分类的数量包含其子分类。</p>' +
     '<section aria-labelledby="categories-technical"><h2 id="categories-technical">技术与设备</h2>' +
-    `<div class="category-groups">${categoryGroups(technicalRoots)}</div></section>` +
+    `<div class="category-groups">${categoryGroups(technicalRoots, true)}</div></section>` +
     '<section aria-labelledby="categories-life"><h2 id="categories-life">生活与阅读</h2>' +
     `<div class="category-groups">${categoryGroups(otherRoots)}</div></section></div>`
 })
@@ -99,11 +103,14 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   if (html.includes('id="home-topics"')) return html
   const links = topics().map(topic =>
     `<a class="home-topic-link" href="${href('/topics/#' + topic.id)}" aria-label="${esc(topic.title)}专题">` +
-    `${esc(topic.home_title || topic.title)}</a>`
+    `<span class="topic-bubble"><i class="${esc(topic.icon)}" aria-hidden="true"></i>` +
+    `<span class="topic-bubble-label">${esc(topic.home_title || topic.title)}</span></span></a>`
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
     '<div class="home-topics-heading"><span class="home-topics-label">按专题阅读</span>' +
-    `<a class="home-topics-all" href="${href('/topics/')}">全部专题 <span aria-hidden="true">↗</span></a></div>` +
+    '<div class="home-topics-actions"><label class="home-motion-control">' +
+    '<input class="home-motion-toggle" type="checkbox"><span>暂停动画</span></label>' +
+    `<a class="home-topics-all" href="${href('/topics/')}">全部专题 <span aria-hidden="true">→</span></a></div></div>` +
     `<div class="home-topic-links">${links}</div></nav>`
   return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
 }, 6)
@@ -148,7 +155,8 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   const navigation = '<nav class="category-archive-nav" id="category-archive-nav" aria-label="分类导航">' +
     `<a href="${href('/categories/')}">全部分类</a>` +
     (parentLinks ? '<span aria-hidden="true">›</span>' + parentLinks : '') +
-    `<a href="${href('/topics/')}">技术专题</a><a href="${href('/tags/')}">全部标签</a></nav>`
+    (current ? `<span aria-hidden="true">›</span><span aria-current="page">${esc(current.name)}</span>` : '') +
+    '</nav>'
   return html.replace(/(<div\b[^>]*\bid="category"[^>]*>)/i, (_, start) => start + navigation)
 }, 6)
 

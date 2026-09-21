@@ -28,15 +28,19 @@ hexo.extend.tag.register('tag_directory', () => {
   const sections = groups.map(group => {
     const links = group.tags.map(tag =>
       `<li><a href="${href(tag.path)}"><span>${esc(tag.name)}</span>` +
-      `<span class="tag-count">${tag.posts.length} 篇</span></a></li>`
+      `<span class="tag-count" aria-label="${tag.posts.length} 篇文章">${tag.posts.length}</span></a></li>`
     ).join('')
     return `<section class="tag-group" aria-labelledby="tags-${esc(group.id)}">` +
-      `<h2 id="tags-${esc(group.id)}">${esc(group.title)}</h2>` +
-      (group.description ? `<p>${esc(group.description)}</p>` : '') +
+      `<div class="tag-group-heading"><h2 id="tags-${esc(group.id)}">${esc(group.title)}</h2>` +
+      (group.description ? `<p>${esc(group.description)}</p>` : '') + '</div>' +
       `<ul class="tag-list">${links}</ul></section>`
   }).join('')
-  return '<div class="tag-directory">' +
-    `<p class="tag-directory-count">共 ${tags.length} 个标签</p>` +
+  return '<div class="taxonomy-directory tag-directory">' +
+    '<div class="directory-toolbar"><nav class="directory-tabs" aria-label="内容目录">' +
+    `<a href="${href('/categories/')}">分类</a><a href="${href('/tags/')}" aria-current="page">标签</a>` +
+    `<a href="${href('/topics/')}">技术专题</a></nav>` +
+    `<span class="directory-total">${tags.length} 个标签</span></div>` +
+    '<p class="directory-intro">从关键词找到相关文章。标签旁的数字是文章数量。</p>' +
     `<nav class="tag-group-nav" aria-label="跳转到标签分组">${jumpLinks}</nav>` +
     `<div class="tag-groups">${sections}</div></div>`
 })
@@ -51,12 +55,10 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   }
   const currentTag = data?.page?.tag
   if (!currentTag || html.includes('id="tag-archive-nav"')) return html
-  const relatedAI = currentTag !== 'AI' &&
-    tagGroups().find(group => group.id === 'ai')?.tags.includes(currentTag)
-  const ai = relatedAI && hexo.locals.get('tags').toArray().find(tag => tag.name === 'AI')
+  const group = tagGroups().find(group => group.tags.includes(currentTag))
   const navigation = '<nav class="tag-archive-nav" id="tag-archive-nav" aria-label="标签导航">' +
     `<a href="${href('/tags/')}">全部标签</a>` +
-    `<a href="${href('/topics/')}">技术专题</a>` +
-    (ai ? `<a href="${href(ai.path)}">AI 相关文章</a>` : '') + '</nav>'
+    (group ? `<span aria-hidden="true">›</span><a href="${href('/tags/#tags-' + group.id)}">${esc(group.title)}</a>` : '') +
+    `<span aria-hidden="true">›</span><span aria-current="page">${esc(currentTag)}</span></nav>`
   return html.replace(/(<div\b[^>]*\bid="tag"[^>]*>)/i, (_, start) => start + navigation)
 }, 6)

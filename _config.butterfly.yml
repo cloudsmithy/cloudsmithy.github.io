@@ -17,9 +17,27 @@ nav:
 
 menu:
   首页: / || fas fa-home
-  技术专题: /topics/ || fas fa-compass
-  文章归档: /archives/ || fas fa-archive
-  生活: /life/ || fas fa-book-open
+  技术专题 || fas fa-compass:
+    专题总览: /topics/ || fas fa-compass
+    懒猫微服: /topics/#lazycat || fas fa-server
+    Easysearch: /topics/#easysearch || fas fa-database
+    Coco AI: /topics/#coco || fas fa-magnifying-glass
+    OpenSearch: /topics/#opensearch || fas fa-magnifying-glass-chart
+    Kubernetes: /topics/#kubernetes || fas fa-diagram-project
+    AWS 与云计算: /topics/#cloud || fas fa-cloud
+    Docker 与 Homelab: /topics/#containers || fas fa-cubes
+    AI 实践: /topics/#ai || fas fa-microchip
+  文章归档 || fas fa-archive:
+    全部文章: /archives/ || fas fa-clock
+    按分类浏览: /categories/ || fas fa-folder-open
+    按标签浏览: /tags/ || fas fa-tags
+  生活 || fas fa-book-open:
+    生活总览: /life/ || fas fa-book-open
+    书单与课程: /reading/ || fas fa-book
+    日记: /todo/daily/ || fas fa-pen
+    月报: /todo/monthly/ || fas fa-calendar
+    个人语录: /quotes/ || fas fa-quote-left
+    网站收藏: /mark/ || fas fa-bookmark
   关于: /about/ || fas fa-user
 
 # --------------------------------------

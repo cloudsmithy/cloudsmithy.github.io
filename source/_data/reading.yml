@@ -5,9 +5,41 @@
 #   category 分类：技术 / 哲学·道家 / 中医·养生 / 人文社科 / 成长·自我 / 文学
 #   status   状态：done 读完 / reading 在读 / half 读了一半 / want 想读
 #   date     记录时间 "YYYY-MM-DD"
+#            只知道月份时保留 "YYYY-MM"，不补具体日期
+#   type     省略时为书籍；course 表示课程或讲座
 #   reason   选书理由 / 一句话感受
 #   notes    读书笔记链接（可多条），无则省略
 #     - { label: 笔记, url: https://... }
+
+- title: 止学
+  category: 人文社科
+  status: done
+  date: "2026-09-19"
+
+- title: 漫画三十六计
+  category: 人文社科
+  status: done
+  date: "2026-09-18"
+
+- title: 细读商君书
+  category: 人文社科
+  status: reading
+  date: "2026-09-12"
+  reason: 戴波著。有兴趣，读了一点，行文结构很喜欢。
+
+- title: 董平讲王阳明（浙江大学）
+  type: course
+  category: 人文社科
+  status: done
+  date: "2026-09"
+  reason: 9 月看完。
+
+- title: 董平讲王阳明（百家讲坛）
+  type: course
+  category: 人文社科
+  status: done
+  date: "2026-09"
+  reason: 9 月看完。
 
 - title: 时间看得见
   category: 成长·自我
