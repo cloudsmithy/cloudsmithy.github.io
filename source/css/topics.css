@@ -620,6 +620,22 @@
   z-index: 20;
 }
 
+#nav .nav-dropdown {
+  position: relative;
+}
+
+/* Keep the pointer inside the menu while crossing its visual gap. */
+#nav .nav-dropdown[open]::after {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 99;
+  width: 100%;
+  min-width: 200px;
+  height: 8px;
+  content: "";
+}
+
 #nav .nav-dropdown-trigger {
   display: inline-flex;
   min-height: 44px;
@@ -648,8 +664,9 @@
   transform: rotate(180deg);
 }
 
-#nav .nav-dropdown > .menus_item_child {
+#nav .menus_items .nav-dropdown > .menus_item_child {
   display: block;
+  top: 100%;
   z-index: 100;
   min-width: 200px;
   max-height: min(70vh, 480px);
