@@ -102,8 +102,9 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
     `${esc(topic.home_title || topic.title)}</a>`
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
-    '<span class="home-topics-label">专题</span>' + links +
-    `<a class="home-topics-all" href="${href('/topics/')}">全部专题 <span aria-hidden="true">→</span></a></nav>`
+    '<div class="home-topics-heading"><span class="home-topics-label">按专题阅读</span>' +
+    `<a class="home-topics-all" href="${href('/topics/')}">全部专题 <span aria-hidden="true">↗</span></a></div>` +
+    `<div class="home-topic-links">${links}</div></nav>`
   return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
 }, 6)
 

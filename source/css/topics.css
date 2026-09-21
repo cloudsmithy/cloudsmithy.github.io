@@ -1,35 +1,170 @@
+#recent-posts {
+  --home-border: #e6e9ec;
+  --home-muted: #626b75;
+  --home-chip-bg: #f2f4f6;
+  --home-chip-hover: #e8edf1;
+}
+
+[data-theme="dark"] #recent-posts {
+  --home-border: #34383e;
+  --home-muted: #afb7c1;
+  --home-chip-bg: #272c32;
+  --home-chip-hover: #343c45;
+}
+
 .home-topics {
+  margin: 0 0 24px;
+}
+
+.home-topics-heading {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0 16px;
-  margin-bottom: 16px;
-  padding: 0 8px 12px;
-  border-bottom: 1px solid var(--hr-border);
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
 }
 
 .home-topics-label {
-  font-size: .85rem;
+  color: var(--home-muted);
+  font-size: 13px;
   font-weight: 600;
+  letter-spacing: .06em;
+}
+
+.home-topic-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .home-topics a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
   color: var(--font-color);
-  font-size: .95rem;
+  font-size: 13px;
+  line-height: 1.5;
   white-space: nowrap;
+  text-decoration: none;
+  transition: background-color .18s ease, color .18s ease;
 }
 
-.home-topics a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.home-topic-link {
+  padding: 0 14px;
+  border-radius: 8px;
+  background: var(--home-chip-bg);
 }
 
-.home-topics-all {
-  margin-left: auto;
+.home-topic-link:hover {
+  background: var(--home-chip-hover);
+  color: var(--text-highlight-color);
+}
+
+.home-topics .home-topics-all {
+  color: var(--home-muted);
+  font-size: 12px;
+}
+
+.home-topics-all:hover {
+  color: var(--text-highlight-color);
+}
+
+/* Text-only posts should take the height of their content, not an empty cover. */
+#recent-posts .recent-post-item:has(> .recent-post-info.no-cover) {
+  height: auto;
+  margin-bottom: 16px;
+  border: 1px solid var(--home-border);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+#recent-posts .recent-post-item > .recent-post-info.no-cover {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px;
+}
+
+#recent-posts .recent-post-info.no-cover > .article-title {
+  display: block;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+#recent-posts .recent-post-info.no-cover > .content {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.8;
+  -webkit-line-clamp: 2;
+}
+
+#recent-posts .recent-post-info.no-cover > .article-meta-wrap {
+  order: 1;
+  margin: 14px 0 0;
+  color: var(--home-muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+#recent-posts .recent-post-info.no-cover .article-meta-wrap a {
+  color: inherit;
+}
+
+#recent-posts .recent-post-info.no-cover .article-meta-wrap .fa-calendar-alt,
+#recent-posts .recent-post-info.no-cover .article-meta-wrap .fa-inbox,
+#recent-posts .recent-post-info.no-cover .article-meta-wrap .fa-tag,
+#recent-posts .recent-post-info.no-cover .article-meta-label {
+  display: none;
+}
+
+#recent-posts .recent-post-info.no-cover .article-meta-separator {
+  margin: 0 10px;
+  font-size: 0;
+}
+
+#recent-posts .recent-post-info.no-cover .article-meta-separator::before {
+  content: "·";
+  font-size: 12px;
+}
+
+#recent-posts .article-title:focus-visible {
+  outline: 2px solid var(--text-highlight-color);
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  #content-inner.layout:has(> #recent-posts) {
+    padding: 16px;
+  }
+
+  .home-topics {
+    margin-bottom: 20px;
+  }
+
+  .home-topic-links {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 4px 8px;
+    margin: 0 -4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--home-border) transparent;
+  }
+
+  .home-topic-link {
+    flex: 0 0 auto;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info.no-cover {
+    padding: 20px;
+  }
+
+  #recent-posts .recent-post-info.no-cover > .article-title {
+    font-size: 20px;
+  }
 }
 
 .topic-grid {
@@ -390,6 +525,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-topics a,
   .topic-grid .topic-card {
     transition: none;
   }
