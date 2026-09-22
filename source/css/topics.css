@@ -291,9 +291,53 @@
   width: 100%;
 }
 
-/* Full directory widgets made the sidebar taller than the article list. */
-#content-inner:has(> #recent-posts) #aside-content :is(.card-categories, .card-tags, .card-archives) {
+/* Categories and the tag cloud are moved below the article list at build time. */
+#content-inner:has(> #recent-posts) #aside-content .card-archives {
   display: none;
+}
+
+.home-discovery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.home-discovery > .card-widget {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid var(--directory-border);
+  border-radius: 12px;
+  background: var(--card-bg);
+}
+
+.home-discovery .item-headline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.home-discovery :is(.all-categories-link, .all-tags-link) {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 13px;
+}
+
+.home-discovery .card-tag-cloud a:focus-visible {
+  outline: 2px solid var(--text-highlight-color);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .home-discovery {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 20px;
+  }
 }
 
 #aside-content .home-directory {
@@ -1112,7 +1156,8 @@
   gap: 4px 6px;
 }
 
-#aside-content .card-tags .card-tag-cloud a {
+#aside-content .card-tags .card-tag-cloud a,
+.home-discovery .card-tag-cloud a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;

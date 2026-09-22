@@ -7,6 +7,23 @@ const href = value => esc(url_for.call(hexo, value))
 const topics = () => hexo.locals.get('data').topics || []
 const categoryCount = item => `<span class="category-count">${item.posts.length} 篇</span>`
 
+function divRange(html, opening) {
+  const match = opening.exec(html)
+  if (!match) return null
+  // Ignore comments and raw script/style text when walking nested widget divs.
+  const tokens = /<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)\s*>|<!--[\s\S]*?-->|<\/?div\b[^>]*>/gi
+  tokens.lastIndex = match.index
+  let depth = 0
+  let token
+  while ((token = tokens.exec(html))) {
+    if (/^<div\b/i.test(token[0])) depth++
+    else if (/^<\/div\b/i.test(token[0]) && --depth === 0) {
+      return { start: match.index, close: token.index, end: tokens.lastIndex }
+    }
+  }
+  return null
+}
+
 function topicCards(base) {
   return topics().map(topic =>
     `<a class="topic-card" href="${href(base + '#' + topic.id)}">` +
@@ -252,8 +269,8 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   return insertion < 0 ? result + script : result.slice(0, insertion) + script + result.slice(insertion)
 }, 6)
 
-// Article listings only need directory entrances; the full trees live on their
-// own pages. Keeping this static also makes the links work without JavaScript.
+// Keep full categories and the tag cloud visible below the articles, while the
+// sidebar keeps short directory links. Static markup also works without JS.
 hexo.extend.filter.register('after_render:html', (html, data) => {
   if (!/^\/?(?:page\/\d+\/)?index\.html$/.test(data?.path || '') ||
       !html.includes('id="recent-posts"') || html.includes('id="home-directory"')) return html
@@ -267,7 +284,21 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
     '<span class="home-directory-arrow" aria-hidden="true">→</span></a>'
   ).join('')
   const directory = '<nav class="card-widget home-directory" id="home-directory" aria-label="文章目录">' + links + '</nav>'
-  return html.replace(/(<div\b[^>]*\bclass="sticky_layout"[^>]*>)/i, (_, start) => start + directory)
+  let result = html
+  const widgets = []
+  for (const name of ['categories', 'tags']) {
+    const range = divRange(result, new RegExp(`<div\\b[^>]*\\bclass="card-widget card-${name}"[^>]*>`, 'i'))
+    if (!range) continue
+    widgets.push(result.slice(range.start, range.end))
+    result = result.slice(0, range.start) + result.slice(range.end)
+  }
+  if (widgets.length) {
+    const articles = divRange(result, /<div\b[^>]*\bid="recent-posts"[^>]*>/i)
+    if (!articles) return html
+    const discovery = '<section class="home-discovery" aria-label="分类与标签">' + widgets.join('') + '</section>'
+    result = result.slice(0, articles.close) + discovery + result.slice(articles.close)
+  }
+  return result.replace(/(<div\b[^>]*\bclass="sticky_layout"[^>]*>)/i, (_, start) => start + directory)
 }, 6)
 
 hexo.extend.filter.register('after_render:html', (html, data) => {

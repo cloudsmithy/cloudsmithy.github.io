@@ -310,7 +310,7 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
   assert.equal(desktop.listeners.size, 1)
 })
 
-test('article listings get compact directory links without changing other pages', () => {
+test('article listings preserve full categories and tag clouds below posts without changing other pages', () => {
   const filters = []
   const locals = { data: { topics: [] }, categories: { length: 34 }, tags: { length: 52 }, posts: { length: 357 } }
   vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/topics.js'), 'utf8'), {
@@ -322,8 +322,15 @@ test('article listings get compact directory links without changing other pages'
       extend: { tag: { register() {} }, filter: { register(_, callback) { filters.push(callback) } } }
     }
   })
-  const html = '<main><div id="recent-posts">Articles</div><div id="aside-content">' +
-    '<div class="sticky_layout"><div class="card-widget card-categories">Original categories</div></div></div></main>'
+  const categories = '<div class="card-widget card-categories"><div class="item-headline">分类</div>' +
+    '<div><details><summary>Original categories</summary><a href="/categories/tech/">Tech</a></details></div></div>'
+  const tags = '<div class="card-widget card-tags"><div class="item-headline">标签</div>' +
+    '<div class="card-tag-cloud"><a href="/tags/Docker/" style="font-size:1.4em">Docker</a>' +
+    '<a href="/tags/AI/">AI</a></div><a class="all-tags-link" href="/tags/">全部标签</a></div>'
+  const script = '<script>const example = "<div>example</div>"</script>'
+  const html = '<main><div id="recent-posts">Articles' + script + '<nav id="pagination">Pages</nav></div>' +
+    '<div id="aside-content"><div class="sticky_layout">' + categories + tags +
+    '<div class="card-widget card-webinfo">Site information</div></div></div></main>'
   const render = filters.find(callback => callback(html, { path: 'index.html' }).includes('id="home-directory"'))
   assert.ok(render)
   for (const page of ['index.html', 'page/2/index.html', 'page/36/index.html']) {
@@ -333,6 +340,14 @@ test('article listings get compact directory links without changing other pages'
     assert.match(decoded, /href="\/tags\/"[\s\S]*?52 个/)
     assert.match(decoded, /href="\/archives\/"[\s\S]*?357 篇/)
     assert.ok(result.includes('Original categories'))
+    assert.ok(result.includes(categories))
+    assert.ok(result.includes(tags))
+    assert.ok(result.includes(script))
+    assert.equal((result.match(/class="card-widget card-categories"/g) || []).length, 1)
+    assert.equal((result.match(/class="card-widget card-tags"/g) || []).length, 1)
+    assert.ok(result.indexOf('class="home-discovery"') > result.indexOf('id="pagination"'))
+    assert.ok(result.indexOf(tags) < result.indexOf('id="aside-content"'))
+    assert.ok(result.indexOf('Site information') > result.indexOf('id="aside-content"'))
     assert.equal(render(result, { path: page }), result)
   }
   for (const page of ['categories/index.html', 'tags/AI/index.html', 'fa9f211a/index.html']) {
