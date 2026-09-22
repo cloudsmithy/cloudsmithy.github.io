@@ -1,5 +1,6 @@
 ---
 title: 关于我
+description: 忘机山人的技术经历与社区作品：前 AWS 技术支持，AWS Summit / User Group 讲师，极限科技供稿作者、Milvus 北辰使者与懒猫微服专栏作家。
 toc: true
 ---
 
@@ -32,6 +33,7 @@ Homelab 爱好者，家里自建 DC，Kubernetes 狂热玩家，OpenID Connect �
 
 - 🎨 [拓竹社区 3D 打印模型](https://makerworld.com.cn/zh/@cloud9/upload)
 - ✍️ [CSDN 博客主页](https://blog.csdn.net/weixin_38781498)
+- 📖 [简书主页](https://www.jianshu.com/u/1b3fa7ff18f1)
 - 🛠️ [GitHub 项目主页](https://github.com/cloudsmithy)
 - 🐳 [Docker Hub](https://hub.docker.com/u/cloudsmithy)
 - 📚 [InfoQ 技术征文主页](https://www.infoq.cn/u/awscom/)

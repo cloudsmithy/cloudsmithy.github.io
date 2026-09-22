@@ -154,6 +154,11 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/seo-meta-enhance.js'
 const head = '<head><meta name="viewport" content="width=device-width">' +
   '<meta name="twitter:card" content="summary_large_image">'
 
+function jsonLdNodes(html) {
+  return [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .flatMap(([, value]) => { const data = JSON.parse(value); return data['@graph'] || [data] })
+}
+
 test('404 variants are noindex while the homepage remains indexable', () => {
   for (const route of ['404', '/404', '404.html', '404/', '404/index.html']) {
     assert.match(renderMeta(head + '</head>', { path: route }), /content="noindex,follow"/)
@@ -175,7 +180,7 @@ test('sharing metadata escapes entities once and JSON-LD contains readable text'
   assert.match(result, /name="twitter:title" content="A &amp; B"/)
   assert.match(result, /name="twitter:description" content="聊聊 &quot;在吗&quot; 和 A &amp; B"/)
   assert.doesNotMatch(result, /&amp;(?:quot|amp);/)
-  const json = JSON.parse(result.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])
+  const json = jsonLdNodes(result).find(node => node['@type'] === 'BlogPosting')
   assert.equal(json.description, '聊聊 "在吗" 和 A & B')
   assert.deepEqual(json.keywords, ['A & B'])
 })
@@ -188,8 +193,69 @@ test('code examples in descriptions cannot close a JSON-LD script element', () =
   const result = renderMeta(html, { path: 'post/index.html' })
   assert.equal((result.match(/<\/script>/g) || []).length, 1)
   assert.ok(result.includes('name="twitter:description" content="示例 &lt;/script&gt; 和 $&amp;"'))
-  const json = JSON.parse(result.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])
+  const json = jsonLdNodes(result).find(node => node['@type'] === 'BlogPosting')
   assert.equal(json.description, '示例 </script> 和 $&')
+})
+
+test('home, profile and article identify the same author without claiming guest authorship', () => {
+  const authorId = origin + '/about/#person'
+  const home = jsonLdNodes(renderMeta(head + '</head>', { path: 'index.html' }))
+  assert.equal(home.find(node => node['@type'] === 'WebSite').author['@id'], authorId)
+  const profile = jsonLdNodes(renderMeta(head + '</head>', { path: 'about/index.html' }))
+  assert.equal(profile.find(node => node['@type'] === 'ProfilePage').mainEntity['@id'], authorId)
+  assert.equal(profile.find(node => node['@type'] === 'Person')['@id'], authorId)
+  for (const name of ['忘机山人', 'Guest']) {
+    const html = head + '<meta property="og:type" content="article">' +
+      `<script type="application/ld+json">${JSON.stringify({
+        '@type': 'BlogPosting', url: origin + '/post/', author: [{ '@type': 'Person', name, url: '/author/' }]
+      })}</script></head>`
+    const data = jsonLdNodes(renderMeta(html, { path: 'post/index.html' }))
+    const article = data.find(node => node['@type'] === 'BlogPosting')
+    assert.equal(article.author[0].name, name)
+    assert.equal(article.author[0]['@id'], name === '忘机山人' ? authorId : undefined)
+    assert.equal(article.publisher['@id'], authorId)
+  }
+})
+
+test('technical and life sections use categories and honor explicit mixed-content overrides', () => {
+  const { sectionOf } = require('../lib/content-sections')
+  assert.equal(sectionOf({ categories: [{ name: '软件' }, { name: 'AWS' }] }), 'tech')
+  assert.equal(sectionOf({ categories: ['懒猫微服', '故事'] }), 'tech')
+  assert.equal(sectionOf({ categories: ['读书有感'], tags: ['Docker'] }), 'life')
+  assert.equal(sectionOf({ categories: ['软件'], section: 'life' }), 'life')
+  assert.equal(sectionOf({ categories: [], section: 'tech' }), 'tech')
+})
+
+test('homepage and related posts filter without removing life posts from shared locals', () => {
+  const posts = [
+    { path: 'tech/', title: 'Tech', categories: ['软件'] },
+    { path: 'life/', title: 'Life', categories: ['散文随笔'] }
+  ]
+  let beforeGenerate, generateIndex
+  const helpers = new Map([['related_posts', post => post.tags.flatMap(tag => tag.posts.map(item => item.path))]])
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/content-sections.js'), 'utf8'), {
+    require(name) {
+      if (name === 'hexo-generator-index/lib/generator') return locals => locals.posts
+      return require(name)
+    },
+    hexo: {
+      on(name, fn) { beforeGenerate = fn },
+      extend: {
+        helper: { get: name => helpers.get(name), register: (name, fn) => helpers.set(name, fn) },
+        generator: { register(name, fn) { generateIndex = fn } },
+        tag: { register() {} }, filter: { register() {} }
+      }
+    }
+  })
+  beforeGenerate()
+  const selected = generateIndex({ posts })
+  assert.equal(selected.length, 1)
+  assert.equal(selected[0].path, 'tech/')
+  assert.equal(posts.length, 2)
+  for (const post of posts) {
+    post.tags = [{ posts }]
+    assert.deepEqual(helpers.get('related_posts')(post), [post.path])
+  }
 })
 
 test('dropdown injection preserves HTML snippets inside existing scripts', () => {

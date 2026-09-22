@@ -26,6 +26,7 @@ menu:
     Kubernetes: /topics/#kubernetes || fas fa-diagram-project
     AWS 与云计算: /topics/#cloud || fas fa-cloud
     Docker 与 Homelab: /topics/#containers || fas fa-cubes
+    系列阅读: /series/ || fas fa-list-ol
     AI 实践: /topics/#ai || fas fa-microchip
     机器学习笔记: /series/machine-learning/ || fas fa-brain
     单片机与嵌入式: /series/embedded/ || fas fa-microchip
@@ -35,6 +36,7 @@ menu:
     按标签浏览: /tags/ || fas fa-tags
   生活 || fas fa-book-open:
     生活总览: /life/ || fas fa-book-open
+    生活文章: /life/articles/ || fas fa-feather
     书单与课程: /reading/ || fas fa-book
     日记: /todo/daily/ || fas fa-pen
     月报: /todo/monthly/ || fas fa-calendar
@@ -220,7 +222,7 @@ toc:
 post_copyright:
   enable: true
   decode: true
-  author_href: https://blog.no-claw.com/
+  author_href: https://blog.no-claw.com/about/
   license: CC BY-NC 4.0
   license_url: https://creativecommons.org/licenses/by-nc/4.0/
 

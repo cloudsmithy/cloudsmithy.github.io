@@ -157,8 +157,8 @@
   summary: 从第一个容器到多服务部署
   intro: 容器小书可以按顺序读：先理解部署问题，再认识镜像和容器，最后处理数据持久化与多服务编排。
   more:
-    label: 浏览 Docker 全部文章
-    url: /tags/Docker/
+    label: 查看 Docker 系列目录与部署练习
+    url: /series/docker/
   steps:
     - title: 为什么需要 Docker
       url: /effe7a9a/

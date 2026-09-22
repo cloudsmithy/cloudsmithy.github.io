@@ -1,0 +1,28 @@
+# 与关于页的公开介绍保持一致。sameAs 仅使用本人的平台主页。
+name: 忘机山人
+alternateName: CloudSmithy
+jobTitle: 后端开发与 AI 工程化
+description: 前 AWS 技术支持，AWS Summit / User Group 讲师，极限科技供稿作者、Milvus 北辰使者与懒猫微服专栏作家。记录云计算、搜索引擎、AI 工程化和 Homelab 实践。
+knowsAbout:
+  - AWS 云计算
+  - Amazon Bedrock
+  - Kubernetes
+  - Docker
+  - Linux
+  - Python 后端开发
+  - Easysearch
+  - OpenSearch
+  - Elasticsearch
+  - Milvus
+  - AI 工程化
+  - OpenID Connect
+  - NAS
+  - Homelab
+sameAs:
+  - https://github.com/cloudsmithy
+  - https://blog.csdn.net/weixin_38781498
+  - https://www.jianshu.com/u/1b3fa7ff18f1
+  - https://hub.docker.com/u/cloudsmithy
+  - https://www.infoq.cn/u/awscom/
+  - https://makerworld.com.cn/zh/@cloud9/upload
+  - https://playground.lazycat.cloud/#/user-profile/459/dynamic

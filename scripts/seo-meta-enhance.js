@@ -11,6 +11,7 @@ const SITE_ALT = ['CloudSmithy Blog', '忘机山人']
 const SITE_DESC = '忘机山人的个人博客，专注 AWS 云计算、Docker 容器、NAS 与懒猫微服、Easysearch、Python 后端开发、AI 部署与 Homelab 实践，记录技术、生活与思考'
 const AUTHOR = '忘机山人'
 const AUTHOR_URL = SITE_URL + '/about/'
+const AUTHOR_ID = AUTHOR_URL + '#person'
 const LOGO_URL = SITE_URL + '/images/icon-512.png'
 const HOME_H1 = '镜湖 — 忘机山人的云计算与 Homelab 笔记'
 const HOME_OG_TITLE = '镜湖 — 忘机山人的云计算与 Homelab 笔记'
@@ -20,18 +21,33 @@ const FONTAWESOME_HREF = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': SITE_URL + '/#website',
   name: SITE_NAME,
   alternateName: SITE_ALT,
   url: SITE_URL + '/',
   description: SITE_DESC,
   inLanguage: 'zh-CN',
   copyrightYear: '2016',
-  author: { '@type': 'Person', name: AUTHOR, url: AUTHOR_URL },
-  publisher: {
+  author: { '@id': AUTHOR_ID },
+  publisher: { '@id': AUTHOR_ID }
+}
+
+function personJsonLd() {
+  const profile = hexo.locals?.get('data')?.author || {}
+  return {
     '@type': 'Person',
+    '@id': AUTHOR_ID,
     name: AUTHOR,
-    image: { '@type': 'ImageObject', url: LOGO_URL }
+    url: AUTHOR_URL,
+    ...Object.fromEntries(['alternateName', 'jobTitle', 'description', 'knowsAbout', 'sameAs']
+      .filter(key => profile[key]).map(key => [key, profile[key]]))
   }
+}
+
+function graphScript(entities) {
+  return '<script type="application/ld+json">' +
+    JSON.stringify({ '@context': 'https://schema.org', '@graph': entities })
+      .replace(/</g, '\\u003c') + '</script>'
 }
 
 function isRootHome(path) {
@@ -94,7 +110,8 @@ function pickMeta(html, names) {
 }
 
 function rewriteHomeJsonLd(html) {
-  const next = `<script type="application/ld+json">${JSON.stringify(websiteJsonLd).replace(/</g, '\\u003c')}</script>`
+  const { '@context': context, ...website } = websiteJsonLd
+  const next = graphScript([website, personJsonLd()])
   // Replace the first WebSite block if present; otherwise inject before </head>.
   const re = /<script\s+type="application\/ld\+json">\s*\{[^<]*?"@type"\s*:\s*"WebSite"[\s\S]*?<\/script>/i
   if (re.test(html)) return html.replace(re, next)
@@ -136,14 +153,24 @@ function enrichPostJsonLd(html, ctx) {
   if (ctx.keywords && ctx.keywords.length) data.keywords = ctx.keywords
   data.inLanguage = 'zh-CN'
   data.mainEntityOfPage = { '@type': 'WebPage', '@id': data.url }
-  data.publisher = {
-    '@type': 'Organization',
-    name: SITE_NAME,
-    logo: { '@type': 'ImageObject', url: LOGO_URL }
-  }
+  data.publisher = { '@id': AUTHOR_ID }
+  const authors = data.author ? [].concat(data.author) : [{ name: AUTHOR }]
+  data.author = authors.map(author => author.name === AUTHOR
+    ? { '@type': 'Person', '@id': AUTHOR_ID, name: AUTHOR, url: AUTHOR_URL }
+    : author)
+  delete data['@context']
+  return html.replace(re, () => graphScript([data, personJsonLd()]))
+}
 
-  const json = JSON.stringify(data).replace(/</g, '\\u003c')
-  return html.replace(re, () => `<script type="application/ld+json">${json}</script>`)
+function enrichProfileJsonLd(html) {
+  return html.replace(/<\/head>/i, () => graphScript([{
+    '@type': 'ProfilePage',
+    '@id': AUTHOR_URL + '#profile',
+    url: AUTHOR_URL,
+    name: '关于忘机山人',
+    mainEntity: { '@id': AUTHOR_ID },
+    isPartOf: { '@id': SITE_URL + '/#website' }
+  }, personJsonLd()]) + '</head>')
 }
 
 hexo.extend.filter.register('after_render:html', function (html, data) {
@@ -190,6 +217,7 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
     out = rewriteHomeJsonLd(out)
     out = rewriteHomeH1(out)
   }
+  if (/^\/?about\/(?:index\.html)?$/.test(path)) out = enrichProfileJsonLd(out)
 
   // re-read og:title after potential rewrite, so twitter:title gets the rich version
   const finalOgTitle = pickMeta(out, ['og:title']) || ogTitle

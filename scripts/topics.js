@@ -302,6 +302,8 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
 hexo.extend.filter.register('after_render:html', (html, data) => {
   const post = data?.page
   if (post?.layout !== 'post' || html.includes('id="post-topic-nav"')) return html
+  const section = hexo.extend.helper.get?.('content_section')
+  if (section && section(post) !== 'tech') return html
   const tags = new Set(post.tags?.map(tag => tag.name) || [])
   const categories = new Set(post.categories?.map(category => category.name) || [])
   const currentPath = '/' + String(post.path || '').replace(/^\/+/, '').replace(/index\.html$/, '')
