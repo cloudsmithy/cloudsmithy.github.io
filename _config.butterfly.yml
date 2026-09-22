@@ -273,12 +273,12 @@ footer:
   nav:
   owner:
     enable: true
-    since: 2022
+    since: 2016
   # Copyright of theme and framework
   copyright:
     enable: true
     version: true
-  custom_text: <div id="runtime"></div><script>function siteTime(){const e=new Date("01/01/2022 00:00:00"),t=new Date,n=t-e,a=Math.floor(n/864e5),o=Math.floor(n%864e5/36e5),r=Math.floor(n%36e5/6e4),i=Math.floor(n%6e4/1e3);document.getElementById("runtime").innerHTML="本站已运行 "+a+" 天 "+o+" 小时 "+r+" 分 "+i+" 秒"}setInterval(siteTime,1e3);</script>
+  custom_text: <div id="runtime"></div><script>function siteTime(){const e=new Date("2016-10-01T00:00:00+08:00"),t=new Date,n=t-e,a=Math.floor(n/864e5),o=Math.floor(n%864e5/36e5),r=Math.floor(n%36e5/6e4),i=Math.floor(n%6e4/1e3);document.getElementById("runtime").innerHTML="本站已运行 "+a+" 天 "+o+" 小时 "+r+" 分 "+i+" 秒"}setInterval(siteTime,1e3);</script>
 
 # --------------------------------------
 # Aside Settings

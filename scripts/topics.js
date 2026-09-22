@@ -132,8 +132,8 @@ function initTopicBubbles() {
     const showInAside = desktop.matches && aside && getComputedStyle(aside).display !== 'none'
     const destination = showInAside ? aside : articles
     if (!destination || nav.parentElement === destination) return
-    const author = showInAside && aside.querySelector('.card-info')
-    if (author) author.after(nav)
+    const anchor = showInAside && (aside.querySelector('.card-announcement') || aside.querySelector('.card-info'))
+    if (anchor) anchor.after(nav)
     else destination.prepend(nav)
   }
   placeTopics()
@@ -256,8 +256,6 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
     `${esc(topic.home_title || topic.title)}</a></div>`
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
-    '<div class="home-topics-heading">' +
-    `<a class="home-topics-all" href="${href('/topics/')}" aria-label="查看全部专题"><span lang="en">All</span></a></div>` +
     '<p class="topic-play-hint" id="topic-play-hint">点气泡玩，点文字读</p>' +
     `<div class="home-topic-links">${links}</div></nav>`
   const script = `<script data-pjax>if(!window.jinghuTopicBubbles){window.jinghuTopicBubbles=${initTopicBubbles.toString()};` +

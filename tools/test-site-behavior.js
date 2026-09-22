@@ -242,6 +242,7 @@ test('homepage bubbles separate play buttons from reading links and preserve HTM
   assert.match(require('hexo-util').unescapeHTML(result), /class="topic-bubble-label" href="\/topics\/#easysearch"/)
   assert.ok(result.includes('A &quot;quote&quot; &lt;tag&gt; &amp; B'))
   assert.doesNotMatch(result, /<a\b[^>]*>[^<]*<button/)
+  assert.doesNotMatch(result, /home-topics-all|home-topics-heading/)
   assert.match(result, /<\/button><\/div><\/div><a class="topic-bubble-label"/)
   assert.match(result, /<div id="aside-content">Author<\/div><script data-pjax>/)
   assert.match(result, /<\/script><\/main>/)
@@ -261,8 +262,14 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
     change(matches) { this.matches = matches; this.listeners.forEach(callback => callback()) }
   }
   const articles = { prepend(node) { node.parentElement = this } }
-  const author = { after(node) { node.parentElement = aside; node.afterAuthor = true } }
-  const aside = { visible: true, querySelector: () => author, prepend(node) { node.parentElement = this } }
+  const author = { after(node) { node.parentElement = aside; node.after = 'author' } }
+  const announcement = { after(node) { node.parentElement = aside; node.after = 'announcement' } }
+  const aside = {
+    visible: true,
+    hasAnnouncement: true,
+    querySelector(selector) { return selector === '.card-announcement' ? (this.hasAnnouncement ? announcement : null) : author },
+    prepend(node) { node.parentElement = this }
+  }
   let nav = { dataset: {}, parentElement: articles, querySelectorAll: () => [] }
   const observers = []
   const context = {
@@ -283,7 +290,7 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
   vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/topics.js'), 'utf8'), context)
   context.initTopicBubbles()
   assert.equal(nav.parentElement, aside)
-  assert.equal(nav.afterAuthor, true)
+  assert.equal(nav.after, 'announcement')
   assert.equal(desktop.listeners.size, 1)
 
   desktop.change(false)
@@ -296,6 +303,12 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
   aside.visible = true
   observers[0].callback()
   assert.equal(nav.parentElement, aside)
+  assert.equal(nav.after, 'announcement')
+
+  desktop.change(false)
+  aside.hasAnnouncement = false
+  desktop.change(true)
+  assert.equal(nav.after, 'author')
 
   context.initTopicBubbles()
   assert.equal(desktop.listeners.size, 1)
@@ -354,4 +367,46 @@ test('article listings preserve full categories and tag clouds below posts witho
     assert.equal(render(html, { path: page }), html)
   }
   assert.equal(render('<main>Without sidebar</main>', { path: 'index.html' }), '<main>Without sidebar</main>')
+})
+
+test('tags can belong to multiple groups while totals and article counts stay unique', () => {
+  const tags = [
+    { name: 'AgentCore', path: 'tags/AgentCore/', posts: { length: 3 } },
+    { name: 'Bedrock', path: 'tags/Bedrock/', posts: { length: 8 } },
+    { name: 'Docker', path: 'tags/Docker/', posts: { length: 32 } },
+    { name: 'New', path: 'tags/New/', posts: { length: 1 } }
+  ]
+  const groups = [
+    { id: 'ai', title: 'AI', tags: ['AgentCore', 'Bedrock'] },
+    { id: 'cloud', title: 'AWS', tags: ['AgentCore', 'Bedrock', 'Docker'] }
+  ]
+  let renderDirectory
+  let renderArchive
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/tag-directory.js'), 'utf8'), {
+    require,
+    hexo: {
+      config: { root: '/', url: origin },
+      locals: { get: name => name === 'data' ? { tag_groups: groups } : { length: tags.length, toArray: () => tags } },
+      extend: {
+        tag: { register(_, callback) { renderDirectory = callback } },
+        filter: { register(_, callback) { renderArchive = callback } }
+      }
+    }
+  })
+  const decode = require('hexo-util').unescapeHTML
+  const directory = decode(renderDirectory())
+  assert.match(directory, /class="directory-total">4 个标签/)
+  assert.equal((directory.match(/href="\/tags\/AgentCore\/"/g) || []).length, 2)
+  assert.equal((directory.match(/href="\/tags\/Bedrock\/"/g) || []).length, 2)
+  assert.equal((directory.match(/aria-label="3 篇文章">3/g) || []).length, 2)
+  assert.equal((directory.match(/aria-label="8 篇文章">8/g) || []).length, 2)
+  assert.equal((directory.match(/href="\/tags\/New\/"/g) || []).length, 1)
+  assert.match(directory, /tags-other/)
+
+  const archive = decode(renderArchive('<div id="tag">Posts</div>', { page: { tag: 'AgentCore' } }))
+  assert.match(archive, /href="\/tags\/#tags-ai"/)
+  assert.match(archive, /href="\/tags\/#tags-cloud"/)
+  assert.equal((archive.match(/aria-current="page"/g) || []).length, 1)
+  groups[0].tags.push('AgentCore')
+  assert.throws(() => renderDirectory(), /twice in group ai/)
 })

@@ -20,16 +20,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
   min-width: 0;
   margin: 0 0 20px;
-}
-
-.home-topics-heading {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 0 0 auto;
 }
 
 .topic-play-hint {
@@ -255,21 +247,6 @@
   50% { transform: translate3d(0, -3px, 0); }
 }
 
-.home-topics .home-topics-all {
-  flex-shrink: 0;
-  min-width: 44px;
-  padding: 0 4px;
-  border-radius: 8px;
-  color: var(--home-muted);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: .04em;
-}
-
-.home-topics .home-topics-all:is(:hover, :focus-visible) {
-  color: var(--font-color);
-}
-
 #aside-content .home-topics {
   display: block;
   margin: 0 0 20px;
@@ -297,35 +274,80 @@
 }
 
 .home-discovery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
   margin-top: 28px;
 }
 
 .home-discovery > .card-widget {
-  display: flex;
+  display: block;
   min-width: 0;
-  flex-direction: column;
-  padding: 20px;
-  border: 1px solid var(--directory-border);
-  border-radius: 12px;
-  background: var(--card-bg);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-discovery > .card-widget + .card-widget {
+  margin-top: 24px;
 }
 
 .home-discovery .item-headline {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
-  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--directory-muted);
+  font-size: 14px;
   font-weight: 500;
 }
 
 .home-discovery :is(.all-categories-link, .all-tags-link) {
-  margin-top: auto;
-  padding-top: 12px;
-  font-size: 13px;
+  margin-top: 4px;
+  padding-top: 0;
+  color: var(--directory-muted);
+  font-size: 12px;
+}
+
+.home-discovery .sidebar-category-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.home-discovery .category-group summary {
+  padding: 0 4px;
+  font-size: 14px;
+}
+
+.home-discovery .category-group strong {
+  font-weight: 500;
+}
+
+.home-discovery .card-categories .category-leaf {
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0 4px;
+  font-size: 14px;
+}
+
+.home-discovery .card-categories .category-count {
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+.home-discovery .category-group[open] {
+  flex-basis: 100%;
+}
+
+.home-discovery .category-group[open] > .category-tree {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  padding: 0 8px;
+}
+
+.home-discovery .card-tags .card-tag-cloud {
+  gap: 2px 12px;
 }
 
 .home-discovery .card-tag-cloud a:focus-visible {
@@ -335,8 +357,11 @@
 
 @media (max-width: 768px) {
   .home-discovery {
-    grid-template-columns: minmax(0, 1fr);
     margin-top: 20px;
+  }
+
+  .home-discovery .category-group[open] > .category-tree {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -681,6 +706,13 @@
   align-items: center;
   color: var(--font-color);
   text-decoration: none;
+}
+
+.tag-archive-groups {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
 }
 
 .tag-archive-nav a:hover,
@@ -1156,8 +1188,7 @@
   gap: 4px 6px;
 }
 
-#aside-content .card-tags .card-tag-cloud a,
-.home-discovery .card-tag-cloud a {
+#aside-content .card-tags .card-tag-cloud a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -1167,6 +1198,15 @@
   color: var(--font-color) !important;
   font-size: 13px !important;
   line-height: 28px;
+}
+
+.home-discovery .card-tag-cloud a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 4px;
+  color: var(--font-color) !important;
+  line-height: 1.4;
 }
 
 .card-tags .card-tag-cloud a:hover {

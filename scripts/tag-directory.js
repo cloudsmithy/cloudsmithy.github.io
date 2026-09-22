@@ -10,14 +10,18 @@ hexo.extend.tag.register('tag_directory', () => {
   const tags = hexo.locals.get('tags').toArray().filter(tag => tag.posts.length)
   const byName = new Map(tags.map(tag => [tag.name, tag]))
   const seen = new Set()
-  const groups = tagGroups().map(group => ({
-    ...group,
-    tags: group.tags.map(name => {
-      if (seen.has(name)) throw new Error(`Tag appears in multiple groups: ${name}`)
-      seen.add(name)
-      return byName.get(name)
-    }).filter(Boolean)
-  })).filter(group => group.tags.length)
+  const groups = tagGroups().map(group => {
+    const inGroup = new Set()
+    return {
+      ...group,
+      tags: group.tags.map(name => {
+        if (inGroup.has(name)) throw new Error(`Tag appears twice in group ${group.id}: ${name}`)
+        inGroup.add(name)
+        seen.add(name)
+        return byName.get(name)
+      }).filter(Boolean)
+    }
+  }).filter(group => group.tags.length)
   const other = tags.filter(tag => !seen.has(tag.name))
     .sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name, 'zh-CN'))
   if (other.length) groups.push({ id: 'other', title: '其他标签', tags: other })
@@ -40,7 +44,7 @@ hexo.extend.tag.register('tag_directory', () => {
     `<a href="${href('/categories/')}">分类</a><a href="${href('/tags/')}" aria-current="page">标签</a>` +
     `<a href="${href('/topics/')}">技术专题</a></nav>` +
     `<span class="directory-total">${tags.length} 个标签</span></div>` +
-    '<p class="directory-intro">从关键词找到相关文章。标签旁的数字是文章数量。</p>' +
+    '<p class="directory-intro">按内容方向浏览标签，同一标签可出现在多个分组。数字表示该标签的文章数量。</p>' +
     `<nav class="tag-group-nav" aria-label="跳转到标签分组">${jumpLinks}</nav>` +
     `<div class="tag-groups">${sections}</div></div>`
 })
@@ -55,10 +59,12 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   }
   const currentTag = data?.page?.tag
   if (!currentTag || html.includes('id="tag-archive-nav"')) return html
-  const group = tagGroups().find(group => group.tags.includes(currentTag))
+  const groups = tagGroups().filter(group => group.tags.includes(currentTag))
   const navigation = '<nav class="tag-archive-nav" id="tag-archive-nav" aria-label="标签导航">' +
     `<a href="${href('/tags/')}">全部标签</a>` +
-    (group ? `<span aria-hidden="true">›</span><a href="${href('/tags/#tags-' + group.id)}">${esc(group.title)}</a>` : '') +
-    `<span aria-hidden="true">›</span><span aria-current="page">${esc(currentTag)}</span></nav>`
+    `<span aria-hidden="true">›</span><span aria-current="page">${esc(currentTag)}</span>` +
+    (groups.length ? '<span class="tag-archive-groups"><span>相关方向：</span>' +
+      groups.map(group => `<a href="${href('/tags/#tags-' + group.id)}">${esc(group.title)}</a>`).join('') + '</span>' : '') +
+    '</nav>'
   return html.replace(/(<div\b[^>]*\bid="tag"[^>]*>)/i, (_, start) => start + navigation)
 }, 6)

@@ -1,8 +1,10 @@
 # 只维护分组和显示顺序；文章数量、标签地址由 Hexo 读取。
 # 新标签未分组时自动显示在“其他标签”，不会从目录中消失。
+# 按本站相关文章的内容分组，允许同一标签出现在多个相关方向。
+# 同一分组内不重复，页面标签总数仍按唯一标签统计。
 - id: ai
-  title: AI 与知识检索
-  description: 从模型使用到 RAG、Agent 和知识库。
+  title: AI 与智能应用
+  description: 模型使用、Agent 开发、RAG、知识检索与 AI 编程。
   tags:
     - AI
     - LLM
@@ -16,21 +18,27 @@
     - AI 编程
 
 - id: search
-  title: 搜索引擎
-  description: 部署、查询、数据接入与集群管理。
+  title: 搜索与知识库
+  description: 搜索引擎、知识库接入、RAG 与向量检索。
   tags:
     - Easysearch
     - OpenSearch
     - Elasticsearch
     - 搜索引擎
+    - Coco AI
+    - RAG
+    - 向量数据库
+    - Milvus
     - DBX
     - 极限科技
 
 - id: infrastructure
   title: 云计算与运维
-  description: 云服务、容器、Linux 与身份认证。
+  description: AWS 服务、容器、Linux 与身份认证。
   tags:
     - AWS
+    - AgentCore
+    - Bedrock
     - Docker
     - Kubernetes
     - Linux
@@ -40,8 +48,8 @@
     - 代理
 
 - id: development
-  title: 开发与写作
-  description: 编程、版本管理、博客搭建与效率工具。
+  title: 编程与博客
+  description: 编程语言、版本管理、博客搭建与内容发布。
   tags:
     - 开发
     - Python
@@ -50,22 +58,33 @@
     - Blog
     - Markdown
     - SEO
-    - 效率
-    - 双拼
 
-- id: devices
-  title: 设备与家庭网络
-  description: 微服、NAS、桌面设备与家里的网络。
+- id: homelab
+  title: NAS 与家庭服务
+  description: 微服、家庭存储、文件共享与家庭网络。
   tags:
     - 懒猫微服
     - NAS
     - 家庭网络
     - 群晖
+    - Samba
+
+- id: devices
+  title: 数码与硬件
+  description: 电脑手机、外设体验与开发板折腾。
+  tags:
     - Apple
     - 外设
     - 手机
-    - Samba
     - 单片机
+
+- id: productivity
+  title: 效率与个人管理
+  description: 时间管理、习惯养成、搞定实践与输入法。
+  tags:
+    - 效率
+    - 搞定三部曲
+    - 双拼
 
 - id: life
   title: 生活与阅读
@@ -80,4 +99,3 @@
     - 减肥
     - 体验
     - Podcasts
-    - 搞定三部曲

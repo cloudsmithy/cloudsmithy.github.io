@@ -25,7 +25,7 @@ const websiteJsonLd = {
   url: SITE_URL + '/',
   description: SITE_DESC,
   inLanguage: 'zh-CN',
-  copyrightYear: '2022',
+  copyrightYear: '2016',
   author: { '@type': 'Person', name: AUTHOR, url: AUTHOR_URL },
   publisher: {
     '@type': 'Person',
