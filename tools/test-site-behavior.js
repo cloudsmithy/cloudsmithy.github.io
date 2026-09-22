@@ -309,3 +309,34 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
   assert.equal(nav.parentElement, aside)
   assert.equal(desktop.listeners.size, 1)
 })
+
+test('article listings get compact directory links without changing other pages', () => {
+  const filters = []
+  const locals = { data: { topics: [] }, categories: { length: 34 }, tags: { length: 52 }, posts: { length: 357 } }
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/topics.js'), 'utf8'), {
+    require,
+    hexo: {
+      config: { root: '/', url: origin },
+      on() {},
+      locals: { get: name => locals[name] },
+      extend: { tag: { register() {} }, filter: { register(_, callback) { filters.push(callback) } } }
+    }
+  })
+  const html = '<main><div id="recent-posts">Articles</div><div id="aside-content">' +
+    '<div class="sticky_layout"><div class="card-widget card-categories">Original categories</div></div></div></main>'
+  const render = filters.find(callback => callback(html, { path: 'index.html' }).includes('id="home-directory"'))
+  assert.ok(render)
+  for (const page of ['index.html', 'page/2/index.html', 'page/36/index.html']) {
+    const result = render(html, { path: page })
+    const decoded = require('hexo-util').unescapeHTML(result)
+    assert.match(decoded, /href="\/categories\/"[\s\S]*?34 个/)
+    assert.match(decoded, /href="\/tags\/"[\s\S]*?52 个/)
+    assert.match(decoded, /href="\/archives\/"[\s\S]*?357 篇/)
+    assert.ok(result.includes('Original categories'))
+    assert.equal(render(result, { path: page }), result)
+  }
+  for (const page of ['categories/index.html', 'tags/AI/index.html', 'fa9f211a/index.html']) {
+    assert.equal(render(html, { path: page }), html)
+  }
+  assert.equal(render('<main>Without sidebar</main>', { path: 'index.html' }), '<main>Without sidebar</main>')
+})

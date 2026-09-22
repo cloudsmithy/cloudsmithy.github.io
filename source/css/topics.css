@@ -257,7 +257,7 @@
 
 .home-topics .home-topics-all {
   flex-shrink: 0;
-  gap: 4px;
+  min-width: 44px;
   padding: 0 4px;
   border-radius: 8px;
   color: var(--home-muted);
@@ -266,24 +266,8 @@
   letter-spacing: .04em;
 }
 
-.home-topics-arrow {
-  display: inline-block;
-  font-size: 16px;
-  line-height: 1;
-  letter-spacing: 0;
-  transition: transform .2s ease;
-}
-
 .home-topics .home-topics-all:is(:hover, :focus-visible) {
   color: var(--font-color);
-}
-
-.home-topics-all:is(:hover, :focus-visible) .home-topics-arrow {
-  transform: translateX(3px);
-}
-
-.home-topics-all:active .home-topics-arrow {
-  transform: translateX(3px) scale(.94);
 }
 
 #aside-content .home-topics {
@@ -305,6 +289,59 @@
 
 #aside-content .home-topic-link {
   width: 100%;
+}
+
+/* Full directory widgets made the sidebar taller than the article list. */
+#content-inner:has(> #recent-posts) #aside-content :is(.card-categories, .card-tags, .card-archives) {
+  display: none;
+}
+
+#aside-content .home-directory {
+  padding: 8px 16px;
+  border: 1px solid var(--directory-border);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.home-directory a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 12px;
+  color: var(--font-color);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.home-directory a + a {
+  border-top: 1px solid var(--directory-border);
+}
+
+.home-directory a > i {
+  width: 18px;
+  color: var(--directory-muted);
+  text-align: center;
+}
+
+.home-directory-count {
+  margin-left: auto;
+  color: var(--directory-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-directory-arrow {
+  color: var(--directory-muted);
+}
+
+.home-directory a:hover {
+  color: var(--text-highlight-color);
+}
+
+.home-directory a:focus-visible {
+  outline: 2px solid var(--text-highlight-color);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Text-only posts should take the height of their content, not an empty cover. */
@@ -1075,7 +1112,7 @@
   gap: 4px 6px;
 }
 
-.card-tags .card-tag-cloud a {
+#aside-content .card-tags .card-tag-cloud a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -1156,7 +1193,6 @@
 @media (prefers-reduced-motion: reduce) {
   .nav-dropdown-trigger > .fa-chevron-down,
   .home-topics a,
-  .home-topics-arrow,
   .topic-grid .topic-card {
     transition: none;
   }
@@ -1176,9 +1212,5 @@
 
   .topic-bubble-motion {
     transform: none !important;
-  }
-
-  .home-topics-all:is(:hover, :focus-visible, :active) .home-topics-arrow {
-    transform: none;
   }
 }

@@ -240,8 +240,7 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
     '<div class="home-topics-heading">' +
-    `<a class="home-topics-all" href="${href('/topics/')}" aria-label="More · 查看全部专题"><span lang="en">More</span> ` +
-    '<span class="home-topics-arrow" aria-hidden="true">》</span></a></div>' +
+    `<a class="home-topics-all" href="${href('/topics/')}" aria-label="查看全部专题"><span lang="en">ALL</span></a></div>` +
     '<p class="topic-play-hint" id="topic-play-hint">点气泡玩，点文字读</p>' +
     `<div class="home-topic-links">${links}</div></nav>`
   const script = `<script data-pjax>if(!window.jinghuTopicBubbles){window.jinghuTopicBubbles=${initTopicBubbles.toString()};` +
@@ -251,6 +250,24 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   const mainEnd = result.toLowerCase().lastIndexOf('</main>')
   const insertion = mainEnd < 0 ? result.toLowerCase().lastIndexOf('</body>') : mainEnd
   return insertion < 0 ? result + script : result.slice(0, insertion) + script + result.slice(insertion)
+}, 6)
+
+// Article listings only need directory entrances; the full trees live on their
+// own pages. Keeping this static also makes the links work without JavaScript.
+hexo.extend.filter.register('after_render:html', (html, data) => {
+  if (!/^\/?(?:page\/\d+\/)?index\.html$/.test(data?.path || '') ||
+      !html.includes('id="recent-posts"') || html.includes('id="home-directory"')) return html
+  const links = [
+    { path: '/categories/', label: '分类', icon: 'fas fa-folder-open', count: hexo.locals.get('categories').length, unit: '个' },
+    { path: '/tags/', label: '标签', icon: 'fas fa-tags', count: hexo.locals.get('tags').length, unit: '个' },
+    { path: '/archives/', label: '归档', icon: 'fas fa-archive', count: hexo.locals.get('posts').length, unit: '篇' }
+  ].map(item =>
+    `<a href="${href(item.path)}"><i class="${item.icon}" aria-hidden="true"></i>` +
+    `<span>${item.label}</span><span class="home-directory-count">${item.count} ${item.unit}</span>` +
+    '<span class="home-directory-arrow" aria-hidden="true">→</span></a>'
+  ).join('')
+  const directory = '<nav class="card-widget home-directory" id="home-directory" aria-label="文章目录">' + links + '</nav>'
+  return html.replace(/(<div\b[^>]*\bclass="sticky_layout"[^>]*>)/i, (_, start) => start + directory)
 }, 6)
 
 hexo.extend.filter.register('after_render:html', (html, data) => {
