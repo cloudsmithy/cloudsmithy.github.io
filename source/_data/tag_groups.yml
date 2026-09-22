@@ -16,6 +16,7 @@
     - 向量数据库
     - Milvus
     - AI 编程
+    - 机器学习
 
 - id: search
   title: 搜索与知识库
@@ -77,6 +78,9 @@
     - 外设
     - 手机
     - 单片机
+    - 51 单片机
+    - STM32
+    - 树莓派
 
 - id: productivity
   title: 效率与个人管理

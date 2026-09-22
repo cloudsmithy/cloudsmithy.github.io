@@ -199,3 +199,59 @@
     - title: 用 MCP 让 AI 操作 Easysearch
       url: /9ca6531a/
       note: 把检索和集群操作封装成 AI 可以调用的工具。
+
+- id: machine-learning
+  title: 机器学习笔记
+  home: false
+  match:
+    tags: [机器学习]
+  icon: fas fa-brain
+  summary: 数据探索、回归、分类、聚类与图学习
+  intro: 这组 2024 年的课程笔记保留了原练习、代码和图表。先看系列目录中的环境与数据说明，再按数据探索、监督学习、神经网络和无监督学习的顺序阅读。
+  more:
+    label: 查看 14 篇完整目录与运行说明
+    url: /series/machine-learning/
+  steps:
+    - title: 数据探索与清洗
+      url: /b5db1154/
+      note: 从读取数据、处理重复记录和基本统计开始。
+    - title: 线性回归
+      url: /bef942f1/
+      note: 理解回归模型，并跟随原练习查看实现。
+    - title: 多层感知机
+      url: /3a5f01bd/
+      note: 从基础分类方法继续进入神经网络。
+    - title: K-means 与层次聚类
+      url: /a45ff8db/
+      note: 进入无监督学习，比较不同的聚类方式。
+    - title: 图学习
+      url: /48f09f83/
+      note: 跟随原工作坊材料理解网络结构与图分析。
+
+- id: embedded
+  title: 单片机与嵌入式
+  home: false
+  match:
+    tags: [单片机, 51 单片机, STM32, 树莓派]
+  icon: fas fa-microchip
+  summary: 51 单片机、STM32 与树莓派的早期实践
+  intro: 从 51 单片机的环境搭建与 LED 实验开始，再看输入输出、定时器和通信。STM32 与树莓派在完整目录中单列，保留各自的工具和硬件背景。
+  more:
+    label: 查看嵌入式系列完整目录
+    url: /series/embedded/
+  steps:
+    - title: Linux 开发 8051 的环境搭建
+      url: /8bd7b11b/
+      note: 了解原记录中的编译器、编辑器和烧录工具。
+    - title: LED 与流水灯
+      url: /fc49a1f5/
+      note: 从点亮一个灯开始熟悉输出控制。
+    - title: 中断与定时器
+      url: /283d15fb/
+      note: 查看外部中断与定时器实验。
+    - title: 串口通信
+      url: /a5882897/
+      note: 继续实践收发数据与串口中断。
+    - title: STM32F767 CubeMX 跑马灯
+      url: /327b74bc/
+      note: 换一个硬件平台，了解 HAL 与工程生成过程。

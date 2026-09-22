@@ -27,6 +27,8 @@ menu:
     AWS 与云计算: /topics/#cloud || fas fa-cloud
     Docker 与 Homelab: /topics/#containers || fas fa-cubes
     AI 实践: /topics/#ai || fas fa-microchip
+    机器学习笔记: /series/machine-learning/ || fas fa-brain
+    单片机与嵌入式: /series/embedded/ || fas fa-microchip
   文章归档 || fas fa-archive:
     全部文章: /archives/ || fas fa-clock
     按分类浏览: /categories/ || fas fa-folder-open
