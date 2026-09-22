@@ -108,6 +108,7 @@ feed:
   content_limit_delim: " "
 sitemap:
   path: sitemap.xml
+  # scripts/tag-directory.js restricts tag entries to source/_data/tag_landings.yml.
   tags: true
   categories: true
 nofollow:

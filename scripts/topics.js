@@ -247,7 +247,7 @@ function initTopicBubbles() {
 hexo.extend.filter.register('after_render:html', (html, data) => {
   if (!/^\/?index\.html$/.test(data?.path || '') || !topics().length) return html
   if (html.includes('id="home-topics"')) return html
-  const links = topics().map(topic =>
+  const links = topics().filter(topic => topic.home !== false).map(topic =>
     '<div class="home-topic-link"><div class="topic-bubble-motion"><div class="topic-bubble">' +
     `<button class="topic-bubble-play" type="button" aria-label="晃一晃${esc(topic.title)}气泡" ` +
     'aria-describedby="topic-play-hint" title="点击弹跳，拖动后回弹">' +
@@ -267,8 +267,8 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   return insertion < 0 ? result + script : result.slice(0, insertion) + script + result.slice(insertion)
 }, 6)
 
-// Keep full categories and the tag cloud visible below the articles, while the
-// sidebar keeps short directory links. Static markup also works without JS.
+// Put discovery below both columns so it has its own centered reading area.
+// Keep it inside main so PJAX replaces it together with the article listing.
 hexo.extend.filter.register('after_render:html', (html, data) => {
   if (!/^\/?(?:page\/\d+\/)?index\.html$/.test(data?.path || '') ||
       !html.includes('id="recent-posts"') || html.includes('id="home-directory"')) return html
@@ -291,10 +291,10 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
     result = result.slice(0, range.start) + result.slice(range.end)
   }
   if (widgets.length) {
-    const articles = divRange(result, /<div\b[^>]*\bid="recent-posts"[^>]*>/i)
-    if (!articles) return html
-    const discovery = '<section class="home-discovery" aria-label="分类与标签">' + widgets.join('') + '</section>'
-    result = result.slice(0, articles.close) + discovery + result.slice(articles.close)
+    const mainEnd = result.toLowerCase().lastIndexOf('</main>')
+    if (mainEnd < 0) return html
+    const discovery = '<section class="home-discovery" id="home-discovery" aria-label="分类与标签">' + widgets.join('') + '</section>'
+    result = result.slice(0, mainEnd) + discovery + result.slice(mainEnd)
   }
   return result.replace(/(<div\b[^>]*\bclass="sticky_layout"[^>]*>)/i, (_, start) => start + directory)
 }, 6)

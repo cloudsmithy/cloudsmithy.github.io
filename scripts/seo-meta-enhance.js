@@ -45,14 +45,20 @@ function stripEmptyJsonLd(html) {
   )
 }
 
-function ensureMetaRobots(html, isNotFound) {
+function ensureMetaRobots(html, noindex) {
   const robots = /<meta\s+name="robots"[^>]*>/i
-  const tag = `<meta name="robots" content="${isNotFound ? 'noindex,follow' : 'index,follow'}">`
-  if (robots.test(html)) return isNotFound ? html.replace(robots, tag) : html
+  const tag = `<meta name="robots" content="${noindex ? 'noindex,follow' : 'index,follow'}">`
+  if (robots.test(html)) return noindex ? html.replace(robots, tag) : html
   return html.replace(
     /(<meta\s+name="viewport"[^>]*>)/i,
     '$1' + tag
   )
+}
+
+function setMeta(html, attribute, name, content) {
+  const tag = `<meta ${attribute}="${name}" content="${escapeAttr(content)}">`
+  const pattern = new RegExp(`<meta\\s+${attribute}="${name}"[^>]*>`, 'i')
+  return pattern.test(html) ? html.replace(pattern, () => tag) : html.replace(/<\/head>/i, tag + '</head>')
 }
 
 function fillTwitterCard(html, { title, description }) {
@@ -147,6 +153,14 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
   const path = data && data.path ? data.path : ''
   const isHome = isRootHome(path)
   const isNotFound = /^\/?404(?:\.html|\/(?:index\.html)?)?$/.test(path)
+  const isTagRoute = /^\/?tags(?:\/|$)/.test(path)
+  const currentTag = data?.page?.tag
+  const tagPage = Number(data?.page?.current || 1)
+  const isTagPagination = tagPage > 1 || /\/page\/\d+\//.test(path)
+  const landing = currentTag && (hexo.locals?.get('data')?.tag_landings || [])
+    .find(item => item.tag === currentTag)
+  const indexableTag = Boolean(landing && !isTagPagination)
+  const noindex = isNotFound || (isTagRoute && !indexableTag)
 
   // Read description/og:title from the rendered HTML, then mutate.
   const desc = pickMeta(html, ['description', 'og:description'])
@@ -154,8 +168,22 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
 
   let out = html
   out = stripEmptyJsonLd(out)
-  out = ensureMetaRobots(out, isNotFound)
+  out = ensureMetaRobots(out, noindex)
   out = preloadFontAwesome(out)
+
+  if (currentTag) {
+    const pageSuffix = isTagPagination ? ` · 第 ${tagPage} 页` : ''
+    const title = `${landing?.title || currentTag + ' 标签归档'}${pageSuffix} - ${SITE_NAME}`
+    const description = isTagPagination
+      ? `${currentTag} 标签的第 ${tagPage} 页文章归档，继续查阅镜湖的相关记录。`
+      : landing?.description || `镜湖博客中与 ${currentTag} 相关的文章归档，按发表时间查找实践记录与笔记。`
+    out = out.replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${escapeAttr(title)}</title>`)
+    for (const [attribute, name, value] of [
+      ['name', 'description', description], ['property', 'og:title', title],
+      ['property', 'og:description', description], ['name', 'twitter:title', title],
+      ['name', 'twitter:description', description]
+    ]) out = setMeta(out, attribute, name, value)
+  }
 
   if (isHome) {
     out = rewriteHomeOgTitle(out)

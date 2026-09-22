@@ -274,7 +274,16 @@
 }
 
 .home-discovery {
-  margin-top: 28px;
+  flex: 0 0 100%;
+  width: 100%;
+  margin: 40px 0 0;
+  padding: 28px 24px 0;
+  border-top: 1px solid var(--directory-border);
+  text-align: center;
+}
+
+#content-inner:has(> .home-discovery) {
+  flex-wrap: wrap;
 }
 
 .home-discovery > .card-widget {
@@ -285,6 +294,8 @@
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .home-discovery > .card-widget + .card-widget {
@@ -294,6 +305,7 @@
 .home-discovery .item-headline {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   margin-bottom: 8px;
   color: var(--directory-muted);
@@ -306,11 +318,13 @@
   padding-top: 0;
   color: var(--directory-muted);
   font-size: 12px;
+  justify-content: center;
 }
 
 .home-discovery .sidebar-category-groups {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 4px 16px;
 }
 
@@ -337,6 +351,8 @@
 
 .home-discovery .category-group[open] {
   flex-basis: 100%;
+  max-width: 720px;
+  text-align: left;
 }
 
 .home-discovery .category-group[open] > .category-tree {
@@ -348,6 +364,8 @@
 
 .home-discovery .card-tags .card-tag-cloud {
   gap: 2px 12px;
+  justify-content: center;
+  font-size: 14px;
 }
 
 .home-discovery .card-tag-cloud a:focus-visible {
@@ -357,7 +375,8 @@
 
 @media (max-width: 768px) {
   .home-discovery {
-    margin-top: 20px;
+    margin-top: 28px;
+    padding: 24px 0 0;
   }
 
   .home-discovery .category-group[open] > .category-tree {
@@ -713,6 +732,45 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 4px 12px;
+}
+
+.tag-landing {
+  margin: 24px 0 32px;
+}
+
+.tag-landing h2 {
+  margin: 0 0 16px;
+  font-size: 1.6em;
+  line-height: 1.5;
+}
+
+.tag-landing p {
+  line-height: 1.9;
+}
+
+.tag-landing-reads {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 28px;
+  padding-left: 24px;
+}
+
+.tag-landing-reads a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.tag-landing-reads span {
+  display: block;
+  color: var(--directory-muted);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .tag-landing-reads {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .tag-archive-nav a:hover,

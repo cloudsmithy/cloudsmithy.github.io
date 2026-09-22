@@ -359,7 +359,8 @@ test('article listings preserve full categories and tag clouds below posts witho
     assert.equal((result.match(/class="card-widget card-categories"/g) || []).length, 1)
     assert.equal((result.match(/class="card-widget card-tags"/g) || []).length, 1)
     assert.ok(result.indexOf('class="home-discovery"') > result.indexOf('id="pagination"'))
-    assert.ok(result.indexOf(tags) < result.indexOf('id="aside-content"'))
+    assert.ok(result.indexOf(tags) > result.indexOf('Site information'))
+    assert.ok(result.indexOf(tags) < result.indexOf('</main>'))
     assert.ok(result.indexOf('Site information') > result.indexOf('id="aside-content"'))
     assert.equal(render(result, { path: page }), result)
   }
@@ -386,6 +387,7 @@ test('tags can belong to multiple groups while totals and article counts stay un
     require,
     hexo: {
       config: { root: '/', url: origin },
+      on() {},
       locals: { get: name => name === 'data' ? { tag_groups: groups } : { length: tags.length, toArray: () => tags } },
       extend: {
         tag: { register(_, callback) { renderDirectory = callback } },
@@ -409,4 +411,72 @@ test('tags can belong to multiple groups while totals and article counts stay un
   assert.equal((archive.match(/aria-current="page"/g) || []).length, 1)
   groups[0].tags.push('AgentCore')
   assert.throws(() => renderDirectory(), /twice in group ai/)
+})
+
+test('only maintained tag landings are indexed; other tags and every tag pagination are noindex', () => {
+  const landings = require(require.resolve('js-yaml', { paths: [require.resolve('hexo')] })).load(fs.readFileSync(path.join(root, 'source/_data/tag_landings.yml'), 'utf8'))
+  let render
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/seo-meta-enhance.js'), 'utf8'), {
+    require,
+    hexo: {
+      locals: { get: () => ({ tag_landings: landings }) },
+      extend: { filter: { register(_, callback) { render = callback } } }
+    }
+  })
+  const html = head + '<title>镜湖</title><meta name="robots" content="index,follow">' +
+    '<meta property="og:title" content="镜湖"><meta name="description" content="通用描述">' +
+    '<meta property="og:description" content="通用描述"><meta name="twitter:description" content="通用描述"></head>'
+  for (const landing of landings) {
+    const result = render(html, { path: `tags/${landing.tag}/index.html`, page: { tag: landing.tag, current: 1 } })
+    assert.match(result, /name="robots" content="index,follow"/)
+    assert.ok(result.includes(`<title>${landing.title} - 镜湖</title>`))
+    assert.equal((result.match(new RegExp(landing.description, 'g')) || []).length, 3)
+    assert.doesNotMatch(result, /通用描述/)
+    const paged = render(html, { path: `tags/${landing.tag}/page/2/index.html`, page: { tag: landing.tag, current: 2 } })
+    assert.match(paged, /name="robots" content="noindex,follow"/)
+    assert.match(paged, /第 2 页/)
+  }
+  for (const tag of ['AgentCore', '机器学习', 'STM32']) {
+    const result = render(html, { path: `tags/${tag}/index.html`, page: { tag, current: 1 } })
+    assert.match(result, /name="robots" content="noindex,follow"/)
+    assert.ok(result.includes(`${tag} 标签归档`))
+  }
+  assert.match(render(html, { path: 'tags/index.html', page: {} }), /name="robots" content="noindex,follow"/)
+  assert.match(render(html, { path: 'post/index.html', page: { layout: 'post' } }), /name="robots" content="index,follow"/)
+})
+
+test('sitemap allowlist and tag landing introductions use the same maintained data', () => {
+  const landings = require(require.resolve('js-yaml', { paths: [require.resolve('hexo')] })).load(fs.readFileSync(path.join(root, 'source/_data/tag_landings.yml'), 'utf8'))
+  const tags = [...landings.map(item => ({ name: item.tag })), { name: 'Other' }]
+  let beforeGenerate
+  let generate
+  let renderArchive
+  const config = { root: '/', url: origin }
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/tag-directory.js'), 'utf8'), {
+    require: name => name === 'hexo-generator-sitemap/lib/generator'
+      ? function (locals) { assert.equal(this.config, config); return locals }
+      : require(name),
+    hexo: {
+      config,
+      on(_, callback) { beforeGenerate = callback },
+      locals: { get: name => name === 'data' ? { tag_landings: landings, tag_groups: [] } : { length: tags.length } },
+      extend: {
+        generator: { register(_, callback) { generate = callback } },
+        tag: { register() {} },
+        filter: { register(_, callback) { renderArchive = callback } }
+      }
+    }
+  })
+  beforeGenerate()
+  const posts = { retained: true }
+  const filtered = generate.call({ config }, { tags: { toArray: () => tags }, posts })
+  assert.deepEqual(filtered.tags.toArray().map(item => item.name), ['Docker', 'AWS', 'NAS', '懒猫微服'])
+  assert.equal(filtered.posts, posts)
+  for (const landing of landings) {
+    const first = renderArchive('<div id="tag">Articles</div>', { path: `tags/${landing.tag}/index.html`, page: { tag: landing.tag, current: 1 } })
+    assert.ok(first.includes(landing.heading))
+    assert.equal((first.match(/<li>/g) || []).length, 4)
+    const next = renderArchive('<div id="tag">Articles</div>', { path: `tags/${landing.tag}/page/2/index.html`, page: { tag: landing.tag, current: 2 } })
+    assert.doesNotMatch(next, /tag-landing-title/)
+  }
 })
