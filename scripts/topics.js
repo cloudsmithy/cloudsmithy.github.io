@@ -240,7 +240,7 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
     '<div class="home-topics-heading">' +
-    `<a class="home-topics-all" href="${href('/topics/')}" aria-label="查看全部专题"><span lang="en">ALL</span></a></div>` +
+    `<a class="home-topics-all" href="${href('/topics/')}" aria-label="查看全部专题"><span lang="en">All</span></a></div>` +
     '<p class="topic-play-hint" id="topic-play-hint">点气泡玩，点文字读</p>' +
     `<div class="home-topic-links">${links}</div></nav>`
   const script = `<script data-pjax>if(!window.jinghuTopicBubbles){window.jinghuTopicBubbles=${initTopicBubbles.toString()};` +
