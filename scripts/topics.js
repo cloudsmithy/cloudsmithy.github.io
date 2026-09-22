@@ -100,9 +100,33 @@ hexo.extend.tag.register('category_directory', () => {
 // the generated homepage markup, including when PJAX returns to the homepage.
 function initTopicBubbles() {
   const nav = document.getElementById('home-topics')
-  if (!nav || nav.dataset.bubblesReady) return
+  if (!nav) {
+    window.jinghuTopicBubblesCleanup?.()
+    return
+  }
+  if (nav.dataset.bubblesReady) return
+  window.jinghuTopicBubblesCleanup?.()
   nav.dataset.bubblesReady = 'true'
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const desktop = window.matchMedia('(min-width: 901px)')
+  const articles = document.getElementById('recent-posts')
+  const aside = document.getElementById('aside-content')
+  const placeTopics = () => {
+    const showInAside = desktop.matches && aside && getComputedStyle(aside).display !== 'none'
+    const destination = showInAside ? aside : articles
+    if (!destination || nav.parentElement === destination) return
+    const author = showInAside && aside.querySelector('.card-info')
+    if (author) author.after(nav)
+    else destination.prepend(nav)
+  }
+  placeTopics()
+  desktop.addEventListener('change', placeTopics)
+  const observer = new MutationObserver(placeTopics)
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+  window.jinghuTopicBubblesCleanup = () => {
+    desktop.removeEventListener('change', placeTopics)
+    observer.disconnect()
+  }
 
   nav.querySelectorAll('.topic-bubble-play').forEach(button => {
     const motion = button.closest('.topic-bubble-motion')
@@ -130,11 +154,11 @@ function initTopicBubbles() {
       motion.classList.add('is-playing')
       const current = motion.animate([
         { transform: `translate(${x}px, ${y}px) rotate(${x / 8}deg) scale(.95, 1.04)`, offset: 0 },
-        { transform: `translate(${-x * .22}px, ${-y * .22 - 18}px) rotate(${-x / 12}deg) scale(1.04, .97)`, offset: .3 },
-        { transform: `translate(${x * .1}px, ${y * .1 + 6}px) scale(.98, 1.02)`, offset: .56 },
-        { transform: 'translate(0, -3px) scale(1.01, .99)', offset: .78 },
+        { transform: `translate(${-x * .22}px, ${-y * .22 - 10}px) rotate(${-x / 12}deg) scale(1.04, .97)`, offset: .3 },
+        { transform: `translate(${x * .1}px, ${y * .1 + 3}px) scale(.98, 1.02)`, offset: .56 },
+        { transform: 'translate(0, -2px) scale(1.01, .99)', offset: .78 },
         { transform: 'translate(0, 0) rotate(0) scale(1)', offset: 1 }
-      ], { duration: 720, easing: 'ease-out' })
+      ], { duration: 520, easing: 'ease-out' })
       animation = current
       current.finished.catch(() => {}).finally(() => {
         if (animation === current) {
@@ -156,14 +180,12 @@ function initTopicBubbles() {
       animation?.cancel()
       motion.style.transform = ''
       const bounds = motion.getBoundingClientRect()
-      const inRail = window.matchMedia('(min-width: 1100px)').matches
-      const articleEdge = document.getElementById('recent-posts').getBoundingClientRect().left
+      const panelBounds = nav.getBoundingClientRect()
       pointer = {
         id: event.pointerId, startX: event.clientX, startY: event.clientY,
         x: 0, y: 0, moved: false,
-        minX: Math.max(-36, 12 - bounds.left),
-        maxX: Math.max(0, Math.min(36, window.innerWidth - bounds.right - 12,
-          inRail ? articleEdge - bounds.right - 12 : 36))
+        minX: Math.min(0, Math.max(-20, panelBounds.left + 8 - bounds.left)),
+        maxX: Math.max(0, Math.min(20, panelBounds.right - bounds.right - 8))
       }
       suppressClick = false
       motion.classList.add('is-grabbed')
@@ -177,7 +199,7 @@ function initTopicBubbles() {
       if (Math.hypot(dx, dy) > 5) pointer.moved = true
       if (!pointer.moved) return
       pointer.x = Math.max(pointer.minX, Math.min(pointer.maxX, dx))
-      pointer.y = Math.max(-40, Math.min(40, dy))
+      pointer.y = Math.max(-16, Math.min(12, dy))
       if (!frame) frame = requestAnimationFrame(() => {
         frame = null
         if (pointer) motion.style.transform =
@@ -212,19 +234,23 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
     '<div class="home-topic-link"><div class="topic-bubble-motion"><div class="topic-bubble">' +
     `<button class="topic-bubble-play" type="button" aria-label="晃一晃${esc(topic.title)}气泡" ` +
     'aria-describedby="topic-play-hint" title="点击弹跳，拖动后回弹">' +
-    `<i class="${esc(topic.icon)}" aria-hidden="true"></i></button>` +
+    `<i class="${esc(topic.icon)}" aria-hidden="true"></i></button></div></div>` +
     `<a class="topic-bubble-label" href="${href('/topics/#' + topic.id)}" aria-label="阅读${esc(topic.title)}专题">` +
-    `${esc(topic.home_title || topic.title)}</a></div></div></div>`
+    `${esc(topic.home_title || topic.title)}</a></div>`
   ).join('')
   const panel = '<nav class="home-topics" id="home-topics" aria-label="技术专题">' +
     '<div class="home-topics-heading">' +
     `<a class="home-topics-all" href="${href('/topics/')}" aria-label="More · 查看全部专题"><span lang="en">More</span> ` +
     '<span class="home-topics-arrow" aria-hidden="true">》</span></a></div>' +
     '<p class="topic-play-hint" id="topic-play-hint">点气泡玩，点文字读</p>' +
-    `<div class="home-topic-links">${links}</div></nav>` +
-    `<script>if(!window.jinghuTopicBubbles){window.jinghuTopicBubbles=${initTopicBubbles.toString()};` +
+    `<div class="home-topic-links">${links}</div></nav>`
+  const script = `<script data-pjax>if(!window.jinghuTopicBubbles){window.jinghuTopicBubbles=${initTopicBubbles.toString()};` +
     "document.addEventListener('pjax:complete',window.jinghuTopicBubbles)}window.jinghuTopicBubbles();</script>"
-  return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
+  const result = html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + panel)
+  // Run after both columns are parsed, inside the container replaced by PJAX.
+  const mainEnd = result.toLowerCase().lastIndexOf('</main>')
+  const insertion = mainEnd < 0 ? result.toLowerCase().lastIndexOf('</body>') : mainEnd
+  return insertion < 0 ? result + script : result.slice(0, insertion) + script + result.slice(insertion)
 }, 6)
 
 hexo.extend.filter.register('after_render:html', (html, data) => {
