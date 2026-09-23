@@ -1,7 +1,7 @@
 ---
 title: macOS HiDPI 配置笔记：BetterDisplay 与 M2 脚本调整
 date: '2024-05-23 18:27:49'
-updated: '2024-05-31 00:12:17'
+updated: '2026-09-23'
 abbrlink: '53738e12'
 categories:
 - 电子产品
@@ -17,7 +17,7 @@ source_title: MacOS开启HIDPI的几种方案
 
 这篇保留 2024 年整理的显示设置与脚本修改记录，涉及 BetterDisplay 和 one-key-hidpi。下面的函数调整针对当时的 M2 环境，使用时需要对照自己的系统和脚本版本。
 
-BetterDisplay 是一个功能丰富的显示管理工具，可以为 macOS 提供自定义分辨率、XDR/HDR 额外亮度、虚拟屏幕、画中画、显示断开、显示和 EDID 覆盖等功能。以下是安装和使用 BetterDisplay 的指南：
+我把 BetterDisplay 的安装和显示设置入口记在下面，包括分辨率、亮度、虚拟屏幕和 EDID。菜单名称对应当时的版本：
 
 1. **下载和安装**：
 
@@ -52,11 +52,9 @@ BetterDisplay 是一个功能丰富的显示管理工具，可以为 macOS 提�
      - 选择 “EDID Overrides”。
      - 可以手动输入或导入 EDID 数据来覆盖显示器的默认设置。
 
-BetterDisplay 提供了丰富的功能来增强 macOS 显示设置的灵活性和控制能力，适合需要自定义和高级显示管理的用户。
-
 对于更详细的功能使用说明，可以查看 [BetterDisplay 的 GitHub 页面](https://github.com/waydabber/BetterDisplay)上的文档。
 
-针对M2芯片进行HiDPI修改，以下是具体步骤：
+另一部分是针对 M2 环境调整 one-key-hidpi 的显示器识别函数。下面只列出需要替换的片段，省略了函数的其他部分：
 
 1. **下载并解压项目包**：
 
@@ -101,7 +99,7 @@ BetterDisplay 提供了丰富的功能来增强 macOS 显示设置的灵活性�
    ```
 3. **保存并运行脚本**：
 
-   - 保存修改后的`hidpi.sh`文件。
-   - 按照项目提供的使用说明，运行脚本以启用HiDPI设置。
+   - 保存修改后的 `hidpi.sh` 文件。
+   - 按照项目提供的使用说明运行脚本，不要把上面的函数片段单独当成完整脚本执行。
 
-更多详细步骤和信息可以参考知乎上的文章：[链接](https://zhuanlan.zhihu.com/p/697043685)。
+这部分调整还参考了[原笔记保存的知乎文章](https://zhuanlan.zhihu.com/p/697043685)。

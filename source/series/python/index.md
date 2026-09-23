@@ -25,6 +25,8 @@ comments: false
 
 ## 环境与运行
 
+- [Python 依赖迁移：导出与安装 requirements.txt](/cb008009/) — 从原环境导出依赖，在目标环境安装，并检查包版本与系统依赖的边界。
+- [Ubuntu 配置 JDK 8 环境变量](/08615b14/) — 配合 Python 调用 Java 的笔记，检查 JAVA_HOME、PATH 与配置文件的生效方式。
 - [pipx 与 conda：应用隔离和 Python 环境管理](/7e63cf3c/) — 整理 pipx 安装命令行应用和 conda 管理开发环境的命令，比较两者的用途、依赖隔离及环境导入导出方式。
 - [Python 项目如何忽略和清理 __pycache__](/2eb9cbc6/) — 解释 __pycache__ 和 pyc 文件的来源，记录 .gitignore 配置、取消 Git 跟踪和清理本地缓存的操作。
 - [使用 systemd 设置 Python 程序开机启动](/a6528011/) — 为 Python 脚本编写 systemd 服务文件，设置运行用户、自动启动和重启行为，并记录 crontab 的 @reboot 用法。

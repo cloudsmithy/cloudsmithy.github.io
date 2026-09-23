@@ -21,6 +21,7 @@ comments: false
 
 ## 连接、认证与服务部署
 
+- [Amazon MSK 连接笔记：匿名、TLS、IAM 与 SASL/SCRAM](/b0f1dbc0/) — 对照认证方式、端口、客户端配置和 Secrets Manager，排查连接串混用与密码轮换问题。
 - [AWS CLI 使用笔记：多账户、角色切换与代理](/c3549f55/) — 从 AWS CLI 的凭证配置入手，整理多个 profile、IAM Role、AssumeRole、凭证查找顺序与 HTTP 代理使用方法。
 - [连接 EC2 的四种方式：SSH、Instance Connect、SSM 与串行控制台](/a851db/) — 对照 EC2 Instance Connect、SSH、会话管理器与串行控制台，记录连接设置、常见 SSH 错误及排查思路。
 - [API Gateway 认证实践：IAM、Lambda、Cognito 与 JWT](/74f8a437/) — 分别测试 REST API 与 HTTP API 的资源策略、Lambda 授权、Cognito、IAM 和 JWT，并记录 API Key 使用计划及限流响应。
@@ -33,6 +34,7 @@ comments: false
 
 ## AI 与机器学习
 
+- [Bedrock Converse 调用笔记：DeepSeek R1 与 Claude](/6384163b/) — 两组 Boto3 调用示例，以及文本响应读取、多轮消息和 InvokeModel 的区别。
 - [Amazon Bedrock 基础模型初体验](/fd6e8ce3/) — 记录在 Amazon Bedrock 中尝试文本生成、图片生成、模型评估和 Guardrails 的过程，保留当时的模型选择与界面。
 - [Amazon Q Developer 实践：读代码与修改游戏功能](/aa5bd787/) — 借助 Amazon Q Developer 实验手册，在 VS Code 中解读体素游戏代码、插入功能修改，并尝试生成 Boto3 调用示例。
 - [Amazon SageMaker 学习笔记：数据、训练与部署](/39f5bddc/) — 整理 SageMaker 在数据准备、模型构建、训练和部署中的功能，以及端点、预测数据捕获与模型观察的学习记录。

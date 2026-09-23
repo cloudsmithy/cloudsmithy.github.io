@@ -1,6 +1,7 @@
 ---
-title: "快速检索懒猫商店1000+应用,微服秒变Mac原生APP"
-description: 用 PWA 将懒猫商店变成 Mac 原生应用，快速检索上千款应用
+title: "把懒猫 Web 应用放进 Mac 程序坞：Chrome 与 Safari 的设置方法"
+description: 用 Chrome 或 Safari 把常用的懒猫 Web 应用添加到 Mac 程序坞，直接打开网盘、清单和 ONLYOFFICE，减少反复查找。
+original_title: "快速检索懒猫商店1000+应用,微服秒变Mac原生APP"
 categories:
   - 懒猫微服
   - 番外
@@ -9,42 +10,42 @@ tags:
 toc: true
 abbrlink: ce3905e3
 date: 2025-05-07 00:00:00
+updated: '2026-09-23'
 ---
 
-懒猫商店如今已有 1000+ 应用，日常使用中经常要在搜索栏反复查找，着实有些不便。有没有更简单的方法呢？答案是：**可以直接把网页保存成 Mac 应用，像手机 App 一样快捷打开！**
+写这篇时，懒猫商店已经有 1000 多款应用。日常使用清单、网盘时，总要重新查找入口，有些不便。我把常用网页添加到了 Mac 的程序坞，点击图标就能打开。
 
-下面就手把手教大家几种实用的方法。
+下面分别记录 Chrome 和 Safari 的设置方法。
 
-### 优雅方案——PWA
+### 用 PWA 打开常用应用
 
-在 Mac 上，我们有更高级的玩法。
 不少现代网站都支持 **PWA（Progressive Web App）**，简单来说，就是让网页像 App 一样运行：
 
 - 可以像应用一样安装在本地
-- 点击图标就能直接启动，无需打开浏览器
+- 点击图标就能打开独立的应用窗口
 - 界面简洁，没有多余的地址栏和标签页
 
 下面是懒猫清单的安装效果：
 
 ![懒猫清单 PWA 效果图](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506145822013.png)
 
-**支持 PWA 的网站，在地址栏右侧会自动弹出“安装应用”按钮。**
+**在 Chrome 中，满足安装条件的网站可以通过地址栏右侧的“安装应用”按钮添加。**
 
 ![添加应用](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506144310554.png)
 
 只需点击它，就能轻松将网页保存为应用。
 
-> PWA 的优点：速度快、体验好、支持离线，真正做到了网页与 App 的无缝结合。
+> 添加后的入口更方便，但离线能用哪些功能取决于应用本身。需要连接微服的网盘和在线文档，不会因为安装了 PWA 就自动变成离线应用。
 
-通过 PWA 添加之后，会在 Finder 里弹出 Chrome 应用，我这里添加了懒猫网盘，懒猫原生的 APP 基本都是带 PWA 的，所以这一点体验很好。
+添加完成后，Finder 会打开 Chrome 应用目录。我这里添加了懒猫网盘，之后就可以从这个入口直接打开。
 
 ![Chrome应用](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506144413958.png)
 
-添加完桌面应用之后，浏览器会有“在应用中打开”的提示，点击就可以像 APP 一下打开，就是前面第二张懒猫清单的图片。
+添加完桌面应用后，浏览器里会出现“在应用中打开”的提示，点击后就会进入前面懒猫清单那样的独立窗口。
 
 ![](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506193028087.png)
 
-### 如何通过 Chrome 中安装懒猫 Web 应用
+### 在 Chrome 中安装懒猫 Web 应用
 
 1. 在 Chrome 浏览器中打开你要保存的网站（如懒猫微服务）。
 2. 点击右上角“更多”按钮，依次选择**投放、保存和分享 → 将网页安装为应用...**。
@@ -54,7 +55,7 @@ date: 2025-05-07 00:00:00
 
 安装时你可以自定义应用名称，这里以 OnlyOffice 为例。
 
-这样做还可以解决 Mac 没有 Office 订阅的痛点，直接通过网页版弥补。
+没有安装桌面 Office 时，也可以从这个入口使用 ONLYOFFICE 网页版编辑文档。
 
 ![OnlyOffice 安装为应用](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506145157209.png)
 
@@ -64,7 +65,7 @@ date: 2025-05-07 00:00:00
 /Users/你的用户名/Applications/Chrome Apps.localized/
 ```
 
-它们会以`.app`格式存在，完全就像普通 Mac 应用一样。
+它们会以 `.app` 的形式出现在目录中，但运行的内容仍然是网页应用。
 
 ```bash
 ❰~/Applications/Chrome Apps.localized❱✔≻ ls
@@ -93,7 +94,7 @@ ONLYOFFICE Docs.app/ 懒猫网盘.app/
 
 无论是通过 Chrome 还是 Safari 安装的网页 App，安装完成后都可以像普通应用一样拖到 Dock。
 
-只需保持懒猫微服务后台连接，点击 Dock 图标，就能立即打开应用，体验和原生 App 无异！
+保持懒猫微服客户端连接后，点击 Dock 图标即可打开对应网页，省去了再去商店里查找入口的步骤。
 
 ![拖到 Dock 后效果](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20250506202828139.png)
 
@@ -109,9 +110,9 @@ webbrowser.open("https://www.apple.com")  # 打开网页
 
 支持新窗口、新标签等操作，适合简单自定义。
 
-# 结语
+### 日常使用
 
-通过以上方法，我们就可以把常用的懒猫 APP 变成 Mac 的桌面应用，随时一键直达，告别繁琐的搜索过程，体验飞跃式提升！
+清单、网盘和文档编辑器这些经常用的应用，放进 Dock 就够了。它们仍然依赖原来的网页服务，只是入口变得顺手了一些。
 
 ![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/459/b551e149-48d5-4b6c-b570-65f295961d4b.png "image.png")
 

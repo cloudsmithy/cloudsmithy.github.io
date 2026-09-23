@@ -9,13 +9,14 @@ categories:
   - AWS
 abbrlink: b9af2b64
 date: 2025-06-20 00:00:00
+updated: '2026-09-23'
 ---
 
-Amazon Transit Gateway (TGW) 是一个强大的网络连接服务，用于在不同的 VPC（虚拟私有云）之间实现高效互联。本文将指导您如何创建和配置 TGW，以便实现跨账户和跨区域的 VPC 互联。
+多个 VPC 需要互通时，可以用 Amazon Transit Gateway（TGW）集中转发流量。下面记录创建 TGW、连接 VPC、配置两层路由表，以及通过 RAM 跨账户共享的过程。
 
 ### VPC Peering 的局限性
 
-**点对点连接**：VPC Peering 是一个点对点的连接，每次只能连接两个 VPC。如果需要连接多个 VPC，需要为每对 VPC 单独设置 Peering 连接，也就是我们常说的不能进行路由的传递，需要打通的 VPC 很多的时候会非常的麻烦。
+**点对点连接**：一条 VPC Peering 连接只连接两个 VPC，而且不支持传递路由。比如 A 与 B、B 与 C 建立了 Peering，并不意味着 A 就能经由 B 访问 C。需要全互联的 VPC 多起来后，要维护的连接也会增加。
 
 **手动路由配置**：每个 VPC Peering 连接都需要手动配置路由表，这在大规模环境下非常繁琐。
 
@@ -27,7 +28,7 @@ Amazon Transit Gateway (TGW) 是一个强大的网络连接服务，用于在不
 
 **跨账户和跨区域支持**：TGW 支持跨多个亚马逊云科技账户和跨区域的连接，提供更大的灵活性和扩展性。
 
-总结下来说，TGW 就是是一个中转网关，使用时候需要在需要打通的 VPC 内创建一个挂载点，TGW 会管理一张路由表来决定流量的转发到对应的挂载点上。本质上是 EC2 的请求路由到 TGW，然后在查询 TGW 的路由表来再来决定下一跳，所以需要同时修改 VPC 内子网的路由表和 TGW 的路由表。
+可以把 TGW 理解成中转网关。每个需要互通的 VPC 创建一个挂载点（attachment），TGW 根据路由表把流量转发到对应挂载点。EC2 发出的请求先经过子网路由表到达 TGW，再由 TGW 路由表决定下一跳，所以这两层路由都要配置。
 
 TGW 的网络拓扑图如下：
 
@@ -45,11 +46,11 @@ TGW 的网络拓扑图如下：
 
 建议开启以下三个选项：
 
-DNS support：开启打通 VPC 的 DNS 支持，这个 DNS support 无法解析对端的私有 R53 记录，还需要使用 Resolver 才行 [^1]
+DNS support：开启 DNS 支持，但它不会自动打通其他 VPC 关联的 Route 53 私有托管区域。跨 VPC 的私有域名解析还需要单独规划，例如使用 Route 53 Resolver。[^1]
 
-Default route table association：自动创建一个路由表并且关联这个 TGW
+Default route table association：让新建的挂载点自动关联 TGW 的默认路由表。
 
-Default route table propagation：自动路由表自动传播，这样每次更新的时候就不用手动管理路由。
+Default route table propagation：让挂载点的路由传播到默认 TGW 路由表。它不会代替 VPC 子网路由表中的配置。
 
 ### 2. 在每个 VPC 新建挂载点
 
@@ -60,23 +61,23 @@ Default route table propagation：自动路由表自动传播，这样每次更�
 
 ![](https://i-blog.csdnimg.cn/blog_migrate/f6f20f7a98607b975d5e48590acec9f2.png)
 
-同样这里也要开启对 DNS 的支持，另外关于 Appliance Mode support，如果这个功能开启的话，流量只能在相同的可用区进行转发，这个功能开启需要慎重考虑。
+这里也开启 DNS 支持。另一个选项 Appliance Mode support 主要用于有状态网络设备，例如集中式防火墙。它让同一条流在该挂载点保持可用区路径的一致性，并不是把所有流量限制在同一个可用区内。普通 VPC 互联先按实际需要配置，具体行为见 [VPC 挂载点的 Appliance mode 说明](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html#vpc-attachment-appliance-mode)。
 
 ### 3. 设置 TGW 路由
 
-手动新建 TGW 的路由表并且关联到一个 TGW，如果前面开启了 Default route table association 和 Default route table propagation 不再需要此步骤。
+如果使用前面开启的默认关联和传播，可以先检查默认 TGW 路由表。需要隔离不同网络时，再创建额外的 TGW 路由表，并分别配置挂载点关联和路由传播。
 
 ![](https://i-blog.csdnimg.cn/blog_migrate/fe0bfdcccd14c2694e46dbd5cab24921.png)
 
-需要在 Routes 部分手动添加路由规则
+在 Routes 中检查目标网段是否已有传播路由。下面是手动添加静态路由的界面：
 
 ![](https://i-blog.csdnimg.cn/blog_migrate/98506c132b5f22087bdb79d3ee7e034c.png)
 
 ### 4. 设置子网路由
 
-为每个 VPC 配置路由表，添加到 TGW 的路由。确保启用路由传播，使 VPC 可以通过 TGW 相互通信。
+为需要通信的 VPC 子网配置路由表，把对端网段指向 TGW；对端也要配置返回路由。这里的子网路由需要单独添加，不能只依赖 TGW 路由传播。
 
-和 peering 一一样，需要把对应的流量指到对端，这里 10.1.0.0/16 的流量到 TGW。
+和 Peering 类似，需要告诉子网路由表如何到达对端。这里把发往 `10.1.0.0/16` 的流量交给 TGW。
 
 ![](https://i-blog.csdnimg.cn/blog_migrate/189191718ded45bfd296fb4b345bd12f.png)
 
@@ -88,7 +89,7 @@ Default route table propagation：自动路由表自动传播，这样每次更�
 
 在 RAM 控制台中创建资源共享并邀请其他 AWS 账户。
 
-对方也是需要在 RAM 里进行确认，并且接收方不能二次 share 此 TGW。
+对方接收共享后，就可以按权限创建 VPC 挂载点；接收方不能再把这个 TGW 转分享给其他账户。
 
 ![](https://i-blog.csdnimg.cn/blog_migrate/f228631cba10ecb1ed96ef3c60d7f6a4.png)
 
@@ -114,4 +115,6 @@ https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-
 
 https://aws.amazon.com/cn/blogs/networking-and-content-delivery/centralized-dns-management-of-hybrid-cloud-with-amazon-route-53-and-aws-transit-gateway/
 
-通过这些文档，可以全面了解 TGW 在跨区域连接中的显著优势，确保在大规模和复杂网络环境中的高效、安全和可扩展性。
+本文先完成 VPC 互联与跨账户共享。跨区域 Peering 和集中式 DNS 可以继续对照上面的资料配置。
+
+[^1]: TGW 的 DNS 支持不会自动解析其他 VPC 中的私有托管区域，见上面的 Centralized DNS management 文档。

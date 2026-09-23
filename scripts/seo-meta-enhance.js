@@ -8,12 +8,12 @@ const { unescapeHTML } = require('hexo-util')
 const SITE_URL = 'https://blog.no-claw.com'
 const SITE_NAME = '镜湖'
 const SITE_ALT = ['CloudSmithy Blog', '忘机山人']
-const SITE_DESC = '忘机山人的技术博客。前 AWS 技术支持，家里自建数据中心，为亚马逊云科技、极限科技与懒猫微服供稿。记录 AWS、Docker、NAS、搜索引擎和 AI 部署的实际配置、排查与取舍。'
+const SITE_DESC = '忘机山人的个人博客，记录 AWS 云计算、Docker、NAS、懒猫微服、搜索引擎与 AI 部署的实践，也分享阅读和日常生活。'
 const AUTHOR = '忘机山人'
 const AUTHOR_URL = SITE_URL + '/about/'
 const AUTHOR_ID = AUTHOR_URL + '#person'
 const LOGO_URL = SITE_URL + '/images/icon-512.png'
-const homeTitle = () => `${hexo.config?.title || SITE_NAME} - ${hexo.config?.subtitle || '前 AWS 技术支持的云端与家庭机房实践'}`
+const homeTitle = () => `${hexo.config?.title || SITE_NAME} - ${hexo.config?.subtitle || '忘机山人的技术随手记'}`
 const homeDescription = () => hexo.config?.description || SITE_DESC
 
 const FONTAWESOME_HREF = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css'
