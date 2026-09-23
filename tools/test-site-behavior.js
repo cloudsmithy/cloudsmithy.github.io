@@ -546,3 +546,66 @@ test('sitemap allowlist and tag landing introductions use the same maintained da
     assert.doesNotMatch(next, /tag-landing-title/)
   }
 })
+
+test('homepage search, sharing and structured descriptions follow site configuration', () => {
+  const config = { title: '镜湖', subtitle: '从云端到家庭机房', description: '前 AWS 技术支持，记录 A & B 的实践。' }
+  let render
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/seo-meta-enhance.js'), 'utf8'), {
+    require,
+    hexo: { config, extend: { filter: { register(_, callback) { render = callback } } } }
+  })
+  const html = head + '<title>旧标题</title><meta property="og:title" content="旧标题">' +
+    '<meta name="twitter:title" content="旧标题"><meta name="description" content="旧描述">' +
+    '<meta property="og:description" content="旧描述"><meta name="twitter:description" content="旧描述">' +
+    '</head><h1 class="title-seo">旧标题</h1>'
+  const result = render(html, { path: 'index.html' })
+  assert.match(result, /<title>镜湖 - 从云端到家庭机房<\/title>/)
+  assert.doesNotMatch(result, /旧标题|旧描述/)
+  assert.equal((result.match(/content="前 AWS 技术支持，记录 A &amp; B 的实践。"/g) || []).length, 3)
+  assert.equal(jsonLdNodes(result).find(node => node['@type'] === 'WebSite').description, config.description)
+  const article = render(html, { path: 'article/index.html' })
+  assert.match(article, /<title>旧标题<\/title>/)
+})
+
+test('flat article indexes retain every technical article once and order the complete Lazycat series', () => {
+  const categories = [
+    { _id: 'lazy', name: '懒猫微服' }, { _id: 'intro', name: '入门', parent: 'lazy' },
+    { _id: 'dev', name: '开发', parent: 'lazy' }, { _id: 'software', name: '软件' },
+    { _id: 'life', name: '散文随笔' }
+  ]
+  const post = (id, group, number, extra = {}) => ({
+    path: `${id}/`, title: `<${id}> & 笔记`, source: `_posts/${number}. article.md`,
+    published: true, categories: { toArray: () => group, some: callback => group.some(callback) },
+    date: { format: () => '2025-01-01', valueOf: () => number },
+    ...extra
+  })
+  const first = post('first', categories.slice(0, 2), 2)
+  const tenth = post('tenth', categories.slice(0, 2), 10)
+  const dev = post('dev', [categories[0], categories[2]], 1)
+  const software = post('software', [categories[3]], 1)
+  const life = post('life', [categories[4]], 1)
+  const unpublished = post('draft', categories.slice(0, 2), 3, { published: false })
+  const explicit = post('explicit', [], 1, { section: 'tech' })
+  const posts = [tenth, first, dev, software, life, unpublished, first, explicit]
+  let render
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/series-directory.js'), 'utf8'), {
+    require: name => name === '../lib/content-sections' ? require('../lib/content-sections') : require(name),
+    hexo: {
+      config: { root: '/', url: origin },
+      locals: { get: name => name === 'categories' ? { toArray: () => categories } : { sort: () => posts } },
+      extend: { tag: { register(_, callback) { render = callback } }, filter: { register() {} } }
+    }
+  })
+  const decode = require('hexo-util').unescapeHTML
+  const all = decode(render(['tech']))
+  for (const item of [first, tenth, dev, software, explicit]) {
+    assert.equal((all.match(new RegExp(`href="/${item.path}"`, 'g')) || []).length, 1)
+  }
+  assert.doesNotMatch(all, /href="\/(?:life|draft)\//)
+  assert.match(all, /5 篇文章/)
+  const lazycat = decode(render(['lazycat']))
+  assert.match(lazycat, /3 篇文章/)
+  assert.ok(lazycat.indexOf('href="/first/"') < lazycat.indexOf('href="/tenth/"'))
+  assert.doesNotMatch(lazycat, /href="\/(?:software|explicit)\//)
+  assert.throws(() => render(['unknown']), /Unknown article index/)
+})

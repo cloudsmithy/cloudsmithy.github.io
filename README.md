@@ -62,7 +62,10 @@ pnpm dev
 - 分类页和标签页共用切换导航；标签按方向分行展示，并带文章数量。标签归档的面包屑可以返回所属分组，分类归档可以返回上级分类。
 - 标签改名时，通过 `_config.yml` 的 `tag_map` 保留原有 URL。目前 `Git` 和 `搜索引擎` 分别沿用 `GIT` 和 `搜索引擎（ES）` 的旧地址。
 - `source/_data/tag_landings.yml` 维护 Docker、AWS、NAS、懒猫微服四个可索引标签的介绍、推荐阅读和独立元数据。其余标签、标签分页与标签总目录使用 `noindex,follow`；sitemap 只包含这四个标签的第一页，robots.txt 不禁止抓取标签。
-- `/series/` 汇总 Docker、AWS、Python、机器学习和嵌入式系列。系列页介绍范围、阅读顺序和环境说明，正文通过顶部链接返回目录。迁移文章保留首次发表时间与 `source_url`，原代码、公式和图表不代表迁移时已重新实测。
+- `/series/` 汇总懒猫微服、Docker、AWS、Python、机器学习和嵌入式系列。`/series/` 与 `/topics/` 同时使用 `{% article_index tech %}` 生成全部技术文章的直链目录；`/series/lazycat/` 使用 `{% article_index lazycat %}` 按子类与原系列编号排列全部懒猫文章。目录由 `scripts/series-directory.js` 在构建时读取文章生成，不截断、不分页，也不依赖 JavaScript。
+- 系列页介绍范围、阅读顺序和环境说明，正文通过顶部链接返回目录。迁移文章保留首次发表时间与 `source_url`，原代码、公式和图表不代表迁移时已重新实测。
+- 新文章的十六进制 `abbrlink` 用引号包成字符串，避免 `53738e12` 一类值被 YAML 当作科学计数法，生成错误的短链接。
+- 首页定位文案在 `_config.yml` 的 `subtitle`、`description`、`home_intro` 中维护；搜索标题、Open Graph、Twitter 与 WebSite 描述保持一致。正文定位句仅在首页首屏显示，避免大幅封面挤占文章位置。
 - `source/_data/author.yml` 维护与关于页一致的作者信息。首页 WebSite、文章 BlogPosting 和关于页 ProfilePage 通过同一个 `/about/#person` 关联 Person，包含技术方向及平台主页；历史经历写入简介，不虚构现任雇主。转载或其他署名作者不会被替换为本站作者。
 - 专题的“浏览更多”入口必须覆盖这条路线的文章；例如 AI 专题链接到 `AI` 标签，而不是仅链接到 `LLM`。
 

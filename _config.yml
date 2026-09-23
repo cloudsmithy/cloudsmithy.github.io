@@ -1,6 +1,7 @@
 title: 镜湖
-subtitle: "忘机山人的技术随手记 · AWS · Docker · 懒猫微服 · Homelab"
-description: "镜湖 - 忘机山人的个人博客，专注 AWS 云计算、Docker 容器、NAS 与懒猫微服、Easysearch、Python 后端开发、AI 部署与 Homelab 实践，记录技术、生活与思考"
+subtitle: "前 AWS 技术支持的云端与家庭机房实践"
+description: "忘机山人的技术博客。前 AWS 技术支持，家里自建数据中心，为亚马逊云科技、极限科技与懒猫微服供稿。记录 AWS、Docker、NAS、搜索引擎和 AI 部署的实际配置、排查与取舍。"
+home_intro: "前 AWS 技术支持，家里自建数据中心。为亚马逊云科技、极限科技和懒猫微服写稿，也在这里记录从云端到家用 NAS 的折腾。"
 keywords:
   - 博客
   - 技术

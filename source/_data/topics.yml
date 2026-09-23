@@ -9,7 +9,7 @@
   intro: 刚拿到微服，可以先熟悉硬件和远程登录，再配置家人的账户。准备移植应用时，从开发知识清单开始。
   more:
     label: 浏览懒猫微服全部文章
-    url: /categories/懒猫微服/
+    url: /series/lazycat/
   steps:
     - title: 开箱初探，认识硬件与系统
       url: /4022bac/

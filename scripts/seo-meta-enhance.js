@@ -8,13 +8,13 @@ const { unescapeHTML } = require('hexo-util')
 const SITE_URL = 'https://blog.no-claw.com'
 const SITE_NAME = '镜湖'
 const SITE_ALT = ['CloudSmithy Blog', '忘机山人']
-const SITE_DESC = '忘机山人的个人博客，专注 AWS 云计算、Docker 容器、NAS 与懒猫微服、Easysearch、Python 后端开发、AI 部署与 Homelab 实践，记录技术、生活与思考'
+const SITE_DESC = '忘机山人的技术博客。前 AWS 技术支持，家里自建数据中心，为亚马逊云科技、极限科技与懒猫微服供稿。记录 AWS、Docker、NAS、搜索引擎和 AI 部署的实际配置、排查与取舍。'
 const AUTHOR = '忘机山人'
 const AUTHOR_URL = SITE_URL + '/about/'
 const AUTHOR_ID = AUTHOR_URL + '#person'
 const LOGO_URL = SITE_URL + '/images/icon-512.png'
-const HOME_H1 = '镜湖 — 忘机山人的云计算与 Homelab 笔记'
-const HOME_OG_TITLE = '镜湖 — 忘机山人的云计算与 Homelab 笔记'
+const homeTitle = () => `${hexo.config?.title || SITE_NAME} - ${hexo.config?.subtitle || '前 AWS 技术支持的云端与家庭机房实践'}`
+const homeDescription = () => hexo.config?.description || SITE_DESC
 
 const FONTAWESOME_HREF = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css'
 
@@ -111,6 +111,7 @@ function pickMeta(html, names) {
 
 function rewriteHomeJsonLd(html) {
   const { '@context': context, ...website } = websiteJsonLd
+  website.description = homeDescription()
   const next = graphScript([website, personJsonLd()])
   // Replace the first WebSite block if present; otherwise inject before </head>.
   const re = /<script\s+type="application\/ld\+json">\s*\{[^<]*?"@type"\s*:\s*"WebSite"[\s\S]*?<\/script>/i
@@ -121,15 +122,18 @@ function rewriteHomeJsonLd(html) {
 function rewriteHomeH1(html) {
   return html.replace(
     /<h1\s+class="title-seo">[^<]*<\/h1>/i,
-    `<h1 class="title-seo">${escapeAttr(HOME_H1)}</h1>`
+    `<h1 class="title-seo">${escapeAttr(homeTitle())}</h1>`
   )
 }
 
-function rewriteHomeOgTitle(html) {
-  return html.replace(
-    /<meta\s+property="og:title"\s+content="[^"]*">/i,
-    `<meta property="og:title" content="${escapeAttr(HOME_OG_TITLE)}">`
-  )
+function rewriteHomeMetadata(html) {
+  let result = html.replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${escapeAttr(homeTitle())}</title>`)
+  for (const [attribute, name, value] of [
+    ['property', 'og:title', homeTitle()], ['name', 'twitter:title', homeTitle()],
+    ['name', 'description', homeDescription()], ['property', 'og:description', homeDescription()],
+    ['name', 'twitter:description', homeDescription()]
+  ]) result = setMeta(result, attribute, name, value)
+  return result
 }
 
 function preloadFontAwesome(html) {
@@ -213,7 +217,7 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
   }
 
   if (isHome) {
-    out = rewriteHomeOgTitle(out)
+    out = rewriteHomeMetadata(out)
     out = rewriteHomeJsonLd(out)
     out = rewriteHomeH1(out)
   }
