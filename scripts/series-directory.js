@@ -54,10 +54,3 @@ hexo.extend.tag.register('article_index', ([scope = 'tech']) => {
     `<p class="article-index-count">${seen.size} 篇文章，直接点击标题阅读全文。</p>` +
     `<nav class="article-index-nav" aria-label="${heading}分组">${navigation}</nav>${sections}</div>`
 })
-
-hexo.extend.filter.register('after_render:html', (html, data) => {
-  if (!/^\/?index\.html$/.test(data?.path || '') || html.includes('id="home-intro"') || !hexo.config.home_intro) return html
-  const intro = `<div class="home-intro" id="home-intro"><p>${esc(hexo.config.home_intro)}</p>` +
-    `<a href="${href('/series/')}">全部技术文章 <span aria-hidden="true">→</span></a></div>`
-  return html.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + intro)
-}, 7)

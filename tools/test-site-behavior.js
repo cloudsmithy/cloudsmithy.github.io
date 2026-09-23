@@ -327,7 +327,11 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
     removeEventListener(_, callback) { this.listeners.delete(callback) },
     change(matches) { this.matches = matches; this.listeners.forEach(callback => callback()) }
   }
-  const articles = { prepend(node) { node.parentElement = this } }
+  const homeNotice = { after(node) { node.parentElement = articles; node.after = 'home-notice' } }
+  const articles = {
+    querySelector: () => homeNotice,
+    prepend(node) { node.parentElement = this }
+  }
   const author = { after(node) { node.parentElement = aside; node.after = 'author' } }
   const announcement = { after(node) { node.parentElement = aside; node.after = 'announcement' } }
   const aside = {
@@ -361,6 +365,7 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
 
   desktop.change(false)
   assert.equal(nav.parentElement, articles)
+  assert.equal(nav.after, 'home-notice')
   desktop.change(true)
   assert.equal(nav.parentElement, aside)
   aside.visible = false
@@ -387,6 +392,36 @@ test('homepage topics follow the visible sidebar and clean up on PJAX navigation
   context.initTopicBubbles()
   assert.equal(nav.parentElement, aside)
   assert.equal(desktop.listeners.size, 1)
+})
+
+test('homepage moves one announcement before articles while preserving rich content and other pages', () => {
+  const filters = []
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/topics.js'), 'utf8'), {
+    require,
+    hexo: {
+      config: { root: '/', url: origin }, on() {},
+      locals: { get() { return { topics: [] } } },
+      extend: { tag: { register() {} }, filter: { register(_, callback) { filters.push(callback) } } }
+    }
+  })
+  const content = '<div><p>欢迎来到镜湖</p><a href="/reading/">阅读书架</a></div>'
+  const widget = '<div class="card-widget card-announcement"><div class="item-headline">公告</div>' +
+    `<div class="announcement_content">${content}</div></div>`
+  const html = '<main><div id="recent-posts"><article>Article</article></div>' +
+    `<div id="aside-content">${widget}<div class="card-info">Author</div></div></main>`
+  const render = filters.find(callback => callback(html, { path: 'index.html' }).includes('id="home-announcement"'))
+  assert.ok(render)
+  const result = render(html, { path: 'index.html' })
+  assert.equal((result.match(/id="home-announcement"/g) || []).length, 1)
+  assert.ok(result.includes(content))
+  assert.match(result, /id="recent-posts"><aside class="home-announcement"/)
+  assert.doesNotMatch(result, /card-announcement|home-intro|全部技术文章/)
+  assert.match(result, /id="aside-content"><div class="card-info">Author<\/div>/)
+  assert.equal(render(result, { path: 'index.html' }), result)
+  for (const path of ['page/2/index.html', 'article/index.html', 'topics/index.html']) {
+    assert.equal(render(html, { path }), html)
+  }
+  assert.equal(render(html.replace(widget, ''), { path: 'index.html' }), html.replace(widget, ''))
 })
 
 test('article listings preserve full categories and tag clouds below posts without changing other pages', () => {

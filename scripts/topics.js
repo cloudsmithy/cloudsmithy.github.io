@@ -132,7 +132,9 @@ function initTopicBubbles() {
     const showInAside = desktop.matches && aside && getComputedStyle(aside).display !== 'none'
     const destination = showInAside ? aside : articles
     if (!destination || nav.parentElement === destination) return
-    const anchor = showInAside && (aside.querySelector('.card-announcement') || aside.querySelector('.card-info'))
+    const anchor = showInAside
+      ? aside.querySelector('.card-announcement') || aside.querySelector('.card-info')
+      : articles.querySelector?.('.home-announcement')
     if (anchor) anchor.after(nav)
     else destination.prepend(nav)
   }
@@ -266,6 +268,25 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   const insertion = mainEnd < 0 ? result.toLowerCase().lastIndexOf('</body>') : mainEnd
   return insertion < 0 ? result + script : result.slice(0, insertion) + script + result.slice(insertion)
 }, 6)
+
+// The first homepage uses one compact notice above the reading list.
+// Move the existing content at build time so it also works without JavaScript.
+hexo.extend.filter.register('after_render:html', (html, data) => {
+  if (!/^\/?index\.html$/.test(data?.path || '') || html.includes('id="home-announcement"') ||
+      !html.includes('id="recent-posts"')) return html
+  const widget = divRange(html, /<div\b[^>]*\bclass="card-widget card-announcement"[^>]*>/i)
+  if (!widget) return html
+  const markup = html.slice(widget.start, widget.end)
+  const content = divRange(markup, /<div\b[^>]*\bclass="announcement_content"[^>]*>/i)
+  if (!content) return html
+  const openingEnd = markup.indexOf('>', content.start) + 1
+  const notice = '<aside class="home-announcement" id="home-announcement" aria-labelledby="home-announcement-title">' +
+    '<div class="home-announcement-label" id="home-announcement-title">' +
+    '<i class="fas fa-bullhorn" aria-hidden="true"></i><span>公告</span></div>' +
+    `<div class="home-announcement-content">${markup.slice(openingEnd, content.close)}</div></aside>`
+  const result = html.slice(0, widget.start) + html.slice(widget.end)
+  return result.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + notice)
+}, 7)
 
 // Put discovery below both columns so it has its own centered reading area.
 // Keep it inside main so PJAX replaces it together with the article listing.
