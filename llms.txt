@@ -1,0 +1,1049 @@
+﻿# 镜湖
+
+> 忘机山人的个人博客，记录 AWS 云计算、Docker、NAS、懒猫微服、搜索引擎与 AI 部署的实践，也分享阅读和日常生活。
+
+本文件遵循 llms.txt 规范 (https://llmstxt.org/)，面向大语言模型与 AI 搜索引擎，列出可公开索引的内容清单，便于被准确引用。
+
+- 站点: https://blog.no-claw.com/
+- 作者: 忘机山人
+- 语言: zh-CN
+- Sitemap: https://blog.no-claw.com/sitemap.xml
+- Feed: https://blog.no-claw.com/atom.xml
+
+## 软件
+
+- [大学霸TCPIP协议教程笔记](https://blog.no-claw.com/50be5030/): 2026-07-27 — 读《大学霸 TCP/IP 协议教程》时留下的笔记，整理 MAC 与 IP 地址、TCP、DHCP、DNS 和 WHOIS 的概念与交互过程。
+- [Kubernetes 系列课程 · 术语去重词典（按课程 > 节 分组）](https://blog.no-claw.com/7845f1d8/): 2026-07-13 — 整理 Kubernetes 入门、CKAD、Helm 和集群管理课程中的英语词汇，附音标、中文释义与课程语境，方便听课时查阅。
+- [子域名独立解析DNS迁移](https://blog.no-claw.com/13d4e54c/): 2026-07-03 — 通过NS委派实现子域名跨服务商独立管理
+- [Rime + 万象拼音配置双拼](https://blog.no-claw.com/c1342edf/): 2026-06-29 — 在 Mac 上安装 Rime 与万象拼音，通过 /flypy 切换小鹤双拼，并重新部署输入法配置。
+- [《程序员健康指南》读后感](https://blog.no-claw.com/93a77f57/): 2026-06-29 — 隔了十年读完《程序员健康指南》，结合自己的调理经历，记下久坐、饮食、运动和习惯管理方面的感受与保留意见。
+- [我是如何学会双拼的](https://blog.no-claw.com/89081682/): 2026-06-26 — 因为全拼打字手指疼，重新学习小鹤双拼。记下纸砚练习、高频键位、悬浮键位图，以及十天左右开始正常打字的过程。
+- [Bedrock 使用 Claude fable5](https://blog.no-claw.com/5303808f/): 2026-06-11 — 记录在 Bedrock 中调用 Claude fable5 的示例，包含数据保留设置、SigV4 签名请求和 Converse 调用代码。
+- [用 pikepdf 去除 PDF 的"禁止复制"限制](https://blog.no-claw.com/11cd0ca9/): 2026-06-09 — 用 pikepdf 重新保存可打开但限制复制的 PDF，记录单文件与批量处理示例，并区分权限限制和打开密码。
+- [Amazon Bedrock GUARDRAIL 拦截教程](https://blog.no-claw.com/ba3e7018/): 2026-06-08 — 用 Python 调用 Bedrock Guardrails，整理放行、只检测、拦截和脱敏时的返回字段，并记录命中规则的分类与输出。
+- [Socket 模拟木马程序笔记(合规demo版)](https://blog.no-claw.com/97358423/): 2026-06-06 — 用 Python Socket 写一个本机通信示例，记录监听、连接、发送和接收的流程，并用打印消息模拟指令执行。
+- [CodeX 使用Bedrock 模型](https://blog.no-claw.com/e7117226/): 2026-06-03 — 记录通过 Bedrock Mantle 接口调用模型的测试代码，以及 Codex 的模型提供方配置和区域不匹配时遇到的报错。
+- [文本向量化写到 OpenSearch OSS](https://blog.no-claw.com/43237a4a/): 2026-06-02 — 向量化写到 OpenSearch OSS
+- [SAML登陆Amazon Grafana](https://blog.no-claw.com/98b752fe/): 2026-06-01 — 用 SAML-tracer 查看登录断言，记录 Amazon Grafana 中用户名、邮箱、组与角色的映射配置。
+- [Hexo Sitemap 踩坑复盘：CRC32 哈希碰撞导致重复 URL](https://blog.no-claw.com/428cc28c/): 2026-05-14 — 记录博客 sitemap 中出现重复 URL 的排查过程，根因是 hexo-abbrlink 插件使用 CRC32 产生了哈希碰撞，最终通过 postinstall patch 替换为 MD5 解决。
+- [Cognito OIDC接入](https://blog.no-claw.com/6d999d73/): 2026-04-29 — 用 Flask 和 Authlib 接入 Cognito OIDC，整理用户池、回调与登出配置，附登录示例和常见报错的排查线索。
+- [Claude Code 额度不够用？走 Bedrock 账单](https://blog.no-claw.com/4dbc8277/): 2026-04-17 — 记录让 Claude Code 通过 Amazon Bedrock 调用模型的环境变量配置，以及后续使用本地 AWS 凭证的更新。
+- [Quick Suite 链接 Oauth 认证的 AgentCore runtime 部署的 MCP](https://blog.no-claw.com/57053bb7/): 2026-04-17 — 连接 Quick Suite 与带 OAuth 认证的 AgentCore MCP 服务时，记录把 Runtime ARN 编码并拼接成 HTTPS 调用地址的做法。
+- [让 OpenSearch 支持单点登录：从密码登录到 OpenID Connect](https://blog.no-claw.com/37c6815d/): 2026-04-02 — 让 OpenSearch 支持 SSO：接入 OpenID Connect 认证
+- [在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 OpenSearch](https://blog.no-claw.com/3c76c368/): 2026-03-24 — 用 Fluent Bit 采集 Kubernetes 中的 Nginx 日志到 OpenSearch，记录采集范围、索引轮换、Pod 字段过滤和缓冲区排查。
+- [Go 代理项目：14 周每日学习路线](https://blog.no-claw.com/e6d8d61c/): 2026-03-15 — 以 Go 反向代理为练习项目，按十四周安排语法、请求转发、监控与协议转换的学习任务，作为分阶段推进的计划。
+- [手把手教你安装OpenClaw](https://blog.no-claw.com/8e9b51fc/): 2026-03-15 — 记录在 Mac 上安装 OpenClaw、接入模型和飞书、访问 Web 界面到卸载的过程，也保留了当时对权限和数据风险的提醒。
+- [在AWS EC2 上从零搭建 Kubernetes 集群（kubeadm）](https://blog.no-claw.com/7e9d67ce/): 2026-03-06 — 使用 kubeadm 在 AWS EC2 Ubuntu 实例上搭建 Kubernetes 集群，一台 Master 两台 Worker 的完整教程。
+- [修复 GitHub Pages 推送后 CNAME 自动重置旧域名的问题](https://blog.no-claw.com/6ec894ce/): 2026-03-05 — GitHub Pages 部署后域名自动变回旧域名，排查发现是 source/CNAME 残留导致，删除后解决。
+- [k8s yml小抄](https://blog.no-claw.com/e2ac0d70/): 2026-03-02 — Kubernetes 常用 YAML 配置速查，涵盖 Pod、Service、Deployment 等资源定义，基于 cloudacademy 源码整理。
+- [开源OpenSearch学习笔记｜部署篇（二）：Kubernetes 上用 Helm 快速搭建 OpenSearch.](https://blog.no-claw.com/1e02510f/): 2026-03-02 — 在 Amazon EKS 上用 Helm 部署 OpenSearch 与 Dashboards，记录 Secret 密码配置、存储问题、副本调整和端口转发验证。
+- [安卓ADB提取APK安装包](https://blog.no-claw.com/17adb539/): 2026-02-22 — 通过无线 ADB 连接安卓设备，使用命令行提取已安装应用的 APK 安装包。
+- [安卓也有terminal，使用无线ADB解锁X300的终端](https://blog.no-claw.com/d5ad04d5/): 2026-02-20 — 通过无线 ADB 解锁 X300 设备隐藏的终端功能，让安卓设备也能用命令行。
+- [使用 AWS SES + S3 发送 HTML 邮件](https://blog.no-claw.com/d51f292a/): 2026-02-02 — 用 Python + boto3 从 S3 读取 HTML 模板，通过 AWS SES 发送格式丰富的营销或通知邮件。
+- [一次拿trace把langfuse打挂的修复](https://blog.no-claw.com/c4eda619/): 2026-02-01 — Langfuse 拉 trace 数据导致 Node.js OOM 502，从发现问题到安全导出标注数据的完整排查过程。
+- [Python小抄们](https://blog.no-claw.com/11ca0dba/): 2026-01-01 — 开发常用命令速查，涵盖 Git 浅克隆、Python 技巧等实用小抄合集。
+- [Amazon Bedrock AgentCore 开发实战（一）：本地构建 AI Agent](https://blog.no-claw.com/a1b2c3d4/): 2025-12-15 — 使用 Amazon Bedrock AgentCore 在本地构建和调试 AI Agent 的实战教程
+- [使用agentcore部署MCP server](https://blog.no-claw.com/56feb9d1/): 2025-12-15 — 整理在 AgentCore 上部署 MCP 服务的初步笔记，涉及 Runtime、Gateway、调用地址和 Bearer Token，示例代码仍待补充。
+- [Milvus Workshop Web 版上线：4 万 Star 项目的官方实战教程，在手机上也能直接学了](https://blog.no-claw.com/581baa02/): 2025-12-12 — Milvus 官方实战教程 Web 版上线，4 万 Star 向量数据库从入门到生产环境的完整学习路径。
+- [零代码改动！用 Docker 将 Flask 应用部署到 AWS Lambda](https://blog.no-claw.com/79854e67/): 2025-11-20 — 用 Docker 和 Lambda Web Adapter 零改动部署 Flask 到 AWS Lambda
+- [学云计算到底是在学什么？](https://blog.no-claw.com/4b1e0fb/): 2025-08-11 — 从个人经验聊聊学云计算到底在学什么
+- [Google SEO 技巧](https://blog.no-claw.com/3d393e74/): 2025-08-09 — Google SEO 实用技巧，包括 NCR 入口、搜索优化等提升网站排名的方法。
+- [修改 Hexo 的 RSS 阅读数量（Icarus 主题）](https://blog.no-claw.com/2d0d3922/): 2025-08-08 — 修改 Hexo Icarus 主题的 RSS 输出文章数量配置。
+- [使用 OpenList 将 S3 转换为 WebDAV](https://blog.no-claw.com/21efda6/): 2025-07-29 — 通过 OpenList 将 Amazon S3 存储转换为 WebDAV 协议访问
+- [AWS Credit 充值到账户全流程图文指南](https://blog.no-claw.com/11273243/): 2025-07-26 — 图文详解 AWS Credit 代金券充值到账户的完整操作流程
+- [GIT小书](https://blog.no-claw.com/fa9f211a/): 2025-07-18 — 以故事形式讲解 Git 版本管理，从新手入职到项目协作的 Git 学习之路。
+- [EC2 没有绑定 EIP，重启后 IP 会变？DDNS-GO 自动更新你的域名](https://blog.no-claw.com/369cde6d/): 2025-07-15 — 用 DDNS-GO 解决 EC2 无 EIP 重启后 IP 变化的动态域名解析方案
+- [快速启动 http 站点](https://blog.no-claw.com/572b7187/): 2025-07-12 — Python 内置 HTTP 服务器的几种启动方式，一行命令快速搭建本地静态站点。
+- [使用 Zilliz Cloud 快速体验 Milvus](https://blog.no-claw.com/938aef4d/): 2025-07-03 — 零部署体验 Milvus 向量数据库，注册 Zilliz Cloud 免费套餐并运行官方示例代码。
+- [Gemini-cli 踩坑机：国内环境 , 用过 Google Cloud 如何设置？](https://blog.no-claw.com/8d2ea5f5/): 2025-07-02 — 国内环境使用 Gemini CLI 的踩坑记录，Google Cloud 账号配置与免费额度说明。
+- [通过 SMTP 使用 163 邮箱发送邮件](https://blog.no-claw.com/5dfd4b8a/): 2025-07-01 — Python 通过 SMTP 协议使用 163 邮箱发送邮件，含授权码获取和 smtplib 代码示例。
+- [Amazon OpenSearch Service 现在支持 JSON Web Token（JWT）身份验证和授权](https://blog.no-claw.com/330e574/): 2025-06-20 — 介绍 Amazon OpenSearch Service 新增的 JWT 身份验证与授权功能
+- [半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置](https://blog.no-claw.com/b9af2b64/): 2025-06-20 — 记录用 Transit Gateway 连接多个 VPC 的配置过程，包括挂载点、TGW 与子网路由表，以及通过 RAM 跨账户共享。
+- [基于 AWS IAM Identity Center 的 SAML 配置，实现单点登录阿里云](https://blog.no-claw.com/511c83d9/): 2025-06-20 — 配置 AWS IAM Identity Center SAML 实现单点登录阿里云的教程
+- [组队参加 Amazon Q Idea 1000，我们的作品上了 AWS 峰会](https://blog.no-claw.com/ac23bcf7/): 2025-06-20 — 参加 Amazon Q Idea 1000 比赛，作品登上 AWS 峰会的经历分享
+- [如何在 AWS EC2 上部署 Isaac Sim](https://blog.no-claw.com/10d4e175/): 2025-06-12 — 在 AWS EC2 G5 实例上部署 NVIDIA Isaac Sim 仿真平台的实战教程
+- [LWScreenShot在锁屏的时候自动截图](https://blog.no-claw.com/ce2cfd16/): 2025-06-10 — 记录 Mac 锁屏或登录界面生成 LWScreenShot 文件的现象，以及它与截图快捷键的关系，留作排查时的备忘。
+- [手把手搞定报名亚马逊科技认证](https://blog.no-claw.com/4533e9f8/): 2025-06-02 — 手把手教你报名 AWS 亚马逊云科技认证考试的完整流程
+- [记一次Amazon Q pro的使用](https://blog.no-claw.com/56bb1eb7/): 2025-06-02 — 记录 Amazon Q Pro 的申请与实际使用体验
+- [如何关闭 AWS root 账号的 MFA 认证](https://blog.no-claw.com/f4ce40dc/): 2025-05-20 — 详解如何关闭 AWS root 账号的 MFA 多因素认证
+- [Elasticsearch 数据迁移方法笔记](https://blog.no-claw.com/4a698a49/): 2025-05-04 — 整理 Elasticsearch 的快照恢复、远程 reindex、Logstash、elasticdump 和跨集群复制方法，以及迁移时的版本、网络和数据核对事项。
+- [Bedrock Converse 调用笔记：DeepSeek R1 与 Claude](https://blog.no-claw.com/6384163b/): 2025-05-04 — 用 Boto3 的 Converse API 调用 Bedrock 上的 DeepSeek R1 和 Claude，说明模型 ID、文本响应读取，以及与 InvokeModel 和多轮上下文的关系。
+- [OpenSearch ISM 索引轮换策略笔记](https://blog.no-claw.com/4ea76b9/): 2025-05-04 — 记录 OpenSearch ISM 策略的创建请求、分层存储状态配置，以及将策略附加到索引的方法。
+- [使用 Nginx 获取并返回客户端的公网 IP 地址](https://blog.no-claw.com/92ab0084/): 2025-04-24 — 自建 Nginx 服务返回客户端公网 IP，简单配置实现个性化 IP 查询接口。
+- [Ubuntu 安装 Docker：软件源、引擎与运行验证](https://blog.no-claw.com/e149e3cd/): 2025-04-19 — 在 Ubuntu 中清理旧 Docker 软件包，配置官方软件源和 GPG 密钥，安装引擎，并用 hello-world 验证运行。
+- [Python 项目如何忽略和清理 __pycache__](https://blog.no-claw.com/2eb9cbc6/): 2025-03-26 — 解释 pycache 和 pyc 文件的来源，记录 .gitignore 配置、取消 Git 跟踪和清理本地缓存的操作。
+- [Git 命令技巧](https://blog.no-claw.com/27bf94ea/): 2025-03-02 — 用 git config --local 为当前仓库单独设置提交用户名和邮箱，留作切换项目时的命令备忘。
+- [从 Flask 项目打包为多平台 Docker 镜像并上传 Docker Hub（含 GitHub Actions）](https://blog.no-claw.com/e51b087c/): 2025-03-02 — Flask 项目打包为多平台 Docker 镜像的完整流程，含 GitHub Actions 自动构建与推送 Docker Hub。
+- [Typora 与 Obsidian 配置 GitHub 图床](https://blog.no-claw.com/c9e271b6/): 2025-02-15 — 记录通过 PicGo 将 Typora、Obsidian 的 Markdown 图片上传到 GitHub 的配置过程，以及编辑器和排版工具中的显示效果。
+- [Typora 和Obsidian 自动使用 Github 做在线图床](https://blog.no-claw.com/1fc7f9f5/): 2025-02-15 — 配置 Typora 和 Obsidian 自动上传图片到 GitHub 图床
+- [酒店机场免费WIFI不弹认证？用这个方法](https://blog.no-claw.com/c39ca3b5/): 2025-01-15 — 解决酒店机场免费 WiFi 连接后不弹出认证页面的方法
+- [使用 elasticdump 迁移与备份 Elasticsearch 索引](https://blog.no-claw.com/9034aa6e/): 2024-10-12 — 使用 elasticdump 复制分析器、映射和数据，导出 JSON 或 gzip 备份，并记录查询过滤、文件拆分和 S3 导入导出方法。
+- [跨集群复制：在 Amazon OpenSearch Service 中实现数据同步](https://blog.no-claw.com/aae56ced/): 2024-10-11 — Amazon OpenSearch Service 跨集群复制的配置笔记，涵盖前提条件、权限、单索引复制和自动跟随规则。
+- [Markdown 完全指南](https://blog.no-claw.com/84c20813/): 2024-09-16 — Markdown 语法完全指南，从基础到进阶用法全面覆盖
+- [Lightsail 与 EC2：云服务器选择笔记](https://blog.no-claw.com/d93d06d/): 2024-08-24 — 从使用门槛、资源配置、网络和典型场景对照 Lightsail 与 EC2，记录选择云服务器时的考虑。
+- [Amazon Bedrock 基础模型初体验](https://blog.no-claw.com/fd6e8ce3/): 2024-08-18 — 记录在 Amazon Bedrock 中尝试文本生成、图片生成、模型评估和 Guardrails 的过程，保留当时的模型选择与界面。
+- [Amazon Q Developer 实践：读代码与修改游戏功能](https://blog.no-claw.com/aa5bd787/): 2024-08-17 — 借助 Amazon Q Developer 实验手册，在 VS Code 中解读体素游戏代码、插入功能修改，并尝试生成 Boto3 调用示例。
+- [我的 NAS 是怎么连接 Amazon S3 的](https://blog.no-claw.com/4d75dd2/): 2024-07-28 — NAS 接入 Amazon S3 的实践笔记，整理 CLI、挂载、Storage Gateway、Transfer Family 与备份同步方式。
+- [使用 AWS Lambda 把天气预报推送到微信](https://blog.no-claw.com/8b54051/): 2024-07-20 — 用彩云天气 API 获取天气，通过 AWS Lambda、EventBridge 和 Server 酱定时推送到微信。
+- [使用 Docker 部署 Wiki.js 与 PostgreSQL](https://blog.no-claw.com/7c39692e/): 2024-07-13 — 使用 Docker 启动 PostgreSQL 和 Wiki.js，配置数据库连接及端口映射，并记录安装向导和使用体验。
+- [Linux常用命令](https://blog.no-claw.com/d0edc1ed/): 2024-07-02 — Linux 常用命令速查，涵盖别名设置、文件操作等日常运维实用命令。
+- [连接 EC2 的四种方式：SSH、Instance Connect、SSM 与串行控制台](https://blog.no-claw.com/a851db/): 2024-06-13 — 对照 EC2 Instance Connect、SSH、会话管理器与串行控制台，记录连接设置、常见 SSH 错误及排查思路。
+- [使用 systemd 设置 Python 程序开机启动](https://blog.no-claw.com/a6528011/): 2024-05-20 — 为 Python 脚本编写 systemd 服务文件，设置运行用户、自动启动和重启行为，并记录 crontab 的 @reboot 用法。
+- [在 Amazon Linux 2 上安装 PHP 7.4 与 Nginx](https://blog.no-claw.com/10ddce89/): 2024-05-20 — 记录 Amazon Linux 2 中 Nginx、PHP 7.4 和 PHP-FPM 的安装配置，以及用测试页面验证并清理环境的步骤。
+- [Python 备忘单：基础语法、NumPy 与 Pandas](https://blog.no-claw.com/bf379e5e/): 2024-05-15 — 按主题整理 Python 字符串、容器、JSON、循环、文件、函数与日期时间示例，并收录 NumPy 数组和 Pandas 数据处理用法。
+- [AWS IoT 服务组件学习笔记](https://blog.no-claw.com/a4330068/): 2024-05-08 — 整理 AWS IoT 的设备接入、消息通信、规则处理、设备影子与管理组件，记录各部分的职责。
+- [浏览器屏幕采集示例：getDisplayMedia 与本地预览](https://blog.no-claw.com/bd11d200/): 2024-04-23 — 用 getDisplayMedia 请求屏幕共享，将 MediaStream 显示在 video 元素中，并处理用户停止共享或拒绝授权的情况。
+- [Whisper 语音转文字：CUDA 与 Apple Silicon 尝试](https://blog.no-claw.com/f5d64091/): 2024-04-20 — 记录 Whisper 的安装、模型选择、GPU 占用和字幕清洗，并对照 whisper.cpp 在 Apple Silicon 上的转写体验。
+- [API Gateway 认证实践：IAM、Lambda、Cognito 与 JWT](https://blog.no-claw.com/74f8a437/): 2024-04-13 — 分别测试 REST API 与 HTTP API 的资源策略、Lambda 授权、Cognito、IAM 和 JWT，并记录 API Key 使用计划及限流响应。
+- [AWS CLI 使用笔记：多账户、角色切换与代理](https://blog.no-claw.com/c3549f55/): 2024-04-07 — 从 AWS CLI 的凭证配置入手，整理多个 profile、IAM Role、AssumeRole、凭证查找顺序与 HTTP 代理使用方法。
+- [pipx 与 conda：应用隔离和 Python 环境管理](https://blog.no-claw.com/7e63cf3c/): 2024-04-04 — 整理 pipx 安装命令行应用和 conda 管理开发环境的命令，比较两者的用途、依赖隔离及环境导入导出方式。
+- [使用 Docker 与 Nginx 部署静态网站](https://blog.no-claw.com/478f80e7/): 2024-03-31 — 为 HTML、CSS 和 JavaScript 文件编写 Dockerfile，构建 Nginx 镜像并映射端口，完成静态网站部署。
+- [一起学习机器学习（13）：PCA 与 NMF](https://blog.no-claw.com/6319c3f1/): 2024-03-26 — 线性降维学习笔记，结合 Python 练习理解主成分分析 PCA 与非负矩阵分解 NMF。
+- [一起学习机器学习（14）：图学习](https://blog.no-claw.com/48f09f83/): 2024-03-26 — 用秀丽隐杆线虫网络数据练习图学习，分析度分布、拉普拉斯谱、Fiedler 向量与谱聚类。
+- [一起学习机器学习（11）：K-means 与层次聚类](https://blog.no-claw.com/a45ff8db/): 2024-03-26 — 学习 K-means 与层次聚类，结合距离计算、簇中心更新和 linkage 比较不同聚类方法。
+- [一起学习机器学习（12）：高斯混合模型](https://blog.no-claw.com/a8809226/): 2024-03-26 — 整理高斯混合模型与 EM 算法，通过乳腺癌数据练习参数估计和聚类分析。
+- [一起学习机器学习（10）：卷积神经网络](https://blog.no-claw.com/d5930aa6/): 2024-03-26 — 用 NumPy 理解一维卷积，再用 PyTorch 构建、训练和评估卷积神经网络。
+- [一起学习机器学习（09）：多层感知机](https://blog.no-claw.com/3a5f01bd/): 2024-03-26 — 从三层感知机扩展到通用 MLP，整理数据预处理、前向计算、反向传播和随机梯度下降训练。
+- [一起学习机器学习（08）：随机梯度下降](https://blog.no-claw.com/7672e2db/): 2024-03-26 — 随机梯度下降学习笔记，结合公式和 Python 练习理解参数更新、学习率与迭代过程。
+- [一起学习机器学习（07）：支持向量机](https://blog.no-claw.com/fe56f8aa/): 2024-03-26 — 实现线性 SVM 的目标函数与随机梯度下降，使用交叉验证评估模型，并讨论核函数与分类边界。
+- [一起学习机器学习（06）：决策树与随机森林](https://blog.no-claw.com/e2f006fc/): 2024-03-26 — 从 GINI 指数、特征划分和决策树训练开始，实现特征采样、Bootstrap 与随机森林的分类聚合。
+- [一起学习机器学习（04）：逻辑回归](https://blog.no-claw.com/b3298cba/): 2024-03-26 — 生成分类数据，实现逻辑回归的参数化函数与优化过程，通过分类指标和 ROC 曲线评估模型。
+- [一起学习机器学习（05）：朴素贝叶斯](https://blog.no-claw.com/523e0f93/): 2024-03-26 — 以文本分类为例，整理数据预处理、多项式朴素贝叶斯的似然与后验概率计算。
+- [一起学习机器学习（03）：kNN](https://blog.no-claw.com/a50c0a43/): 2024-03-25 — 从距离计算和邻居投票实现 kNN 分类，用交叉验证选择 k，再扩展到回归任务。
+- [一起学习机器学习（02）：线性回归](https://blog.no-claw.com/bef942f1/): 2024-03-24 — 用 NumPy 实现线性回归，推导最小二乘与最大似然估计，并比较 Ridge、LASSO 和梯度下降的效果。
+- [一起学习机器学习（01）：数据探索](https://blog.no-claw.com/b5db1154/): 2024-03-24 — 用 pandas 加载和清洗数据，处理缺失值与重复记录，再通过描述统计和可视化了解数据分布。
+- [Amazon SageMaker 学习笔记：数据、训练与部署](https://blog.no-claw.com/39f5bddc/): 2024-03-15 — 整理 SageMaker 在数据准备、模型构建、训练和部署中的功能，以及端点、预测数据捕获与模型观察的学习记录。
+- [分布式机器学习笔记：Spark、MLlib 与 EMR](https://blog.no-claw.com/6dd3a41b/): 2024-03-15 — 整理 Apache Spark 的分布式计算、MLlib 机器学习和 EMR 集群使用方式，以及存储连接与集群调整。
+- [机器学习基础笔记：监督学习、无监督学习与神经网络](https://blog.no-claw.com/c9dc5c97/): 2024-03-15 — 整理监督与无监督学习、训练集划分、常见算法以及深度神经网络的训练概念。
+- [Amazon Redshift 数据仓库学习笔记](https://blog.no-claw.com/ea823df3/): 2024-03-14 — 整理数据仓库、Redshift 集群和节点、数据加载、性能监控以及 IAM 角色访问其他 AWS 服务的学习记录。
+- [Kinesis Analytics 学习笔记：流处理与时间窗口](https://blog.no-claw.com/72adfd47/): 2024-03-13 — 保留 Kinesis Analytics SQL 流处理的学习记录，涵盖输入输出流、数据模式、泵、连续查询和时间窗口。
+- [Amazon MSK 学习笔记：托管 Kafka 基础](https://blog.no-claw.com/a527500d/): 2024-03-13 — 整理 Amazon MSK 托管 Kafka 的服务组成、集群管理、数据传输与监控相关概念。
+- [Amazon ECS 容器服务学习笔记](https://blog.no-claw.com/2fe9416a/): 2024-03-13 — 整理 ECS 的容器运行、任务、服务和集群概念，以及托管容器应用的基本方式。
+- [Amazon EKS 托管 Kubernetes 学习笔记](https://blog.no-claw.com/19746f09/): 2024-03-13 — 记录 Amazon EKS 的托管 Kubernetes 架构、控制平面与工作节点，以及集群运行的基本概念。
+- [Amazon ECR 容器镜像仓库学习笔记](https://blog.no-claw.com/83d4807/): 2024-03-13 — 整理 Amazon ECR 镜像仓库的基本功能、镜像存储与访问方式，以及与容器部署流程的关系。
+- [AWS KMS 密钥管理学习笔记](https://blog.no-claw.com/3cb7eae/): 2024-03-13 — 整理 AWS KMS 的密钥类型、加解密、访问权限、密钥管理及服务集成相关概念。
+- [Amazon Kinesis 流数据服务学习笔记](https://blog.no-claw.com/d8c69dd2/): 2024-03-13 — 记录流数据处理的场景和 Amazon Kinesis 服务组成，对照数据采集、传递与实时分析的分工。
+- [Kinesis Data Streams 学习笔记](https://blog.no-claw.com/f763080/): 2024-03-13 — 整理 Kinesis Data Streams 的流、分片、生产者、消费者、容量与数据处理方式，保留原有学习记录。
+- [AWS Glue 数据集成学习笔记](https://blog.no-claw.com/f920bebc/): 2024-03-13 — 整理 AWS Glue 的数据目录、爬网程序、ETL 作业和数据集成流程，以及与数据分析服务的配合。
+- [AWS Lake Formation 数据湖学习笔记](https://blog.no-claw.com/909feaee/): 2024-03-13 — 记录 Lake Formation 的数据湖构建、数据目录与访问管理概念，以及数据采集和权限配置的学习内容。
+- [Amazon EMR 大数据处理学习笔记](https://blog.no-claw.com/eb3fec0b/): 2024-03-13 — 整理 EMR 集群的大数据处理场景、节点配置、存储选择和伸缩方式，以及与 S3 数据存储的配合。
+- [在 AWS Lambda 中运行 Selenium](https://blog.no-claw.com/6c599e86/): 2024-03-13 — 使用容器为 AWS Lambda 打包 Chrome、驱动与 Selenium，保留 Dockerfile 和 Python 示例。
+- [通过 Squid 代理访问 AWS VPC 内网资源](https://blog.no-claw.com/d143e1fe/): 2024-03-13 — 在公有子网部署 Squid 代理，通过安全组白名单控制访问，配置客户端代理并验证 VPC 内网资源的连通性。
+- [把 Pop!_OS 搬到 EC2：磁盘转换与远程桌面](https://blog.no-claw.com/dd1a54e9/): 2024-03-13 — 记录将 Pop!OS 虚拟机磁盘转换为 RAW、写入 EBS 并替换 EC2 根卷的过程，以及 BIOS 引导和 RDP 桌面体验。
+- [Amazon MSK 连接笔记：匿名、TLS、IAM 与 SASL/SCRAM](https://blog.no-claw.com/b0f1dbc0/): 2024-03-01 — 整理 Amazon MSK 的匿名、TLS、IAM 和 SASL/SCRAM 连接方式，对照端口、Kafka 客户端配置、Secrets Manager 与公有访问条件。
+- [使用 Azure AD 通过 SAML 登录 OpenSearch](https://blog.no-claw.com/379ebb9d/): 2024-03-01 — 记录 Azure AD 企业应用的 SAML 配置、元数据导出、用户关联与 OpenSearch 单点登录测试。
+- [Elastic Beanstalk 更新策略笔记](https://blog.no-claw.com/d48dda7b/): 2024-03-01 — 对照 Elastic Beanstalk 的一次性、滚动、附加批次、不可变、蓝绿和流量拆分部署，记录停机、回滚与资源开销的区别。
+- [多平台日程同步](https://blog.no-claw.com/450f2bc0/): 2024-01-11 — 实现 Apple 日历与 Windows Outlook 等多平台日程同步
+- [雷电4传输](https://blog.no-claw.com/6cc0c7dd/): 2024-01-01 — 雷电4接口数据传输方案与对拷线使用体验
+- [Filebeat 输出日志到 Opensearch](https://blog.no-claw.com/8924813e/): 2023-12-08 — 在 ECS Fargate 场景下尝试用 Filebeat 向 OpenSearch 发送日志，记录容器配置、兼容性报错和仍会重启的问题。
+- [网络维修记录](https://blog.no-claw.com/da62ad7a/): 2023-09-12 — 记录家庭网络故障排查与维修的过程
+- [记录mokee刷机](https://blog.no-claw.com/a8322290/): 2021-01-22 — 记录早期刷入 MoKee 的镜像准备与 TWRP、fastboot 操作，文末保留了 2023 年项目停更的备注。
+- [Git 入门笔记：创建仓库、提交与首次推送](https://blog.no-claw.com/e56cfb4d/): 2019-11-30 — 从安装 Git、创建 GitHub 仓库开始，练习 git init、add、commit、remote 和 push，完成本地目录与远程仓库的关联。
+- [Ubuntu 配置 JDK 8 环境变量](https://blog.no-claw.com/08615b14/): 2019-09-13 — 记录在 Ubuntu 的 Bash 中配置 JDK 8 的 JAVAHOME 和 PATH，并检查 java、javac 是否指向解压后的 JDK。
+- [Ubuntu 18.04 安装 NVIDIA 1080 Ti 驱动记录](https://blog.no-claw.com/f868b20e/): 2019-09-12 — 记录 Ubuntu 18.04 中清理旧 NVIDIA 驱动、添加驱动源、安装与重启的步骤，以及 deb 安装时遇到的依赖问题。
+- [Ubuntu 18.04 安装 TeX Live 与 TeXstudio](https://blog.no-claw.com/7fa7f203/): 2019-09-12 — 在 Ubuntu 18.04 中安装 TeX Live 和 TeXstudio，设置 XeLaTeX 编译器及中文界面，并保留当时的配置命令。
+- [Xcode 配合 Git 进行版本控制](https://blog.no-claw.com/868d9711/): 2019-09-11 — 记录在 Xcode 中创建 Git 工程、关联 GitHub 仓库、查看代码差异，以及 commit、push 和分支操作的过程。
+- [Python 依赖迁移：导出与安装 requirements.txt](https://blog.no-claw.com/cb008009/): 2019-06-28 — 使用 pip freeze 导出 Python 包和版本，再通过 requirements.txt 安装到目标环境，说明它与完整环境备份的区别。
+- [Java 内部类学习笔记](https://blog.no-claw.com/f13e8b32/): 2019-06-22 — 通过代码对照成员内部类、静态内部类和访问控制，记录实例化方式，以及内部类访问外部字段和方法的区别。
+- [LaTeX 入门：文档结构与中文排版](https://blog.no-claw.com/144d3c45/): 2019-06-22 — 从一份中文 LaTeX 示例开始，认识文档类型、宏包、标题、作者和三级章节命令。
+- [Python 调用 Java 与 C++ 的尝试](https://blog.no-claw.com/fea420b7/): 2019-02-21 — 在 Ubuntu 16.04 中使用 JPype 从 Python 调用 Java，并将 C++ 编译为共享库后由 Python 加载调用。
+- [VS code+linux子系统打造开发环境](https://blog.no-claw.com/7225c876/): 2019-02-14 — 记录 2019 年搭建 VS Code 与 Windows Linux 子系统开发环境的步骤，包括编译工具、GCC 升级和 Anaconda 安装。
+- [C++ 文件读写笔记](https://blog.no-claw.com/8163462d/): 2018-12-27 — 使用 fstream、ifstream 和 ofstream 练习 C++ 文件读写，记录创建文件、追加内容和完整读写示例。
+- [C++ 数组遍历：范围 for 与下标循环](https://blog.no-claw.com/ea2bf9d8/): 2018-12-27 — 用一个整型数组对照 C++11 范围 for 和下标循环，补齐可编译示例，并说明按值遍历、引用和数组长度的区别。
+- [RPG Maker MV 插件笔记：移动提示与标题参数](https://blog.no-claw.com/34cce265/): 2018-12-16 — 保留 RPG Maker MV 插件课程中的移动提示与标题描边练习，修正插件路径、参数读取、立即执行函数和方法覆盖的用法。
+- [微信小程序云开发笔记：查询与删除云函数](https://blog.no-claw.com/39553255/): 2018-12-02 — 记录微信小程序云开发中查询、删除云函数的写法，以及前端调用和上传部署步骤。
+- [微信小程序后端学习笔记：商品、路由与订单](https://blog.no-claw.com/84f0a0d4/): 2018-11-15 — 整理 2018 年 Wafer 小程序课程中的商品列表、详情、购买请求与订单查询，修正 SQL 连接字段并补充分组示例。
+- [数学基础笔记：函数、对数与几种曲线](https://blog.no-claw.com/7d1a33f5/): 2018-10-21 — 重新整理一次与二次函数、对数性质、取整函数和几种曲线，修正原笔记中的系数、定义域与公式排版。
+- [数学基础笔记：数列、级数与求和](https://blog.no-claw.com/3b9e0ffb/): 2018-10-16 — 整理等差、等比、调和数列与常见求和公式，区分有限和、无穷级数及复利模型，修正原笔记中的下标和系数。
+- [拉普拉斯变换笔记：常用变换与微分方程](https://blog.no-claw.com/f1436f9a/): 2018-09-12 — 整理单边拉普拉斯变换、常用变换表、时移和微分性质，补充一阶微分方程与负反馈传递函数的入门例子。
+- [ES6 学习笔记：基础语法与迭代](https://blog.no-claw.com/7dcc1fe5/): 2018-09-05 — 整理 let、const、模板字符串、解构、对象字面量、for 循环、展开运算符与剩余参数，并与 Python 用法对照。
+- [C 与 x86 汇编混合编程：GCC 内联汇编加法示例](https://blog.no-claw.com/37c707fa/): 2018-08-29 — 保留一次在 C 程序中调用 x86 内联汇编的加法练习，说明 AT&T 语法、输入输出操作数与 GCC 约束的关系。
+- [无人驾驶学习笔记：GNSS、惯性导航与融合定位](https://blog.no-claw.com/bd5f43e3/): 2018-08-06 — 整理 GNSS、RTK、IMU、激光雷达与视觉定位的作用，补齐坐标变换和运动公式，区分定位精度、漂移与传感器融合。
+- [无人驾驶学习笔记：高精度地图](https://blog.no-claw.com/75bfc6d8/): 2018-08-04 — 从定位、路径规划和地图制作流程理解高精度地图，保留 2018 年课程笔记，并修正地图更新与感知能力的边界。
+- [刷完 Udacity JavaScript 入门课后的笔记](https://blog.no-claw.com/d536f3ad/): 2018-08-04 — 保留为学习微信小程序而补 JavaScript 的经历，整理类型、相等比较、真假值、作用域、函数、数组与对象，并补齐可运行例子。
+- [概率与统计笔记：均值、方差和二项分布](https://blog.no-claw.com/3d94456e/): 2018-07-31 — 合并概率公式与统计学提纲，整理抽样、描述统计、离散分布、期望、方差及二项分布，并补齐适用条件与例子。
+- [微积分笔记：导数、微分与中值定理](https://blog.no-claw.com/e76b2003/): 2018-07-31 — 从平均速度与瞬时速度理解导数，区分微分、罗尔定理和拉格朗日中值定理，用小例子说明导数与单调性的关系。
+- [在 Jupyter Notebook 中使用 Matplotlib 画图](https://blog.no-claw.com/aee2a967/): 2018-05-16 — 保留使用 Matplotlib 绘制折线图和条形图的示例代码与结果，作为 Jupyter Notebook 绘图练习笔记。
+- [Python 字符串笔记：换行与 format 格式化](https://blog.no-claw.com/acdf14a8/): 2018-05-03 — 通过示例记录多行字符串、format 参数替换以及使用字典进行字符串格式化的方法。
+- [Python 函数笔记：参数、global 与 lambda](https://blog.no-claw.com/15c7745a/): 2018-05-02 — 整理函数调用、默认参数、关键字参数、global 作用域以及 lambda 表达式，保留练习代码与输出。
+- [Python 小语法：链式比较、ASCII 与科学计数法](https://blog.no-claw.com/2e034e73/): 2018-05-02 — 记录 Python 链式比较、ASCII 字符转换、科学计数法和类型检查的几组入门练习。
+- [测试 Python 程序运行时间](https://blog.no-claw.com/5360c45b/): 2018-04-30 — 保留一次 Python 计时实验的代码和结果，对照输出操作以及整数、Decimal 运算的时间开销。
+- [Python 容器笔记：list、dict、set 与 tuple](https://blog.no-claw.com/dae402df/): 2018-04-24 — 按初始化、增删改查、遍历和排序整理 Python 列表、字典、集合与元组的使用代码。
+- [Python 字典练习：遍历、累加与寻找最小值](https://blog.no-claw.com/4c6a71a3/): 2018-04-18 — 用交通费用的例子练习列表转字典、重复键累加、处理 KeyError，并使用 itemgetter 找到费用最小的项目。
+- [Python zip 与星号表达式：打包、解包和版本差异](https://blog.no-claw.com/a00c01cd/): 2018-04-17 — 记录 zip 的打包与解包、星号表达式的参数接收，以及 Python 2 和 Python 3 中 zip 返回结果的区别。
+- [Python 列表 sort 与 sorted 的区别](https://blog.no-claw.com/6230851d/): 2018-04-16 — 通过示例对照列表 sort 方法和 sorted 函数，观察原列表是否改变，以及 reverse 参数的倒序用法。
+- [Windows 配置 C 开发环境：MinGW、Sublime 与终端](https://blog.no-claw.com/1cd8b984/): 2017-12-20 — 记录在 Windows 中安装 MinGW、为 Sublime Text 配置 C 编译与运行命令，以及从当前目录打开终端的方法。
+
+## 懒猫微服
+
+- [我不会代码，可以给懒猫贡献软件吗？](https://blog.no-claw.com/de707059/): 2026-08-21 — 从 Lazycat Skills 入手，看看不会写代码的普通用户，如何借助 AI 移植 Docker 应用、测试 LPK，并为懒猫微服应用生态做贡献。
+- [给开发者的 NAS 小书：我们需要什么样的 NAS？](https://blog.no-claw.com/49e2197c/): 2026-08-21 — 从系统分层、数据持久化、三套 Docker、远程网络、OIDC、应用开发和 HDMI 桌面等角度，聊聊开发者真正需要什么样的 NAS。
+- [这是心目中我极客风的AI 摄像头 - 开箱配置手记](https://blog.no-claw.com/b3747d80/): 2026-08-03 — 懒猫微服摄像头体验，硬件外观、接口配置与初印象。
+- [懒猫微服进阶心得（十七）：懒猫SSO对接外部OpenID Connect的尝试](https://blog.no-claw.com/172c9f9a/): 2026-04-15 — 尝试把懒猫 SSO 接入 Cognito，记录私有域名和网络可达性导致的失败，以及改为浏览器回退直连 Dex 的实验。
+- [懒猫微服进阶心得（十六）：解密OpenID Connect，如何自主注册懒猫SSO？](https://blog.no-claw.com/a4d264e8/): 2026-04-09 — 通过 gRPC 注册懒猫 SSO 客户端，再用 Flask 与 Authlib 验证 OIDC 登录，记录回调地址和重启后注册信息丢失的问题。
+- [懒猫微服实战入门（三十六）：懒猫微服QEMU虚拟机快速上手](https://blog.no-claw.com/5f202ca3/): 2026-02-26 — 在懒猫微服上使用 QEMU 虚拟机，全容器化安装免去环境依赖烦恼，轻松上手虚拟机操作。
+- [USB 打印机网络共享：CUPS、AirPrint 与驱动兼容实测](https://blog.no-claw.com/846eeff9/): 2026-02-15 — 用 CUPS 共享 USB 打印机并连接 AirPrint，记录 USB 直通、驱动不兼容和打印异常，以及 Windows 与 RDP 的备用方案。
+- [国民NAS 飞牛零日漏洞之后：我们需要什么样的 NAS ？](https://blog.no-claw.com/75d5cfe5/): 2026-02-07 — 飞牛 NAS 零日漏洞事件引发的思考，从威联通到群晖再到飞牛，NAS 安全问题频发，我们到底需要什么样的 NAS。
+- [懒猫微服实战入门（三十四）：方寸之间，自有天地：懒猫微服，男人的网络瑞士军刀](https://blog.no-claw.com/5226a270/): 2026-01-31 — 把懒猫微服当家庭网络的核心来用，从网卡、内网穿透到 DNS 转发，一台机器顶掉一整排盒子。
+- [懒猫微服进阶心得（十五）：超越systemd，不用每次开机都再安装软件～](https://blog.no-claw.com/c1ba52cc/): 2026-01-31 — 用 Docker 容器运行系统监控工具，免去每次开机重装软件的烦恼，懒猫微服上的容器化运维实践。
+- [懒猫微服：不只是 NAS，更适合云计算宝宝体质](https://blog.no-claw.com/b0a96c84/): 2026-01-17 — 懒猫微服不只是 NAS，它构建了从虚拟化到应用层的完整私有云生态，适合个人和小团队的云计算需求。
+- [懒猫微服实战入门（三十三）：网络设置中不显示我的 Wi-Fi 怎么办？](https://blog.no-claw.com/ff23bf7c/): 2025-11-22 — 懒猫微服网络设置中 Wi-Fi 不显示的排查与解决方法。
+- [懒猫微服实战入门（三十二）：让懒猫微服替你看家，摄像头接入篇（上）](https://blog.no-claw.com/88c99791/): 2025-11-02 — 懒猫微服接入摄像头实现家庭监控，数据掌控在自己手中。
+- [懒猫微服实战入门（三十一）：百度网盘迁移到懒猫网盘](https://blog.no-claw.com/5332ecc4/): 2025-11-02 — 从百度网盘迁移数据到懒猫网盘，把公有云数据搬回私有空间。
+- [懒猫微服开发篇（八）：反向代理与自签名 SSL 的优雅共存之道](https://blog.no-claw.com/990eab20/): 2025-10-08 — 探讨懒猫微服中反向代理与自签名 SSL 证书共存的配置方案
+- [懒猫微服炫技篇（四）：蓝牙音浪，懒猫开唱](https://blog.no-claw.com/afaab095/): 2025-10-03 — 纯命令行实现懒猫微服蓝牙配对音箱并播放音乐
+- [懒猫微服炫技篇（九十九）：从今天起，不用安装客户端也能访问懒猫微服啦～](https://blog.no-claw.com/cc9f9be0/): 2025-10-01 — 用透明代理和 HTTP 代理两条路，让没装客户端的设备也能从浏览器直接打开懒猫微服的服务。
+- [懒猫算力仓初探（一）：开箱手记](https://blog.no-claw.com/7ae44bfb/): 2025-09-26 — 懒猫算力仓开箱体验，初步了解硬件配置与外观
+- [懒猫算力仓初探（四）：如何高效的向算力仓传输文件？](https://blog.no-claw.com/7419d0c1/): 2025-09-26 — 介绍几种高效向懒猫算力仓传输文件的方法
+- [懒猫算力仓初探（二）：懒猫微服如何绑定算力仓？](https://blog.no-claw.com/cbd8657f/): 2025-09-26 — 图文教程：懒猫微服绑定算力仓的完整操作步骤
+- [懒猫算力仓初探（三）：如何配置 SSH 免密登录和免密 sudo？](https://blog.no-claw.com/a4c04b60/): 2025-09-26 — 配置算力仓 SSH 免密登录和免密 sudo 的详细教程
+- [懒猫算力仓初探（五）：有了图形界面，算力仓轻松设置静态 IP](https://blog.no-claw.com/2f8bfee6/): 2025-09-26 — 通过图形界面为懒猫算力仓设置静态 IP 地址
+- [懒猫微服实战入门（二十六）：Obsidian 用 GIT 同步总是冲突，果断存到懒猫微服了](https://blog.no-claw.com/a1d9284e/): 2025-09-20 — Obsidian 用 Git 同步频繁冲突，改用懒猫微服网盘存储笔记更省心。
+- [懒猫微服实战入门（二十七）：KSpeeder 加速，让 Docker 镜像不再超时](https://blog.no-claw.com/6300bfd5/): 2025-09-20 — 用 KSpeeder 加速懒猫微服上的 Docker 镜像拉取，告别超时问题。
+- [懒猫微服实战入门（二十九）：域名解析与 2.5G 测速体验](https://blog.no-claw.com/63e9bc75/): 2025-09-20 — 懒猫微服的 heiyu.space 域名背后是 IPv6，配合 iperf3 和 LibreSpeed 实测 1G 与 2.5G 环境下的有线无线速率。
+- [懒猫微服实战入门（二十八）：如何获取懒猫微服的私有地址](https://blog.no-claw.com/4c7e3909/): 2025-09-20 — 改过 br-lan 网桥后客户端不再显示网络地址，用 Python socket、netifaces 等几种办法把懒猫微服的局域网私有 IP 抓出来。
+- [懒猫微服实战入门（二十八）：坏掉的 Windows 不要扔，硬盘插在懒猫上还能用](https://blog.no-claw.com/768b4867/): 2025-09-20 — 坏掉的 Windows 电脑硬盘插到懒猫微服上，数据照样能读取使用。
+- [懒猫微服实战入门（三十）：懒猫微服改装闺蜜机，一台设备的多重人生](https://blog.no-claw.com/2c05ec4f/): 2025-09-20 — 把懒猫微服改装成闺蜜机，一台设备兼顾 NAS、电视盒子和闺蜜机。
+- [懒猫微服进阶心得（十四）：接入 Casdoor，玩转OpenID Connect（OIDC）](https://blog.no-claw.com/93c9e4e6/): 2025-09-19 — 在懒猫微服上接入 Casdoor 实现 OIDC 单点登录，统一管理应用认证。
+- [懒猫微服故事篇（四）：不折腾内网穿透了，懒猫微服一站式全搞定！](https://blog.no-claw.com/9806a8cb/): 2025-09-19 — 告别复杂的内网穿透配置，用懒猫微服一站式解决远程访问需求
+- [懒猫微服故事篇（三）：朋友拿着一台没公网 IP 的服务器跑来找我，问我能不能转发？](https://blog.no-claw.com/52d0811e/): 2025-09-14 — 用懒猫微服帮朋友解决没有公网 IP 的服务器端口转发问题
+- [懒猫微服实战入门（二十五）：有了懒猫微服之后，我用 Vaultwarden 平替了 1Password 订阅，附送迁移方案](https://blog.no-claw.com/f46ed8e7/): 2025-09-11 — 用 Vaultwarden 自托管密码管理器替代 1Password 订阅，含完整迁移方案。
+- [Mac 上 Orbstack的Docker容器访问微服 Wordpress IPv6 解析问题记录](https://blog.no-claw.com/2ad973ba/): 2025-08-08 — 记录 Mac 上 Orbstack 容器访问懒猫微服 WordPress 时 IPv6 解析异常的排查
+- [懒猫微服实战入门（二十四）：在懒猫微服中使用群晖](https://blog.no-claw.com/815f771a/): 2025-07-26 — 在懒猫微服中运行群晖系统，一台设备同时享受两套 NAS 生态。
+- [懒猫微服实战入门（二十三）：使用 GitHub 单点登录到 Memos](https://blog.no-claw.com/b10cd1f4/): 2025-07-23 — 配置 GitHub OAuth 实现单点登录到懒猫微服上的 Memos 笔记应用。
+- [懒猫微服炫技篇（三）：sunshine+moonlight 双人串流打游戏](https://blog.no-claw.com/2d63e359/): 2025-07-23 — 在懒猫微服上用 Sunshine+Moonlight 实现远程双人串流游戏
+- [懒猫微服买硬件送服务，刚学的计算机知识顺便接了个单](https://blog.no-claw.com/cb1ae078/): 2025-07-19 — 入手懒猫微服后用所学计算机知识帮人部署服务的真实经历
+- [懒猫微服开发篇（七）：解析 Docker Compose Override](https://blog.no-claw.com/7ac076b/): 2025-07-18 — 详解 Docker Compose Override 机制及其在懒猫微服开发中的应用
+- [懒猫微服进阶心得（十一）：把懒猫微服当作旁路由，客户端无需转发直接访问内外地址](https://blog.no-claw.com/5018903b/): 2025-07-18 — 把懒猫微服配置为旁路由，客户端无需转发即可直接访问内外网地址。
+- [懒猫微服进阶心得（十三）： WebVirtCloud 安装 Windows 使用 virtIO 的注意事项](https://blog.no-claw.com/147991a4/): 2025-07-18 — 在懒猫微服 WebVirtCloud 中安装 Windows 虚拟机时 virtIO 驱动的注意事项。
+- [懒猫微服进阶心得（十二）：不登陆机器，如何使用 Docker Context 玩转微服容器？](https://blog.no-claw.com/8be8e345/): 2025-07-18 — 通过 Docker Context 远程管理懒猫微服容器，无需 SSH 登录机器。
+- [懒猫微服实战入门（二十二）：使用 DDNS-GO 给 Cloudflare 做动态域名解析](https://blog.no-claw.com/6031f818/): 2025-07-14 — 在懒猫微服上用 DDNS-GO 配合 Cloudflare 实现动态域名解析。
+- [懒猫微服实战入门（二十一）：使用 Memos 替代 Flomo](https://blog.no-claw.com/6f97c31a/): 2025-07-12 — 在懒猫微服上部署 Memos，自托管的轻量笔记替代 Flomo。
+- [懒猫微服实战入门（二十）：如何使用 Time Machine 将 Mac 备份到懒猫微服](https://blog.no-claw.com/c5298d72/): 2025-07-11 — Mac 通过 Time Machine 备份到懒猫微服，实现本地 NAS 自动备份。
+- [懒猫微服实战入门（十九）：我最喜欢的 RSS 阅读器-FreshRSS](https://blog.no-claw.com/9fd148d9/): 2025-07-10 — 在懒猫微服上部署 FreshRSS，自建 RSS 阅读器订阅博客和资讯。
+- [给传统 NAS 玩家介绍一下懒猫微服](https://blog.no-claw.com/47885d90/): 2025-07-10 — 面向传统 NAS 用户，介绍懒猫微服的特色与优势
+- [懒猫微服开发篇（四）：懒猫微服如何使用 OpenID Connect（OIDC）？（上）](https://blog.no-claw.com/dcc47393/): 2025-07-09 — 懒猫微服 OIDC 单点登录开发教程（上篇），从原理到接入配置。
+- [懒猫微服开发篇（三）：如何将已有 Docker Compose 应用移植到懒猫微服](https://blog.no-claw.com/5e5f8aaa/): 2025-07-08 — 以商店里的 Milvus 为例，逐字段拆解 lzc-manifest.yml，把一个跑在本地的 Docker Compose 应用打包上架到懒猫微服。
+- [懒猫微服实战入门（十八）：用 Planka 做项目管理](https://blog.no-claw.com/51800531/): 2025-07-07 — 在懒猫微服上部署 Planka 做个人项目管理，类 Jira 的看板工具。
+- [懒猫微服开发篇（二）：远程调试之 Devshell](https://blog.no-claw.com/2c167bb4/): 2025-07-07 — 使用 Devshell 远程调试懒猫微服上的应用，提升开发效率。
+- [懒猫微服开发篇（五）：懒猫微服如何使用 OpenID Connect （OIDC）？（下）](https://blog.no-claw.com/48285dc8/): 2025-07-05 — 懒猫微服 OIDC 单点登录开发教程（下篇），实战代码与调试。
+- [懒猫微服开发篇（六）：用 OpenResty 做反向代理来解决跨域问题](https://blog.no-claw.com/300338c6/): 2025-07-05 — 介绍如何在懒猫微服中使用 OpenResty 反向代理解决前后端跨域问题
+- [懒猫微服开发篇（一）：懒猫微服全栈上架指南，一步打包，一键发布](https://blog.no-claw.com/ec579c86/): 2025-07-02 — 懒猫微服应用全栈上架完整指南，从打包到一键发布。
+- [懒猫微服实战入门（十七）：把 Steam 游戏存到懒猫网盘](https://blog.no-claw.com/ffc71b6/): 2025-07-01 — 把 Steam 游戏库存到懒猫网盘，客户端自动挂载，节省本地硬盘空间。
+- [懒猫微服实战入门（十六）：把懒猫微服当作 24 × 7 在线开发机](https://blog.no-claw.com/25ccd3a3/): 2025-06-29 — 把懒猫微服当作 24 小时在线的远程开发机，随时连接中间件和数据库。
+- [懒猫微服进阶心得（十）：本地开发，如何接入懒猫微服的 OpenID Connect (OIDC)](https://blog.no-claw.com/4daab20a/): 2025-06-27 — 本地开发环境接入懒猫微服 OIDC 单点登录的配置方法。
+- [懒猫微服实战入门（十五）：大疆 Pocket 3 素材导入懒猫网盘](https://blog.no-claw.com/50f8f5d2/): 2025-06-24 — 大疆 Pocket3 拍摄素材导入懒猫网盘，解决多设备共享视频的痛点。
+- [懒猫微服排查篇（二）：上架应用后，pip 安装报错 HASH 不一致](https://blog.no-claw.com/cf7f5d3/): 2025-06-24 — 排查懒猫微服上架应用后 pip 安装时 HASH 校验不一致的问题
+- [懒猫微服开发篇（零）：上架应用需要哪些知识](https://blog.no-claw.com/c7acbc13/): 2025-06-23 — 懒猫微服应用上架前需要掌握的知识清单，从 Docker 到应用打包。
+- [懒猫微服进阶心得（九）：商店 App 如何接管 Docker 引擎？](https://blog.no-claw.com/e8e61ce7/): 2025-06-22 — 懒猫微服商店应用如何接管和管理 Docker 引擎的机制解析。
+- [懒猫微服实战入门（十四）：不登录客户端，如何用 Samba 挂载懒猫微服网盘？](https://blog.no-claw.com/86ecba8b/): 2025-06-21 — 不登录懒猫客户端，通过 Samba 协议直接挂载懒猫微服网盘。
+- [懒猫微服排查篇（一）：403 Forbidden！记应用商店 pip 使用清华源的报错](https://blog.no-claw.com/c20c194c/): 2025-06-21 — 排查懒猫微服应用商店中 pip 使用清华源时出现 403 报错的解决过程
+- [懒猫微服入门篇（零）：开箱初探，硬件亮相](https://blog.no-claw.com/4022bac/): 2025-06-19 — 懒猫微服开箱体验，硬件外观、接口配置与初印象。
+- [懒猫微服炫技篇（二）：使用懒猫微服倒推停电时间](https://blog.no-claw.com/b6479fd0/): 2025-06-18 — 利用懒猫微服的 uptime 和上电自启功能倒推家中停电时间
+- [Docker 跨架构运行：ARM 与 x86 镜像选择、QEMU 和迁移](https://blog.no-claw.com/86ab1d7c/): 2025-06-17 — 在 ARM 与 x86 主机之间选择、验证和运行 Docker 镜像，排查 exec format error，并使用 save、load 迁移镜像。
+- [懒猫微服故事篇（二）：西湖邂逅后，我手把手教她玩转NAS](https://blog.no-claw.com/943b4ba6/): 2025-06-09 — 西湖偶遇后手把手教朋友使用懒猫微服 NAS 的有趣经历
+- [我用Amazon Q写了一个Docker客户端，并上架了懒猫微服商店](https://blog.no-claw.com/8f0212bf/): 2025-06-08 — 使用 Amazon Q 开发 Docker 客户端并上架懒猫微服商店的全过程
+- [懒猫微服进阶心得（七）：懒猫的镜像仓库](https://blog.no-claw.com/8cdf9a5/): 2025-06-07 — 懒猫微服内置镜像仓库的使用方法与管理技巧。
+- [懒猫微服进阶心得（六）：以纸砚双拼为例，快速移植纯前端项目到懒猫微服](https://blog.no-claw.com/7294709a/): 2025-06-06 — 以纸砚双拼为例，演示如何快速将纯前端项目移植到懒猫微服。
+- [懒猫微服实战入门（十三）：懒猫穿透不只图形化，纯命令行服务器也可以](https://blog.no-claw.com/3d7a2d17/): 2025-06-05 — 懒猫微服穿透服务不限于图形界面，纯命令行服务器也能用。
+- [懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器](https://blog.no-claw.com/9d1544e0/): 2025-06-04 — 在懒猫微服上用 iVentoy 搭建 PXE 网络启动服务器，局域网装机更方便。
+- [懒猫微服进阶心得（五）：使用懒猫微服做 Ventoy 启动盘](https://blog.no-claw.com/1c49be8c/): 2025-06-03 — 用懒猫微服制作 Ventoy 启动盘，局域网装机更方便。
+- [懒猫微服实战入门（十一）：一键换源指南：用 chsrc 开启丝滑体验](https://blog.no-claw.com/eef881d4/): 2025-06-02 — 懒猫微服固件更新后软件源变慢，用 chsrc 一键切换国内镜像源。
+- [懒猫微服实战入门（十）：通过 nmtui 设置静态 IP，接入旁路由实现科学上网](https://blog.no-claw.com/b704f5f8/): 2025-06-01 — 懒猫微服通过 nmtui 设置静态 IP，接入旁路由实现科学上网的完整配置。
+- [Debian 与 Ubuntu 配置 XRDP：XFCE 远程桌面与黑屏排查](https://blog.no-claw.com/8e360f7e/): 2025-05-31 — 为 Debian 系系统安装 XRDP 与 XFCE，配置会话、用户登录和启动脚本，并记录懒猫微服上的远程桌面实践。
+- [systemd 用户服务：用 systemctl --user 在登录时运行脚本](https://blog.no-claw.com/95e86a3c/): 2025-05-30 — 为初始化脚本编写 systemd 用户服务，配置 oneshot、default.target 和日志排查，并记录懒猫微服恢复工具环境的实践。
+- [懒猫微服实战入门（八）：懒猫微服 × SSH Remote：打造随时随地的云端开发环境](https://blog.no-claw.com/778337f4/): 2025-05-29 — 懒猫微服搭配 VS Code SSH Remote，打造随时随地可用的云端开发环境。
+- [Docker Compose（五）：多容器编排、网络与多环境配置](https://blog.no-claw.com/61cfcd24/): 2025-05-23 — 用 Docker Compose 管理应用、数据库与前端服务，配置网络、卷、环境变量和健康检查，并整理多环境覆盖与 V2 迁移。
+- [Docker 数据持久化（四）：Volume、Bind Mount 与备份恢复](https://blog.no-claw.com/8b5626cb/): 2025-05-22 — 对照 Docker Volume 与 Bind Mount，练习数据卷创建、容器共享、目录挂载以及备份恢复，并延伸到 Kubernetes PVC。
+- [懒猫微服故事篇（一）：服务器宕机之后，我和前端靠懒猫微服结对编程](https://blog.no-claw.com/d2e0eee4/): 2025-05-22 — 服务器宕机后，用懒猫微服搭建临时开发环境实现前后端结对编程的故事
+- [Docker 容器管理（三）：启动、停止、日志与重启策略](https://blog.no-claw.com/5517bd46/): 2025-05-21 — 练习 docker run、ps、stop、start、exec 和 logs，理解前后台运行、端口映射、环境变量与容器重启策略。
+- [懒猫微服进阶心得（三）：一台机器跑三套 Docker？深入解析懒猫容器的共存机制（下）](https://blog.no-claw.com/b853f136/): 2025-05-21 — 深入解析懒猫微服三套 Docker 引擎共存机制（下篇），容器网络与存储隔离。
+- [Docker 镜像（二）：分层、构建、仓库与镜像优化](https://blog.no-claw.com/e0565a55/): 2025-05-20 — 理解 Docker 镜像的分层结构，练习构建、拉取、推送、导出与导入，并用多阶段构建和缓存优化镜像。
+- [懒猫微服实战入门（七）：超越蒲公英 SD-WAN，用懒猫转发服务，iPad 随时远程家里 Windows](https://blog.no-claw.com/59f4c56d/): 2025-05-20 — 用懒猫微服转发服务替代蒲公英 SD-WAN，iPad 随时远程访问家里的 Windows 电脑。
+- [懒猫微服进阶心得（二）：一台机器跑三套 Docker？深入解析懒猫容器的共存机制（上）](https://blog.no-claw.com/1d9319fb/): 2025-05-20 — 深入解析懒猫微服一台机器运行三套 Docker 引擎的共存机制（上篇）。
+- [Docker 入门（一）：容器化部署与基本概念](https://blog.no-claw.com/effe7a9a/): 2025-05-19 — 从部署环境不一致的问题理解 Docker，认识镜像、容器、Dockerfile 和仓库，并运行第一个容器。
+- [懒猫微服炫技篇（一）：使用懒猫微服的穿透服务，车机使用DS music 远程听歌，黑群晖不用再洗白](https://blog.no-claw.com/12695041/): 2025-05-19 — 借助懒猫微服穿透服务，让车机远程播放群晖 DS music，免洗白方案
+- [懒猫微服实战入门（六）：使用 2FAuth 共享 MFA](https://blog.no-claw.com/b6b74923/): 2025-05-17 — 在懒猫微服上部署 2FAuth，实现多人共享 MFA 两步验证码。
+- [深度长文：NAS 大降价的年代，我为何接受溢价来购买懒猫微服（附送回本攻略）](https://blog.no-claw.com/d6c5e7b2/): 2025-05-16 — 深度分析 NAS 降价潮中选择懒猫微服的理由，附回本攻略
+- [懒猫微服实战入门（五）：文件上传到懒猫网盘，SMB 电视盒子观影](https://blog.no-claw.com/b62d86a5/): 2025-05-15 — 文件上传到懒猫网盘，通过 SMB 协议在电视盒子上直接观影。
+- [懒猫微服进阶心得（一）：M 芯片移植懒猫应用、构建 Docker 镜像的常见问题排查及解决方案](https://blog.no-claw.com/126ed22c/): 2025-05-14 — Apple M 芯片构建懒猫微服 Docker 镜像的常见问题排查与解决方案。
+- [懒猫微服实战入门（四）：完全DNS访问，和本地代理冲突了怎么办？](https://blog.no-claw.com/36782d5f/): 2025-05-13 — 懒猫微服完全 DNS 访问与本地代理冲突的解决方案。
+- [懒猫微服实战入门（三）：懒猫智慧屏，以为是地表最强电视盒子，结果是闺蜜机](https://blog.no-claw.com/5a9099c0/): 2025-05-12 — 懒猫智慧屏体验，本以为是电视盒子，没想到是一台闺蜜机。
+- [懒猫微服实战入门（二）：打造多人协作环境，权限控制 + 数据隔离一步到位](https://blog.no-claw.com/4d17c8d/): 2025-05-10 — 懒猫微服多用户管理教程，权限控制与数据隔离配置一步到位。
+- [懒猫微服实战入门（一）：从开启 SSH 到免密登录，一步步教你搞定远程管理](https://blog.no-claw.com/56f9b737/): 2025-05-08 — 懒猫微服开启 SSH 并配置免密登录的完整教程，轻松搞定远程管理。
+- [把懒猫 Web 应用放进 Mac 程序坞：Chrome 与 Safari 的设置方法](https://blog.no-claw.com/ce3905e3/): 2025-05-07 — 用 Chrome 或 Safari 把常用的懒猫 Web 应用添加到 Mac 程序坞，直接打开网盘、清单和 ONLYOFFICE，减少反复查找。
+- [自带内网穿透，懒猫微服治好了我的 NAS 焦虑](https://blog.no-claw.com/b1e8232f/): 2025-05-04 — 懒猫微服自带内网穿透功能，彻底解决 NAS 远程访问焦虑
+
+## 电子产品
+
+- [地铁上耳机被其他人偷偷连了，苹果售后这样说....](https://blog.no-claw.com/57fccc9b/): 2026-06-07 — 朋友的耳机充电盒被陌生账户绑定，反复响起查找提示。记下联系苹果电话客服、授权店和直营店后仍未解决问题的经历。
+- [MacOS的LWScreenShot，锁屏以后还能截图](https://blog.no-claw.com/5b230ad0/): 2026-04-17 — 早上发现 Mac 上多了一张 LWScreenShot 截图，一度担心电脑被入侵，后来才弄清它与登录窗口、锁屏截图的关系。
+- [将 Apple 日历同步到 vivo 日历](https://blog.no-claw.com/f3e6ab16/): 2026-04-16 — 换用安卓后，通过 App 专用密码和 CalDAV 把 Apple 日历接入 vivo，记录配置过程，以及只读和部分日程缺失的情况。
+- [给Macbook Pro安装Fedora Asahi Remix](https://blog.no-claw.com/5743bae5/): 2026-02-23 — 16G MacBook Pro 内存不够用，安装 Fedora Asahi Remix 做双系统的完整过程。
+- [被CUPS共享打印机驱动搞疯了，换windows10 做打印机 server吧](https://blog.no-claw.com/7cc2eba9/): 2026-02-17 — CUPS 对联想打印机兼容性差，改用 Windows 10 做打印服务器，原生驱动更稳定还能 RDP 远程管理。
+- [Macbook Pro 虚拟机安装ARM飞牛](https://blog.no-claw.com/567b12ef/): 2026-02-15 — 在 MacBook Pro 上通过虚拟机安装 ARM 版飞牛 NAS 系统的教程。
+- [在Macbook Pro上突破原生限制，实现菊花链三屏显示（曲线救国版）](https://blog.no-claw.com/cb0bcf1b/): 2026-02-09 — M 芯片 MacBook Pro 原生只支持双外接显示器，第三块屏接上就黑屏。通过 DisplayLink 扩展坞 + USB 直连显示器，曲线实现菊花链三屏 4K@60Hz 输出，桌面走线也更清爽。
+- [被天才吧耽误，Apple silicon 死机与恢复的一年](https://blog.no-claw.com/d5918d57/): 2025-12-22 — 十年黑苹果玩家入手 Apple Silicon 后频繁死机，被天才吧耽误一年的维修经历。
+- [铁威马：被忽视的中坚NAS玩家，为何在群晖阴影下沉默？](https://blog.no-claw.com/1690f93c/): 2025-10-08 — 从硬件定位、TOS 软件生态和社区传播几个角度，讨论铁威马在群晖、威联通与自建 NAS 之间的位置。
+- [一根网线搞定远程运维，GL-RM1PE 深度体验：远程运维、装机、开机一体化的 KVM over IP](https://blog.no-claw.com/63cca403/): 2025-09-16 — GL-RM1PE KVM over IP 深度体验，一根网线实现远程运维与装机
+- [群晖如何配置 Server 酱 Webhook 事件通知？](https://blog.no-claw.com/e5f6a7b8/): 2025-09-14 — 群晖 DSM 配置 Server 酱 Webhook，实现系统事件微信推送通知。
+- [早上起来，Chrome 白屏了……](https://blog.no-claw.com/a3db028b/): 2025-09-07 — Chrome 浏览器突然白屏的排查与修复过程记录
+- [毕业很久了，女同学突然找来修电脑.......](https://blog.no-claw.com/4b7a2922/): 2025-08-27 — 帮女同学远程排查 Mac 文件无法删除错误代码 8062 的经历
+- [硬件探索记 Tuya 篇（一）：初识 T5 AI 开发板，先配置个环境吧](https://blog.no-claw.com/ab7870f7/): 2025-08-27 — Tuya T5 AI 开发板开箱与开发环境配置入门
+- [硬件黑客松的感受](https://blog.no-claw.com/9a6d478a/): 2025-08-27 — 参加 Rebuild-z 硬件黑客松的感受与经验教训
+- [如何白嫖嘉立创每个月免费打板？](https://blog.no-claw.com/de1fd60a/): 2025-08-12 — 教你每月免费领取嘉立创 PCB 打板优惠券的方法
+- [大上墨水屏测评](https://blog.no-claw.com/2fca5ee8/): 2025-08-10 — 大上墨水屏显示器深度测评，护眼与阅读体验分析
+- [普通人需要哪些电脑知识？](https://blog.no-claw.com/87d5ac58/): 2025-08-09 — 面向普通用户的实用电脑知识科普与常见问题解答
+- [使用 MacOS 给泰山派烧录镜像](https://blog.no-claw.com/89eeed1/): 2025-08-09 — 在 macOS 上为泰山派 RK3568 开发板烧录系统镜像的详细教程
+- [找到了一个wedav的项目](https://blog.no-claw.com/3ebd9b42/): 2025-07-30 — 发现一个 WebDAV 开源项目，可用于 NAS 文件远程访问。
+- [再也不用拼手速！一条命令直接进 BIOS（Windows/Linux/macOS 全攻略)](https://blog.no-claw.com/a0b67926/): 2025-07-27 — 一条命令直接进入 BIOS，Windows/Linux/macOS 全平台方法汇总
+- [TrackWeight, 把 Macbook 的触控板当作电子秤](https://blog.no-claw.com/10473fce/): 2025-07-27 — 用 TrackWeight 将 MacBook 触控板变成电子秤的趣味体验
+- [记一次iphone的死机](https://blog.no-claw.com/b81a6bca/): 2025-07-27 — 记录一次 iPhone 屏幕失灵死机的排查与解决过程
+- [家居常用测网速软件](https://blog.no-claw.com/73f93987/): 2025-07-26 — 家居场景下常用的网络测速与管理软件推荐
+- [京东售后拒修 AirPods 称"无问题"，苹果官方检测后直接换新！京东竟删除检测记录？](https://blog.no-claw.com/c67acea7/): 2025-07-09 — AirPods 出现单侧无声等故障，京东寄修称没有问题，随后苹果直营店检测并换新，记下两次售后与检测记录变化的经历。
+- [Mac 上 Fn + F12 怎么改成 F12？（适用于 macOS 13 Ventura）](https://blog.no-claw.com/18eac60e/): 2025-07-08 — 记录 macOS 13 Ventura 中标准功能键的设置入口，把 F12 的默认行为从音量调节切回功能键，方便日常使用快捷键。
+- [高版本的MacOS如何降级？](https://blog.no-claw.com/5b6f9bd/): 2025-07-08 — macOS 高版本降级到低版本的方法与注意事项。
+- [Lighting 原生不支持OTG！](https://blog.no-claw.com/d969a069/): 2025-06-26 — 尝试用原装线把 Pocket 3 和移动硬盘接到旧款 iPhone，记录无响应、与 iPad 对比，以及寻找转接方案的过程。
+- [MacOS 26 beta 如何恢复启动台](https://blog.no-claw.com/83eb1399/): 2025-06-22 — macOS 26 beta 升级后启动台异常的恢复方法。
+- [给群晖安装Iperf3，一键局域网测速](https://blog.no-claw.com/e70dd7d7/): 2025-06-15 — 在群晖上安装 Iperf3，一条命令测试局域网带宽速度。
+- [车机锁 Wi‑Fi 奸商跑路，高楼组 Mesh 极客破局](https://blog.no-claw.com/fc9b2cf2/): 2025-05-11 — 车机锁 WiFi 与高楼 Mesh 组网的极客解决方案
+- [Proxmox Virtual Environment (PVE) 虚拟机安装不完全指南](https://blog.no-claw.com/13af016a/): 2025-05-11 — PVE 虚拟化平台安装指南，从零搭建家庭虚拟化环境。
+- [威联通 QNAP 系列 (一) 全闪 NAS TBS-h574TX QuTS hero 初探](https://blog.no-claw.com/7acb32ac/): 2025-04-24 — 从 Qfinder Pro 发现设备到安装 QuTS hero，记录 TBS-h574TX 的初始化、存储池设置、监控与日志功能，以及风扇噪声的初步体验。
+- [等了半年的 POE 系统，铭凡 S100 不完全测评](https://blog.no-claw.com/a7aa5f43/): 2025-04-02 — 铭凡 S100 POE 供电小主机开箱测评与使用体验
+- [Cudy TR3000 刷 Openwrt](https://blog.no-claw.com/3e1838df/): 2025-04-02 — Cudy TR3000 路由器刷入 OpenWrt 固件的详细教程
+- [PXE 装机：iventoy 聊胜于无](https://blog.no-claw.com/3ff07059/): 2025-04-02 — 使用 iVentoy 搭建 PXE 网络装机环境的体验记录。
+- [如何使用 Iphone 拍摄 JPG 格式的照片](https://blog.no-claw.com/4bc0fb74/): 2025-04-02 — iPhone 默认拍 HEIC 格式，如何设置直接拍摄 JPG 格式照片。
+- [飞牛OS虚拟机初体验](https://blog.no-claw.com/3608dae8/): 2025-03-11 — 飞牛 NAS 系统虚拟机安装初体验，上手感受与基本配置。
+- [群晖导入磁盘大法 - 安装img](https://blog.no-claw.com/8c366e49/): 2025-03-02 — 群晖通过导入磁盘镜像安装系统的方法记录。
+- [追忆青春 - 黑群晖](https://blog.no-claw.com/795ed575/): 2025-02-15 — 黑群晖折腾回忆录，从入门到放弃再到怀念的 NAS 之路。
+- [DSM 外接磁盘挂载记录](https://blog.no-claw.com/f2e07cac/): 2025-02-15 — 群晖 DSM 外接 USB 磁盘的挂载方法与踩坑记录。
+- [群晖套娃飞牛OS（FnOS）](https://blog.no-claw.com/1eb7a4c5/): 2025-02-02 — 在群晖虚拟机中套娃安装飞牛 NAS 系统的实践记录。
+- [威联通 QNAP 系列（二）：全闪 NAS TBS-h574TX 雷电网桥设置](https://blog.no-claw.com/767176d1/): 2025-01-24 — 记录 QNAP TBS-h574TX 雷电网桥的连接、路由、iperf3 测速、MTU 调整，以及 Thunderbolt to Ethernet 的使用体验。
+- [老式打印机改 Airprint 之 cups](https://blog.no-claw.com/6fcedbb0/): 2025-01-20 — 把老式联想打印机接到群晖，用 Docker 运行 CUPS 实现 AirPrint，记录驱动选择、跨设备测试和重启容器的小工具。
+- [米家配合 iPhone 快捷指令控制智能家居](https://blog.no-claw.com/85170954/): 2024-10-28 — 以空调伴侣为例，在米家创建手动场景并加入 Siri 快捷指令，记录通过 iPhone 和 HomePod 控制设备的过程。
+- [macOS HiDPI 配置笔记：BetterDisplay 与 M2 脚本调整](https://blog.no-claw.com/53738e12/): 2024-05-23 — 记录使用 BetterDisplay 调整 macOS 显示设置，以及修改 one-key-hidpi 的设备识别函数来适配 M2 的过程。
+- [便携显示器](https://blog.no-claw.com/3badab23/): 2024-05-12 — 便携显示器的使用体验与实际效果测评
+- [你的下一个电脑还得是电脑](https://blog.no-claw.com/c40f7be/): 2024-05-12 — iPad 能否替代电脑？实际体验告诉你，下一台电脑还得是电脑。
+- [使用ipad 串流 MacOS](https://blog.no-claw.com/474f606e/): 2024-03-24 — 在 Mac 上安装 Sunshine，再用 iPad 的 Moonlight 配对连接，记录网页配置、PIN 验证和录屏权限的设置过程。
+- [电容键盘体验](https://blog.no-claw.com/7b93b635/): 2024-02-16 — 记录国产宁芝电容键盘的使用感受，以及按键失灵后按客服指引用检测工具处理的经历，后来因只支持有线而弃用。
+- [MacOS安装的软件无法打开](https://blog.no-claw.com/3ab0fe4d/): 2024-02-02 — macOS 安装第三方软件提示无法打开的解决方法。
+- [NFC复制卡写手机手环](https://blog.no-claw.com/5ce15c7a/): 2024-01-02 — 使用 NFC 工具复制加密 IC 卡并写入手机手环的教程
+- [Home Assistant 实现米家设备接入 HomeKit，圆梦苹果全家桶](https://blog.no-claw.com/aec4a8fe/): 2024-01-02 — 用 Home Assistant 将米家智能设备接入 Apple HomeKit
+- [出远门带的电子产品](https://blog.no-claw.com/3205bf5/): 2024-01-02 — 出远门时随身携带的电子产品清单与搭配建议
+- [小米4A刷OpenWrt](https://blog.no-claw.com/63a7a8fe/): 2023-06-22 — 小米路由器 4A 刷入 OpenWrt 固件的完整教程
+- [MacOS干扰那些事](https://blog.no-claw.com/9afa2bcc/): 2023-05-23 — macOS 随航、隔空投送等功能的干扰问题与解决方法。
+- [ventoy引导wtg](https://blog.no-claw.com/874b576b/): 2023-02-10 — 使用 Ventoy 引导 Windows To Go，实现 U 盘启动 Windows 系统。
+- [intel 12代CPU折腾记](https://blog.no-claw.com/5821c3b8/): 2023-02-06 — Intel 12 代 CPU 与 NUC 小主机的折腾记录
+- [打印机改无线](https://blog.no-claw.com/79388b04/): 2023-01-24 — 将老式有线打印机改装为无线打印的几种方案
+- [工具集锦](https://blog.no-claw.com/cf8e3176/): 2023-01-06 — 电工网工常用工具集锦，工欲善其事必先利其器
+- [工作台改造](https://blog.no-claw.com/baed0386/): 2022-10-18 — 办公工作台改造计划与桌面布局优化
+- [“智能”家居相伴的日子](https://blog.no-claw.com/49e53210/): 2022-06-19 — 记录智能家居设备的日常使用体验与感受
+- [小米Ax5400双宽带叠加](https://blog.no-claw.com/4625bf56/): 2022-05-06 — 小米 AX5400 路由器实现双宽带叠加的配置方法
+- [树莓派入门笔记：系统安装与远程连接](https://blog.no-claw.com/11aafc82/): 2019-02-21 — 早期树莓派学习笔记：准备存储卡和散热片、安装系统，以及 HDMI、VNC、SSH 和远程桌面的连接方式。
+- [51 单片机学习笔记：SPI 通信](https://blog.no-claw.com/84abc641/): 2018-01-03 — 整理 51 单片机 SPI 通信的实验代码，按延时模块、通信模块和主程序拆分文件。
+- [51 单片机学习笔记：I²C 通信](https://blog.no-claw.com/6a750119/): 2018-01-02 — 整理 51 单片机 I²C 通信的实验代码，包括延时、通信模块、头文件与主程序。
+- [51 单片机学习笔记：PWM](https://blog.no-claw.com/9e7d6ad0/): 2017-12-30 — 51 单片机 PWM 学习笔记，记录脉宽调制与输出控制的 C 语言实验代码。
+- [51 单片机学习笔记：蜂鸣器](https://blog.no-claw.com/10170653/): 2017-12-28 — 用 51 单片机驱动蜂鸣器，逐步调整程序并使用定时器模拟门铃。
+- [51 单片机学习笔记：串口通信](https://blog.no-claw.com/a5882897/): 2017-12-28 — 从串口收发到中断处理，整理串口通信代码与延时、显示等模块的配合方式。
+- [51 单片机学习笔记：中断与定时器](https://blog.no-claw.com/283d15fb/): 2017-12-27 — 学习外部中断的下降沿与低电平触发，整理定时器四种工作方式及计数器实验。
+- [51 单片机学习笔记：按键](https://blog.no-claw.com/c9c6472d/): 2017-12-26 — 51 单片机按键实验：独立按键、按键复用、矩阵键盘，以及 74LS148 编码器的应用。
+- [51 单片机学习笔记：数码管](https://blog.no-claw.com/1baba95c/): 2017-12-25 — 从数码管静态显示到动态扫描，整理共阴段码及 74LS138、74LS48 辅助显示的实验。
+- [51 单片机学习笔记：常用库函数](https://blog.no-claw.com/a73de94/): 2017-12-25 — 整理 51 单片机 C 程序中使用的常用库函数，配合示例记录调用方式。
+- [51 单片机学习笔记：LED 与流水灯](https://blog.no-claw.com/fc49a1f5/): 2017-12-25 — 在 Proteus 与 Keil C 中练习 LED 点亮、闪烁和心形流水灯，记录端口控制与延时写法。
+- [51 单片机学习笔记：Linux 开发 8051：环境搭建](https://blog.no-claw.com/8bd7b11b/): 2017-12-24 — 在 Linux 下配置 SDCC 与 stcflash，记录 8051 程序的编译、串口连接和烧录过程。
+- [STM32F767 CubeMX 开发手记（一）：跑马灯](https://blog.no-claw.com/327b74bc/): 2017-12-20 — 使用 STM32CubeMX 和 SW4STM32 为 STM32F767 配置 RCC、GPIO 与时钟树，生成工程并实现跑马灯。
+- [外设常见问题汇总](https://blog.no-claw.com/6f08b777/): 2017-10-06 — 盘点硬件选购和使用中常见的坑与避坑指南
+- [SSD介绍](https://blog.no-claw.com/2e34d332/): 2017-03-10 — SSD 固态硬盘基础知识介绍，了解 SLC/MLC/TLC 闪存颗粒区别
+
+## 极限科技
+
+- [连接 Easysearch 的新方式：使用 DBX 把索引当成表来浏览](https://blog.no-claw.com/c16f9938/): 2026-08-21 — DBX 已原生支持 Easysearch，可以通过图形界面连接集群、浏览索引，并使用 DSL 和 SQL 查询数据。
+- [给 Easysearch 以文搜图搭座桥，结果 Haiku 把藕片看成了炒饭（下）](https://blog.no-claw.com/f90f59cd/): 2026-07-12 — 为图片生成描述和食材标签，结合向量与关键词检索改善局部细节召回，记录标注模型的误判与对照测试。
+- [我用 Easysearch 搭了个「以文搜图」，然后被一盘藕片上了一课（上）](https://blog.no-claw.com/5840ae26/): 2026-07-12 — 用 Easysearch 和 Bedrock 多模态向量搭建以文搜图，记录索引配置、图片入库和局部食材召回失败的排查过程。
+- [告别“兼容模式”：Easysearch 有了自己的官方 Python 客户端](https://blog.no-claw.com/d4422b76/): 2026-05-06 — 介绍 Easysearch 官方 Python 客户端的安装、连接、证书配置、批量写入、查询与聚合用法。
+- [LLM时代，密码也能日抛了](https://blog.no-claw.com/3da9c2fb/): 2026-05-06 — 部署 Easysearch 2.1.2 后在容器日志里找不到初始密码，改用 resetadminpassword.sh 完成重置，记录这次安装中的变化。
+- [拒绝 latest 陷阱：Easysearch Docker 镜像拉取与管理全攻略](https://blog.no-claw.com/e2d3ed1a/): 2026-04-22 — 整理下载和管理 Easysearch Docker 镜像时用到的命令，涵盖版本标签、digest 校验、多架构选择和离线导入导出。
+- [在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 Easysearch](https://blog.no-claw.com/8fee9a49/): 2026-03-11 — 基于 k3s + Easysearch 2.0.3 实测，从零搭建 Fluent Bit 日志收集方案，将 Nginx 日志转发到 Easysearch。
+- [k3s + Helm 部署 Easysearch](https://blog.no-claw.com/1dba38bc/): 2026-03-03 — 在 k3s 集群上使用 Helm 快速部署 Easysearch 搜索引擎的实战记录。
+- [Easysearch 数据映射之 Deep Dive：我踩过的 Volume 坑](https://blog.no-claw.com/65e472bd/): 2026-02-26 — Docker 部署 Easysearch 时遇到的数据持久化问题，具名卷与绑定挂载的区别，以及 503 错误的排查过程。
+- [记一次硬盘满了导致 Coco Server 无法启动的排查](https://blog.no-claw.com/db853650/): 2026-02-21 — Coco Server 启动失败的排查过程，最终定位到磁盘空间不足导致服务无法正常运行。
+- [RK3566嵌入式开发板运行Coco AI Sever](https://blog.no-claw.com/ce955007/): 2026-02-18 — 在 RK3566 嵌入式开发板上部署运行 Coco AI Server 的实践记录。
+- [Docker启动Coco AI Server后，如何访问内置Easysearch](https://blog.no-claw.com/b7b40656/): 2026-02-17 — Docker 部署 Coco AI Server 后访问内置 Easysearch 的方法和配置说明。
+- [Easysearch 集群监控实战（下）：线程池、索引、查询、段合并性能指标详解](https://blog.no-claw.com/d129577a/): 2026-01-01 — Easysearch 索引性能监控笔记，涵盖线程池、分片分布、搜索延迟、段合并与写入排查。
+- [Easysearch 集群监控实战（上）：CPU、内存、磁盘、网络核心指标详解](https://blog.no-claw.com/354bc2ce/): 2026-01-01 — Easysearch 集群基础设施监控笔记，涵盖 CPU、系统负载、内存、JVM、磁盘与网络指标。
+- [告别 DSL！我用 MCP 让 AI 帮我操作 Easysearch](https://blog.no-claw.com/9ca6531a/): 2025-12-31 — 通过 MCP 协议让 AI 直接操作 Easysearch，告别复杂的 DSL 查询语法。
+- [INFINI Labs 产品全览：搜索引擎、网关、管理台与 AI 搜索](https://blog.no-claw.com/f21e6be4/): 2025-12-22 — 梳理 Easysearch、Gateway、Console、Coco AI 与 Loadgen 的分工，说明搜索、运维和知识库场景下如何组合，以及上线前需要验证的边界。
+- [Easysearch 更新后日志中看不到密码？一文带你搞清楚原因与解决方案](https://blog.no-claw.com/dba72588/): 2025-10-20 — 解析 Easysearch 更新后日志中不再显示密码的原因及解决方案
+- [Elasticsearch、OpenSearch 与 Easysearch：关系、授权与兼容边界](https://blog.no-claw.com/ca6d4c60/): 2025-10-07 — 从 Lucene、Elasticsearch 7.10.2 和授权变化讲起，梳理 Elasticsearch、OpenSearch 与 Easysearch 的关系，以及 API、客户端、插件和快照的兼容边界。
+- [Coco AI 插件商店很多功能，还能玩 2048](https://blog.no-claw.com/76058f6a/): 2025-10-07 — 探索 Coco AI 插件商店的丰富功能，还内置了 2048 小游戏
+- [Docker 启动 Easysearch 时自定义初始密码的几种方式](https://blog.no-claw.com/588b9d1d/): 2025-10-05 — 介绍 Docker 启动 Easysearch 时自定义初始密码的多种配置方法
+- [Easysearch 的写入流程（一）：refresh](https://blog.no-claw.com/eb05eb6d/): 2025-10-05 — 深入解析 Easysearch 写入流程中的 refresh 机制
+- [不用每次都改 `easysearch.yml` 也能改启动参数 —— 用 Docker 环境变量搞定一切](https://blog.no-claw.com/c3d4e5f6/): 2025-10-05 — 通过 Docker 环境变量修改 Easysearch 启动参数，无需手动编辑配置文件
+- [Elasticsearch 自动 Mapping 与 MySQL Schema 的对比分析](https://blog.no-claw.com/ce1ebcd3/): 2025-10-05 — 对比 Elasticsearch 动态 Mapping 与 MySQL Schema 的字段管理方式，讨论类型推断、映射膨胀，以及用动态模板和显式定义控制结构的思路。
+- [Easysearch 索引别名（Index Alias）详解](https://blog.no-claw.com/c41993b0/): 2025-10-05 — 详解 Easysearch 索引别名的创建、使用场景与管理操作
+- [在嘉立创的泰山派上也能运行Easysearch](https://blog.no-claw.com/d0139002/): 2025-10-01 — 在嘉立创泰山派开发板上成功运行 Easysearch 的实践记录
+- [Easysearch 可视化升级：无需额外部署 UI 软件](https://blog.no-claw.com/a378e5b1/): 2025-09-21 — Easysearch 内置可视化功能升级，无需额外部署 UI 工具即可管理
+- [容器运行 Coco AI，如何访问宿主机的 localhost？](https://blog.no-claw.com/d4e5f6a7/): 2025-08-28 — 容器运行 Coco AI 时访问宿主机 localhost 服务的解决方案
+- [Coco AI 服务端文件系统检索](https://blog.no-claw.com/ca3451f/): 2025-08-11 — 使用 Coco AI 检索服务端文件系统中的文档内容
+- [在 Coco AI 中接入 WordPress RSS，实现文章秒级搜索](https://blog.no-claw.com/2bdb8c4a/): 2025-08-11 — 将 WordPress 博客通过 RSS 接入 Coco AI 实现智能文章检索
+- [手把手教你使用 Coco AI 订阅RSS，智能检索Hexo博客](https://blog.no-claw.com/47752b69/): 2025-08-11 — 手把手教你将 Hexo 博客接入 Coco AI 实现智能检索
+- [从零到用：RSS 接入 Coco-AI 实战指南](https://blog.no-claw.com/2c28c43/): 2025-08-10 — 从零开始将 RSS 订阅源接入 Coco AI 的完整实战教程
+- [Coco AI × Amazon S3：秒搜你的云端文件](https://blog.no-claw.com/f050840/): 2025-08-10 — 将 Amazon S3 接入 Coco AI，实现云端文件的秒级智能搜索
+- [MacOS 环境下运行 EasySearch 报错无法信任 Java 包的解决方案](https://blog.no-claw.com/b77119f9/): 2025-07-12 — 解决 macOS 上运行 Easysearch 时 Java 包不受信任的报错问题
+- [用Filebeat OSS 7.10.2将收集日志到Easysearch](https://blog.no-claw.com/a0786458/): 2025-07-12 — 使用 Filebeat OSS 7.10.2 采集日志并输出到 Easysearch 的配置教程
+- [Easysearch 实战指南：修改索引主分片的三种方式（split shrink reindex](https://blog.no-claw.com/cba11cdd/): 2025-06-28 — 详解 Easysearch 中通过 split、shrink、reindex 修改索引主分片数的方法
+- [Easysearch 索引关闭与重开全攻略：open close 操作、批量处理及防误操作配置](https://blog.no-claw.com/af48f3e/): 2025-06-24 — Easysearch 索引 open/close 操作详解，含批量处理与防误操作配置
+- [本地 RAG 实战：用 Easysearch + Ollama SDK 半小时搭建检索增强问答系统](https://blog.no-claw.com/5a5307d/): 2025-06-09 — 用 Easysearch 和 Ollama SDK 半小时搭建本地 RAG 检索增强问答系统
+- [轻松管理 ES 集群：我把 Infinilabs Console 上架了懒猫微服，默认支持外网访问、](https://blog.no-claw.com/75c015c8/): 2025-05-09 — 将 Infinilabs Console 上架懒猫微服商店，轻松管理 ES 集群并支持外网访问
+- [MySQL数据实时接入Easysearch，零代码迁移全流程](https://blog.no-claw.com/7a296932/): 2025-05-05 — 零代码实现 MySQL 数据实时同步到 Easysearch 的完整流程
+- [从认证到透传：用 Nginx 为 Easysearch 构建一体化认证网关](https://blog.no-claw.com/c50511c4/): 2025-04-24 — 使用 Nginx 为 Easysearch 搭建统一认证网关的实战教程
+- [Easysearch 服务昨天还好好的，为什么今天突然访问不了了？](https://blog.no-claw.com/8d9611a5/): 2025-04-23 — 排查 Easysearch 服务突然无法访问的常见原因与解决方案
+- [Easysearch 基础运维扫盲指南：从 HTTP 到 HTTPS、认证与安全访问全解析](https://blog.no-claw.com/1f7436df/): 2025-04-23 — Easysearch 运维入门：HTTP/HTTPS 配置、认证机制与安全访问全解析
+- [Coco AI 接入 Google Drive：OAuth 配置与数据源验证](https://blog.no-claw.com/e011202f/): 2025-04-17 — 从 Google OAuth 客户端、Drive 权限和测试用户配置开始，为 Coco Server 接入 Google Drive，并验证文件读取结果。
+- [Coco-AI 接入 Google drive](https://blog.no-claw.com/10b05aec/): 2025-04-17 — 零代码将 Google Drive 接入 Coco AI，实现云端资料智能检索
+- [Coco-AI 集成语雀作为语料库进行检索](https://blog.no-claw.com/6a9ecc86/): 2025-04-17 — 将语雀文档接入 Coco AI 作为语料库实现智能检索
+- [Coco-AI 接入自定义数据源](https://blog.no-claw.com/271ab503/): 2025-04-17 — 为 Coco AI 接入自定义数据源，扩展智能检索范围
+- [Coco-AI 支持嵌入，让你的网站拥有 AI 搜索力](https://blog.no-claw.com/e32dbde5/): 2025-04-03 — 通过嵌入方式为网站集成 Coco AI 搜索能力
+- [不建 Hugo、不用 Hexo，纯 Markdown 文件也能接入 Coco-AI！](https://blog.no-claw.com/df454c34/): 2025-03-28 — 无需静态站点框架，纯 Markdown 文件直接接入 Coco AI 检索
+- [Docker-Compose部署 EasySearch 异常问题排查](https://blog.no-claw.com/719d7034/): 2025-03-24 — 排查 Docker Compose 部署 Easysearch 时遇到的常见异常问题
+- [拓展 Coco AI 功能 - 智能检索 Hexo 博客](https://blog.no-claw.com/9eab63c2/): 2025-03-20 — 拓展 Coco AI 功能，实现 Hexo 博客内容的智能检索
+- [Coco AI 智能检索 Hugo Blog 集成指南](https://blog.no-claw.com/afa68182/): 2025-03-18 — 将 Hugo 博客集成到 Coco AI 实现智能内容检索的配置指南
+- [CoCo AI APP 初体验：开启智能知识管理新篇章](https://blog.no-claw.com/eb0b4c83/): 2025-03-11 — Coco AI 桌面应用初体验，探索智能知识管理的全新方式
+- [Coco AI 全新升级：全图形化 RAG 配置，一键开启智能知识管理！](https://blog.no-claw.com/b126c84d/): 2025-03-11 — Coco AI 升级全图形化 RAG 配置界面，一键开启智能知识管理
+- [Easysearch 中 PUT 和 POST 更新索引的区别及常见错误解析](https://blog.no-claw.com/d5a28fff/): 2025-03-09 — 解析 Easysearch 中 PUT 与 POST 更新索引的区别及常见报错处理
+- [Easysearch 使用 AWS S3 进行快照备份与还原：完整指南及常见错误排查](https://blog.no-claw.com/eab170f2/): 2025-03-09 — Easysearch 使用 AWS S3 快照备份还原的完整教程与错误排查
+- [实现 INFINI Console 与 GitHub 的单点登录集成：一站式身份验证解决方案](https://blog.no-claw.com/86ef0187/): 2025-02-22 — 配置 INFINI Console 与 GitHub 单点登录集成的完整方案
+- [使用 INFINI Console 配置集群监控 Webhook 通知指南](https://blog.no-claw.com/361d01a9/): 2025-02-21 — 通过 INFINI Console 配置 Easysearch 集群监控的 Webhook 告警通知
+- [推荐给 Easysearch 新用户的几个 Elasticsearch 可视化工具](https://blog.no-claw.com/e3691a5b/): 2025-02-20 — 为 Easysearch 新手推荐几款实用的 Elasticsearch 可视化管理工具
+- [打造智能语料库：通过Coco AI Server 实现 Notion 笔记 RAG 检索功能](https://blog.no-claw.com/3d90967f/): 2025-02-17 — 用 Coco AI Server 将 Notion 笔记构建为 RAG 智能语料库
+- [Macbook Pro快速搭建Easysearch学习环境](https://blog.no-claw.com/8b29e69c/): 2025-02-11 — 在 MacBook Pro 上快速搭建 Easysearch 本地学习开发环境
+- [在 AWS EKS 上部署 Easysearch](https://blog.no-claw.com/628ec63/): 2024-08-15 — 使用 eksctl 创建 EKS 集群，配置 EBS CSI 驱动与负载均衡控制器，通过 Helm 部署 Easysearch 和 Console 并验证连接。
+- [INFINI Console 使用介绍](https://blog.no-claw.com/bde1966f/): 2024-07-22 — INFINI Console 的功能介绍与基本使用教程
+- [Elasticsearch 快照跨版本恢复：Easysearch 与 OpenSearch 兼容性实测](https://blog.no-claw.com/80e06f4b/): 2024-07-19 — 使用 S3 仓库测试 Elasticsearch、Easysearch 和 Amazon OpenSearch 的快照恢复，记录 IAM PassRole、仓库配置、失败信息与版本兼容结果。
+- [使用 Elasticsearch Python SDK 查询 Easysearch](https://blog.no-claw.com/a7b8c9d0/): 2024-07-10 — 使用 Elasticsearch Python SDK 连接和查询 Easysearch 的实战教程
+- [玩转 Easysearch 语法](https://blog.no-claw.com/f6a7b8c9/): 2024-07-04 — 玩转 Easysearch 查询语法，掌握搜索引擎的核心检索能力
+- [Easysearch 数据可视化和管理平台：INFINI Console 使用介绍](https://blog.no-claw.com/ebd08f3f/): 2024-07-03 — 介绍 INFINI Console 作为 Easysearch 数据可视化和集群管理平台的使用方法
+- [INFINI Easysearch尝鲜Hands on](https://blog.no-claw.com/8c820eb6/): 2024-06-30 — INFINI Easysearch 初体验，快速上手搜索引擎部署与基本操作
+
+## AWS
+
+- [Bedrock 使用 Claude fable5](https://blog.no-claw.com/5303808f/): 2026-06-11 — 记录在 Bedrock 中调用 Claude fable5 的示例，包含数据保留设置、SigV4 签名请求和 Converse 调用代码。
+- [Amazon Bedrock GUARDRAIL 拦截教程](https://blog.no-claw.com/ba3e7018/): 2026-06-08 — 用 Python 调用 Bedrock Guardrails，整理放行、只检测、拦截和脱敏时的返回字段，并记录命中规则的分类与输出。
+- [CodeX 使用Bedrock 模型](https://blog.no-claw.com/e7117226/): 2026-06-03 — 记录通过 Bedrock Mantle 接口调用模型的测试代码，以及 Codex 的模型提供方配置和区域不匹配时遇到的报错。
+- [Cognito OIDC接入](https://blog.no-claw.com/6d999d73/): 2026-04-29 — 用 Flask 和 Authlib 接入 Cognito OIDC，整理用户池、回调与登出配置，附登录示例和常见报错的排查线索。
+- [Claude Code 额度不够用？走 Bedrock 账单](https://blog.no-claw.com/4dbc8277/): 2026-04-17 — 记录让 Claude Code 通过 Amazon Bedrock 调用模型的环境变量配置，以及后续使用本地 AWS 凭证的更新。
+- [Quick Suite 链接 Oauth 认证的 AgentCore runtime 部署的 MCP](https://blog.no-claw.com/57053bb7/): 2026-04-17 — 连接 Quick Suite 与带 OAuth 认证的 AgentCore MCP 服务时，记录把 Runtime ARN 编码并拼接成 HTTPS 调用地址的做法。
+- [让 OpenSearch 支持单点登录：从密码登录到 OpenID Connect](https://blog.no-claw.com/37c6815d/): 2026-04-02 — 让 OpenSearch 支持 SSO：接入 OpenID Connect 认证
+- [在AWS EC2 上从零搭建 Kubernetes 集群（kubeadm）](https://blog.no-claw.com/7e9d67ce/): 2026-03-06 — 使用 kubeadm 在 AWS EC2 Ubuntu 实例上搭建 Kubernetes 集群，一台 Master 两台 Worker 的完整教程。
+- [使用 AWS SES + S3 发送 HTML 邮件](https://blog.no-claw.com/d51f292a/): 2026-02-02 — 用 Python + boto3 从 S3 读取 HTML 模板，通过 AWS SES 发送格式丰富的营销或通知邮件。
+- [Amazon Bedrock AgentCore 开发实战（一）：本地构建 AI Agent](https://blog.no-claw.com/a1b2c3d4/): 2025-12-15 — 使用 Amazon Bedrock AgentCore 在本地构建和调试 AI Agent 的实战教程
+- [使用agentcore部署MCP server](https://blog.no-claw.com/56feb9d1/): 2025-12-15 — 整理在 AgentCore 上部署 MCP 服务的初步笔记，涉及 Runtime、Gateway、调用地址和 Bearer Token，示例代码仍待补充。
+- [零代码改动！用 Docker 将 Flask 应用部署到 AWS Lambda](https://blog.no-claw.com/79854e67/): 2025-11-20 — 用 Docker 和 Lambda Web Adapter 零改动部署 Flask 到 AWS Lambda
+- [学云计算到底是在学什么？](https://blog.no-claw.com/4b1e0fb/): 2025-08-11 — 从个人经验聊聊学云计算到底在学什么
+- [使用 OpenList 将 S3 转换为 WebDAV](https://blog.no-claw.com/21efda6/): 2025-07-29 — 通过 OpenList 将 Amazon S3 存储转换为 WebDAV 协议访问
+- [AWS Credit 充值到账户全流程图文指南](https://blog.no-claw.com/11273243/): 2025-07-26 — 图文详解 AWS Credit 代金券充值到账户的完整操作流程
+- [EC2 没有绑定 EIP，重启后 IP 会变？DDNS-GO 自动更新你的域名](https://blog.no-claw.com/369cde6d/): 2025-07-15 — 用 DDNS-GO 解决 EC2 无 EIP 重启后 IP 变化的动态域名解析方案
+- [Amazon OpenSearch Service 现在支持 JSON Web Token（JWT）身份验证和授权](https://blog.no-claw.com/330e574/): 2025-06-20 — 介绍 Amazon OpenSearch Service 新增的 JWT 身份验证与授权功能
+- [半小时学会 Amazon Transit Gateway 跨 VPC 网络互联配置](https://blog.no-claw.com/b9af2b64/): 2025-06-20 — 记录用 Transit Gateway 连接多个 VPC 的配置过程，包括挂载点、TGW 与子网路由表，以及通过 RAM 跨账户共享。
+- [基于 AWS IAM Identity Center 的 SAML 配置，实现单点登录阿里云](https://blog.no-claw.com/511c83d9/): 2025-06-20 — 配置 AWS IAM Identity Center SAML 实现单点登录阿里云的教程
+- [组队参加 Amazon Q Idea 1000，我们的作品上了 AWS 峰会](https://blog.no-claw.com/ac23bcf7/): 2025-06-20 — 参加 Amazon Q Idea 1000 比赛，作品登上 AWS 峰会的经历分享
+- [如何在 AWS EC2 上部署 Isaac Sim](https://blog.no-claw.com/10d4e175/): 2025-06-12 — 在 AWS EC2 G5 实例上部署 NVIDIA Isaac Sim 仿真平台的实战教程
+- [手把手搞定报名亚马逊科技认证](https://blog.no-claw.com/4533e9f8/): 2025-06-02 — 手把手教你报名 AWS 亚马逊云科技认证考试的完整流程
+- [记一次Amazon Q pro的使用](https://blog.no-claw.com/56bb1eb7/): 2025-06-02 — 记录 Amazon Q Pro 的申请与实际使用体验
+- [如何关闭 AWS root 账号的 MFA 认证](https://blog.no-claw.com/f4ce40dc/): 2025-05-20 — 详解如何关闭 AWS root 账号的 MFA 多因素认证
+- [Bedrock Converse 调用笔记：DeepSeek R1 与 Claude](https://blog.no-claw.com/6384163b/): 2025-05-04 — 用 Boto3 的 Converse API 调用 Bedrock 上的 DeepSeek R1 和 Claude，说明模型 ID、文本响应读取，以及与 InvokeModel 和多轮上下文的关系。
+- [OpenSearch ISM 索引轮换策略笔记](https://blog.no-claw.com/4ea76b9/): 2025-05-04 — 记录 OpenSearch ISM 策略的创建请求、分层存储状态配置，以及将策略附加到索引的方法。
+- [跨集群复制：在 Amazon OpenSearch Service 中实现数据同步](https://blog.no-claw.com/aae56ced/): 2024-10-11 — Amazon OpenSearch Service 跨集群复制的配置笔记，涵盖前提条件、权限、单索引复制和自动跟随规则。
+- [Lightsail 与 EC2：云服务器选择笔记](https://blog.no-claw.com/d93d06d/): 2024-08-24 — 从使用门槛、资源配置、网络和典型场景对照 Lightsail 与 EC2，记录选择云服务器时的考虑。
+- [Amazon Bedrock 基础模型初体验](https://blog.no-claw.com/fd6e8ce3/): 2024-08-18 — 记录在 Amazon Bedrock 中尝试文本生成、图片生成、模型评估和 Guardrails 的过程，保留当时的模型选择与界面。
+- [Amazon Q Developer 实践：读代码与修改游戏功能](https://blog.no-claw.com/aa5bd787/): 2024-08-17 — 借助 Amazon Q Developer 实验手册，在 VS Code 中解读体素游戏代码、插入功能修改，并尝试生成 Boto3 调用示例。
+- [我的 NAS 是怎么连接 Amazon S3 的](https://blog.no-claw.com/4d75dd2/): 2024-07-28 — NAS 接入 Amazon S3 的实践笔记，整理 CLI、挂载、Storage Gateway、Transfer Family 与备份同步方式。
+- [使用 AWS Lambda 把天气预报推送到微信](https://blog.no-claw.com/8b54051/): 2024-07-20 — 用彩云天气 API 获取天气，通过 AWS Lambda、EventBridge 和 Server 酱定时推送到微信。
+- [连接 EC2 的四种方式：SSH、Instance Connect、SSM 与串行控制台](https://blog.no-claw.com/a851db/): 2024-06-13 — 对照 EC2 Instance Connect、SSH、会话管理器与串行控制台，记录连接设置、常见 SSH 错误及排查思路。
+- [在 Amazon Linux 2 上安装 PHP 7.4 与 Nginx](https://blog.no-claw.com/10ddce89/): 2024-05-20 — 记录 Amazon Linux 2 中 Nginx、PHP 7.4 和 PHP-FPM 的安装配置，以及用测试页面验证并清理环境的步骤。
+- [AWS IoT 服务组件学习笔记](https://blog.no-claw.com/a4330068/): 2024-05-08 — 整理 AWS IoT 的设备接入、消息通信、规则处理、设备影子与管理组件，记录各部分的职责。
+- [API Gateway 认证实践：IAM、Lambda、Cognito 与 JWT](https://blog.no-claw.com/74f8a437/): 2024-04-13 — 分别测试 REST API 与 HTTP API 的资源策略、Lambda 授权、Cognito、IAM 和 JWT，并记录 API Key 使用计划及限流响应。
+- [AWS CLI 使用笔记：多账户、角色切换与代理](https://blog.no-claw.com/c3549f55/): 2024-04-07 — 从 AWS CLI 的凭证配置入手，整理多个 profile、IAM Role、AssumeRole、凭证查找顺序与 HTTP 代理使用方法。
+- [Amazon Redshift 数据仓库学习笔记](https://blog.no-claw.com/ea823df3/): 2024-03-14 — 整理数据仓库、Redshift 集群和节点、数据加载、性能监控以及 IAM 角色访问其他 AWS 服务的学习记录。
+- [Kinesis Analytics 学习笔记：流处理与时间窗口](https://blog.no-claw.com/72adfd47/): 2024-03-13 — 保留 Kinesis Analytics SQL 流处理的学习记录，涵盖输入输出流、数据模式、泵、连续查询和时间窗口。
+- [Amazon MSK 学习笔记：托管 Kafka 基础](https://blog.no-claw.com/a527500d/): 2024-03-13 — 整理 Amazon MSK 托管 Kafka 的服务组成、集群管理、数据传输与监控相关概念。
+- [Amazon ECS 容器服务学习笔记](https://blog.no-claw.com/2fe9416a/): 2024-03-13 — 整理 ECS 的容器运行、任务、服务和集群概念，以及托管容器应用的基本方式。
+- [Amazon EKS 托管 Kubernetes 学习笔记](https://blog.no-claw.com/19746f09/): 2024-03-13 — 记录 Amazon EKS 的托管 Kubernetes 架构、控制平面与工作节点，以及集群运行的基本概念。
+- [Amazon ECR 容器镜像仓库学习笔记](https://blog.no-claw.com/83d4807/): 2024-03-13 — 整理 Amazon ECR 镜像仓库的基本功能、镜像存储与访问方式，以及与容器部署流程的关系。
+- [AWS KMS 密钥管理学习笔记](https://blog.no-claw.com/3cb7eae/): 2024-03-13 — 整理 AWS KMS 的密钥类型、加解密、访问权限、密钥管理及服务集成相关概念。
+- [Amazon Kinesis 流数据服务学习笔记](https://blog.no-claw.com/d8c69dd2/): 2024-03-13 — 记录流数据处理的场景和 Amazon Kinesis 服务组成，对照数据采集、传递与实时分析的分工。
+- [Kinesis Data Streams 学习笔记](https://blog.no-claw.com/f763080/): 2024-03-13 — 整理 Kinesis Data Streams 的流、分片、生产者、消费者、容量与数据处理方式，保留原有学习记录。
+- [AWS Glue 数据集成学习笔记](https://blog.no-claw.com/f920bebc/): 2024-03-13 — 整理 AWS Glue 的数据目录、爬网程序、ETL 作业和数据集成流程，以及与数据分析服务的配合。
+- [AWS Lake Formation 数据湖学习笔记](https://blog.no-claw.com/909feaee/): 2024-03-13 — 记录 Lake Formation 的数据湖构建、数据目录与访问管理概念，以及数据采集和权限配置的学习内容。
+- [Amazon EMR 大数据处理学习笔记](https://blog.no-claw.com/eb3fec0b/): 2024-03-13 — 整理 EMR 集群的大数据处理场景、节点配置、存储选择和伸缩方式，以及与 S3 数据存储的配合。
+- [在 AWS Lambda 中运行 Selenium](https://blog.no-claw.com/6c599e86/): 2024-03-13 — 使用容器为 AWS Lambda 打包 Chrome、驱动与 Selenium，保留 Dockerfile 和 Python 示例。
+- [通过 Squid 代理访问 AWS VPC 内网资源](https://blog.no-claw.com/d143e1fe/): 2024-03-13 — 在公有子网部署 Squid 代理，通过安全组白名单控制访问，配置客户端代理并验证 VPC 内网资源的连通性。
+- [把 Pop!_OS 搬到 EC2：磁盘转换与远程桌面](https://blog.no-claw.com/dd1a54e9/): 2024-03-13 — 记录将 Pop!OS 虚拟机磁盘转换为 RAW、写入 EBS 并替换 EC2 根卷的过程，以及 BIOS 引导和 RDP 桌面体验。
+- [Amazon MSK 连接笔记：匿名、TLS、IAM 与 SASL/SCRAM](https://blog.no-claw.com/b0f1dbc0/): 2024-03-01 — 整理 Amazon MSK 的匿名、TLS、IAM 和 SASL/SCRAM 连接方式，对照端口、Kafka 客户端配置、Secrets Manager 与公有访问条件。
+- [使用 Azure AD 通过 SAML 登录 OpenSearch](https://blog.no-claw.com/379ebb9d/): 2024-03-01 — 记录 Azure AD 企业应用的 SAML 配置、元数据导出、用户关联与 OpenSearch 单点登录测试。
+- [Elastic Beanstalk 更新策略笔记](https://blog.no-claw.com/d48dda7b/): 2024-03-01 — 对照 Elastic Beanstalk 的一次性、滚动、附加批次、不可变、蓝绿和流量拆分部署，记录停机、回滚与资源开销的区别。
+- [Filebeat 输出日志到 Opensearch](https://blog.no-claw.com/8924813e/): 2023-12-08 — 在 ECS Fargate 场景下尝试用 Filebeat 向 OpenSearch 发送日志，记录容器配置、兼容性报错和仍会重启的问题。
+
+## Easysearch
+
+- [连接 Easysearch 的新方式：使用 DBX 把索引当成表来浏览](https://blog.no-claw.com/c16f9938/): 2026-08-21 — DBX 已原生支持 Easysearch，可以通过图形界面连接集群、浏览索引，并使用 DSL 和 SQL 查询数据。
+- [给 Easysearch 以文搜图搭座桥，结果 Haiku 把藕片看成了炒饭（下）](https://blog.no-claw.com/f90f59cd/): 2026-07-12 — 为图片生成描述和食材标签，结合向量与关键词检索改善局部细节召回，记录标注模型的误判与对照测试。
+- [我用 Easysearch 搭了个「以文搜图」，然后被一盘藕片上了一课（上）](https://blog.no-claw.com/5840ae26/): 2026-07-12 — 用 Easysearch 和 Bedrock 多模态向量搭建以文搜图，记录索引配置、图片入库和局部食材召回失败的排查过程。
+- [告别“兼容模式”：Easysearch 有了自己的官方 Python 客户端](https://blog.no-claw.com/d4422b76/): 2026-05-06 — 介绍 Easysearch 官方 Python 客户端的安装、连接、证书配置、批量写入、查询与聚合用法。
+- [LLM时代，密码也能日抛了](https://blog.no-claw.com/3da9c2fb/): 2026-05-06 — 部署 Easysearch 2.1.2 后在容器日志里找不到初始密码，改用 resetadminpassword.sh 完成重置，记录这次安装中的变化。
+- [拒绝 latest 陷阱：Easysearch Docker 镜像拉取与管理全攻略](https://blog.no-claw.com/e2d3ed1a/): 2026-04-22 — 整理下载和管理 Easysearch Docker 镜像时用到的命令，涵盖版本标签、digest 校验、多架构选择和离线导入导出。
+- [在 Kubernetes 上用 Fluent Bit 收集 Nginx 日志到 Easysearch](https://blog.no-claw.com/8fee9a49/): 2026-03-11 — 基于 k3s + Easysearch 2.0.3 实测，从零搭建 Fluent Bit 日志收集方案，将 Nginx 日志转发到 Easysearch。
+- [k3s + Helm 部署 Easysearch](https://blog.no-claw.com/1dba38bc/): 2026-03-03 — 在 k3s 集群上使用 Helm 快速部署 Easysearch 搜索引擎的实战记录。
+- [Easysearch 数据映射之 Deep Dive：我踩过的 Volume 坑](https://blog.no-claw.com/65e472bd/): 2026-02-26 — Docker 部署 Easysearch 时遇到的数据持久化问题，具名卷与绑定挂载的区别，以及 503 错误的排查过程。
+- [Easysearch 集群监控实战（下）：线程池、索引、查询、段合并性能指标详解](https://blog.no-claw.com/d129577a/): 2026-01-01 — Easysearch 索引性能监控笔记，涵盖线程池、分片分布、搜索延迟、段合并与写入排查。
+- [Easysearch 集群监控实战（上）：CPU、内存、磁盘、网络核心指标详解](https://blog.no-claw.com/354bc2ce/): 2026-01-01 — Easysearch 集群基础设施监控笔记，涵盖 CPU、系统负载、内存、JVM、磁盘与网络指标。
+- [告别 DSL！我用 MCP 让 AI 帮我操作 Easysearch](https://blog.no-claw.com/9ca6531a/): 2025-12-31 — 通过 MCP 协议让 AI 直接操作 Easysearch，告别复杂的 DSL 查询语法。
+- [Easysearch 更新后日志中看不到密码？一文带你搞清楚原因与解决方案](https://blog.no-claw.com/dba72588/): 2025-10-20 — 解析 Easysearch 更新后日志中不再显示密码的原因及解决方案
+- [Elasticsearch、OpenSearch 与 Easysearch：关系、授权与兼容边界](https://blog.no-claw.com/ca6d4c60/): 2025-10-07 — 从 Lucene、Elasticsearch 7.10.2 和授权变化讲起，梳理 Elasticsearch、OpenSearch 与 Easysearch 的关系，以及 API、客户端、插件和快照的兼容边界。
+- [Docker 启动 Easysearch 时自定义初始密码的几种方式](https://blog.no-claw.com/588b9d1d/): 2025-10-05 — 介绍 Docker 启动 Easysearch 时自定义初始密码的多种配置方法
+- [Easysearch 的写入流程（一）：refresh](https://blog.no-claw.com/eb05eb6d/): 2025-10-05 — 深入解析 Easysearch 写入流程中的 refresh 机制
+- [不用每次都改 `easysearch.yml` 也能改启动参数 —— 用 Docker 环境变量搞定一切](https://blog.no-claw.com/c3d4e5f6/): 2025-10-05 — 通过 Docker 环境变量修改 Easysearch 启动参数，无需手动编辑配置文件
+- [Elasticsearch 自动 Mapping 与 MySQL Schema 的对比分析](https://blog.no-claw.com/ce1ebcd3/): 2025-10-05 — 对比 Elasticsearch 动态 Mapping 与 MySQL Schema 的字段管理方式，讨论类型推断、映射膨胀，以及用动态模板和显式定义控制结构的思路。
+- [Easysearch 索引别名（Index Alias）详解](https://blog.no-claw.com/c41993b0/): 2025-10-05 — 详解 Easysearch 索引别名的创建、使用场景与管理操作
+- [在嘉立创的泰山派上也能运行Easysearch](https://blog.no-claw.com/d0139002/): 2025-10-01 — 在嘉立创泰山派开发板上成功运行 Easysearch 的实践记录
+- [Easysearch 可视化升级：无需额外部署 UI 软件](https://blog.no-claw.com/a378e5b1/): 2025-09-21 — Easysearch 内置可视化功能升级，无需额外部署 UI 工具即可管理
+- [MacOS 环境下运行 EasySearch 报错无法信任 Java 包的解决方案](https://blog.no-claw.com/b77119f9/): 2025-07-12 — 解决 macOS 上运行 Easysearch 时 Java 包不受信任的报错问题
+- [用Filebeat OSS 7.10.2将收集日志到Easysearch](https://blog.no-claw.com/a0786458/): 2025-07-12 — 使用 Filebeat OSS 7.10.2 采集日志并输出到 Easysearch 的配置教程
+- [Easysearch 实战指南：修改索引主分片的三种方式（split shrink reindex](https://blog.no-claw.com/cba11cdd/): 2025-06-28 — 详解 Easysearch 中通过 split、shrink、reindex 修改索引主分片数的方法
+- [Easysearch 索引关闭与重开全攻略：open close 操作、批量处理及防误操作配置](https://blog.no-claw.com/af48f3e/): 2025-06-24 — Easysearch 索引 open/close 操作详解，含批量处理与防误操作配置
+- [本地 RAG 实战：用 Easysearch + Ollama SDK 半小时搭建检索增强问答系统](https://blog.no-claw.com/5a5307d/): 2025-06-09 — 用 Easysearch 和 Ollama SDK 半小时搭建本地 RAG 检索增强问答系统
+- [轻松管理 ES 集群：我把 Infinilabs Console 上架了懒猫微服，默认支持外网访问、](https://blog.no-claw.com/75c015c8/): 2025-05-09 — 将 Infinilabs Console 上架懒猫微服商店，轻松管理 ES 集群并支持外网访问
+- [MySQL数据实时接入Easysearch，零代码迁移全流程](https://blog.no-claw.com/7a296932/): 2025-05-05 — 零代码实现 MySQL 数据实时同步到 Easysearch 的完整流程
+- [从认证到透传：用 Nginx 为 Easysearch 构建一体化认证网关](https://blog.no-claw.com/c50511c4/): 2025-04-24 — 使用 Nginx 为 Easysearch 搭建统一认证网关的实战教程
+- [Easysearch 服务昨天还好好的，为什么今天突然访问不了了？](https://blog.no-claw.com/8d9611a5/): 2025-04-23 — 排查 Easysearch 服务突然无法访问的常见原因与解决方案
+- [Easysearch 基础运维扫盲指南：从 HTTP 到 HTTPS、认证与安全访问全解析](https://blog.no-claw.com/1f7436df/): 2025-04-23 — Easysearch 运维入门：HTTP/HTTPS 配置、认证机制与安全访问全解析
+- [Docker-Compose部署 EasySearch 异常问题排查](https://blog.no-claw.com/719d7034/): 2025-03-24 — 排查 Docker Compose 部署 Easysearch 时遇到的常见异常问题
+- [Easysearch 中 PUT 和 POST 更新索引的区别及常见错误解析](https://blog.no-claw.com/d5a28fff/): 2025-03-09 — 解析 Easysearch 中 PUT 与 POST 更新索引的区别及常见报错处理
+- [Easysearch 使用 AWS S3 进行快照备份与还原：完整指南及常见错误排查](https://blog.no-claw.com/eab170f2/): 2025-03-09 — Easysearch 使用 AWS S3 快照备份还原的完整教程与错误排查
+- [实现 INFINI Console 与 GitHub 的单点登录集成：一站式身份验证解决方案](https://blog.no-claw.com/86ef0187/): 2025-02-22 — 配置 INFINI Console 与 GitHub 单点登录集成的完整方案
+- [使用 INFINI Console 配置集群监控 Webhook 通知指南](https://blog.no-claw.com/361d01a9/): 2025-02-21 — 通过 INFINI Console 配置 Easysearch 集群监控的 Webhook 告警通知
+- [推荐给 Easysearch 新用户的几个 Elasticsearch 可视化工具](https://blog.no-claw.com/e3691a5b/): 2025-02-20 — 为 Easysearch 新手推荐几款实用的 Elasticsearch 可视化管理工具
+- [Macbook Pro快速搭建Easysearch学习环境](https://blog.no-claw.com/8b29e69c/): 2025-02-11 — 在 MacBook Pro 上快速搭建 Easysearch 本地学习开发环境
+- [在 AWS EKS 上部署 Easysearch](https://blog.no-claw.com/628ec63/): 2024-08-15 — 使用 eksctl 创建 EKS 集群，配置 EBS CSI 驱动与负载均衡控制器，通过 Helm 部署 Easysearch 和 Console 并验证连接。
+- [INFINI Console 使用介绍](https://blog.no-claw.com/bde1966f/): 2024-07-22 — INFINI Console 的功能介绍与基本使用教程
+- [Elasticsearch 快照跨版本恢复：Easysearch 与 OpenSearch 兼容性实测](https://blog.no-claw.com/80e06f4b/): 2024-07-19 — 使用 S3 仓库测试 Elasticsearch、Easysearch 和 Amazon OpenSearch 的快照恢复，记录 IAM PassRole、仓库配置、失败信息与版本兼容结果。
+- [使用 Elasticsearch Python SDK 查询 Easysearch](https://blog.no-claw.com/a7b8c9d0/): 2024-07-10 — 使用 Elasticsearch Python SDK 连接和查询 Easysearch 的实战教程
+- [玩转 Easysearch 语法](https://blog.no-claw.com/f6a7b8c9/): 2024-07-04 — 玩转 Easysearch 查询语法，掌握搜索引擎的核心检索能力
+- [Easysearch 数据可视化和管理平台：INFINI Console 使用介绍](https://blog.no-claw.com/ebd08f3f/): 2024-07-03 — 介绍 INFINI Console 作为 Easysearch 数据可视化和集群管理平台的使用方法
+- [INFINI Easysearch尝鲜Hands on](https://blog.no-claw.com/8c820eb6/): 2024-06-30 — INFINI Easysearch 初体验，快速上手搜索引擎部署与基本操作
+
+## 入门
+
+- [懒猫微服实战入门（三十六）：懒猫微服QEMU虚拟机快速上手](https://blog.no-claw.com/5f202ca3/): 2026-02-26 — 在懒猫微服上使用 QEMU 虚拟机，全容器化安装免去环境依赖烦恼，轻松上手虚拟机操作。
+- [USB 打印机网络共享：CUPS、AirPrint 与驱动兼容实测](https://blog.no-claw.com/846eeff9/): 2026-02-15 — 用 CUPS 共享 USB 打印机并连接 AirPrint，记录 USB 直通、驱动不兼容和打印异常，以及 Windows 与 RDP 的备用方案。
+- [懒猫微服实战入门（三十四）：方寸之间，自有天地：懒猫微服，男人的网络瑞士军刀](https://blog.no-claw.com/5226a270/): 2026-01-31 — 把懒猫微服当家庭网络的核心来用，从网卡、内网穿透到 DNS 转发，一台机器顶掉一整排盒子。
+- [懒猫微服实战入门（三十三）：网络设置中不显示我的 Wi-Fi 怎么办？](https://blog.no-claw.com/ff23bf7c/): 2025-11-22 — 懒猫微服网络设置中 Wi-Fi 不显示的排查与解决方法。
+- [懒猫微服实战入门（三十二）：让懒猫微服替你看家，摄像头接入篇（上）](https://blog.no-claw.com/88c99791/): 2025-11-02 — 懒猫微服接入摄像头实现家庭监控，数据掌控在自己手中。
+- [懒猫微服实战入门（三十一）：百度网盘迁移到懒猫网盘](https://blog.no-claw.com/5332ecc4/): 2025-11-02 — 从百度网盘迁移数据到懒猫网盘，把公有云数据搬回私有空间。
+- [懒猫微服实战入门（二十六）：Obsidian 用 GIT 同步总是冲突，果断存到懒猫微服了](https://blog.no-claw.com/a1d9284e/): 2025-09-20 — Obsidian 用 Git 同步频繁冲突，改用懒猫微服网盘存储笔记更省心。
+- [懒猫微服实战入门（二十七）：KSpeeder 加速，让 Docker 镜像不再超时](https://blog.no-claw.com/6300bfd5/): 2025-09-20 — 用 KSpeeder 加速懒猫微服上的 Docker 镜像拉取，告别超时问题。
+- [懒猫微服实战入门（二十九）：域名解析与 2.5G 测速体验](https://blog.no-claw.com/63e9bc75/): 2025-09-20 — 懒猫微服的 heiyu.space 域名背后是 IPv6，配合 iperf3 和 LibreSpeed 实测 1G 与 2.5G 环境下的有线无线速率。
+- [懒猫微服实战入门（二十八）：如何获取懒猫微服的私有地址](https://blog.no-claw.com/4c7e3909/): 2025-09-20 — 改过 br-lan 网桥后客户端不再显示网络地址，用 Python socket、netifaces 等几种办法把懒猫微服的局域网私有 IP 抓出来。
+- [懒猫微服实战入门（二十八）：坏掉的 Windows 不要扔，硬盘插在懒猫上还能用](https://blog.no-claw.com/768b4867/): 2025-09-20 — 坏掉的 Windows 电脑硬盘插到懒猫微服上，数据照样能读取使用。
+- [懒猫微服实战入门（三十）：懒猫微服改装闺蜜机，一台设备的多重人生](https://blog.no-claw.com/2c05ec4f/): 2025-09-20 — 把懒猫微服改装成闺蜜机，一台设备兼顾 NAS、电视盒子和闺蜜机。
+- [懒猫微服实战入门（二十五）：有了懒猫微服之后，我用 Vaultwarden 平替了 1Password 订阅，附送迁移方案](https://blog.no-claw.com/f46ed8e7/): 2025-09-11 — 用 Vaultwarden 自托管密码管理器替代 1Password 订阅，含完整迁移方案。
+- [懒猫微服实战入门（二十四）：在懒猫微服中使用群晖](https://blog.no-claw.com/815f771a/): 2025-07-26 — 在懒猫微服中运行群晖系统，一台设备同时享受两套 NAS 生态。
+- [懒猫微服实战入门（二十三）：使用 GitHub 单点登录到 Memos](https://blog.no-claw.com/b10cd1f4/): 2025-07-23 — 配置 GitHub OAuth 实现单点登录到懒猫微服上的 Memos 笔记应用。
+- [懒猫微服实战入门（二十二）：使用 DDNS-GO 给 Cloudflare 做动态域名解析](https://blog.no-claw.com/6031f818/): 2025-07-14 — 在懒猫微服上用 DDNS-GO 配合 Cloudflare 实现动态域名解析。
+- [懒猫微服实战入门（二十一）：使用 Memos 替代 Flomo](https://blog.no-claw.com/6f97c31a/): 2025-07-12 — 在懒猫微服上部署 Memos，自托管的轻量笔记替代 Flomo。
+- [懒猫微服实战入门（二十）：如何使用 Time Machine 将 Mac 备份到懒猫微服](https://blog.no-claw.com/c5298d72/): 2025-07-11 — Mac 通过 Time Machine 备份到懒猫微服，实现本地 NAS 自动备份。
+- [懒猫微服实战入门（十九）：我最喜欢的 RSS 阅读器-FreshRSS](https://blog.no-claw.com/9fd148d9/): 2025-07-10 — 在懒猫微服上部署 FreshRSS，自建 RSS 阅读器订阅博客和资讯。
+- [懒猫微服实战入门（十八）：用 Planka 做项目管理](https://blog.no-claw.com/51800531/): 2025-07-07 — 在懒猫微服上部署 Planka 做个人项目管理，类 Jira 的看板工具。
+- [懒猫微服实战入门（十七）：把 Steam 游戏存到懒猫网盘](https://blog.no-claw.com/ffc71b6/): 2025-07-01 — 把 Steam 游戏库存到懒猫网盘，客户端自动挂载，节省本地硬盘空间。
+- [懒猫微服实战入门（十六）：把懒猫微服当作 24 × 7 在线开发机](https://blog.no-claw.com/25ccd3a3/): 2025-06-29 — 把懒猫微服当作 24 小时在线的远程开发机，随时连接中间件和数据库。
+- [懒猫微服实战入门（十五）：大疆 Pocket 3 素材导入懒猫网盘](https://blog.no-claw.com/50f8f5d2/): 2025-06-24 — 大疆 Pocket3 拍摄素材导入懒猫网盘，解决多设备共享视频的痛点。
+- [懒猫微服实战入门（十四）：不登录客户端，如何用 Samba 挂载懒猫微服网盘？](https://blog.no-claw.com/86ecba8b/): 2025-06-21 — 不登录懒猫客户端，通过 Samba 协议直接挂载懒猫微服网盘。
+- [懒猫微服入门篇（零）：开箱初探，硬件亮相](https://blog.no-claw.com/4022bac/): 2025-06-19 — 懒猫微服开箱体验，硬件外观、接口配置与初印象。
+- [懒猫微服实战入门（十三）：懒猫穿透不只图形化，纯命令行服务器也可以](https://blog.no-claw.com/3d7a2d17/): 2025-06-05 — 懒猫微服穿透服务不限于图形界面，纯命令行服务器也能用。
+- [懒猫微服实战入门（十二）：用 iVentoy 打造你的 PXE 服务器](https://blog.no-claw.com/9d1544e0/): 2025-06-04 — 在懒猫微服上用 iVentoy 搭建 PXE 网络启动服务器，局域网装机更方便。
+- [懒猫微服实战入门（十一）：一键换源指南：用 chsrc 开启丝滑体验](https://blog.no-claw.com/eef881d4/): 2025-06-02 — 懒猫微服固件更新后软件源变慢，用 chsrc 一键切换国内镜像源。
+- [懒猫微服实战入门（十）：通过 nmtui 设置静态 IP，接入旁路由实现科学上网](https://blog.no-claw.com/b704f5f8/): 2025-06-01 — 懒猫微服通过 nmtui 设置静态 IP，接入旁路由实现科学上网的完整配置。
+- [Debian 与 Ubuntu 配置 XRDP：XFCE 远程桌面与黑屏排查](https://blog.no-claw.com/8e360f7e/): 2025-05-31 — 为 Debian 系系统安装 XRDP 与 XFCE，配置会话、用户登录和启动脚本，并记录懒猫微服上的远程桌面实践。
+- [懒猫微服实战入门（八）：懒猫微服 × SSH Remote：打造随时随地的云端开发环境](https://blog.no-claw.com/778337f4/): 2025-05-29 — 懒猫微服搭配 VS Code SSH Remote，打造随时随地可用的云端开发环境。
+- [懒猫微服实战入门（七）：超越蒲公英 SD-WAN，用懒猫转发服务，iPad 随时远程家里 Windows](https://blog.no-claw.com/59f4c56d/): 2025-05-20 — 用懒猫微服转发服务替代蒲公英 SD-WAN，iPad 随时远程访问家里的 Windows 电脑。
+- [懒猫微服实战入门（六）：使用 2FAuth 共享 MFA](https://blog.no-claw.com/b6b74923/): 2025-05-17 — 在懒猫微服上部署 2FAuth，实现多人共享 MFA 两步验证码。
+- [懒猫微服实战入门（五）：文件上传到懒猫网盘，SMB 电视盒子观影](https://blog.no-claw.com/b62d86a5/): 2025-05-15 — 文件上传到懒猫网盘，通过 SMB 协议在电视盒子上直接观影。
+- [懒猫微服实战入门（四）：完全DNS访问，和本地代理冲突了怎么办？](https://blog.no-claw.com/36782d5f/): 2025-05-13 — 懒猫微服完全 DNS 访问与本地代理冲突的解决方案。
+- [懒猫微服实战入门（三）：懒猫智慧屏，以为是地表最强电视盒子，结果是闺蜜机](https://blog.no-claw.com/5a9099c0/): 2025-05-12 — 懒猫智慧屏体验，本以为是电视盒子，没想到是一台闺蜜机。
+- [懒猫微服实战入门（二）：打造多人协作环境，权限控制 + 数据隔离一步到位](https://blog.no-claw.com/4d17c8d/): 2025-05-10 — 懒猫微服多用户管理教程，权限控制与数据隔离配置一步到位。
+- [懒猫微服实战入门（一）：从开启 SSH 到免密登录，一步步教你搞定远程管理](https://blog.no-claw.com/56f9b737/): 2025-05-08 — 懒猫微服开启 SSH 并配置免密登录的完整教程，轻松搞定远程管理。
+
+## 电脑
+
+- [MacOS的LWScreenShot，锁屏以后还能截图](https://blog.no-claw.com/5b230ad0/): 2026-04-17 — 早上发现 Mac 上多了一张 LWScreenShot 截图，一度担心电脑被入侵，后来才弄清它与登录窗口、锁屏截图的关系。
+- [给Macbook Pro安装Fedora Asahi Remix](https://blog.no-claw.com/5743bae5/): 2026-02-23 — 16G MacBook Pro 内存不够用，安装 Fedora Asahi Remix 做双系统的完整过程。
+- [Macbook Pro 虚拟机安装ARM飞牛](https://blog.no-claw.com/567b12ef/): 2026-02-15 — 在 MacBook Pro 上通过虚拟机安装 ARM 版飞牛 NAS 系统的教程。
+- [在Macbook Pro上突破原生限制，实现菊花链三屏显示（曲线救国版）](https://blog.no-claw.com/cb0bcf1b/): 2026-02-09 — M 芯片 MacBook Pro 原生只支持双外接显示器，第三块屏接上就黑屏。通过 DisplayLink 扩展坞 + USB 直连显示器，曲线实现菊花链三屏 4K@60Hz 输出，桌面走线也更清爽。
+- [被天才吧耽误，Apple silicon 死机与恢复的一年](https://blog.no-claw.com/d5918d57/): 2025-12-22 — 十年黑苹果玩家入手 Apple Silicon 后频繁死机，被天才吧耽误一年的维修经历。
+- [铁威马：被忽视的中坚NAS玩家，为何在群晖阴影下沉默？](https://blog.no-claw.com/1690f93c/): 2025-10-08 — 从硬件定位、TOS 软件生态和社区传播几个角度，讨论铁威马在群晖、威联通与自建 NAS 之间的位置。
+- [早上起来，Chrome 白屏了……](https://blog.no-claw.com/a3db028b/): 2025-09-07 — Chrome 浏览器突然白屏的排查与修复过程记录
+- [毕业很久了，女同学突然找来修电脑.......](https://blog.no-claw.com/4b7a2922/): 2025-08-27 — 帮女同学远程排查 Mac 文件无法删除错误代码 8062 的经历
+- [普通人需要哪些电脑知识？](https://blog.no-claw.com/87d5ac58/): 2025-08-09 — 面向普通用户的实用电脑知识科普与常见问题解答
+- [找到了一个wedav的项目](https://blog.no-claw.com/3ebd9b42/): 2025-07-30 — 发现一个 WebDAV 开源项目，可用于 NAS 文件远程访问。
+- [再也不用拼手速！一条命令直接进 BIOS（Windows/Linux/macOS 全攻略)](https://blog.no-claw.com/a0b67926/): 2025-07-27 — 一条命令直接进入 BIOS，Windows/Linux/macOS 全平台方法汇总
+- [TrackWeight, 把 Macbook 的触控板当作电子秤](https://blog.no-claw.com/10473fce/): 2025-07-27 — 用 TrackWeight 将 MacBook 触控板变成电子秤的趣味体验
+- [记一次iphone的死机](https://blog.no-claw.com/b81a6bca/): 2025-07-27 — 记录一次 iPhone 屏幕失灵死机的排查与解决过程
+- [京东售后拒修 AirPods 称"无问题"，苹果官方检测后直接换新！京东竟删除检测记录？](https://blog.no-claw.com/c67acea7/): 2025-07-09 — AirPods 出现单侧无声等故障，京东寄修称没有问题，随后苹果直营店检测并换新，记下两次售后与检测记录变化的经历。
+- [Mac 上 Fn + F12 怎么改成 F12？（适用于 macOS 13 Ventura）](https://blog.no-claw.com/18eac60e/): 2025-07-08 — 记录 macOS 13 Ventura 中标准功能键的设置入口，把 F12 的默认行为从音量调节切回功能键，方便日常使用快捷键。
+- [高版本的MacOS如何降级？](https://blog.no-claw.com/5b6f9bd/): 2025-07-08 — macOS 高版本降级到低版本的方法与注意事项。
+- [Lighting 原生不支持OTG！](https://blog.no-claw.com/d969a069/): 2025-06-26 — 尝试用原装线把 Pocket 3 和移动硬盘接到旧款 iPhone，记录无响应、与 iPad 对比，以及寻找转接方案的过程。
+- [MacOS 26 beta 如何恢复启动台](https://blog.no-claw.com/83eb1399/): 2025-06-22 — macOS 26 beta 升级后启动台异常的恢复方法。
+- [给群晖安装Iperf3，一键局域网测速](https://blog.no-claw.com/e70dd7d7/): 2025-06-15 — 在群晖上安装 Iperf3，一条命令测试局域网带宽速度。
+- [Proxmox Virtual Environment (PVE) 虚拟机安装不完全指南](https://blog.no-claw.com/13af016a/): 2025-05-11 — PVE 虚拟化平台安装指南，从零搭建家庭虚拟化环境。
+- [威联通 QNAP 系列 (一) 全闪 NAS TBS-h574TX QuTS hero 初探](https://blog.no-claw.com/7acb32ac/): 2025-04-24 — 从 Qfinder Pro 发现设备到安装 QuTS hero，记录 TBS-h574TX 的初始化、存储池设置、监控与日志功能，以及风扇噪声的初步体验。
+- [等了半年的 POE 系统，铭凡 S100 不完全测评](https://blog.no-claw.com/a7aa5f43/): 2025-04-02 — 铭凡 S100 POE 供电小主机开箱测评与使用体验
+- [PXE 装机：iventoy 聊胜于无](https://blog.no-claw.com/3ff07059/): 2025-04-02 — 使用 iVentoy 搭建 PXE 网络装机环境的体验记录。
+- [如何使用 Iphone 拍摄 JPG 格式的照片](https://blog.no-claw.com/4bc0fb74/): 2025-04-02 — iPhone 默认拍 HEIC 格式，如何设置直接拍摄 JPG 格式照片。
+- [飞牛OS虚拟机初体验](https://blog.no-claw.com/3608dae8/): 2025-03-11 — 飞牛 NAS 系统虚拟机安装初体验，上手感受与基本配置。
+- [群晖导入磁盘大法 - 安装img](https://blog.no-claw.com/8c366e49/): 2025-03-02 — 群晖通过导入磁盘镜像安装系统的方法记录。
+- [DSM 外接磁盘挂载记录](https://blog.no-claw.com/f2e07cac/): 2025-02-15 — 群晖 DSM 外接 USB 磁盘的挂载方法与踩坑记录。
+- [群晖套娃飞牛OS（FnOS）](https://blog.no-claw.com/1eb7a4c5/): 2025-02-02 — 在群晖虚拟机中套娃安装飞牛 NAS 系统的实践记录。
+- [威联通 QNAP 系列（二）：全闪 NAS TBS-h574TX 雷电网桥设置](https://blog.no-claw.com/767176d1/): 2025-01-24 — 记录 QNAP TBS-h574TX 雷电网桥的连接、路由、iperf3 测速、MTU 调整，以及 Thunderbolt to Ethernet 的使用体验。
+- [你的下一个电脑还得是电脑](https://blog.no-claw.com/c40f7be/): 2024-05-12 — iPad 能否替代电脑？实际体验告诉你，下一台电脑还得是电脑。
+- [使用ipad 串流 MacOS](https://blog.no-claw.com/474f606e/): 2024-03-24 — 在 Mac 上安装 Sunshine，再用 iPad 的 Moonlight 配对连接，记录网页配置、PIN 验证和录屏权限的设置过程。
+- [电容键盘体验](https://blog.no-claw.com/7b93b635/): 2024-02-16 — 记录国产宁芝电容键盘的使用感受，以及按键失灵后按客服指引用检测工具处理的经历，后来因只支持有线而弃用。
+- [MacOS安装的软件无法打开](https://blog.no-claw.com/3ab0fe4d/): 2024-02-02 — macOS 安装第三方软件提示无法打开的解决方法。
+- [MacOS干扰那些事](https://blog.no-claw.com/9afa2bcc/): 2023-05-23 — macOS 随航、隔空投送等功能的干扰问题与解决方法。
+- [ventoy引导wtg](https://blog.no-claw.com/874b576b/): 2023-02-10 — 使用 Ventoy 引导 Windows To Go，实现 U 盘启动 Windows 系统。
+- [intel 12代CPU折腾记](https://blog.no-claw.com/5821c3b8/): 2023-02-06 — Intel 12 代 CPU 与 NUC 小主机的折腾记录
+- [SSD介绍](https://blog.no-claw.com/2e34d332/): 2017-03-10 — SSD 固态硬盘基础知识介绍，了解 SLC/MLC/TLC 闪存颗粒区别
+
+## 编程
+
+- [Python 项目如何忽略和清理 __pycache__](https://blog.no-claw.com/2eb9cbc6/): 2025-03-26 — 解释 pycache 和 pyc 文件的来源，记录 .gitignore 配置、取消 Git 跟踪和清理本地缓存的操作。
+- [使用 systemd 设置 Python 程序开机启动](https://blog.no-claw.com/a6528011/): 2024-05-20 — 为 Python 脚本编写 systemd 服务文件，设置运行用户、自动启动和重启行为，并记录 crontab 的 @reboot 用法。
+- [Python 备忘单：基础语法、NumPy 与 Pandas](https://blog.no-claw.com/bf379e5e/): 2024-05-15 — 按主题整理 Python 字符串、容器、JSON、循环、文件、函数与日期时间示例，并收录 NumPy 数组和 Pandas 数据处理用法。
+- [浏览器屏幕采集示例：getDisplayMedia 与本地预览](https://blog.no-claw.com/bd11d200/): 2024-04-23 — 用 getDisplayMedia 请求屏幕共享，将 MediaStream 显示在 video 元素中，并处理用户停止共享或拒绝授权的情况。
+- [pipx 与 conda：应用隔离和 Python 环境管理](https://blog.no-claw.com/7e63cf3c/): 2024-04-04 — 整理 pipx 安装命令行应用和 conda 管理开发环境的命令，比较两者的用途、依赖隔离及环境导入导出方式。
+- [Git 入门笔记：创建仓库、提交与首次推送](https://blog.no-claw.com/e56cfb4d/): 2019-11-30 — 从安装 Git、创建 GitHub 仓库开始，练习 git init、add、commit、remote 和 push，完成本地目录与远程仓库的关联。
+- [Ubuntu 配置 JDK 8 环境变量](https://blog.no-claw.com/08615b14/): 2019-09-13 — 记录在 Ubuntu 的 Bash 中配置 JDK 8 的 JAVAHOME 和 PATH，并检查 java、javac 是否指向解压后的 JDK。
+- [Xcode 配合 Git 进行版本控制](https://blog.no-claw.com/868d9711/): 2019-09-11 — 记录在 Xcode 中创建 Git 工程、关联 GitHub 仓库、查看代码差异，以及 commit、push 和分支操作的过程。
+- [Python 依赖迁移：导出与安装 requirements.txt](https://blog.no-claw.com/cb008009/): 2019-06-28 — 使用 pip freeze 导出 Python 包和版本，再通过 requirements.txt 安装到目标环境，说明它与完整环境备份的区别。
+- [Java 内部类学习笔记](https://blog.no-claw.com/f13e8b32/): 2019-06-22 — 通过代码对照成员内部类、静态内部类和访问控制，记录实例化方式，以及内部类访问外部字段和方法的区别。
+- [Python 调用 Java 与 C++ 的尝试](https://blog.no-claw.com/fea420b7/): 2019-02-21 — 在 Ubuntu 16.04 中使用 JPype 从 Python 调用 Java，并将 C++ 编译为共享库后由 Python 加载调用。
+- [C++ 文件读写笔记](https://blog.no-claw.com/8163462d/): 2018-12-27 — 使用 fstream、ifstream 和 ofstream 练习 C++ 文件读写，记录创建文件、追加内容和完整读写示例。
+- [C++ 数组遍历：范围 for 与下标循环](https://blog.no-claw.com/ea2bf9d8/): 2018-12-27 — 用一个整型数组对照 C++11 范围 for 和下标循环，补齐可编译示例，并说明按值遍历、引用和数组长度的区别。
+- [RPG Maker MV 插件笔记：移动提示与标题参数](https://blog.no-claw.com/34cce265/): 2018-12-16 — 保留 RPG Maker MV 插件课程中的移动提示与标题描边练习，修正插件路径、参数读取、立即执行函数和方法覆盖的用法。
+- [微信小程序云开发笔记：查询与删除云函数](https://blog.no-claw.com/39553255/): 2018-12-02 — 记录微信小程序云开发中查询、删除云函数的写法，以及前端调用和上传部署步骤。
+- [微信小程序后端学习笔记：商品、路由与订单](https://blog.no-claw.com/84f0a0d4/): 2018-11-15 — 整理 2018 年 Wafer 小程序课程中的商品列表、详情、购买请求与订单查询，修正 SQL 连接字段并补充分组示例。
+- [ES6 学习笔记：基础语法与迭代](https://blog.no-claw.com/7dcc1fe5/): 2018-09-05 — 整理 let、const、模板字符串、解构、对象字面量、for 循环、展开运算符与剩余参数，并与 Python 用法对照。
+- [C 与 x86 汇编混合编程：GCC 内联汇编加法示例](https://blog.no-claw.com/37c707fa/): 2018-08-29 — 保留一次在 C 程序中调用 x86 内联汇编的加法练习，说明 AT&T 语法、输入输出操作数与 GCC 约束的关系。
+- [刷完 Udacity JavaScript 入门课后的笔记](https://blog.no-claw.com/d536f3ad/): 2018-08-04 — 保留为学习微信小程序而补 JavaScript 的经历，整理类型、相等比较、真假值、作用域、函数、数组与对象，并补齐可运行例子。
+- [在 Jupyter Notebook 中使用 Matplotlib 画图](https://blog.no-claw.com/aee2a967/): 2018-05-16 — 保留使用 Matplotlib 绘制折线图和条形图的示例代码与结果，作为 Jupyter Notebook 绘图练习笔记。
+- [Python 字符串笔记：换行与 format 格式化](https://blog.no-claw.com/acdf14a8/): 2018-05-03 — 通过示例记录多行字符串、format 参数替换以及使用字典进行字符串格式化的方法。
+- [Python 函数笔记：参数、global 与 lambda](https://blog.no-claw.com/15c7745a/): 2018-05-02 — 整理函数调用、默认参数、关键字参数、global 作用域以及 lambda 表达式，保留练习代码与输出。
+- [Python 小语法：链式比较、ASCII 与科学计数法](https://blog.no-claw.com/2e034e73/): 2018-05-02 — 记录 Python 链式比较、ASCII 字符转换、科学计数法和类型检查的几组入门练习。
+- [测试 Python 程序运行时间](https://blog.no-claw.com/5360c45b/): 2018-04-30 — 保留一次 Python 计时实验的代码和结果，对照输出操作以及整数、Decimal 运算的时间开销。
+- [Python 容器笔记：list、dict、set 与 tuple](https://blog.no-claw.com/dae402df/): 2018-04-24 — 按初始化、增删改查、遍历和排序整理 Python 列表、字典、集合与元组的使用代码。
+- [Python 字典练习：遍历、累加与寻找最小值](https://blog.no-claw.com/4c6a71a3/): 2018-04-18 — 用交通费用的例子练习列表转字典、重复键累加、处理 KeyError，并使用 itemgetter 找到费用最小的项目。
+- [Python zip 与星号表达式：打包、解包和版本差异](https://blog.no-claw.com/a00c01cd/): 2018-04-17 — 记录 zip 的打包与解包、星号表达式的参数接收，以及 Python 2 和 Python 3 中 zip 返回结果的区别。
+- [Python 列表 sort 与 sorted 的区别](https://blog.no-claw.com/6230851d/): 2018-04-16 — 通过示例对照列表 sort 方法和 sorted 函数，观察原列表是否改变，以及 reverse 参数的倒序用法。
+- [Windows 配置 C 开发环境：MinGW、Sublime 与终端](https://blog.no-claw.com/1cd8b984/): 2017-12-20 — 记录在 Windows 中安装 MinGW、为 Sublime Text 配置 C 编译与运行命令，以及从当前目录打开终端的方法。
+
+## 零碎生活
+
+- [4个月减肥20斤后，我悟到的这几件事](https://blog.no-claw.com/3930b15c/): 2026-07-03 — 四个月减重二十斤后，记下对饮食、休息、锻炼和体重数字的个人体会，也提醒自己把健康和日常习惯放在前面。
+- [减肥攻略](https://blog.no-claw.com/768f5303/): 2026-06-25 — 记录自己的减重过程、饮食取舍和步行作息，也整理了补充蛋白质与日常餐食的想法，作为个人生活记录。
+- [深夜，我卸载了豆包](https://blog.no-claw.com/121796b7/): 2026-04-09 — 从觉得语音聊天方便，到发现日常被对话切碎，记下卸载豆包的原因，以及对迎合式回复、隐私和情感依赖的担心。
+- [月度TODO](https://blog.no-claw.com/2d786d98/): 2026-03-17 — 每月内容创作计划和待办事项清单。
+- [零碎生活](https://blog.no-claw.com/c1a39aad/): 2026-01-01 — 随手记下卫浴用品和搬家服务的个人选择，留给下次购置和搬家时参考。
+- [装修日记](https://blog.no-claw.com/a7fd58f1/): 2026-01-01 — 装修踩坑记录，卫浴品牌选择、厨房电闸预留、插座功率等实用经验分享。
+- [米其林 * 黑珍珠 ：金陵饭店 - 梅苑 用餐体验](https://blog.no-claw.com/c6f5f74f/): 2025-09-07 — 南京金陵饭店梅苑米其林黑珍珠淮扬菜用餐体验
+- [高铁上错车以及误车怎么办？](https://blog.no-claw.com/9ff7e5aa/): 2025-08-26 — 分享高铁上错车和误车的真实经历及应对方法
+- [避雷！ 百大值友熊猫不是猫公开抄袭文章理直气壮，态度恶劣，投诉、辟谣、关评全流程实录](https://blog.no-claw.com/951989c3/): 2025-08-05 — 记录百大值友抄袭文章后投诉维权的完整过程
+- [上网逛逛开源项目，发现自己的文章被偷了，心慈手软给对方整改机会，结果后悔到拍大腿!](https://blog.no-claw.com/5f056020/): 2025-08-01 — 发现文章被开源项目洗稿后维权的完整经历与教训
+- [晨间流程](https://blog.no-claw.com/5e8400b1/): 2025-01-01 — 整理起床后的伸展、洗漱、补水、正念练习和任务记录，给自己留一份可以调整的晨间流程。
+- [记一次消防演练](https://blog.no-claw.com/cd8d8984/): 2024-11-08 — 记录写字楼消防演练经历，第一次使用真实灭火器
+- [关于速食我想说的话](https://blog.no-claw.com/404bc04b/): 2024-08-27 — 从放弃海淘 Soylent 到尝试若饭、热干面、拉面和速食泡馍，记下价格、口味与饱腹感，最后还是想好好吃饭。
+- [自制辣椒油](https://blog.no-claw.com/eae9c1f1/): 2024-02-18 — 记下自制辣椒油的三个步骤：香料炸油、拌好辣椒，再泼入热油，顺便记录自己用了花雕酒的做法。
+- [悠乐汇看雪](https://blog.no-claw.com/1fcc0fa5/): 2023-12-13 — 在悠乐汇的一场雪里出门觅食，看松树、脚印、玩雪的孩子与匆忙的行人，记下北京冬日里短暂的北国味道。
+- [从望京吃到酒仙桥](https://blog.no-claw.com/512ddea4/): 2023-11-11 — 北京望京到酒仙桥的美食探店与踩雷记录
+- [几个获取公网IP的网站](https://blog.no-claw.com/b893f77b/): 2023-09-27 — 汇总几个常用的查询公网 IP 地址的在线工具网站
+- [假装南方小土豆,哈尔滨一日游,再也不去了](https://blog.no-claw.com/32308110/): 2023-07-22 — 假装南方小土豆的哈尔滨一日游吐槽记录
+- [消毒药水](https://blog.no-claw.com/ff4866a6/): 2023-07-22 — 常见消毒药水的种类、成分与使用场景科普
+- [血型](https://blog.no-claw.com/d14ad726/): 2023-05-23 — 血型基础知识科普，了解 ABO 与 Rh 血型系统
+- [家有吃货之自制纯肉肠](https://blog.no-claw.com/75eceee6/): 2023-01-15 — 在家用猪肠衣自制纯肉肠的详细做法与经验
+- [自制味精](https://blog.no-claw.com/9599d85d/): 2023-01-15 — 用虾等食材自制天然味精鸡粉的做法
+- [无限续面](https://blog.no-claw.com/45c86e6c/): 2022-12-30 — 盘点北京那些可以无限续面的小吃店
+- [北京租房心得](https://blog.no-claw.com/cdd2a06/): 2022-04-23 — 北漂租房经验总结与实用心得分享
+- [2022年6月2日 北京医院拒诊（中日友好医院）](https://blog.no-claw.com/69b5547e/): 2022-04-23 — 记录 2022 年疫情期间北京中日友好医院拒诊的经历
+- [小白零基础线上配镜，拔草蔡司。](https://blog.no-claw.com/b97d7b57/): 2021-10-08 — 零基础线上配镜体验，蔡司镜片选购与配镜全流程分享
+- [生活小妙招](https://blog.no-claw.com/29d0960/): 2020-01-15 — 实用生活小妙招合集，冰箱去霜等家居技巧
+- [身份证科普](https://blog.no-claw.com/7a47d12b/): 2017-10-06 — 身份证号码 18 位数字的含义与编码规则科普
+
+## 散文随笔
+
+- [不要让别人轻易使用你的时间](https://blog.no-claw.com/84c2f014/): 2026-09-04 — 随手的忙可以帮，但时间需要边界。记几条关于人情、帮忙，以及如何留出时间思考和休息的提醒。
+- [二十八岁的七夕 --记一次水晶疗愈](https://blog.no-claw.com/cceefc55/): 2026-08-20 — 二十八岁的七夕，出于好奇体验了一次水晶疗愈。记下谈话、呼吸引导和颂钵中的感受，也想了想信任、边界与沉静。
+- [当手艺变成符号，美食博主夜访全聚德](https://blog.no-claw.com/6b735ca0/): 2026-08-16 — 一次夜访全聚德的用餐记录：从排队、上菜到烤鸭口感与定价，也想了想老字号的名声和眼前体验之间的距离。
+- [舆论的传播](https://blog.no-claw.com/1fb83a2f/): 2026-04-24 — 从办公室八卦、网络热点到生成式 AI，想想信息如何传播、情绪如何被带动，以及自己该怎样守住注意力和判断。
+- [景山公园游记](https://blog.no-claw.com/fc3e8db7/): 2026-04-13 — 周末闲逛景山，从明思宗殉国处走到关帝庙和寿皇殿，想起历史与小说里的旧事，再沿中轴线走向钟鼓楼。
+- [龙珠外传，比克大魔王的自白](https://blog.no-claw.com/64009444/): 2026-04-11 — 借比克的视角写一篇虚构自白：从分离善念、被武泰斗封印，到与神仙重新合一，追问异类如何与世界相处。
+- [是和尚，就可以传经讲道吗？](https://blog.no-claw.com/7a4f0ae5/): 2026-04-01 — 回想十年前在火车上遇到的一位和尚，从手机答疑聊到传经讲道，写下我对身份、权威和身体力行的疑问。
+- [记年初的武汉游记](https://blog.no-claw.com/cc35fe6/): 2025-07-02 — 年初去武汉，在江汉路落脚，沿东湖骑车、徒步长江大桥，也连着喝了几家的藕汤。保留当地朋友当时给的推荐和自己的吃喝感受。
+- [《重生时刻》第一章：初遇](https://blog.no-claw.com/eb71309a/): 2025-03-18 — 小说《重生时刻》第一章：林沫得到爷爷留下的怀表，与张明德进入医院的旧时光，追寻被改变的记忆和命运。
+- [云端秘境：EC2 的奇幻之旅](https://blog.no-claw.com/99a827a4/): 2025-03-07 — 借程序法师艾伦在云端王国的冒险，认识 EC2、EBS、安全组、Auto Scaling、负载均衡和备份之间的关系。
+- [外滩夜游](https://blog.no-claw.com/b2c3d4e5/): 2024-05-28 — 骑车去外滩，半路摔了一跤，沿江散步时又和陌生人互相拍照。记上海夜色、江风，以及一个人闲逛的晚上。
+- [爱情是婚姻的坟墓么](https://blog.no-claw.com/5102820d/): 2023-12-01 — 从单身到养娃，聊聊婚姻中的几种状态，以及爱屋及乌背后的现实与无奈。
+- [地坛游记](https://blog.no-claw.com/bb8b63b3/): 2023-04-29 — 重游地坛，边听《我与地坛》有声书边寻找史铁生笔下的痕迹，古树、祭坛与现代公园的交织。
+- [雨](https://blog.no-claw.com/13ca4a36/): 2023-04-28 — 一首关于雨的诗，从村头泥路到都市地板，记录不同人生阶段与雨的交集。
+- [深夜随笔](https://blog.no-claw.com/fb8d6bf1/): 2023-04-02 — 深夜随感，从教育内卷到文人气节，聊聊独立精神与小人物的无奈。
+- [2018年度总结和2019展望](https://blog.no-claw.com/321633c7/): 2018-12-17 — 回看 2018 年的学习、编程、阅读和面试经历，记录遇见庄子与正念之后的变化，以及对 2019 年的期待。
+- [离开所有学生组织后，我得到了什么](https://blog.no-claw.com/cce6e028/): 2018-06-12 — 回顾大学学生组织中的经历，以及离开之后重新看待时间、学习与个人选择的过程。
+- [生而为人，我很抱歉](https://blog.no-claw.com/cf2c58e1/): 2018-01-31 — 2018 年的一篇大学随笔，记录学编程时对自己的要求，以及重新给阅读、运动和生活留出时间的想法。
+- [不想长大](https://blog.no-claw.com/c4671bbc/): 2018-01-29 — 记录学生时代折腾电脑、电器与编程的经历，也写下对成长、专业选择和生活的感受。
+- [关于计算机，我学到了什么？](https://blog.no-claw.com/424dfb87/): 2018-01-14 — 回顾从自动化专业入学开始接触计算机、编程、Linux 和硬件维修的学习过程。
+- [佛•教化•屠杀](https://blog.no-claw.com/b4d03554/): 2017-10-06 — 旅顺日俄监狱游记，从佛教超度到意识形态渗透，战争遗址中的历史反思。
+- [房间](https://blog.no-claw.com/e1677cc4/): 2017-09-06 — 一篇悬疑短篇小说，好好先生被带入与自家一模一样的黑屋子，在月光下寻找出路。
+
+## Coco AI
+
+- [记一次硬盘满了导致 Coco Server 无法启动的排查](https://blog.no-claw.com/db853650/): 2026-02-21 — Coco Server 启动失败的排查过程，最终定位到磁盘空间不足导致服务无法正常运行。
+- [RK3566嵌入式开发板运行Coco AI Sever](https://blog.no-claw.com/ce955007/): 2026-02-18 — 在 RK3566 嵌入式开发板上部署运行 Coco AI Server 的实践记录。
+- [Docker启动Coco AI Server后，如何访问内置Easysearch](https://blog.no-claw.com/b7b40656/): 2026-02-17 — Docker 部署 Coco AI Server 后访问内置 Easysearch 的方法和配置说明。
+- [Coco AI 插件商店很多功能，还能玩 2048](https://blog.no-claw.com/76058f6a/): 2025-10-07 — 探索 Coco AI 插件商店的丰富功能，还内置了 2048 小游戏
+- [容器运行 Coco AI，如何访问宿主机的 localhost？](https://blog.no-claw.com/d4e5f6a7/): 2025-08-28 — 容器运行 Coco AI 时访问宿主机 localhost 服务的解决方案
+- [Coco AI 服务端文件系统检索](https://blog.no-claw.com/ca3451f/): 2025-08-11 — 使用 Coco AI 检索服务端文件系统中的文档内容
+- [在 Coco AI 中接入 WordPress RSS，实现文章秒级搜索](https://blog.no-claw.com/2bdb8c4a/): 2025-08-11 — 将 WordPress 博客通过 RSS 接入 Coco AI 实现智能文章检索
+- [手把手教你使用 Coco AI 订阅RSS，智能检索Hexo博客](https://blog.no-claw.com/47752b69/): 2025-08-11 — 手把手教你将 Hexo 博客接入 Coco AI 实现智能检索
+- [从零到用：RSS 接入 Coco-AI 实战指南](https://blog.no-claw.com/2c28c43/): 2025-08-10 — 从零开始将 RSS 订阅源接入 Coco AI 的完整实战教程
+- [Coco AI × Amazon S3：秒搜你的云端文件](https://blog.no-claw.com/f050840/): 2025-08-10 — 将 Amazon S3 接入 Coco AI，实现云端文件的秒级智能搜索
+- [Coco AI 接入 Google Drive：OAuth 配置与数据源验证](https://blog.no-claw.com/e011202f/): 2025-04-17 — 从 Google OAuth 客户端、Drive 权限和测试用户配置开始，为 Coco Server 接入 Google Drive，并验证文件读取结果。
+- [Coco-AI 接入 Google drive](https://blog.no-claw.com/10b05aec/): 2025-04-17 — 零代码将 Google Drive 接入 Coco AI，实现云端资料智能检索
+- [Coco-AI 集成语雀作为语料库进行检索](https://blog.no-claw.com/6a9ecc86/): 2025-04-17 — 将语雀文档接入 Coco AI 作为语料库实现智能检索
+- [Coco-AI 接入自定义数据源](https://blog.no-claw.com/271ab503/): 2025-04-17 — 为 Coco AI 接入自定义数据源，扩展智能检索范围
+- [Coco-AI 支持嵌入，让你的网站拥有 AI 搜索力](https://blog.no-claw.com/e32dbde5/): 2025-04-03 — 通过嵌入方式为网站集成 Coco AI 搜索能力
+- [不建 Hugo、不用 Hexo，纯 Markdown 文件也能接入 Coco-AI！](https://blog.no-claw.com/df454c34/): 2025-03-28 — 无需静态站点框架，纯 Markdown 文件直接接入 Coco AI 检索
+- [拓展 Coco AI 功能 - 智能检索 Hexo 博客](https://blog.no-claw.com/9eab63c2/): 2025-03-20 — 拓展 Coco AI 功能，实现 Hexo 博客内容的智能检索
+- [Coco AI 智能检索 Hugo Blog 集成指南](https://blog.no-claw.com/afa68182/): 2025-03-18 — 将 Hugo 博客集成到 Coco AI 实现智能内容检索的配置指南
+- [CoCo AI APP 初体验：开启智能知识管理新篇章](https://blog.no-claw.com/eb0b4c83/): 2025-03-11 — Coco AI 桌面应用初体验，探索智能知识管理的全新方式
+- [Coco AI 全新升级：全图形化 RAG 配置，一键开启智能知识管理！](https://blog.no-claw.com/b126c84d/): 2025-03-11 — Coco AI 升级全图形化 RAG 配置界面，一键开启智能知识管理
+- [打造智能语料库：通过Coco AI Server 实现 Notion 笔记 RAG 检索功能](https://blog.no-claw.com/3d90967f/): 2025-02-17 — 用 Coco AI Server 将 Notion 笔记构建为 RAG 智能语料库
+
+## 读书有感
+
+- [《搞定》个人工作流 SOP](https://blog.no-claw.com/db9df156/): 2026-09-16 — 将《搞定》三部曲压缩成可重复执行的标准流程，覆盖捕捉、明确、组织、执行、回顾和失控恢复。
+- [潇洒姐《时间看得见》摘抄和感受](https://blog.no-claw.com/7c4ae2d1/): 2026-09-04 — 王潇《时间看得见》读书笔记，一天的八项时间配额、复盘四步法与 CXN 归因，以及富兰克林的十三条戒律和手账表格法。
+- [《搞定》实践清单手册](https://blog.no-claw.com/f009420a/): 2026-08-28 — 把《搞定》三部曲的方法整理成可以直接执行的清单：系统初始化、工作篮处理、每日运行、每周回顾、项目计划、委派与六层视角。
+- [高效程序员的45个习惯](https://blog.no-claw.com/8f11a70d/): 2026-08-04 — 《高效程序员的45个习惯》的精髓是对结果负责、小步获得反馈、持续修正，顺手把版本控制、纯文本、可回滚这些工程习惯搬到生活管理上。
+- [搞定(AI提取)](https://blog.no-claw.com/6220a80a/): 2026-07-23 — 以线上《搞定》《搞定II》《搞定III》三篇旧稿为底稿，对照三本原书补齐章节、原理、例子和实践方法。
+- [《搞定Ⅲ：平衡工作与生活的艺术》全书提炼](https://blog.no-claw.com/9eb50d25/): 2026-06-18 — 提炼《搞定Ⅲ》的掌控与视角模型：五个掌控步骤、六个视角高度、自我管理矩阵，以及系统回顾方法。
+- [潇洒姐《山洞四律》摘抄和感受](https://blog.no-claw.com/b1ff342a/): 2026-06-07 — 读《山洞四律》，记下几种拖延状态，以及写下、具身、戒屏、做事这四种行动，提醒自己把注意力落回具体的事。
+- [《搞定Ⅱ：提升工作与生活效率的 52 项原则》全书提炼](https://blog.no-claw.com/6a72b0c5/): 2026-05-13 — 提炼《搞定Ⅱ》的 52 项效率原则，以及书末的工作流程、自然式计划模式和每周回顾核查清单。
+- [《搞定Ⅰ：无压工作的艺术》全书提炼](https://blog.no-claw.com/b3483798/): 2026-04-08 — 提炼《搞定Ⅰ》的完整 GTD 方法：横向五步工作流、纵向自然计划法、六层次检视，以及三个关键原则。
+- [《每个人的OKR》书摘](https://blog.no-claw.com/54f71ff9/): 2024-05-02 — 《每个人的OKR》书摘，物质激励的副作用与时间管理术语整理。
+- [好叶视频笔记](https://blog.no-claw.com/7966bd76/): 2023-07-02 — 好叶视频笔记整理，关于目标设定、技能发掘和热情来源的思考。
+- [代码之髓](https://blog.no-claw.com/fc64123d/): 2021-01-22 — 《代码之髓》读书笔记，三种代码阅读方法：按需阅读、先概念后细节、手抄代码。
+- [搞定](https://blog.no-claw.com/723111cd/): 2021-01-22 — 《搞定Ⅰ：无压工作的艺术》读书笔记，GTD 的横向五步流程、纵向五阶段，以及六层次检视法。
+- [搞定II](https://blog.no-claw.com/ff723111/): 2021-01-22 — 《搞定II：提升工作与生活效率的52项原则》读书笔记，横向控制的五阶段流程、纵向控制的自然式计划模式，以及每周回顾指南。
+- [搞定III](https://blog.no-claw.com/88750187/): 2021-01-22 — 《搞定III：平衡工作与生活的艺术》读书笔记，处理与组织整理流程图、六个高度的视角层次，以及情境清单与每周回顾。
+- [效率技巧摘抄（出处待考）](https://blog.no-claw.com/26314a8/): 2021-01-22 — 效率提升技巧摘抄，两分钟法则、五分钟法则等实用时间管理方法。
+- [关键20小时](https://blog.no-claw.com/614ff5d2/): 2021-01-22 — 《关键20小时》读书笔记，快速学习的核心方法：分解步骤、充分学习、自我纠正。
+- [自控力](https://blog.no-claw.com/ca2dc828/): 2021-01-22 — 重读《自控力》，记下意志力的消耗、群体影响、自我接纳，以及允许自己感到无聊的几点感受。
+- [吃掉那只青蛙](https://blog.no-claw.com/4141dd35/): 2018-10-25 — 《吃掉那只青蛙》读书笔记，整理 21 条时间管理法则，并补入当时关于每日计划、事前准备、任务分解和截止时间的行动短记。
+- [驯服头脑中的野兽](https://blog.no-claw.com/101d9cf0/): 2018-10-25 — 《驯服头脑中的野兽》读书笔记，识别并驯服影响效率的内心野兽。
+
+## 机器学习
+
+- [Whisper 语音转文字：CUDA 与 Apple Silicon 尝试](https://blog.no-claw.com/f5d64091/): 2024-04-20 — 记录 Whisper 的安装、模型选择、GPU 占用和字幕清洗，并对照 whisper.cpp 在 Apple Silicon 上的转写体验。
+- [一起学习机器学习（13）：PCA 与 NMF](https://blog.no-claw.com/6319c3f1/): 2024-03-26 — 线性降维学习笔记，结合 Python 练习理解主成分分析 PCA 与非负矩阵分解 NMF。
+- [一起学习机器学习（14）：图学习](https://blog.no-claw.com/48f09f83/): 2024-03-26 — 用秀丽隐杆线虫网络数据练习图学习，分析度分布、拉普拉斯谱、Fiedler 向量与谱聚类。
+- [一起学习机器学习（11）：K-means 与层次聚类](https://blog.no-claw.com/a45ff8db/): 2024-03-26 — 学习 K-means 与层次聚类，结合距离计算、簇中心更新和 linkage 比较不同聚类方法。
+- [一起学习机器学习（12）：高斯混合模型](https://blog.no-claw.com/a8809226/): 2024-03-26 — 整理高斯混合模型与 EM 算法，通过乳腺癌数据练习参数估计和聚类分析。
+- [一起学习机器学习（10）：卷积神经网络](https://blog.no-claw.com/d5930aa6/): 2024-03-26 — 用 NumPy 理解一维卷积，再用 PyTorch 构建、训练和评估卷积神经网络。
+- [一起学习机器学习（09）：多层感知机](https://blog.no-claw.com/3a5f01bd/): 2024-03-26 — 从三层感知机扩展到通用 MLP，整理数据预处理、前向计算、反向传播和随机梯度下降训练。
+- [一起学习机器学习（08）：随机梯度下降](https://blog.no-claw.com/7672e2db/): 2024-03-26 — 随机梯度下降学习笔记，结合公式和 Python 练习理解参数更新、学习率与迭代过程。
+- [一起学习机器学习（07）：支持向量机](https://blog.no-claw.com/fe56f8aa/): 2024-03-26 — 实现线性 SVM 的目标函数与随机梯度下降，使用交叉验证评估模型，并讨论核函数与分类边界。
+- [一起学习机器学习（06）：决策树与随机森林](https://blog.no-claw.com/e2f006fc/): 2024-03-26 — 从 GINI 指数、特征划分和决策树训练开始，实现特征采样、Bootstrap 与随机森林的分类聚合。
+- [一起学习机器学习（04）：逻辑回归](https://blog.no-claw.com/b3298cba/): 2024-03-26 — 生成分类数据，实现逻辑回归的参数化函数与优化过程，通过分类指标和 ROC 曲线评估模型。
+- [一起学习机器学习（05）：朴素贝叶斯](https://blog.no-claw.com/523e0f93/): 2024-03-26 — 以文本分类为例，整理数据预处理、多项式朴素贝叶斯的似然与后验概率计算。
+- [一起学习机器学习（03）：kNN](https://blog.no-claw.com/a50c0a43/): 2024-03-25 — 从距离计算和邻居投票实现 kNN 分类，用交叉验证选择 k，再扩展到回归任务。
+- [一起学习机器学习（02）：线性回归](https://blog.no-claw.com/bef942f1/): 2024-03-24 — 用 NumPy 实现线性回归，推导最小二乘与最大似然估计，并比较 Ridge、LASSO 和梯度下降的效果。
+- [一起学习机器学习（01）：数据探索](https://blog.no-claw.com/b5db1154/): 2024-03-24 — 用 pandas 加载和清洗数据，处理缺失值与重复记录，再通过描述统计和可视化了解数据分布。
+- [Amazon SageMaker 学习笔记：数据、训练与部署](https://blog.no-claw.com/39f5bddc/): 2024-03-15 — 整理 SageMaker 在数据准备、模型构建、训练和部署中的功能，以及端点、预测数据捕获与模型观察的学习记录。
+- [分布式机器学习笔记：Spark、MLlib 与 EMR](https://blog.no-claw.com/6dd3a41b/): 2024-03-15 — 整理 Apache Spark 的分布式计算、MLlib 机器学习和 EMR 集群使用方式，以及存储连接与集群调整。
+- [机器学习基础笔记：监督学习、无监督学习与神经网络](https://blog.no-claw.com/c9dc5c97/): 2024-03-15 — 整理监督与无监督学习、训练集划分、常见算法以及深度神经网络的训练概念。
+
+## 进阶
+
+- [懒猫微服进阶心得（十七）：懒猫SSO对接外部OpenID Connect的尝试](https://blog.no-claw.com/172c9f9a/): 2026-04-15 — 尝试把懒猫 SSO 接入 Cognito，记录私有域名和网络可达性导致的失败，以及改为浏览器回退直连 Dex 的实验。
+- [懒猫微服进阶心得（十六）：解密OpenID Connect，如何自主注册懒猫SSO？](https://blog.no-claw.com/a4d264e8/): 2026-04-09 — 通过 gRPC 注册懒猫 SSO 客户端，再用 Flask 与 Authlib 验证 OIDC 登录，记录回调地址和重启后注册信息丢失的问题。
+- [懒猫微服进阶心得（十五）：超越systemd，不用每次开机都再安装软件～](https://blog.no-claw.com/c1ba52cc/): 2026-01-31 — 用 Docker 容器运行系统监控工具，免去每次开机重装软件的烦恼，懒猫微服上的容器化运维实践。
+- [懒猫微服进阶心得（十四）：接入 Casdoor，玩转OpenID Connect（OIDC）](https://blog.no-claw.com/93c9e4e6/): 2025-09-19 — 在懒猫微服上接入 Casdoor 实现 OIDC 单点登录，统一管理应用认证。
+- [懒猫微服进阶心得（十一）：把懒猫微服当作旁路由，客户端无需转发直接访问内外地址](https://blog.no-claw.com/5018903b/): 2025-07-18 — 把懒猫微服配置为旁路由，客户端无需转发即可直接访问内外网地址。
+- [懒猫微服进阶心得（十三）： WebVirtCloud 安装 Windows 使用 virtIO 的注意事项](https://blog.no-claw.com/147991a4/): 2025-07-18 — 在懒猫微服 WebVirtCloud 中安装 Windows 虚拟机时 virtIO 驱动的注意事项。
+- [懒猫微服进阶心得（十二）：不登陆机器，如何使用 Docker Context 玩转微服容器？](https://blog.no-claw.com/8be8e345/): 2025-07-18 — 通过 Docker Context 远程管理懒猫微服容器，无需 SSH 登录机器。
+- [懒猫微服进阶心得（十）：本地开发，如何接入懒猫微服的 OpenID Connect (OIDC)](https://blog.no-claw.com/4daab20a/): 2025-06-27 — 本地开发环境接入懒猫微服 OIDC 单点登录的配置方法。
+- [懒猫微服进阶心得（九）：商店 App 如何接管 Docker 引擎？](https://blog.no-claw.com/e8e61ce7/): 2025-06-22 — 懒猫微服商店应用如何接管和管理 Docker 引擎的机制解析。
+- [Docker 跨架构运行：ARM 与 x86 镜像选择、QEMU 和迁移](https://blog.no-claw.com/86ab1d7c/): 2025-06-17 — 在 ARM 与 x86 主机之间选择、验证和运行 Docker 镜像，排查 exec format error，并使用 save、load 迁移镜像。
+- [懒猫微服进阶心得（七）：懒猫的镜像仓库](https://blog.no-claw.com/8cdf9a5/): 2025-06-07 — 懒猫微服内置镜像仓库的使用方法与管理技巧。
+- [懒猫微服进阶心得（六）：以纸砚双拼为例，快速移植纯前端项目到懒猫微服](https://blog.no-claw.com/7294709a/): 2025-06-06 — 以纸砚双拼为例，演示如何快速将纯前端项目移植到懒猫微服。
+- [懒猫微服进阶心得（五）：使用懒猫微服做 Ventoy 启动盘](https://blog.no-claw.com/1c49be8c/): 2025-06-03 — 用懒猫微服制作 Ventoy 启动盘，局域网装机更方便。
+- [systemd 用户服务：用 systemctl --user 在登录时运行脚本](https://blog.no-claw.com/95e86a3c/): 2025-05-30 — 为初始化脚本编写 systemd 用户服务，配置 oneshot、default.target 和日志排查，并记录懒猫微服恢复工具环境的实践。
+- [懒猫微服进阶心得（三）：一台机器跑三套 Docker？深入解析懒猫容器的共存机制（下）](https://blog.no-claw.com/b853f136/): 2025-05-21 — 深入解析懒猫微服三套 Docker 引擎共存机制（下篇），容器网络与存储隔离。
+- [懒猫微服进阶心得（二）：一台机器跑三套 Docker？深入解析懒猫容器的共存机制（上）](https://blog.no-claw.com/1d9319fb/): 2025-05-20 — 深入解析懒猫微服一台机器运行三套 Docker 引擎的共存机制（上篇）。
+- [懒猫微服进阶心得（一）：M 芯片移植懒猫应用、构建 Docker 镜像的常见问题排查及解决方案](https://blog.no-claw.com/126ed22c/): 2025-05-14 — Apple M 芯片构建懒猫微服 Docker 镜像的常见问题排查与解决方案。
+
+## 苹果
+
+- [MacOS的LWScreenShot，锁屏以后还能截图](https://blog.no-claw.com/5b230ad0/): 2026-04-17 — 早上发现 Mac 上多了一张 LWScreenShot 截图，一度担心电脑被入侵，后来才弄清它与登录窗口、锁屏截图的关系。
+- [给Macbook Pro安装Fedora Asahi Remix](https://blog.no-claw.com/5743bae5/): 2026-02-23 — 16G MacBook Pro 内存不够用，安装 Fedora Asahi Remix 做双系统的完整过程。
+- [在Macbook Pro上突破原生限制，实现菊花链三屏显示（曲线救国版）](https://blog.no-claw.com/cb0bcf1b/): 2026-02-09 — M 芯片 MacBook Pro 原生只支持双外接显示器，第三块屏接上就黑屏。通过 DisplayLink 扩展坞 + USB 直连显示器，曲线实现菊花链三屏 4K@60Hz 输出，桌面走线也更清爽。
+- [被天才吧耽误，Apple silicon 死机与恢复的一年](https://blog.no-claw.com/d5918d57/): 2025-12-22 — 十年黑苹果玩家入手 Apple Silicon 后频繁死机，被天才吧耽误一年的维修经历。
+- [京东售后拒修 AirPods 称"无问题"，苹果官方检测后直接换新！京东竟删除检测记录？](https://blog.no-claw.com/c67acea7/): 2025-07-09 — AirPods 出现单侧无声等故障，京东寄修称没有问题，随后苹果直营店检测并换新，记下两次售后与检测记录变化的经历。
+- [Mac 上 Fn + F12 怎么改成 F12？（适用于 macOS 13 Ventura）](https://blog.no-claw.com/18eac60e/): 2025-07-08 — 记录 macOS 13 Ventura 中标准功能键的设置入口，把 F12 的默认行为从音量调节切回功能键，方便日常使用快捷键。
+- [高版本的MacOS如何降级？](https://blog.no-claw.com/5b6f9bd/): 2025-07-08 — macOS 高版本降级到低版本的方法与注意事项。
+- [Lighting 原生不支持OTG！](https://blog.no-claw.com/d969a069/): 2025-06-26 — 尝试用原装线把 Pocket 3 和移动硬盘接到旧款 iPhone，记录无响应、与 iPad 对比，以及寻找转接方案的过程。
+- [MacOS 26 beta 如何恢复启动台](https://blog.no-claw.com/83eb1399/): 2025-06-22 — macOS 26 beta 升级后启动台异常的恢复方法。
+- [如何使用 Iphone 拍摄 JPG 格式的照片](https://blog.no-claw.com/4bc0fb74/): 2025-04-02 — iPhone 默认拍 HEIC 格式，如何设置直接拍摄 JPG 格式照片。
+- [你的下一个电脑还得是电脑](https://blog.no-claw.com/c40f7be/): 2024-05-12 — iPad 能否替代电脑？实际体验告诉你，下一台电脑还得是电脑。
+- [使用ipad 串流 MacOS](https://blog.no-claw.com/474f606e/): 2024-03-24 — 在 Mac 上安装 Sunshine，再用 iPad 的 Moonlight 配对连接，记录网页配置、PIN 验证和录屏权限的设置过程。
+- [MacOS安装的软件无法打开](https://blog.no-claw.com/3ab0fe4d/): 2024-02-02 — macOS 安装第三方软件提示无法打开的解决方法。
+- [MacOS干扰那些事](https://blog.no-claw.com/9afa2bcc/): 2023-05-23 — macOS 随航、隔空投送等功能的干扰问题与解决方法。
+
+## 嵌入式
+
+- [树莓派入门笔记：系统安装与远程连接](https://blog.no-claw.com/11aafc82/): 2019-02-21 — 早期树莓派学习笔记：准备存储卡和散热片、安装系统，以及 HDMI、VNC、SSH 和远程桌面的连接方式。
+- [51 单片机学习笔记：SPI 通信](https://blog.no-claw.com/84abc641/): 2018-01-03 — 整理 51 单片机 SPI 通信的实验代码，按延时模块、通信模块和主程序拆分文件。
+- [51 单片机学习笔记：I²C 通信](https://blog.no-claw.com/6a750119/): 2018-01-02 — 整理 51 单片机 I²C 通信的实验代码，包括延时、通信模块、头文件与主程序。
+- [51 单片机学习笔记：PWM](https://blog.no-claw.com/9e7d6ad0/): 2017-12-30 — 51 单片机 PWM 学习笔记，记录脉宽调制与输出控制的 C 语言实验代码。
+- [51 单片机学习笔记：蜂鸣器](https://blog.no-claw.com/10170653/): 2017-12-28 — 用 51 单片机驱动蜂鸣器，逐步调整程序并使用定时器模拟门铃。
+- [51 单片机学习笔记：串口通信](https://blog.no-claw.com/a5882897/): 2017-12-28 — 从串口收发到中断处理，整理串口通信代码与延时、显示等模块的配合方式。
+- [51 单片机学习笔记：中断与定时器](https://blog.no-claw.com/283d15fb/): 2017-12-27 — 学习外部中断的下降沿与低电平触发，整理定时器四种工作方式及计数器实验。
+- [51 单片机学习笔记：按键](https://blog.no-claw.com/c9c6472d/): 2017-12-26 — 51 单片机按键实验：独立按键、按键复用、矩阵键盘，以及 74LS148 编码器的应用。
+- [51 单片机学习笔记：数码管](https://blog.no-claw.com/1baba95c/): 2017-12-25 — 从数码管静态显示到动态扫描，整理共阴段码及 74LS138、74LS48 辅助显示的实验。
+- [51 单片机学习笔记：常用库函数](https://blog.no-claw.com/a73de94/): 2017-12-25 — 整理 51 单片机 C 程序中使用的常用库函数，配合示例记录调用方式。
+- [51 单片机学习笔记：LED 与流水灯](https://blog.no-claw.com/fc49a1f5/): 2017-12-25 — 在 Proteus 与 Keil C 中练习 LED 点亮、闪烁和心形流水灯，记录端口控制与延时写法。
+- [51 单片机学习笔记：Linux 开发 8051：环境搭建](https://blog.no-claw.com/8bd7b11b/): 2017-12-24 — 在 Linux 下配置 SDCC 与 stcflash，记录 8051 程序的编译、串口连接和烧录过程。
+- [STM32F767 CubeMX 开发手记（一）：跑马灯](https://blog.no-claw.com/327b74bc/): 2017-12-20 — 使用 STM32CubeMX 和 SW4STM32 为 STM32F767 配置 RCC、GPIO 与时钟树，生成工程并实现跑马灯。
+
+## 外设
+
+- [一根网线搞定远程运维，GL-RM1PE 深度体验：远程运维、装机、开机一体化的 KVM over IP](https://blog.no-claw.com/63cca403/): 2025-09-16 — GL-RM1PE KVM over IP 深度体验，一根网线实现远程运维与装机
+- [大上墨水屏测评](https://blog.no-claw.com/2fca5ee8/): 2025-08-10 — 大上墨水屏显示器深度测评，护眼与阅读体验分析
+- [家居常用测网速软件](https://blog.no-claw.com/73f93987/): 2025-07-26 — 家居场景下常用的网络测速与管理软件推荐
+- [macOS HiDPI 配置笔记：BetterDisplay 与 M2 脚本调整](https://blog.no-claw.com/53738e12/): 2024-05-23 — 记录使用 BetterDisplay 调整 macOS 显示设置，以及修改 one-key-hidpi 的设备识别函数来适配 M2 的过程。
+- [便携显示器](https://blog.no-claw.com/3badab23/): 2024-05-12 — 便携显示器的使用体验与实际效果测评
+- [NFC复制卡写手机手环](https://blog.no-claw.com/5ce15c7a/): 2024-01-02 — 使用 NFC 工具复制加密 IC 卡并写入手机手环的教程
+- [Home Assistant 实现米家设备接入 HomeKit，圆梦苹果全家桶](https://blog.no-claw.com/aec4a8fe/): 2024-01-02 — 用 Home Assistant 将米家智能设备接入 Apple HomeKit
+- [出远门带的电子产品](https://blog.no-claw.com/3205bf5/): 2024-01-02 — 出远门时随身携带的电子产品清单与搭配建议
+- [工具集锦](https://blog.no-claw.com/cf8e3176/): 2023-01-06 — 电工网工常用工具集锦，工欲善其事必先利其器
+- [工作台改造](https://blog.no-claw.com/baed0386/): 2022-10-18 — 办公工作台改造计划与桌面布局优化
+- [“智能”家居相伴的日子](https://blog.no-claw.com/49e53210/): 2022-06-19 — 记录智能家居设备的日常使用体验与感受
+- [外设常见问题汇总](https://blog.no-claw.com/6f08b777/): 2017-10-06 — 盘点硬件选购和使用中常见的坑与避坑指南
+
+## 51 单片机
+
+- [51 单片机学习笔记：SPI 通信](https://blog.no-claw.com/84abc641/): 2018-01-03 — 整理 51 单片机 SPI 通信的实验代码，按延时模块、通信模块和主程序拆分文件。
+- [51 单片机学习笔记：I²C 通信](https://blog.no-claw.com/6a750119/): 2018-01-02 — 整理 51 单片机 I²C 通信的实验代码，包括延时、通信模块、头文件与主程序。
+- [51 单片机学习笔记：PWM](https://blog.no-claw.com/9e7d6ad0/): 2017-12-30 — 51 单片机 PWM 学习笔记，记录脉宽调制与输出控制的 C 语言实验代码。
+- [51 单片机学习笔记：蜂鸣器](https://blog.no-claw.com/10170653/): 2017-12-28 — 用 51 单片机驱动蜂鸣器，逐步调整程序并使用定时器模拟门铃。
+- [51 单片机学习笔记：串口通信](https://blog.no-claw.com/a5882897/): 2017-12-28 — 从串口收发到中断处理，整理串口通信代码与延时、显示等模块的配合方式。
+- [51 单片机学习笔记：中断与定时器](https://blog.no-claw.com/283d15fb/): 2017-12-27 — 学习外部中断的下降沿与低电平触发，整理定时器四种工作方式及计数器实验。
+- [51 单片机学习笔记：按键](https://blog.no-claw.com/c9c6472d/): 2017-12-26 — 51 单片机按键实验：独立按键、按键复用、矩阵键盘，以及 74LS148 编码器的应用。
+- [51 单片机学习笔记：数码管](https://blog.no-claw.com/1baba95c/): 2017-12-25 — 从数码管静态显示到动态扫描，整理共阴段码及 74LS138、74LS48 辅助显示的实验。
+- [51 单片机学习笔记：常用库函数](https://blog.no-claw.com/a73de94/): 2017-12-25 — 整理 51 单片机 C 程序中使用的常用库函数，配合示例记录调用方式。
+- [51 单片机学习笔记：LED 与流水灯](https://blog.no-claw.com/fc49a1f5/): 2017-12-25 — 在 Proteus 与 Keil C 中练习 LED 点亮、闪烁和心形流水灯，记录端口控制与延时写法。
+- [51 单片机学习笔记：Linux 开发 8051：环境搭建](https://blog.no-claw.com/8bd7b11b/): 2017-12-24 — 在 Linux 下配置 SDCC 与 stcflash，记录 8051 程序的编译、串口连接和烧录过程。
+
+## NAS
+
+- [Macbook Pro 虚拟机安装ARM飞牛](https://blog.no-claw.com/567b12ef/): 2026-02-15 — 在 MacBook Pro 上通过虚拟机安装 ARM 版飞牛 NAS 系统的教程。
+- [铁威马：被忽视的中坚NAS玩家，为何在群晖阴影下沉默？](https://blog.no-claw.com/1690f93c/): 2025-10-08 — 从硬件定位、TOS 软件生态和社区传播几个角度，讨论铁威马在群晖、威联通与自建 NAS 之间的位置。
+- [找到了一个wedav的项目](https://blog.no-claw.com/3ebd9b42/): 2025-07-30 — 发现一个 WebDAV 开源项目，可用于 NAS 文件远程访问。
+- [给群晖安装Iperf3，一键局域网测速](https://blog.no-claw.com/e70dd7d7/): 2025-06-15 — 在群晖上安装 Iperf3，一条命令测试局域网带宽速度。
+- [Proxmox Virtual Environment (PVE) 虚拟机安装不完全指南](https://blog.no-claw.com/13af016a/): 2025-05-11 — PVE 虚拟化平台安装指南，从零搭建家庭虚拟化环境。
+- [威联通 QNAP 系列 (一) 全闪 NAS TBS-h574TX QuTS hero 初探](https://blog.no-claw.com/7acb32ac/): 2025-04-24 — 从 Qfinder Pro 发现设备到安装 QuTS hero，记录 TBS-h574TX 的初始化、存储池设置、监控与日志功能，以及风扇噪声的初步体验。
+- [飞牛OS虚拟机初体验](https://blog.no-claw.com/3608dae8/): 2025-03-11 — 飞牛 NAS 系统虚拟机安装初体验，上手感受与基本配置。
+- [群晖导入磁盘大法 - 安装img](https://blog.no-claw.com/8c366e49/): 2025-03-02 — 群晖通过导入磁盘镜像安装系统的方法记录。
+- [DSM 外接磁盘挂载记录](https://blog.no-claw.com/f2e07cac/): 2025-02-15 — 群晖 DSM 外接 USB 磁盘的挂载方法与踩坑记录。
+- [群晖套娃飞牛OS（FnOS）](https://blog.no-claw.com/1eb7a4c5/): 2025-02-02 — 在群晖虚拟机中套娃安装飞牛 NAS 系统的实践记录。
+- [威联通 QNAP 系列（二）：全闪 NAS TBS-h574TX 雷电网桥设置](https://blog.no-claw.com/767176d1/): 2025-01-24 — 记录 QNAP TBS-h574TX 雷电网桥的连接、路由、iperf3 测速、MTU 调整，以及 Thunderbolt to Ethernet 的使用体验。
+
+## 开发
+
+- [我不会代码，可以给懒猫贡献软件吗？](https://blog.no-claw.com/de707059/): 2026-08-21 — 从 Lazycat Skills 入手，看看不会写代码的普通用户，如何借助 AI 移植 Docker 应用、测试 LPK，并为懒猫微服应用生态做贡献。
+- [懒猫微服开发篇（八）：反向代理与自签名 SSL 的优雅共存之道](https://blog.no-claw.com/990eab20/): 2025-10-08 — 探讨懒猫微服中反向代理与自签名 SSL 证书共存的配置方案
+- [懒猫微服开发篇（七）：解析 Docker Compose Override](https://blog.no-claw.com/7ac076b/): 2025-07-18 — 详解 Docker Compose Override 机制及其在懒猫微服开发中的应用
+- [懒猫微服开发篇（四）：懒猫微服如何使用 OpenID Connect（OIDC）？（上）](https://blog.no-claw.com/dcc47393/): 2025-07-09 — 懒猫微服 OIDC 单点登录开发教程（上篇），从原理到接入配置。
+- [懒猫微服开发篇（三）：如何将已有 Docker Compose 应用移植到懒猫微服](https://blog.no-claw.com/5e5f8aaa/): 2025-07-08 — 以商店里的 Milvus 为例，逐字段拆解 lzc-manifest.yml，把一个跑在本地的 Docker Compose 应用打包上架到懒猫微服。
+- [懒猫微服开发篇（二）：远程调试之 Devshell](https://blog.no-claw.com/2c167bb4/): 2025-07-07 — 使用 Devshell 远程调试懒猫微服上的应用，提升开发效率。
+- [懒猫微服开发篇（五）：懒猫微服如何使用 OpenID Connect （OIDC）？（下）](https://blog.no-claw.com/48285dc8/): 2025-07-05 — 懒猫微服 OIDC 单点登录开发教程（下篇），实战代码与调试。
+- [懒猫微服开发篇（六）：用 OpenResty 做反向代理来解决跨域问题](https://blog.no-claw.com/300338c6/): 2025-07-05 — 介绍如何在懒猫微服中使用 OpenResty 反向代理解决前后端跨域问题
+- [懒猫微服开发篇（一）：懒猫微服全栈上架指南，一步打包，一键发布](https://blog.no-claw.com/ec579c86/): 2025-07-02 — 懒猫微服应用全栈上架完整指南，从打包到一键发布。
+- [懒猫微服开发篇（零）：上架应用需要哪些知识](https://blog.no-claw.com/c7acbc13/): 2025-06-23 — 懒猫微服应用上架前需要掌握的知识清单，从 Docker 到应用打包。
+
+## 番外
+
+- [给开发者的 NAS 小书：我们需要什么样的 NAS？](https://blog.no-claw.com/49e2197c/): 2026-08-21 — 从系统分层、数据持久化、三套 Docker、远程网络、OIDC、应用开发和 HDMI 桌面等角度，聊聊开发者真正需要什么样的 NAS。
+- [国民NAS 飞牛零日漏洞之后：我们需要什么样的 NAS ？](https://blog.no-claw.com/75d5cfe5/): 2026-02-07 — 飞牛 NAS 零日漏洞事件引发的思考，从威联通到群晖再到飞牛，NAS 安全问题频发，我们到底需要什么样的 NAS。
+- [懒猫微服：不只是 NAS，更适合云计算宝宝体质](https://blog.no-claw.com/b0a96c84/): 2026-01-17 — 懒猫微服不只是 NAS，它构建了从虚拟化到应用层的完整私有云生态，适合个人和小团队的云计算需求。
+- [懒猫微服买硬件送服务，刚学的计算机知识顺便接了个单](https://blog.no-claw.com/cb1ae078/): 2025-07-19 — 入手懒猫微服后用所学计算机知识帮人部署服务的真实经历
+- [给传统 NAS 玩家介绍一下懒猫微服](https://blog.no-claw.com/47885d90/): 2025-07-10 — 面向传统 NAS 用户，介绍懒猫微服的特色与优势
+- [我用Amazon Q写了一个Docker客户端，并上架了懒猫微服商店](https://blog.no-claw.com/8f0212bf/): 2025-06-08 — 使用 Amazon Q 开发 Docker 客户端并上架懒猫微服商店的全过程
+- [深度长文：NAS 大降价的年代，我为何接受溢价来购买懒猫微服（附送回本攻略）](https://blog.no-claw.com/d6c5e7b2/): 2025-05-16 — 深度分析 NAS 降价潮中选择懒猫微服的理由，附回本攻略
+- [把懒猫 Web 应用放进 Mac 程序坞：Chrome 与 Safari 的设置方法](https://blog.no-claw.com/ce3905e3/): 2025-05-07 — 用 Chrome 或 Safari 把常用的懒猫 Web 应用添加到 Mac 程序坞，直接打开网盘、清单和 ONLYOFFICE，减少反复查找。
+- [自带内网穿透，懒猫微服治好了我的 NAS 焦虑](https://blog.no-claw.com/b1e8232f/): 2025-05-04 — 懒猫微服自带内网穿透功能，彻底解决 NAS 远程访问焦虑
+
+## 摘抄
+
+- [经济学原理 摘录](https://blog.no-claw.com/b353a576/): 2026-07-21 — 整理《经济学原理》中关于机会成本、边际思维、激励、供需与市场边界的概念，配上例子和情景练习，方便回顾。
+- [五种时间摘抄](https://blog.no-claw.com/c0512844/): 2026-05-07 — 摘录《五种时间》中关于生存时间与清单法的内容，记下从被动应付到主动选择、拆解任务和安排优先级的思路。
+- [每日正念](https://blog.no-claw.com/6130ae25/): 2026-05-07 — 《每日正念》40 天课程的文字摘录，按天整理呼吸、身体觉知、情绪、念头与日常沟通等练习，方便回看。
+- [超效率手册](https://blog.no-claw.com/b6e1e84a/): 2026-02-25 — 《超效率手册》读书摘抄，涵盖时间管理、任务分解、短跑冲刺等实用方法。
+- [摘抄：不要呆在没有话语权的小团体里](https://blog.no-claw.com/8f725a10/): 2025-10-05 — B站大脑成长计划摘抄，识别缺乏话语权的小团体，避免被隐性权力关系消耗。
+- [摘抄：我发现有个输出型爱好真的很重要](https://blog.no-claw.com/e7ef5dac/): 2025-10-05 — B站大脑成长计划摘抄，输出型爱好对个人成长和心理健康的重要性。
+- [摘抄：改变自己最快的方式：早起+密集做事](https://blog.no-claw.com/806d38a3/): 2025-10-05 — 整理一段关于早起与专注做事的视频笔记，记录晨间仪式、番茄工作法、重要任务清单和持续回顾的思路。
+- [摘抄：无事不要讲话，讲话只有三个目的](https://blog.no-claw.com/78d33cb9/): 2025-10-05 — B站大脑成长计划摘抄，无事不要讲话，开口只为三个目的。
+
+## 吃货风云
+
+- [米其林 * 黑珍珠 ：金陵饭店 - 梅苑 用餐体验](https://blog.no-claw.com/c6f5f74f/): 2025-09-07 — 南京金陵饭店梅苑米其林黑珍珠淮扬菜用餐体验
+- [从望京吃到酒仙桥](https://blog.no-claw.com/512ddea4/): 2023-11-11 — 北京望京到酒仙桥的美食探店与踩雷记录
+- [家有吃货之自制纯肉肠](https://blog.no-claw.com/75eceee6/): 2023-01-15 — 在家用猪肠衣自制纯肉肠的详细做法与经验
+- [自制味精](https://blog.no-claw.com/9599d85d/): 2023-01-15 — 用虾等食材自制天然味精鸡粉的做法
+- [无限续面](https://blog.no-claw.com/45c86e6c/): 2022-12-30 — 盘点北京那些可以无限续面的小吃店
+
+## 容器
+
+- [Docker Compose（五）：多容器编排、网络与多环境配置](https://blog.no-claw.com/61cfcd24/): 2025-05-23 — 用 Docker Compose 管理应用、数据库与前端服务，配置网络、卷、环境变量和健康检查，并整理多环境覆盖与 V2 迁移。
+- [Docker 数据持久化（四）：Volume、Bind Mount 与备份恢复](https://blog.no-claw.com/8b5626cb/): 2025-05-22 — 对照 Docker Volume 与 Bind Mount，练习数据卷创建、容器共享、目录挂载以及备份恢复，并延伸到 Kubernetes PVC。
+- [Docker 容器管理（三）：启动、停止、日志与重启策略](https://blog.no-claw.com/5517bd46/): 2025-05-21 — 练习 docker run、ps、stop、start、exec 和 logs，理解前后台运行、端口映射、环境变量与容器重启策略。
+- [Docker 镜像（二）：分层、构建、仓库与镜像优化](https://blog.no-claw.com/e0565a55/): 2025-05-20 — 理解 Docker 镜像的分层结构，练习构建、拉取、推送、导出与导入，并用多阶段构建和缓存优化镜像。
+- [Docker 入门（一）：容器化部署与基本概念](https://blog.no-claw.com/effe7a9a/): 2025-05-19 — 从部署环境不一致的问题理解 Docker，认识镜像、容器、Dockerfile 和仓库，并运行第一个容器。
+
+## 数学基础
+
+- [数学基础笔记：函数、对数与几种曲线](https://blog.no-claw.com/7d1a33f5/): 2018-10-21 — 重新整理一次与二次函数、对数性质、取整函数和几种曲线，修正原笔记中的系数、定义域与公式排版。
+- [数学基础笔记：数列、级数与求和](https://blog.no-claw.com/3b9e0ffb/): 2018-10-16 — 整理等差、等比、调和数列与常见求和公式，区分有限和、无穷级数及复利模型，修正原笔记中的下标和系数。
+- [拉普拉斯变换笔记：常用变换与微分方程](https://blog.no-claw.com/f1436f9a/): 2018-09-12 — 整理单边拉普拉斯变换、常用变换表、时移和微分性质，补充一阶微分方程与负反馈传递函数的入门例子。
+- [概率与统计笔记：均值、方差和二项分布](https://blog.no-claw.com/3d94456e/): 2018-07-31 — 合并概率公式与统计学提纲，整理抽样、描述统计、离散分布、期望、方差及二项分布，并补齐适用条件与例子。
+- [微积分笔记：导数、微分与中值定理](https://blog.no-claw.com/e76b2003/): 2018-07-31 — 从平均速度与瞬时速度理解导数，区分微分、罗尔定理和拉格朗日中值定理，用小例子说明导数与单调性的关系。
+
+## 算力仓
+
+- [懒猫算力仓初探（一）：开箱手记](https://blog.no-claw.com/7ae44bfb/): 2025-09-26 — 懒猫算力仓开箱体验，初步了解硬件配置与外观
+- [懒猫算力仓初探（四）：如何高效的向算力仓传输文件？](https://blog.no-claw.com/7419d0c1/): 2025-09-26 — 介绍几种高效向懒猫算力仓传输文件的方法
+- [懒猫算力仓初探（二）：懒猫微服如何绑定算力仓？](https://blog.no-claw.com/cbd8657f/): 2025-09-26 — 图文教程：懒猫微服绑定算力仓的完整操作步骤
+- [懒猫算力仓初探（三）：如何配置 SSH 免密登录和免密 sudo？](https://blog.no-claw.com/a4c04b60/): 2025-09-26 — 配置算力仓 SSH 免密登录和免密 sudo 的详细教程
+- [懒猫算力仓初探（五）：有了图形界面，算力仓轻松设置静态 IP](https://blog.no-claw.com/2f8bfee6/): 2025-09-26 — 通过图形界面为懒猫算力仓设置静态 IP 地址
+
+## 炫技
+
+- [懒猫微服炫技篇（四）：蓝牙音浪，懒猫开唱](https://blog.no-claw.com/afaab095/): 2025-10-03 — 纯命令行实现懒猫微服蓝牙配对音箱并播放音乐
+- [懒猫微服炫技篇（九十九）：从今天起，不用安装客户端也能访问懒猫微服啦～](https://blog.no-claw.com/cc9f9be0/): 2025-10-01 — 用透明代理和 HTTP 代理两条路，让没装客户端的设备也能从浏览器直接打开懒猫微服的服务。
+- [懒猫微服炫技篇（三）：sunshine+moonlight 双人串流打游戏](https://blog.no-claw.com/2d63e359/): 2025-07-23 — 在懒猫微服上用 Sunshine+Moonlight 实现远程双人串流游戏
+- [懒猫微服炫技篇（二）：使用懒猫微服倒推停电时间](https://blog.no-claw.com/b6479fd0/): 2025-06-18 — 利用懒猫微服的 uptime 和上电自启功能倒推家中停电时间
+- [懒猫微服炫技篇（一）：使用懒猫微服的穿透服务，车机使用DS music 远程听歌，黑群晖不用再洗白](https://blog.no-claw.com/12695041/): 2025-05-19 — 借助懒猫微服穿透服务，让车机远程播放群晖 DS music，免洗白方案
+
+## 纯硬件
+
+- [硬件探索记 Tuya 篇（一）：初识 T5 AI 开发板，先配置个环境吧](https://blog.no-claw.com/ab7870f7/): 2025-08-27 — Tuya T5 AI 开发板开箱与开发环境配置入门
+- [硬件黑客松的感受](https://blog.no-claw.com/9a6d478a/): 2025-08-27 — 参加 Rebuild-z 硬件黑客松的感受与经验教训
+- [如何白嫖嘉立创每个月免费打板？](https://blog.no-claw.com/de1fd60a/): 2025-08-12 — 教你每月免费领取嘉立创 PCB 打板优惠券的方法
+- [使用 MacOS 给泰山派烧录镜像](https://blog.no-claw.com/89eeed1/): 2025-08-09 — 在 macOS 上为泰山派 RK3568 开发板烧录系统镜像的详细教程
+
+## 故事
+
+- [懒猫微服故事篇（四）：不折腾内网穿透了，懒猫微服一站式全搞定！](https://blog.no-claw.com/9806a8cb/): 2025-09-19 — 告别复杂的内网穿透配置，用懒猫微服一站式解决远程访问需求
+- [懒猫微服故事篇（三）：朋友拿着一台没公网 IP 的服务器跑来找我，问我能不能转发？](https://blog.no-claw.com/52d0811e/): 2025-09-14 — 用懒猫微服帮朋友解决没有公网 IP 的服务器端口转发问题
+- [懒猫微服故事篇（二）：西湖邂逅后，我手把手教她玩转NAS](https://blog.no-claw.com/943b4ba6/): 2025-06-09 — 西湖偶遇后手把手教朋友使用懒猫微服 NAS 的有趣经历
+- [懒猫微服故事篇（一）：服务器宕机之后，我和前端靠懒猫微服结对编程](https://blog.no-claw.com/d2e0eee4/): 2025-05-22 — 服务器宕机后，用懒猫微服搭建临时开发环境实现前后端结对编程的故事
+
+## 路由器
+
+- [车机锁 Wi‑Fi 奸商跑路，高楼组 Mesh 极客破局](https://blog.no-claw.com/fc9b2cf2/): 2025-05-11 — 车机锁 WiFi 与高楼 Mesh 组网的极客解决方案
+- [Cudy TR3000 刷 Openwrt](https://blog.no-claw.com/3e1838df/): 2025-04-02 — Cudy TR3000 路由器刷入 OpenWrt 固件的详细教程
+- [小米4A刷OpenWrt](https://blog.no-claw.com/63a7a8fe/): 2023-06-22 — 小米路由器 4A 刷入 OpenWrt 固件的完整教程
+- [小米Ax5400双宽带叠加](https://blog.no-claw.com/4625bf56/): 2022-05-06 — 小米 AX5400 路由器实现双宽带叠加的配置方法
+
+## B站大脑成长计划
+
+- [摘抄：不要呆在没有话语权的小团体里](https://blog.no-claw.com/8f725a10/): 2025-10-05 — B站大脑成长计划摘抄，识别缺乏话语权的小团体，避免被隐性权力关系消耗。
+- [摘抄：我发现有个输出型爱好真的很重要](https://blog.no-claw.com/e7ef5dac/): 2025-10-05 — B站大脑成长计划摘抄，输出型爱好对个人成长和心理健康的重要性。
+- [摘抄：改变自己最快的方式：早起+密集做事](https://blog.no-claw.com/806d38a3/): 2025-10-05 — 整理一段关于早起与专注做事的视频笔记，记录晨间仪式、番茄工作法、重要任务清单和持续回顾的思路。
+- [摘抄：无事不要讲话，讲话只有三个目的](https://blog.no-claw.com/78d33cb9/): 2025-10-05 — B站大脑成长计划摘抄，无事不要讲话，开口只为三个目的。
+
+## 北漂
+
+- [悠乐汇看雪](https://blog.no-claw.com/1fcc0fa5/): 2023-12-13 — 在悠乐汇的一场雪里出门觅食，看松树、脚印、玩雪的孩子与匆忙的行人，记下北京冬日里短暂的北国味道。
+- [北京租房心得](https://blog.no-claw.com/cdd2a06/): 2022-04-23 — 北漂租房经验总结与实用心得分享
+- [2022年6月2日 北京医院拒诊（中日友好医院）](https://blog.no-claw.com/69b5547e/): 2022-04-23 — 记录 2022 年疫情期间北京中日友好医院拒诊的经历
+
+## 打印机
+
+- [被CUPS共享打印机驱动搞疯了，换windows10 做打印机 server吧](https://blog.no-claw.com/7cc2eba9/): 2026-02-17 — CUPS 对联想打印机兼容性差，改用 Windows 10 做打印服务器，原生驱动更稳定还能 RDP 远程管理。
+- [老式打印机改 Airprint 之 cups](https://blog.no-claw.com/6fcedbb0/): 2025-01-20 — 把老式联想打印机接到群晖，用 Docker 运行 CUPS 实现 AirPrint，记录驱动选择、跨设备测试和重启容器的小工具。
+- [打印机改无线](https://blog.no-claw.com/79388b04/): 2023-01-24 — 将老式有线打印机改装为无线打印的几种方案
+
+## 排查
+
+- [Mac 上 Orbstack的Docker容器访问微服 Wordpress IPv6 解析问题记录](https://blog.no-claw.com/2ad973ba/): 2025-08-08 — 记录 Mac 上 Orbstack 容器访问懒猫微服 WordPress 时 IPv6 解析异常的排查
+- [懒猫微服排查篇（二）：上架应用后，pip 安装报错 HASH 不一致](https://blog.no-claw.com/cf7f5d3/): 2025-06-24 — 排查懒猫微服上架应用后 pip 安装时 HASH 校验不一致的问题
+- [懒猫微服排查篇（一）：403 Forbidden！记应用商店 pip 使用清华源的报错](https://blog.no-claw.com/c20c194c/): 2025-06-21 — 排查懒猫微服应用商店中 pip 使用清华源时出现 403 报错的解决过程
+
+## 减肥
+
+- [4个月减肥20斤后，我悟到的这几件事](https://blog.no-claw.com/3930b15c/): 2026-07-03 — 四个月减重二十斤后，记下对饮食、休息、锻炼和体重数字的个人体会，也提醒自己把健康和日常习惯放在前面。
+- [减肥攻略](https://blog.no-claw.com/768f5303/): 2026-06-25 — 记录自己的减重过程、饮食取舍和步行作息，也整理了补充蛋白质与日常餐食的想法，作为个人生活记录。
+
+## 无人驾驶
+
+- [无人驾驶学习笔记：GNSS、惯性导航与融合定位](https://blog.no-claw.com/bd5f43e3/): 2018-08-06 — 整理 GNSS、RTK、IMU、激光雷达与视觉定位的作用，补齐坐标变换和运动公式，区分定位精度、漂移与传感器融合。
+- [无人驾驶学习笔记：高精度地图](https://blog.no-claw.com/75bfc6d8/): 2018-08-04 — 从定位、路径规划和地图制作流程理解高精度地图，保留 2018 年课程笔记，并修正地图更新与感知能力的边界。
+
+## 日常行为模式
+
+- [日常行为模式](https://blog.no-claw.com/fae03579/): 2026-08-06 — 记下吃饭、睡眠、晨写、专注做事和定期回顾的提醒，也给打断、求助与临时任务留出边界。
+
+## 摄像头
+
+- [这是心目中我极客风的AI 摄像头 - 开箱配置手记](https://blog.no-claw.com/b3747d80/): 2026-08-03 — 懒猫微服摄像头体验，硬件外观、接口配置与初印象。
+
+## 树莓派
+
+- [树莓派入门笔记：系统安装与远程连接](https://blog.no-claw.com/11aafc82/): 2019-02-21 — 早期树莓派学习笔记：准备存储卡和散热片、安装系统，以及 HDMI、VNC、SSH 和远程桌面的连接方式。
+
+## Podcasts
+
+- [Podcasts 订阅折腾记录](https://blog.no-claw.com/752e409a/): 2026-07-20 — 尝试把课程音频订阅到 Apple Podcasts，记录 XML、OPML 格式的差别，以及小宇宙转码和 Pocket Casts 使用中遇到的问题。
+
+## QNAP
+
+- [威联通 QNAP 系列（二）：全闪 NAS TBS-h574TX 雷电网桥设置](https://blog.no-claw.com/767176d1/): 2025-01-24 — 记录 QNAP TBS-h574TX 雷电网桥的连接、路由、iperf3 测速、MTU 调整，以及 Thunderbolt to Ethernet 的使用体验。
+
+## STM32
+
+- [STM32F767 CubeMX 开发手记（一）：跑马灯](https://blog.no-claw.com/327b74bc/): 2017-12-20 — 使用 STM32CubeMX 和 SW4STM32 为 STM32F767 配置 RCC、GPIO 与时钟树，生成工程并实现跑马灯。
+
+## Optional
+
+- [标签](https://blog.no-claw.com/tags/): 按 AI、搜索与知识库、云计算、编程、NAS、数码、效率和生活方向浏览镜湖博客，查看每个标签下的相关文章。
+- [博客feature 计划（不一定修](https://blog.no-claw.com/todo/): Blog 功能 目录页 markdown高亮 友链 评论功能 打赏二维码 社交链接 改log 404页面 分类 搜索 草稿和发布的关系 标签 RSS订阅 归档 最近文章 FOLLOW.IT 订阅更新 文章折叠 图片的问题（github图床） 固定左右边栏 头像 文章todo 我与儒释道 工作台打造计
+- [单片机与嵌入式学习笔记](https://blog.no-claw.com/series/embedded/): 51 单片机、STM32 和树莓派的早期学习记录，按环境搭建、输入输出、定时器与通信整理阅读顺序。
+- [分类](https://blog.no-claw.com/categories/): 按技术、设备、生活和阅读分类浏览镜湖博客，展开子分类查找 Easysearch、Coco AI、AWS、懒猫微服与 NAS 等内容。
+- [感谢各位的赞赏](https://blog.no-claw.com/reward/): 统计实际时间 2026 年 8 月 21 日 昵称 金额 备注 Tom 乐 211.33 请大佬喝杯咖啡 沈同学 85.00 支持一下 zhuoman 40.00 打赏支持 玄兴梦影 19.90 支持一下 安生 19.90 支持一下 秦峰 13.00 很实用的文章 Damo 5.00 感谢内容分享
+- [个人语录](https://blog.no-claw.com/quotes/): 有感 才子佳人乃是佳偶天成，世人却总会棒打鸳鸯。 我给女孩子修电脑，就真的只是修电脑，关心电脑好不好用，甚至会忘记女孩子的名字。（2020） 公开 Gitee 仓库要实名认证：离变量名有政治倾向的日子不远了。（2023） 人生四大悲剧: 戏子谈法，娼妓从良，恶人经商，老實人夢碎。（2022） 任侠多
+- [关于我](https://blog.no-claw.com/about/): 忘机山人的技术经历与社区作品：前 AWS 技术支持，AWS Summit / User Group 讲师，极限科技供稿作者、Milvus 北辰使者与懒猫微服专栏作家。
+- [技术系列阅读](https://blog.no-claw.com/series/): 懒猫微服、Docker、AWS、Python、机器学习、数学、无人驾驶与编程系列入口，附全部技术文章的直链目录。
+- [技术专题](https://blog.no-claw.com/topics/): 镜湖技术文章导览，覆盖 Easysearch、Coco AI、OpenSearch、Kubernetes、懒猫微服、AWS、Docker 与 AI 实践，并附全部技术文章的完整直链目录。
+- [镜湖的由来](https://blog.no-claw.com/note/): 博客取名为镜湖，取自陆游的《鹊桥仙》：”镜湖元自属闲人，又何必、君恩赐与。” 墨客总会把小事写得文雅脱俗，比如辛弃疾的”听取蛙声一片”，欧阳修的”伛偻提携，往来而不绝者”。 从前的文人可以醉卧沙场，后来的墨客亦可科技兴邦。即使文化人看得透彻，也到底无力改变。 不会再去写歌功颂德一类的东西了，这里是留
+- [懒猫微服完整系列：入门、开发与排查](https://blog.no-claw.com/series/lazycat/): 懒猫微服全部文章目录，按入门、进阶、开发、容器、排查、摄像头、算力仓、炫技、故事与番外整理，直接阅读全文。
+- [日记](https://blog.no-claw.com/todo/daily/): 每天一句话，按月倒序。在这里编辑日报。想看阶段性复盘请移步 月报。 2026-07 08-05 桌垫的做大作用还是放鼠标，目前不需要 吃全聚德 08-04 下载了DDB的论文，开始看 看完了庄子《人间世》 08-03 读完了程序员的45个习惯，文笔化，版本控制，以及小步快跑。 08-02 吃阳坊涮肉
+- [生活](https://blog.no-claw.com/life/): 忘机山人的生活与创作入口，汇集日记、月报、阅读笔记、散文随笔、小说、科普故事、语录与收藏。
+- [生活与阅读](https://blog.no-claw.com/life/articles/): 按时间浏览忘机山人的生活记录、散文随笔、旅行见闻、读书笔记与摘抄。
+- [收藏一些有用的网站](https://blog.no-claw.com/mark/): 硬件类 嘉立创开源广场 立创开发板技术文档中心 https://huggingface.co/ https://leetcode.cn/ https://csdiy.wiki/ https://www.docker.com/ https://quickref.me/ MDN:https://deve
+- [书单与课程](https://blog.no-claw.com/reading/): 这里记录读过、在读和想读的书，也记录看过的课程与讲座。保留当时的阅读状态、日期和感受。点击编辑。 📊 概览 共 42 项✅ 已完成（26）📚 进行中（4）📖 完成一半（2）📖 计划中（10） 书籍 40 本 · 课程与讲座 2 项 按分类💻 技术✅ 3🧘 哲学·道家📚 2🩺 中医·养
+- [数学基础笔记](https://blog.no-claw.com/series/mathematics/): 从函数、数列到微分、概率与拉普拉斯变换，整理 2018 年的数学学习记录，修正公式并补充例子。
+- [无人驾驶学习笔记](https://blog.no-claw.com/series/autonomous-driving/): 2018 年 Udacity 无人驾驶先修课笔记，按高精度地图、GNSS、惯性导航与融合定位的顺序阅读。
+- [一起学习机器学习](https://blog.no-claw.com/series/machine-learning/): 从数据探索到回归、分类、聚类和图学习，按顺序阅读 14 篇机器学习课程笔记。
+- [月报](https://blog.no-claw.com/todo/monthly/): 每月一次的复盘，顺带按周归纳。节点里 📅 是月度总结，🗓️ 是周记。在这里编辑月报,想看流水账请移步 日记。 2026 📅 2026-07 月度 Todo:继续6月没看完的 📅 2026-06 月度 Todo1: 把庄子内七篇 前5篇看完，总结每个章节的大概主旨Todo2: 倪海厦《针灸》全
+- [早期编程学习笔记](https://blog.no-claw.com/series/early-programming/): 为开发微信小程序而学习 JavaScript，再用同一门语言练习小程序后端和 RPG Maker MV 插件，保留 2018 年的学习顺序。
+- [AWS 实战与学习笔记](https://blog.no-claw.com/series/aws/): 按服务基础、连接认证、应用部署、AI 与数据处理浏览 AWS 实践记录和学习笔记。
+- [Docker 容器小书](https://blog.no-claw.com/series/docker/): 从容器化部署、镜像与生命周期，到数据卷和 Compose，按顺序阅读 Docker 入门及跨架构部署实践。
+- [Python 编程与环境笔记](https://blog.no-claw.com/series/python/): 从字符串、容器、函数与字典练习，到 Jupyter、NumPy、Pandas 和环境管理，汇集 Python 学习与实用笔记。
