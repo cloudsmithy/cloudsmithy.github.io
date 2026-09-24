@@ -57,6 +57,10 @@
     - Python
     - Java
     - JavaScript
+    - SQL
+    - 微信小程序
+    - RPG Maker MV
+    - 游戏开发
     - C语言
     - C++
     - Jupyter
@@ -113,3 +117,16 @@
     - Podcasts
     - 小说
     - 科普故事
+
+- id: learning
+  title: 数学与工程学习
+  description: 数学基础、概率统计、控制理论与无人驾驶课程笔记。
+  tags:
+    - 数学
+    - 微积分
+    - 统计学
+    - 控制理论
+    - 机器学习
+    - 无人驾驶
+    - 高精地图
+    - 定位

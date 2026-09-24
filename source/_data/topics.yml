@@ -255,3 +255,72 @@
     - title: STM32F767 CubeMX 跑马灯
       url: /327b74bc/
       note: 换一个硬件平台，了解 HAL 与工程生成过程。
+
+- id: mathematics
+  title: 数学基础
+  home: false
+  match:
+    tags:
+    - 数学
+  icon: fas fa-square-root-variable
+  summary: 函数、微积分、概率统计与变换
+  intro: 从函数和数列开始，再看导数、概率统计与拉普拉斯变换。原稿公式重新排版，图片短稿合并为能直接阅读的文字笔记。
+  more:
+    label: 查看数学基础完整目录
+    url: /series/mathematics/
+  steps:
+  - title: 数学基础笔记：函数、对数与几种曲线
+    url: /7d1a33f5/
+    note: 重新整理一次与二次函数、对数性质、取整函数和几种曲线，修正原笔记中的系数、定义域与公式排版。
+  - title: 微积分笔记：导数、微分与中值定理
+    url: /e76b2003/
+    note: 从平均速度与瞬时速度理解导数，区分微分、罗尔定理和拉格朗日中值定理，用小例子说明导数与单调性的关系。
+  - title: 概率与统计笔记：均值、方差和二项分布
+    url: /3d94456e/
+    note: 合并概率公式与统计学提纲，整理抽样、描述统计、离散分布、期望、方差及二项分布，并补齐适用条件与例子。
+  - title: 拉普拉斯变换笔记：常用变换与微分方程
+    url: /f1436f9a/
+    note: 整理单边拉普拉斯变换、常用变换表、时移和微分性质，补充一阶微分方程与负反馈传递函数的入门例子。
+- id: autonomous-driving
+  title: 无人驾驶学习
+  home: false
+  match:
+    tags:
+    - 无人驾驶
+  icon: fas fa-car
+  summary: 高精度地图、定位与传感器融合
+  intro: 2018 年无人驾驶先修课的两篇笔记，先认识地图，再理解 GNSS、IMU 和环境匹配各自提供什么信息。
+  more:
+    label: 查看无人驾驶学习目录
+    url: /series/autonomous-driving/
+  steps:
+  - title: 无人驾驶学习笔记：高精度地图
+    url: /75bfc6d8/
+    note: 从定位、路径规划和地图制作流程理解高精度地图，保留 2018 年课程笔记，并修正地图更新与感知能力的边界。
+  - title: 无人驾驶学习笔记：GNSS、惯性导航与融合定位
+    url: /bd5f43e3/
+    note: 整理 GNSS、RTK、IMU、激光雷达与视觉定位的作用，补齐坐标变换和运动公式，区分定位精度、漂移与传感器融合。
+- id: early-programming
+  title: JavaScript 与应用开发
+  home: false
+  match:
+    tags:
+    - JavaScript
+    - 微信小程序
+    - RPG Maker MV
+  icon: fas fa-code
+  summary: 语言基础、小程序后端与游戏插件
+  intro: 从 JavaScript 语法开始，把函数、对象与请求处理用到小程序和游戏插件中，保留早期课程背景和补充示例。
+  more:
+    label: 查看早期编程学习目录
+    url: /series/early-programming/
+  steps:
+  - title: 刷完 Udacity JavaScript 入门课后的笔记
+    url: /d536f3ad/
+    note: 保留为学习微信小程序而补 JavaScript 的经历，整理类型、相等比较、真假值、作用域、函数、数组与对象，并补齐可运行例子。
+  - title: 微信小程序后端学习笔记：商品、路由与订单
+    url: /84f0a0d4/
+    note: 整理 2018 年 Wafer 小程序课程中的商品列表、详情、购买请求与订单查询，修正 SQL 连接字段并补充分组示例。
+  - title: RPG Maker MV 插件笔记：移动提示与标题参数
+    url: /34cce265/
+    note: 保留 RPG Maker MV 插件课程中的移动提示与标题描边练习，修正插件路径、参数读取、立即执行函数和方法覆盖的用法。

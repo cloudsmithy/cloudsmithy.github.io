@@ -10,6 +10,24 @@ const root = path.resolve(__dirname, '..')
 const origin = 'https://blog.no-claw.com'
 const workerSource = fs.readFileSync(path.join(root, 'source/sw.js'), 'utf8')
 
+test('math tags render accessible formulas at build time and reject malformed TeX', () => {
+  let render
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/math.js'), 'utf8'), {
+    require,
+    hexo: { extend: { tag: { register(name, callback, options) {
+      assert.equal(name, 'math')
+      assert.equal(options.ends, true)
+      render = callback
+    } } } }
+  })
+  const block = render([], String.raw`\frac{n(n+1)}{2}`)
+  assert.match(block, /class="katex-display"/)
+  assert.match(block, /<math\b/)
+  assert.match(block, /encoding="application\/x-tex"/)
+  assert.doesNotMatch(render(['inline'], 'x^2'), /class="katex-display"/)
+  assert.throws(() => render([], String.raw`\frac{1}{`), /ParseError/)
+})
+
 function worker({ network = async () => new Response('fresh'), storageFails = false } = {}) {
   const handlers = {}
   const stores = new Map()
