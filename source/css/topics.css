@@ -404,9 +404,68 @@
   width: 100%;
 }
 
-/* Categories and the tag cloud are moved below the article list at build time. */
+/* Keep a compact month-by-month archive alongside the homepage article stream. */
 #content-inner:has(> #recent-posts) #aside-content .card-archives {
-  display: none;
+  display: block;
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list {
+  position: relative;
+  margin: 10px 0 0 5px;
+  padding: 0;
+  list-style: none;
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list::before {
+  position: absolute;
+  top: 22px;
+  bottom: 22px;
+  left: 0;
+  width: 1px;
+  background: var(--directory-border);
+  content: '';
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 8px 4px 8px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list-link::before {
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6ba99b;
+  content: '';
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list-link:hover {
+  color: var(--font-color);
+  background: color-mix(in srgb, var(--card-bg) 91%, #6ba99b);
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list-link:focus-visible {
+  outline: 2px solid #6ba99b;
+  outline-offset: 2px;
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list-count {
+  color: var(--directory-muted);
+  font-size: 12px;
+}
+
+#content-inner:has(> #recent-posts) .card-archive-list-count::after {
+  margin-left: 4px;
+  content: '篇';
 }
 
 .home-discovery {

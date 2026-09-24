@@ -349,7 +349,7 @@ aside:
     # Type: monthly / yearly
     type: monthly
     # Eg: YYYY年MM月
-    format: MMMM YYYY
+    format: YYYY 年 M 月
     # Sort of order. 1, asc for ascending; -1, desc for descending
     order: -1
     # If set 0 will show all
