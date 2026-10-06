@@ -1,10 +1,10 @@
 # 镜湖
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5758e165-50ce-4406-8b45-85ba4c7778c6/deploy-status)](https://app.netlify.com/projects/lazycat-docsx/deploys)
 
 > 镜湖元自属闲人，又何必、君恩赐与
 
 忘机山人的个人博客，记录技术折腾、电子产品体验与生活碎碎念。
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5758e165-50ce-4406-8b45-85ba4c7778c6/deploy-status)](https://app.netlify.com/projects/lazycat-docsx/deploys)
 
 ## 技术栈
 
