@@ -1,4 +1,12 @@
 import type { UserConfig } from 'vitepress'
+import { existsSync } from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+// Hexo 的 source 目录，文章里的 /images/... 指向这里
+const HEXO_SOURCE = fileURLToPath(new URL('../../source', import.meta.url))
+// Hexo 主站地址，与 _config.yml 的 url 一致
+const HEXO_URL = 'https://blog.no-claw.com'
 
 // HTML 标签集合，用于 markdown 处理
 const HTML_TAGS = new Set(['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'slot', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'template', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'])
@@ -14,7 +22,10 @@ export const sharedConfig: Partial<UserConfig> = {
       md.render = (src, env) => {
         // 移除 <!-- more -->
         src = src.replace(/<!--\s*more\s*-->/gi, '')
-        
+
+        // Hexo {% mermaid %} 转成代码块，否则 {% endmermaid %} 会被 markdown-it-attrs 当成属性
+        src = src.replace(/\{%\s*mermaid\s*%\}([\s\S]*?)\{%\s*endmermaid\s*%\}/g, (_, body) => '```mermaid\n' + body.trim() + '\n```')
+
         // 保护代码块
         const codeBlocks: string[] = []
         src = src.replace(/```[\s\S]*?```|`[^`]+`/g, (match) => {
@@ -30,12 +41,28 @@ export const sharedConfig: Partial<UserConfig> = {
           return `&lt;${tag}&gt;`
         })
         
+        // 站内链接（abbrlink、/topics/、/series/ 等）只在 Hexo 主站存在，改成主站绝对地址
+        src = src.replace(/\]\(\/(?!images\/)/g, `](${HEXO_URL}/`)
+
         // 恢复代码块
         src = src.replace(/__CODE_BLOCK_(\d+)__/g, (_, i) => codeBlocks[parseInt(i)])
         
         return defaultRender(src, env)
       }
     }
+  },
+
+  vite: {
+    plugins: [{
+      // 把 /images/... 解析到 Hexo source/images，按引用打包进 assets
+      name: 'hexo-source-images',
+      enforce: 'pre',
+      resolveId(id) {
+        if (!id.startsWith('/images/')) return
+        const file = path.join(HEXO_SOURCE, decodeURIComponent(id.split('?')[0]))
+        if (existsSync(file)) return file
+      }
+    }]
   },
 
   async transformPageData(pageData) {
