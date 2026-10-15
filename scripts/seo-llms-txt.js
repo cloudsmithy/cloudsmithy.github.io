@@ -72,8 +72,11 @@ hexo.extend.generator.register('llms_txt', function (locals) {
   lines.push(`- Feed: ${siteUrl}/atom.xml`)
   lines.push('')
 
+  const { llmsMdPath, llmsCategoryPath } = hexo.llmsPaths
+
+  // 每篇链到 Markdown 版（seo-llms-full-txt.js 生成），文件头里带原文 URL
   const fmtPost = (p) => {
-    const url = p.permalink || joinUrl(p.path)
+    const url = joinUrl(llmsMdPath(p))
     const date = p.date ? p.date.format('YYYY-MM-DD') : ''
     const desc = cleanDesc(p.description)
     const parts = []
@@ -82,6 +85,21 @@ hexo.extend.generator.register('llms_txt', function (locals) {
     const tail = parts.length ? `: ${parts.join(' — ')}` : ''
     return `- [${escTitle(p.title)}](${url})${tail}`
   }
+
+  // 全文合集：按顶级分类拆分，和 seo-llms-full-txt.js 的分组一致
+  const topCounts = new Map()
+  for (const p of posts) {
+    const cats = p.categories ? p.categories.toArray() : []
+    const top = (cats.find(c => !c.parent) || cats[0] || { name: '其他' }).name
+    topCounts.set(top, (topCounts.get(top) || 0) + 1)
+  }
+  lines.push('## 全文')
+  lines.push('')
+  lines.push(`- [全站合集](${joinUrl('llms-full.txt')}): 全部 ${posts.length} 篇文章的 Markdown 正文`)
+  for (const [cat, n] of [...topCounts].sort((a, b) => b[1] - a[1])) {
+    lines.push(`- [${escTitle(cat)}](${joinUrl(llmsCategoryPath(cat))}): ${n} 篇`)
+  }
+  lines.push('')
 
   for (const [cat, list] of sortedCats) {
     lines.push(`## ${escTitle(cat)}`)

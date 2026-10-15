@@ -77,3 +77,10 @@ tmp/
 /tools/lint-description.js
 /scripts/lint-description.js
 /tools/consolidate-taxonomy.js
+
+# Python
+__pycache__/
+*.pyc
+
+# 本地书稿工具（懒猫微服100篇 PDF）
+/tools/book/

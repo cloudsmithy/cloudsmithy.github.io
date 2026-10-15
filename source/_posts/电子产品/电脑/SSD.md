@@ -8,6 +8,8 @@ categories:
 abbrlink: 2e34d332
 date: 2017-03-10 00:00:00
 tags:
+  - SSD
+  - 存储
 ---
 
 ## slc、mlc、tlc 闪存芯片颗粒区别介绍
