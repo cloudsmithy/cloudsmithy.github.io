@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>博恩·崔西工作法则 7 册 · 书架</title>
+<style>
+:root{
+  --bg:#f3ebdd; --bg2:#ece1cf; --paper:#fffaf1; --page:#fbf4e6; --ink:#2a211a; --ink2:#5e5146; --ink3:#93857a;
+  --line:#e2d5c1; --soft:#efe5d4; --rule:rgba(120,90,60,.12);
+  --brand:#854d0e; --brands:#f3e3c9;
+  --wood1:#9a6534; --wood2:#7a4b24; --wood3:#5c3517; --woodhi:rgba(255,226,180,.35);
+  --glow:rgba(255,205,130,.55);
+  --b1:#1f6f6b; --b1s:#dcefeb;
+  --b2:#2f3e8f; --b2s:#e1e4f6;
+  --b3:#9b2335; --b3s:#f6dfe2;
+  --b4:#b5541a; --b4s:#f8e3d4;
+  --b5:#6b2d7b; --b5s:#eedff2;
+  --b6:#2e6b3a; --b6s:#dfeee1;
+  --b7:#1f5f8b; --b7s:#dceaf4;
+  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","Kaiti SC",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --shadow:0 1px 1px rgba(60,40,20,.06),0 10px 24px -8px rgba(60,40,20,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#16110d; --bg2:#1d1712; --paper:#231c16; --page:#201913; --ink:#f1e6d6; --ink2:#c2b3a1; --ink3:#8c7d6d;
+    --line:#3a2f25; --soft:#2b231b; --rule:rgba(255,220,170,.06);
+    --brand:#e3a857; --brands:#3a2a15;
+    --wood1:#4a3221; --wood2:#3a2617; --wood3:#24170d; --woodhi:rgba(255,200,140,.12);
+    --glow:rgba(255,170,80,.16);
+    --b1:#5fd0c3; --b1s:#173230;
+    --b2:#9aa8ff; --b2s:#22264a;
+    --b3:#ff8a9a; --b3s:#3d1c22;
+    --b4:#ffa463; --b4s:#3d2616;
+    --b5:#d8a2ff; --b5s:#33213f;
+    --b6:#7fd88f; --b6s:#18321d;
+    --b7:#7cc7f5; --b7s:#15303f;
+    --shadow:0 1px 1px rgba(0,0,0,.4),0 12px 26px -10px rgba(0,0,0,.6);
+  }
+}
+/* 书脊用的布面颜色：深浅模式都保持浓郁 */
+.s1{--sp:#1f6f6b} .s2{--sp:#2f3e8f} .s3{--sp:#9b2335} .s4{--sp:#b5541a} .s5{--sp:#6b2d7b} .s6{--sp:#2e6b3a} .s7{--sp:#1f5f8b}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;color:var(--ink);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased;
+  background:radial-gradient(1100px 520px at 50% -80px,var(--glow),transparent 70%),var(--bg)}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.35;margin:0}
+p{margin:.4em 0}
+.small{font-size:13px;color:var(--ink3)}
+b,strong{font-weight:650}
+.c1{--c:var(--b1);--cs:var(--b1s)} .c2{--c:var(--b2);--cs:var(--b2s)} .c3{--c:var(--b3);--cs:var(--b3s)}
+.c4{--c:var(--b4);--cs:var(--b4s)} .c5{--c:var(--b5);--cs:var(--b5s)} .c6{--c:var(--b6);--cs:var(--b6s)}
+.c7{--c:var(--b7);--cs:var(--b7s)} .cb{--c:var(--brand);--cs:var(--brands)}
+.wood{background:
+  repeating-linear-gradient(90deg,transparent 0 140px,rgba(0,0,0,.05) 140px 142px,transparent 142px 260px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 5px),
+  linear-gradient(180deg,var(--wood1),var(--wood2))}
+
+/* ---------- nav：木质导轨 ---------- */
+nav.top{position:sticky;top:0;z-index:50;color:#f6e7cf;border-bottom:3px solid var(--wood3);box-shadow:0 6px 16px -8px rgba(40,20,5,.55)}
+nav.top .wrap{display:flex;align-items:center;gap:3px;height:54px;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{font-family:var(--serif);font-weight:700;margin-right:auto;white-space:nowrap;padding-right:14px;letter-spacing:.06em}
+nav.top a{text-decoration:none;font-size:13.5px;color:rgba(246,231,207,.82);padding:5px 10px;border-radius:4px;white-space:nowrap;transition:.2s;display:flex;align-items:center;gap:6px}
+nav.top a i{display:inline-block;width:6px;height:16px;border-radius:1px;background:var(--sp,#e3a857);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.25)}
+nav.top a:hover,nav.top a.on{background:rgba(255,240,215,.14);color:#fff7e8}
+
+/* ---------- hero：书架 ---------- */
+.hero{padding:70px 0 40px;text-align:center;position:relative}
+.lamp{width:120px;height:14px;margin:0 auto 26px;border-radius:0 0 60px 60px;background:linear-gradient(#c79a55,#8a5d2a);position:relative;box-shadow:0 18px 60px 26px var(--glow)}
+.lamp::before{content:"";position:absolute;left:50%;top:-60px;width:2px;height:60px;background:var(--ink3);opacity:.5}
+.eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.32em;color:var(--brand);margin-bottom:14px}
+.hero h1{font-size:clamp(34px,5.6vw,62px);letter-spacing:.06em}
+.hero h1 small{display:block;font-size:.42em;letter-spacing:.3em;color:var(--ink2);font-weight:400;margin-top:8px}
+.hero .lead{font-size:clamp(16px,1.9vw,19px);color:var(--ink2);max-width:780px;margin:22px auto 0;font-family:var(--serif);line-height:1.9}
+.hero .lead strong{color:var(--ink)}
+.meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 26px;margin-top:20px;font-size:13px;color:var(--ink3)}
+.meta-row b{color:var(--brand);font-family:var(--serif);font-size:18px;margin-right:4px}
+
+.bookcase{margin:46px auto 0;max-width:1000px;position:relative}
+.shelf{display:flex;align-items:flex-end;justify-content:center;gap:5px;padding:0 26px;min-height:390px;overflow-x:auto;overflow-y:visible;scrollbar-width:none}
+.shelf::-webkit-scrollbar{display:none}
+.spine{flex:none;position:relative;width:var(--w,74px);height:var(--h,330px);border-radius:5px 5px 2px 2px;text-decoration:none;color:#fbf1df;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.32),rgba(255,255,255,.16) 14%,rgba(255,255,255,0) 34%,rgba(0,0,0,0) 70%,rgba(0,0,0,.3)),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px),
+    var(--sp);
+  box-shadow:0 2px 0 rgba(0,0,0,.25),3px 0 6px -2px rgba(0,0,0,.35);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;display:flex;flex-direction:column;align-items:center;padding:16px 0 14px;outline:none}
+.spine::before,.spine::after{content:"";position:absolute;left:8px;right:8px;height:6px;border-top:1.5px solid rgba(240,205,140,.85);border-bottom:1.5px solid rgba(240,205,140,.85)}
+.spine::before{top:30px} .spine::after{bottom:52px}
+.spine:hover,.spine:focus-visible,.spine.on{transform:translateY(-22px) rotate(-1.2deg);box-shadow:0 26px 30px -16px rgba(0,0,0,.55),3px 0 6px -2px rgba(0,0,0,.35)}
+.spine .au{font-size:10.5px;letter-spacing:.2em;opacity:.8;margin-top:22px;writing-mode:vertical-rl}
+.spine .tt{writing-mode:vertical-rl;font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.14em;margin-top:18px;line-height:1.1;text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.spine .tt small{font-size:11.5px;font-weight:400;letter-spacing:.1em;opacity:.85;margin-top:10px;display:inline-block}
+.spine .tcy{text-combine-upright:all;-webkit-text-combine:horizontal}
+.spine .no{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:17px;color:rgba(245,215,160,.95)}
+.stack{flex:none;align-self:flex-end;margin-left:18px;display:flex;flex-direction:column;align-items:flex-end;gap:0;text-decoration:none}
+.stack span{display:block;height:34px;border-radius:3px 6px 6px 3px;color:#fbf1df;font-family:var(--serif);font-size:14px;line-height:34px;padding:0 14px;text-align:left;white-space:nowrap;
+  background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(0,0,0,.2)),var(--brand);box-shadow:inset -6px 0 0 #f4e6cc,inset -7px 0 0 rgba(0,0,0,.2),0 2px 3px rgba(0,0,0,.25);transition:.3s}
+.stack span:nth-child(1){width:150px;background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(0,0,0,.2)),#5c3a1a;font-size:12px;height:26px;line-height:26px;margin-right:8px}
+.stack span:nth-child(2){width:190px}
+.stack:hover span:nth-child(2){transform:translateX(-10px)}
+.plank{height:26px;border-radius:3px;position:relative;box-shadow:0 18px 26px -12px rgba(40,20,5,.6),inset 0 2px 0 var(--woodhi)}
+.plank::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(var(--wood3),transparent);opacity:.55;border-radius:0 0 4px 4px}
+.shelfcap{min-height:58px;margin:26px auto 0;max-width:720px;font-family:var(--serif);font-size:16.5px;color:var(--ink2);transition:opacity .25s}
+.shelfcap b{color:var(--c,var(--brand));font-size:18px;margin-right:8px}
+
+/* 书目卡（hero 下方） */
+.catalog{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;text-align:left}
+.ccard{display:block;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:16px 16px 14px 20px;box-shadow:var(--shadow);position:relative;transition:transform .25s;
+  background-image:repeating-linear-gradient(180deg,transparent 0 25px,var(--rule) 25px 26px);background-position:0 46px}
+.ccard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+.ccard:hover{transform:translateY(-3px) rotate(-.4deg)}
+.ccard .cn{font-size:11.5px;letter-spacing:.18em;color:var(--c);font-weight:700}
+.ccard h3{font-size:16.5px;margin:2px 0 6px;padding-bottom:6px;border-bottom:1.5px solid color-mix(in srgb,var(--c) 55%,transparent)}
+.ccard p{font-size:13.5px;color:var(--ink2);line-height:26px;margin:0}
+.ccard.all{background-color:var(--brands)}
+
+/* ---------- 每本书：扉页 ---------- */
+section.block{padding:80px 0 76px;position:relative;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 7%,var(--bg)),var(--bg) 340px)}
+section.block::before{content:"";position:absolute;top:0;right:max(24px,calc(50% - 540px));width:26px;height:92px;background:var(--c);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);box-shadow:0 4px 8px rgba(0,0,0,.2)}
+.sec-head{position:relative;max-width:760px;margin:0 auto 40px;text-align:center;background:var(--page);padding:42px 36px 36px;border-radius:2px 8px 8px 2px;
+  box-shadow:-12px 0 0 var(--c),-13px 0 0 rgba(0,0,0,.15),var(--shadow);outline:1px solid color-mix(in srgb,var(--c) 45%,transparent);outline-offset:-14px}
+.sec-head::after{content:"❦";display:block;color:var(--c);font-size:20px;margin-top:14px;opacity:.8}
+.sec-head .big{font-family:var(--serif);font-size:44px;line-height:1;color:var(--c);font-weight:700;margin-bottom:12px}
+.sec-head .tag{font-size:12.5px;color:var(--c);font-weight:600;letter-spacing:.2em}
+.sec-head h2{font-size:clamp(26px,3.8vw,38px);margin:10px 0 4px;letter-spacing:.04em}
+.sec-head .en{font-size:13px;color:var(--ink3);font-style:italic;line-height:1.7}
+.sec-head.left{text-align:left}
+.thesis{font-family:var(--serif);font-size:clamp(18px,2.1vw,21px);line-height:1.9;margin:0 auto 36px;max-width:860px;padding:0 0 0 24px;border-left:3px solid var(--c)}
+.thesis strong{color:var(--c)}
+h3.sub{font-size:21px;margin:56px 0 18px;display:flex;align-items:baseline;gap:12px}
+h3.sub::before{content:"§";font-family:var(--serif);color:var(--c);font-size:22px}
+h3.sub small{font-family:var(--sans);font-weight:400;font-size:13px;color:var(--ink3)}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px;box-shadow:var(--shadow)}
+.card h4{font-size:17px;margin-bottom:8px}
+.card h4.cc{color:var(--c)}
+.card p,.card li{font-size:14.5px;color:var(--ink2)}
+.card ul,.card ol{margin:4px 0 0;padding-left:1.25em}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mt{margin-top:16px}
+.pill{display:inline-block;font-size:12.5px;padding:1px 9px;border-radius:3px;background:var(--cs);color:var(--c);margin:2px;font-weight:600}
+
+/* 主张：三张便笺 */
+.claims{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.claim{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:2px;padding:18px 18px 16px;box-shadow:var(--shadow)}
+.claim .k{font-size:11.5px;letter-spacing:.2em;color:var(--c);font-weight:700}
+.claim b{display:block;font-family:var(--serif);font-size:17px;margin:4px 0 6px;line-height:1.5}
+.claim span{display:block;font-size:14px;color:var(--ink2);line-height:1.75}
+
+/* 法则：索引卡 */
+.laws{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:lw}
+.laws.c2col{grid-template-columns:repeat(2,1fr)}
+.laws.c4col{grid-template-columns:repeat(4,1fr)}
+.law{position:relative;counter-increment:lw;background-color:var(--paper);border:1px solid var(--line);border-radius:3px;padding:14px 16px 16px;box-shadow:0 1px 0 var(--line),0 6px 14px -8px rgba(60,40,20,.3);
+  background-image:repeating-linear-gradient(180deg,transparent 0 23px,var(--rule) 23px 24px);background-position:0 54px;transition:transform .2s,box-shadow .2s}
+.law:hover{transform:translateY(-2px);box-shadow:0 1px 0 var(--line),0 12px 20px -10px rgba(60,40,20,.4)}
+.law::before{content:"No." counter(lw,decimal-leading-zero);font-family:var(--serif);color:var(--c);font-weight:700;font-size:12px;letter-spacing:.08em}
+.law::after{content:"";position:absolute;bottom:7px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--bg);box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
+.law.nonum::before{content:none}
+.law h4{font-family:var(--serif);font-size:16px;margin:2px 0 7px;padding-bottom:6px;line-height:1.45;border-bottom:1.5px solid color-mix(in srgb,var(--c) 60%,transparent)}
+.law p{font-size:13.5px;color:var(--ink2);margin:0;line-height:24px}
+.part-lbl{grid-column:1/-1;font-family:var(--serif);font-weight:700;color:var(--c);font-size:15px;margin:12px 0 -2px;display:flex;align-items:center;gap:12px;letter-spacing:.08em}
+.part-lbl::before{content:"";width:14px;height:20px;background:var(--c);clip-path:polygon(0 0,100% 0,100% 100%,50% 75%,0 100%)}
+.part-lbl::after{content:"";flex:1;height:1px;background:var(--line)}
+.part-lbl:first-child{margin-top:0}
+
+/* 书签条 */
+.tiles{display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:12px;align-items:stretch}
+.tile{position:relative;background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--c);padding:14px 14px 30px;clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 14px),0 100%);box-shadow:var(--shadow)}
+.tile.hl{background:var(--cs);border-color:transparent;border-top-color:var(--c)}
+.tile .tk{display:inline-grid;place-items:center;min-width:26px;height:26px;padding:0 6px;border-radius:50%;border:1.5px solid var(--c);color:var(--c);font-family:var(--serif);font-size:14px;font-weight:700;margin-bottom:8px}
+.tile b{display:block;font-family:var(--serif);font-size:16px;margin-bottom:4px;color:var(--ink)}
+.tile span{display:block;font-size:13.5px;color:var(--ink2);line-height:1.65}
+
+/* 步骤：翻页 */
+.steps{display:grid;grid-template-columns:repeat(var(--n,5),1fr);gap:0;counter-reset:s;filter:drop-shadow(0 8px 14px rgba(60,40,20,.14))}
+.step{background:var(--page);border:1px solid var(--line);padding:20px 16px 18px;position:relative;counter-increment:s}
+.step:first-child{border-radius:4px 0 0 4px}
+.step:last-child{border-radius:0 4px 4px 0}
+.step+.step{border-left:1px dashed color-mix(in srgb,var(--c) 40%,var(--line))}
+.step::before{content:counter(s);font-family:var(--serif);font-size:13px;color:var(--paper);background:var(--c);font-weight:700;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%}
+.step .lt{font-family:var(--serif);font-size:34px;color:var(--c);font-weight:700;line-height:1;display:block}
+.steps.letters .step::before{content:none}
+.step h4{font-size:17px;margin:10px 0 5px}
+.step p{font-size:13.5px;color:var(--ink2);margin:0;line-height:1.65}
+
+/* 数字：藏书章 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px 18px 16px;position:relative;box-shadow:var(--shadow)}
+.stat::after{content:"";position:absolute;inset:6px;border:1px solid color-mix(in srgb,var(--c) 30%,transparent);border-radius:2px;pointer-events:none}
+.stat .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--c);line-height:1.1}
+.stat .v small{font-size:15px;margin-left:2px}
+.stat .k{font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.6}
+
+.bar{display:flex;height:44px;border-radius:4px;overflow:hidden;margin:6px 0 10px;font-size:13.5px;font-weight:600}
+.bar div{display:flex;align-items:center;padding:0 14px;white-space:nowrap;overflow:hidden}
+.bar .a{background:var(--c);color:var(--paper)}
+.bar .b{background:var(--cs);color:var(--c)}
+.bar .c{background:var(--soft);color:var(--ink2)}
+
+/* 矩阵 */
+.mx{display:grid;grid-template-columns:30px 1fr;grid-template-rows:1fr 30px;gap:8px}
+.mx .ay{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:12.5px;color:var(--ink3);letter-spacing:.2em;display:flex;align-items:center;justify-content:center}
+.mx .ax{grid-column:2;text-align:center;font-size:12.5px;color:var(--ink3);letter-spacing:.2em}
+.mx .q4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px}
+.quad{border-radius:3px;padding:15px 15px 13px;border:1px solid var(--line);background:var(--paper);min-height:148px;box-shadow:var(--shadow)}
+.quad .meta{font-size:11.5px;color:var(--c);font-weight:700;letter-spacing:.06em}
+.quad h4{font-size:18px;margin:4px 0 2px}
+.quad p{font-size:13.5px;color:var(--ink2);margin-top:8px;line-height:1.65}
+.quad.best{background:var(--c);border-color:var(--c);color:var(--paper)}
+.quad.best p,.quad.best .meta{color:color-mix(in srgb,var(--paper) 86%,transparent)}
+.quad.soft{background:var(--cs);border-color:transparent}
+
+/* 阶梯 */
+.ladder{display:flex;flex-direction:column;gap:7px}
+.rung{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:12px 18px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.rung::before{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--w)*1%);background:var(--cs);z-index:0}
+.rung::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+.rung>*{position:relative;z-index:1}
+.rung .alt{font-family:var(--serif);font-weight:700;font-size:16.5px;color:var(--c)}
+.rung .alt small{display:block;font-family:var(--sans);font-weight:400;font-size:12px;color:var(--ink3)}
+.rung .what{font-size:14px;color:var(--ink2)}
+.rung .what b{color:var(--ink)}
+
+/* 图 */
+.viz{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:20px;box-shadow:var(--shadow)}
+.viz svg{display:block;width:100%;height:auto}
+.viz svg text{font-family:var(--sans);fill:var(--ink2);font-size:13px}
+.viz svg .t-c{fill:var(--c);font-weight:700}
+.viz svg .t-s{font-size:11.5px;fill:var(--ink3)}
+.viz .cap{font-size:13px;color:var(--ink3);margin-top:8px}
+.flow{display:flex;align-items:stretch;flex-wrap:nowrap}
+.fnode{flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:12px 14px;text-align:center;box-shadow:var(--shadow)}
+.fnode.q{border-color:color-mix(in srgb,var(--c) 50%,var(--line));background:var(--cs)}
+.fnode b{display:block;font-family:var(--serif);font-size:15.5px;color:var(--c)}
+.fnode span{display:block;font-size:12.5px;color:var(--ink2);line-height:1.6;margin-top:3px}
+.farr{align-self:center;color:var(--c);padding:0 6px;font-size:18px;font-family:var(--serif)}
+.rings{position:relative;width:100%;max-width:320px;aspect-ratio:1;margin:0 auto}
+.rings div{position:absolute;border-radius:50%;border:1.5px dashed var(--c);left:50%;top:50%;transform:translate(-50%,-50%);display:flex;justify-content:center;align-items:flex-start;padding-top:10px;font-size:12px;color:var(--ink2);text-align:center;line-height:1.45}
+.rings .r3{width:100%;height:100%}
+.rings .r2{width:64%;height:64%;background:color-mix(in srgb,var(--cs) 60%,transparent)}
+.rings .r1{width:32%;height:32%;background:var(--cs);border-style:solid;align-items:center;padding:0 6px}
+.rings b{display:block;color:var(--c);font-size:13px}
+
+/* 金句：书页摘抄 */
+.quotes{columns:2;column-gap:18px}
+.quote{break-inside:avoid;background:var(--page);border:1px solid var(--line);border-radius:2px;padding:22px 24px 16px 26px;margin-bottom:18px;position:relative;font-family:var(--serif);font-size:17px;line-height:1.85;box-shadow:4px 4px 0 -1px var(--paper),4px 4px 0 0 var(--line),var(--shadow)}
+.quote::before{content:"「";color:var(--c);font-size:26px;position:absolute;left:6px;top:4px;line-height:1}
+.quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12px;color:var(--ink3);margin-top:8px;letter-spacing:.06em}
+.quote cite::before{content:"—— "}
+
+/* 折叠：目录页 */
+details.toc{background:var(--page);border:1px solid var(--line);border-radius:3px;margin-top:14px;overflow:hidden;box-shadow:var(--shadow)}
+details.toc summary{cursor:pointer;padding:16px 22px;font-family:var(--serif);font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::before{content:"目";flex:none;display:inline-grid;place-items:center;width:26px;height:26px;border-radius:2px;background:var(--c);color:var(--paper);font-size:13px}
+details.toc summary span{flex:1}
+details.toc summary::after{content:"+";font-size:22px;color:var(--c);transition:.2s;font-family:var(--sans)}
+details.toc[open] summary::after{transform:rotate(45deg)}
+.toc-body{padding:0 22px 18px}
+.toc-body .part{margin-top:14px}
+.toc-body .part h5{font-family:var(--serif);font-size:15px;color:var(--c);margin:0 0 6px}
+.chl{display:grid;grid-template-columns:250px 1fr;gap:14px;padding:9px 0;border-top:1px dotted color-mix(in srgb,var(--ink3) 50%,transparent);font-size:14.5px}
+.chl b{font-weight:600;font-family:var(--serif)}
+.chl span{color:var(--ink2)}
+
+/* ---------- 合起来看 ---------- */
+.heat{display:grid;grid-template-columns:170px repeat(7,1fr) 56px;gap:6px 8px;align-items:end;font-size:13px}
+.heat .h{font-family:var(--serif);font-weight:700;font-size:14px;text-align:center;color:var(--c);padding-bottom:4px;border-bottom:2px solid var(--c)}
+.heat .lb{font-family:var(--serif);font-weight:700;align-self:center}
+.heat .cell{height:30px;width:16px;margin:0 auto;border-radius:2px 2px 1px 1px;border:1.5px dashed color-mix(in srgb,var(--ink3) 35%,transparent);opacity:.6}
+.heat .cell.on{border:none;opacity:1;height:34px;background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(255,255,255,.18) 30%,rgba(0,0,0,.15)),var(--sp);box-shadow:inset 0 4px 0 rgba(240,205,140,.6)}
+.heat .cell.mid{border:1.5px solid var(--sp);opacity:1;height:26px;background:color-mix(in srgb,var(--sp) 18%,transparent)}
+.heat .cnt{text-align:right;color:var(--ink3);align-self:center}
+.heat .sep{grid-column:1/-1;height:1px;background:linear-gradient(90deg,var(--wood2),transparent);opacity:.35}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink3);margin-top:14px;align-items:center}
+.legend i{display:inline-block;width:10px;height:18px;border-radius:2px;vertical-align:-4px;margin-right:6px}
+.tbl-wrap{overflow-x:auto;border-radius:4px;box-shadow:var(--shadow)}
+table.cmp{width:100%;min-width:1000px;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;font-size:13.5px}
+.cmp th,.cmp td{padding:12px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.65}
+.cmp td+td,.cmp th+th{border-left:1px dotted var(--line)}
+.cmp tr:last-child td{border-bottom:none}
+.cmp thead th{font-family:var(--serif);font-size:14px;background:var(--page);color:var(--c);box-shadow:inset 0 4px 0 var(--c)}
+.cmp thead th:first-child{color:var(--ink3);box-shadow:inset 0 4px 0 var(--brand)}
+.cmp td:first-child{font-family:var(--serif);font-weight:700;color:var(--brand);font-size:14.5px;width:118px;background:var(--page)}
+.cmp td{color:var(--ink2)}
+.cmp td.no{color:var(--ink3);opacity:.5;text-align:center}
+
+/* ---------- 行动清单：借书卡 ---------- */
+.libcard{background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);padding:22px 24px 24px;position:relative}
+.libcard::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(90deg,var(--b1) 0 14.28%,var(--b2) 0 28.57%,var(--b3) 0 42.85%,var(--b4) 0 57.14%,var(--b5) 0 71.42%,var(--b6) 0 85.71%,var(--b7) 0 100%);border-radius:4px 4px 0 0}
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:0 26px}
+.check label{display:flex;gap:14px;align-items:flex-start;padding:13px 4px;cursor:pointer;border-bottom:1px solid var(--rule);transition:.2s}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;border:1.5px solid var(--ink3);border-radius:50%;margin-top:2px;display:grid;place-items:center;transition:.15s;cursor:pointer;background:var(--page)}
+.check input:checked{border:2px solid var(--brand);background:color-mix(in srgb,var(--brand) 14%,var(--page));transform:rotate(-8deg)}
+.check input:checked::after{content:"✓";color:var(--brand);font-weight:900;font-size:14px;line-height:1}
+.check label:has(input:checked) b{text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--brand) 70%,transparent);color:var(--ink3)}
+.check label:has(input:checked) span{opacity:.6}
+.check b{font-size:15.5px;display:block;font-family:var(--serif)}
+.check span{font-size:13.5px;color:var(--ink2);display:block;margin-top:2px}
+.check .src{font-size:11.5px;color:var(--ink3);margin-top:6px}
+.check .src i{font-style:normal;display:inline-block;padding:0 6px;border-radius:2px;margin-right:4px;background:var(--cs);color:var(--c);font-weight:700;font-family:var(--serif)}
+.check .grp{grid-column:1/-1;font-family:var(--serif);font-weight:700;color:var(--brand);margin:22px 0 2px;font-size:16px;letter-spacing:.12em;display:flex;align-items:center;gap:10px}
+.check .grp::after{content:"";flex:1;height:1px;background:var(--line)}
+.check .grp:first-child{margin-top:0}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.progress .track{flex:1;height:10px;background:var(--soft);border-radius:2px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.12)}
+.progress .fill{height:100%;width:0;background:linear-gradient(90deg,var(--wood1),var(--brand));transition:width .35s}
+.progress .txt{font-size:14px;color:var(--ink2);min-width:64px;text-align:right;font-family:var(--serif)}
+.progress button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--page);color:var(--ink2);border-radius:3px;padding:3px 12px;cursor:pointer}
+
+footer{padding:40px 0 64px;text-align:center;font-size:13px;color:#e9d8bd;line-height:1.9;border-top:3px solid var(--wood3)}
+footer .wrap{opacity:.9}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.spine{transition:none}}
+
+@media (max-width:960px){
+  .catalog{grid-template-columns:repeat(2,1fr)}
+  .grid3,.laws,.claims{grid-template-columns:1fr 1fr}
+  .grid4,.stats,.laws.c4col{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr!important;gap:10px;filter:none}
+  .step,.step:first-child,.step:last-child{border-radius:4px;border-left:1px solid var(--line)!important;box-shadow:var(--shadow)}
+  .tiles{grid-template-columns:1fr 1fr!important}
+  .grid2{grid-template-columns:1fr}
+  .flow{flex-direction:column}
+  .farr{transform:rotate(90deg);text-align:center}
+  .heat{grid-template-columns:120px repeat(7,1fr) 44px;font-size:12px}
+  .stack{display:none}
+}
+@media (max-width:620px){
+  .wrap{padding:0 16px}
+  .catalog,.grid3,.laws,.laws.c2col,.laws.c4col,.claims,.check,.stats,.grid4{grid-template-columns:1fr}
+  .tiles,.steps{grid-template-columns:1fr!important}
+  .quotes{columns:1}
+  .chl{grid-template-columns:1fr;gap:2px}
+  .rung{grid-template-columns:1fr;gap:4px}
+  .shelf{gap:3px;padding:0 6px;min-height:300px;justify-content:flex-start}
+  .spine{width:calc(var(--w,74px)*.62);height:calc(var(--h,330px)*.8)}
+  .spine .tt{font-size:15px;letter-spacing:.06em}
+  .spine .tt small,.spine .au{display:none}
+  .sec-head{padding:34px 20px 28px;outline-offset:-9px}
+  .heat{grid-template-columns:88px repeat(7,1fr);font-size:11px;gap:5px 4px}
+  .heat .cnt,.heat .hc{display:none}
+  section.block::before{right:16px;width:20px;height:70px}
+}
+
+/* ---------- 我要怎么做？抽屉 ---------- */
+.fab{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:10px;padding:12px 20px 12px 14px;border:none;cursor:pointer;color:#fbf1df;font:700 15.5px/1 var(--serif);letter-spacing:.06em;border-radius:3px 9px 9px 3px;
+  background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.12) 12%,rgba(0,0,0,0) 40%),#854d0e;box-shadow:inset 7px 0 0 #5c3517,0 12px 24px -8px rgba(40,20,5,.6);transition:transform .25s}
+.fab::after{content:"";position:absolute;right:18px;bottom:-16px;width:12px;height:20px;background:#9b2335;clip-path:polygon(0 0,100% 0,100% 100%,50% 72%,0 100%)}
+.fab:hover{transform:translateY(-3px)}
+.fab:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.fab-ic{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,240,215,.18);font-size:14px}
+.ov{position:fixed;inset:0;background:rgba(25,14,5,.5);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:90}
+.ov.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(500px,100vw);z-index:100;display:flex;flex-direction:column;background:var(--page);color:var(--ink);
+  border-left:10px solid var(--c);box-shadow:-24px 0 48px -12px rgba(0,0,0,.5);transform:translateX(110%);transition:transform .38s cubic-bezier(.2,.8,.2,1),border-color .3s;visibility:hidden}
+.drawer.open{transform:none;visibility:visible}
+.dw-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:22px 22px 12px;border-bottom:1px solid var(--line)}
+.dw-k{font-size:11.5px;letter-spacing:.2em;color:var(--c);font-weight:700}
+.dw-head h2{font-size:24px;margin-top:4px}
+.dw-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink2);font-size:22px;line-height:1;cursor:pointer}
+.dw-x:hover{color:var(--ink);border-color:var(--c)}
+.dw-tabs{display:flex;gap:6px;padding:12px 22px 10px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);background:var(--bg2)}
+.dw-tabs::-webkit-scrollbar{display:none}
+.dw-tab{flex:none;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink2);font:600 13px/1 var(--sans);padding:8px 10px 8px 8px;border-radius:3px;cursor:pointer;white-space:nowrap}
+.dw-tab i{display:inline-block;width:6px;height:16px;border-radius:1px;background:var(--sp,#854d0e)}
+.dw-tab[aria-selected="true"]{background:var(--sp,#854d0e);border-color:var(--sp,#854d0e);color:#fbf1df}
+.dw-tab[aria-selected="true"] i{background:#f0cd8c}
+.dw-tab:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.dw-prog{display:flex;align-items:center;gap:12px;padding:10px 22px;font:13px var(--serif);color:var(--ink2)}
+.dw-prog .track{flex:1;height:8px;background:var(--soft);border-radius:2px;overflow:hidden}
+.dw-prog .fill{height:100%;width:0;background:var(--c);transition:width .3s}
+.dw-body{flex:1;overflow-y:auto;padding:4px 22px 40px;overscroll-behavior:contain}
+.dw-intro{font-size:13.5px;color:var(--ink2);margin:8px 0 4px;font-family:var(--serif)}
+.stg{margin-top:18px}
+.stg h3{display:flex;align-items:baseline;gap:10px;font-size:17px;padding-bottom:6px;border-bottom:1.5px solid color-mix(in srgb,var(--c) 55%,transparent)}
+.stg h3 .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--c);color:var(--paper);font-size:13px;flex:none;align-self:center}
+.stg h3 small{font:400 12px var(--sans);color:var(--ink3);margin-left:auto}
+.dw-item{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px dotted var(--line);cursor:pointer}
+.dw-item input{appearance:none;-webkit-appearance:none;flex:none;width:21px;height:21px;margin-top:2px;border:1.5px solid var(--ink3);border-radius:3px;display:grid;place-items:center;cursor:pointer;background:var(--paper)}
+.dw-item input:checked{background:var(--c);border-color:var(--c)}
+.dw-item input:checked::after{content:"";width:5px;height:10px;border:solid var(--paper);border-width:0 2.4px 2.4px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.dw-item input:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.dw-item b{display:block;font-size:14.5px;font-family:var(--serif);line-height:1.55}
+.dw-item span{display:block;font-size:13px;color:var(--ink2);line-height:1.65;margin-top:2px}
+.dw-item em{display:inline-block;font-style:normal;font-size:11.5px;color:var(--c);margin-top:5px;padding:1px 7px;border-radius:2px;background:var(--cs)}
+.dw-item:has(input:checked) b{text-decoration:line-through;color:var(--ink3)}
+.dw-item:has(input:checked) span{opacity:.6}
+body.dw-lock{overflow:hidden}
+@media (max-width:620px){
+  .fab{right:14px;bottom:16px;padding:11px 16px 11px 12px;font-size:14.5px}
+  .drawer{top:auto;bottom:0;width:100vw;height:100vh;height:100dvh;border-left:none;border-top:8px solid var(--c);border-radius:14px 14px 0 0;transform:translateY(105%)}
+  .dw-head,.dw-tabs,.dw-prog,.dw-body{padding-left:16px;padding-right:16px}
+}
+@media (prefers-reduced-motion:reduce){.drawer,.ov{transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="top wood">
+  <div class="wrap">
+    <span class="brand">博恩·崔西 · 工作法则 7 册</span>
+    <a href="#overview">书架</a>
+    <a href="#b1" class="s1"><i></i>Ⅰ 高效人生</a>
+    <a href="#b2" class="s2"><i></i>Ⅱ 涡轮教练</a>
+    <a href="#b3" class="s3"><i></i>Ⅲ 涡轮战略</a>
+    <a href="#b4" class="s4"><i></i>Ⅳ 激励</a>
+    <a href="#b5" class="s5"><i></i>Ⅴ 谈判</a>
+    <a href="#b6" class="s6"><i></i>Ⅵ 授权</a>
+    <a href="#b7" class="s7"><i></i>Ⅶ 魅力</a>
+    <a href="#together">合起来看</a>
+    <a href="#todo">行动清单</a>
+  </div>
+</nav>
+
+<header class="hero" id="overview">
+  <div class="wrap">
+    <div class="lamp" aria-hidden="true"></div>
+    <div class="eyebrow">博恩·崔西职业巅峰系列 · BRIAN TRACY</div>
+    <h1>博恩·崔西工作法则<small>七 册 书 架</small></h1>
+    <p class="lead">七本书分别讲个人效能、职业规划、企业战略、激励、谈判、授权和魅力，背后是同一套思路：<strong>先想清楚要什么，把时间压到价值最高的少数几件事上，其余的交出去；带人时，让对方觉得自己重要；和人打交道时，多听少说。</strong></p>
+    <div class="meta-row">
+      <span><b>7</b>册合订</span><span><b>156</b>章</span><span><b>≈41</b>万字</span><span>机械工业出版社 · 2014–2015</span>
+    </div>
+
+    <div class="bookcase">
+      <div class="shelf" id="shelf">
+        <a class="spine s1 c1" href="#b1" style="--w:84px;--h:374px" data-t="高效人生的12个关键点" data-g="在每个生活领域找到你的“×”：用 80/20、零基思考和简化，让收入和空闲时间一起翻番。">
+          <span class="tt">高效人生的<span class="tcy">12</span>个关键点</span><span class="no">Ⅰ</span></a>
+        <a class="spine s2 c2" href="#b2" style="--w:72px;--h:336px" data-t="涡轮教练：教练式领导力手册" data-g="一本自助式私人教练：先问“我干什么能干得最出色”，再讲委托、杠杆、客户、个人品牌和利润。">
+          <span class="tt">涡轮教练<small>教练式领导力手册</small></span><span class="no">Ⅱ</span></a>
+        <a class="spine s3 c3" href="#b3" style="--w:80px;--h:362px" data-t="涡轮战略：快速引爆利润 成就企业蜕变" data-g="21 条企业战略法则：零基思维、GOSPA、SBU 四分法、约束分析，把资源集中到最有成效的业务上。">
+          <span class="tt">涡轮战略<small>快速引爆利润</small></span><span class="no">Ⅲ</span></a>
+        <a class="spine s4 c4" href="#b4" style="--w:62px;--h:304px" data-t="激励" data-g="任何激励都是自我激励。管理者要驱除恐惧、提升员工的自尊，靠的是和下属的关系。">
+          <span class="tt">激励</span><span class="no">Ⅳ</span></a>
+        <a class="spine s5 c5" href="#b5" style="--w:66px;--h:320px" data-t="谈判" data-g="凡事皆可谈判。力量来自准备、备选方案和对时间的把握，再加上价格五策略和离席法。">
+          <span class="tt">谈判</span><span class="no">Ⅴ</span></a>
+        <a class="spine s6 c6" href="#b6" style="--w:64px;--h:310px" data-t="授权" data-g="管理就是通过别人取得结果：关键成果、目标管理、七种技巧、例外管理，并避免逆向授权。">
+          <span class="tt">授权</span><span class="no">Ⅵ</span></a>
+        <a class="spine s7 c7" href="#b7" style="--w:74px;--h:344px" data-t="魅力的力量" data-g="魅力的秘密是让对方感受到自我价值：5A 行为、倾听四要素、八个“我在听”的信号。">
+          <span class="tt">魅力的力量</span><span class="no">Ⅶ</span></a>
+        <a class="stack" href="#together" aria-label="7 本合起来看">
+          <span>行动清单</span>
+          <span>∑ 七本合起来看</span>
+        </a>
+      </div>
+      <div class="plank wood"></div>
+    </div>
+    <p class="shelfcap" id="shelfcap">把鼠标移到书脊上看这本书讲什么，点一下就翻到那一本。</p>
+
+    <div class="catalog">
+      <a class="ccard c1" href="#b1"><div class="cn">第 Ⅰ 册 · 12 章</div><h3>高效人生的12个关键点</h3><p>个人效能总纲。在 7 个生活领域各找到自己的“×”，让收入和空闲时间一起翻番。</p></a>
+      <a class="ccard c2" href="#b2"><div class="cn">第 Ⅱ 册 · 21 章</div><h3>涡轮教练</h3><p>职业规划的自助教练。从战略规划讲到委托、杠杆、客户满意和个人品牌，每章配练习。</p></a>
+      <a class="ccard c3" href="#b3"><div class="cn">第 Ⅲ 册 · 21 条法则</div><h3>涡轮战略</h3><p>企业战略。零基思维、GOSPA、SBU、约束分析，目标是现金流、利润和回报率。</p></a>
+      <a class="ccard c4" href="#b4"><div class="cn">第 Ⅳ 册 · 21 章</div><h3>激励</h3><p>带团队，让人想干。任何激励都是自我激励，关键在管理者和下属的关系。</p></a>
+      <a class="ccard c5" href="#b5"><div class="cn">第 Ⅴ 册 · 21 章</div><h3>谈判</h3><p>凡事皆可谈判。准备、备选方案、时间与情绪，加上价格五策略和离席法。</p></a>
+      <a class="ccard c6" href="#b6"><div class="cn">第 Ⅵ 册 · 21 章</div><h3>授权</h3><p>带团队，让人能干。关键成果、目标管理、七种技巧、例外管理、避免逆向授权。</p></a>
+      <a class="ccard c7" href="#b7"><div class="cn">第 Ⅶ 册 · 39 章</div><h3>魅力的力量</h3><p>讨人喜欢的技术。5A 行为、倾听四要素、八个信号，以及说话的节奏和声音。</p></a>
+      <a class="ccard cb all" href="#together"><div class="cn">∑ · 对照与清单</div><h3>七本合起来看</h3><p>80/20、写下目标、零基思考、委托、倾听……哪些法则反复出现，各本怎么讲。</p></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BOOK I 高效人生的12个关键点 ============ -->
+<section class="block c1" id="b1">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅰ</div>
+      <div>
+        <div class="tag">第 1 册 · 个人效能总纲 · 12 章</div>
+        <h2>高效人生的12个关键点</h2>
+        <div class="en">Focal Point · 博恩·崔西 著 · 史雷 译</div>
+      </div>
+    </div>
+    <p class="thesis reveal">序言里有个故事：核电站请来的专家只在一根管子上画了个“×”，账单上写着：在测量仪上面画“×”，收费1美元；查找应该在哪个测量仪上面画“×”，收费9999美元。这个 × 就是<strong>关键点</strong>：在特定时刻、特定领域里，能带来最好结果的那件事。全书教你在工作、家庭、财务、健康、成长、社会贡献、精神这 7 个领域，各自找到自己的“×”。</p>
+
+    <div class="claims reveal">
+      <div class="claim"><span class="k">改变的 4 种途径</span><b>多做 · 少做 · 开始做 · 停止做</b><span>改善生活和工作只需做好这 4 件事。书里从序言一直讲到第 12 章。</span></div>
+      <div class="claim"><span class="k">因果定律</span><b>思想是因，处境是果</b><span>你要对一切负全责。用乐观、着眼未来、目标取向等 7 种思维方式训练头脑，人生就会改变。</span></div>
+      <div class="claim"><span class="k">翻番</span><b>收入和空闲时间同时翻番</b><span>收入取决于有限时间里产出的价值。案例中的保险高管 3 个月内把每周工作 7 天减到 5 天，1 年后收入增加 300%。</span></div>
+    </div>
+
+    <h3 class="sub reveal">12 个关键点 <small>章名照原文</small></h3>
+    <div class="laws reveal">
+      <div class="law"><h4>释放你的全部潜能</h4><p>零基思考加 80/20 法则；“大满贯公式”和 7 种杠杆；让收入和空闲时间翻番的 6 个步骤。</p></div>
+      <div class="law"><h4>工作效率翻番</h4><p>获得优秀业绩的 5 个问题、ABCDE 法则、紧急与重要、提高工作效率的 7 个关键点。</p></div>
+      <div class="law"><h4>简化你的生活</h4><p>复杂性定律、实现简化的 7R 法则、学会说“不”、简化生活的 6 种途径。</p></div>
+      <div class="law"><h4>发掘你最珍贵的资源</h4><p>你的头脑。乐观是成功人士最重要的特性，要用 7 种法则保持精神健康。</p></div>
+      <div class="law"><h4>实施个人战略计划</h4><p>战略计划的 7 个问题、S 形曲线、80/20 法则、对束缚的分析，以及形成关键点的过程。</p></div>
+      <div class="law"><h4>成就自己的事业和职业</h4><p>“你就是自己的个人服务公司的总裁”。事业成功的 4 个要素：专业化、差异化、分解、集中。</p></div>
+      <div class="law"><h4>改善你的家庭和个人生活</h4><p>用 4 个问题问伴侣：希望我多做、少做、开始做、停止做什么。</p></div>
+      <div class="law"><h4>实现财务独立</h4><p>多挣、少花、储蓄、投资。“少花即多挣”，每次加薪把增加部分的 50% 存起来。</p></div>
+      <div class="law"><h4>拥有健康的身体素质</h4><p>拥有好身体的 7 个秘诀。控制体重的 5 字秘诀是“少吃多锻炼”。</p></div>
+      <div class="law"><h4>成就你能够成就的一切</h4><p>每天用现在时写 10 个目标；每日 7 条行为准则；1000% 法则。</p></div>
+      <div class="law"><h4>让自己在群体中脱颖而出</h4><p>想想你要留下什么遗产，做一个“明智和有知识的给予者”。</p></div>
+      <div class="law"><h4>心灵的成长与内心的平静</h4><p>独处、黄金法则、普遍的真理，以及 4 个重要的问题：如果每个人都和我一样，世界、国家、公司、家庭会怎样？</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">结语《21世纪的7堂必修课》收尾，附录是约 138 个价值观词汇，供各章挑选和排序时使用。</p>
+
+    <h3 class="sub reveal">大满贯公式 SLAM</h3>
+    <div class="tiles reveal" style="--n:4">
+      <div class="tile hl"><span class="tk">S</span><b>简单化</b><span>减少、消除低价值的活动。先问：“如果我以前没有做这些事的话，那么我今天还会这么做吗？”</span></div>
+      <div class="tile hl"><span class="tk">L</span><b>杠杆作用</b><span>借用 7 种“其他人的”资源：知识、能量、金钱、成功、失败、想法、关系。</span></div>
+      <div class="tile hl"><span class="tk">A</span><b>加速</b><span>迅速行动，快速满足关键人物和客户的需求。</span></div>
+      <div class="tile hl"><span class="tk">M</span><b>多倍增长</b><span>组建团队，通过别人的努力让产出成倍增长。</span></div>
+    </div>
+
+    <h3 class="sub reveal">ABCDE 法则：每天给清单排序</h3>
+    <div class="steps letters reveal" style="--n:5">
+      <div class="step"><span class="lt">A</span><h4>必须做</h4><p>不做后果严重。多个 A 时再分 A-1、A-2、A-3。</p></div>
+      <div class="step"><span class="lt">B</span><h4>应该做</h4><p>不做会有一些后果，但比 A 轻。</p></div>
+      <div class="step"><span class="lt">C</span><h4>做了愉快</h4><p>做不做都没有什么后果。</p></div>
+      <div class="step"><span class="lt">D</span><h4>委托</h4><p>能让别人做的工作，全部委托出去。</p></div>
+      <div class="step"><span class="lt">E</span><h4>取消</h4><p>干脆不做。</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">规则：还有 A 没做完，就不做 B；还有 B 没做完，就不做 C。</p>
+
+    <div class="grid2 reveal" style="margin-top:30px">
+      <div>
+        <h3 class="sub" style="margin-top:0">紧急 vs 重要</h3>
+        <div class="mx">
+          <div class="ay">重 要 ↑</div>
+          <div class="q4">
+            <div class="quad soft"><div class="meta">重要 · 不紧急</div><h4>长期影响最大</h4><p>写报告、学习、陪孩子、健身。人们常把它们搁着，其实投入越多越有效率。</p></div>
+            <div class="quad best"><div class="meta">重要 · 紧急</div><h4>马上做</h4><p>书中称“迫在眉睫”，最先处理。</p></div>
+            <div class="quad"><div class="meta">不重要 · 不紧急</div><h4>浪费时间</h4><p>很多人一半的时间耗在这里。</p></div>
+            <div class="quad"><div class="meta">不重要 · 紧急</div><h4>别人的急事</h4><p>同事的电话、邮件。多数人的时间花在这里。</p></div>
+          </div>
+          <div></div><div class="ax">紧 急 →</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">复杂性定律：复杂度 = 步骤数²</h3>
+        <div class="viz">
+          <svg viewBox="0 0 420 250" role="img" aria-label="复杂性定律柱状图">
+            <line x1="40" y1="215" x2="410" y2="215" stroke="var(--line)" stroke-width="2"/>
+            <rect x="62" y="211" width="44" height="4" rx="3" fill="var(--c)"/>
+            <rect x="134" y="199" width="44" height="16" rx="3" fill="var(--c)"/>
+            <rect x="206" y="179" width="44" height="36" rx="3" fill="var(--c)"/>
+            <rect x="278" y="115" width="44" height="100" rx="3" fill="var(--c)"/>
+            <rect x="350" y="15" width="44" height="200" rx="3" fill="var(--c)" opacity=".55"/>
+            <text x="84" y="205" text-anchor="middle" class="t-c">1</text>
+            <text x="156" y="192" text-anchor="middle" class="t-c">4</text>
+            <text x="228" y="172" text-anchor="middle" class="t-c">9</text>
+            <text x="300" y="108" text-anchor="middle" class="t-c">25</text>
+            <text x="372" y="40" text-anchor="middle" style="fill:var(--paper);font-weight:700">100</text>
+            <text x="84" y="236" text-anchor="middle" class="t-s">1 步</text>
+            <text x="156" y="236" text-anchor="middle" class="t-s">2 步</text>
+            <text x="228" y="236" text-anchor="middle" class="t-s">3 步</text>
+            <text x="300" y="236" text-anchor="middle" class="t-s">5 步</text>
+            <text x="372" y="236" text-anchor="middle" class="t-s">10 步</text>
+          </svg>
+          <p class="cap">自己打电话是 1 步；请人代打是 2 步，复杂度变成 4。复杂性意味着更多成本、时间和出错的可能。案例：保险公司审批保单原来要 22 道程序、耗时 6 周，改成 1 人处理前 21 道、另 1 人复核后，缩短到 24 小时。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">实现简化的 7R 法则</h3>
+    <div class="tiles reveal" style="--n:7">
+      <div class="tile"><span class="tk">1</span><b>重新思考</b><span>“我还有其他更好的办法吗？”</span></div>
+      <div class="tile"><span class="tk">2</span><b>重新评估</b><span>“现实情况是怎样的？”</span></div>
+      <div class="tile"><span class="tk">3</span><b>重新安排</b><span>同样的投入，更高的产出。</span></div>
+      <div class="tile"><span class="tk">4</span><b>重新改组</b><span>把资源投到前 20% 的工作。</span></div>
+      <div class="tile"><span class="tk">5</span><b>重建</b><span>先定一个把步骤减少 30% 的目标。</span></div>
+      <div class="tile"><span class="tk">6</span><b>改造</b><span>每 6~12 个月改造自己一次。</span></div>
+      <div class="tile"><span class="tk">7</span><b>重新控制</b><span>定新目标、订新计划，承担全部责任。</span></div>
+    </div>
+
+    <h3 class="sub reveal">形成关键点的过程：7 个领域 × 7 个步骤</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4 class="cc">7 个生活领域（各按 1~10 分自评）</h4>
+        <ol>
+          <li>事业与职业（第 6 章）</li>
+          <li>家庭与个人生活（第 7 章）</li>
+          <li>金钱与投资（第 8 章）</li>
+          <li>健康与健身（第 9 章）</li>
+          <li>个人成长与发展（第 10 章）</li>
+          <li>社会与社区活动（第 11 章）</li>
+          <li>精神的丰富与内心的宁静（第 12 章）</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4 class="cc">每个领域都走一遍这 7 步</h4>
+        <ol>
+          <li><b>价值观</b>：这个领域最重要的价值观和品质是什么？</li>
+          <li><b>想象力</b>：完美的 5 年后会是什么样子？</li>
+          <li><b>目标</b>：要实现理想，必须达成哪些具体目标？</li>
+          <li><b>知识和技能</b>：要在哪些方面超过别人？</li>
+          <li><b>习惯</b>：需要哪些思考和行动的习惯？</li>
+          <li><b>每天的活动</b>：每天具体做什么？</li>
+          <li><b>行动</b>：现在马上要采取的具体行动是什么？</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">1000% 法则：每天进步 0.1%</h3>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">0.1<small>%/天</small></div><div class="k">每周 5 天是 0.5%，每月约 2%</div></div>
+      <div class="stat"><div class="v">26<small>%/年</small></div><div class="k">一年 13 个“2%”</div></div>
+      <div class="stat"><div class="v">2.7<small>年</small></div><div class="k">按这个速度，2.7 年翻一番</div></div>
+      <div class="stat"><div class="v">1004<small>%</small></div><div class="k">坚持 10 年，提升 1004%</div></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">7 个步骤：早起读 1 小时专业资料；出门前用现在时重写目标；每晚计划第二天；每天第一件事做最有价值的工作；开车时听教育广播（“车轮上的大学”）；每件事做完后问“我做对了哪件事？我要做什么才能脱颖而出？”；像对待身家百万的客户那样对待每一个人。</p>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">生活就是对注意力的研究。你关注哪里，你的心就要用到哪里。<cite>第 1 章</cite></div>
+      <div class="quote">“不”这个词是你所学过的所有单词中最有力量的一个词。<cite>第 3 章 学会如何说“不”</cite></div>
+      <div class="quote">思想是因，处境是果。<cite>第 4 章 因果定律</cite></div>
+      <div class="quote">心中没有目标的人命中注定要为那些有目标的人打工。<cite>第 4 章</cite></div>
+      <div class="quote">请记住，对时间最糟糕的利用就是将那些根本不用去做的事情干得非常出色。<cite>第 4 章 关注结果</cite></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary><span>书中清单全收录：7 种杠杆 · 翻番 6 步骤 · 效率 7 关键点 · 精神健康 7 法则 · 目标 7 步骤 · 健康 7 秘诀 · 7 堂必修课</span></summary>
+      <div class="toc-body">
+        <div class="part"><h5>7 种类型的杠杆（第 1 章）</h5>
+          <div class="chl"><b>其他人的知识 · 能量 · 金钱</b><span>借书籍、期刊和会议；把低价值活动外包或委托出去；借入资金投资，让收益超过借款成本。</span></div>
+          <div class="chl"><b>其他人的成功 · 失败 · 想法 · 关系</b><span>研究成功者，少走弯路；把别人的教训“借”过来；多读多学多讨论；借助人脉引荐。</span></div>
+        </div>
+        <div class="part"><h5>让收入和空闲时间翻番的 6 个步骤（第 1 章）</h5>
+          <div class="chl"><b>1 明确最有价值的几件工作</b><span>和老板、同事讨论，确定你的主要工作。</span></div>
+          <div class="chl"><b>2 找出耗时又无益的例行工作</b><span>交给别人做，或一次性解决掉。</span></div>
+          <div class="chl"><b>3 使用大满贯公式</b><span>简单化、杠杆、加速、多倍增长。</span></div>
+          <div class="chl"><b>4 每星期抽出一整天处理个人事务</b><span>这一天完全不碰工作。</span></div>
+          <div class="chl"><b>5 逐步扩展到完整的周末</b><span>再到每季度 3 天假、每年 2~4 周假期。</span></div>
+          <div class="chl"><b>6 从今天开始加大关注力度</b><span>先想后做，并养成习惯。</span></div>
+        </div>
+        <div class="part"><h5>提高工作效率的 7 个关键点（第 2 章）</h5>
+          <div class="chl"><b>努力工作 · 快速工作 · 做更有价值的工作</b><span>工作时间不社交，光这一条就能让效率翻番；保持紧迫感；价值比时长重要。</span></div>
+          <div class="chl"><b>做自己擅长的 · 同时处理大量的 · 简化 · 工作更长的时间</b><span>同类工作批量处理，单项耗时可减少 80%；早到晚走，避开交通高峰。</span></div>
+        </div>
+        <div class="part"><h5>保持精神健康的 7 种法则（第 4 章）</h5>
+          <div class="chl"><b>着眼于未来 · 思考你的目标 · 追求卓越</b><span>“怎么办”是最有力量的词；只有 3% 的人写下目标；下决心进入本领域的前 10%。</span></div>
+          <div class="chl"><b>关注结果 · 聚焦解决方案 · 成长取向 · 马上行动！</b><span>把头衔换成“解决问题的人”；收入的 3% 投资于自己；速度会被当作质量。</span></div>
+        </div>
+        <div class="part"><h5>设定目标的 7 个步骤（第 4 章）</h5>
+          <div class="chl"><b>1–4</b><span>确定每个方面需要什么 → 清楚具体地写下来，并且可以衡量 → 设定最后期限 → 把要做的事列成清单。</span></div>
+          <div class="chl"><b>5–7</b><span>把清单变成有先后顺序的计划 → 马上付诸实践 → 每天都朝主要目标做些事情。</span></div>
+        </div>
+        <div class="part"><h5>拥有好身体的 7 个秘诀（第 9 章）</h5>
+          <div class="chl"><b>体重 · 饮食 · 锻炼 · 休息</b><span>少吃多锻炼；食物多样，少糖少盐少精白面；每周锻炼 200~300 分钟；每晚睡 7~8 小时。</span></div>
+          <div class="chl"><b>营养品 · 戒烟 · 少喝酒</b><span>“做任何事情都要适度。”</span></div>
+        </div>
+        <div class="part"><h5>结语：21 世纪的 7 堂必修课</h5>
+          <div class="chl"><b>1–3</b><span>只有当你变得强大时，你的生活才会越来越好；出身并不重要，重要的是你如何选择方向；任何值得认真去做的事情在开始的时候都不轻松。</span></div>
+          <div class="chl"><b>4–7</b><span>选择权决定自由程度；每个困难里都有利益的种子；需要的知识都可以学；最大的障碍是思维里的那堵墙。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ BOOK II 涡轮教练 ============ -->
+<section class="block c2" id="b2">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅱ</div>
+      <div>
+        <div class="tag">第 2 册 · 私人教练手册 · 3 部分 21 章</div>
+        <h2>涡轮教练：教练式领导力手册</h2>
+        <div class="en">Turbo Coach · 博恩·崔西、坎贝尔·弗雷泽 著 · 李云 译</div>
+      </div>
+    </div>
+    <p class="thesis reveal">成功“很大部分取决于一个人思考、规划、决定和行动的能力”。先问清<strong>“我干什么能干得最出色？”</strong>，再把时间集中到价值最高的 20%，其余的委托、外包或干脆不做；最后通过客户满意、推荐、营销和个人品牌把事业做大。衡量成功的标准是利润，而不是销售额。</p>
+
+    <div class="claims reveal">
+      <div class="claim"><span class="k">目标清晰</span><b>先做个人战略规划</b><span>有规划和没规划的差别，就像“乘飞机和乘火车的区别”。用 8 个基本问题和 7 个战略问题，找到自己的竞争优势。</span></div>
+      <div class="claim"><span class="k">提高效率</span><b>只做高价值的 20%</b><span>帕累托法则、每小时工资率、归零思考、委托、杠杆、比较优势，层层递进，都在回答一个问题：哪些事该你亲自做。</span></div>
+      <div class="claim"><span class="k">壮大企业</span><b>多根柱子各进一点</b><span>帕特农原则：多方面的小幅改进叠加起来，整体就会有很大提升。销售是引擎，客户满意是燃料。</span></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">体例：每章先做“是/否”自测，再讲概念，最后是“应用练习”，并以“学习了本章，你会立即采取哪些行动？”收尾。</p>
+
+    <h3 class="sub reveal">21 章方法清单 <small>标题照原文</small></h3>
+    <div class="laws reveal">
+      <div class="part-lbl">第一部分 目标清晰</div>
+      <div class="law"><h4>战略规划</h4><p>用 8 个基本问题，从价值观出发，一路问到日常活动。</p></div>
+      <div class="law"><h4>从事哪个行业</h4><p>定期问 7 个战略问题。铁路只把自己当“铁路交通的供应商”，结果被淘汰。</p></div>
+      <div class="law"><h4>研究竞争</h4><p>尊重对手、向对手学习，找出自己的“独特卖点”。</p></div>
+      <div class="law"><h4>了解你的客户</h4><p>分内部客户和外部客户。案例中一位企业家把低价值客户转介出去，一年后收入翻番。</p></div>
+      <div class="law"><h4>找到你的强项</h4><p>方向对了有 5 个标志：表现杰出、乐在其中、精力充沛、感染他人、动力来自内在。</p></div>
+      <div class="law"><h4>解除限制因素</h4><p>找到决定速度的那个瓶颈。限制因素 80% 在内部，20% 在外部。</p></div>
+      <div class="law"><h4>你在S形曲线的什么位置</h4><p>职业、企业、产品都走 S 形生命周期，下降期要重做规划。</p></div>
+      <div class="part-lbl">第二部分 提高效率</div>
+      <div class="law"><h4>提高生产力的11种方法</h4><p>从写下目标、列计划、定优先顺序，一直到整合工作、简化步骤。</p></div>
+      <div class="law"><h4>帕累托法则</h4><p>80% 的成就来自 20% 的付出。用“每小时工资率”判断一件事值不值得亲自做。</p></div>
+      <div class="law"><h4>归零思考法</h4><p>“就现在所知，如果得从头再来，我会再次这样做吗？”答案是“不会”，就改造或淘汰。</p></div>
+      <div class="law"><h4>有效委托</h4><p>10 个基本原则。“有效委托并不是退位让权”。</p></div>
+      <div class="law"><h4>杠杆的力量</h4><p>借用他人的精力、知识、金钱、成功、失败、点子和关系网，共 7 种杠杆。</p></div>
+      <div class="law"><h4>李嘉图的比较优势法则</h4><p>专业化带来财富。把别人能做到你 75% 水平的工作交出去。</p></div>
+      <div class="law"><h4>帕特农原则</h4><p>企业有 7 根核心支柱，每根提升 10%，生产力和盈利能力就能翻倍。</p></div>
+      <div class="part-lbl">第三部分 壮大企业</div>
+      <div class="law"><h4>提高收益的7种方法</h4><p>扩大客户群、让老客户多买、交叉销售、加大单笔、提价、多卖高利润的、降低销售成本。</p></div>
+      <div class="law"><h4>客户满意的4个层次</h4><p>满足期望、超出期望、取悦客户、让客户惊讶。</p></div>
+      <div class="law"><h4>通过客户的推荐建立你的生意</h4><p>推荐的效果是电话推销的 15 倍。要建立推荐的“黄金链条”。</p></div>
+      <div class="law"><h4>制订一个强大的营销计划</h4><p>7 要素：产品、价格、人、促销、包装、定位、渠道。本章讲前 4 个。</p></div>
+      <div class="law"><h4>完成你的营销计划</h4><p>讲包装、定位、地点，核心是管理客户的认知。“少承诺，多做事”。</p></div>
+      <div class="law"><h4>创建你的个人品牌</h4><p>品牌由两部分构成：做出承诺，信守承诺。另有 7 个法则。</p></div>
+      <div class="law"><h4>利润最大化</h4><p>从个人、员工、客户、营销、产品、市场 6 个维度做盈利分析。</p></div>
+    </div>
+
+    <h3 class="sub reveal">战略规划的 8 个基本问题</h3>
+    <div class="tiles reveal" style="--n:4">
+      <div class="tile"><span class="tk">1</span><b>价值观</b><span>事业中最重要的价值观、品德和素质是什么？</span></div>
+      <div class="tile"><span class="tk">2</span><b>期待</b><span>想象 5 年后事业成功时的样子。</span></div>
+      <div class="tile"><span class="tk">3</span><b>任务</b><span>基于你的价值观，怎样具体地实现期望？</span></div>
+      <div class="tile"><span class="tk">4</span><b>目的</b><span>成功者都在通过努力帮助他人。你的目的是什么？</span></div>
+      <div class="tile"><span class="tk">5</span><b>目标</b><span>为了实现理想，要达成哪些具体目标？</span></div>
+      <div class="tile"><span class="tk">6</span><b>知识和技能</b><span>你要在哪方面技高一筹？</span></div>
+      <div class="tile"><span class="tk">7</span><b>习惯</b><span>需要养成哪些思维和行为习惯？</span></div>
+      <div class="tile"><span class="tk">8</span><b>日常活动</b><span>需要做哪些具体的日常活动？</span></div>
+    </div>
+
+    <h3 class="sub reveal">S 形曲线：你在哪个阶段？</h3>
+    <div class="viz reveal">
+      <svg viewBox="0 0 900 300" role="img" aria-label="S形曲线三个阶段">
+        <line x1="60" y1="260" x2="860" y2="260" stroke="var(--line)" stroke-width="2"/>
+        <line x1="60" y1="260" x2="60" y2="30" stroke="var(--line)" stroke-width="2"/>
+        <rect x="60" y="30" width="240" height="230" fill="var(--cs)" opacity=".35"/>
+        <rect x="560" y="30" width="300" height="230" fill="var(--cs)" opacity=".2"/>
+        <path d="M60 235 C150 250 230 245 300 200 S420 70 520 60 S640 70 700 130" fill="none" stroke="var(--c)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M640 230 C700 245 760 238 820 195" fill="none" stroke="var(--c)" stroke-width="3" stroke-dasharray="7 7" opacity=".75"/>
+        <path d="M700 130 Q690 190 652 224" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-dasharray="3 5"/>
+        <text x="180" y="58" text-anchor="middle" class="t-c">阶段一 · 学习期</text>
+        <text x="180" y="80" text-anchor="middle" class="t-s">机遇与困难并存，多数新企业过不了这关</text>
+        <text x="180" y="98" text-anchor="middle" class="t-s">对策：勇气、毅力、策略上的灵活性</text>
+        <text x="420" y="160" text-anchor="middle" class="t-c">阶段二 · 成长期</text>
+        <text x="420" y="182" text-anchor="middle" class="t-s">业务量和收益大增</text>
+        <text x="420" y="200" text-anchor="middle" class="t-s">对策：别被成功冲昏头，建立现金储备</text>
+        <text x="710" y="58" text-anchor="middle" class="t-c">阶段三 · 下降期</text>
+        <text x="710" y="80" text-anchor="middle" class="t-s">收益、热情、士气都在下滑</text>
+        <text x="760" y="178" text-anchor="middle" class="t-s">重做战略规划 → 新的阶段一</text>
+        <text x="460" y="285" text-anchor="middle" class="t-s">时间 →</text>
+      </svg>
+      <p class="cap">职业、企业、产品、关系、组织甚至国家，都会走一条横放着的“S”形。成功的人经常检查自己在曲线上的位置，在下滑之前就开始“再创造”。</p>
+    </div>
+
+    <h3 class="sub reveal">算一算：你的每小时工资率</h3>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">÷2000</div><div class="k">年收入除以 2000 小时，得出每小时工资率。年收入 10 万美元约合每小时 50 美元</div></div>
+      <div class="stat"><div class="v">37.5<small>美元</small></div><div class="k">一位年收入 7.5 万美元的客户每天花 2 小时送甜甜圈，等于按这个时薪付钱给自己做这件事</div></div>
+      <div class="stat"><div class="v">10<small>美元</small></div><div class="k">她改为每小时 10 美元雇学生代劳，10 个月后收入翻了一番</div></div>
+      <div class="stat"><div class="v">1<small>分钟</small></div><div class="k">花在计划上的 1 分钟，能在执行时省下 10 分钟</div></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">练习：以 15 分钟为单位记录一周工作，按 1–10 分级（1 最高），1、2 级就是你的 20%。低于你工资率的工作，委托、外包或删掉。</p>
+
+    <h3 class="sub reveal">提高生产力的 11 种方法</h3>
+    <div class="laws c4col reveal">
+      <div class="law"><h4>制定清晰的目标，并把它写下来</h4><p>具体、可衡量、可实现、与价值观契合、有时限。</p></div>
+      <div class="law"><h4>列一个清晰的行动计划</h4><p>1 分钟计划，省 10 分钟执行。</p></div>
+      <div class="law"><h4>确定优先顺序</h4><p>从最有价值的任务开始做起。</p></div>
+      <div class="law"><h4>集中注意力，不要分心</h4><p>一件事做完再做下一件。</p></div>
+      <div class="law"><h4>延长工作时间同时增加休假时间</h4><p>早到晚走，避开高峰；休假时完全不想工作。</p></div>
+      <div class="law"><h4>做事的时候就要努力去做</h4><p>工作时间不沉迷社交，效率可增加一倍。</p></div>
+      <div class="law"><h4>加快脚步</h4><p>培养紧迫感，快速应对每项任务。</p></div>
+      <div class="law"><h4>机智灵活</h4><p>把时间投在高价值的工作上。</p></div>
+      <div class="law"><h4>让工作跟技能匹配</h4><p>做擅长、有经验的事。</p></div>
+      <div class="law"><h4>整合你的工作</h4><p>同类工作集中做，可缩短 80% 的时间。</p></div>
+      <div class="law"><h4>简化步骤</h4><p>合并步骤，去掉不必要的环节。案例中 24 步被压缩到 2 步。</p></div>
+    </div>
+
+    <h3 class="sub reveal">客户满意的 4 个层次</h3>
+    <div class="ladder reveal">
+      <div class="rung" style="--w:100"><div class="alt">④ 让客户惊讶<small>能主导市场</small></div><div class="what">整形外科医生术后几小时、几天后打电话回访，10 天后再寄一张亲笔签名卡片。</div></div>
+      <div class="rung" style="--w:75"><div class="alt">③ 取悦客户<small>情感上打动</small></div><div class="what">律师订阅医药期刊，把相关文章寄给做医疗的客户。这样的客户，竞争对手很难抢走。</div></div>
+      <div class="rung" style="--w:50"><div class="alt">② 超出客户期望<small>给惊喜</small></div><div class="what">面包店每次多送一个面包圈，三代人都成了回头客。</div></div>
+      <div class="rung" style="--w:25"><div class="alt">① 满足客户期望<small>生存的最低要求</small></div><div class="what">干洗店只有一次没能当天洗好，就永远失去了这位客户。</div></div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">记住，你思考的质量决定了生活的质量。<cite>第 1 章 战略规划</cite></div>
+      <div class="quote">在计划上花1分钟时间会在日后的执行当中为你节省10分钟。<cite>第 8 章</cite></div>
+      <div class="quote">对达不到你每小时工资率的工作投入任何时间都是一种无效的投资。<cite>第 11 章 有效委托</cite></div>
+      <div class="quote">有效委托并不是退位让权。<cite>第 11 章</cite></div>
+      <div class="quote">如果销售是企业发展的引擎，那么客户满意就是燃料。<cite>第 16 章</cite></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary><span>更多清单：有效委托 10 原则 · 7 种杠杆 · 个人品牌 7 法则 · 帕特农 7 柱</span></summary>
+      <div class="toc-body">
+        <div class="part"><h5>有效委托的 10 个基本原则（第 11 章）</h5>
+          <div class="chl"><b>1 把精力集中在价值高的任务上</b><span>按帕累托法则和每小时工资率划分任务。</span></div>
+          <div class="chl"><b>2 做你最擅长的事；剩下的委托别人来做</b><span>工资率比你低的人能做的事，都交出去。</span></div>
+          <div class="chl"><b>3 委托给已经证明了的有能力的人</b><span>交给没能力的人，等于“设计陷害”对方。</span></div>
+          <div class="chl"><b>4 明确任务</b><span>让接手人复述一遍，并讲清“为什么”。</span></div>
+          <div class="chl"><b>5 定一个最终期限</b><span>不说“下周某个时间”这种话。</span></div>
+          <div class="chl"><b>6 建立标准</b><span>双方对评判进度的标准达成共识。</span></div>
+          <div class="chl"><b>7 商定资源</b><span>确保接手人拿得到所需资源。</span></div>
+          <div class="chl"><b>8 商定结果</b><span>成功和失败各有什么后果，而且一定兑现。</span></div>
+          <div class="chl"><b>9 写下来</b><span>由接手人起草书面协议，双方签字。</span></div>
+          <div class="chl"><b>10 检查完成情况</b><span>建立监督体系。</span></div>
+        </div>
+        <div class="part"><h5>7 种杠杆（第 12 章）</h5>
+          <div class="chl"><b>利用他人的精力 / 知识 / 金钱</b><span>委托外包；读书、请教、上网；借贷融资（“借钱的最好时机就是当你不需要的时候”）。</span></div>
+          <div class="chl"><b>利用他人的成功 / 失败</b><span>读自传，向榜样请教；更要听成功者讲他们的失败。</span></div>
+          <div class="chl"><b>利用他人的点子 / 关系网或声誉</b><span>好点子要付诸实践才有回报；寻求引荐，把满意客户当作参考。</span></div>
+        </div>
+        <div class="part"><h5>创建个人品牌的 7 个法则（第 20 章）</h5>
+          <div class="chl"><b>专门化 · 领导力 · 个性</b><span>只专注一个方面；成为领域里最受尊敬的人；言行一致，值得信赖。</span></div>
+          <div class="chl"><b>区别性 · 可见性 · 一致性 · 坚持</b><span>用独特的方式表达；让人反复看到你；台前台后一致；遇到挫折也坚持下去。</span></div>
+        </div>
+        <div class="part"><h5>帕特农原则的 7 根支柱（第 14 章）</h5>
+          <div class="chl"><b>产品 · 销售与营销 · 服务 · 定价</b><span>每根都找一个提升 10% 的办法。</span></div>
+          <div class="chl"><b>促销 · 引荐 · 生产力与利润率</b><span>按书中的表格，各提升 10%，整体就能翻倍。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ BOOK III 涡轮战略 ============ -->
+<section class="block c3" id="b3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅲ</div>
+      <div>
+        <div class="tag">第 3 册 · 企业战略 · 21 条实用法则</div>
+        <h2>涡轮战略：快速引爆利润 成就企业蜕变</h2>
+        <div class="en">Turbo Strategy: 21 Powerful Ways to Transform Your Business and Boost Your Profits Quickly · 博恩·崔西 著 · 赵银德 译 · 献给彼得·德鲁克</div>
+      </div>
+    </div>
+    <p class="thesis reveal">考题没变，答案变了。经营环境一直在变，战略思考就不能停，要不断重新检验假设，追问<strong>“哪些工作有成效？”“哪些工作没有成效？”</strong>。战略的核心是提高现金流、利润和投入资金的回报率：把稀缺资源集中到最有成效的业务上，并决定哪些要增加、减少、开始做、彻底放弃。</p>
+
+    <div class="claims reveal">
+      <div class="claim"><span class="k">导论</span><b>经营弹性最重要</b><span>门宁格研究院认为，成功企业最重要的特质是经营有弹性；70% 的经营决策从长期看都会出问题。一位寡妇接管建筑公司后，只问两个问题：哪些有成效？哪些没成效？</span></div>
+      <div class="claim"><span class="k">第 4 章</span><b>清晰是战略成功的关键</b><span>涡轮战略的核心目标是现金流、利润和回报率。经营完善靠 4 个决定：增加投入、减少投入、开始做、彻底放弃。</span></div>
+      <div class="claim"><span class="k">结论</span><b>关键在行动</b><span>21 章对应 21 条法则，结论部分用“观点 1–21”逐条回顾。每章末尾的“小结”是一组自问题。</span></div>
+    </div>
+
+    <h3 class="sub reveal">21 条法则 <small>章名照原文 · 每章对应结论里的一个“观点”</small></h3>
+    <div class="laws reveal">
+      <div class="law"><h4>立足当下，认清自我</h4><p>现金是王道。按产品、市场、渠道看清销量、现金流和利润，逐条审查假设。</p></div>
+      <div class="law"><h4>结束过去，走向未来</h4><p>零基思维：就现在所知，今天没做的事，以后还会去做吗？必要时“炒客户的鱿鱼”。</p></div>
+      <div class="law"><h4>商业分析，企业必做</h4><p>像第一次见到一样审视产品和业务，对每个方面都问“残酷”的问题。</p></div>
+      <div class="law"><h4>需求界定，讲究精准</h4><p>GOSPA 模型；为自己在每个领域的角色定下明确、可衡量的书面目标。</p></div>
+      <div class="law"><h4>理想未来，精心设计</h4><p>五年期理想化设想，再用“基于未来的现实思维”倒推今天该做什么。</p></div>
+      <div class="law"><h4>使命陈述，正确定位</h4><p>先定 3~5 个价值观并用行为界定，再写可量化、能激励人的使命。</p></div>
+      <div class="law"><h4>企业组织，重新塑造</h4><p>“假设遭遇火灾”：企业烧光了，你先做哪些产品、先找哪些客户、带走哪些员工？</p></div>
+      <div class="law"><h4>人员雇用，重在合适</h4><p>你在企业的成功，95% 取决于和谁共事。用“三次定律”招人。</p></div>
+      <div class="law"><h4>市场营销，高效策划</h4><p>“所有的商业战略都是营销战略”。营销四要素：专业化、差异化、市场细分、集中化。</p></div>
+      <div class="law"><h4>竞争分析，知己知彼</h4><p>弄清客户为什么向对手买，想办法抵消对手的优势，不要贬低对手。</p></div>
+      <div class="law"><h4>多快好省，优势所在</h4><p>低价本身不是竞争优势。在经营卓越、行业领先、贴近客户三个领域里选一个做到超群。</p></div>
+      <div class="law"><h4>营销组合，及时调整</h4><p>4P：产品、定价、促销、分销。衡量广告只问一句：“是否有电话打来？”</p></div>
+      <div class="law"><h4>品牌打造，以求成功</h4><p>每个品牌都对应一个词。84% 的购买决定来自口碑。“一切皆重要！”</p></div>
+      <div class="law"><h4>经营战略，重在SBU</h4><p>把每个产品当成“企业内企业”，按现金牛、明星、问题、瘦狗分类，各有负责人。</p></div>
+      <div class="law"><h4>推销活动，做到更好</h4><p>销售是企业的生命之源。6 个核心问题答错一个，销售就会失败。</p></div>
+      <div class="law"><h4>经营瓶颈，努力克服</h4><p>约束分析：定目标，问为什么还没达到，找出瓶颈。80% 的约束在内部。</p></div>
+      <div class="law"><h4>企业再造，经营出新</h4><p>复杂性定律。用减少、合并、外包、授权、清除环节和异常管理来简化。</p></div>
+      <div class="law"><h4>利润分析，增利之道</h4><p>按全成本和机会成本算出每个产品的真实净利，放弃低利润业务。</p></div>
+      <div class="law"><h4>产品质量，持续改进</h4><p>Kaizen 持续改进，弄清客户怎样定义“质量”，再超过客户的期望。</p></div>
+      <div class="law"><h4>核心业务，务必专注</h4><p>大本营战略。核心产品 80% 的市场潜力可能还没开发。</p></div>
+      <div class="law"><h4>经营效果，第一关注</h4><p>只有效果才是真正的衡量标准。用 ABCDE 排序，投入少数关键任务。</p></div>
+    </div>
+
+    <h3 class="sub reveal">GOSPA 模型：五大思考工具</h3>
+    <div class="steps letters reveal" style="--n:5">
+      <div class="step"><span class="lt">G</span><h4>最终目标</h4><p>Goals。企业要实现的最终结果，如销售、利润、增长率、回报率，必须可衡量。</p></div>
+      <div class="step"><span class="lt">O</span><h4>阶段目标</h4><p>Objectives。通向最终目标的阶梯，像梯子上一级一级的横档，如广告回报率、收款、缺陷率。</p></div>
+      <div class="step"><span class="lt">S</span><h4>策略</h4><p>Strategies。自营还是外包、走什么渠道、定价高低、追加销售还是交叉销售。</p></div>
+      <div class="step"><span class="lt">P</span><h4>计划</h4><p>Plans。一步接一步的蓝图，按时间先后和优先顺序拆细。</p></div>
+      <div class="step"><span class="lt">A</span><h4>执行</h4><p>Actions。要求清晰、目标可行、时间明确、指定执行者。</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">从下往上逐层支撑：执行支撑计划，计划支撑策略，策略支撑阶段目标，阶段目标支撑最终目标。</p>
+
+    <h3 class="sub reveal">零基思维：从头再来，还会这样做吗？</h3>
+    <div class="flow reveal">
+      <div class="fnode"><b>列出对象</b><span>产品、服务、人员、供应商、客户、支出、工序、广告营销</span></div>
+      <div class="farr">→</div>
+      <div class="fnode q"><b>就现在所知</b><span>“如果得从头再来，我会再次这样做吗？”</span></div>
+      <div class="farr">→</div>
+      <div class="fnode"><b>答案是“不”</b><span>“该如何摆脱当下的困境？能多快摆脱？”</span></div>
+      <div class="farr">→</div>
+      <div class="fnode q"><b>果断放弃</b><span>事后人们几乎都会说：“我早该这么做了！”</span></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">需要做零基思考的信号：持续感到紧张、愤怒、沮丧、苦恼，甚至失眠。书中把它比作兰乔圣菲的“待铲房”：拆掉重建，反而比修修补补更省钱。</p>
+
+    <div class="grid2 reveal" style="margin-top:34px">
+      <div>
+        <h3 class="sub" style="margin-top:0">SBU 四分法（第 14 章）</h3>
+        <div class="mx">
+          <div class="ay">增 长 潜 力 ↑</div>
+          <div class="q4">
+            <div class="quad soft"><div class="meta">高增长 · 耗现金</div><h4>问题型</h4><p>要么全力以赴，要么索性放弃，并事先定好决策标准。</p></div>
+            <div class="quad best"><div class="meta">高增长 · 产现金</div><h4>明星型</h4><p>投入最好的人才和资源。</p></div>
+            <div class="quad"><div class="meta">低增长 · 耗现金</div><h4>瘦狗型</h4><p>立即淘汰。</p></div>
+            <div class="quad"><div class="meta">低增长 · 产现金</div><h4>现金牛型</h4><p>用心维护，尽量延长它的寿命。</p></div>
+          </div>
+          <div></div><div class="ax">提 供 现 金 →</div>
+        </div>
+        <p class="small" style="margin-top:8px">每个产品或产品组都要指定销售和盈利的责任人，报酬和业绩挂钩。个人也可以按这四类盘点自己的技能。</p>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">三项潜在优势（第 11 章）</h3>
+        <div class="tiles" style="--n:1">
+          <div class="tile hl"><b>经营卓越</b><span>例：麦当劳、沃尔玛。</span></div>
+          <div class="tile hl"><b>行业领先</b><span>例：奔驰、劳力士。</span></div>
+          <div class="tile hl"><b>贴近客户</b><span>例：咨询公司、律师事务所。</span></div>
+        </div>
+        <p class="small" style="margin-top:8px">规则：在一个领域卓越超群，另外两个领域相对优秀。企业的承诺要落在更好、更快、更省、更便利上，并随时能回答客户：“告诉我理由，我们为什么应该买你的产品或服务？”</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">成就个人业绩的七个环节（第 21 章）</h3>
+    <div class="tiles reveal" style="--n:7">
+      <div class="tile"><span class="tk">1</span><b>书面目标</b><span>可衡量、有截止期。</span></div>
+      <div class="tile"><span class="tk">2</span><b>提前一晚列清单</b><span>第二天要做的全部事项。</span></div>
+      <div class="tile"><span class="tk">3</span><b>排序</b><span>用 80/20 或 ABCDE 法。</span></div>
+      <div class="tile"><span class="tk">4</span><b>有意推延</b><span>低价值的事故意往后放。</span></div>
+      <div class="tile"><span class="tk">5</span><b>先做 A-1</b><span>最重要的那件先开始。</span></div>
+      <div class="tile"><span class="tk">6</span><b>一心一意</b><span>直到 100% 完成。</span></div>
+      <div class="tile"><span class="tk">7</span><b>紧迫感</b><span>养成快速行动的习惯。</span></div>
+    </div>
+
+    <h3 class="sub reveal">书里的关键数字</h3>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">95<small>%</small></div><div class="k">你在企业的成功，取决于选择为谁工作、与谁共事</div></div>
+      <div class="stat"><div class="v">84<small>%</small></div><div class="k">购买决定来自口碑</div></div>
+      <div class="stat"><div class="v">68<small>%</small></div><div class="k">的客户流失，是因为觉得销售团队里有人对他们漠不关心</div></div>
+      <div class="stat"><div class="v">17<small>分钟</small></div><div class="k">一份保单实际所需的处理时间。原流程却有 24 个环节、要 6 周</div></div>
+      <div class="stat"><div class="v">&lt;10<small>%</small></div><div class="k">一家杂志订阅费翻倍后取消订阅的比例。公司一夜之间扭亏为盈</div></div>
+      <div class="stat"><div class="v">30<small>%</small></div><div class="k">第一次分析流程时，就以砍掉 30% 的环节为目标</div></div>
+      <div class="stat"><div class="v">3–6<small>倍</small></div><div class="k">一名雇员的实际成本相当于工资的倍数</div></div>
+      <div class="stat"><div class="v">3R</div><div class="k">再评估、集中、重新取得控制（涡轮战略课程）</div></div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">的确，要想做更多对的事，首先必须放弃那些无效的做法。<cite>第 2 章</cite></div>
+      <div class="quote">清晰（Clarity）是战略成功的关键。<cite>第 4 章</cite></div>
+      <div class="quote">终极而言，所有的商业战略都是营销战略。<cite>第 9 章</cite></div>
+      <div class="quote">低价本身并非竞争优势。<cite>第 11 章</cite></div>
+      <div class="quote">涡轮战略的核心并非在于你学到了什么，而在于你有怎样的行动以及能否尽快落实这些行动。<cite>结论</cite></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary><span>更多工具：雇用三次定律 · 销售 6 问 · 4P · 利润分析 · 大本营战略 · 客户 4 问</span></summary>
+      <div class="toc-body">
+        <div class="part"><h5>人员雇用（第 8 章）</h5>
+          <div class="chl"><b>好员工的两大优点</b><span>能按时出色地完成任务、值得信赖；是好的团队成员，善于与人相处。</span></div>
+          <div class="chl"><b>雇用决定中的三次定律</b><span>至少面试三次，换三个地点，再请三个人面试，找三个证明人核实。要问前雇主：“你还会雇用这个人吗？”</span></div>
+        </div>
+        <div class="part"><h5>做销售的核心问题（第 15 章）</h5>
+          <div class="chl"><b>6 个问题</b><span>销售什么 · 由谁销售 · 销售给谁 · 按什么价格销售 · 如何收款 · 如何交货。</span></div>
+        </div>
+        <div class="part"><h5>营销组合 4P（第 12 章）</h5>
+          <div class="chl"><b>产品 · 定价 · 促销 · 分销</b><span>约 80% 的产品和服务会在 5 年内被替换；约 70% 的销售人员没受过销售培训。</span></div>
+        </div>
+        <div class="part"><h5>利润分析（第 18 章）</h5>
+          <div class="chl"><b>全成本加机会成本</b><span>净销售收入要扣除缺陷、退货、坏账；成本包括直接、间接、可变、固定成本和管理费用分摊；管理者的时间按年收入 ÷ 2000 计价。最后按盈利能力排序，提价或放弃低利润业务，并找出“高维护成本”客户。</span></div>
+        </div>
+        <div class="part"><h5>大本营战略（第 20 章）</h5>
+          <div class="chl"><b>守住核心业务</b><span>核心业务最危险的时候恰恰是它成长、赚钱的时候，企业容易分心去做不擅长的事。以最坏情形为底线，做好情景规划和退守策略。</span></div>
+        </div>
+        <div class="part"><h5>客户四问（第 21 章）</h5>
+          <div class="chl"><b>4 个问题</b><span>价钱是多少？花钱买到的是什么？何时才能得到承诺的利益？获得那些利益的把握如何？</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ BOOK IV 激励 ============ -->
+<section class="block c4" id="b4">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅳ</div>
+      <div>
+        <div class="tag">第 4 册 · 管理者手册 · 21 章</div>
+        <h2>激励</h2>
+        <div class="en">Motivation · 博恩·崔西 著 · 林治勋 译</div>
+      </div>
+    </div>
+    <p class="thesis reveal">“任何激励都属于自我激励。”管理者没法从外部给人打气，能做的是<strong>消除障碍</strong>，营造一个让员工自我激励的环境。普通员工只发挥了约 50% 的能力，管理的目标是把“能力收益率”（return on energy）做到最高。而决定这一切的只有一个因素：管理者和下属之间的关系。</p>
+
+    <div class="claims reveal">
+      <div class="claim"><span class="k">两大障碍</span><b>害怕失败，害怕拒绝</b><span>一个来自童年受到的破坏性批评，一个来自父母“有条件的爱”。对策是“驱除恐惧”：允许犯错，对员工无条件接受。</span></div>
+      <div class="claim"><span class="k">X 要素</span><b>心理因素，即自我概念</b><span>二战后英德两国车厂产量相差 4 倍，设备和技术都解释不了。差别在心理，核心是自尊。</span></div>
+      <div class="claim"><span class="k">行动</span><b>觉得有用，当天就用</b><span>每章末尾都有两条“行为实践”。作者希望你读到有用的方法，当天就付诸实践。</span></div>
+    </div>
+
+    <h3 class="sub reveal">21 章激励方法 <small>章名照原文</small></h3>
+    <div class="laws reveal">
+      <div class="law"><h4>X要素</h4><p>自我概念由自我理想、自我形象、自我尊重组成，自尊是“核反应堆堆芯”。7 大激励因素都在强化它。</p></div>
+      <div class="law"><h4>选择合适的人</h4><p>管理者约 95% 的成功来自选对人。招聘用“皆三法则”和 SWAN 公式。</p></div>
+      <div class="law"><h4>入职伊始就委以重任</h4><p>德勤 30 年的研究：从第一天起就被分配大量工作的人，长期绩效最高。</p></div>
+      <div class="law"><h4>明确表达预期</h4><p>最糟的工作经历是“我从来就不知道老板期待我做什么”。成功有 5 大因素。</p></div>
+      <div class="law"><h4>实行参与式管理</h4><p>员工参与设定目标越多，承诺越深。“感觉知情”是最强大的激励因素之一。</p></div>
+      <div class="law"><h4>激励四要素</h4><p>领导风格、奖励结构、组织氛围、工作结构。领导风格能“一夜之间”改变。</p></div>
+      <div class="law"><h4>激励的3R</h4><p>奖励、认同、强化。“什么得到认同，什么就会再次发生”。</p></div>
+      <div class="law"><h4>实行价值观管理</h4><p>价值观决定人格。人格标靶：价值观 → 信念 → 期望 → 态度 → 行为。</p></div>
+      <div class="law"><h4>实行目标管理</h4><p>就目标达成一致，方法让员工自己选。只适用于已证明能胜任的人。</p></div>
+      <div class="law"><h4>采用例外管理</h4><p>约定好标准就放手，出现偏差才汇报。没有消息就是好消息。</p></div>
+      <div class="law"><h4>应用帕累托原理</h4><p>10 件事里有 2 件的价值超过其余之和；二三十件事里有 3 件占了 90% 的价值。</p></div>
+      <div class="law"><h4>做员工的指导老师</h4><p>教员工是管理者职责的一部分，而不是打扰。“绝不要假定员工对工作了如指掌”。</p></div>
+      <div class="law"><h4>持续培训和持续教育</h4><p>适当的培训有 10 至 30 倍的回报。别问“我们培训了员工，可他们跳槽了怎么办？”</p></div>
+      <div class="law"><h4>坚持零缺陷原则</h4><p>品质认知度与利润率直接相关。老板为全公司定下质量基调。</p></div>
+      <div class="law"><h4>引入质量小组和质量团队</h4><p>同级员工组成，每周见面一次，以书面形式向管理层提建议。</p></div>
+      <div class="law"><h4>定期进行头脑风暴</h4><p>4~7 人，15~45 分钟，重数量、不评判。7 位秘书 20 分钟想出 200 多个点子。</p></div>
+      <div class="law"><h4>成为良师益友</h4><p>“给予注意就是赋予价值”。导师见面每次不超过 10 分钟，带书面问题清单。</p></div>
+      <div class="law"><h4>以身作则</h4><p>士气自上而下渗透。“管理者如何对待员工，员工就会如何对待客户”。</p></div>
+      <div class="law"><h4>倾听员工心声</h4><p>倾听是“白色魔术”。4 个关键：用心听、停顿、提问澄清、改述。</p></div>
+      <div class="law"><h4>铭记友情因素</h4><p>3C：体贴、关爱、礼貌。管理的黄金法则。</p></div>
+      <div class="law"><h4>创造激励奇迹</h4><p>每天 7 种行为：微笑、提问、倾听、客气、感谢、让员工知情、鼓励持续改善。</p></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:36px">
+      <div>
+        <h3 class="sub" style="margin-top:0">自我概念：激励的“控制中心”</h3>
+        <div class="viz" style="padding:26px 20px">
+          <div class="rings">
+            <div class="r3"><span><b>自我理想</b>我想成为什么样的人</span></div>
+            <div class="r2"><span><b>自我形象</b>我觉得别人怎么看我</span></div>
+            <div class="r1"><span><b>自我尊重</b>我有多喜欢自己</span></div>
+          </div>
+          <p class="cap" style="text-align:center">自尊是“核反应堆堆芯”。管理者的一言一行，都在抬高或压低员工的自尊。</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">7 大激励因素</h3>
+        <div class="tiles" style="--n:1;gap:7px">
+          <div class="tile" style="padding:10px 14px"><b>挑战</b><span>工作不能太轻松，要有一定的紧张感。</span></div>
+          <div class="tile" style="padding:10px 14px"><b>自由</b><span>不要盯得太紧，给足自主权。</span></div>
+          <div class="tile" style="padding:10px 14px"><b>控制</b><span>定期检查、反馈和讨论工作表现。</span></div>
+          <div class="tile" style="padding:10px 14px"><b>尊重</b><span>征求员工意见，在他们想谈时认真聆听。</span></div>
+          <div class="tile" style="padding:10px 14px"><b>温暖</b><span>关心员工这个人本身，像对待“大家庭”的成员。</span></div>
+          <div class="tile" style="padding:10px 14px"><b>成功经历</b><span>分配他们能完成的工作，让他们觉得自己是“胜利者”。</span></div>
+          <div class="tile hl" style="padding:10px 14px"><b>积极预期</b><span>或许是所有激励因素中最强大的一个。</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">获得成功的五大因素（第 4 章）</h3>
+    <div class="steps reveal" style="--n:5">
+      <div class="step"><h4>目的和目标</h4><p>清晰，经过讨论，得到认可。</p></div>
+      <div class="step"><h4>量化标准</h4><p>确切地知道怎样算做好。</p></div>
+      <div class="step"><h4>截止日期</h4><p>有明确的截止日期和分段截止日期。</p></div>
+      <div class="step"><h4>成功经历</h4><p>真的按时、按预算、按质量完成。</p></div>
+      <div class="step"><h4>认可和奖励</h4><p>精神奖励和物质奖励相结合。</p></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:36px">
+      <div>
+        <h3 class="sub" style="margin-top:0">招人：皆三法则 + SWAN</h3>
+        <div class="card">
+          <h4 class="cc">皆三法则</h4>
+          <ol>
+            <li>每个岗位至少面试三个候选人</li>
+            <li>中意的人，在三个不同时间面试</li>
+            <li>在三个不同地点面试（防“变色龙”）</li>
+            <li>再请团队里至少三位成员面试</li>
+            <li>至少核查三份推荐信</li>
+            <li>通过推荐人再联系三位简历上没写的同事</li>
+          </ol>
+          <p class="small" style="margin-top:8px">核查推荐信的关键一问：“如果这个人向你提出求职申请，你还会再次雇用他吗？”</p>
+        </div>
+        <div class="tiles mt" style="--n:4">
+          <div class="tile hl"><span class="tk">S</span><b>聪明</b><span>好奇、爱提问。</span></div>
+          <div class="tile hl"><span class="tk">W</span><b>努力工作</b><span>有长期努力的经历。</span></div>
+          <div class="tile hl"><span class="tk">A</span><b>雄心壮志</b><span>渴望培训和成长。</span></div>
+          <div class="tile hl"><span class="tk">N</span><b>和蔼可亲</b><span>和客户打交道时尤其重要。</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">四级业绩制（第 7 章案例）</h3>
+        <div class="ladder">
+          <div class="rung" style="--w:100"><div class="alt">双重惊叹级</div><div class="what">年终奖占年收入的 <b>50%~100%</b></div></div>
+          <div class="rung" style="--w:70"><div class="alt">惊叹级</div><div class="what">年终奖最高可达 <b>50%</b></div></div>
+          <div class="rung" style="--w:40"><div class="alt">优秀级</div><div class="what">保住工作的最低标准，年终奖 <b>10%~20%</b></div></div>
+          <div class="rung" style="--w:12"><div class="alt">普通级</div><div class="what">工作处于危险之中</div></div>
+        </div>
+        <div class="card mt">
+          <h4 class="cc">激励的 3R</h4>
+          <p><b>奖励</b>：只奖业绩，不奖资历和权术。<b>认同</b>：什么得到认同，什么就会再次发生。<b>强化</b>：最强大的激励技巧。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">每天都能做的 7 种行为（第 21 章）</h3>
+    <div class="tiles reveal" style="--n:7">
+      <div class="tile"><span class="tk">1</span><b>微笑</b><span>微笑只用 13 块肌肉，皱眉要用 112 块。</span></div>
+      <div class="tile"><span class="tk">2</span><b>提问</b><span>问问员工今天感觉怎么样，是否一切都好。</span></div>
+      <div class="tile"><span class="tk">3</span><b>倾听</b><span>会让对方的大脑释放内啡肽。</span></div>
+      <div class="tile"><span class="tk">4</span><b>客气</b><span>像对待专业人才那样对待员工。</span></div>
+      <div class="tile"><span class="tk">5</span><b>感谢</b><span>事无大小都道谢。</span></div>
+      <div class="tile"><span class="tk">6</span><b>让员工知情</b><span>让他们觉得自己是“局内人”。</span></div>
+      <div class="tile"><span class="tk">7</span><b>持续改善</b><span>Kaizen：在“视线范围”内找改进的办法。</span></div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">我们知道，你或许无法激励他人，但你可以消除那些阻碍他人进行自我激励的障碍。任何激励都属于自我激励。<cite>前言</cite></div>
+      <div class="quote">实现激励和最佳表现的关键因素只有一个：管理者与被管理者之间的关系。<cite>前言</cite></div>
+      <div class="quote">有这样一条规则：什么得到认同，什么就会再次发生。<cite>第 7 章 激励的3R</cite></div>
+      <div class="quote">有关最大贡献的法则是：少做事，但做更重要的事，而且要多做这样的事，把每件事都做得更好。<cite>第 11 章 应用帕累托原理</cite></div>
+      <div class="quote">你不能逐级提升组织的士气。士气是自上而下渗透的，它基于领导者或管理者的性格和人格。<cite>第 18 章 以身作则</cite></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary><span>更多清单：团队 5 关键 · 目标管理 4 步 · 头脑风暴 7 要素 · 倾听 4 关键 · 友情 3C</span></summary>
+      <div class="toc-body">
+        <div class="part"><h5>建立团队的五大关键（第 5 章）</h5>
+          <div class="chl"><b>共同的目的和目标 · 共同的价值观</b><span>价值观举例：守时、担责、互助、合作、信守承诺。</span></div>
+          <div class="chl"><b>共同的行动计划 · 行动领袖 · 定期检查和反馈</b><span>管理者负责清除障碍，经常问“进展如何”。</span></div>
+        </div>
+        <div class="part"><h5>目标管理四步（第 9 章）</h5>
+          <div class="chl"><b>1 目标一致 → 2 讨论方法</b><span>就目标达成明确的一致，但不规定过程。</span></div>
+          <div class="chl"><b>3 评估标准 → 4 定期汇报</b><span>员工带着问题来时，先问：“你认为我们应该怎么办？”</span></div>
+        </div>
+        <div class="part"><h5>头脑风暴七要素（第 16 章）</h5>
+          <div class="chl"><b>人数 · 角色 · 时限</b><span>4~7 人；一位桌长加一位记录员；15~45 分钟，准时开始，准时结束。</span></div>
+          <div class="chl"><b>问题 · 数量 · 不评判 · 后评价</b><span>问题要具体；重数量不重质量；不做任何评判；先全部收集，之后再评价，也可以交给邻桌交叉评价。</span></div>
+        </div>
+        <div class="part"><h5>有效倾听的四个关键（第 19 章）</h5>
+          <div class="chl"><b>用心听 · 回应之前做出停顿</b><span>身体前倾，关掉手机，不打断；停三五秒，表示重视，也避免打断。</span></div>
+          <div class="chl"><b>提问澄清 · 改述</b><span>“你说的是什么意思？”“让我确定一下你是想说……”</span></div>
+        </div>
+        <div class="part"><h5>友情因素 3C（第 20 章）</h5>
+          <div class="chl"><b>体贴 · 关爱 · 礼貌</b><span>问候家人；需要时立刻停下来帮忙；压力之下也保持风度。管理的黄金法则：你希望上司怎么对待你，你就怎么对待下属。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ BOOK V 谈判 ============ -->
+<section class="block c5" id="b5">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅴ</div>
+      <div>
+        <div class="tag">第 5 册 · 谈判实战 · 21 章</div>
+        <h2>谈判</h2>
+        <div class="en">Negotiation · 博恩·崔西 著 · 马喜文 译</div>
+      </div>
+    </div>
+    <p class="thesis reveal">“人生就好比一场漫长的谈判之旅”。价格和价值都是主观的，所以<strong>凡事皆可谈判</strong>，印好的价签和合同都只是起点。达成更好交易的要诀是开口提要求，并克服对被拒绝的恐惧。谈判的力量来自准备、备选方案和对时间的把握；能随时起身离开的人，才是真正自由的。</p>
+
+    <div class="grid2 reveal">
+      <div class="card" style="border-top:3px solid var(--c)">
+        <h4 class="cc">甲型：一锤子买卖</h4>
+        <p>目标只有一个：拿到最佳价格。可以表现得“冷静、油滑和自私”，对方喜不喜欢你无关紧要。第 18 章的价格策略主要用在这里。</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--c)">
+        <h4 class="cc">乙型：长期关系</h4>
+        <p>履约期长达几个月甚至几年。要追求双赢，让各方都愿意履约、愿意再合作。“中国式合同”的做法是：签字只是开始，情况变了就重新商量。作者和芝加哥一家公司合作了 30 年。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">21 章谈判法则 <small>章名照原文</small></h3>
+    <div class="laws reveal">
+      <div class="law"><h4>凡事皆可谈判</h4><p>价格极少是固定的，合同是替拟定方写的。作者的新租约里有 52 处不利改动，他全部改了回来。</p></div>
+      <div class="law"><h4>克服对谈判的恐惧</h4><p>反复去做害怕的事，用“系统脱敏”克服恐惧。“拒绝并非针对个人”。</p></div>
+      <div class="law"><h4>谈判的类型</h4><p>甲型一锤子买卖，乙型长期谈判，两种的打法完全不同。</p></div>
+      <div class="law"><h4>终身业务关系</h4><p>好的协议要让各方都愿意履约，也愿意和同一个对手再次交易。</p></div>
+      <div class="law"><h4>六大谈判风格</h4><p>赢/输、输/赢、双输、妥协、无交易、双赢。</p></div>
+      <div class="law"><h4>发挥你的力量</h4><p>6 种力量：准备、权力、知彼、移情、奖惩、投入。</p></div>
+      <div class="law"><h4>力量与感知</h4><p>“所谓力量，全然关乎感知”。另有 5 种感知的力量。</p></div>
+      <div class="law"><h4>情感对谈判的影响</h4><p>愿望、贪婪、恐惧、愤怒。越想要，力量越小。记住：“交易就像是公共汽车”。</p></div>
+      <div class="law"><h4>决策中的时间因素</h4><p>月底最好买车；越急力量越弱；重要决策至少拖 24 小时；20/80 法则。</p></div>
+      <div class="law"><h4>了解自己的需要</h4><p>写下最佳、中等、最差三档结果，开价要稍高于最佳结果。</p></div>
+      <div class="law"><h4>哈佛谈判项目</h4><p>4 大要素：人、利益、选择、标准。</p></div>
+      <div class="law"><h4>准备是关键</h4><p>80% 甚至更多的成功，取决于第一次会谈之前的准备。</p></div>
+      <div class="law"><h4>阐明各方的立场</h4><p>先替对方写一份陈述，再写自己的。问对方：“对贵方来说完美的结果是什么？”</p></div>
+      <div class="law"><h4>四事法则</h4><p>谈判通常只有 4 个主要问题：1 个最重要，3 个次之。</p></div>
+      <div class="law"><h4>暗示的力量</h4><p>95% 的想法和决策受环境暗示影响。注意地点、座位、身体语言和食物。</p></div>
+      <div class="law"><h4>用互惠原则来说服</h4><p>先为对方做点事；让步要显得勉强；把“公平”挂在嘴边；价格和支付条款分开谈。</p></div>
+      <div class="law"><h4>用社会认同来说服</h4><p>“像我一样”的人怎么做，对我们影响最大。作者称之为“迄今为止我发现的最强有力的谈判工具之一”。</p></div>
+      <div class="law"><h4>价格谈判策略</h4><p>退缩、质疑、断言、拦腰还价、再咬一口。</p></div>
+      <div class="law"><h4>离席谈判法</h4><p>谈判中最强大的工具之一。没准备好离席，就别开始正式谈判。</p></div>
+      <div class="law"><h4>谈判永无终结</h4><p>有了新信息就可以要求重谈，但要拿出对对方有利的交换条件。</p></div>
+      <div class="law"><h4>成功的谈判家</h4><p>4 大要点：掌握事实、提前准备；提出要求；谋求双赢；实践，实践，还是实践。</p></div>
+    </div>
+
+    <h3 class="sub reveal">六大谈判风格</h3>
+    <div class="tiles reveal" style="--n:6">
+      <div class="tile"><b>赢/输</b><span>甲方得到所需，乙方受损。这是甲型谈判的目标。</span></div>
+      <div class="tile"><b>输/赢</b><span>反过来，乙方得到所需，甲方受损。</span></div>
+      <div class="tile"><b>双输</b><span>谁都没满足。例：夫妻最后去吃两人都不想吃的菜。</span></div>
+      <div class="tile"><b>妥协</b><span>都有收获，但“双方都心有不甘”。</span></div>
+      <div class="tile"><b>无交易</b><span>分歧太大，坦然接受谈不成，以后还能再谈。</span></div>
+      <div class="tile hl"><b>双赢</b><span>都觉得自己赢了。通常要找到比双方原先设想都更好的第三种方案。</span></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:36px">
+      <div>
+        <h3 class="sub" style="margin-top:0">谈判力量：6 种实际力量 + 5 种感知力量</h3>
+        <div class="card">
+          <h4 class="cc">发挥你的力量（第 6 章）</h4>
+          <p><span class="pill">准备</span> <span class="pill">权力</span> <span class="pill">知彼</span> <span class="pill">移情</span> <span class="pill">奖惩</span> <span class="pill">投入</span></p>
+          <p>准备越充分力量越大；你有权决定买还是不买；越了解对方的处境越有利；先建立融洽关系，对方会放松并改善条件。</p>
+          <h4 class="cc" style="margin-top:14px">力量与感知（第 7 章）</h4>
+          <p><span class="pill">稀缺</span> <span class="pill">冷漠</span> <span class="pill">勇气</span> <span class="pill">承诺</span> <span class="pill">知识和专长</span></p>
+          <p>“扑克脸”，表现得无所谓；敢于放弃交易。苹果专卖店每平方英尺销售额 4600 美元，因为店员对产品极其熟悉。</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">谈判前写下三档结果（第 10 章）</h3>
+        <div class="ladder">
+          <div class="rung" style="--w:100"><div class="alt">出发点<small>开口的位置</small></div><div class="what">稍高于你的最佳结果。工会先要求一年加薪 50%，最后接受两年加薪 5%。</div></div>
+          <div class="rung" style="--w:78"><div class="alt">最佳结果</div><div class="what">把理想结果的每个细节写下来，讲给别人听。</div></div>
+          <div class="rung" style="--w:52"><div class="alt">中等结果</div><div class="what">可以接受的结果。</div></div>
+          <div class="rung" style="--w:28"><div class="alt">最差结果<small>底线</small></div><div class="what">即“终极反馈点”。低于它，就起身离席。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">价格谈判 5 策略（第 18 章）</h3>
+    <div class="steps reveal" style="--n:5">
+      <div class="step"><h4>退缩</h4><p>一听报价就露出痛苦的表情：“哇！这是一大笔钱呀！”见效就反复用。</p></div>
+      <div class="step"><h4>质疑</h4><p>“这是贵方所能提供的最佳条件吗？”问完保持沉默。</p></div>
+      <div class="step"><h4>断言</h4><p>“我可以从别处买到更便宜的产品。”语气友好、轻松。</p></div>
+      <div class="step"><h4>拦腰还价</h4><p>对方要 100 美元，你说“我立即给你50美元的现金”。</p></div>
+      <div class="step"><h4>再咬一口</h4><p>价格谈定后、签字前，再加一个条件，比如免运费。</p></div>
+    </div>
+
+    <h3 class="sub reveal">哈佛谈判项目：4 大要素（第 11 章）</h3>
+    <div class="tiles reveal" style="--n:4">
+      <div class="tile"><span class="tk">人</span><b>人和问题分开</b><span>不掺杂个人感情。</span></div>
+      <div class="tile"><span class="tk">利</span><b>利益</b><span>先弄清各方的利益和需求。可以问：“如果本次谈判达到最佳效果，您预计我们最终会实现什么样的结果？”</span></div>
+      <div class="tile"><span class="tk">选</span><b>选择</b><span>讨论之前，先用头脑风暴、思维导图、白板列出多种方案。</span></div>
+      <div class="tile"><span class="tk">标</span><b>标准</b><span>也叫“边界条件”，事先约定判断结果好坏的客观标准。</span></div>
+    </div>
+
+    <h3 class="sub reveal">书里的关键数字</h3>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">20/80</div><div class="k">最后 20% 的时间里，解决 80% 的重要问题，所以要有耐心</div></div>
+      <div class="stat"><div class="v">80<small>%+</small></div><div class="k">谈判的成功取决于第一次会谈前的精心准备</div></div>
+      <div class="stat"><div class="v">24<small>小时</small></div><div class="k">重要决策至少往后拖这么久</div></div>
+      <div class="stat"><div class="v">≈80<small>%</small></div><div class="k">逐条过合同时，大约这么多的条款双方会一致。分歧的先跳过，过三四遍收敛成最后 4 个问题</div></div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">谈判的走向掌握在提要求者手中，胜利属于那些信心十足、大胆提出要求且反复提出要求的谈判者。<cite>第 2 章</cite></div>
+      <div class="quote">所谓力量，全然关乎感知。你拥有的力量大小本无所谓，有所谓的是对方如何看待这种力量。<cite>第 7 章</cite></div>
+      <div class="quote">要记住：为实现特定目标而投入最多情感的人，其力量是最弱的。<cite>第 8 章</cite></div>
+      <div class="quote">如果你没有选择方案，你就没有选择。如果你没有选择，你就没有自由。<cite>第 19 章 离席谈判法</cite></div>
+      <div class="quote">记住：只有在你起身要走的时候，你才会知道最优价格是多少。<cite>第 19 章</cite></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary><span>更多：时间工具箱 · 准备清单 · 互惠与社会认同 · 离席话术</span></summary>
+      <div class="toc-body">
+        <div class="part"><h5>决策中的时间因素（第 9 章）</h5>
+          <div class="chl"><b>提防紧迫感</b><span>越急，力量越弱。可以这样回应：“如果让我立即作决策的话，我的决策是‘不’”，然后请对方给你时间仔细考虑。</span></div>
+          <div class="chl"><b>设定但避开最后期限</b><span>给对方设期限，但别让对方知道你的期限。赫布·科恩在日本被对方掌握了返程日期，前五天全是吃喝参观，最后在去机场的车上才谈细节。</span></div>
+        </div>
+        <div class="part"><h5>准备清单（第 12–13 章）</h5>
+          <div class="chl"><b>备选方案</b><span>找其他货源、其他对象，弄清应付的价格和交期。</span></div>
+          <div class="chl"><b>研究对手</b><span>上网查，打几个电话，找和对手谈过的人请教。</span></div>
+          <div class="chl"><b>质疑并验证假设</b><span>引德鲁克：“每一次失败的根源都在于假设出了错”。对方未必真想成交，可能只是拿你压价。</span></div>
+          <div class="chl"><b>立场</b><span>必须得到什么、绝不放弃什么、愿意让什么；绝不做单方面让步。</span></div>
+        </div>
+        <div class="part"><h5>互惠与社会认同（第 16–17 章）</h5>
+          <div class="chl"><b>互惠</b><span>扶把椅子、倒杯咖啡、真诚倾听；先谈能达成一致的部分；分歧时说“我们等会儿再讨论这个问题吧”；让步后要求对方在你最在意的地方回报。</span></div>
+          <div class="chl"><b>价格和支付条款是两码事</b><span>一块 60 万美元的地以 100 万成交，条件是 20 年无息，每年付 5 万。</span></div>
+          <div class="chl"><b>社会认同</b><span>作者给银行行长看十家合作银行的名单，对方五分钟内就签了约。</span></div>
+        </div>
+        <div class="part"><h5>离席谈判法（第 19 章）</h5>
+          <div class="chl"><b>话术</b><span>“直截了当地告诉我贵方的最低价格，我就会告诉你我买还是不买。”卖东西时：“这是我能接受的最低价了。如果你接受不了，我表示理解。”</span></div>
+          <div class="chl"><b>买车的教训</b><span>对方报价 3 万美元，作者三四次起身离开，最后 2.5 万美元成交。离席只是一种技巧，走出去还可以再回来。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ BOOK VI 授权 ============ -->
+<section class="block c6" id="b6">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅵ</div>
+      <div>
+        <div class="tag">第 6 册 · 授权与监督 · 21 章</div>
+        <h2>授权</h2>
+        <div class="en">Delegation &amp; Supervision · 博恩·崔西 著 · 郭武文 译</div>
+      </div>
+    </div>
+    <p class="thesis reveal">管理被定义为“通过其他人来取得结果”。下属是你最宝贵的资源，一般人在工作中只发挥了 50%~60% 的能力。<strong>有效授权的能力</strong>比其他任何事情都更能决定你的仕途、晋升速度和报酬。授权可以学会：先了解怎么做，再反复练习，直到习以为常，“就跟学开车一样”。</p>
+
+    <div class="claims reveal">
+      <div class="claim"><span class="k">第 2 章</span><b>击破 5 个怪论</b><span>没有时间授权；员工不够能干；凡事只有亲自出马才能办好；授权会被看作失去了掌控能力；自己的长项就该亲自动手。</span></div>
+      <div class="claim"><span class="k">70% 规则</span><b>做到你 70% 就交出去</b><span>有人能把某件任务做到你 70% 的水平，就交给他，腾出手去做那些非你不可的少数工作。</span></div>
+      <div class="claim"><span class="k">第 4 章</span><b>你是乘号还是减号？</b><span>每个下属是否清楚 3 件事：要他做什么、什么时候交、要达到什么质量？授权含糊，产量可能从 10 件掉到 5 件。</span></div>
+    </div>
+
+    <h3 class="sub reveal">21 章授权方法 <small>章名照原文</small></h3>
+    <div class="laws reveal">
+      <div class="law"><h4>开发你最宝贵的资源</h4><p>唯有人才能增值。你的工作是栽培下属，让公司的人力投资取得最大回报。</p></div>
+      <div class="law"><h4>击破阻碍有效授权的怪论</h4><p>5 个怪论。“他们把命令等同于授权。这可不是授权，而是卸责。”</p></div>
+      <div class="law"><h4>开始授权</h4><p>先筹划再授权：我要做些什么事？怎么去做？有没有更好的办法？自己干、交给别人，还是外包？</p></div>
+      <div class="law"><h4>工厂管理模式</h4><p>把每个人当成一家工厂：投入、活动、产出。只按产出的数量和质量判断生产率。</p></div>
+      <div class="law"><h4>确定关键成果</h4><p>任何工作的关键成果很少超过 5~7 种。先问：“我凭什么领薪水？”</p></div>
+      <div class="law"><h4>确立卓越绩效标准</h4><p>“接受考评的工作才算完成”。公布数字，让每个人都能看到自己的排名。</p></div>
+      <div class="law"><h4>目标管理</h4><p>和胜任的员工一起商定目标、期限和考评数字，然后彻底放手。</p></div>
+      <div class="law"><h4>一流上司的三种特质</h4><p>一项覆盖 3.2 万名员工的调查：体贴、明晰、给下属自由。</p></div>
+      <div class="law"><h4>有效授权的七种技巧</h4><p>从用人得当到放手用人，见下方 7 步。</p></div>
+      <div class="law"><h4>例外管理</h4><p>“报忧不报喜”。按计划进展就不必汇报，90% 的情况都不需要再联系。</p></div>
+      <div class="law"><h4>把自己视作教师</h4><p>绝不要以为你懂的下属也懂。交代清楚做什么，也说明为什么，并鼓励提问。</p></div>
+      <div class="law"><h4>为员工树立信心</h4><p>期望定律：“只要满怀信心，定会心想事成。”上司如同家长。</p></div>
+      <div class="law"><h4>决策授权</h4><p>下属找你拿主意时，反问“你觉得我们应该怎么办？”，再要求他走问题解决四步法。</p></div>
+      <div class="law"><h4>检查方能达到期望</h4><p>“授权不等于放手”。用走动式管理（MBWA）及时掌握进度。</p></div>
+      <div class="law"><h4>日常反馈凝聚员工</h4><p>“反馈是冠军的早餐”。做中性反馈，做“计时员”，及时奖励，允许诚实的错误。</p></div>
+      <div class="law"><h4>不断激励员工</h4><p>5 个“A”：认同、感谢、赞美、嘉许、关心；倾听的 4 种技巧。</p></div>
+      <div class="law"><h4>采用情境领导</h4><p>按任务相关成熟度的高低调整管理方式。换到新岗位，成熟度会“从头再来”。</p></div>
+      <div class="law"><h4>辨别四种个性</h4><p>DISC：引导者、社交者、相安者、分析者。“人各有异”。</p></div>
+      <div class="law"><h4>三种领导风格</h4><p>专权、民主、放任。民主风格最适合授权。</p></div>
+      <div class="law"><h4>避免逆向授权</h4><p>别把下属背上的“猴子”捉到自己背上。“这是你的工作，责任在你，而不在我”。</p></div>
+      <div class="law"><h4>管理成效的五大要素</h4><p>承担 100% 责任；把下属当晚辈；友善待人；黄金法则；人力资源是最宝贵的资产。</p></div>
+    </div>
+
+    <h3 class="sub reveal">有效授权的七种技巧（第 9 章）</h3>
+    <div class="steps reveal" style="--n:7">
+      <div class="step"><h4>用人得当</h4><p>按技术、能力和干劲安排岗位，不给远超能力的任务。</p></div>
+      <div class="step"><h4>逐步授权</h4><p>先交小任务，让新手积累信心。</p></div>
+      <div class="step"><h4>授权整个任务</h4><p>每人至少全权负责一件事。避免几个人分担一件事，变成“孤儿职位”。</p></div>
+      <div class="step"><h4>授权具体成果</h4><p>交代要什么成果，而不是每天要做哪些活动。</p></div>
+      <div class="step"><h4>鼓励参与和讨论</h4><p>讨论得越多，下属越会把工作当成自己的事。</p></div>
+      <div class="step"><h4>授权权限和责任</h4><p>说清时间、可以找谁帮忙、能花多少钱。</p></div>
+      <div class="step"><h4>放手用人</h4><p>别频繁盘查，又把任务“拽回来”。</p></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:36px">
+      <div>
+        <h3 class="sub" style="margin-top:0">一流上司：体贴 × 明晰（图 8-1）</h3>
+        <div class="mx">
+          <div class="ay">明 晰 ↑</div>
+          <div class="q4">
+            <div class="quad soft"><div class="meta">明晰高 · 体贴低</div><h4>重任务、轻人</h4><p>在要求严、变化快的环境里有效，但下属终会心怀不满。</p></div>
+            <div class="quad best"><div class="meta">明晰高 · 体贴高</div><h4>“双满分”上司</h4><p>既关心下属，又清楚交代任务。这种平衡永无止境。</p></div>
+            <div class="quad"><div class="meta">明晰低 · 体贴低</div><h4>含糊其辞</h4><p>举棋不定，下属几乎不可能有高水平的表现。</p></div>
+            <div class="quad"><div class="meta">明晰低 · 体贴高</div><h4>友好但模糊</h4><p>任务和顺序含糊不清，团队绩效低。</p></div>
+          </div>
+          <div></div><div class="ax">体 贴 →</div>
+        </div>
+        <p class="small" style="margin-top:8px">第三种特质是自由。老子有云：“太上……功成事遂，百姓皆谓我自然。”</p>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">DISC 四种个性（图 18-1）</h3>
+        <div class="mx">
+          <div class="ay">内 向 → 外 向</div>
+          <div class="q4">
+            <div class="quad"><div class="meta">外向 · 任务导向 · D</div><h4>引导者</h4><p>动力是“取得成果”。管理要务实、准确、迅速，讲清成果和考评方式。</p></div>
+            <div class="quad"><div class="meta">外向 · 人际导向 · I</div><h4>社交者</h4><p>动力是“你来我往”。让他们别偏离方向，细节交给别人。</p></div>
+            <div class="quad"><div class="meta">内向 · 任务导向 · C</div><h4>分析者</h4><p>动力是“准确无误”。讲话要精确，注重细节，低调自制。</p></div>
+            <div class="quad"><div class="meta">内向 · 人际导向 · S</div><h4>相安者</h4><p>动力是“相安无事”。放慢速度，多提问，不要催他们做决定。</p></div>
+          </div>
+          <div></div><div class="ax">任 务 ← → 人</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">问题解决四步法：先走完，再来找我（第 13 章）</h3>
+    <div class="flow reveal">
+      <div class="fnode q"><b>① 记下问题</b><span>书面定义问题。讨论时约 50% 的时间都花在定义问题上</span></div>
+      <div class="farr">→</div>
+      <div class="fnode q"><b>② 找出原因</b><span>书面列出问题产生的原因</span></div>
+      <div class="farr">→</div>
+      <div class="fnode q"><b>③ 列出方案</b><span>列出所有可能的方案。警惕“任何问题只有唯一解决方案”的思想</span></div>
+      <div class="farr">→</div>
+      <div class="fnode q"><b>④ 作出决策</b><span>选出最佳方案，并说明理由</span></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">书中说，用了这个方法的管理者，和员工讨论问题的时间减少了 75% 以上。</p>
+
+    <div class="grid2 reveal" style="margin-top:36px">
+      <div>
+        <h3 class="sub" style="margin-top:0">情境领导：员工成长的四个阶段</h3>
+        <div class="ladder">
+          <div class="rung" style="--w:100"><div class="alt">参与</div><div class="what">最高层次。和你完全信任的能干员工一起讨论目标，然后彻底交给他们。</div></div>
+          <div class="rung" style="--w:72"><div class="alt">授权</div><div class="what">只用于已证明有能力的员工，商定目标、期限和标准后定时联系。</div></div>
+          <div class="rung" style="--w:46"><div class="alt">推销式</div><div class="what">在讲清楚的基础上，鼓动并说服员工去完成。</div></div>
+          <div class="rung" style="--w:22"><div class="alt">告知式</div><div class="what">具体告诉新员工做什么、怎么做、何时完成、质量标准，并监督。</div></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">避免逆向授权：谁背上了猴子？</h3>
+        <div class="card">
+          <p>威廉·安肯：“任何任务中负责下一步的人就成了任务的责任人。”下属请你帮个忙，你一答应，“猴子”就到了你背上。逆向授权常见于 4 个方面：</p>
+          <ul>
+            <li><b>信息</b>：“找到这些信息是你的工作。”</li>
+            <li><b>问题</b>：让他定义问题、拟几个办法、选一个，再来找你。</li>
+            <li><b>困难任务</b>：在你的指导下学会，而不是你拿回来做。</li>
+            <li><b>人际纠纷</b>：不偏向任何一方，把双方叫来当面说清。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">让员工觉得重要的 5 个“A”（第 16 章）</h3>
+    <div class="tiles reveal" style="--n:5">
+      <div class="tile hl"><span class="tk">A</span><b>认同</b><span>Acceptance。每次见面都露出友善的微笑。</span></div>
+      <div class="tile hl"><span class="tk">A</span><b>感谢</b><span>Appreciation。对每件任务都说声“谢谢你”。</span></div>
+      <div class="tile hl"><span class="tk">A</span><b>赞美</b><span>Admiration。赞美对方的衣着、配饰，以及不寻常的付出。</span></div>
+      <div class="tile hl"><span class="tk">A</span><b>嘉许</b><span>Approval。多表扬，最好当着同事的面。</span></div>
+      <div class="tile hl"><span class="tk">A</span><b>关心</b><span>Attention。对方想说时，悉心聆听。</span></div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">他们把命令等同于授权。这可不是授权，而是卸责。<cite>第 2 章</cite></div>
+      <div class="quote">不能从执行任务转变到管理任务，是管理人员失败的最大原因。<cite>第 2 章</cite></div>
+      <div class="quote">“最浪费时间的莫过于把毫无必要的事情做得十分漂亮。”<cite>第 5 章 · 引管理咨询师本杰明·特里戈</cite></div>
+      <div class="quote">凭借授权，你的潜力会没有止境。如果没有授权的能力，那么一切就只能你自己动手。<cite>第 9 章</cite></div>
+      <div class="quote">授权不等于放手。<cite>第 14 章</cite></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary><span>更多：关键成果 3 特性 · 调动积极性 5 因素 · 例外管理 · 倾听 4 技巧 · 三种领导风格 · 五大要素</span></summary>
+      <div class="toc-body">
+        <div class="part"><h5>关键成果的三种特性（第 5 章）</h5>
+          <div class="chl"><b>可量度 · 在你掌控之下 · 必不可少</b><span>清楚具体，可以衡量；必须由你去取得；是公司必需的产出，会成为下一项工作的投入。你 20% 的工作决定了 80% 的劳动价值，有时是 10% 决定 90%。</span></div>
+        </div>
+        <div class="part"><h5>调动积极性的五项关键因素（第 6 章）</h5>
+          <div class="chl"><b>目标 · 标准 · 体验成功 · 赞扬 · 奖励</b><span>清楚的目的、目标和关键成果；考评标准；按高标准完成的感觉；上司和他人的赞扬；和卓越绩效直接挂钩的奖励。人人都想当“胜利者”。</span></div>
+        </div>
+        <div class="part"><h5>例外管理（第 10 章）</h5>
+          <div class="chl"><b>报忧不报喜</b><span>例：12 个月销售额目标 120 万美元，每月 10 万美元。只要月销售额达标就不用汇报，降到八九万才要报告。</span></div>
+        </div>
+        <div class="part"><h5>倾听的四种技巧（第 16 章）</h5>
+          <div class="chl"><b>专心不打岔 · 作答前停顿 · 提问澄清 · 复述回应</b><span>“此话怎讲”；“你说的是不是这个意思……”</span></div>
+        </div>
+        <div class="part"><h5>三种领导风格（第 19 章）</h5>
+          <div class="chl"><b>专权</b><span>上司一离开，一切就松懈下来，谁也不敢做决定。</span></div>
+          <div class="chl"><b>民主</b><span>共同决定目标和标准，最适合授权。上司离开两三个星期，照样运转。</span></div>
+          <div class="chl"><b>放任</b><span>和谐程度高，生产率却很低。在这种环境里授权是危险的。</span></div>
+        </div>
+        <div class="part"><h5>管理成效的五大要素（第 21 章）</h5>
+          <div class="chl"><b>责任 · 家长心 · 友善 · 黄金法则 · 人力资源</b><span>为下属做或没做的一切承担 100% 责任；像家长关爱子女一样对待下属；讨人喜欢、受人信赖；你希望上司怎么对你，就怎么对下属；人力资源是企业最宝贵的资产。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ BOOK VII 魅力的力量 ============ -->
+<section class="block c7" id="b7">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅶ</div>
+      <div>
+        <div class="tag">第 7 册 · 人际魅力 · 39 章 + 电话特辑</div>
+        <h2>魅力的力量</h2>
+        <div class="en">The Power of Charm · 博恩·崔西、罗恩·阿登 著 · 苏军锋 译</div>
+      </div>
+    </div>
+    <p class="thesis reveal">“生活中和职场里足足有85%的成功，取决于和他人有效交际的能力。”魅力不是天生的，“魅力是能够习得的”。它的秘密很简单：<strong>让他人感受到自我价值</strong>。全书走“由表及里”的路子：先练外在行为，尤其是专注倾听的一套信号，内心的感受会随之改变。</p>
+
+    <div class="claims reveal">
+      <div class="claim"><span class="k">第 4 章</span><b>魅力的秘密</b><span>渴求自我价值是人的本性。用 5 种行为（5A）提升对方的自尊，对方就会觉得你有魅力。</span></div>
+      <div class="claim"><span class="k">第 8 章</span><b>由表及里</b><span>来自戏剧表演的“欧式法”：先改步态和言谈，再进入内心。“如果真的想改变，少担心为什么，多专注怎么做。”</span></div>
+      <div class="claim"><span class="k">第 23 章</span><b>“假设”原理</b><span>威廉·詹姆斯：没有某种感觉时，先假定自己已经有了，行为会催生相应的情感。“弄假成真。”</span></div>
+    </div>
+
+    <h3 class="sub reveal">让人感到被重视的 5A 行为（第 4 章）</h3>
+    <div class="tiles reveal" style="--n:5">
+      <div class="tile hl"><span class="tk">1</span><b>接受</b><span>Acceptance。“无条件地尊重”，不批评、不挑刺。方法：微笑。</span></div>
+      <div class="tile hl"><span class="tk">2</span><b>欣赏</b><span>Appreciation。对方做的事不论大小，都说“谢谢”。</span></div>
+      <div class="tile hl"><span class="tk">3</span><b>认可</b><span>Approval。“婴儿哭求认可，成人死求认可”。</span></div>
+      <div class="tile hl"><span class="tk">4</span><b>赞扬</b><span>Admiration。真诚地赞扬对方的特质、物件和成就。</span></div>
+      <div class="tile hl"><span class="tk">5</span><b>关注</b><span>Attention。或许最重要，也是随后各章的主题。</span></div>
+    </div>
+
+    <h3 class="sub reveal">有效倾听的四个关键要素（第 5 章）</h3>
+    <div class="steps reveal" style="--n:4">
+      <div class="step"><h4>专注地听</h4><p>不打断，关掉电视。把双眼想象成两盏太阳灯，聚焦在对方脸上。</p></div>
+      <div class="step"><h4>回应前要稍稍停顿</h4><p>停 3~5 秒：避免打断对方，表示你在认真考虑，也能听出言外之意。</p></div>
+      <div class="step"><h4>提问以澄清问题</h4><p>“你确切的意思是什么”提出问题的一方掌握话语权。</p></div>
+      <div class="step"><h4>给予反馈，用自己的话再说一遍</h4><p>“你刚才说……，然后就有了这事，所以你决定那样做，对吗？”</p></div>
+    </div>
+
+    <h3 class="sub reveal">“我在听”的八个信号 <small>第 10–17 章，章名照原文</small></h3>
+    <div class="laws c4col reveal">
+      <div class="law"><h4>第一信号：目光接触</h4><p>倾听时目光接触再多都不为过，理想状态是百分之百。</p></div>
+      <div class="law"><h4>第二信号：视线移位</h4><p>目光在对方两只眼睛之间来回移动。眼睛不动，就是“灯开着，家里却没人”。</p></div>
+      <div class="law"><h4>第三信号：头部微倾</h4><p>像狗听主人说话那样。倾听时头部微倾，说话时挺直身体。</p></div>
+      <div class="law"><h4>第四信号：点头</h4><p>慢点头表示“我在听”，稍快表示“我同意”，更快表示“我同意，并为我所听到的感到高兴”。</p></div>
+      <div class="law"><h4>第五信号：完整的身体语言</h4><p>全身朝向对方，身体前倾，不交叉双臂，保持合适的距离。</p></div>
+      <div class="law"><h4>第六信号：避免使用的身体语言</h4><p>离得太远、膝盖不朝向对方、陷进椅子、双臂交叉。</p></div>
+      <div class="law"><h4>第七信号：发出声音 确认在听</h4><p>“嗯”“啊”“呣”。对方越兴奋，声音可以越大一点。</p></div>
+      <div class="law"><h4>第八信号：口头回应</h4><p>非承诺性的“我明白了”“真的吗”；承诺性的“我完全同意”。</p></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:36px">
+      <div>
+        <h3 class="sub" style="margin-top:0">面对面交谈的信息来自哪里</h3>
+        <div class="card">
+          <div class="bar"><div class="a" style="flex:55">身体语言 55%</div><div class="b" style="flex:38">声音 38%</div><div class="c" style="flex:7;padding:0 6px">7%</div></div>
+          <p class="small">阿尔伯特·梅拉宾博士的研究：只有 7% 的信息量通过话语本身传递。所以第 24–29 章专门讲说话时的目光、语速、停顿和声音：</p>
+          <ul>
+            <li>说话时看对方眼睛，不超过谈话时间的 75%~85%</li>
+            <li>侧视：目光偶尔瞥向对方脸部一侧，2~3 秒就回来</li>
+            <li>放慢语速；在各部分之间停顿 1~2 秒</li>
+            <li>用停顿代替“啊”“呣”“呃”：“过多的话把就是魅力的扫把”</li>
+            <li>压低声音，听起来更温暖、亲近</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">交际的三个距离圈（第 14 章）</h3>
+        <div class="viz" style="padding:26px 20px">
+          <div class="rings">
+            <div class="r3"><span><b>8~10 英尺</b>和陌生人之间的安全距离</span></div>
+            <div class="r2"><span><b>2~6 英尺</b>社交和商务场合</span></div>
+            <div class="r1"><span><b>约 2 英尺</b>伴侣和家人</span></div>
+          </div>
+          <p class="cap" style="text-align:center">站着交谈时，直面对方，相距 2~4 英尺，身体重心略微前移。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">驾驭谈话：三个问题让对方打开话匣子（第 32 章）</h3>
+    <div class="flow reveal">
+      <div class="fnode q"><b>“你是做什么工作的？”</b><span>工作是大多数人生活的中心，人们都乐于谈论它</span></div>
+      <div class="farr">→</div>
+      <div class="fnode q"><b>“你是怎样进入这一行当的？”</b><span>对方会讲起往事、经历和背景</span></div>
+      <div class="farr">→</div>
+      <div class="fnode q"><b>“然后呢？”</b><span>对方一停顿，就接着问；语速一慢，就问“之后呢？”</span></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">用谁、什么、为什么、什么时候、什么地方、怎样开头的问题，对方没法只答“是”或“不”。听完对方的趣事，马上问一句：“你觉得那怎么样？”</p>
+
+    <h3 class="sub reveal">几条容易做错的规矩</h3>
+    <div class="grid4 reveal">
+      <div class="card"><h4 class="cc">慎提建议</h4><p>“没有人在生气时想听建议！”有人诉苦时，先问“你觉得该怎么做？”，然后耐心听。</p></div>
+      <div class="card"><h4 class="cc">赞扬的三原则</h4><p>要具体；要立即；不论成就大小都表扬。“看着他们把事情做好。”</p></div>
+      <div class="card"><h4 class="cc">不要“打死球”</h4><p>冲突一起，魅力尽失。温和地表明观点就打住，“如果你赢了——其实你输了！”</p></div>
+      <div class="card"><h4 class="cc">与对方合拍</h4><p>对方语速快你就跟上，手势多你也多。能通过别人的眼光看世界，是魅力最重要的秘密之一。</p></div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">渴求自我价值是人的本性，因而魅力的秘密非常简单：让他人感受到自我价值。<cite>第 4 章</cite></div>
+      <div class="quote">交际最重要的规则之一就是：提出问题的一方具有话语权。<cite>第 5 章</cite></div>
+      <div class="quote">无论我们内心的想法是什么，人们都是基于他们观察到的外在行为来做出反应的。<cite>第 8 章</cite></div>
+      <div class="quote">任何值得做好的事情都容许一开始做不好。<cite>第 18 章</cite></div>
+      <div class="quote">一个看起来矛盾的事实是，只有优先考虑对方，才能最终展示自己。<cite>第 37 章</cite></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary><span>全书 39 章一览 + 电话里彰显魅力的 22 条建议</span></summary>
+      <div class="toc-body">
+        <div class="part"><h5>认识魅力（第 1–9 章）</h5>
+          <div class="chl"><b>何为魅力 · 交际中的魅力 · 魅力的作用</b><span>魅力能学会。先给自己的“魅商”打个 1~10 分，再请别人打，别人打的才是真实分数。</span></div>
+          <div class="chl"><b>怎样“魅”服他人 · 倾听的魔力</b><span>5A 行为；倾听四要素。</span></div>
+          <div class="chl"><b>“魅”服女士 · “魅”服男士</b><span>女士的三种深层需要是爱慕、关注和尊敬；男士则要欣赏他的成就，比如说一句“你肯定为它而骄傲”。</span></div>
+          <div class="chl"><b>“由里及表”和“由表及里”的魅力 · 关注的力量</b><span>行为就是一切；用信号“给予认可，确保倾听”。</span></div>
+        </div>
+        <div class="part"><h5>八个信号与练习（第 10–23 章）</h5>
+          <div class="chl"><b>第一至第八信号</b><span>目光接触、视线移位、头部微倾、点头、完整的身体语言、避免使用的身体语言、发出声音、口头回应。</span></div>
+          <div class="chl"><b>和朋友练习 以提升魅力</b><span>一次练一种。三四分钟后问搭档：我看起来是真的在倾听吗？</span></div>
+          <div class="chl"><b>慎提建议 · 耐心倾听的力量</b><span>对方有情绪时，先让他说完。</span></div>
+          <div class="chl"><b>多微笑，笑出声 · 多赞扬他人 · 利用“假设”原理</b><span>真正的微笑不会戛然而止；赞扬要具体、及时；假设对方极有吸引力。</span></div>
+        </div>
+        <div class="part"><h5>说话的艺术（第 24–35 章）</h5>
+          <div class="chl"><b>说什么和怎么说 · 侧视 · 慢说的艺术 · 沉默的雄辩</b><span>说话时的目光规则、语速和停顿。</span></div>
+          <div class="chl"><b>过多的话把是魅力的扫把 · 用声音“魅服”他人</b><span>用停顿消灭“啊、呣、呃”；声音要低沉温暖，像讲故事一样有起伏。</span></div>
+          <div class="chl"><b>做个富有魅力的交谈者 · 驾驭谈话方向 · 做好功课</b><span>稍稍转换话题，而不是生硬地换；见面前多了解对方。</span></div>
+          <div class="chl"><b>坚持让对方先说 · 不要“打死球” · 要与对方合拍</b><span>像打网球那样让球来回动起来；避免冲突；镜像与合拍。</span></div>
+        </div>
+        <div class="part"><h5>化为习惯（第 36–39 章）</h5>
+          <div class="chl"><b>熟能生巧 · 把技能转换为艺术 · 现在就做起来 · 不断彰显魅力</b><span>“考虑”不是“做”，“练习”也不是“做”，做就是做！</span></div>
+        </div>
+        <div class="part"><h5>特别呈献：电话里彰显魅力的力量</h5>
+          <div class="chl"><b>三步</b><span>第一印象（对着电话微笑，对方听得出来）→ 发现对方说话的线索（关注细节还是情感，你就跟着谈哪一种）→ 给予对方想要的。</span></div>
+          <div class="chl"><b>22 条建议（1–11）</b><span>鼓励对方说下去；清楚简洁直接；专心倾听；耐心倾听；积极倾听；可以打断但不要冒犯；用简短生动的事例；永不假设；说话不要急促；利用短暂的停顿；不要给予过多信息。</span></div>
+          <div class="chl"><b>22 条建议（12–22）</b><span>与对方的情绪产生共鸣；声音要有热情和活力；表达自己的感受；对着电话微笑；己之所欲，先施予人；谈对方感兴趣的事；克制自己不提建议；始终要得到对方的允许；有礼貌地对待愤怒或挑衅；挂断前不忘彰显魅力；想着自己是在为对方出谋划策。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ TOGETHER ============ -->
+<section class="block cb" id="together">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">∑</div>
+      <div>
+        <div class="tag">7 本合起来看</div>
+        <h2>反复出现的核心法则</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">七本书的分工大致是：<strong>Ⅰ</strong> 管自己，<strong>Ⅱ Ⅲ</strong> 管事业和企业，<strong>Ⅳ Ⅵ</strong> 带人，<strong>Ⅴ Ⅶ</strong> 和人打交道。同一批法则在不同的书里换个场景反复出现。下图按书中的实际篇幅标出每条法则出现在哪几本里。</p>
+
+    <div class="card reveal" style="overflow-x:auto">
+      <div class="heat" id="heat" style="min-width:640px"></div>
+      <div class="legend"><span><i style="background:#9b2335"></i>有专章或成体系的讲解（书脊）</span><span><i style="border:1.5px solid #9b2335;background:transparent"></i>顺带提到</span><span><i style="border:1.5px dashed var(--ink3);opacity:.6"></i>书中没有</span></div>
+    </div>
+
+    <h3 class="sub reveal">对照表：同一条法则，各本怎么讲</h3>
+    <div class="tbl-wrap reveal">
+      <table class="cmp">
+        <thead><tr>
+          <th>法则</th>
+          <th class="c1">Ⅰ 高效人生</th><th class="c2">Ⅱ 涡轮教练</th><th class="c3">Ⅲ 涡轮战略</th><th class="c4">Ⅳ 激励</th><th class="c5">Ⅴ 谈判</th><th class="c6">Ⅵ 授权</th><th class="c7">Ⅶ 魅力</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>80/20 法则</td>
+            <td>20% 的工作产生 80% 以上的价值；第 5 章：10%~20% 的行动带来 80%~90% 的结果</td>
+            <td>第 9 章 帕累托法则，配合“每小时工资率”（年收入 ÷ 2000）</td>
+            <td>找出创造 80% 成果的 20% 业务；用 80/20 做利润分析</td>
+            <td>第 11 章：10 件事里有 2 件比其余加起来更有价值；二三十件事里 3 件占 90%</td>
+            <td>谈判中的 20/80：最后 20% 的时间解决 80% 的重要问题</td>
+            <td>你 20% 的工作决定了 80% 的劳动价值，有时是 10% 决定 90%</td>
+            <td class="no">—</td></tr>
+          <tr><td>先做最重要的事</td>
+            <td>ABCDE 法则；紧急 vs 重要；每天第一件事做最有价值的工作</td>
+            <td>确定优先顺序，从最有价值的任务开始</td>
+            <td>ABCDE，先做 A-1，一心一意直到完成</td>
+            <td>用 3 个“神奇的问题”找出三件大事，先做它们</td>
+            <td>四事法则：先确定那 1 个首要问题</td>
+            <td>列出关键成果，请上司定优先顺序</td>
+            <td class="no">—</td></tr>
+          <tr><td>写下目标</td>
+            <td>设定目标的 7 个步骤；只有 3% 的人写下目标；每天用现在时写 10 个</td>
+            <td>11 种方法的第 1 条：制定清晰的目标，并把它写下来</td>
+            <td>GOSPA；目标清楚、有案可查、计量可行、期限明确</td>
+            <td>获得成功的五大因素，第一条就是目的和目标</td>
+            <td>谈判前写下最佳、中等、最差三档结果</td>
+            <td>关键成果、卓越绩效标准、目标管理</td>
+            <td class="no">—</td></tr>
+          <tr><td>零基思考</td>
+            <td>“如果我以前没有做这些事的话，那么我今天还会这么做吗？”</td>
+            <td>第 10 章 归零思考法</td>
+            <td>第 2 章 零基思维，“待铲房”的比喻</td>
+            <td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+          <tr><td>简化流程</td>
+            <td>复杂性定律、7R；保险公司 22 道程序缩到 24 小时</td>
+            <td>简化步骤：西北互助人寿 24 步压到 2 步</td>
+            <td>复杂性定律；24 个环节，实际只需 17 分钟</td>
+            <td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+          <tr><td>瓶颈在自己</td>
+            <td>对束缚的分析：80% 来自内部</td>
+            <td>解除限制因素：80% 在内部</td>
+            <td>约束分析：80% 的约束来自内部</td>
+            <td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+          <tr><td>委托与放手</td>
+            <td>ABCDE 中的 D；SLAM 中的杠杆</td>
+            <td>有效委托 10 原则：“有效委托并不是退位让权”</td>
+            <td>授权他人承担次要任务；异常管理</td>
+            <td>目标管理 + 例外管理，只用于已证明能胜任的人</td>
+            <td class="no">—</td>
+            <td>全书主题：七种技巧、例外管理、避免逆向授权</td>
+            <td class="no">—</td></tr>
+          <tr><td>倾听</td>
+            <td>问伴侣 4 个问题，耐心听，不争论、不辩解</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td>第 19 章 有效倾听的四个关键</td>
+            <td>怀着真正的兴趣倾听；提问后保持沉默</td>
+            <td>倾听是“白魔法”，四种技巧</td>
+            <td>倾听四要素 + 八个“我在听”的信号</td></tr>
+          <tr><td>让人感到重要</td>
+            <td>像对待身家百万的客户那样对待每一个人</td>
+            <td class="no">—</td>
+            <td class="no">—</td>
+            <td>7 大激励因素；“给予注意就是赋予价值”</td>
+            <td>移情的力量；互惠：先为对方做点事</td>
+            <td>5 个 A：认同、感谢、赞美、嘉许、关心</td>
+            <td>5A：接受、欣赏、认可、赞扬、关注</td></tr>
+          <tr><td>持续学习</td>
+            <td>每天读 1 小时；“车轮上的大学”；收入的 3% 投资自己</td>
+            <td>3~5 年后需要的核心竞争力，从今天开始学</td>
+            <td>围绕关键领域不断学习，完善自己</td>
+            <td>持续培训，回报可达 10 至 30 倍</td>
+            <td>实践，实践，还是实践</td>
+            <td>授权可以学会；把自己视作教师</td>
+            <td>熟能生巧；找朋友当训练搭档</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub reveal">在几本书里重复出现的案例和说法</h3>
+    <div class="grid3 reveal">
+      <div class="card"><h4 class="cc">铁路其实是运输业</h4><p>Ⅰ Ⅱ Ⅲ 都用它说明：先问清：我到底在从事什么行业？</p></div>
+      <div class="card"><h4 class="cc">保险公司的审批流程</h4><p>Ⅰ Ⅱ Ⅲ 都讲到一份保单要走二十多道程序、耗时 6 周，合并之后 24 小时就能答复。</p></div>
+      <div class="card"><h4 class="cc">1 分钟计划，省 10 分钟</h4><p>Ⅰ Ⅱ Ⅵ 都有这句话。动手前先列清单。</p></div>
+      <div class="card"><h4 class="cc">不会做“预估”的 MBA</h4><p>Ⅳ Ⅵ 都讲到这位新员工（一本译作“预估方案”，一本译作“预估报告”），得出同一条规矩：绝不要以为你懂的下属也懂。</p></div>
+      <div class="card"><h4 class="cc">孩子第一</h4><p>Ⅳ Ⅵ 都讲到作者公司的这条制度：员工的孩子有需要时可以立刻去照顾，不扣工资，也不用补工时。</p></div>
+      <div class="card"><h4 class="cc">55% 靠身体语言</h4><p>Ⅴ Ⅶ 都引用梅拉宾的研究：谈判和交谈时，姿势和座位本身就在传递信息。</p></div>
+      <div class="card"><h4 class="cc">招人至少“三次”</h4><p>Ⅲ Ⅳ：面试三次、换三个地点、请三个人面试、找三个证明人，并问“你还会再次雇用他吗？”</p></div>
+      <div class="card"><h4 class="cc">每小时工资率</h4><p>Ⅱ Ⅲ：年收入 ÷ 2000。低于这个价值的工作，交给别人。</p></div>
+      <div class="card"><h4 class="cc">黄金法则</h4><p>Ⅰ 讲“己所不欲，勿施于人”；Ⅳ Ⅵ 把它用到管理上：你希望上司怎么对待你，就怎么对待你的下属。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TODO ============ -->
+<section class="block cb" id="todo">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag">START HERE</div><h2>行动清单：从今天开始</h2></div></div>
+    <div class="progress"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 0</div><button type="button" id="preset">清空</button></div>
+    <div class="libcard"><div class="check" id="check"></div></div>
+  </div>
+</section>
+
+<footer class="wood">
+  根据《博恩·崔西工作法则（7册装）》全文整理：《高效人生的12个关键点》《涡轮教练：教练式领导力手册》《涡轮战略：快速引爆利润 成就企业蜕变》《激励》《谈判》《授权》《魅力的力量》（博恩·崔西 等著，机械工业出版社）<br>
+  引文均摘自中译本原文 · 勾选进度只保存在本机浏览器
+</footer>
+
+<!-- ============ 我要怎么做？ 抽屉 ============ -->
+<button class="fab" id="fab" type="button" aria-haspopup="dialog" aria-controls="drawer"><span class="fab-ic" aria-hidden="true">✎</span><span>我要怎么做？</span></button>
+<div class="ov" id="ov" aria-hidden="true"></div>
+<aside class="drawer cb" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true">
+  <div class="dw-head">
+    <div>
+      <div class="dw-k">落地路线 · 只用书里的方法</div>
+      <h2 id="dwTitle">我要怎么做？</h2>
+    </div>
+    <button class="dw-x" id="dwClose" type="button" aria-label="关闭">×</button>
+  </div>
+  <div class="dw-tabs" id="dwTabs" role="tablist"></div>
+  <div class="dw-prog"><div class="track"><div class="fill" id="dwFill"></div></div><span id="dwTxt">0 / 0</span></div>
+  <div class="dw-body" id="dwBody"></div>
+</aside>
+
+<script>
+const BK=["Ⅰ","Ⅱ","Ⅲ","Ⅳ","Ⅴ","Ⅵ","Ⅶ"];
+
+/* ---------- 书架：书脊说明 ---------- */
+(function(){
+  const cap=document.getElementById('shelfcap'),def=cap.innerHTML;
+  document.querySelectorAll('.spine').forEach(sp=>{
+    const show=()=>{cap.style.setProperty('--c',getComputedStyle(sp).getPropertyValue('--sp'));cap.innerHTML=`<b>${sp.dataset.t}</b>${sp.dataset.g}`};
+    sp.addEventListener('mouseenter',show);sp.addEventListener('focus',show);
+    sp.addEventListener('mouseleave',()=>{cap.innerHTML=def});
+  });
+})();
+
+/* ---------- 热力图：2 = 专章/成体系，1 = 顺带提到，0 = 没有 ---------- */
+const H=[
+["80/20 法则",[2,2,2,2,1,1,0]],
+["先做最重要的事",[2,2,2,2,0,1,0]],
+["写下目标",[2,2,2,2,1,2,0]],
+["价值观先行",[2,2,2,2,0,0,0]],
+["零基思考",[2,2,2,0,0,0,0]],
+["质疑假设",[1,0,2,0,2,1,0]],
+["简化 / 复杂性定律",[2,1,2,0,0,0,0]],
+["找出限制因素",[2,2,2,0,0,0,0]],
+["S 形曲线",[2,2,0,0,0,0,0]],
+["杠杆",[2,2,1,0,0,1,0]],
+["委托与授权",[1,2,1,2,0,2,0]],
+["目标管理 / 例外管理",[0,0,1,2,0,2,0]],
+["选对人",[0,0,2,2,0,1,0]],
+["倾听四要素",[1,0,0,2,1,2,2]],
+["让人感到重要（5A）",[1,0,0,2,1,2,2]],
+["黄金法则",[2,0,0,2,0,2,0]],
+["持续学习 / 练习",[2,2,1,2,2,1,2]]
+];
+(function(){
+  const hp=document.getElementById('heat');
+  let hh='<div></div>'+BK.map((b,i)=>`<div class="h c${i+1}">${b}</div>`).join('')+'<div class="cnt hc">本数</div>';
+  H.forEach(([n,v],r)=>{
+    if(r&&r%4===0)hh+='<div class="sep"></div>';
+    hh+=`<div class="lb">${n}</div>`+v.map((x,i)=>`<div class="cell s${i+1} ${x==2?'on':x==1?'mid':''}" title="${BK[i]} · ${x==2?'专章或成体系':x==1?'顺带提到':'无'}"></div>`).join('')+`<div class="cnt">${v.filter(x=>x).length} 本</div>`;
+  });
+  hp.innerHTML=hh;
+})();
+
+/* ---------- 行动清单 ---------- */
+const T=[
+["g","管好自己的时间"],
+["做一次零基思考","列出手上所有的事、项目、关系，逐项问：“就现在所知，如果得从头再来，我会再次这样做吗？”答案是“不会”的，定下退出时间。","1,2,3"],
+["每天用 ABCDE 排清单","前一晚列好第二天的清单，标上 A/B/C/D/E；早上先做 A-1，一直做完。A 没做完不碰 B。","1,3"],
+["算出你的每小时工资率","年收入 ÷ 2000。以 15 分钟为单位记一周时间，低于这个价值的事委托、外包或删掉。","2,3"],
+["每天写目标，动手前先计划","每天早晨用现在时写下 10 个目标，圈出最重要的一个；动手前花 1 分钟列计划。","1,2,6"],
+["每天读 1 小时专业资料","早起读书，开车时听教育音频，把收入的 3% 投资在自己身上。","1"],
+["给一项流程砍掉 30% 的步骤","列出全部步骤，用合并、外包、委托、取消、调整顺序来简化。","1,3"],
+["g","做事业"],
+["找出那个瓶颈","写下“为什么我还没有实现目标？”，先从自己身上找原因，锁定一个限制因素全力攻克。","1,2,3"],
+["判断自己在 S 形曲线上的位置","个人和业务各判断一次。成长期就存现金，下降期就重做战略规划。","1,2"],
+["给产品做一次 SBU 和利润体检","按现金牛、明星、问题、瘦狗分类并指定负责人；算出全成本净利，放弃低利润业务。","2,3"],
+["每次成交后都求推荐","争取两三个名字；一天内道谢，并向推荐人反馈结果。","2"],
+["g","带团队"],
+["写下每个下属的关键成果","先问“我凭什么领薪水？”，再问“我的员工凭什么领薪水？”，然后当面讲清楚，并说明怎么考评。","4,6"],
+["交任务时讲清三件事","做什么、什么时候交、要什么质量，再让对方用自己的话复述一遍。","2,4,6"],
+["不接下属递来的“猴子”","下属带着问题来，先问：“你觉得我们应该怎么办？”让他先走完问题解决四步。","4,6"],
+["下次招人至少面试“三次”","三次面试、三个地点、三位同事、三个证明人，并问前雇主“你还会再次雇用他吗？”","3,4"],
+["g","谈判与沟通"],
+["谈判前写下三档结果和备选方案","最佳、中等、最差（底线），开价稍高于最佳；手里至少有一个备选，随时能离席。","5"],
+["价格谈判先“退缩”，再“质疑”","听到报价先露出吃惊的表情，再问“这是贵方所能提供的最佳条件吗？”，然后保持沉默。","5"],
+["练习倾听四步","专注听、停顿 3~5 秒、提问澄清、用自己的话复述。先在家里练。","4,6,7"],
+["每天用 5A 对待身边的人","接受（微笑）、欣赏（谢谢）、认可、赞扬、关注。","6,7"]
+];
+(function(){
+  const KEY='tracy7-check-v1';
+  let saved=[];try{saved=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+  const ck=document.getElementById('check');
+  let idx=0,total=0;
+  ck.innerHTML=T.map(t=>{
+    if(t[0]==='g')return `<div class="grp">${t[1]}</div>`;
+    const i=idx++;total++;
+    const src=t[2].split(',').map(n=>`<i class="c${n}">${BK[n-1]}</i>`).join('');
+    return `<label><input type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${src}</div></div></label>`;
+  }).join('');
+  function prog(){
+    const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+    try{localStorage.setItem(KEY,JSON.stringify(on))}catch(e){}
+    document.getElementById('pfill').style.width=(on.length/total*100)+'%';
+    document.getElementById('ptxt').textContent=on.length+' / '+total;
+  }
+  ck.addEventListener('change',prog);
+  document.getElementById('preset').onclick=()=>{ck.querySelectorAll('input').forEach(x=>x.checked=false);prog()};
+  prog();
+})();
+
+/* ---------- 我要怎么做？落地路线 ---------- */
+const STG=[["今天就做","15 分钟内能完成"],["第一周","要建立的做法"],["一个月后","要形成的习惯 · 怎么检验"],["卡住了怎么办","书里提到的障碍和对策"]];
+const HOW={
+all:{n:"综合",s:"",intro:"取 7 册里反复出现的核心法则。出处标的是册号和章号。",st:[
+ [["做一次零基思考","挑一件让你烦心的事，问：“就现在所知，如果得从头再来，我会再次这样做吗？”答案是“不会”，就写下退出的第一步。","Ⅰ 第1章 · Ⅱ 第10章 · Ⅲ 第2章"],
+  ["给明天的清单排序","写下明天要做的事，标上 A/B/C/D/E，圈出 A-1。","Ⅰ 第2章 · Ⅲ 第21章"],
+  ["算出你的每小时工资率","年收入 ÷ 2000。找一件低于这个价值、却天天在做的事。","Ⅱ 第9章 · Ⅲ 第18章"]],
+ [["把目标写下来","目标要具体、可衡量、有期限。只有 3% 的人这样做。","Ⅰ 第4章 · Ⅱ 第8章 · Ⅲ 第4章"],
+  ["动手前先花 1 分钟计划","书里三次出现同一句话：1 分钟的计划，能省下 10 分钟的执行时间。","Ⅰ 第2章 · Ⅱ 第8章 · Ⅵ 第3章"],
+  ["交出去一件事，并讲清三件事","做什么、什么时候交、要什么质量，再让对方复述一遍。","Ⅱ 第11章 · Ⅳ 第4章 · Ⅵ 第4章"]],
+ [["习惯：只做价值最高的 20%","每周检查一次：时间是不是花在了那 20% 上？其余的委托、外包或取消。","Ⅰ 第1章 · Ⅱ 第9章 · Ⅳ 第11章"],
+  ["习惯：倾听四步","专注听、停顿、提问澄清、复述。检验：请家人或同事说说你有没有变化。","Ⅳ 第19章 · Ⅵ 第16章 · Ⅶ 第5章"],
+  ["习惯：每天学习","每天读 1 小时专业资料，或在路上听教育音频。检验：这个月读完了几本书。","Ⅰ 第4章、第10章 · Ⅳ 第13章"]],
+ [["卡住：目标迟迟没有进展","问“为什么我还没有实现目标？”，找出那个限制因素。三本书都说约 80% 在自己身上。","Ⅰ 第5章 · Ⅱ 第6章 · Ⅲ 第16章"],
+  ["卡住：不敢放手","用目标管理和例外管理：商定目标、标准和检查时间后放手，出现偏差才汇报。只用于已证明能胜任的人。","Ⅳ 第9–10章 · Ⅵ 第7、10章"],
+  ["卡住：流程太慢、太乱","复杂性等于步骤数的平方。合并、外包、委托、取消步骤，第一次就以减少 30% 为目标。","Ⅰ 第3章 · Ⅲ 第17章"]]]},
+b1:{n:"Ⅰ 高效人生",s:"s1",intro:"《高效人生的12个关键点》：在每个领域找到你的“×”。",st:[
+ [["列出所有活动，做一次零基思考","逐项问：“如果我以前没有做这些事的话，那么我今天还会这么做吗？”圈出一件准备停下来的事。","第1章 释放你的全部潜能"],
+  ["给明天的清单标 ABCDE","A 必须做，B 应该做，C 做了愉快，D 委托，E 取消。A 没做完不做 B。","第2章 工作效率翻番"],
+  ["选出 5 个价值观并排序","从附录的价值观列表里挑，排出先后。","第3章 确立你的价值观"]],
+ [["每天早晨用现在时写 10 个目标","圈出最重要的一个，定期限和分段期限，每天都为它做点事。","第10章 成就你能够成就的一切"],
+  ["每晚计划第二天","第二天早上的第一件事，做最有价值的工作。","第10章 1000%法则"],
+  ["本周留一整天完全不碰工作","这是让收入和空闲时间翻番的第 4 步，之后再扩展到完整的周末。","第1章 让收入和空闲时间翻番的6个步骤"]],
+ [["习惯：1000% 法则的 7 步","早起读 1 小时、写目标、晚上做计划、先做最有价值的事、开车听音频、复盘、善待每个人。检验：每件事做完后问“我做对了哪件事？我要做什么才能脱颖而出？”","第10章 1000%法则"],
+  ["检验：给 7 个生活领域各打 1~10 分","事业、家庭、财务、健康、成长、社会、精神，和一个月前的分数对比。","第5章 形成关键点的过程"],
+  ["检验：算出净值和资金消耗率","90 天内把开支削减 10%~20%，以后每次加薪，把增加部分的 50% 存起来。","第8章 实现财务独立"]],
+ [["卡住：时间都被急事占了","先做紧急且重要的，再做重要不紧急的；紧急不重要和不紧急不重要的，阻止自己去做。","第2章 区分紧急的事情和重要的事情"],
+  ["卡住：要做的事太多","学会说“不”。“不”这个词是你所学过的所有单词中最有力量的一个词。","第3章 学会如何说“不”"],
+  ["卡住：目标迟迟不动","找出最大的束缚。束缚有 80% 来自内部：习惯、信仰、态度、技能。","第5章 消除你的主要束缚"]]]},
+b2:{n:"Ⅱ 涡轮教练",s:"s2",intro:"《涡轮教练》每章末尾都有应用练习，下面按练习排了顺序。",st:[
+ [["算出每小时工资率","年收入 ÷ 2000。以后做事前先问：我会花这个时薪做这件事吗？","第9章 帕累托法则"],
+  ["选出 3~5 个核心价值观","从附录的价值观列表里挑。","第1章 战略规划 · 应用练习"],
+  ["写下别人现在怎么形容你","再写下你希望他们用什么词，这就是你要打造的个人品牌。","第20章 创建你的个人品牌 · 应用练习"]],
+ [["以 15 分钟为单位记录一周","按 1–10 分级（1 最高），1、2 级就是你的 20%。标出你在“付钱”做的低价值工作。","第9章 帕累托法则 · 应用练习"],
+  ["按 10 原则委托一项任务","选有能力的人，讲清结果和原因，定期限、标准、资源和后果，写成书面协议。","第11章 有效委托"],
+  ["列出 10 个目标，选出“终极目标”","写明期限、障碍、所需知识技能，以及需要谁的帮助。","第8章 提高生产力的11种方法 · 应用练习"]],
+ [["习惯：每次成交前后求推荐","每次争取两三个名字，一天内发感谢信息，再向推荐人反馈结果。检验：这个月拿到了多少个推荐名字。","第17章 通过客户的推荐建立你的生意"],
+  ["检验：你在 S 形曲线的哪个阶段","个人和生意各判断一次，写出对策。成长期存现金，下降期重做规划。","第7章 你在S形曲线的什么位置"],
+  ["检验：帕特农 7 根柱子","在产品、销售、服务、定价、促销、推荐、利润率上各找一个提升 10% 的办法，看看哪几根动了。","第14章 帕特农原则"]],
+ [["卡住：进展太慢","问“为什么我还没有实现我的目标？”限制因素 80% 在内部。","第6章 解除限制因素"],
+  ["卡住：手下没人会做","不要因此放弃委托，可以外包出去。","第11章 有效委托"],
+  ["卡住：旧做法放不下","归零思考：如果当初就知道现在知道的事，还会这样做吗？不会，就改造或淘汰。","第10章 归零思考法"]]]},
+b3:{n:"Ⅲ 涡轮战略",s:"s3",intro:"《涡轮战略》：考题没变，答案变了。",st:[
+ [["问两个问题","哪些工作有成效？哪些没有成效？按产品、市场、人员各问一遍。","导论 · 老问题，新答案"],
+  ["写下约束句","“要不是……我们就可以实现销售的翻番？”","第16章 经营瓶颈，努力克服"],
+  ["写一张品牌备忘单","假设客户要向别人推荐你，你希望他用哪些词？把这些词列出来。","第13章 品牌打造，以求成功"]],
+ [["用 GOSPA 写一页战略","最终目标、阶段目标、策略、计划、执行，再列出增加、减少、开始、放弃四项决定。","第4章 需求界定，讲究精准"],
+  ["给产品做 SBU 四分类","现金牛维护、明星加码、问题限期决断、瘦狗淘汰，每类指定负责人。","第14章 经营战略，重在SBU"],
+  ["给一个流程砍掉 30% 的环节","列出全部环节，用合并、外包、授权、清除来简化。","第17章 企业再造，经营出新"]],
+ [["习惯：每天走一遍七个环节","前一晚列清单，用 ABCDE 排序，先做 A-1 并做完。检验：A 没做完时，有没有去碰 B 和 C。","第21章 经营效果，第一关注"],
+  ["检验：做一次全成本利润分析","把间接费用和管理者时间都算进去，按盈利能力给产品排序，看有没有该放弃的。","第18章 利润分析，增利之道"],
+  ["习惯：每月一次零基思维清单","产品、客户、供应商、人员、支出，逐项问“就现在所知，如果得从头再来，我会再次这样做吗？”","第2章 结束过去，走向未来"]],
+ [["卡住：持续紧张、愤怒、失眠","这是需要零基思维的信号。问：“该如何摆脱当下的困境？能多快摆脱？”","第2章 运用零基思维"],
+  ["卡住：只能靠降价卖","低价本身并非竞争优势。在经营卓越、行业领先、贴近客户中选一个做到超群。","第11章 多快好省，优势所在"],
+  ["卡住：想去做不擅长的新业务","核心业务正在赚钱时最危险。回到大本营战略，集中做核心产品。","第20章 核心业务，务必专注"]]]},
+b4:{n:"Ⅳ 激励",s:"s4",intro:"《激励》：管理者无法激励别人，但能消除障碍。",st:[
+ [["今天见到每位员工时先微笑","停下脚步，问问他们今天感觉怎么样，是否一切都好。","第21章 创造激励奇迹"],
+  ["给一项任务补齐三样东西","工作内容、质量标准、截止日期，再请员工用自己的话复述。","第4章 明确表达预期"],
+  ["公开表扬一件做好的事","什么得到认同，什么就会再次发生。","第7章 激励的3R"]],
+ [["帮每位员工找出“三件大事”","用三个“神奇的问题”：如果一整天只做一件事……然后是第二件、第三件。","第11章 应用帕累托原理"],
+  ["开一次头脑风暴","4~7 人，15~45 分钟，问题要具体，重数量、不评判。","第16章 定期进行头脑风暴"],
+  ["单独问每位员工想提升哪些技能","为他们提供时间和费用，你自己也订一份学习计划。","第13章 持续培训和持续教育"]],
+ [["习惯：每天 7 种行为","微笑、提问、倾听、客气、感谢、让员工知情、鼓励持续改善。检验：员工描述工作时，是否开始说“我们和我们的”。","第21章 · 第5章 实行参与式管理"],
+  ["检验：对照成功的五大因素","每个人是否都有清晰的目标、量化标准、截止日期、成功经历、认可和奖励？","第4章 明确表达预期"]],
+ [["卡住：员工不敢冒险","根源是害怕失败、害怕拒绝。对策是驱除恐惧：允许犯错，无条件接受。","前言"],
+  ["卡住：员工总带着问题来找你","先问：“你认为我们应该怎么办？”","第9章 实行目标管理"],
+  ["卡住：担心培训完员工就跳槽","正确的问题是：“如果不培训员工，他们留了下来，会怎样？”","第13章 持续培训和持续教育"]]]},
+b5:{n:"Ⅴ 谈判",s:"s5",intro:"《谈判》：凡事皆可谈判，而准备决定了 80% 的结果。",st:[
+ [["给下一次谈判写三档结果","最佳、中等、最差（底线）。开价稍高于最佳结果。","第10章 了解自己的需要"],
+  ["列出至少一个备选方案","其他货源、其他对象。没有选择，就没有自由。","第12章 准备是关键 · 第19章"],
+  ["试一次“质疑”","对一个报价问：“这是贵方所能提供的最佳条件吗？”问完保持沉默。","第18章 价格谈判策略"]],
+ [["先替对方写一份陈述","列出对方可能问的问题，想清楚他们的最低和最高要求，再写自己的立场。","第13章 阐明各方的立场"],
+  ["拿一份合同逐条过","先在没有争议的条款上达成一致，分歧的先跳过。","第14章 四事法则"],
+  ["每天找机会提一次要求","把谈判当游戏，用反复提要求来脱敏。","第2章 克服对谈判的恐惧"]],
+ [["习惯：每次让步都索要回报","绝不做单方面让步，让步时显得勉强，把“公平”挂在嘴边。检验：回看这个月的让步，有没有一次是白给的。","第13章 · 第16章 用互惠原则来说服"],
+  ["检验：重要决策都拖了 24 小时吗","有没有被对方制造的紧迫感推着当场拍板？","第9章 决策中的时间因素"],
+  ["检验：这个月的谈判属于哪种风格","赢/输、输/赢、双输、妥协、无交易、双赢。长期关系要追求双赢。","第5章 六大谈判风格"]],
+ [["卡住：怕被拒绝","“拒绝并非针对个人。”反复去做害怕的事，勇气也是一种习惯。","第2章 克服对谈判的恐惧"],
+  ["卡住：太想要这笔交易","投入情感最多的人力量最弱。问自己“那又怎么样？”，记住“交易就像是公共汽车，总会有下一趟的”。","第8章 情感对谈判的影响"],
+  ["卡住：被逼着马上决定","说：“如果让我立即作决策的话，我的决策是‘不’”，然后请对方给你时间仔细考虑。","第9章 决策中的时间因素"]]]},
+b6:{n:"Ⅵ 授权",s:"s6",intro:"《授权》：管理就是“通过其他人来取得结果”。",st:[
+ [["写下“我凭什么领薪水？”","列出你的关键成果，通常不超过 5~7 种。","第5章 确定关键成果"],
+  ["找一件别人能做到你 70% 的事","把它交出去，腾出手做非你不可的工作。","第2章 怪论之五 · 70%规则"],
+  ["下属来问怎么办时，反问一句","“你觉得我们应该怎么办？”","第13章 决策授权"]],
+ [["为每个下属写下关键成果","按重要程度排序，当面讲清楚，并说明怎么考评。","第5章 确定关键成果"],
+  ["和一位胜任的员工做目标管理","商定目标、期限和考评数字，约好汇报时间，之后“报忧不报喜”。","第7章 目标管理 · 第10章 例外管理"],
+  ["评估每位下属的任务相关成熟度","低、中、高，分别手把手培训、聚焦成果反馈、轻松交流。","第17章 采用情境领导"]],
+ [["习惯：走动式管理 + 及时表扬","经常在员工间走动，发现做得对的事就当场表扬。检验：你能离开办公室多久而不引起混乱？","第14章 · 第15章 · 第7章 敢不敢离开"],
+  ["习惯：问题解决四步","要求员工先记下问题、找出原因、列出方案、作出决策，再来找你。检验：讨论问题的时间是否明显减少。","第13章 问题解决过程"]],
+ [["卡住：没时间授权","现实中始终都有足够的时间来有效授权。一分钟的筹划能节省十分钟的执行时间。","第2章 怪论之一 · 第3章 开始授权"],
+  ["卡住：“猴子”又回到你背上","坚持说：“这是你的工作，责任在你，而不在我”。","第20章 避免逆向授权"],
+  ["卡住：交出去的事做砸了","检查是否用人得当、是否逐步授权。授权不等于放手，要定期检查。","第9章 有效授权的七种技巧 · 第14章"]]]},
+b7:{n:"Ⅶ 魅力",s:"s7",intro:"《魅力的力量》：魅力是能够习得的，从行为练起。",st:[
+ [["测一测你的“魅商”","自己打 1~10 分，再请一个认识的人打。他给的分数才是真实的。","第3章 魅力的作用"],
+  ["下一次交谈专注地听","关掉电视和手机，不打断；对方说完后，停顿 3~5 秒再回应。","第5章 倾听的魔力"],
+  ["说一句具体的赞扬","不说“你是个很棒的秘书”，而说“你昨天起草的报告真是又快又好”。","第22章 多赞扬他人"]],
+ [["找一个朋友当训练搭档","一次练一种信号，三四分钟后问：“我看起来是真的在倾听吗？”","第18章 和朋友练习 以提升魅力"],
+  ["对新认识的人用三个问题","“你是做什么工作的？”“你是怎样进入这一行当的？”“然后呢？”","第32章 做好功课"],
+  ["录一段自己的慢速朗读","用慢到让你不舒服的语速读，回放听听，其实正好。","第26章 慢说的艺术"]],
+ [["习惯：八个信号变成条件反射","目光接触、视线移位、头部微倾、点头、身体语言、避免消极姿势、声音确认、口头回应。检验：请搭档再问一遍那四个问题。","第10–17章 · 第36章 熟能生巧"],
+  ["检验：打电话时对照 22 条建议","把建议写在纸上，每次通话时放在眼前。","特别呈献 电话里彰显魅力的力量"]],
+ [["卡住：忍不住给建议","没有人在生气时想听建议。先问：“你觉得该怎么做？”然后耐心听。","第19章 慎提建议 · 第20章"],
+  ["卡住：争论中想赢","不要“打死球”。“如果你赢了——其实你输了！”","第34章 不要“打死球”"],
+  ["卡住：感觉别扭、不自然","由表及里：先做出行为，情感会跟上来。任何值得做好的事情都容许一开始做不好。","第8章 · 第23章 · 第18章"]]]}
+};
+(function(){
+  const KEY='tracy7-howto-v1';
+  let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  const dw=document.getElementById('drawer'),ov=document.getElementById('ov'),fab=document.getElementById('fab');
+  const tabs=document.getElementById('dwTabs'),body=document.getElementById('dwBody');
+  const ids=Object.keys(HOW);let cur='all',lastFocus=null;
+  tabs.innerHTML=ids.map(k=>`<button class="dw-tab ${HOW[k].s}" role="tab" data-k="${k}" aria-selected="false"><i></i>${HOW[k].n}</button>`).join('');
+  function render(k){
+    cur=k;const d=HOW[k];
+    dw.className='drawer open '+(k==='all'?'cb':'c'+k.slice(1));
+    tabs.querySelectorAll('.dw-tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.k===k));
+    body.innerHTML=`<p class="dw-intro">${d.intro}</p>`+d.st.map((items,si)=>`<section class="stg"><h3><span class="n">${si+1}</span>${STG[si][0]}<small>${STG[si][1]}</small></h3>`+
+      items.map((it,ii)=>{const id=`${k}-${si}-${ii}`;return `<label class="dw-item"><input type="checkbox" data-id="${id}" ${done[id]?'checked':''}><div><b>${it[0]}</b><span>${it[1]}</span><em>出处：${it[2]}</em></div></label>`}).join('')+'</section>').join('');
+    prog();
+  }
+  function prog(){
+    const all=body.querySelectorAll('input'),on=body.querySelectorAll('input:checked');
+    document.getElementById('dwFill').style.width=(all.length?on.length/all.length*100:0)+'%';
+    document.getElementById('dwTxt').textContent=on.length+' / '+all.length;
+  }
+  body.addEventListener('change',e=>{const id=e.target.dataset.id;if(!id)return;if(e.target.checked)done[id]=1;else delete done[id];try{localStorage.setItem(KEY,JSON.stringify(done))}catch(err){}prog()});
+  tabs.addEventListener('click',e=>{const b=e.target.closest('.dw-tab');if(b){render(b.dataset.k);body.scrollTop=0}});
+  tabs.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;const i=ids.indexOf(cur)+(e.key==='ArrowRight'?1:-1);const k=ids[(i+ids.length)%ids.length];render(k);tabs.querySelector(`[data-k="${k}"]`).focus()});
+  function open(k){
+    lastFocus=document.activeElement;render(k||cur);
+    dw.setAttribute('aria-hidden','false');ov.classList.add('open');document.body.classList.add('dw-lock');
+    setTimeout(()=>document.getElementById('dwClose').focus(),60);
+  }
+  function close(){
+    dw.classList.remove('open');dw.setAttribute('aria-hidden','true');ov.classList.remove('open');document.body.classList.remove('dw-lock');
+    if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  }
+  window.openHowTo=open;
+  fab.addEventListener('click',()=>{
+    const s=[...document.querySelectorAll('section.block[id^="b"]')].find(x=>{const r=x.getBoundingClientRect();return r.top<innerHeight/2&&r.bottom>innerHeight/2});
+    open(s&&HOW[s.id]?s.id:cur);
+  });
+  document.getElementById('dwClose').addEventListener('click',close);
+  ov.addEventListener('click',close);
+  addEventListener('keydown',e=>{
+    if(!dw.classList.contains('open'))return;
+    if(e.key==='Escape'){close();return}
+    if(e.key==='Tab'){const f=[...dw.querySelectorAll('button,input')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){z.focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===z){a.focus();e.preventDefault()}}
+  });
+  const m=location.hash.match(/^#howto(?:-(\w+))?$/);
+  if(m)open(HOW[m[1]]?m[1]:'all');
+})();
+
+/* ---------- reveal ---------- */
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+
+/* ---------- 导航高亮 ---------- */
+(function(){
+  const links=[...document.querySelectorAll('nav.top a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  let last=-1;
+  addEventListener('scroll',()=>{
+    let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<120)k=i});
+    if(k!==last){links.forEach((a,i)=>a.classList.toggle('on',i===k));last=k;
+      const a=links[k],w=a.parentElement;if(w.scrollWidth>w.clientWidth)w.scrollTo({left:a.offsetLeft-w.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});}
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

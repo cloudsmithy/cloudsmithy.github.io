@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>五种时间 FIVE TIMES · 一本书的杂志特辑</title>
+<style>
+:root{
+  --bg:#ffffff; --ink:#0b0b0b; --ink2:#3d3d3d; --ink3:#8a8a8a; --hair:#e6e6e6; --tint:#f4f4f2;
+  --c1:#2f54eb; --c1t:#2f54eb; --c1on:#ffffff; --c1d:#17309e; --c1l:#9db0ff;
+  --c2:#ffc400; --c2t:#9a7300; --c2on:#111111;
+  --c3:#ff2d87; --c3t:#df0f6c; --c3on:#ffffff;
+  --c4:#00b37a; --c4t:#00835a; --c4on:#04170f;
+  --c5:#7a3cff; --c5t:#6a2cf0; --c5on:#ffffff;
+  --sans:-apple-system,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --latin:"Helvetica Neue",-apple-system,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0c0c0c; --ink:#f3f3f1; --ink2:#c4c4c0; --ink3:#7d7d79; --hair:#262626; --tint:#171717;
+    --c1:#4a6bff; --c1t:#8aa0ff; --c1d:#2a43c4; --c1l:#a9b9ff;
+    --c2t:#ffd23f; --c3t:#ff66a8; --c4t:#2fd99a; --c5t:#a789ff;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.01em}
+p{margin:.45em 0}
+b,strong{font-weight:700;color:var(--ink)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.mono{font-family:var(--latin);letter-spacing:.14em;text-transform:uppercase;font-size:11.5px;font-weight:700}
+.muted{color:var(--ink2)} .small{font-size:13px;color:var(--ink3)}
+.k1{--k:var(--c1);--kt:var(--c1t);--kon:var(--c1on)}
+.k2{--k:var(--c2);--kt:var(--c2t);--kon:var(--c2on)}
+.k3{--k:var(--c3);--kt:var(--c3t);--kon:var(--c3on)}
+.k4{--k:var(--c4);--kt:var(--c4t);--kon:var(--c4on)}
+.k5{--k:var(--c5);--kt:var(--c5t);--kon:var(--c5on)}
+.k0{--k:var(--ink);--kt:var(--ink);--kon:var(--bg)}
+
+/* masthead */
+nav.mast{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--ink)}
+nav.mast .wrap{display:flex;align-items:center;height:54px;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.mast .wrap::-webkit-scrollbar{display:none}
+.logo{font-family:var(--latin);font-weight:900;font-size:17px;letter-spacing:-.02em;white-space:nowrap;margin-right:auto;padding-right:16px;text-decoration:none}
+.logo span{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.1em;color:var(--ink3);margin-left:10px}
+nav.mast a.l{text-decoration:none;font-size:13px;font-weight:600;color:var(--ink2);padding:6px 10px;white-space:nowrap;border-bottom:3px solid transparent;display:flex;align-items:center;gap:6px}
+nav.mast a.l i{width:9px;height:9px;background:var(--k);display:inline-block}
+nav.mast a.l:hover{color:var(--ink)}
+nav.mast a.l.on{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* folio */
+.folio{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;border-top:2px solid var(--ink);padding:10px 0 0;margin-bottom:40px}
+.folio .pg{font-family:var(--latin);font-weight:900;font-size:13px;letter-spacing:.08em}
+.folio .t{font-size:13px;color:var(--ink2);font-weight:600}
+.folio .lab{font-family:var(--latin);font-weight:800;font-size:11px;letter-spacing:.2em;background:var(--k);color:var(--kon);padding:3px 10px}
+
+/* cover */
+.cover{padding:36px 0 40px}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:10px;gap:16px;flex-wrap:wrap}
+.cover-top .mono{color:var(--ink2)}
+.cover-grid{display:grid;grid-template-columns:7fr 5fr;gap:40px;align-items:center;padding:28px 0 10px}
+.cover h1{font-size:clamp(96px,16.5vw,232px);line-height:.86;font-weight:800;letter-spacing:-.06em;margin-left:-.04em}
+.cover h1 em{font-style:normal;display:block}
+.cover .en{font-family:var(--latin);font-weight:900;font-size:clamp(20px,2.8vw,34px);letter-spacing:-.01em;margin-top:18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.cover .en small{font-family:var(--sans);font-size:clamp(15px,1.6vw,19px);font-weight:600;letter-spacing:.32em;color:var(--ink2)}
+.rings{width:100%;max-width:440px;margin:0 auto;display:block}
+.rings text{font-family:var(--sans);font-weight:800}
+.coverlines{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);margin-top:26px}
+.coverlines div{padding:14px 18px 6px 0;border-right:1px solid var(--hair);margin-right:18px}
+.coverlines div:last-child{border-right:none;margin-right:0}
+.coverlines b{display:block;font-size:19px;line-height:1.3;font-weight:800}
+.coverlines span{display:block;font-size:13.5px;color:var(--ink2);line-height:1.6;margin-top:4px}
+.coverlines .mono{color:var(--ink3);display:block;margin-bottom:6px}
+.thesis-big{font-size:clamp(22px,2.6vw,30px);line-height:1.55;font-weight:600;max-width:980px;margin:56px 0 0;letter-spacing:-.005em}
+.thesis-big strong{background:linear-gradient(transparent 62%,var(--c2) 62%);color:var(--ink)}
+@media (prefers-color-scheme:dark){.thesis-big strong{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--c2) 55%,transparent) 62%)}}
+
+/* five magazine covers */
+.covers{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px}
+.mag{background:var(--k);color:var(--kon);text-decoration:none;aspect-ratio:3/4.1;padding:16px 16px 18px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .3s}
+.mag:hover{transform:translateY(-6px)}
+.mag .top{display:flex;justify-content:space-between;font-family:var(--latin);font-weight:800;font-size:11px;letter-spacing:.16em;border-bottom:1.5px solid currentColor;padding-bottom:6px;opacity:.95}
+.mag .nm{font-size:clamp(54px,6.4vw,86px);font-weight:800;line-height:.9;letter-spacing:-.05em;margin-top:14px}
+.mag .nm small{display:block;font-size:.36em;letter-spacing:.02em;margin-top:6px;font-weight:700}
+.mag .en{font-family:var(--latin);font-weight:900;font-size:12px;letter-spacing:.12em;margin-top:8px;opacity:.85}
+.mag .tag{margin-top:auto;font-size:12.5px;line-height:1.55;font-weight:500;position:relative}
+.mag .tag b{display:block;font-size:15px;color:inherit;margin-bottom:4px;font-weight:800}
+.mag .big{position:absolute;right:-6px;bottom:52px;font-family:var(--latin);font-weight:900;font-size:120px;line-height:.8;opacity:.16;letter-spacing:-.06em}
+
+/* sections */
+section.sec{padding:84px 0 40px}
+.spread{display:grid;grid-template-columns:290px 1fr;gap:64px}
+.side{position:sticky;top:78px;align-self:start}
+.side .num{font-family:var(--latin);font-weight:900;font-size:128px;line-height:.78;letter-spacing:-.07em;color:var(--k)}
+.k0 .side .num{-webkit-text-stroke:2px var(--ink);color:transparent}
+.side .kicker{margin-top:18px;color:var(--kt)}
+.side h2{font-size:clamp(44px,5vw,64px);line-height:1;letter-spacing:-.04em;margin-top:8px}
+.side .dek{font-size:18px;font-weight:700;margin-top:14px;line-height:1.45}
+.side .bar{height:10px;background:var(--k);margin-top:20px;width:64px}
+.side .meta{font-size:13px;color:var(--ink3);margin-top:14px;line-height:1.65}
+.main{min-width:0}
+.lede{font-size:clamp(19px,2vw,22px);line-height:1.7;font-weight:500;color:var(--ink);margin:0 0 8px;max-width:820px}
+.lede::first-letter{float:left;font-size:3.6em;line-height:.92;font-weight:800;margin:.06em .1em 0 0;color:var(--kt)}
+h3.hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:60px 0 22px;font-size:clamp(22px,2.4vw,28px);letter-spacing:-.02em}
+h3.hd .lb{font-family:var(--latin);font-size:11px;letter-spacing:.2em;font-weight:800;color:var(--kon);background:var(--k);padding:3px 8px;align-self:center}
+h3.hd small{font-size:13.5px;font-weight:500;color:var(--ink3);letter-spacing:0}
+
+.g2,.g3,.g4,.g5,.g6,.g7{display:grid;column-gap:30px;row-gap:30px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+.g5{grid-template-columns:repeat(5,1fr);column-gap:20px} .g6{grid-template-columns:repeat(6,1fr);column-gap:18px} .g7{grid-template-columns:repeat(7,1fr);column-gap:16px}
+.it{border-top:2px solid var(--ink);padding-top:12px;min-width:0}
+.it .n{font-family:var(--latin);font-weight:900;font-size:13px;letter-spacing:.06em;color:var(--kt)}
+.it h4{font-size:18px;margin:4px 0 6px;line-height:1.35}
+.it p,.it li{font-size:14.5px;color:var(--ink2)}
+.it ul,.it ol{margin:6px 0 0;padding-left:1.15em}
+.it li{margin:3px 0}
+.it.thin{border-top-width:1px}
+.it .q{font-size:13.5px;color:var(--kt);font-weight:600;margin-top:8px;line-height:1.6}
+.it .bn{font-family:var(--latin);font-weight:900;font-size:44px;line-height:1;color:var(--k);letter-spacing:-.04em}
+.blk{background:var(--k);color:var(--kon);padding:24px 26px}
+.blk b,.blk strong,.blk h4{color:var(--kon)}
+.blk p,.blk li{color:var(--kon);opacity:.92}
+.blk .mono{opacity:.8}
+.tnt{background:var(--tint);padding:22px 24px}
+.tnt p,.tnt li{color:var(--ink2)}
+.hl{background:var(--k);color:var(--kon);padding:0 5px;font-weight:700}
+.note{font-size:13.5px;color:var(--ink3);margin-top:14px;max-width:860px}
+
+/* pull quote */
+.pull{padding:86px 0 82px;margin:40px 0 0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.pull.fill{background:var(--k);color:var(--kon);border-color:transparent}
+.pull .wrap{display:grid;grid-template-columns:290px 1fr;gap:64px;align-items:start}
+.pull .qm{font-family:Georgia,"Times New Roman",serif;font-weight:900;font-size:180px;line-height:.7;color:var(--k)}
+.pull.fill .qm{color:var(--kon);opacity:.85}
+.pull blockquote{margin:0;font-size:clamp(28px,4.2vw,54px);line-height:1.28;font-weight:800;letter-spacing:-.025em}
+.pull cite{display:block;font-style:normal;margin-top:22px}
+
+/* table */
+.tblwrap{overflow-x:auto}
+table.tbl{width:100%;min-width:900px;border-collapse:collapse;font-size:14px}
+.tbl th{padding:14px 14px 12px;text-align:left;background:var(--k);color:var(--kon);font-size:20px;font-weight:800;letter-spacing:-.01em;vertical-align:bottom}
+.tbl th small{display:block;font-family:var(--latin);font-size:10.5px;letter-spacing:.18em;font-weight:800;opacity:.85;margin-bottom:2px}
+.tbl th:first-child{background:transparent;color:var(--ink);width:88px}
+.tbl td{padding:13px 14px;vertical-align:top;border-bottom:1px solid var(--hair);color:var(--ink2);line-height:1.65}
+.tbl tr:first-child td{border-top:2px solid var(--ink)}
+.tbl td:first-child{font-weight:800;color:var(--ink);font-size:13px;white-space:nowrap}
+
+/* passive/active strip */
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-top:6px}
+.strip div{background:var(--k);color:var(--kon);padding:16px 14px;min-height:118px;display:flex;flex-direction:column}
+.strip div b{color:inherit;font-size:20px;letter-spacing:-.01em}
+.strip div span{font-size:12.5px;line-height:1.55;margin-top:auto;opacity:.95}
+.strip .pass{background:repeating-linear-gradient(135deg,var(--c1d) 0 9px,var(--c1) 9px 18px)}
+.strip-lbl{display:grid;grid-template-columns:1fr 5fr;gap:4px;margin-top:8px}
+.strip-lbl div{border-top:3px solid var(--ink);padding-top:6px}
+.arrows{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:36px}
+.arrows .it h4{display:flex;align-items:center;gap:8px}
+.arrows .it h4 i{width:12px;height:12px;background:var(--k);flex:none}
+
+/* contents */
+.toc{display:grid;grid-template-columns:repeat(3,1fr);column-gap:30px}
+.toc a{display:grid;grid-template-columns:60px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--hair);text-decoration:none}
+.toc a:nth-child(-n+3){border-top:2px solid var(--ink)}
+.toc a .p{font-family:var(--latin);font-weight:900;font-size:24px;line-height:1;color:var(--kt);letter-spacing:-.03em}
+.toc a b{display:block;font-size:16px}
+.toc a span{font-size:13.5px;color:var(--ink2);line-height:1.6;display:block;margin-top:2px}
+.toc a:hover b{text-decoration:underline;text-underline-offset:4px}
+
+/* ch1 */
+.wish{display:flex;height:64px;margin:14px 0 10px}
+.wish div{display:flex;align-items:center;padding:0 16px;font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden}
+.wish .a{flex:99;background:var(--ink);color:var(--bg)}
+.wish .b{flex:4;background:var(--c3);color:#fff;justify-content:center;padding:0}
+.ab{display:grid;grid-template-columns:1fr 150px 1fr;gap:24px;align-items:stretch}
+.ab .pt .L{font-family:var(--latin);font-weight:900;font-size:96px;line-height:.8;letter-spacing:-.06em}
+.ab .mid{display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:12.5px;color:var(--ink3);gap:8px}
+.ab .mid .ln{height:3px;background:var(--ink);position:relative}
+.ab .mid .ln::after{content:"";position:absolute;right:-2px;top:-6px;border:7.5px solid transparent;border-left:10px solid var(--ink);border-right:none}
+.form{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:14px}
+.form div{background:var(--tint);padding:12px 14px;font-size:13px;color:var(--ink2);line-height:1.55}
+.form div b{display:block;font-size:14.5px}
+.form div.key{background:var(--ink);color:var(--bg)}
+.form div.key b{color:var(--bg)}
+.evo{width:100%;border-collapse:collapse;font-size:15px}
+.evo th{text-align:left;font-family:var(--latin);font-size:11px;letter-spacing:.2em;padding:0 0 8px;color:var(--ink3);border-bottom:2px solid var(--ink)}
+.evo td{padding:12px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+.evo td:first-child{color:var(--ink3);width:38%;padding-right:20px;text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--ink3) 60%,transparent)}
+.evo td:last-child{font-weight:600}
+
+/* ch2 */
+.pyr-row{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center}
+.pyr svg{width:100%;display:block}
+.five-mark{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center;margin-top:30px}
+.five-mark .n{font-family:var(--latin);font-weight:900;font-size:170px;line-height:.78;color:var(--k);letter-spacing:-.08em;text-align:center}
+.five-mark p{font-size:16px;color:var(--ink)}
+.sched{display:flex;height:42px;font-size:12px;margin-top:10px}
+.sched div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;font-weight:800}
+.sched .tr{background:var(--c1);color:#fff} .sched .rs{background:var(--tint);color:var(--ink2)} .sched .st2{background:var(--c1l);color:#0b0b0b}
+.ticks{display:flex;font-size:11px;color:var(--ink3);margin-top:4px;font-family:var(--latin)}
+.ticks span{white-space:nowrap}
+
+/* ch3 */
+.eq{font-family:var(--latin);font-weight:900;font-size:clamp(56px,9vw,124px);letter-spacing:-.05em;line-height:1;margin:6px 0 10px;color:var(--ink)}
+.eq sup{font-size:.48em;color:var(--kt)}
+.eq .d{color:var(--kt)}
+.vars .it .bn{font-size:52px}
+.curves svg{width:100%;height:auto;display:block;margin-bottom:6px}
+svg text{font-family:var(--sans)}
+.venn-row{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:center}
+
+/* ch4 */
+.chips7{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 14px}
+.chips7 span{background:var(--k);color:var(--kon);padding:8px 16px;font-weight:800;font-size:15px}
+.rate .r{display:grid;grid-template-columns:170px 1fr 70px;gap:14px;align-items:center;padding:8px 0;border-bottom:1px solid var(--hair);font-size:14px}
+.rate .tk{height:20px;background:var(--tint)}
+.rate .tk i{display:block;height:100%;background:var(--k)}
+.rate .r span:last-child{text-align:right;font-family:var(--latin);font-weight:900;font-size:22px;letter-spacing:-.02em}
+
+/* ch5 */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.vs>div{padding:26px 28px}
+.vs .l{background:var(--tint)}
+.vs .r{background:var(--k);color:var(--kon)}
+.vs .r h4,.vs .r b,.vs .r p{color:var(--kon)}
+.vs h4{font-size:22px;margin:6px 0 10px}
+.vs p{font-size:14.5px;color:var(--ink2)}
+.dots{display:flex;gap:7px;margin:12px 0}
+.dots i{width:16px;height:16px;border-radius:50%;background:var(--ink3)}
+.linebar{height:16px;margin:12px 0;background:var(--kon);opacity:.9}
+
+/* ch6 */
+.flow-row{display:grid;grid-template-columns:360px 1fr;gap:36px;align-items:start}
+.eight{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;counter-reset:e}
+.eight div{background:var(--tint);padding:14px;font-size:14.5px;font-weight:600;counter-increment:e;display:flex;gap:12px;align-items:center;min-height:64px}
+.eight div::before{content:counter(e);font-family:var(--latin);font-weight:900;color:var(--kt);font-size:26px;letter-spacing:-.03em;width:22px;flex:none}
+.chem{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.chem div{padding:16px;font-size:13.5px;line-height:1.6;color:var(--kon);background:color-mix(in srgb,var(--k) var(--p),var(--bg))}
+.chem div:nth-child(1){--p:22%;color:var(--ink)} .chem div:nth-child(2){--p:45%;color:var(--ink)} .chem div:nth-child(3){--p:78%} .chem div:nth-child(4){--p:100%}
+.chem div b{display:block;font-size:16px;color:inherit;margin-bottom:4px}
+
+/* garden */
+.garden{display:grid;grid-template-columns:repeat(24,1fr);gap:4px;align-items:end;padding:18px 0 0;border-top:2px solid var(--ink)}
+.gcell{display:flex;flex-direction:column;align-items:stretch;gap:5px;user-select:none;-webkit-user-select:none}
+.gcell .stk{display:flex;flex-direction:column-reverse;gap:2px;min-height:28px}
+.gcell .stk i{display:block;height:28px}
+.gcell .stk.empty{border:1.5px dashed var(--ink3);height:28px;opacity:.6}
+.gcell .hr{font-family:var(--latin);font-size:10.5px;font-weight:700;color:var(--ink3);text-align:center;line-height:1}
+.garden.edit .gcell{cursor:pointer}
+.garden.edit .gcell:hover .stk{outline:2px solid var(--ink);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink2);margin-top:12px}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:13px;height:13px;display:inline-block}
+.c-s0{background:var(--c1)} .c-sp{background:var(--c1d)} .c-sa{background:var(--c1l)}
+.c-m{background:var(--c2)} .c-b{background:var(--c3)} .c-p{background:var(--c4)} .c-f{background:var(--c5)}
+
+.folds{display:grid;grid-template-columns:repeat(4,1fr);column-gap:24px;row-gap:22px}
+.folds>div{border-top:1px solid var(--ink);padding-top:10px;font-size:14px;color:var(--ink2);line-height:1.55}
+.folds .tg{display:flex;gap:3px;margin-bottom:8px;flex-wrap:wrap}
+.folds .tg em{font-style:normal;font-size:11.5px;font-weight:800;padding:2px 7px;background:var(--k);color:var(--kon)}
+.folds.three{grid-template-columns:repeat(3,1fr)}
+.calc{font-family:var(--latin);font-weight:900;font-size:clamp(44px,7vw,96px);letter-spacing:-.05em;line-height:1;margin:6px 0}
+.calc span{color:var(--ink3);font-weight:300;margin:0 .14em}
+.types .row{display:flex;flex-wrap:wrap;gap:3px;margin:8px 0}
+.types .row em{font-style:normal;font-size:11.5px;padding:2px 7px;background:var(--k);color:var(--kon);font-weight:800}
+.types .row em.no{background:transparent;border:1px dashed var(--ink3);color:var(--ink3);text-decoration:line-through}
+.tv{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.tv div{background:var(--tint);padding:12px;font-size:12.5px;color:var(--ink2);line-height:1.55}
+.tv div b{display:block;font-size:14px;margin-bottom:2px}
+.tv div.on{background:var(--ink);color:var(--bg)}
+.tv div.on b{color:var(--bg)}
+.prio .pr{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--hair)}
+.prio .pr>span{font-size:13.5px;font-weight:700}
+.prio .chips{display:flex;gap:3px;flex-wrap:wrap;counter-reset:p}
+.prio .chips em{font-style:normal;counter-increment:p;font-size:15px;padding:7px 14px;background:var(--k);color:var(--kon);font-weight:800}
+.prio .chips em::before{content:counter(p) "  ";font-family:var(--latin);font-weight:900;opacity:.7}
+
+/* quotes spread */
+.qgrid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:30px;row-gap:46px}
+.qq{grid-column:span 6;border-top:2px solid var(--ink);padding-top:16px}
+.qq.wide{grid-column:span 12;border-top:none;background:var(--ink);color:var(--bg);padding:40px 44px}
+.qq.wide p{color:var(--bg)}
+.qq.s4{grid-column:span 4}
+.qq.s8{grid-column:span 8}
+.qq p{margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.38;font-size:clamp(20px,2.2vw,27px)}
+.qq.wide p{font-size:clamp(28px,4vw,50px);line-height:1.25}
+.qq .mk{display:block;width:34px;height:8px;background:var(--k);margin-bottom:14px}
+.qq cite{display:block;font-style:normal;margin-top:14px;color:var(--ink3)}
+.qq.wide cite{color:color-mix(in srgb,var(--bg) 60%,transparent)}
+
+/* tool */
+.tabs{display:flex;gap:0;margin-bottom:18px;border:2px solid var(--ink);width:max-content;max-width:100%}
+.tab{border:none;background:transparent;color:var(--ink);padding:9px 18px;font:700 14px var(--sans);cursor:pointer}
+.tab.on{background:var(--ink);color:var(--bg)}
+.brushes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.brush{border:2px solid var(--ink);background:transparent;color:var(--ink);padding:6px 12px;font:600 13.5px var(--sans);cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.brush i{width:12px;height:12px;display:inline-block}
+.brush.on{background:var(--ink);color:var(--bg)}
+.btn{border:none;background:var(--tint);color:var(--ink);padding:8px 14px;font:600 13.5px var(--sans);cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.tool-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;margin-top:34px;align-items:start}
+.weekin{display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
+.weekin label{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--hair);padding:12px 0;font-size:14.5px;font-weight:600}
+.weekin label i{width:14px;height:14px;flex:none}
+.weekin label span{flex:1}
+.weekin input{width:84px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);padding:5px 8px;font:700 16px var(--latin);text-align:right}
+.weekin input:focus{outline:3px solid var(--c2);outline-offset:1px}
+.res .brow{display:grid;grid-template-columns:52px 1fr 116px;gap:12px;align-items:center;font-size:14.5px;padding:9px 0;border-bottom:1px solid var(--hair)}
+.res .brow b{font-weight:800}
+.res .track{height:18px;background:var(--tint);display:flex}
+.res .track i{display:block;height:100%}
+.res .val{text-align:right;font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums;font-family:var(--latin);font-weight:700}
+.res .subl{font-size:12px;color:var(--ink3);padding:4px 0 0 64px}
+.stackbar{display:flex;height:40px;background:var(--tint);margin:10px 0 6px}
+.stackbar i{display:block;height:100%}
+.diag{margin:0;padding:0;list-style:none;counter-reset:d}
+.diag li{font-size:14px;color:var(--ink2);border-top:1px solid var(--hair);padding:11px 0 11px 34px;line-height:1.65;position:relative;counter-increment:d}
+.diag li:first-child{border-top:2px solid var(--ink)}
+.diag li::before{content:counter(d,decimal-leading-zero);position:absolute;left:0;top:11px;font-family:var(--latin);font-weight:900;font-size:13px}
+.warn{color:var(--c3t);font-size:13.5px;font-weight:700;margin-top:8px;min-height:1em}
+
+/* checklist */
+.prog{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;margin-bottom:26px}
+.prog .tk{height:12px;background:var(--tint)}
+.prog .fill{height:100%;width:0;background:var(--ink);transition:width .35s}
+.prog .txt{font-family:var(--latin);font-weight:900;font-size:28px;letter-spacing:-.03em}
+.check{display:grid;grid-template-columns:repeat(2,1fr);column-gap:40px}
+.check label{display:grid;grid-template-columns:44px 26px 1fr;gap:14px;align-items:start;border-top:2px solid var(--ink);padding:16px 0 18px;cursor:pointer}
+.check .no{font-family:var(--latin);font-weight:900;font-size:28px;line-height:1;letter-spacing:-.04em}
+.cbx{appearance:none;-webkit-appearance:none;width:24px;height:24px;border:2.5px solid var(--ink);margin:2px 0 0;display:grid;place-items:center;cursor:pointer;background:transparent;flex:none}
+.cbx:checked{background:var(--ink)}
+.cbx:checked::after{content:"";width:6px;height:12px;border:solid var(--bg);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.cbx:focus-visible{outline:3px solid var(--c2);outline-offset:2px}
+.check label:has(.cbx:checked){opacity:.45}
+.check label:has(.cbx:checked) b{text-decoration:line-through}
+.check b{font-size:16.5px;display:block;line-height:1.4}
+.check span{font-size:14px;color:var(--ink2);display:block;margin-top:4px}
+.src{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:800;padding:2px 8px;background:var(--k);color:var(--kon);font-style:normal}
+
+/* ending & colophon */
+.ending{padding:110px 0 100px;background:var(--ink);color:var(--bg);margin-top:60px}
+.ending p{font-size:clamp(26px,3.6vw,46px);line-height:1.38;font-weight:800;letter-spacing:-.02em;max-width:1060px;margin:0}
+.ending p span{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ending .mono{color:color-mix(in srgb,var(--bg) 60%,transparent);margin-top:24px;display:block}
+.colophon{padding:36px 0 110px}
+.colophon .row{display:grid;grid-template-columns:290px 1fr;gap:64px;border-top:2px solid var(--ink);padding-top:14px}
+.colophon p{font-size:13px;color:var(--ink3);margin:0}
+.swatches{display:flex;gap:4px;margin-top:10px}
+.swatches i{width:28px;height:28px}
+
+/* ---------- action drawer ---------- */
+.fab{position:fixed;right:24px;bottom:24px;z-index:80;border:none;cursor:pointer;background:var(--ink);color:var(--bg);font:800 16px var(--sans);padding:0;display:flex;align-items:stretch;box-shadow:0 10px 30px rgba(0,0,0,.22);transition:transform .2s}
+.fab:hover{transform:translateY(-3px)}
+.fab .stripe{width:10px;background:linear-gradient(to bottom,var(--c1) 0 20%,var(--c2) 20% 40%,var(--c3) 40% 60%,var(--c4) 60% 80%,var(--c5) 80%)}
+.fab .tx{padding:14px 18px 14px 16px;display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
+.fab .tx small{font-family:var(--latin);font-size:10px;letter-spacing:.2em;font-weight:800;opacity:.65;margin-bottom:3px}
+.fab:focus-visible{outline:3px solid var(--c2);outline-offset:3px}
+body.dw-open .fab{opacity:0;pointer-events:none}
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s}
+body.dw-open .scrim{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(500px,100vw);background:var(--bg);color:var(--ink);border-left:2px solid var(--ink);transform:translateX(102%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;visibility:hidden}
+body.dw-open .drawer{transform:none;visibility:visible}
+.dw-head{padding:18px 22px 14px;border-bottom:2px solid var(--ink);display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
+.dw-head h2{font-size:32px;letter-spacing:-.03em;margin-top:4px}
+.dw-x{border:2px solid var(--ink);background:transparent;color:var(--ink);width:40px;height:40px;font:700 22px/1 var(--latin);cursor:pointer}
+.dw-x:hover{background:var(--ink);color:var(--bg)}
+.dw-x:focus-visible{outline:3px solid var(--c2);outline-offset:2px}
+.dw-body{overflow-y:auto;padding:18px 22px 40px;flex:1;overscroll-behavior:contain}
+.dw-q{font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:8px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.seg button{border:2px solid var(--k);background:transparent;color:var(--ink);font:700 14px var(--sans);padding:8px 6px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.seg button i{width:10px;height:10px;background:var(--k);display:inline-block}
+.seg button.on{background:var(--k);color:var(--kon)}
+.seg button.on i{background:var(--kon)}
+.seg button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.dw-core{margin-top:16px;padding:16px 18px;background:var(--k);color:var(--kon)}
+.dw-core .mono{opacity:.8}
+.dw-core p{margin:6px 0 0;font-size:14.5px;font-weight:600;line-height:1.6;color:var(--kon)}
+.dw-prog{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin:18px 0 4px}
+.dw-prog .tk{height:8px;background:var(--tint)}
+.dw-prog .fill{height:100%;background:var(--ink);width:0;transition:width .3s}
+.dw-prog .txt{font-family:var(--latin);font-weight:900;font-size:16px}
+.stage{margin-top:22px}
+.stage h3{font-size:18px;display:flex;align-items:baseline;gap:10px;border-top:2px solid var(--ink);padding-top:10px}
+.stage h3 .sn{font-family:var(--latin);font-weight:900;font-size:26px;letter-spacing:-.04em;line-height:1}
+.stage h3 small{font-size:12.5px;color:var(--ink3);font-weight:500;margin-left:auto}
+.step{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--hair);cursor:pointer;align-items:start}
+.step:last-child{border-bottom:none}
+.step b{display:block;font-size:15px;line-height:1.45}
+.step span{display:block;font-size:13.5px;color:var(--ink2);line-height:1.6;margin-top:3px}
+.step .src{margin-top:6px}
+.step:has(.cbx:checked) b{text-decoration:line-through}
+.step:has(.cbx:checked){opacity:.5}
+.dw-foot{font-size:12.5px;color:var(--ink3);margin-top:22px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.mag,.drawer,.scrim,.fab{transition:none}}
+
+@media (max-width:1060px){
+  .spread,.pull .wrap,.colophon .row{grid-template-columns:1fr;gap:26px}
+  .side{position:static;display:grid;grid-template-columns:auto 1fr;column-gap:24px;align-items:end}
+  .side .num{grid-row:span 4;font-size:110px}
+  .side .bar{display:none}
+  .pull .qm{font-size:120px}
+  .cover-grid{grid-template-columns:1fr}
+  .rings{max-width:360px}
+  .covers{grid-template-columns:repeat(5,minmax(190px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+  .mag{scroll-snap-align:start}
+  .g4,.g5,.folds,.eight,.chem,.form{grid-template-columns:repeat(2,1fr)}
+  .g6,.g7,.tv{grid-template-columns:repeat(3,1fr)}
+  .toc,.coverlines{grid-template-columns:repeat(2,1fr)}
+  .toc a:nth-child(3){border-top:1px solid var(--hair)}
+  .coverlines div:nth-child(2){border-right:none;margin-right:0}
+  .strip{grid-template-columns:repeat(3,1fr)}
+  .strip-lbl{display:none}
+  .arrows{grid-template-columns:repeat(2,1fr)}
+  .pyr-row,.venn-row,.flow-row,.tool-grid{grid-template-columns:1fr}
+  .pyr svg{max-width:260px;margin:0 auto}
+  .garden{grid-template-columns:repeat(12,1fr);row-gap:16px}
+  .qq,.qq.s4,.qq.s8{grid-column:span 12}
+}
+@media (max-width:680px){
+  .wrap{padding:0 18px}
+  .g2,.g3,.g4,.g5,.folds,.folds.three,.check,.weekin,.toc,.coverlines,.vs{grid-template-columns:1fr}
+  .g6,.g7,.tv,.eight,.chem,.form,.strip{grid-template-columns:repeat(2,1fr)}
+  .toc a:nth-child(2){border-top:1px solid var(--hair)}
+  .coverlines div{border-right:none;margin-right:0;border-bottom:1px solid var(--hair)}
+  .covers{grid-template-columns:repeat(5,72vw)}
+  .ab{grid-template-columns:1fr}
+  .ab .mid{flex-direction:row;align-items:center}
+  .ab .mid .ln{flex:1}
+  .five-mark{grid-template-columns:90px 1fr;gap:16px}
+  .five-mark .n{font-size:110px}
+  .garden{grid-template-columns:repeat(8,1fr)}
+  .rate .r{grid-template-columns:110px 1fr 56px}
+  .prio .pr{grid-template-columns:1fr}
+  .side .num{font-size:84px}
+  .qq.wide{padding:28px 24px}
+  .res .brow{grid-template-columns:44px 1fr 100px}
+  .fab{right:14px;bottom:14px;font-size:15px}
+  .fab .tx{padding:12px 14px}
+  .drawer{top:0;left:0;right:0;bottom:0;width:100vw;border-left:none;border-top:2px solid var(--ink);transform:translateY(102%)}
+  .dw-head{padding:14px 18px 12px}
+  .dw-body{padding:16px 18px 40px}
+}
+</style>
+</head>
+<body>
+
+<nav class="mast">
+  <div class="wrap">
+    <a class="logo" href="#cover">FIVE TIMES<span>五种时间</span></a>
+    <a class="l" href="#cover">封面</a>
+    <a class="l" href="#overview">总览</a>
+    <a class="l" href="#ch1">开篇</a>
+    <a class="l k1" href="#ch2"><i></i>生存</a>
+    <a class="l k2" href="#ch3"><i></i>赚钱</a>
+    <a class="l k3" href="#ch4"><i></i>好看</a>
+    <a class="l k4" href="#ch5"><i></i>好玩</a>
+    <a class="l k5" href="#ch6"><i></i>心流</a>
+    <a class="l" href="#ch7">花园模型</a>
+    <a class="l" href="#ch8">命运地图</a>
+    <a class="l" href="#quotes">金句</a>
+    <a class="l" href="#tool">测一测</a>
+    <a class="l" href="#todo">清单</a>
+  </div>
+</nav>
+
+<!-- ============ COVER ============ -->
+<header class="cover k0" id="cover">
+  <div class="wrap">
+    <div class="cover-top">
+      <span class="mono">特辑 · 一本书读完</span>
+      <span class="mono">王潇 著 · 中信出版集团 · 2020.10</span>
+    </div>
+    <div class="cover-grid">
+      <div>
+        <h1><em>五种</em><em>时间</em></h1>
+        <div class="en">FIVE TIMES <small>重建人生秩序</small></div>
+      </div>
+      <svg class="rings" viewBox="0 0 400 400" role="img" aria-label="五种时间同心环：由外到内为生存、赚钱、好看、好玩、心流">
+        <circle cx="200" cy="200" r="198" fill="var(--c1)"/>
+        <circle cx="200" cy="200" r="160" fill="var(--c2)"/>
+        <circle cx="200" cy="200" r="122" fill="var(--c3)"/>
+        <circle cx="200" cy="200" r="84" fill="var(--c4)"/>
+        <circle cx="200" cy="200" r="46" fill="var(--c5)"/>
+        <text x="200" y="27" text-anchor="middle" font-size="15" fill="#fff">生存 · 人生的底色</text>
+        <text x="200" y="65" text-anchor="middle" font-size="15" fill="#111">赚钱 · 循环增强</text>
+        <text x="200" y="103" text-anchor="middle" font-size="15" fill="#fff">好看 · 内丹在炼</text>
+        <text x="200" y="141" text-anchor="middle" font-size="15" fill="#04170f">好玩 · 收集世界</text>
+        <text x="200" y="208" text-anchor="middle" font-size="22" fill="#fff">心流</text>
+      </svg>
+    </div>
+    <div class="coverlines">
+      <div><span class="mono">开篇</span><b>99∶1 的愿望饼图</b><span>用一场追悼会预演找到人生终点 B</span></div>
+      <div><span class="mono">生存时间</span><b>运动员密码“5”</b><span>先缩短被动生存，再逾越主动生存</span></div>
+      <div><span class="mono">赚钱时间</span><b>D = P(1+R)<sup>N</sup></b><span>从《徒手攀岩》推出的硬核人生终极等式</span></div>
+      <div><span class="mono">花园模型</span><b>折叠时间是最大的捷径</b><span>每天 24 格，种下你的时间植物</span></div>
+    </div>
+    <p class="thesis-big reveal">作者认为，<strong>人生的本质是对五种时间综合管理后的结果</strong>。先把每天做的事辨认为生存、赚钱、好看、好玩、心流五种时间，再问一句“这是我自己选的吗”。然后压缩并逾越生存时间，持续做能循环增强的事，尽量多争取心流，并去找能同时折叠几种时间的事。最后用时间花园和命运地图，把愿景拆到每一天。</p>
+  </div>
+</header>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="sec k0" id="overview">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.02</span><span class="t">五种时间 · 总览</span><span class="lab">OVERVIEW</span></div>
+
+    <div class="covers">
+      <a class="mag k1" href="#ch2"><div class="top"><span>NO.01</span><span>P.04</span></div><div class="nm">生存<small>时间</small></div><div class="en">SURVIVAL</div><div class="big">01</div><div class="tag"><b>运动员密码</b>能力不足、条件受限，没法主动选择、只能被动待着的时间。要一关一关地逾越。</div></a>
+      <a class="mag k2" href="#ch3"><div class="top"><span>NO.02</span><span>P.05</span></div><div class="nm">赚钱<small>时间</small></div><div class="en">MONEY</div><div class="big">02</div><div class="tag"><b>终极等式</b>在可选的时间里只对核心竞争力做功。赚钱 = 创造价值的过程。</div></a>
+      <a class="mag k3" href="#ch4"><div class="top"><span>NO.03</span><span>P.06</span></div><div class="nm">好看<small>时间</small></div><div class="en">BEAUTY</div><div class="big">03</div><div class="tag"><b>身体主义</b>专门留出来、只用来变好看的时间。追求生命力的好看，重点练“内丹”。</div></a>
+      <a class="mag k4" href="#ch5"><div class="top"><span>NO.04</span><span>P.07</span></div><div class="nm">好玩<small>时间</small></div><div class="en">PLAY</div><div class="big">04</div><div class="tag"><b>收集世界</b>由无聊变成、主动选择投入以获得乐趣的时间。不保证好玩，但保住好奇心。</div></a>
+      <a class="mag k5" href="#ch6"><div class="top"><span>NO.05</span><span>P.08</span></div><div class="nm">心流<small>时间</small></div><div class="en">FLOW</div><div class="big">05</div><div class="tag"><b>奉若神明</b>为获得心流体验而付出的时间。作者认为心流状态就是人们追求的幸福本身。</div></a>
+    </div>
+
+    <h3 class="hd" style="margin-top:72px"><span class="lb">CHART</span>五种时间对照表 <small>窄屏可左右滑动</small></h3>
+    <div class="tblwrap reveal">
+    <table class="tbl">
+      <thead><tr>
+        <th></th>
+        <th class="k1"><small>01</small>生存时间</th><th class="k2"><small>02</small>赚钱时间</th><th class="k3"><small>03</small>好看时间</th><th class="k4"><small>04</small>好玩时间</th><th class="k5"><small>05</small>心流时间</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>定义</td>
+          <td>大多数人在人生的大部分时间里，因能力不足和外部限制，无法主动选择而被动处于的时间分布。目标是逾越一个又一个生存时间。</td>
+          <td>在一天可选的时间中，用于赚钱（创造价值）的时间。关键看是否持续增强了核心竞争力。</td>
+          <td>安排出特定时间，只用于做让自己变好看的事。内丹（锻炼）和外法（妆扮、医美）都算。</td>
+          <td>由无聊时间变成；主动选择投入、用来获得乐趣的时间。可以没有具体目标和计划。</td>
+          <td>为获得心流体验而选择付出的时间：完全投入一件有挑战、又是自己擅长的事。</td></tr>
+        <tr><td>你会感到</td>
+          <td>选择受限，挣扎或煎熬；有傀儡感；方向模糊，时间是“被充斥”而不是“充实”。</td>
+          <td>心情激动、跌宕起伏，自驱和目标感强，有“打鸡血”的状态。</td>
+          <td>常常主动追求。</td>
+          <td>放松、心安理得；也可能“不够好玩”，需要处理失望。</td>
+          <td>时光飞逝，忘我，每个动作和想法都行云流水，能力发挥到极致。</td></tr>
+        <tr><td>过程</td>
+          <td>被他人选择和推动，事情没进入正向循环，暂时无力改变，经历漫长等待。</td>
+          <td>确定和不确定交织，焦虑、压力和期待交织；结果由市场给出。</td>
+          <td>强烈期待结果，有时为目标能忍受枯燥甚至痛苦。</td>
+          <td>投入不一定收获快乐。痛苦或无聊总比快乐确定得多。</td>
+          <td>符合米哈里的 8 个标准：可完成、全神贯注、目的明确、即时反馈等。</td></tr>
+        <tr><td>得到</td>
+          <td>情绪多为负面；但认知和行动能让人晋级。</td>
+          <td>核心竞争力和财富的积累；阶段性达成的快乐与未达成的痛苦。</td>
+          <td>内丹：变好看、变健康。外法：一定期限内变好看，未必变健康。</td>
+          <td>丰富的体验、意外的道路和爱好；“哲学性无聊”带来的思考。</td>
+          <td>当下满足；6 种愉悦激素同时分泌；约 5 倍的信息处理能力。</td></tr>
+        <tr><td>怎么做</td>
+          <td>被动：用清单法高效完成他律任务。主动：写下“5”，照运动员密码行动。</td>
+          <td>填好终极等式 D=P(1+R)<sup>N</sup>，每天安排“重要不紧急”的赚钱时间。</td>
+          <td>把内丹好看时间严格前置；内丹外法 1∶1；用 7 个条件坚持 100 天。</td>
+          <td>挣脱信息流；分清体验清单和创造清单；允许失望，保住好奇心。</td>
+          <td>守住火种 → 建触发仪式 → 关闭干扰、硬做 25 分钟 → 颅内模拟、上身法。</td></tr>
+        <tr><td>核心比喻</td>
+          <td>运动员密码“5”；西西弗斯推石头</td>
+          <td>徒手攀岩“酋长岩=生命”；滚雪球</td>
+          <td>内丹与外法；身体是灵魂居住的真正房子</td>
+          <td>按按钮的小白鼠；让价值观下起大雨</td>
+          <td>盗火、人神合一；“上身”</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="hd"><span class="lb">MAP</span>被动与主动：只有生存时间是被迫的</h3>
+    <div class="reveal">
+      <div class="strip">
+        <div class="k1 pass"><b>被动生存</b><span>“能力不足，任人安排”<br>被安排时 · 能力不足时</span></div>
+        <div class="k1"><b>主动生存</b><span>“主动争取，直面挑战”<br>行业起点 · 晋级之后</span></div>
+        <div class="k2"><b>赚钱</b><span>这段时间是人主动选择的</span></div>
+        <div class="k3"><b>好看</b><span>常常主动追求</span></div>
+        <div class="k4"><b>好玩</b><span>这段时间是我们主动选择的</span></div>
+        <div class="k5"><b>心流</b><span>为获得心流体验而选择付出</span></div>
+      </div>
+      <div class="strip-lbl"><div class="mono">被动 · 他律</div><div class="mono">主动选择 · 自律与当下满足</div></div>
+    </div>
+    <div class="arrows reveal">
+      <div class="it k1"><h4><i></i>被动 → 主动生存</h4><p>“当我觉知自己正处于生存时间中时，首要任务就是从被动生存走向主动生存。”</p></div>
+      <div class="it k2"><h4><i></i>主动生存 → 赚钱</h4><p>在主动生存时间中捕捉到某种奇特的力量时，就会到达赚钱时间。区别在于是否瞄准核心竞争力、是否循环增强。</p></div>
+      <div class="it k3"><h4><i></i>赚钱 → 好看</h4><p>作者建议的苛刻标准：需要在赚钱时间的基础上追求好看时间。</p></div>
+      <div class="it k5"><h4><i></i>一切的去向：心流</h4><p>生存时间该逾越到哪里、赚钱的终极目标在哪、好玩的尽头是什么，第 6 章是“所有章的去向和解释”。</p></div>
+    </div>
+
+    <h3 class="hd"><span class="lb">TIME VIEW</span>另一种分法：要现在，还是要未来 <small>第 7 章 · 津巴多时间观</small></h3>
+    <div class="g2 reveal">
+      <div class="it"><div class="n">享乐主义的现在时间观</div><p><span class="hl k4">好玩时间</span> <span class="hl k5">心流时间</span> 立刻就要收获好玩和心流。</p></div>
+      <div class="it"><div class="n">未来时间观</div><p><span class="hl k1">生存时间</span> <span class="hl k2">赚钱时间</span> 都是为了以后；<span class="hl k3">好看时间</span> 看具体做什么，用来健身就是典型的未来时间观。</p></div>
+    </div>
+    <p class="note reveal">按津巴多的建议，为当下和为未来服务的时间在重要性和比例上接近 1∶1，人最心安理得。</p>
+
+    <h3 class="hd"><span class="lb">CONTENTS</span>本期目录 · 全书结构</h3>
+    <div class="toc reveal">
+      <a href="#ch1" class="k0"><span class="p">01</span><div><b>神灯和它的主人</b><span>愿望饼图 99∶1；症状都来自“重大事务优先级错乱”；终局判断法。</span></div></a>
+      <a href="#ch2" class="k1"><span class="p">02</span><div><b>生存时间 · 运动员密码</b><span>被动生存用清单法缩短，主动生存照运动员的 5 件事去逾越。</span></div></a>
+      <a href="#ch3" class="k2"><span class="p">03</span><div><b>赚钱时间 · 终极等式</b><span>D=P(1+R)<sup>N</sup>；三种人生曲线；理想 D 在四个圈的交集里。</span></div></a>
+      <a href="#ch4" class="k3"><span class="p">04</span><div><b>好看时间 · 身体主义</b><span>生命力与长期主义的好看；内丹外法；7 个条件坚持 100 天。</span></div></a>
+      <a href="#ch5" class="k4"><span class="p">05</span><div><b>好玩时间 · 收集世界</b><span>挣脱信息流、处理失望、哲学性无聊；体验清单和创造清单。</span></div></a>
+      <a href="#ch6" class="k5"><span class="p">06</span><div><b>心流时间 · 奉若神明</b><span>心流通道、《盗火》神经化学、6 个认知、触发心流四步。</span></div></a>
+      <a href="#ch7" class="k0"><span class="p">07</span><div><b>折叠时间 · 花园模型</b><span>重构五步；36 种花园；最优模型：心流高、多折叠、生存低。</span></div></a>
+      <a href="#ch8" class="k0"><span class="p">08</span><div><b>命运地图</b><span>用生平写愿景，用榜样推演路线，把五种时间拆到年、月、天。</span></div></a>
+      <a href="#quotes" class="k0"><span class="p">+</span><div><b>序言 · 写在最后 · 附录</b><span>时间管理的五个时代；“你自己就是这个人”；两份语音引导原文。</span></div></a>
+    </div>
+
+    <h3 class="hd"><span class="lb">HISTORY</span>序言一：时间管理的前世今生</h3>
+    <div class="g6 reveal">
+      <div class="it thin"><div class="n">上古时代</div><h4>备忘时代</h4><p>结绳记事、壁画，相当于今天的备忘录和便笺</p></div>
+      <div class="it thin"><div class="n">农业时代</div><h4>计划时代</h4><p>按年月日计划农活，相当于清单、日程表、甘特图</p></div>
+      <div class="it thin"><div class="n">工业时代</div><h4>效率时代</h4><p>优先级决策成核心，出现四象限法则、运筹学</p></div>
+      <div class="it thin"><div class="n">信息时代</div><h4>价值时代</h4><p>甄选有价值的信息，追求人生的自定义和自我实现</p></div>
+      <div class="it thin"><div class="n">智能时代</div><h4>会进入什么时代？</h4><p>定向广告、按上瘾设计的应用、小红点堆积的信息湍流</p></div>
+      <div class="blk k0"><div class="mono">作者的期望</div><h4 style="font-size:22px;margin:6px 0">花园时代</h4><p style="font-size:13.5px">能应对、关闭信息流，找到可支配时间，管理自己的人生秩序</p></div>
+    </div>
+    <p class="note reveal">作者认为每代时间管理方法都是“进化”而不是“完全替代”，可以按自己所处的阶段搭配着用。</p>
+  </div>
+</section>
+
+<!-- ============ CH1 ============ -->
+<section class="sec k0" id="ch1">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.03</span><span class="t">第 1 章 · 神灯和它的主人</span><span class="lab">OPENING</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">01</div>
+        <div class="kicker mono">THE LAMP &amp; ITS MASTER</div>
+        <h2>神灯和<br>它的主人</h2>
+        <p class="dek">先找到终点 B，<br>再谈怎么分配时间。</p>
+        <div class="bar"></div>
+      </aside>
+      <div class="main">
+        <p class="lede">种种“时间管理不行”的症状，其实是同一个原因：重大事务优先级错乱。要治它，得先用极限情境逼自己问到最深处，找到人生的终点 B。</p>
+
+        <h3 class="hd"><span class="lb">DATA</span>愿望饼状图</h3>
+        <div class="reveal">
+          <p class="muted" style="margin:0">几十万人在“趁早效率手册”上许下的愿望：</p>
+          <div class="wish"><div class="a">99% 金榜题名 · 升职加薪 · 结婚生子 · 买房买车</div><div class="b">1%</div></div>
+          <div class="g2" style="margin-top:20px">
+            <div class="it thin"><p>剩下 1% 是“希望能有更多时间做某事”：阅读、电影、旅行、运动、唱歌、学乐器、写作、谈恋爱、亲友聚会……</p></div>
+            <div class="it thin"><p>作者从小把愿望分两部分：一是周围世界让我做的事（大概率快乐），二是空白、自由、自己做主。手册里空白框和横线按 3∶7 设计，就是给第二部分留的“行使区”。</p></div>
+          </div>
+        </div>
+
+        <h3 class="hd"><span class="lb">SYMPTOMS</span>错乱的症状</h3>
+        <div class="g2 reveal">
+          <div class="it"><ul>
+            <li>不知道从哪里开始，不明白一切是为了什么</li>
+            <li>梦想时有时无，目标模糊；间歇性动力丧失</li>
+            <li>虚度碎片时间，习惯性拖延；长期自我怀疑</li>
+            <li>反复开始、最终放弃健身；长期分不清是懒还是累</li>
+          </ul></div>
+          <div class="it"><p>学生时代很少错乱，因为目标单一。大学毕业后道路分岔，再加上社交媒体让人不停比较，错乱就开始了。这些症状在《时间看得见》里已经被总结过，本书把它们归为一个原因。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">METHOD</span>洋葱式追问：从 PPT 式到找到“核”</h3>
+        <div class="g4 reveal">
+          <div class="it"><div class="bn">1</div><h4>PPT 式</h4><p>提出问题、交代背景、努力给出方案。作者 30 岁刚写人生难题时的方法。</p></div>
+          <div class="it"><div class="bn">2</div><h4>洋葱式</h4><p>一个难题不只对应一个答案，要层层向里剥，这一层的答案可能藏在上一层里。</p></div>
+          <div class="it"><div class="bn">3</div><h4>找到核</h4><p>洋葱剥到最后是空的，但追问到最后得有核，才扛得住“为什么非要逾越”这类终极追问。</p></div>
+          <div class="it"><div class="bn">4</div><h4>核 = 可操作的结构</h4><p>核必须是日常可操作的认知。现在作者会从一个人的时间分类和行为分类入手回答问题。</p></div>
+        </div>
+        <p class="note reveal">每逢重大事务优先级错乱，人就一定会做洋葱式追问。怎样才能有效问到最后？作者的方法是自我创造一个“极限情境”，叫<b>终局判断法</b>。</p>
+
+        <h3 class="hd"><span class="lb">METHOD</span>终局判断法：锚定 A，寻找 B</h3>
+        <div class="ab reveal">
+          <div class="it pt"><div class="L">A</div><h4>第一步 · 人生起落图</h4><p>横轴是年龄（一格 5 岁或 10 岁），纵轴从 –20（绝望低谷）到 20（巅峰体验）。标出波峰、波谷、嗨点、沸点、燃点、颓点和对应事件，连成曲线。</p><p class="small">用途：看清前半生的因果；看清得失感受取决于什么；看清自己现在的位置和情绪。</p></div>
+          <div class="mid"><span>所有时间管理方法</span><div class="ln"></div><span>都在试图连接 A、B 之间最短的线</span></div>
+          <div class="it pt"><div class="L">B</div><h4>第二步 · 追悼会策划表</h4><p>一场追悼会预演，用“站在未来看今天”的视角，写下最接近内心的愿望。作者说明确 B 能解决未来约 80% 的疑惑。</p><p class="small">准备：留出 1 小时完整时间 · 独处、关门、关手机 · 可关灯点香薰蜡烛 · 放钢琴曲或轻音乐 · 跟随音频引导填写。</p></div>
+        </div>
+        <div class="reveal" style="margin-top:30px">
+          <div class="mono" style="color:var(--ink3)">追悼会策划表要填什么 · 附录语音原文，约 40–60 分钟</div>
+          <div class="form">
+            <div><b>生卒年</b>出生日期 + 假定的忌日，具体到月日</div>
+            <div><b>托付人</b>当天替你执行这份表的人</div>
+            <div><b>鲜花与音乐</b>选什么花、什么主题曲，为什么</div>
+            <div><b>社交账号与告别</b>保留、告别信还是删空；用什么方式告别</div>
+            <div><b>邀请名单</b>希望谁如约而至</div>
+            <div class="key"><b>生平（最重要）</b>“是……”的形容词 · 家庭中 · 工作中（尽量量化）· 一生中 · 获得了</div>
+            <div><b>朗读人</b>懂你生平的那个人</div>
+            <div><b>墓志铭</b>一句话诠释这一生，顺境逆境时都会在脑中映现</div>
+          </div>
+          <p class="note">作者称之为“借假修真”：生平是“真”；考试、煎熬、等待、学艰深技能都是为抵达那里不得不经历的“假”。遇到重大挫折、犹豫该不该做时，就把它拿出来重读。</p>
+        </div>
+
+        <h3 class="hd"><span class="lb">BEFORE / AFTER</span>想要一切：从一生的维度看，愿望变了</h3>
+        <table class="evo reveal">
+          <thead><tr><th>年度愿望清单里</th><th>追悼会策划表里</th></tr></thead>
+          <tbody>
+            <tr><td>考试成功</td><td>精通一个专业，并成为这个领域中的高手</td></tr>
+            <tr><td>升职加薪</td><td>做着有价值的工作，得到很多人的认可和尊敬</td></tr>
+            <tr><td>结婚生子</td><td>付出很多爱，也得到很多爱，体验爱的温暖与珍贵</td></tr>
+            <tr><td>买房买车</td><td>几乎完全消失；房子变成体会爱与温暖的介质</td></tr>
+            <tr><td>钱</td><td>和自由放在一起：有足够的钱自由生活，做喜欢的事</td></tr>
+            <tr><td>占 1% 的“想有更多时间做某事”</td><td>旅行、健康、爱好、亲友相聚、私人好时光，大量出现</td></tr>
+          </tbody>
+        </table>
+        <p class="note reveal">世俗成功原本是获得珍贵事物的桥梁。我们既要珍贵事物，也要桥梁，“我们根本就是想要一切”。办法是把时间看成资源，分配到各个目标 B 里去，这要从对 B 的分类开始，也就是五种时间。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pull k0">
+  <div class="wrap"><div class="qm">“</div><div><blockquote>人生的本质，就是追悼会策划表上你填写下的这段时间。</blockquote><cite class="mono">第 1 章 · 神灯和它的主人</cite></div></div>
+</section>
+
+<!-- ============ CH2 生存 ============ -->
+<section class="sec k1" id="ch2">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.04</span><span class="t">第 2 章 · 生存时间 · 运动员密码</span><span class="lab">FEATURE</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">02</div>
+        <div class="kicker mono">SURVIVAL TIME</div>
+        <h2>生存<br>时间</h2>
+        <p class="dek">先缩短，再逾越。</p>
+        <div class="bar"></div>
+        <p class="meta">“时间不是用来等待的，而是用来迭代的。”</p>
+      </aside>
+      <div class="main">
+        <p class="lede">生存时间占据人生最大比重，不会永久消失，只会被阶段性跨越，再换个面貌出现。它的痛苦是人生的底色，让人对比出其他时间的快乐。完整的认知是：我可以忍受，但暂时的忍受是为了终将打破现状。</p>
+
+        <h3 class="hd"><span class="lb">TYPES</span>四种情况，两种性质</h3>
+        <div class="pyr-row reveal">
+          <div class="pyr">
+            <svg viewBox="0 0 260 220" role="img" aria-label="从被动生存到主动生存">
+              <polygon points="130,6 254,214 6,214" fill="var(--c1)"/>
+              <polygon points="130,6 186,100 74,100" fill="var(--bg)" stroke="var(--c1)" stroke-width="3"/>
+              <text x="130" y="82" text-anchor="middle" font-size="16" font-weight="800" fill="var(--c1t)">主动生存</text>
+              <text x="130" y="166" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">被动生存</text>
+              <text x="130" y="194" text-anchor="middle" font-size="11.5" fill="#fff" opacity=".85">从被动生存到主动生存</text>
+            </svg>
+          </div>
+          <div class="g2">
+            <div class="it"><div class="n">被动生存 · 能力不足，任人安排</div>
+              <p><b>1. 被安排时：</b>父母前辈替你选了不喜欢的行业，你失去目标又没能力离开。</p>
+              <p><b>2. 能力不足时：</b>面试 50 家只有这份录用你，除了工资没有更多意义。</p>
+              <p class="q">作者毕业后在电视台念新闻：“我认为我有个脑子，但是这份工作不允许我用”。</p></div>
+            <div class="it"><div class="n">主动生存 · 主动争取，直面挑战</div>
+              <p><b>3. 处于行业起点时：</b>进了喜欢的行业，但只能从学徒、实习生做起。</p>
+              <p><b>4. 晋级之后：</b>升职或跳槽后题越做越难，转型期、瓶颈期、倦怠期再次出现。</p>
+              <p class="q">作者 30 岁创业，在宴会厅后的送货通道里蹲着粘开胶的手提袋，心想“我的人生不会就这样了吧？”</p></div>
+          </div>
+        </div>
+
+        <div class="g3 reveal" style="margin-top:40px">
+          <div class="blk k1"><div class="mono">二十四字方针</div><p style="font-size:21px;font-weight:800;line-height:1.5;margin-top:8px;opacity:1">识别逆境，稳定情绪，缩短被动生存时间，开启主动生存时间。</p></div>
+          <div class="it"><h4>自律的反方向不是懒惰，而是他律</h4><p>生存时间是典型的他律时间：你已把时间、智识、精力和机会成本兑换给了别人。目标很简单：<b>高效完成他律任务，为主动生存争取时间</b>。</p></div>
+          <div class="it"><h4>别报复性地挥霍时间</h4><p>熬过被占据的一天后，躺着刷手机、看剧、吃东西，以为是重获自由，其实是“时间被捆绑后的情绪反弹”。情绪到低谷时，最好的办法是马上行动。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">HOW-TO</span>被动生存：用清单法缩短它 <small>解决不了“价值”，但能解决“效率”</small></h3>
+        <div class="g2 reveal">
+          <div class="it"><div class="n">清单法的 5 个作用</div>
+            <ol>
+              <li><b>减轻焦虑：</b>把他律事务归到同一张清单，量化所有他律。</li>
+              <li><b>专注当下：</b>清单像外脑，暂存不重要的信息。</li>
+              <li><b>摆脱他律：</b>列清单、打钩是自律的初级形式。康德说“自由即自律”。</li>
+              <li><b>拆解目标：</b>把大目标拆成里程碑。“做咸鱼，也要做咸鱼里最咸的那条呀。”</li>
+              <li><b>打钩的快感：</b>打钩刺激多巴胺，慢慢形成对时间和任务的掌控感。</li>
+            </ol></div>
+          <div class="it"><div class="n">怎么用</div>
+            <ol>
+              <li><b>确定介质：</b>效率手册、笔记本或云笔记，别用随手丢的小纸片。</li>
+              <li><b>开列条目：</b>每天开始工作前用 5 分钟列今日待办。</li>
+              <li><b>确定优先级：</b>写下“每天优先的三件事”；中途冒出的琐事记在最后，三件做完再处理，减少切换。</li>
+              <li><b>执行：</b>开始做，做完它，为每一项打钩。</li>
+            </ol>
+            <p class="q">注意：到了主动生存时间，GTD、时间轴、四象限、清单法、番茄工作法等“效率提升”方法几乎都会失效。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">CODE</span>主动生存：运动员密码 “5” <small>向生活在极致主动生存时间里的人学习</small></h3>
+        <div class="g5 reveal">
+          <div class="it"><div class="bn">1</div><h4>了解自己</h4><p>天赋、身体素质、在领域里的位置，以及自己到底想要有多强。</p><ul><li>我在行业中处在什么位置？</li><li>天赋和核心能力是什么？</li><li>和顶尖选手比，短板在哪？</li><li>能力和热爱是否与行业匹配？</li></ul></div>
+          <div class="it"><div class="bn">2</div><h4>找到好教练</h4><p>前辈、导师、同事、朋友、顾问都行，必须有这样一个人。</p><ul><li>在你想做的领域取得过成功</li><li>竞赛水平高于你</li><li>了解行业，也了解你</li></ul></div>
+          <div class="it"><div class="bn">3</div><h4>艰苦卓绝的训练计划</h4><p>你因什么被卡住？沟通、销售额还是行业天花板？朝那个方向练，练到什么程度。</p><ul><li>难的是在看不到头的枯燥、迷茫、疲惫里，依然按同样节奏做</li></ul></div>
+          <div class="it"><div class="bn">4</div><h4>对标对手</h4><p>运动员睁眼就知道对手也醒了。你的对手是谁？来自行业内还是行业外？</p><ul><li>找到他，对标他，超越他</li><li>中国女排一帧一帧研究对手录像</li></ul></div>
+          <div class="it"><div class="bn">5</div><h4>筹备下一次比赛</h4><p>把月度 KPI、一次演讲、一份 PPT、一个新品的好评率定义为比赛日。</p><ul><li>只有定义好比赛，才能准备比赛</li><li>你下一次赢的机会在什么时候？</li></ul></div>
+        </div>
+        <div class="five-mark reveal">
+          <div class="n">5</div>
+          <p><b>怎么用：</b>情绪低落、觉得人生暗淡、停滞困顿时，先觉知情绪，再在笔记本上今天的日期旁写一个“5”，提醒自己运动员永远在争取晋级，永远在做这 5 件事。有了计划、教练、对手，并期待下一场比赛到来，才算真正进入主动生存时间。</p>
+        </div>
+
+        <div class="g2 reveal" style="margin-top:40px">
+          <div class="it"><div class="n">书中例证 · 2018 年中国女排亚运会封闭集训的一天</div>
+            <div class="sched">
+              <div class="rs" style="flex:1.5">早饭</div>
+              <div class="tr" style="flex:5.5">早训 + 集训</div>
+              <div class="rs" style="flex:2.5">午饭午休</div>
+              <div class="tr" style="flex:3.5">下午训练</div>
+              <div class="rs" style="flex:1">晚饭</div>
+              <div class="st2" style="flex:1.5">学习</div>
+            </div>
+            <div class="ticks" style="justify-content:space-between"><span>不到 6:00 起床</span><span>21:30 结束</span></div>
+            <p>不到 6 点起床，晚上 9 点半才结束。8 场比赛一局未失，时隔 8 年重夺亚运会冠军。C 罗则常年保持每天 8 小时睡眠、严格按周食谱吃饭、一周五练。</p></div>
+          <div class="it"><div class="n">我的生存时间重建</div>
+            <p>想借外力突破（换专业、换工作、换环境、换恋人），先看它对你的<b>时间表</b>有什么影响：正面还是负面？占有时间还是出让时间？让你更懒还是更勤？</p>
+            <p>作者两次重建：考研进人大，被同学专注创作的秩序感染；创业低谷时接下一个超出能力的项目，时间表从此改变。所以她建议<b>“能退能进时，选择进”</b>。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pull fill k1">
+  <div class="wrap"><div class="qm">“</div><div><blockquote>旧秩序是用来完成的，不是用来管理的，用旧秩序无法开创新未来。</blockquote><cite class="mono">第 2 章 · 生存时间</cite></div></div>
+</section>
+
+<!-- ============ CH3 赚钱 ============ -->
+<section class="sec k2" id="ch3">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.05</span><span class="t">第 3 章 · 赚钱时间 · 终极等式</span><span class="lab">FEATURE</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">03</div>
+        <div class="kicker mono">MONEY TIME</div>
+        <h2>赚钱<br>时间</h2>
+        <p class="dek">让雪球滚起来。</p>
+        <div class="bar"></div>
+        <p class="meta">两个基本观点：保持循环增强；时间不愿意回报涣散和没恒心的人。</p>
+      </aside>
+      <div class="main">
+        <p class="lede">单位时间内只对某种产品的核心竞争力做功，直至把它的核心价值推到远超行业平均水准，这些时间才是真正的赚钱时间。“赚钱”就是创造价值的过程，结果要在投入之后由市场给出。</p>
+
+        <div class="g3 reveal" style="margin-top:30px">
+          <div class="it"><h4>“产品”是广义的</h4><p>打工也好、创业也好，你出卖的都是产品。劳动合同就是把“时间、技能、资源、智力”打包作价，市场按质量、功能和稀缺性给价格。</p></div>
+          <div class="it"><h4>和主动生存的区别</h4><p>① 是否瞄准了核心竞争力？② 核心竞争力是否进入了循环增强模式？能让你从生存时间活下来的普通竞争力已经不够。</p></div>
+          <div class="it"><h4>“硬核”= 两项都强</h4><p>核心竞争力强：常胜、稀缺。结构强：坚实、稳健。“我在单项能力上可以打败你，你在整体结构上却无法动摇我。”</p></div>
+        </div>
+        <p class="note reveal">风险：投入大量赚钱时间却没经受住市场验证时，会退回生存时间。作者认为人生较多的至暗时刻并非出现在生存时间，而是在求而不得的赚钱时间。</p>
+
+        <h3 class="hd"><span class="lb">STORY</span>从《徒手攀岩》到终极等式</h3>
+        <div class="g6 reveal">
+          <div class="it thin"><h4>杏仁体与原生家庭</h4><p>抗恐惧的大脑、严厉的妈妈、10 岁跟爸爸开始攀岩</p></div>
+          <div class="it thin"><h4>目标清单</h4><p>酋长岩写在清单上、放在心里 10 年，日常围绕它铺开</p></div>
+          <div class="it thin"><h4>战术日记</h4><p>50 次以上练习，记下每一步动作，不记情绪和无关的事</p></div>
+          <div class="it thin"><h4>日常仪轨</h4><p>每周 6 天、每天 3 小时室内训练；住在车里，吃素</p></div>
+          <div class="it thin"><h4>恐惧</h4><p>“我一遍又一遍地经历恐惧，直到不再恐惧。”</p></div>
+          <div class="it thin"><h4>团队</h4><p>都是高手，怕他死，又懂他为何敢于赴死</p></div>
+        </div>
+        <div class="reveal" style="margin-top:44px;border-top:2px solid var(--ink);padding-top:18px">
+          <p class="muted" style="margin:0">亚历克斯的等式是 <b>酋长岩 = 生命</b>。作者推广为“硬核人生终极等式”：</p>
+          <div class="eq"><span class="d">D</span> = P (1+R)<sup>N</sup></div>
+          <div class="g4 vars">
+            <div class="it thin"><div class="bn">D</div><p>梦想 Dream / 目的地 Destination，是因变量</p></div>
+            <div class="it thin"><div class="bn">P</div><p>核心竞争力起点 Present Location，启动后是常量</p></div>
+            <div class="it thin"><div class="bn">R</div><p>进步的速度 Rate，受能力和效率影响</p></div>
+            <div class="it thin"><div class="bn">N</div><p>时间，按年计算的毕生成长时间</p></div>
+          </div>
+          <p class="note">来源：《从 0 到 1》的幂次法则 + 巴菲特的滚雪球（复利）。2010 年巴菲特对作者说过：“持续做你喜欢的事情，就会非常好。”每天自问：“同学，今天，你‘滚’起来了吗？”</p>
+        </div>
+
+        <h3 class="hd"><span class="lb">CHART</span>三种人生曲线 <small>示意图，按书中描述绘制</small></h3>
+        <div class="g3 curves reveal">
+          <div class="it">
+            <svg viewBox="0 0 300 170" role="img" aria-label="不进则退的人生">
+              <line x1="24" y1="150" x2="290" y2="150" stroke="var(--ink)" stroke-width="2"/><line x1="24" y1="150" x2="24" y2="12" stroke="var(--ink)" stroke-width="2"/>
+              <path d="M24 140 L140 66 Q160 58 176 72 L286 136" fill="none" stroke="var(--ink3)" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="158" cy="62" r="7" fill="var(--k)" stroke="var(--ink)" stroke-width="1.5"/><text x="160" y="44" font-size="12.5" font-weight="700" fill="var(--ink)" text-anchor="middle">行动停止 · 转折点</text>
+              <text x="286" y="166" font-size="11" font-weight="700" fill="var(--ink3)" text-anchor="end">N</text><text x="6" y="20" font-size="11" font-weight="700" fill="var(--ink3)">D</text>
+            </svg>
+            <h4>① 不进则退：想象中的直线人生</h4><p>停止努力后 R 不是 0 而是负数。体力、技能、知识都会因沉沦变废，直线人生从未存在。</p></div>
+          <div class="it">
+            <svg viewBox="0 0 300 170" role="img" aria-label="投机和速成主义的人生">
+              <line x1="24" y1="150" x2="290" y2="150" stroke="var(--ink)" stroke-width="2"/><line x1="24" y1="150" x2="24" y2="12" stroke="var(--ink)" stroke-width="2"/>
+              <path d="M24 140 Q50 112 76 108 M76 140 Q104 106 132 100 M132 140 Q160 110 188 104 M188 140 Q216 112 244 108 M244 140 Q264 118 286 114" fill="none" stroke="var(--ink3)" stroke-width="4" stroke-linecap="round"/>
+              <text x="155" y="78" font-size="12.5" font-weight="700" fill="var(--ink)" text-anchor="middle">D 不停转换 · 浅尝辄止</text>
+              <text x="286" y="166" font-size="11" font-weight="700" fill="var(--ink3)" text-anchor="end">N</text><text x="6" y="20" font-size="11" font-weight="700" fill="var(--ink3)">D</text>
+            </svg>
+            <h4>② 投机和速成主义</h4><p>年轻时转换 D 是有效的试错。遗憾的是 N 越来越少，真正的 D 迟迟不来，D 还在随他人和环境变。</p></div>
+          <div class="it">
+            <svg viewBox="0 0 300 170" role="img" aria-label="长期主义者的人生">
+              <line x1="24" y1="150" x2="290" y2="150" stroke="var(--ink)" stroke-width="2"/><line x1="24" y1="150" x2="24" y2="12" stroke="var(--ink)" stroke-width="2"/>
+              <path d="M24 142 C140 140 210 128 240 96 S278 30 286 14" fill="none" stroke="var(--k)" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="236" cy="101" r="7" fill="var(--ink)"/><text x="226" y="90" font-size="12.5" font-weight="700" fill="var(--ink)" text-anchor="end">质变点</text>
+              <text x="286" y="166" font-size="11" font-weight="700" fill="var(--ink3)" text-anchor="end">N</text><text x="6" y="20" font-size="11" font-weight="700" fill="var(--ink3)">D</text>
+            </svg>
+            <h4>③ 长期主义者：微小积累，循环增强</h4><p>P 既定、R 较大、N 足够长时，曲线某处出现质变点，之后 D 高高扬起。</p></div>
+        </div>
+        <div class="reveal" style="margin-top:30px">
+          <div class="mono" style="color:var(--ink3)">预期中的 D 无法实现的四种情况</div>
+          <div class="g4" style="margin-top:10px">
+            <div class="it thin"><div class="n">01</div><p>只立 flag，不行动，曲线从未开始</p></div>
+            <div class="it thin"><div class="n">02</div><p>过俩月 D 又变了，半途而废</p></div>
+            <div class="it thin"><div class="n">03</div><p>R 时有时无、时大时小，甚至变负数</p></div>
+            <div class="it thin"><div class="n">04</div><p>D 明确、R 稳定为正，但 N 还不够久</p></div>
+          </div>
+        </div>
+
+        <h3 class="hd"><span class="lb">PRACTICE</span>长期主义的知行合一 <small>坚持超过 3 年，即可自判为真正的长期主义者</small></h3>
+        <div class="g4 reveal">
+          <div class="it"><div class="bn">1</div><h4>计划以年为单位</h4><p>如果还没有做年计划的意识，时间管理观念还停在农业时代之前。</p></div>
+          <div class="it"><div class="bn">2</div><h4>每天安排赚钱时间</h4><p>就是四象限里的<b>“重要不紧急”</b>。重要紧急、紧急不重要的事都是生存时间，越快做完，留给赚钱时间的越多。</p></div>
+          <div class="it"><div class="bn">3</div><h4>信所未见，所以延迟满足</h4><p>相信前面有质变点，所以步履不停。质变点没到，只代表暂时还没到。</p></div>
+          <div class="it"><div class="bn">4</div><h4>让雪球滚起来</h4><p>选值得的 D，明确 P，确保 R，让 N 向无限大推移，等待质变点。</p></div>
+        </div>
+        <p class="note reveal">“不重要不紧急”的事也可能有意义，它们会出现在五种时间中的其他三种里。划掉它们，就划掉了自由自在。</p>
+
+        <h3 class="hd"><span class="lb">MODEL</span>理想中 D 的模样：四个圈的交集</h3>
+        <div class="venn-row reveal">
+          <svg viewBox="0 0 300 256" role="img" aria-label="D 的模样：四圈交集" style="width:100%;max-width:300px;margin:0 auto;display:block">
+            <g fill="var(--c2)" fill-opacity=".38" stroke="var(--ink)" stroke-width="1.5">
+              <circle cx="118" cy="100" r="72"/><circle cx="182" cy="100" r="72"/><circle cx="118" cy="152" r="72"/><circle cx="182" cy="152" r="72"/>
+            </g>
+            <text x="72" y="16" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">我热爱的</text>
+            <text x="228" y="16" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">高于平均水平</text>
+            <text x="72" y="248" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">市场需求</text>
+            <text x="228" y="248" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">复利属性</text>
+            <text x="150" y="138" font-size="34" font-family="Helvetica Neue,Arial,sans-serif" font-weight="900" fill="var(--ink)" text-anchor="middle">D</text>
+          </svg>
+          <div class="g2">
+            <div class="it"><h4>找到热爱</h4><p>记住“当热血涌上心头”的时刻，回看人生起落图的峰值。作者在播新闻和给晚会画舞美之间，发现让她热血上涌的是“按自己的意愿创造作品”。</p></div>
+            <div class="it"><h4>高于平均水平的 P</h4><p>热爱不等于擅长。最好用的检验是参与竞争或公开展示。“互联网时代，没有怀才不遇这回事。”</p></div>
+            <div class="it"><h4>市场需求</h4><p>像创业团队一样看行业报告、需求场景、人群体量；也看社会价值和钱：定价体系健康吗？利润率漂亮吗？</p></div>
+            <div class="it"><h4>复利属性</h4><p>告别西西弗斯。这件事随时间向前流动时，是否具有复利属性？运气往往出现在长期积累后的质变点。</p></div>
+          </div>
+        </div>
+        <div class="tnt reveal" style="margin-top:30px">
+          <p style="margin:0"><b>先克服虚荣：</b>你以为热爱这件事，可能热爱的是它背后的虚荣。检验法：独处、没人看见、可能不挣钱也没人知道，你依然默默乐意做的事，就很接近 D。作者 21–35 岁就是第二张图的样子，35 岁才踏上自己的曲线，靠两个底层信念撑着：<b>不停地做任务就是在打磨 P</b>；<b>雪球只要在滚，终有一天串起点滴</b>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pull fill k2">
+  <div class="wrap"><div class="qm">“</div><div><blockquote>R代表微小积累，N代表持续改变，D代表时间看得见。</blockquote><cite class="mono">第 3 章 · 赚钱时间</cite></div></div>
+</section>
+
+<!-- ============ CH4 好看 ============ -->
+<section class="sec k3" id="ch4">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.06</span><span class="t">第 4 章 · 好看时间 · 身体主义</span><span class="lab">FEATURE</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">04</div>
+        <div class="kicker mono">BEAUTY TIME</div>
+        <h2>好看<br>时间</h2>
+        <p class="dek">内丹在炼。</p>
+        <div class="bar"></div>
+        <p class="meta">好看不分男女。健康是好看的必要条件，在健康之后，追求还远远没有结束。</p>
+      </aside>
+      <div class="main">
+        <p class="lede">好看时间是作者五种时间优先级里的第一位，但它“用了很多年才攀爬到优先级的顶部”。人类公认的好看长久地相似：孩童、运动员、凝神专注者的好看，根本上都是生命力的好看。</p>
+
+        <div class="g2 reveal" style="margin-top:30px">
+          <div class="it"><div class="n">内丹 vs 外法 · 借道家“内用成丹，外用成法”</div>
+            <p><b>内丹：</b>修炼以和身体达成契约，类比规律性健身锻炼，是演员修炼的底子。精、气、神对应睡眠、饮食、运动。</p>
+            <p><b>外法：</b>服装、化妆、道具，需要频繁变换。医美如同恒久地化妆，也是外法。</p>
+            <p class="q">真正的修炼目标是“不扮亦是本尊”。内丹的一口真气抵得上万千捷径。</p></div>
+          <div class="it"><div class="n">作者建议的两条苛刻标准</div>
+            <p><b>1. 在赚钱时间的基础上追求好看时间。</b>没有循环增强的内核支撑，终究只有不堪一击的好看。</p>
+            <p><b>2. 内丹和外法按 1∶1 配比。</b>比如每半小时内丹配半小时外法。只顾外法，久了外法的功力也会消失。</p>
+            <p class="q">四个让你确定想要好看时间的契机：繁忙中病倒；裸体站在镜前；看到极少数同龄人的样子；发现改变样子是眼下唯一能改变的现状。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">WHY</span>为什么要做身体主义者</h3>
+        <div class="g3 reveal">
+          <div class="it"><h4>长期主义的好看</h4><p>“不是大师活得久，而是因为活得久他才有机会成为大师。”巴菲特 99% 的资产在 50 岁后获得；贝聿铭 71 岁完成卢浮宫玻璃金字塔；康德若 57 岁前去世，就没有后来的伟大哲学家。</p></div>
+          <div class="it"><h4>防止跌回生存时间</h4><p>脱发、虚弱、颈椎腰椎、肠胃病，甚至猝死。“生存时间的底层问题不是疲于奔命，而是竟然已经没有体力去疲于奔命了。”</p></div>
+          <div class="it"><h4>具身认知</h4><p>动作会反过来影响思维和情绪，“行在知前”。保持有力站姿几分钟能增加力量感；跑步能疗愈；思路不通时来回走动更容易有灵感。低谷期多思无益，立刻锻炼。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">EXAM</span>好看的及格线：七门功课都要 60 分</h3>
+        <div class="reveal">
+          <div class="chips7"><span>睡眠</span><span>饮食</span><span>运动</span><span>遗传</span><span>环境</span><span>情绪</span><span>保养</span></div>
+          <p class="muted" style="max-width:860px">作者在播音系学到：好看的外貌是这七门都及格、综合管理的结果。20 年前她以为及格靠知识，现在认为<b>及格的本质在于行动</b>，也就是<b>时间表严格前置</b>：定好今晚 8–9 点健身，这一小时就几乎不可撼动，不让朋友、恋人、家人、孩子或临时工作随意占用。闸门放开几次，标准就没了。</p>
+        </div>
+
+        <h3 class="hd"><span class="lb">EXPERIMENT</span>让 100 天健身坚持下来的 7 个条件</h3>
+        <div class="g7 reveal">
+          <div class="it thin"><div class="n">01</div><h4>正视起点</h4><p>脱光立于镜前观察，测量、记录</p></div>
+          <div class="it thin"><div class="n">02</div><h4>确立目标</h4><p>100 天后的目标要具体，敢于公布</p></div>
+          <div class="it thin"><div class="n">03</div><h4>监督制度</h4><p>严格截止时间，如每天 12 点前</p></div>
+          <div class="it thin"><div class="n">04</div><h4>遵循计划</h4><p>如每天 15 分钟 HIIT，每天都练</p></div>
+          <div class="it thin"><div class="n">05</div><h4>记录对照</h4><p>打卡；约 20 天后照片出现明显对比</p></div>
+          <div class="it thin"><div class="n">06</div><h4>找到同伴</h4><p>社群见证和陪伴</p></div>
+          <div class="it thin"><div class="n">07</div><h4>金钱奖励</h4><p>全部打卡完成退还挑战金</p></div>
+        </div>
+        <div class="rate reveal" style="margin-top:30px">
+          <div class="mono" style="color:var(--ink3);border-bottom:2px solid var(--ink);padding-bottom:8px">“和潇洒姐塑身 100 天”完成率</div>
+          <div class="r"><span>自行坚持（2018 年前）</span><div class="tk"><i style="width:2.7%"></i></div><span>2.7%</span></div>
+          <div class="r"><span>加强帮助手段后</span><div class="tk"><i style="width:52%"></i></div><span>52%</span></div>
+          <div class="r"><span>2020 年初进阶版</span><div class="tk"><i style="width:74%"></i></div><span>74%</span></div>
+          <p class="note">“人性可爱之处，表现在怕失去健康与好看，但更怕失去金钱。”书中说条件满足得越多，坚持 100 天的成功率可到 52%–75%。</p>
+        </div>
+
+        <h3 class="hd"><span class="lb">LIST</span>作者的容光焕发清单 <small>“很多日常的事情不是因为感觉好了才做，而是因为做了才会感觉好。”</small></h3>
+        <div class="g3 reveal">
+          <div class="it"><h4>作息</h4><ul><li>如无必要不熬夜。这条做不到，下面全部失效</li></ul></div>
+          <div class="it"><h4>饮食</h4><ul><li>无条件吃早餐；多喝水</li><li>吃到不饿就停止</li><li>昏沉时少吃碳水和糖，用肉和蔬菜替代，坚持 7 天以上再观察</li></ul></div>
+          <div class="it"><h4>姿态</h4><ul><li>不开心时就先锻炼</li><li>无精打采时反而要挺胸</li><li>有意识地观察下颌线</li></ul></div>
+          <div class="it"><h4>物品</h4><ul><li>让衣服精良和简单起来</li><li>好看不分人前人后</li><li>集中时间研究和购买</li></ul></div>
+          <div class="it"><h4>正向生活</h4><ul><li>多和夸你的人在一起</li><li>选择忽略负面信息，不围观网络骂战</li><li>追求心流：一天 1 小时，“心流是内丹中的内丹”</li></ul></div>
+          <div class="it"><h4>外法</h4><ul><li>像学理工科入门一样学皮肤、解剖知识</li><li>最根本的一句：务必常年坚持防晒</li><li>不可逆的医美要充分收集信息、和医生沟通</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pull fill k3">
+  <div class="wrap"><div class="qm">“</div><div><blockquote>无论一生在追求什么，身体都是你的起点和归宿，也是有生之年灵魂居住的真正房子。</blockquote><cite class="mono">第 4 章 · 好看时间</cite></div></div>
+</section>
+
+<!-- ============ CH5 好玩 ============ -->
+<section class="sec k4" id="ch5">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.07</span><span class="t">第 5 章 · 好玩时间 · 收集世界</span><span class="lab">FEATURE</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">05</div>
+        <div class="kicker mono">PLAY TIME</div>
+        <h2>好玩<br>时间</h2>
+        <p class="dek">保住好奇心。</p>
+        <div class="bar"></div>
+        <p class="meta">越到中年，好玩时间在优先级上越会前置。在作者当时的排序里，它是好看之后的第二顺位。</p>
+      </aside>
+      <div class="main">
+        <p class="lede">无聊是人生的必然，好玩不是。好玩时间由无聊时间变成，是我们主动选择的，长短和频率都由自己决定。拖延和放空不是故障，而是时间管理里有固有逻辑的一部分。它负责构建自我结构中“丰富”的部分。</p>
+
+        <div class="g3 reveal" style="margin-top:30px">
+          <div class="it"><div class="bn">一</div><h4>挣脱信息流：别做按按钮的小白鼠</h4><p>被他律占了一天，躺下“为所欲为地刷手机”。偶尔出现的笑点就是食物球，多巴胺循环让你滑上 1 小时，把空闲时间又用无聊填了一遍。你像是交互界面“勤奋的无薪员工”。</p>
+            <p class="q">作者写作时把手机放到远离书房的地方，“与其被那帮设计手机交互的人用多巴胺绑架，不如先用特定的事情绑架自己”。也可以预先给出这一小时，“让自己被绑架得明明白白”。</p></div>
+          <div class="it"><div class="bn">二</div><h4>处理失望</h4><p>一周唯一的空闲下午去了聚会，可能很好，也可能 10 分钟就后悔。“这段好玩时间是不是不够好玩？”好玩时间需要代价、冒险，也需要承受失望，下一个惊喜才会出现。</p>
+            <p class="q">比没收获更令人失望的，是好奇心再也无法被激发，对没试过的事说“就那么回事”“不过如此”。</p></div>
+          <div class="it"><div class="bn">三</div><h4>获得哲学性无聊</h4><p>人的结构生长于两种时刻：艰难时刻和无聊时刻。无聊带来的持续痛苦会启发思考，是行动的催化剂，最终让人有能力区分出<b>热闹</b>和<b>丰富</b>。</p>
+            <p class="q">“无聊应该是一段生活的序幕，而不是尾声。”</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">ESSAY</span>收集世界，直到让你的价值观下起大雨</h3>
+        <div class="reveal" style="max-width:860px">
+          <p class="muted">高二暑假通关《美少女梦工厂》《卡耐基人生指南》后，作者意识到真实人生也一样：练号、做任务、在关键时刻做选择。万般都好玩、万般都是游戏，每次转行都是在寻找“奖励路径”，为此可以允许自己失望 100 次。大学楼道里一个宿醉的女生说：<b>“我的作品就是要让你们的价值观下起大雨。”</b></p>
+          <p class="note">下次有一段空闲时，你要选的是让多巴胺因什么而分泌：手机、游戏、一段冒险，还是一段人生奖励路径的寻找之旅。</p>
+        </div>
+
+        <h3 class="hd"><span class="lb">VS</span>从体验清单到创造清单 <small>把遗愿清单拆成两部分</small></h3>
+        <div class="vs reveal">
+          <div class="l">
+            <div class="mono" style="color:var(--ink3)">体验清单 · 颗粒的</div>
+            <h4>肉体前往，眼睛看见</h4>
+            <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <p>没去过的远方、没尝过的东西、没见过的风景：看火山、看日落、看金字塔、跳伞、观鲸……只要人到了那里，基本都能打钩。代表热闹的多样性。</p>
+          </div>
+          <div class="r">
+            <div class="mono">创造清单 · 线性的</div>
+            <h4>目标绩效化、量化，努力争取才能打钩</h4>
+            <div class="linebar"></div>
+            <p>跑完一场马拉松、读完一个学位、考潜水证、学会单板滑雪、写完出版一本书、练出马甲线、用英文演讲、开一家公司……线性旅程里有机制推着你到新高度。</p>
+            <p><b>作者结论：创造清单是体验清单的进阶版，创造是更深刻的体验。</b></p>
+          </div>
+        </div>
+        <p class="note reveal">实现好玩时间的能力不在于买机票，而是一种精神能力：去玩的永恒好奇心，和永远玩下去的生命力。“生命不好玩，还有什么意思呢？”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH6 心流 ============ -->
+<section class="sec k5" id="ch6">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.08</span><span class="t">第 6 章 · 心流时间 · 奉若神明</span><span class="lab">COVER STORY</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">06</div>
+        <div class="kicker mono">FLOW TIME</div>
+        <h2>心流<br>时间</h2>
+        <p class="dek">五种时间的核心。</p>
+        <div class="bar"></div>
+        <p class="meta">作者在知道“心流”这个词之前，用“上身”形容这种感受。</p>
+      </aside>
+      <div class="main">
+        <p class="lede">这本书真正的核心在第 6、7 章：要对使用注意力的习惯做一次极致而永久的调整。如果一个人能不受外界限制地进入心流，他就掌握了改变生活品质的钥匙。</p>
+
+        <h3 class="hd"><span class="lb">THEORY</span>米哈里《心流》里对个人最有用的三个观点</h3>
+        <div class="flow-row reveal">
+          <div>
+            <svg viewBox="0 0 320 270" role="img" aria-label="心流通道示意图" style="width:100%;display:block">
+              <polygon points="40,230 80,230 300,46 300,16 270,16 40,206" fill="var(--k)" fill-opacity=".9"/>
+              <line x1="40" y1="230" x2="305" y2="230" stroke="var(--ink)" stroke-width="2"/>
+              <line x1="40" y1="230" x2="40" y2="10" stroke="var(--ink)" stroke-width="2"/>
+              <text x="300" y="250" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="end">技巧 →</text>
+              <text x="8" y="20" font-size="12" font-weight="700" fill="var(--ink)">挑战</text>
+              <text x="178" y="126" font-size="14" fill="#fff" font-weight="800" transform="rotate(-40 178 126)" text-anchor="middle">心流通道</text>
+              <text x="88" y="72" font-size="16" fill="var(--ink)" font-weight="800">焦虑</text>
+              <text x="230" y="208" font-size="16" fill="var(--ink)" font-weight="800">无聊</text>
+              <circle cx="62" cy="214" r="7" fill="#fff" stroke="var(--ink)" stroke-width="2"/><text x="74" y="210" font-size="12" font-weight="700" fill="var(--ink)">A1</text>
+              <circle cx="190" cy="66" r="7" fill="var(--ink)"/><text x="148" y="58" font-size="12" font-weight="700" fill="var(--ink)">A2</text>
+              <circle cx="190" cy="214" r="7" fill="var(--ink)"/><text x="200" y="226" font-size="12" font-weight="700" fill="var(--ink)">A3</text>
+              <line x1="190" y1="206" x2="190" y2="152" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/>
+              <text x="198" y="176" font-size="11" font-weight="700" fill="var(--ink)">无聊就提升挑战</text>
+              <line x1="198" y1="70" x2="246" y2="92" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/>
+              <text x="70" y="96" font-size="11" font-weight="700" fill="var(--ink)">焦虑就提升技巧 →</text>
+            </svg>
+            <p class="note">网球初学者只求把球打过网（A1，有心流但不久）；技巧进步后同样挑战会无聊（A3）；遇到专业对手会焦虑（A2）。</p>
+          </div>
+          <div style="display:grid;row-gap:24px">
+            <div class="it"><div class="n">01</div><h4>全力投入本身就是收获</h4><p>“过程比结果更重要”只在一种情况下成立：准备过程中全身心投入，结果由这个过程决定。全身心投入的人能以最坦然的心态接受任何结果。</p></div>
+            <div class="it"><div class="n">02</div><h4>心流来自能力与挑战难度的匹配</h4><p>向上挑战、争取进阶时心流才会产生。前提是了解自己的实际能力，且这是一个可实现的挑战。太简单则无聊，太难则焦虑。</p></div>
+            <div class="it"><div class="n">03</div><h4>从失序重归有序，用行为实现熵减</h4><p>精神世界不管它就只会更乱（精神熵）。心流是精神世界的熵减。能找到事物让自己高度沉浸，就是在为生活建立秩序。</p></div>
+          </div>
+        </div>
+
+        <h3 class="hd"><span class="lb">SCIENCE</span>《盗火》：心流时大脑里发生了什么</h3>
+        <div class="chem reveal">
+          <div><b>1 · 聚焦</b>分泌多巴胺和去甲肾上腺素，集中注意力，同时开始关闭对其他信息的感知。</div>
+          <div><b>2 · 舒适</b>分泌内啡肽和花生四烯乙醇胺，减轻痛苦和压力，建立遥远的信息连接，带来创造性思考。</div>
+          <div><b>3 · 潜意识主导</b>进入类似半睡眠状态，关闭更多区域，四种物质协同、按不同浓度和节奏分泌。</div>
+          <div><b>4 · 平和幸福</b>潜意识处理能力至少是日常的 5 倍；分泌血清素和催产素，体验与世隔绝的宁静幸福。</div>
+        </div>
+        <p class="note reveal">简单说：日常我们会体验深浅不同的 6 种高兴，心流让我们同时品尝混合的 6 种高兴。</p>
+
+        <h3 class="hd"><span class="lb">6 INSIGHTS</span>关于心流时间的 6 个认知</h3>
+        <div class="g3 reveal">
+          <div class="it"><div class="bn">1</div><h4>自律是延迟满足，心流是当下满足</h4><p>他律最痛苦，自律好很多，但只要出现“坚持”二字就有忍受。“热爱是不需要坚持的。”比钢铁般的意志更强大的，是幸福的洪流。</p></div>
+          <div class="it"><div class="bn">2</div><h4>挑战反而是获得幸福的机会</h4><p>每次挑战都可能是获得心流的良机，宝藏就在途中。可进可退时永远选择进。</p></div>
+          <div class="it"><div class="bn">3</div><h4>感受是神经化学反应，可以转换</h4><p>大脑本身就是一种虚拟现实。想要创造奇迹，你总是要按下 Hard（困难）键。</p></div>
+          <div class="it"><div class="bn">4</div><h4>站在新高度重新审视自我</h4><p>随时问：“我正在做什么事情？我为什么选择做这件事情？这件事情是我主动选择的吗？”这就是“辨认当下”的意义。</p></div>
+          <div class="it"><div class="bn">5</div><h4>心流爱情、心流教育、心流家庭</h4><p>先做一个有心流的人，再找一个有心流的爱人。培养孩子，就要培养一个心流中的孩子。理想样貌如杨绛《我们仨》。</p></div>
+          <div class="it"><div class="bn">6</div><h4>建造积极生活的机构</h4><p>塞利格曼的积极心理学三支柱：积极体验、积极特质、积极机构。正向生活靠行动才能创建。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">CHECK</span>如何判断进入了心流：米哈里的 8 个标准</h3>
+        <div class="eight reveal">
+          <div>面临可完成的工作</div><div>全神贯注于这件事</div><div>明确的目的</div><div>即时的反馈</div>
+          <div>投入行动之中</div><div>感觉能自由控制行动</div><div>忘我，之后自我意识更强烈</div><div>时间感改变</div>
+        </div>
+
+        <h3 class="hd"><span class="lb">HOW-TO</span>触发心流，抵达“应许之地”</h3>
+        <div class="g4 reveal">
+          <div class="it"><div class="bn">1</div><h4>道路：守住火种</h4><p>暂时找不到热爱时有三个选择：</p><ol><li>个体需求：当下必须做、略具挑战的事</li><li>技能类爱好：要能培养技巧、循环增强</li><li>随机事件：如一段突如其来的独处时间</li></ol></div>
+          <div class="it"><div class="bn">2</div><h4>触发：找到蒲团</h4><p>心流的关键在于独处。建立触发仪式，重现让你进入心流的光亮、颜色、气味、声音。</p><p class="q">作者：书房里选茶、烧水、泡茶，看蒸汽升腾，喝下第一口，大约半小时后心流来临。</p></div>
+          <div class="it"><div class="bn">3</div><h4>关闭：进入山洞</h4><p>人平均 3 分钟被手机打扰一次，重新专注要 25 分钟。</p><ol><li>手机放远处，“在手机和心流时间之中，只能存在一个”</li><li>关闭心理：待办记进手册</li><li>视觉关闭：桌面少放东西</li><li>硬做至少 25 分钟</li></ol></div>
+          <div class="it"><div class="bn">4</div><h4>上身法：颅内模拟</h4><ol><li>视觉化模拟：贴理想大学的照片</li><li>假想敌模拟：用不服和不满激发斗志</li><li>上身法：先模拟榜样人格，再召唤理想化身</li></ol><p class="q">作者写第一本书时模拟梁凤仪“一星期写 10 万字”；十年后召唤的是心流中的理想化身，“我的神仙”。</p></div>
+        </div>
+        <p class="note reveal">25 分钟就是番茄时间的长度。“碎片化时代在用每一个 25 分钟无情地筛选着你。”每天真正有创造力的时间也许不过两三个小时，“心流时间中的人生，才是最该追求的旅程。”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pull fill k5">
+  <div class="wrap"><div class="qm">“</div><div><blockquote>在心流中，坚强的毅力不是解决难题的答案，人生也不总是苦行。比钢铁般的意志更强大的，是幸福的洪流。</blockquote><cite class="mono">第 6 章 · 心流时间</cite></div></div>
+</section>
+
+<!-- ============ CH7 花园模型 ============ -->
+<section class="sec k0" id="ch7">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.09</span><span class="t">第 7 章 · 折叠时间 · 花园模型</span><span class="lab">METHOD</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">07</div>
+        <div class="kicker mono">THE GARDEN MODEL</div>
+        <h2>折叠<br>时间</h2>
+        <p class="dek">把一天看成 24 格时间花园。</p>
+        <div class="bar" style="background:linear-gradient(90deg,var(--c1) 0 20%,var(--c2) 20% 40%,var(--c3) 40% 60%,var(--c4) 60% 80%,var(--c5) 80%)"></div>
+      </aside>
+      <div class="main">
+        <p class="lede">直觉思维和结构性思维之间只隔两步：先觉知自己正处在哪种时间中，再确认这种时间是不是自己的选择。每天是一座能播种 24 次的花园，你选择怎么度过这一小时，就是在这一格种下了哪种时间植物。</p>
+
+        <div class="reveal" style="margin-top:34px">
+          <div class="garden" id="gExample"></div>
+          <div class="legend">
+            <span><i class="c-s0"></i>生存（睡眠饮食）</span><span><i class="c-sp"></i>生存（被动）</span><span><i class="c-m"></i>赚钱</span><span><i class="c-b"></i>好看</span><span><i class="c-p"></i>好玩</span><span><i class="c-f"></i>心流</span>
+          </div>
+          <p class="note">书中示例：不热爱所从事工作的上班族（上班时间成为生存时间）。睡眠 8 + 上班 8 + 用餐 2 = 生存 18 小时；早起锻炼 1 小时（好看）；晚餐后学 PPT 设计 2 小时（赚钱）；专注临摹书法 1 小时（心流）；睡前刷抖音 2 小时（好玩）。时长取自书中示意图，具体钟点为本页示意。</p>
+        </div>
+
+        <h3 class="hd"><span class="lb">5 STEPS</span>模型的重构：五步</h3>
+        <div class="g5 reveal">
+          <div class="it"><div class="bn">1</div><h4>辨识非唯一性</h4><p>同一件事，换了场景、身份、需求，就属于不同时间。</p><p class="q">法餐班：家庭主妇是生存，假期学生是好玩，美食博主是赚钱，厨师在几种之间切换，最后进入心流。</p></div>
+          <div class="it"><div class="bn">2</div><h4>建立花园模型</h4><p>四个追求方向：</p><ol><li>生存时间最小化</li><li>心流时间最大化</li><li>单位时间效能最高</li><li>可支配时间指向生平</li></ol></div>
+          <div class="it"><div class="bn">3</div><h4>不把平衡作为依据</h4><p>平衡不是目标，清晰的优先级才有意义。生存要完成和逾越，心流要毕生追求，中间是自由区域。</p><p class="q">“生命终究有限，深度和广度不可兼得。”</p></div>
+          <div class="it"><div class="bn">4</div><h4>实现折叠时间</h4><p>把本来串联的事并联完成。智人的石块就是时间折叠器：黑猩猩每天咀嚼要 5 小时以上，智人只要 1 小时。</p></div>
+          <div class="it"><div class="bn">5</div><h4>寻找超级 R</h4><p>同一时间里几件事都在各自的终极等式曲线上，几个 R 合体就是超级 R；再加上心流的 5 倍能力，“这就是大神的养成过程”。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">EXAMPLES</span>折叠的例子 <small>书中列举</small></h3>
+        <div class="folds reveal">
+          <div><div class="tg"><em class="k3">好看</em><em class="k4">好玩</em></div>贴着面膜看美剧</div>
+          <div><div class="tg"><em class="k1">生存</em><em class="k3">好看</em></div>站立办公、用带跑步机的办公桌</div>
+          <div><div class="tg"><em class="k1">生存</em><em class="k4">好玩</em></div>上班路上听音频故事</div>
+          <div><div class="tg"><em class="k4">好玩</em><em class="k5">心流</em></div>用心和孩子一起创造作品</div>
+          <div><div class="tg"><em class="k3">好看</em><em class="k2">赚钱</em></div>美妆博主直播化妆过程</div>
+          <div><div class="tg"><em class="k4">好玩</em><em class="k2">赚钱</em></div>游戏玩家比赛</div>
+          <div><div class="tg"><em class="k2">赚钱</em><em class="k5">心流</em></div>画家完成作品；科学家深度研究</div>
+          <div><div class="tg"><em class="k3">好看</em><em class="k4">好玩</em><em class="k5">心流</em></div>全家像团队般一起专注做运动</div>
+          <div><div class="tg"><em class="k3">好看</em><em class="k5">心流</em><em class="k2">赚钱</em></div>每天贴面膜时回答一个问题，100 天后结集出版《米字路口问答》</div>
+          <div><div class="tg"><em class="k4">好玩</em><em class="k1">生存</em><em class="k3">好看</em><em class="k2">赚钱</em></div>“和潇洒姐塑身 100 天”：始于产后自画健身漫画，后成为公司线上业务</div>
+          <div><div class="tg"><em class="k1">生存</em><em class="k4">好玩</em><em class="k3">好看</em><em class="k2">赚钱</em><em class="k5">心流</em></div>C 罗：五折叠，“时间管理的巅峰”</div>
+          <div style="border-top:none;background:var(--ink);color:var(--bg);padding:12px 14px"><b style="color:var(--bg)">规律</b><br>赚钱时间一加入折叠，事情就值得持续做；高手的折叠里必有赚钱 + 心流的二折叠。</div>
+        </div>
+        <p class="note reveal">“如果人生有捷径，那就是选择做能够折叠时间的事。”即使上午下午都不属于你，晚上 8 点到 12 点里依然可以追求折叠。</p>
+
+        <h3 class="hd"><span class="lb">MATH</span>36 种花园模型</h3>
+        <div class="reveal">
+          <div class="calc">24<span>+</span>6<span>+</span>2<span>+</span>4<span>=</span>36</div>
+          <p class="muted" style="max-width:860px">生存在底部不变，其余 4 种排序：选 4 种 4! = 24；选 3 种 3! = 6；选 2 种 2；只选 1 种 4。再加上数量差异和折叠，时间花园可以有无数种样子。“一个人怎样给他的五种时间排序，长久以往他就会成为什么人。”</p>
+        </div>
+        <div class="g5 types reveal" style="margin-top:28px">
+          <div class="it"><h4>美丽而苍白的人</h4><div class="row"><em class="k1">生存</em><em class="k3">大量好看</em><em class="no">赚钱</em><em class="no">心流</em></div><p>穿搭、美妆、拍照，不喜欢深度思辨，也不在乎拓展眼界。</p></div>
+          <div class="it"><h4>沙发土豆人</h4><div class="row"><em class="k1">生存</em><em class="k4">大量好玩</em><em class="no">好看</em><em class="no">心流</em></div><p>游戏和看剧占最大面积，其实都是被绑架的好玩时间。</p></div>
+          <div class="it"><h4>邋遢但幸福的人</h4><div class="row"><em class="k1">生存</em><em class="k5">大量心流</em><em class="no">好看</em></div><p>艺术家、创作者、科学家，不在乎外表和外界评价。</p></div>
+          <div class="it"><h4>富有但不幸福的人</h4><div class="row"><em class="k1">生存</em><em class="k2">赚钱第一</em><em class="no">心流</em></div><p>其他方面空洞，机械的赚钱时间没有转化为心流。</p></div>
+          <div class="it"><h4>机械而麻木的人</h4><div class="row"><em class="k1">大量生存</em><em class="no">好看</em><em class="no">好玩</em><em class="no">心流</em></div><p>疲惫而惶恐，负担不了理想和希望，自称“社畜”。</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">ASK</span>“图什么”：最有建设性的问题</h3>
+        <div class="g3 reveal">
+          <div class="blk k1"><h4>这么苦、这么迷茫</h4><p>因为你正处在生存时间里，试图逾越。</p></div>
+          <div class="blk k2"><h4>这么付出、这么等待</h4><p>你在自由排列里投时间给好看、好玩和赚钱，图的是快乐。快乐像叔本华的钟摆，短暂但你愿意反复得到。</p></div>
+          <div class="blk k5"><h4>想寻求超越、向深处探索</h4><p>就回去种植心流时间植物，图的是幸福，是此时此刻。</p></div>
+        </div>
+        <p class="note reveal">作者在电视台采访过一位成功人士，他说下一步“要么信佛，要么放纵”。作者现在的理解：他应该播种心流时间植物，拥抱内啡肽，摆脱多巴胺的控制。</p>
+
+        <h3 class="hd"><span class="lb">IDEAL</span>理想模型存在吗</h3>
+        <div class="g2 reveal">
+          <div class="it"><div class="n">先打破生存时间的无限循环</div>
+            <p>作者做创业者时，度假看日落也在想“公司那个问题怎么解决”，为了活在未来错过了此刻。有些行业以超长工作为荣，“更长的工作时间=更大的存在意义和价值”。</p>
+            <p><b>真正的卓越肯定不是持续劳动的能力。要以逾越阶段性的生存时间为荣，而非以超长的生存时间为荣。</b>更高阶层的标志应该是：拥有更多时间享受最优体验。</p></div>
+          <div class="blk k0"><div class="mono">五种时间的最优模型</div>
+            <ol style="font-size:19px;font-weight:800;line-height:1.55;margin:10px 0 12px;padding-left:1.2em">
+              <li>心流时间的占比尽可能高</li>
+              <li>心流时间尽可能与其他时间发生折叠</li>
+              <li>生存时间的占比尽量低</li>
+            </ol>
+            <p style="font-size:13.5px">理想模型对每个人都存在，但没有固定标准。它结合了津巴多的时间观：相似的高水平未来时间观和享乐主义的现在时间观，加大剂量的积极过去时间观。</p></div>
+        </div>
+        <div class="tv reveal" style="margin-top:26px">
+          <div class="on"><b>积极的过去</b>认为自己度过了快乐美满的人生</div>
+          <div><b>消极的过去</b>觉得曾经的经历糟糕、令人沮丧</div>
+          <div class="on"><b>享乐主义的现在</b>及时行乐，花开堪折直须折</div>
+          <div><b>宿命主义的现在</b>觉得力量渺小，命运不能改变</div>
+          <div class="on"><b>未来</b>擅长计划和延迟满足</div>
+          <div><b>超未来</b>与宗教信仰有关，指向来世</div>
+        </div>
+        <p class="note reveal">津巴多的 6 种时间观；黑底的三种是他推荐的理想组合。</p>
+
+        <h3 class="hd"><span class="lb">AUTHOR</span>作者自己的优先级</h3>
+        <div class="prio reveal">
+          <div class="pr" style="border-top:2px solid var(--ink)"><span>2018 年巡讲时</span><div class="chips"><em class="k3">好看</em><em class="k4">好玩</em><em class="k5">心流</em><em class="k2">赚钱</em><em class="k1">生存</em></div></div>
+          <div class="pr"><span>写书时（两年后）</span><div class="chips"><em class="k5">心流</em><em class="k3">好看</em><em class="k2">赚钱</em><em class="k4">好玩</em><em class="k1">生存</em></div></div>
+          <p class="muted" style="margin-top:16px;max-width:860px">她反省 2018 年的排法藏着“因为怕输而说自己不想赢”：赚钱和生存的结果不好，就假装它们不重要。现在赚钱排第三，是因为写作时心流和赚钱重叠、健身和录视频时好看和赚钱重叠，二折叠让她更多走在超级 R 的曲线上。</p>
+          <p class="note">建议：开始用花园模型重建秩序时，不需要向太多人宣布，默默排列和执行即可；但要明确告诉自己想要的强烈程度。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH8 命运地图 ============ -->
+<section class="sec k0" id="ch8">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.10</span><span class="t">第 8 章 · 命运地图</span><span class="lab">WORKSHOP</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">08</div>
+        <div class="kicker mono">THE MAP OF FATE</div>
+        <h2>命运<br>地图</h2>
+        <p class="dek">从愿景倒推到每一天。</p>
+        <div class="bar"></div>
+        <p class="meta">“人和人最大的区别就是愿景。”</p>
+      </aside>
+      <div class="main">
+        <p class="lede">愿景决定我们选择什么样的时间植物，时间植物的积累又反过来把愿景变成现实。命运地图有起点、旗帜和里程碑，最终落到每天的 24 格花园里。</p>
+
+        <div class="g3 reveal" style="margin-top:30px">
+          <div class="it"><div class="bn">1</div><h4>绘制地图：愿景故事</h4><p>重读追悼会策划表里的生平，给自己讲一个故事：“看！这就是我要成为的人……”愿景简化为两件事：有待解决的问题，正在尝试的方法。</p><p class="q">永远保留最狂野的那版生平，“人一定无法到达自己根本不敢想象的地方”。</p></div>
+          <div class="it"><div class="bn">2</div><h4>路线：榜样的生平推演</h4><p>通过采访、自传（最好是时间表）推演榜样的时间花园，尤其是折叠方式，先模仿他们的花园模型。榜样很像生存时间里的教练。</p><p class="q">书中推演了村上春树写长篇时、福楼拜写《包法利夫人》时、莫扎特在维也纳时的花园模型。</p></div>
+          <div class="it"><div class="bn">3</div><h4>里程碑：你的时间花园</h4><p>把旗帜旁写下的五种时间愿景按目标倒推，拆分到年、到月、到天，再种进 24 格花园。“任何看似不可能的事情，都可以无限拆分至简单到足以执行的步骤。”</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">FILL IN</span>命运地图怎么填 <small>附录语音引导</small></h3>
+        <div class="g2 reveal">
+          <div class="it"><div class="n">地图</div>
+            <ol>
+              <li><b>目标优先级：</b>参考生平，把五种时间从最优到次优排好。客观顺序和你希望的不符时，遵从自己对未来秩序的设计。</li>
+              <li><b>起点：</b>写上此时此刻的时间和地点。</li>
+              <li><b>旗帜：</b>写下愿景实现的具体年份，可选 10 年、5 年或 3 年。</li>
+              <li><b>量化：</b>那时的心流成就、赚钱结果、好看程度、好玩体验，都用 SMART 原则写下来。</li>
+              <li><b>核定生存关卡：</b>愿景到来时，你正逾越到哪一关？</li>
+            </ol></div>
+          <div class="it"><div class="n">未来 24 小时表盘</div>
+            <ol>
+              <li>圈出必须保证的睡眠，标为生存时间</li>
+              <li>圈出吃饭时间，也标为生存（除非兼具其他功能）</li>
+              <li>标出其他生存时间，细分出被动生存，旁边写“5”</li>
+              <li>按优先级安排好看、好玩、赚钱、心流</li>
+              <li>照表盘在空白花园里种植物；能折叠的就叠在同一格</li>
+            </ol>
+            <p class="q">“如果你本阶段需要赚钱，你可以全部排满赚钱时间，这都是对的，极致地做一件事情，直到它出结果。”</p></div>
+        </div>
+
+        <h3 class="hd"><span class="lb">CASE</span>书中的倒推示例：一个想改变的年轻女生</h3>
+        <div class="folds three reveal">
+          <div><div class="tg"><em class="k5">心流 1 小时</em></div>三年后想每天 2 小时心流 → 现在每天至少 1 小时不刷手机，练专注</div>
+          <div><div class="tg"><em class="k4">好玩 2 小时</em></div>还没找到热爱 → 把 B 站有趣 up 主的玩法活法列成清单，逐个观摩</div>
+          <div><div class="tg"><em class="k3">好看 2 小时</em></div>化妆和健身，前后卸妆洗澡换衣，从容一点</div>
+          <div><div class="tg"><em class="k2">赚钱 2 小时</em><em class="k5">折叠</em></div>为最感兴趣的职业技能订学习计划，和那 1 小时专注折叠，2 小时都不看手机</div>
+          <div><div class="tg"><em class="k1">生存</em></div>睡觉吃饭之外的工作已越来越不喜欢，但决定在生存时间里让自己高兴起来</div>
+          <div><div class="tg"><em class="k4">好玩 每周 2 小时</em></div>相亲也可以是好玩时间：打开世界的另一扇门，不喜欢就关上</div>
+        </div>
+        <p class="note reveal">时间花园“才是阿拉丁神灯”。从此可以对自己、对外界传递简单明确的信息：我是谁，我在做什么，我带着信念，我的时间花园郁郁葱葱。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section class="sec k0" id="quotes">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.11</span><span class="t">金句 · 逐字摘录</span><span class="lab">QUOTES</span></div>
+    <div class="qgrid reveal">
+      <div class="qq wide"><p>如果人生有捷径，那就是选择做能够折叠时间的事。折叠时间就是最大的捷径。</p><cite class="mono">第 7 章 · 折叠时间</cite></div>
+      <div class="qq s8 k1"><span class="mk"></span><p>时间不是用来等待的，而是用来迭代的。</p><cite class="mono">第 2 章 · 生存时间</cite></div>
+      <div class="qq s4 k1"><span class="mk"></span><p>在这里，要明确一个概念：自律的反方向不是懒惰，而是他律。</p><cite class="mono">第 2 章 · 生存时间</cite></div>
+      <div class="qq s4 k1"><span class="mk"></span><p>生存时间给我们的选择并不多，只有两个——晋级或者困在原地。</p><cite class="mono">第 2 章 · 生存时间</cite></div>
+      <div class="qq s8 k3"><span class="mk"></span><p>其实大师与长寿的真正关系是：不是大师活得久，而是因为活得久他才有机会成为大师。</p><cite class="mono">第 4 章 · 好看时间</cite></div>
+      <div class="qq k4"><span class="mk"></span><p>无聊应该是一段生活的序幕，而不是尾声。</p><cite class="mono">第 5 章 · 好玩时间</cite></div>
+      <div class="qq k5"><span class="mk"></span><p>热爱是不需要坚持的，这种体验的喜悦之大，使人愿意主动付出全部身心。</p><cite class="mono">第 6 章 · 心流时间</cite></div>
+      <div class="qq wide"><p>人终究是通过选择如何使用时间而选择成为什么样的自己。时间看得见。</p><cite class="mono">第 7 章 · 花园模型</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOL ============ -->
+<section class="sec k0" id="tool">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.12</span><span class="t">测一测 · 你的时间花园</span><span class="lab">TOOL</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">24</div>
+        <div class="kicker mono">YOUR GARDEN</div>
+        <h2>测一测</h2>
+        <p class="dek">你的一天，种了哪些时间植物？</p>
+        <div class="bar" style="background:linear-gradient(90deg,var(--c1) 0 20%,var(--c2) 20% 40%,var(--c3) 40% 60%,var(--c4) 60% 80%,var(--c5) 80%)"></div>
+        <p class="meta">按书里的两步走：先辨认每个小时属于哪种时间，再问自己是不是主动选的。数据只保存在本机浏览器。</p>
+      </aside>
+      <div class="main">
+        <div class="tabs" role="tablist">
+          <button class="tab on" data-mode="day" role="tab">一天 · 24 格花园</button>
+          <button class="tab" data-mode="week" role="tab">一周 · 168 小时</button>
+        </div>
+        <div id="dayPane">
+          <p class="muted" style="margin:0 0 12px">选一支画笔，点格子。同一格点多种颜色就是<b>折叠</b>；再次用同一画笔点击会取消；“生存”三种只能选一种。</p>
+          <div class="brushes" id="brushes"></div>
+          <div class="garden edit" id="gTool" style="margin-top:14px"></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:14px">
+            <button class="btn" id="loadEx">载入书中示例（上班族）</button>
+            <button class="btn" id="clearDay">清空</button>
+          </div>
+        </div>
+        <div id="weekPane" style="display:none">
+          <p class="muted" style="margin:0 0 6px">直接填每种时间一周大约多少小时。</p>
+          <div class="weekin" id="weekIn"></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:14px">
+            <button class="btn" id="fromDay">用一天的花园 × 7 填入</button>
+            <button class="btn" id="clearWeek">清空</button>
+          </div>
+        </div>
+        <div class="tool-grid">
+          <div class="res" id="res"></div>
+          <div>
+            <div class="mono" style="margin-bottom:8px">对照书中的最优模型</div>
+            <ul class="diag" id="diag"></ul>
+            <div class="warn" id="warn"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TODO ============ -->
+<section class="sec k0" id="todo">
+  <div class="wrap">
+    <div class="folio"><span class="pg">P.13</span><span class="t">行动清单 · 从今天开始</span><span class="lab">CHECKLIST</span></div>
+    <div class="spread">
+      <aside class="side">
+        <div class="num">14</div>
+        <div class="kicker mono">TO DO</div>
+        <h2>行动<br>清单</h2>
+        <p class="dek">“以上所有，请付诸行动，而不是随便说说。”</p>
+        <div class="bar"></div>
+        <p class="meta">勾选进度保存在本机浏览器。想要按阶段走的路线，点右下角“我要怎么做？”。</p>
+      </aside>
+      <div class="main">
+        <div class="prog"><div class="tk"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0/14</div></div>
+        <div class="check" id="check"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="reveal">如果你一直渴望有一个人能敦促你走上这条道路，能够在诱惑袭来时拉住你不放，不许你胆怯，不许你沉沦，不许你随波逐流，不许你就此沉睡，那么现在，<span>你自己就是这个人</span>。</p>
+    <span class="mono">写在最后</span>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="wrap"><div class="row">
+    <div><div class="mono">COLOPHON 版权页</div><div class="swatches"><i class="c-s0"></i><i class="c-m"></i><i class="c-b"></i><i class="c-p"></i><i class="c-f"></i></div></div>
+    <div>
+      <p>根据《五种时间：重建人生秩序》（王潇 著，中信出版集团，2020 年 10 月第 1 版）全文整理。</p>
+      <p>示意图按书中描述重绘；页码为本特辑页码，不对应原书页码。勾选进度与时间花园数据仅保存在本机浏览器。</p>
+    </div>
+  </div></div>
+</footer>
+
+<!-- ============ ACTION DRAWER ============ -->
+<button class="fab" id="fab" type="button" aria-haspopup="dialog" aria-controls="plan" aria-expanded="false"><span class="stripe"></span><span class="tx"><small>ACTION PLAN</small>我要怎么做？</span></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="plan" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true">
+  <div class="dw-head">
+    <div><div class="mono" style="color:var(--ink3)">ACTION PLAN · 按书里的方法落地</div><h2 id="dwTitle">我要怎么做？</h2></div>
+    <button class="dw-x" id="dwClose" type="button" aria-label="关闭">×</button>
+  </div>
+  <div class="dw-body" id="dwBody">
+    <div class="dw-q">我现在主要卡在哪种时间？</div>
+    <div class="seg" id="dwSeg" role="radiogroup" aria-label="选择你卡住的时间类型"></div>
+    <div class="dw-core" id="dwCore"></div>
+    <div class="dw-prog"><div class="tk"><div class="fill" id="dwFill"></div></div><div class="txt" id="dwTxt">0/0</div></div>
+    <div id="dwStages"></div>
+    <p class="dw-foot">每条建议都来自书中原有的方法，标注了出处章节。勾选进度按时间类型分别保存在本机浏览器。按 Esc 或点遮罩可关闭。</p>
+  </div>
+</aside>
+
+<script>
+/* ---------- time types ---------- */
+const K={s0:'生存·睡眠饮食',sp:'生存·被动',sa:'生存·主动',m:'赚钱',b:'好看',p:'好玩',f:'心流'};
+const ORDER=['s0','sp','sa','m','b','p','f'];
+const GROUPS=[['s','生存','var(--c1)'],['m','赚钱','var(--c2)'],['b','好看','var(--c3)'],['p','好玩','var(--c4)'],['f','心流','var(--c5)']];
+const grp=k=>k[0]==='s'?'s':k;
+const EX=(()=>{const a=[];for(let i=0;i<24;i++)a.push([]);
+  [23,0,1,2,3,4,5,6,12,17].forEach(i=>a[i]=['s0']);
+  a[7]=['b'];[8,9,10,11,13,14,15,16].forEach(i=>a[i]=['sp']);
+  a[18]=['m'];a[19]=['m'];a[20]=['f'];a[21]=['p'];a[22]=['p'];return a;})();
+
+function renderGarden(el,data){
+  el.innerHTML=data.map((c,i)=>{
+    const ks=ORDER.filter(k=>c.includes(k));
+    const stk=ks.length?`<div class="stk">${ks.map(k=>`<i class="c-${k}" title="${K[k]}"></i>`).join('')}</div>`:`<div class="stk empty"></div>`;
+    return `<div class="gcell" data-i="${i}">${stk}<span class="hr">${String(i).padStart(2,'0')}</span></div>`;
+  }).join('');
+}
+renderGarden(document.getElementById('gExample'),EX);
+
+/* ---------- tool state ---------- */
+const LS_D='wt5-day-v1',LS_W='wt5-week-v1',LS_M='wt5-mode-v1';
+let day=(()=>{try{const d=JSON.parse(localStorage.getItem(LS_D));if(Array.isArray(d)&&d.length===24&&d.every(Array.isArray))return d}catch(e){}return EX.map(x=>x.slice())})();
+let week=(()=>{try{const w=JSON.parse(localStorage.getItem(LS_W));if(w&&typeof w==='object')return w}catch(e){}return {}})();
+let mode=localStorage.getItem(LS_M)==='week'?'week':'day';
+let brush='sp';
+
+const bEl=document.getElementById('brushes');
+bEl.innerHTML=ORDER.map(k=>`<button class="brush" type="button" data-b="${k}"><i class="c-${k}"></i>${K[k]}</button>`).join('')+`<button class="brush" type="button" data-b="x">橡皮</button>`;
+function syncBrush(){bEl.querySelectorAll('.brush').forEach(c=>c.classList.toggle('on',c.dataset.b===brush))}
+bEl.addEventListener('click',e=>{const c=e.target.closest('.brush');if(!c)return;brush=c.dataset.b;syncBrush()});
+syncBrush();
+
+const gT=document.getElementById('gTool');
+gT.addEventListener('click',e=>{
+  const c=e.target.closest('.gcell');if(!c)return;
+  const i=+c.dataset.i;let cell=day[i];
+  if(brush==='x')cell=[];
+  else if(cell.includes(brush))cell=cell.filter(k=>k!==brush);
+  else{ if(grp(brush)==='s')cell=cell.filter(k=>grp(k)!=='s'); cell=cell.concat(brush); }
+  day[i]=cell;save();update();
+});
+document.getElementById('loadEx').onclick=()=>{day=EX.map(x=>x.slice());save();update()};
+document.getElementById('clearDay').onclick=()=>{day=Array.from({length:24},()=>[]);save();update()};
+
+const wIn=document.getElementById('weekIn');
+wIn.innerHTML=ORDER.map(k=>`<label><i class="c-${k}"></i><span>${K[k]}</span><input type="number" min="0" max="168" step="0.5" inputmode="decimal" data-k="${k}" value="${week[k]||''}" placeholder="0"></label>`).join('');
+wIn.addEventListener('input',e=>{const k=e.target.dataset.k;if(!k)return;const v=parseFloat(e.target.value);week[k]=isNaN(v)||v<0?0:v;save();update()});
+document.getElementById('fromDay').onclick=()=>{const c=countDay();ORDER.forEach(k=>week[k]=c[k]*7);wIn.querySelectorAll('input').forEach(x=>x.value=week[x.dataset.k]||'');save();update()};
+document.getElementById('clearWeek').onclick=()=>{week={};wIn.querySelectorAll('input').forEach(x=>x.value='');save();update()};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;localStorage.setItem(LS_M,mode);update()});
+
+function save(){localStorage.setItem(LS_D,JSON.stringify(day));localStorage.setItem(LS_W,JSON.stringify(week))}
+function countDay(){const c={};ORDER.forEach(k=>c[k]=0);day.forEach(cell=>cell.forEach(k=>{if(k in c)c[k]++}));return c}
+const fmt=n=>(Math.round(n*10)/10).toString();
+
+function update(){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.mode===mode));
+  document.getElementById('dayPane').style.display=mode==='day'?'':'none';
+  document.getElementById('weekPane').style.display=mode==='week'?'':'none';
+  renderGarden(gT,day);
+
+  const total=mode==='day'?24:168;
+  const c=mode==='day'?countDay():Object.fromEntries(ORDER.map(k=>[k,+week[k]||0]));
+  const g={s:c.s0+c.sp+c.sa,m:c.m,b:c.b,p:c.p,f:c.f};
+  const sumTH=g.s+g.m+g.b+g.p+g.f;
+  let folded=0,flowFold=0,filled=0;
+  if(mode==='day'){day.forEach(cell=>{const gs=new Set(cell.map(grp));if(cell.length)filled++;if(gs.size>1)folded++;if(gs.has('f')&&gs.size>1)flowFold++;});}
+
+  let h=`<div class="mono" style="margin-bottom:4px">${mode==='day'?'一天':'一周'}的五种时间 · 以 ${total} 小时为分母</div>`;
+  const rest=mode==='day'?24-filled:Math.max(0,total-sumTH);
+  h+=`<div class="stackbar">${GROUPS.map(([k,n,col])=>g[k]?`<i style="flex:${g[k]};background:${col}" title="${n} ${fmt(g[k])} 小时"></i>`:'').join('')}${rest>0?`<i style="flex:${rest}"></i>`:''}</div>`;
+  h+=`<p class="small" style="margin:0 0 6px">上面这条按“时间植物”总数分配${mode==='day'&&folded?'，折叠的格子会让总数超过 24':''}；浅灰为未分类。</p>`;
+  GROUPS.forEach(([k,n,col])=>{
+    const pct=g[k]/total*100;
+    const track=k==='s'?['s0','sp','sa'].map(x=>c[x]?`<i class="c-${x}" style="width:${Math.min(c[x]/total*100,100)}%"></i>`:'').join(''):`<i style="width:${Math.min(pct,100)}%;background:${col}"></i>`;
+    h+=`<div class="brow"><b>${n}</b><div class="track">${track}</div><span class="val">${fmt(g[k])} h · ${fmt(pct)}%</span></div>`;
+    if(k==='s'&&g.s)h+=`<div class="subl">睡眠饮食 ${fmt(c.s0)} · 被动 ${fmt(c.sp)} · 主动 ${fmt(c.sa)}</div>`;
+  });
+  h+=mode==='day'?`<p class="small" style="margin-top:10px">已分类 ${filled} / 24 格 · 折叠 ${folded} 格（其中含心流的 ${flowFold} 格）</p>`:`<p class="small" style="margin-top:10px">合计 ${fmt(sumTH)} / 168 小时${sumTH>168?'（超出部分可视为折叠时间）':''}</p>`;
+  document.getElementById('res').innerHTML=h;
+
+  const sp=g.s/total*100, fp=g.f/total*100, d=[];
+  d.push(`<b>生存时间占 ${fmt(sp)}%</b>：最优模型要求“尽量低”。其中被动生存 ${fmt(c.sp)} 小时${c.sp?'，可以用清单法高效做完、缩短它，并在日期旁写下“5”':''}。`);
+  d.push(`<b>心流时间 ${fmt(g.f)} 小时（${fmt(fp)}%）</b>：最优模型要求“尽可能高”。${g.f?'':'可以先留出 1 小时远离手机，练习专注。'}`);
+  if(mode==='day')d.push(`<b>心流与其他时间折叠 ${flowFold} 格</b>：最优模型要求“尽可能与其他时间发生折叠”。${flowFold?'':'试着找一件能同时带来心流和赚钱（或好玩、好看）的事。'}`);
+  d.push(`<b>赚钱时间 ${fmt(g.m)} 小时</b>：每天安排“重要不紧急”的事，对核心竞争力做功，让 R 保持为正。`);
+  d.push(`<b>好看 ${fmt(g.b)} · 好玩 ${fmt(g.p)} 小时</b>：自由区域按你的生平排优先级，不追求平衡。`);
+  document.getElementById('diag').innerHTML=d.map(x=>`<li>${x}</li>`).join('');
+  document.getElementById('warn').textContent=(mode==='week'&&sumTH>168)?'一周只有 168 小时，填写合计已超出；如果不是折叠，请检查数字。':'';
+}
+update();
+
+/* ---------- checklist ---------- */
+const CK={1:'k0',2:'k1',3:'k2',4:'k3',5:'k4',6:'k5',7:'k0',8:'k0'};
+const T=[
+["做一次终局判断","先画人生起落图，标出巅峰和低谷事件；再留出 1 小时、关掉手机，完整填一份追悼会策划表，重点写生平。",1],
+["每次做事前问两句","“我正在哪种时间里？这是我主动选择的吗？”先觉知，再决定。",7],
+["开工前 5 分钟列清单","把他律任务归到一张清单，写下“每天优先的三件事”，琐事记在最后，做完就打钩。",2],
+["低落时在日期旁写一个“5”","对照运动员密码自问：了解自己了吗？有教练吗？有训练计划吗？对手是谁？下一场比赛在哪天？",2],
+["写下你的终极等式","D 是什么（热爱 · 高于平均 · 市场需求 · 复利属性）？P 在哪里？R 怎么保持为正？",3],
+["每天留出赚钱时间","哪怕一小时，只做四象限里“重要不紧急”、增强核心竞争力的事。",3],
+["把内丹好看时间写死在日程里","比如晚 8–9 点健身，不让任何人和临时工作挪动；内丹外法尽量 1∶1。",4],
+["启动一个 100 天健身计划","尽量满足 7 个条件：正视起点、确立目标、监督、计划、记录对照、同伴、挑战金。",4],
+["拆分你的遗愿清单","分成“体验清单”和“创造清单”，每年至少推进一项创造清单。",5],
+["给刷手机预先定时","想放松就先说好时长，让自己“被绑架得明明白白”；写作、学习时把手机放到别的房间。",5],
+["建立你的心流触发仪式","固定的光线、气味、声音或泡茶这类动作；关闭手机和视觉干扰，硬做至少 25 分钟。",6],
+["找一件能折叠时间的事","最好包含赚钱 + 心流的二折叠；判断一件事值不值得做时，看它能折叠几种时间。",7],
+["推演一位榜样的时间花园","找他的自传、采访或作息表，标出五种时间和折叠方式，先模仿他的花园模型。",8],
+["画一张命运地图","起点写时间地点；旗帜选 3/5/10 年；五种时间排优先级、用 SMART 量化；再拆到年、月、天，种进 24 格花园。",8]
+];
+const KEY='wt5-check-v1';let saved=[];try{saved=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+const ck=document.getElementById('check');
+ck.innerHTML=T.map((t,i)=>`<label class="${CK[t[2]]}"><span class="no">${String(i+1).padStart(2,'0')}</span><input class="cbx" type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><em class="src">第 ${t[2]} 章</em></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  localStorage.setItem(KEY,JSON.stringify(on));
+  document.getElementById('pfill').style.width=(on.length/T.length*100)+'%';
+  document.getElementById('ptxt').textContent=on.length+'/'+T.length;
+}
+ck.addEventListener('change',prog);prog();
+
+/* ---------- action drawer ---------- */
+const STAGES=[['①','今天就做','15 分钟内'],['②','第一周','要建立的做法'],['③','一个月后','习惯与检验'],['④','卡住了怎么办','常见障碍与对策']];
+const PLAN={
+ all:{n:'还不确定',k:'k0',core:'先辨认，再选择：觉知自己正处在哪种时间中，再确认这是不是自己的选择。花园模型的两步就从这里开始。',src:'第 7 章',
+  s:[
+   [["给今天的 24 小时分类","用 5–10 分钟，把今天每个小时标成生存、赚钱、好看、好玩、心流之一，可以直接用本页“测一测”。","第 7 章 · 附录"],
+    ["问自己三个问题","“我正在做什么事情？我为什么选择做这件事情？这件事情是我主动选择的吗？”","第 6 章"],
+    ["写下每天优先的三件事","今天必须完成、优先级最高的三件；其他琐事记在清单最后。","第 2 章"]],
+   [["留出 1 小时做终局判断","独处、关门、关手机，先画人生起落图锚定 A，再按引导填追悼会策划表寻找 B。","第 1 章 · 附录"],
+    ["按生平给五种时间排优先级","参考生平，从最优到次优排好；客观顺序和你希望的不同时，遵从你对未来秩序的设计。","第 8 章 · 附录"],
+    ["每天开工前 5 分钟列清单","先把被动的他律任务高效做完，为其他时间腾出空间。","第 2 章"]],
+   [["画出命运地图","起点写时间地点；旗帜选 3/5/10 年；每种时间的目标用 SMART 量化，再拆到月、到天。检验：每种时间都能说出本月和今天对应要做什么。","第 8 章"],
+    ["用最优模型复盘你的花园","检验三条：生存时间占比有没有下降？心流时间有没有增加？有没有出现能折叠两种以上时间的格子？","第 7 章"]],
+   [["想让五种时间都平衡","平衡不是目标，清晰明确的优先级才有意义；深度和广度不可兼得。","第 7 章"],
+    ["看到别人都在做某个选择","同一件事对不同的人属于不同的时间。除非深深认同和懂得他人，否则他人的选择和你毫不相干。","第 7 章"],
+    ["重大挫折、犹豫该不该做","把追悼会策划表拿出来重读，再次确认对你来说长期的价值是什么。","第 1 章"]]
+  ]},
+ s:{n:'生存',k:'k1',core:'识别逆境，稳定情绪，缩短被动生存时间，开启主动生存时间。被动生存用清单法缩短，主动生存照运动员密码“5”逾越。',src:'第 2 章',
+  s:[
+   [["判断是被动还是主动生存","被安排时、能力不足时属于被动；处于行业起点、晋级之后属于主动。这段难受的时间是被迫的，还是自己选的？","第 2 章"],
+    ["在今天的日期旁写一个“5”","先觉知情绪：这是生存时间，它会周期性出现，是用来逾越的，不是用来沉沦的。","第 2 章"],
+    ["5 分钟列今日待办","写下每天优先的三件事，突发琐事记在最后，做完一项打一个钩。","第 2 章"]],
+   [["被动生存时间里只盯清单","目标只有一个：高效完成他律任务，缩短它占用的时间，为主动生存争取时间。","第 2 章"],
+    ["回答运动员密码前三问","我在行业中的位置、天赋和短板是什么？我的教练是谁（领域里成功过、水平高于我、了解我）？我的训练计划是什么？","第 2 章"],
+    ["下班后不要报复性挥霍","躺着、刷手机、看剧任由时间流逝，是“时间被捆绑后的情绪反弹”。给自由时间安排一件行动。","第 2 章"]],
+   [["定义下一场比赛并为它训练","把月度 KPI、一次演讲、一份 PPT 或新品好评率定义为比赛日。检验：有计划、有教练、有对手，并期待下一场比赛到来，才算真正进入主动生存。","第 2 章"],
+    ["每天清单 + 打钩成为习惯","检验：被动生存时间是否在缩短，对时间和任务是否开始有“掌控感”。","第 2 章"]],
+   [["“我的人生不会就这样了吧”","这是生存时间的典型感受。时间是计算变化的单位，只要持续采取行动，改变一定会发生；情绪到低谷时，马上展开行动。","第 2 章"],
+    ["想借换工作、换环境、换恋人突破","先看这个外力对你的时间表是正面还是负面、占有时间还是出让时间、让你更懒还是更勤，会不会带来更优的秩序。","第 2 章"],
+    ["在进与退之间犹豫","作者的建议是“能退能进时，选择进”，像运动员一样选择前方的比赛。","第 2 章"]]
+  ]},
+ m:{n:'赚钱',k:'k2',core:'只对核心竞争力做功，保持循环增强。按 D=P(1+R)ᴺ 选 D、明确 P、确保 R，让 N 足够长。',src:'第 3 章',
+  s:[
+   [["写下你的终极等式","等式左边：你朝思暮想的 D 是什么？右边：你现在的核心竞争力起点 P 在哪里？","第 3 章"],
+    ["用四个圈检查 D","它是否同时在“我热爱的”“高于平均水平”“市场需求”“复利属性”的交集里？","第 3 章"],
+    ["在明天的日程里划出 1 小时","专门用于“重要不紧急”、增强核心竞争力的事，这一小时就是赚钱时间。","第 3 章"]],
+   [["每天都安排赚钱时间","把重要紧急、紧急不重要的生存类事务尽快做完，把省下的时间给“重要不紧急”。","第 3 章"],
+    ["用公开展示检验 P","热爱不等于擅长。参与竞争或公开展示，获得评价，判断是否高于行业平均水平。","第 3 章"],
+    ["写一份以年为单位的计划","长期主义者需要计划和设计足够长的时间维度。","第 3 章"]],
+   [["每天自问一句","“同学，今天，你‘滚’起来了吗？”检验：R 是否稳定为正。","第 3 章"],
+    ["对照四种失败情况自查","只立 flag 不行动？过俩月 D 又变了？R 时有时无甚至为负？还是 N 不够久？","第 3 章"]],
+   [["投入很久还没看到结果","质变点没到，只代表暂时还没到。做长期主义的事坚持超过 3 年，才算真正的长期主义者。","第 3 章"],
+    ["不确定自己热爱的是事还是虚荣","独处、没人看见、可能不挣钱也没人知道时，你依然默默乐意做吗？是的话就很接近 D。","第 3 章"],
+    ["D 还没找到，感到迷茫","作者的两个底层信念：不停地做任务就是在打磨 P；雪球只要已经开始滚动，终有一天串起点滴。","第 3 章"],
+    ["害怕失败","亚历克斯通过一遍遍练习扩大舒适区，“我一遍又一遍地经历恐惧，直到不再恐惧”。恐惧是靠训练获得实力而逐渐缩小的。","第 3 章"]]
+  ]},
+ b:{n:'好看',k:'k3',core:'重点修炼内丹（睡眠、饮食、运动），把好看时间严格前置；内丹与外法 1∶1，用 7 个条件坚持 100 天。',src:'第 4 章',
+  s:[
+   [["正视起点","站在镜前观察自己，测量并记录下来。","第 4 章"],
+    ["锁定一个健身时段","比如今晚 8–9 点，写进日程，告诉身边的人这段时间不可挪动。","第 4 章"],
+    ["从容光焕发清单选一条","如无必要不熬夜、无条件吃早餐、多喝水、无精打采时反而要挺胸，今天就做。","第 4 章"]],
+   [["确立具体的 100 天目标","可以是状态描述、身材指标或过往照片，必须具体，最好敢于公布或分享。","第 4 章"],
+    ["每天按计划练","比如每天 15 分钟 HIIT；给自己设截止时间，每天打卡记录。","第 4 章"],
+    ["找同伴，设挑战金","社群同伴的陪伴、完成即退还的挑战金，都能明显提高完成率。","第 4 章"]],
+   [["内丹好看时间每天都有","检验：约 20 天后对比照片，正反馈从这里开始。","第 4 章"],
+    ["七门功课自查","睡眠、饮食、运动、遗传、环境、情绪、保养，是否都达到 60 分以上？","第 4 章"]],
+   [["健身时间总被别人占用","时间表要严格前置。一旦闸门放开几次，标准就会被一连串击溃。","第 4 章"],
+    ["心情低落，不想动","具身认知：“不开心时就先锻炼”，挺胸、跑步、站直、微笑，做了才会感觉好。","第 4 章"],
+    ["一个人坚持不下来","书中数据：自行坚持完成率只有 2.7%，加上监督、记录、同伴、挑战金等条件后升到 52%。","第 4 章"]]
+  ]},
+ p:{n:'好玩',k:'k4',core:'主动安排好玩时间，挣脱信息流，接受失望，保住好奇心；从体验清单走向创造清单。',src:'第 5 章',
+  s:[
+   [["刷手机前先说好时长","明知会被多巴胺绑架，就预先给出这段时间，“让自己被绑架得明明白白”。","第 5 章"],
+    ["把遗愿清单拆成两部分","体验清单（人到了就能打钩）和创造清单（需要量化、努力争取），各写 3 条。","第 5 章"],
+    ["问一句：这次让多巴胺因什么分泌","手机、游戏、一段冒险，还是一段人生奖励路径的寻找之旅？","第 5 章"]],
+   [["在时间轴上给好玩留出时间","如果不计划好玩时间，惊喜就不会来。","第 5 章"],
+    ["去做一件没试过的事","新书、新电影、新的人，可能好玩，也可能不好玩，都可以接受。","第 5 章"],
+    ["专注时把手机放到别的房间","先用特定的事情绑架自己，完成后再坦然地拿起手机。","第 5 章"]],
+   [["推进创造清单上的一项","线性旅程里有机制推着你到新高度。检验：你是否越来越能分清热闹和丰富。","第 5 章"],
+    ["挑一个能培养技巧的爱好","符合培养技巧、拓展能力、循环增强规律的爱好，才可能把你带进心流通道。","第 6 章"]],
+   [["白天被他律占满，晚上报复性刷手机","你拥有的不是自由，是情绪反弹。先完成一件特定的事，再心安理得地放松。","第 2 章 · 第 5 章"],
+    ["去了却很失望","好玩时间本来就需要承受失望。记下是什么人、什么事、为何不好玩，作为下次选择的依据。","第 5 章"],
+    ["感到无聊","允许自己无聊。无聊是行动的催化剂，可以思考、反省，它应该是一段生活的序幕。","第 5 章"]]
+  ]},
+ f:{n:'心流',k:'k5',core:'守住火种，建立触发仪式，关闭干扰，硬做至少 25 分钟；无聊就提升挑战，焦虑就提升技巧。',src:'第 6 章',
+  s:[
+   [["把手机放到另一个房间","“在手机和心流时间之中，只能存在一个。”","第 6 章"],
+    ["清空大脑和桌面","把后续待办记进手册，告诉自己不必记住；挪走桌上可能吸引注意力的东西。","第 6 章"],
+    ["选一件事硬做 25 分钟","一件可完成、略有挑战的事，中途不看手机，让大脑启动自行关闭模式。","第 6 章"]],
+   [["建立你的触发仪式","重现让你进入心流的光亮、颜色、气味、声音，比如作者写作前的泡茶。","第 6 章"],
+    ["每天至少 1 小时不刷手机的专注","哪怕现在还很难感受到心流，也先用这 1 小时练习专注。","第 8 章"],
+    ["按心流通道调难度","感到无聊就提升挑战，感到焦虑就提升技巧。","第 6 章"]],
+   [["固定每天的心流时间","检验：对照米哈里的 8 个标准，看出现了几条，比如全神贯注、即时反馈、忘我、时间感改变。","第 6 章"],
+    ["让心流和其他时间折叠","尝试让心流与赚钱等时间叠在同一格。检验最优模型：心流占比是否提高、是否与其他时间折叠。","第 7 章"]],
+   [["找不到热爱的事","三个选择：当下必须做、略具挑战的事；能循环增强的技能类爱好；突如其来的独处时间。也可以先把心流时间留给寻找，比如研究 20 个人沉迷的是什么。","第 6 章 · 附录"],
+    ["25 分钟里总想看手机","如果在这 25 分钟里偷看了手机，一切就前功尽弃。给够时间，大脑才会来帮你。","第 6 章"],
+    ["启动困难","用颅内模拟：视觉化模拟（贴目标照片）、假想敌模拟、上身法（模拟榜样人格，再召唤理想化身）。","第 6 章"]]
+  ]}
+};
+const PK=['all','s','m','b','p','f'];
+const LS_P='wt5-plan-v1',LS_PT='wt5-plan-type-v1';
+let pState={};try{pState=JSON.parse(localStorage.getItem(LS_P)||'{}')||{}}catch(e){pState={}}
+let pType=PK.includes(localStorage.getItem(LS_PT))?localStorage.getItem(LS_PT):'all';
+const seg=document.getElementById('dwSeg');
+seg.innerHTML=PK.map(k=>`<button type="button" role="radio" class="${PLAN[k].k}" data-t="${k}"><i></i>${PLAN[k].n}</button>`).join('');
+function renderPlan(){
+  const P=PLAN[pType],done=new Set(pState[pType]||[]);
+  seg.querySelectorAll('button').forEach(b=>{const on=b.dataset.t===pType;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});
+  const core=document.getElementById('dwCore');core.className='dw-core '+P.k;
+  core.innerHTML=`<div class="mono">书里的核心对策 · ${P.src}</div><p>${P.core}</p>`;
+  let n=0,html='';
+  P.s.forEach((items,si)=>{
+    html+=`<div class="stage"><h3><span class="sn">${STAGES[si][0]}</span>${STAGES[si][1]}<small>${STAGES[si][2]}</small></h3>`;
+    items.forEach((it,ii)=>{const id=si+'-'+ii;n++;
+      html+=`<label class="step ${P.k}"><input class="cbx" type="checkbox" data-id="${id}" ${done.has(id)?'checked':''}><div><b>${it[0]}</b><span>${it[1]}</span><em class="src">${it[2]}</em></div></label>`;});
+    html+='</div>';
+  });
+  document.getElementById('dwStages').innerHTML=html;
+  const c=[...done].filter(id=>{const [a,b]=id.split('-').map(Number);return P.s[a]&&P.s[a][b]}).length;
+  document.getElementById('dwFill').style.width=(n?c/n*100:0)+'%';
+  document.getElementById('dwTxt').textContent=c+'/'+n;
+}
+seg.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;pType=b.dataset.t;localStorage.setItem(LS_PT,pType);renderPlan();document.getElementById('dwBody').scrollTop=0});
+document.getElementById('dwStages').addEventListener('change',e=>{
+  const id=e.target.dataset.id;if(!id)return;
+  const s=new Set(pState[pType]||[]);e.target.checked?s.add(id):s.delete(id);
+  pState[pType]=[...s];localStorage.setItem(LS_P,JSON.stringify(pState));renderPlan();
+});
+renderPlan();
+
+const fab=document.getElementById('fab'),dw=document.getElementById('plan'),scrim=document.getElementById('scrim');
+function openDw(){document.body.classList.add('dw-open');dw.setAttribute('aria-hidden','false');fab.setAttribute('aria-expanded','true');document.documentElement.style.overflow='hidden';setTimeout(()=>document.getElementById('dwClose').focus(),60)}
+function closeDw(){if(!document.body.classList.contains('dw-open'))return;document.body.classList.remove('dw-open');dw.setAttribute('aria-hidden','true');fab.setAttribute('aria-expanded','false');document.documentElement.style.overflow='';fab.focus()}
+fab.addEventListener('click',openDw);
+scrim.addEventListener('click',closeDw);
+document.getElementById('dwClose').addEventListener('click',closeDw);
+document.addEventListener('keydown',e=>{
+  if(!document.body.classList.contains('dw-open'))return;
+  if(e.key==='Escape'){e.preventDefault();closeDw();return}
+  if(e.key==='Tab'){const f=[...dw.querySelectorAll('button,input')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+if(location.hash==='#plan')openDw();
+
+/* ---------- reveal & nav ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('nav.mast a.l')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+function navOn(){let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<120)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k))}
+addEventListener('scroll',navOn,{passive:true});navOn();
+</script>
+</body>
+</html>
