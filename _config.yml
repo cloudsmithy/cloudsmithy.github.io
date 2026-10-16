@@ -92,7 +92,9 @@ time_format: HH:mm:ss
 updated_option: empty
 per_page: 10
 pagination_dir: page
-include: null
+# 让 .nojekyll 进 public，gh-pages 不跑 Jekyll（否则每篇的 index.md 会被当 Liquid 模板解析而构建失败）
+include:
+  - .nojekyll
 exclude: null
 ignore: null
 theme: butterfly

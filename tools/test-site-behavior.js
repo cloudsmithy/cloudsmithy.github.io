@@ -672,3 +672,9 @@ test('flat article indexes retain every technical article once and order the com
   assert.doesNotMatch(lazycat, /href="\/(?:software|explicit)\//)
   assert.throws(() => render(['unknown']), /Unknown article index/)
 })
+
+test('gh-pages output ships .nojekyll so per-post Markdown is not run through Jekyll', () => {
+  assert.ok(fs.existsSync(path.join(root, 'source/.nojekyll')))
+  const config = fs.readFileSync(path.join(root, '_config.yml'), 'utf8')
+  assert.match(config, /^include:\n(?:\s+-.*\n)*\s+-\s*\.nojekyll\s*$/m)
+})
