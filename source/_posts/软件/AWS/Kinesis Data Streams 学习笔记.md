@@ -14,6 +14,8 @@ source_url: https://blog.csdn.net/weixin_38781498/article/details/136686363
 source_title: Kinesis Data Stream
 ---
 
+> 来自课程转录。
+
 [AWS 实战与学习笔记：系列目录](/series/aws/)
 
 

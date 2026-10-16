@@ -15,6 +15,8 @@ source_url: https://blog.csdn.net/weixin_38781498/article/details/136692411
 source_title: EKS - Elastic Kubernetes Service
 ---
 
+> 来自课程转录。
+
 [AWS 实战与学习笔记：系列目录](/series/aws/)
 
 
