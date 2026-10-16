@@ -1,5 +1,5 @@
 import type { UserConfig } from 'vitepress'
-import { existsSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -7,6 +7,15 @@ import { fileURLToPath } from 'node:url'
 const HEXO_SOURCE = fileURLToPath(new URL('../../source', import.meta.url))
 // Hexo 主站地址，与 _config.yml 的 url 一致
 const HEXO_URL = 'https://blog.no-claw.com'
+
+// 本专栏的文章目录（与 config.*.mts 的 srcDir 一致），abbrlink → 相对 srcDir 的路径
+const SITE_DIR = path.join(HEXO_SOURCE, '_posts', process.env.SITE === 'infini' ? '极限科技' : '懒猫微服')
+const ABBRLINKS = new Map<string, string>()
+for (const file of readdirSync(SITE_DIR, { recursive: true }) as string[]) {
+  if (!file.endsWith('.md')) continue
+  const m = readFileSync(path.join(SITE_DIR, file), 'utf8').match(/^abbrlink:\s*['"]?([0-9a-f]{8})['"]?\s*$/m)
+  if (m) ABBRLINKS.set(m[1], file.split(path.sep).join('/'))
+}
 
 // HTML 标签集合，用于 markdown 处理
 const HTML_TAGS = new Set(['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'slot', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'template', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'])
@@ -41,7 +50,14 @@ export const sharedConfig: Partial<UserConfig> = {
           return `&lt;${tag}&gt;`
         })
         
-        // 站内链接（abbrlink、/topics/、/series/ 等）只在 Hexo 主站存在，改成主站绝对地址
+        // 链到本专栏里的文章（/abbrlink/）改成站内相对链接
+        src = src.replace(/\]\(\/([0-9a-f]{8})\/?(#[^)\s]*)?\)/g, (match, id, hash = '') => {
+          const target = ABBRLINKS.get(id)
+          if (!target) return match
+          const rel = path.posix.relative(path.posix.dirname(env.relativePath || ''), target)
+          return `](<${rel.startsWith('.') ? rel : './' + rel}${hash}>)`
+        })
+        // 其余站内链接（/topics/、/series/、其他分类的文章）只在 Hexo 主站存在，改成主站绝对地址
         src = src.replace(/\]\(\/(?!images\/)/g, `](${HEXO_URL}/`)
 
         // 恢复代码块
