@@ -28,17 +28,12 @@ permalink: :abbrlink/
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/project' and root as '/project/'
 abbrlink:
-  alg: crc32 # 算法：crc16(default) or crc32
+  alg: crc32 # 实际被 tools/patch-abbrlink.js 改成 MD5 前 8 位（postinstall 时打补丁）
   rep: hex # 进制：dec(default) or hex
   use_map: true
 pretty_urls:
   trailing_index: false
   trailing_html: false
-  drafts: false # 是否为草稿生成 abbrlink
-  # 从 Front Matter 中获取 abbrlink
-  enable_category: false
-  enable_title: false
-  enable_date: false
 source_dir: source
 public_dir: public
 tag_dir: tags
@@ -131,7 +126,8 @@ search:
   path: search.xml
   field: post
   content: true
-  format: html
+  # Butterfly 本地搜索在浏览器里也会去掉 HTML 标签，这里提前去掉，search.xml 小很多
+  format: striptags
 
 
 
