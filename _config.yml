@@ -50,6 +50,7 @@ skip_render:
   - "sw.js"
   - "manifest.json"
   - "daily-routine.html"
+  - "book-notes/*.html"
 new_post_name: ":title.md"
 default_layout: post
 titlecase: false
