@@ -442,7 +442,7 @@ test('homepage moves one announcement before articles while preserving rich cont
   assert.equal(render(html.replace(widget, ''), { path: 'index.html' }), html.replace(widget, ''))
 })
 
-test('article listings preserve full categories and tag clouds below posts without changing other pages', () => {
+test('article listings keep taxonomy links in a dismissible popover scoped to the PJAX page', () => {
   const filters = []
   const locals = { data: { topics: [] }, categories: { length: 34 }, tags: { length: 52 }, posts: { length: 357 } }
   vm.runInNewContext(fs.readFileSync(path.join(root, 'scripts/topics.js'), 'utf8'), {
@@ -477,12 +477,22 @@ test('article listings preserve full categories and tag clouds below posts witho
     assert.ok(result.includes(script))
     assert.equal((result.match(/class="card-widget card-categories"/g) || []).length, 1)
     assert.equal((result.match(/class="card-widget card-tags"/g) || []).length, 1)
+    assert.match(result, /<button class="discovery-trigger" type="button" popovertarget="home-discovery">/)
+    assert.match(result, /id="home-discovery" popover="auto" role="dialog" aria-label="分类与标签"/)
+    assert.match(result, /popovertargetaction="hide" aria-label="关闭分类与标签"/)
+    assert.match(result, /id="discovery-categories" aria-controls="discovery-panel-categories" checked autofocus/)
+    assert.match(result, /id="discovery-tags" aria-controls="discovery-panel-tags"/)
+    assert.match(result, /id="discovery-panel-categories"><div class="card-widget card-categories"/)
+    assert.match(result, /id="discovery-panel-tags"><div class="card-widget card-tags"/)
     assert.ok(result.indexOf('class="home-discovery"') > result.indexOf('id="pagination"'))
     assert.ok(result.indexOf(tags) > result.indexOf('Site information'))
     assert.ok(result.indexOf(tags) < result.indexOf('</main>'))
     assert.ok(result.indexOf('Site information') > result.indexOf('id="aside-content"'))
     assert.equal(render(result, { path: page }), result)
   }
+  const tagsOnly = render(html.replace(categories, ''), { path: 'index.html' })
+  assert.match(tagsOnly, /id="discovery-tags" aria-controls="discovery-panel-tags" checked autofocus/)
+  assert.doesNotMatch(tagsOnly, /id="discovery-categories"/)
   for (const page of ['categories/index.html', 'tags/AI/index.html', 'fa9f211a/index.html']) {
     assert.equal(render(html, { path: page }), html)
   }

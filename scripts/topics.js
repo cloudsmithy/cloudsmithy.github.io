@@ -288,8 +288,8 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   return result.replace(/(<div\b[^>]*\bid="recent-posts"[^>]*>)/i, (_, start) => start + notice)
 }, 7)
 
-// Put discovery below both columns so it has its own centered reading area.
-// Keep it inside main so PJAX replaces it together with the article listing.
+// Keep the original taxonomy links in a native, dismissible popover.
+// Both the trigger and panel belong to main so PJAX replaces them together.
 hexo.extend.filter.register('after_render:html', (html, data) => {
   if (!/^\/?(?:page\/\d+\/)?index\.html$/.test(data?.path || '') ||
       !html.includes('id="recent-posts"') || html.includes('id="home-directory"')) return html
@@ -308,13 +308,28 @@ hexo.extend.filter.register('after_render:html', (html, data) => {
   for (const name of ['categories', 'tags']) {
     const range = divRange(result, new RegExp(`<div\\b[^>]*\\bclass="card-widget card-${name}"[^>]*>`, 'i'))
     if (!range) continue
-    widgets.push(result.slice(range.start, range.end))
+    widgets.push({ name, html: result.slice(range.start, range.end) })
     result = result.slice(0, range.start) + result.slice(range.end)
   }
   if (widgets.length) {
     const mainEnd = result.toLowerCase().lastIndexOf('</main>')
     if (mainEnd < 0) return html
-    const discovery = '<section class="home-discovery" id="home-discovery" aria-label="分类与标签">' + widgets.join('') + '</section>'
+    const tabs = widgets.map((widget, index) =>
+      `<input class="discovery-choice" type="radio" name="discovery-view" id="discovery-${widget.name}" ` +
+      `aria-controls="discovery-panel-${widget.name}"${index === 0 ? ' checked autofocus' : ''}>` +
+      `<label for="discovery-${widget.name}">${widget.name === 'categories' ? '分类' : '标签'}` +
+      `<span>${hexo.locals.get(widget.name).length}</span></label>`
+    ).join('')
+    const panels = widgets.map(widget =>
+      `<div class="discovery-panel" id="discovery-panel-${widget.name}">${widget.html}</div>`
+    ).join('')
+    const discovery = '<button class="discovery-trigger" type="button" popovertarget="home-discovery">' +
+      '<i class="fas fa-layer-group" aria-hidden="true"></i><span>分类 · 标签</span></button>' +
+      '<section class="home-discovery" id="home-discovery" popover="auto" role="dialog" aria-label="分类与标签">' +
+      '<div class="discovery-header"><fieldset class="discovery-tabs" aria-label="浏览方式">' + tabs + '</fieldset>' +
+      '<button class="discovery-close" type="button" popovertarget="home-discovery" popovertargetaction="hide" aria-label="关闭分类与标签">' +
+      '<i class="fas fa-times" aria-hidden="true"></i></button></div>' +
+      '<div class="discovery-body">' + panels + '</div></section>'
     result = result.slice(0, mainEnd) + discovery + result.slice(mainEnd)
   }
   return result.replace(/(<div\b[^>]*\bclass="sticky_layout"[^>]*>)/i, (_, start) => start + directory)
