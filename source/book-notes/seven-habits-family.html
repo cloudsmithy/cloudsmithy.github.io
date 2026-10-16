@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>高效能家庭的7个习惯 · 一页读懂</title>
+<style>
+:root{
+  --bg:#f7efe1; --paper:#fffcf5; --ink:#3a2d25; --ink2:#6b594c; --ink3:#9b8a7b;
+  --line:#e9dcc6; --soft:#f0e5d2;
+  --b1:#c2410c; --b1s:#fbe5d3;
+  --b2:#be123c; --b2s:#fbe0e6;
+  --b3:#4d7c5a; --b3s:#e1eedf;
+  --neg:#a1203f; --negs:#fde8ec; --pos:#2f7a45; --poss:#e4f3e6;
+  --tape:rgba(236,200,110,.62); --tape2:rgba(240,160,160,.55); --tape3:rgba(150,196,165,.6);
+  --n1:#fff3b4; --n2:#ffe0e5; --n3:#dcefdc; --n4:#e1eafa; --n5:#fde3c8;
+  --twine:#b08b63; --pin:#d9443b;
+  --kai:"Kaiti SC","STKaiti","KaiTi","BiauKai","楷体","AR PL UKai CN",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --r:18px;
+  --shadow:0 1px 2px rgba(70,45,20,.06),0 10px 22px rgba(70,45,20,.09);
+  --lift:0 2px 3px rgba(70,45,20,.08),0 16px 30px rgba(70,45,20,.14);
+  --dots:color-mix(in srgb,#b89a78 22%,transparent);
+  --c:var(--b1); --cs:var(--b1s);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#1a1512; --paper:#262019; --ink:#f3e8da; --ink2:#c9b9a6; --ink3:#8f8071;
+    --line:#3b3129; --soft:#2f2720;
+    --b1:#fb923c; --b1s:#3c2616;
+    --b2:#fb7185; --b2s:#3f1e27;
+    --b3:#8fd1a0; --b3s:#1e3425;
+    --neg:#fda4af; --negs:#3a1e25; --pos:#8be0a3; --poss:#1b3323;
+    --tape:rgba(214,176,92,.38); --tape2:rgba(220,130,130,.35); --tape3:rgba(120,170,135,.38);
+    --n1:#463d1f; --n2:#45262d; --n3:#223b29; --n4:#232f44; --n5:#46301c;
+    --twine:#8a6c4c; --pin:#e26a5f;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 22px rgba(0,0,0,.3);
+    --lift:0 2px 3px rgba(0,0,0,.4),0 16px 30px rgba(0,0,0,.4);
+    --dots:rgba(255,235,210,.05);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1.1px,transparent 1.4px);background-size:22px 22px;color:var(--ink);font:16px/1.85 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4,h5{font-family:var(--kai);font-weight:700;line-height:1.35;margin:0}
+p{margin:.4em 0}
+.muted{color:var(--ink2)}
+.small{font-size:13px;color:var(--ink3)}
+b,strong{font-weight:650}
+
+/* tape helper */
+.taped{position:relative}
+.taped::before{content:"";position:absolute;top:-11px;left:50%;width:92px;height:24px;transform:translateX(-50%) rotate(-3deg);background:var(--tape);border-left:2px dotted rgba(255,255,255,.35);border-right:2px dotted rgba(255,255,255,.35);z-index:2;pointer-events:none}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.3) blur(12px);-webkit-backdrop-filter:saturate(1.3) blur(12px);border-bottom:2px dashed color-mix(in srgb,var(--twine) 45%,transparent)}
+nav.top .wrap{display:flex;align-items:center;gap:4px;height:58px;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{font-family:var(--kai);font-weight:700;font-size:19px;margin-right:auto;white-space:nowrap;padding-right:12px}
+nav.top .brand i{font-style:normal;color:var(--paper);background:var(--b1);border-radius:50%;display:inline-grid;place-items:center;width:26px;height:26px;font-size:16px;margin:0 2px;transform:rotate(-8deg)}
+nav.top a{text-decoration:none;font-size:14px;color:var(--ink2);padding:5px 11px;border-radius:999px;white-space:nowrap;transition:.2s;border:1px solid transparent}
+nav.top a:hover,nav.top a.on{background:var(--paper);color:var(--ink);border-color:var(--line);box-shadow:0 2px 6px rgba(70,45,20,.08)}
+
+/* hero */
+.hero{padding:70px 0 50px;text-align:center}
+.cover{display:inline-block;max-width:880px;background:var(--paper);padding:40px 46px 34px;border-radius:12px;transform:rotate(-.8deg);box-shadow:var(--lift);position:relative}
+.cover::before,.cover::after{content:"";position:absolute;top:-12px;width:110px;height:28px;background:var(--tape);z-index:2}
+.cover::before{left:-26px;transform:rotate(-28deg)}
+.cover::after{right:-26px;transform:rotate(28deg);background:var(--tape2)}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.18em;color:var(--ink3);border:1.5px dashed var(--line);padding:3px 14px;border-radius:999px;margin-bottom:18px}
+.hero h1{font-size:clamp(38px,6.4vw,70px);letter-spacing:.05em;line-height:1.25}
+.hero h1 .dot{color:var(--b1)}
+.hero h1 .seven{display:inline-grid;place-items:center;width:1.15em;height:1.15em;border-radius:50%;background:var(--b1);color:var(--paper);transform:rotate(-8deg);font-size:.9em;margin:0 .06em;vertical-align:.04em}
+.hero .lead{text-wrap:balance;font-family:var(--kai);font-size:clamp(20px,2.5vw,26px);line-height:1.7;margin:20px auto 0}
+.hero .lead em{font-style:normal;color:var(--b1);background:linear-gradient(transparent 60%,color-mix(in srgb,var(--b1) 22%,transparent) 0)}
+.hero .sub2{font-size:15.5px;color:var(--ink2);max-width:760px;margin:30px auto 0}
+.thread{margin:30px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 8px;max-width:1080px}
+.thread span{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:6px 14px;font-size:14.5px;white-space:nowrap;box-shadow:var(--shadow);transform:rotate(var(--r2,0deg))}
+.thread span:nth-of-type(odd){--r2:-1.5deg}.thread span:nth-of-type(even){--r2:1.2deg}
+.thread i{font-style:normal;color:var(--ink3);align-self:center}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px;text-align:left}
+.tcard{background:var(--n1);padding:30px 22px 22px;box-shadow:var(--shadow);position:relative;transform:rotate(-1.6deg);border-radius:3px 3px 18px 3px}
+.tcard.c2{background:var(--n2);transform:rotate(1.2deg)}
+.tcard.c3{background:var(--n3);transform:rotate(-.6deg)}
+.tcard::before{content:"";position:absolute;top:10px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8 0 25%,transparent 30%),var(--pin);box-shadow:0 3px 4px rgba(0,0,0,.25)}
+.tcard .num{font-family:var(--kai);font-size:15px;color:var(--c);font-weight:700;letter-spacing:.15em}
+.tcard h3{font-size:28px;margin-top:2px}
+.tcard .role{display:inline-block;margin-top:6px;font-size:13px;color:var(--c);font-weight:700;border-bottom:2px solid var(--c)}
+.tcard p{font-size:14.5px;color:var(--ink2);margin-top:10px}
+.c1{--c:var(--b1);--cs:var(--b1s)} .c2{--c:var(--b2);--cs:var(--b2s)} .c3{--c:var(--b3);--cs:var(--b3s)}
+
+/* sections */
+section.block{padding:76px 0;position:relative}
+section.block::before{content:"";position:absolute;top:0;left:50%;width:min(1072px,calc(100% - 48px));transform:translateX(-50%);border-top:2px dashed color-mix(in srgb,var(--twine) 40%,transparent)}
+.sec-head{display:flex;align-items:center;gap:22px;margin-bottom:30px;flex-wrap:wrap}
+.sec-head .big{flex:none;width:92px;height:92px;border-radius:50%;background:var(--c);color:var(--paper);display:grid;place-items:center;font-family:var(--kai);font-size:56px;font-weight:700;line-height:1;transform:rotate(-8deg);box-shadow:var(--shadow);outline:2px dashed color-mix(in srgb,var(--paper) 70%,transparent);outline-offset:-8px}
+.sec-head h2{font-size:clamp(30px,4.2vw,44px)}
+.sec-head h2::after{content:"";display:block;height:10px;margin-top:2px;background:radial-gradient(circle at 6px 0,transparent 5px,color-mix(in srgb,var(--c) 55%,transparent) 5.5px 6.8px,transparent 7.3px) 0 0/12px 10px repeat-x;max-width:220px;opacity:.75}
+.sec-head .tag{font-size:14px;color:var(--c);font-weight:700;letter-spacing:.08em}
+.thesis{font-family:var(--kai);font-size:clamp(19px,2.3vw,23px);line-height:1.85;margin:0 0 40px;max-width:940px;background:var(--paper);background-image:repeating-linear-gradient(transparent 0 calc(1.85em - 1px),color-mix(in srgb,var(--b2) 14%,transparent) calc(1.85em - 1px) 1.85em);background-position:0 18px;padding:18px 26px 18px 64px;border-radius:10px;box-shadow:var(--shadow);position:relative;transform:rotate(-.35deg)}
+.thesis::after{content:"";position:absolute;left:44px;top:0;bottom:0;border-left:2px solid color-mix(in srgb,var(--b2) 35%,transparent)}
+.thesis::before{content:"";position:absolute;top:-10px;left:-14px;width:84px;height:24px;transform:rotate(-24deg);background:var(--tape)}
+.thesis strong{color:var(--c)}
+h3.sub{font-size:25px;margin:56px 0 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h3.sub::before{content:"";flex:none;width:30px;height:13px;background:var(--tape);transform:rotate(-10deg);border-radius:2px}
+h3.sub small{font-family:var(--sans);font-weight:400;font-size:13px;color:var(--ink3)}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);outline:1.5px dashed color-mix(in srgb,var(--ink3) 30%,transparent);outline-offset:-8px}
+.card h4{font-size:19px;margin-bottom:8px}
+.card p,.card li{font-size:14.5px;color:var(--ink2)}
+.card ul,.card ol{margin:6px 0 0;padding-left:1.2em}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kicker{font-family:var(--kai);font-size:16px;color:var(--c);font-weight:700;display:inline-block;margin-bottom:6px;padding:0 8px;background:var(--cs);border-radius:6px;transform:rotate(-1.5deg)}
+.mini-quote{font-family:var(--kai);font-size:18px;line-height:1.7;color:var(--ink);padding:10px 14px 10px 40px;margin:14px 0 0;background:var(--n1);border-radius:4px 14px 4px 14px;position:relative}
+.mini-quote::before{content:"“";position:absolute;left:12px;top:0;font-size:38px;color:var(--c);font-family:Georgia,serif;opacity:.7}
+.mini-quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12px;color:var(--ink3);margin-top:2px}
+
+/* polaroid stories */
+.story{background:var(--paper);border:none;outline:none;border-radius:4px;padding:14px 14px 22px;box-shadow:var(--lift);position:relative;transform:rotate(var(--rot,-.8deg));transition:transform .3s ease}
+.story:hover{transform:rotate(0) translateY(-3px)}
+.story::before{content:"";position:absolute;top:-12px;left:50%;width:96px;height:25px;transform:translateX(-50%) rotate(-3deg);background:var(--tape);z-index:2}
+.grid2>.story:nth-child(even),.grid3>.story:nth-child(even){--rot:1deg}
+.grid2>.story:nth-child(even)::before,.grid3>.story:nth-child(3n+2)::before{background:var(--tape2);transform:translateX(-50%) rotate(4deg)}
+.grid3>.story:nth-child(3n)::before{background:var(--tape3)}
+.grid3>.story:nth-child(3n){--rot:-.4deg}
+.story .chap{display:block;font-family:var(--kai);font-size:19px;font-weight:700;color:var(--c);text-align:center;padding:20px 12px;margin:0 0 14px;border-radius:2px;line-height:1.4;background:var(--cs);background-image:radial-gradient(color-mix(in srgb,var(--c) 14%,transparent) 1px,transparent 1.5px);background-size:9px 9px}
+.story h4{font-size:18px}
+.story .out{margin-top:12px;font-size:13.8px;background:var(--n1);color:var(--ink);border-radius:2px 2px 12px 2px;padding:10px 12px;font-family:var(--kai);font-size:16px;line-height:1.65;transform:rotate(.6deg);box-shadow:0 2px 6px rgba(70,45,20,.08)}
+.story .out b{font-family:var(--kai)}
+
+/* photo wall overview */
+.wall{display:flex;flex-direction:column;gap:26px;padding:28px 26px;border-radius:24px;background:color-mix(in srgb,var(--paper) 55%,transparent);border:2px dashed color-mix(in srgb,var(--twine) 35%,transparent)}
+.wrow{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:start}
+.wnote{background:var(--n1);padding:22px 16px 16px;border-radius:2px 2px 16px 2px;box-shadow:var(--shadow);transform:rotate(-2deg);position:relative;font-size:13px;color:var(--ink2);line-height:1.6;margin-top:26px}
+.wrow.c2 .wnote{background:var(--n2);transform:rotate(1.6deg)}
+.wrow.c3 .wnote{background:var(--n3)}
+.wnote::before{content:"";position:absolute;top:-10px;left:30px;width:70px;height:20px;background:var(--tape);transform:rotate(-6deg)}
+.wnote b{display:block;font-family:var(--kai);font-size:22px;color:var(--c)}
+.wnote strong{display:block;font-family:var(--kai);font-size:17px;color:var(--ink);margin:2px 0 6px}
+.pins{position:relative;display:flex;gap:22px;justify-content:flex-start;align-items:flex-start;padding-top:22px;flex-wrap:wrap}
+.pins::before{content:"";position:absolute;left:-10px;right:-10px;top:12px;height:18px;border-top:2px solid var(--twine);border-radius:50%/0 0 100% 100%;opacity:.8}
+.pola{position:relative;width:212px;background:var(--paper);padding:10px 10px 16px;border-radius:3px;box-shadow:var(--lift);text-decoration:none;transform:rotate(var(--rot,0deg));transition:transform .3s ease;display:flex;flex-direction:column}
+.pola:hover{transform:rotate(0) translateY(-6px) scale(1.02);z-index:3}
+.pola::before{content:"";position:absolute;top:-16px;left:50%;width:12px;height:30px;margin-left:-6px;background:linear-gradient(90deg,#c9a77a,#e2c9a0 50%,#c9a77a);border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,.2);z-index:2}
+.pola .ph{height:118px;border-radius:2px;background:var(--cs);background-image:radial-gradient(color-mix(in srgb,var(--c) 16%,transparent) 1.2px,transparent 1.6px);background-size:10px 10px;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
+.pola .ph .n{font-family:var(--kai);font-size:64px;font-weight:700;color:var(--c);line-height:1}
+.pola .ph .em{font-size:34px}
+.pola b{font-family:var(--kai);font-size:20px;line-height:1.3;text-align:center}
+.pola i{font-style:normal;display:block;text-align:center;font-size:12px;color:var(--c);font-weight:700;letter-spacing:.1em;margin-top:4px}
+.pola span{display:block;text-align:center;font-size:12.8px;color:var(--ink2);line-height:1.55;margin-top:4px}
+.pins .arr{align-self:center;font-family:var(--kai);font-size:26px;color:var(--twine);margin:0 -12px}
+.forces{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.force{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.force .ic{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:20px;background:var(--cs);transform:rotate(-8deg)}
+.force b{font-family:var(--kai);font-size:18px}
+.force p{font-size:13.5px;color:var(--ink2);margin:2px 0 0}
+
+/* gifts */
+.gifts{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.gift{background:var(--paper);border-radius:50% 50% 18px 18px/34% 34% 18px 18px;padding:24px 14px 18px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line)}
+.gift .gi{font-size:28px;width:58px;height:58px;margin:0 auto;border-radius:50%;display:grid;place-items:center;background:var(--cs)}
+.gift b{display:block;font-family:var(--kai);font-size:20px;margin:8px 0 4px}
+.gift span{font-size:13px;color:var(--ink2);line-height:1.6;display:block}
+.gift.fifth{background:var(--n1);border-style:dashed}
+.gift.fifth b{color:var(--c)}
+
+/* stats as luggage tags */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px 22px 22px 10px;padding:16px 16px 14px 34px;position:relative;box-shadow:var(--shadow);transform:rotate(var(--sr,0deg))}
+.stat:nth-child(4n+1){--sr:-.8deg}.stat:nth-child(4n+2){--sr:.6deg}.stat:nth-child(4n+3){--sr:-.3deg}.stat:nth-child(4n){--sr:.9deg}
+.stat::before{content:"";position:absolute;left:12px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--bg);box-shadow:inset 0 1px 2px rgba(0,0,0,.25);border:1.5px solid var(--line)}
+.stat .v{font-family:var(--kai);font-size:30px;font-weight:700;color:var(--c);line-height:1.2}
+.stat .v small{font-size:15px;margin-left:2px}
+.stat .k{font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.55}
+
+/* tables */
+table.tn,table.ledger,table.renew{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:14.5px;box-shadow:var(--shadow)}
+.tn th,.tn td{padding:9px 16px;text-align:left;border-bottom:1px dashed var(--line)}
+.tn tr:last-child td{border-bottom:none}
+.tn thead th{font-family:var(--kai);background:var(--soft);font-size:17px}
+.tn td:last-child{color:var(--neg);font-weight:600}
+.tn td:first-child{color:var(--ink2)}
+
+/* circles */
+.circ{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center}
+.rings{position:relative;width:280px;height:280px;margin:0 auto}
+.rings .outer{position:absolute;inset:0;border-radius:50%;background:var(--n4);border:2px dashed var(--ink3);display:flex;justify-content:center;padding-top:28px;font-family:var(--kai);font-size:16px;color:var(--ink2);font-weight:700}
+.rings .inner{position:absolute;left:50%;top:58%;width:150px;height:150px;transform:translate(-50%,-50%) rotate(-6deg);border-radius:50%;background:var(--c);color:var(--paper);display:grid;place-items:center;text-align:center;font-family:var(--kai);font-weight:700;font-size:17px;line-height:1.5;box-shadow:0 0 0 10px color-mix(in srgb,var(--c) 18%,transparent)}
+.lang{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lang .col{border-radius:4px 4px 16px 4px;padding:16px 16px;box-shadow:var(--shadow)}
+.lang .col.n{background:var(--n2);transform:rotate(-1deg)} .lang .col.p{background:var(--n3);transform:rotate(.8deg)}
+.lang .col h5{margin:0 0 6px;font-size:17px}
+.lang .col.n h5{color:var(--neg)} .lang .col.p h5{color:var(--pos)}
+.lang .col p{font-size:15.5px;margin:6px 0;color:var(--ink);font-family:var(--kai);line-height:1.6}
+
+/* ledger */
+.ledger th,.ledger td{padding:11px 16px;text-align:left;vertical-align:top;border-bottom:1px dashed var(--line)}
+.ledger tr:last-child td{border-bottom:none}
+.ledger th{font-family:var(--kai);font-size:17px;background:var(--soft)}
+.ledger th.w{color:var(--neg)} .ledger th.d{color:var(--pos)}
+.ledger td.w{color:var(--ink2)} .ledger td.d{font-family:var(--kai);font-size:17px;font-weight:700;color:var(--pos);white-space:nowrap}
+.teen{columns:2;column-gap:12px;font-size:13.5px;margin:0;padding:0;list-style:none}
+.teen li{break-inside:avoid;display:flex;gap:10px;padding:5px 10px;border-radius:8px;margin-bottom:5px;background:var(--negs)}
+.teen time{flex:none;font-variant-numeric:tabular-nums;color:var(--neg);font-weight:700;width:62px}
+.teen span{color:var(--ink)}
+.laws{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.laws div{border-radius:50%;aspect-ratio:2.2/1;display:flex;flex-direction:column;justify-content:center;text-align:center;background:var(--cs);border:2px dashed color-mix(in srgb,var(--c) 40%,transparent)}
+.laws div:nth-child(2){transform:rotate(2deg)} .laws div:nth-child(1){transform:rotate(-2deg)}
+.laws b{display:block;font-family:var(--kai);font-size:26px;color:var(--c)}
+.laws s{font-size:13px;color:var(--ink3)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 22px 22px;counter-increment:s;position:relative;box-shadow:var(--shadow)}
+.step::before{content:counter(s);position:absolute;top:-18px;left:20px;width:40px;height:40px;border-radius:50%;background:var(--c);color:var(--paper);display:grid;place-items:center;font-family:var(--kai);font-size:22px;font-weight:700;transform:rotate(-8deg);box-shadow:var(--shadow)}
+.step h4{font-size:20px;margin:0 0 8px}
+.step p,.step li{font-size:14px;color:var(--ink2)}
+.step ul{margin:6px 0 0;padding-left:1.1em}
+.weeks{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.weeks div{background:var(--n5);border-radius:3px 3px 14px 3px;padding:16px 14px;font-size:13.5px;color:var(--ink2);box-shadow:var(--shadow);transform:rotate(var(--wr,0deg))}
+.weeks div:nth-child(odd){--wr:-1.2deg}.weeks div:nth-child(even){--wr:1deg;background:var(--n1)}
+.weeks b{display:block;font-family:var(--kai);color:var(--c);font-size:19px;margin-bottom:4px}
+.ms{font-family:var(--kai);font-size:18px;line-height:1.95;background:var(--paper);background-image:repeating-linear-gradient(transparent 0 calc(1.95em - 1px),color-mix(in srgb,var(--b2) 13%,transparent) calc(1.95em - 1px) 1.95em);border-radius:6px;padding:22px 24px;position:relative;box-shadow:var(--lift);transform:rotate(-.6deg)}
+.ms::before{content:"";position:absolute;top:-11px;right:28px;width:86px;height:24px;transform:rotate(5deg);background:var(--tape3)}
+.ms .who{display:block;font-family:var(--sans);font-size:12px;color:var(--ink3);margin-top:8px;line-height:1.6}
+.qs{display:flex;flex-wrap:wrap;gap:8px}
+.qs span{background:var(--bg);border:1px dashed var(--line);border-radius:999px;padding:4px 12px;font-size:13.5px;color:var(--ink2)}
+.warn3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.warn3 div{border-radius:18px;padding:18px 18px;background:var(--paper);box-shadow:var(--shadow);border:2px solid var(--c);position:relative}
+.warn3 div::after{content:"✕";position:absolute;right:14px;top:10px;font-size:22px;color:var(--c);opacity:.35}
+.warn3 b{font-family:var(--kai);font-size:22px;color:var(--c)}
+.warn3 p{font-size:13.5px;color:var(--ink2);margin:4px 0 0}
+
+/* family time */
+.ft{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ft .card{padding:22px 18px}
+.ft .need{font-size:12px;color:var(--ink3)}
+.ft h4{font-size:24px;color:var(--c);margin:2px 0 8px}
+.jar{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.jarbox{border-radius:var(--r);padding:18px;border:1px solid var(--line);background:var(--paper);text-align:center;box-shadow:var(--shadow)}
+.jarbox .glass{height:150px;width:120px;margin:12px auto 8px;border:3px solid var(--ink3);border-top:none;border-radius:0 0 26px 26px;position:relative;overflow:hidden;background:color-mix(in srgb,var(--n4) 60%,transparent)}
+.jarbox .glass::before{content:"";position:absolute;top:0;left:-6px;right:-6px;height:8px;border-radius:4px;background:var(--ink3);opacity:.5}
+.pebbles{position:absolute;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 30%,var(--ink3) 2.5px,transparent 3px) 0 0/10px 10px,radial-gradient(circle at 70% 70%,var(--ink3) 2.5px,transparent 3px) 0 0/12px 12px;opacity:.55}
+.rock{position:absolute;border-radius:45%;background:var(--c)}
+.jarbox b{font-family:var(--kai);font-size:19px}
+.jarbox span{display:block;font-size:13px;color:var(--ink2)}
+
+/* habit 4 */
+.wl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.wl div{border-radius:18px;padding:16px;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow)}
+.wl div.win{background:var(--c);border-color:var(--c);color:var(--paper);transform:rotate(1.5deg)}
+.wl b{font-family:var(--kai);font-size:24px;display:block}
+.wl span{font-size:13px;line-height:1.6;display:block;margin-top:4px;color:var(--ink2)}
+.wl div.win span{color:color-mix(in srgb,var(--paper) 88%,transparent)}
+.flow3{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+.flow3 .card{text-align:center;padding:18px 14px;border-radius:50% 50% 18px 18px/28% 28% 18px 18px}
+.flow3 .card b{display:block;font-family:var(--kai);font-size:16px;color:var(--c);letter-spacing:.2em}
+.flow3 .card h4{font-size:19px;margin:4px 0 6px}
+.flow3 .ar{align-self:center;color:var(--twine);font-size:24px;font-family:var(--kai)}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:f}
+.five div{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 14px;counter-increment:f;font-size:13.5px;color:var(--ink2);box-shadow:var(--shadow)}
+.five div::before{content:counter(f);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--c);color:var(--paper);font-family:var(--kai);font-size:16px;font-weight:700;margin-bottom:6px;transform:rotate(-8deg)}
+.five b{display:block;font-family:var(--kai);font-size:20px;color:var(--ink);margin-bottom:2px}
+.five i{display:block;font-style:normal;margin-top:8px;font-family:var(--kai);color:var(--c);font-size:15px;border-top:1px dashed var(--line);padding-top:6px}
+
+/* habit 5 */
+.ladder{display:flex;flex-direction:column;gap:8px}
+.rung{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:12px;border-radius:999px;padding:9px 18px;position:relative;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}
+.rung::before{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--w)*1%);background:var(--cs);z-index:0;border-radius:999px}
+.rung>*{position:relative;z-index:1}
+.rung .lv{font-family:var(--kai);font-size:26px;color:var(--c);font-weight:700;text-align:center}
+.rung b{font-family:var(--kai);font-size:18px}
+.rung span{font-size:13px;color:var(--ink2);margin-left:8px}
+.auto{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.auto div{background:var(--n2);border-radius:20px 20px 20px 4px;padding:14px 16px;box-shadow:var(--shadow);position:relative}
+.auto b{font-family:var(--kai);font-size:19px;color:var(--neg);display:block}
+.auto q{display:block;font-family:var(--kai);font-size:16px;margin-top:4px;quotes:"“" "”";color:var(--ink)}
+.auto span{display:block;font-size:12px;color:var(--ink3);margin-top:4px}
+.dlg{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.dlg .card{padding:20px}
+.dlg .bad h4{color:var(--neg)} .dlg .good h4{color:var(--pos)}
+.dlg p{margin:8px 0;font-size:14px;line-height:1.65;padding:6px 12px;border-radius:14px 14px 14px 4px;background:var(--soft)}
+.dlg p:nth-of-type(even){background:var(--cs);border-radius:14px 14px 4px 14px;margin-left:24px}
+.dlg .good p:nth-of-type(even){background:var(--poss)}
+.dlg .bad p:nth-of-type(even){background:var(--negs)}
+.dlg p b{color:var(--ink);font-weight:650}
+.three-q{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.three-q div{border-radius:18px;padding:16px;text-align:center;background:var(--paper);border:2px dashed color-mix(in srgb,var(--c) 40%,transparent)}
+.three-q b{display:block;font-family:var(--kai);font-size:20px}
+.three-q span{font-size:12.5px;color:var(--c);font-weight:700;letter-spacing:.1em}
+.three-q p{font-size:13px;color:var(--ink2);margin:6px 0 0}
+
+/* habit 6 */
+.sum{display:flex;flex-direction:column;gap:10px}
+.sum .row{display:grid;grid-template-columns:140px 1fr;gap:14px;align-items:center}
+.sum .row b{font-family:var(--kai);font-size:17px}
+.sum .bar{height:32px;border-radius:999px;background:var(--soft);position:relative;overflow:hidden}
+.sum .bar i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:color-mix(in srgb,var(--c) var(--o),transparent);border-radius:999px;display:flex;align-items:center;padding-left:14px;font-style:normal;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
+.sofa{display:flex;flex-direction:column;gap:0;border-left:3px dotted var(--twine);margin-left:10px}
+.sofa div{position:relative;padding:8px 0 14px 24px;font-size:14.5px;color:var(--ink2)}
+.sofa div::before{content:"";position:absolute;left:-9px;top:14px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2.5px solid var(--c)}
+.sofa div.p::before{background:var(--c)}
+.sofa .h{display:inline-block;font-size:11.5px;font-weight:700;color:var(--c);background:var(--cs);border-radius:6px;padding:0 7px;margin-left:6px}
+.sofa div.p{color:var(--ink);font-family:var(--kai);font-size:18px}
+.cancer{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cancer div{border-radius:50%;aspect-ratio:1;display:grid;place-items:center;background:var(--negs);color:var(--neg);font-family:var(--kai);font-size:22px;font-weight:700;border:2px dashed color-mix(in srgb,var(--neg) 40%,transparent);position:relative}
+.cancer div::after{content:"";position:absolute;inset:22%;border-top:3px solid color-mix(in srgb,var(--neg) 55%,transparent);transform:rotate(-35deg) translateY(50%)}
+
+/* habit 7 */
+.renew th,.renew td{padding:12px 16px;text-align:left;vertical-align:top;border-bottom:1px dashed var(--line)}
+.renew tr:last-child td{border-bottom:none}
+.renew thead th{font-family:var(--kai);background:var(--soft);font-size:17px}
+.renew td:first-child{font-family:var(--kai);font-size:17px;font-weight:700;color:var(--c);white-space:nowrap;width:110px}
+.renew td{color:var(--ink2);font-size:14px}
+.trad{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.trad div{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 14px;box-shadow:var(--shadow);transform:rotate(var(--tr,0deg))}
+.trad div:nth-child(3n+1){--tr:-.8deg}.trad div:nth-child(3n+2){--tr:.7deg}
+.trad .e{font-size:24px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--cs)}
+.trad b{display:block;font-family:var(--kai);font-size:19px;margin:6px 0 4px}
+.trad span{display:block;font-size:12.8px;color:var(--ink2);line-height:1.6}
+
+/* finale stairs = toy blocks */
+.stairs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end}
+.stair{border-radius:20px;padding:18px 16px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;box-shadow:0 6px 0 color-mix(in srgb,var(--c) 30%,transparent),var(--shadow)}
+.stair:nth-child(1){min-height:260px;background:var(--n4)} .stair:nth-child(2){min-height:300px;background:var(--n3)} .stair:nth-child(3){min-height:340px;background:var(--n1)} .stair:nth-child(4){min-height:380px;background:var(--c);color:var(--paper)}
+.stair .lv{font-size:12px;letter-spacing:.15em;font-weight:700;color:var(--c)}
+.stair:nth-child(4) .lv,.stair:nth-child(4) p,.stair:nth-child(4) .drag,.stair:nth-child(4) .push{color:color-mix(in srgb,var(--paper) 90%,transparent)}
+.stair h4{font-size:32px;margin:2px 0 6px}
+.stair p{font-size:13.5px;color:var(--ink2);margin:0 0 auto}
+.stair .drag,.stair .push{font-size:12.5px;margin-top:8px;line-height:1.5}
+.stair .drag{color:var(--neg)} .stair .push{color:var(--pos)}
+.stair:nth-child(4) .drag,.stair:nth-child(4) .push{font-weight:600}
+.axis-lbl{display:flex;justify-content:space-between;gap:16px;font-family:var(--kai);font-size:16px;color:var(--ink2);margin-top:14px}
+
+/* leadership tree */
+.tree{display:flex;flex-direction:column;gap:12px;max-width:920px;margin:0 auto;position:relative;padding:10px 0}
+.tree::before{content:"";position:absolute;left:50%;top:60px;bottom:70px;width:44px;transform:translateX(-50%);background:linear-gradient(90deg,#8a6040,#a97b54 45%,#8a6040);border-radius:18px;opacity:.55;z-index:0}
+.tlayer{display:grid;grid-template-columns:150px 1fr 150px;gap:14px;align-items:center;position:relative;z-index:1}
+.tlayer .side{font-size:13px;color:var(--ink2);text-align:center;line-height:1.5}
+.tlayer .side b{display:block;color:var(--ink);font-family:var(--kai);font-size:16px}
+.tnode{border-radius:18px;padding:14px 18px;text-align:center;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow);max-width:560px;margin:0 auto;width:100%}
+.tnode .part{font-size:12px;letter-spacing:.15em;color:var(--c);font-weight:700}
+.tnode h4{font-size:24px;margin:0}
+.tnode p{font-size:13px;color:var(--ink2);margin:2px 0 0}
+.tnode .eff{display:inline-block;margin-top:6px;font-size:12.5px;background:var(--cs);color:var(--c);padding:1px 10px;border-radius:999px;font-weight:600}
+.tlayer.l4 .tnode{background:var(--b3s);border-radius:60% 60% 30% 30%/70% 70% 30% 30%;padding:26px 30px 16px;border-color:color-mix(in srgb,var(--b3) 40%,transparent)}
+.tlayer.l4 .tnode .part,.tlayer.l4 .tnode h4{color:var(--b3)}
+.tlayer.l1 .tnode{border-style:dashed;border-radius:18px 18px 50% 50%/18px 18px 40% 40%;padding-bottom:22px;background:var(--n5)}
+.tree .ground{height:4px;border-radius:4px;background:repeating-linear-gradient(90deg,var(--twine) 0 10px,transparent 10px 16px);margin:2px 0;opacity:.6;position:relative;z-index:1}
+.tree .hdr{display:grid;grid-template-columns:150px 1fr 150px;gap:14px;font-size:12px;color:var(--ink3);letter-spacing:.08em;text-align:center;position:relative;z-index:1}
+
+/* quotes as sticky notes */
+.quotes{columns:2;column-gap:26px}
+.quote{break-inside:avoid;background:var(--n1);padding:30px 24px 20px;margin:0 0 28px;position:relative;font-family:var(--kai);font-size:20px;line-height:1.75;box-shadow:var(--shadow);border-radius:2px 2px 22px 2px;transform:rotate(var(--qr,-1deg))}
+.quote:nth-child(4n+2){background:var(--n2);--qr:1.2deg}
+.quote:nth-child(4n+3){background:var(--n3);--qr:-.5deg}
+.quote:nth-child(4n){background:var(--n4);--qr:.8deg}
+.quote::before{content:"";position:absolute;top:10px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8 0 25%,transparent 30%),var(--pin);box-shadow:0 3px 4px rgba(0,0,0,.25)}
+.quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12.5px;color:var(--ink2);margin-top:10px;text-align:right}
+
+/* toc */
+details.toc{background:var(--paper);border:1px solid var(--line);border-radius:18px;margin-top:22px;overflow:hidden;box-shadow:var(--shadow)}
+details.toc summary{cursor:pointer;padding:16px 22px;font-family:var(--kai);font-size:19px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";font-size:24px;color:var(--c);transition:.2s;font-family:var(--sans)}
+details.toc[open] summary::after{transform:rotate(45deg)}
+.toc-body{padding:0 22px 18px}
+.ch{display:grid;grid-template-columns:260px 1fr;gap:14px;padding:10px 0;border-top:1px dashed var(--line);font-size:14.5px}
+.ch b{font-family:var(--kai);font-size:16px;font-weight:700}
+.ch span{color:var(--ink2)}
+
+/* tools: folder tabs + index cards */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px;position:relative;z-index:2;padding-left:14px}
+.tab{border:1px solid var(--line);border-bottom:none;background:var(--soft);color:var(--ink2);padding:9px 18px 8px;border-radius:14px 14px 0 0;font-size:14.5px;cursor:pointer;font-family:var(--kai);font-size:17px;font-weight:700;transition:.15s}
+.tab.on{background:var(--paper);color:var(--c);box-shadow:0 -3px 0 var(--c) inset}
+.pane{display:none}
+.pane.on{display:block}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--lift);position:relative}
+.tool h4{font-size:22px}
+.tool .hint{font-size:13px;color:var(--ink3);margin:2px 0 14px}
+.tool label.f{display:block;font-size:13px;color:var(--ink2);font-weight:600;margin:14px 0 6px}
+.tool input[type=text],.tool textarea,.tool select{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:9px 12px;font:inherit;font-size:14.5px;outline:none}
+.tool textarea{min-height:70px;resize:vertical;line-height:1.7}
+.tool input:focus,.tool textarea:focus,.tool select:focus{border-color:var(--c);background:var(--paper)}
+.btn{border:1.5px solid var(--c);background:var(--c);color:var(--paper);border-radius:999px;padding:7px 18px;font:inherit;font-size:14px;cursor:pointer;font-weight:600;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--c)}
+.btn.sm{padding:3px 10px;font-size:13px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.saved{font-size:12.5px;color:var(--pos);opacity:0;transition:opacity .3s}
+.saved.on{opacity:1}
+.words{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;min-height:20px}
+.word{display:flex;align-items:center;gap:6px;border-radius:4px 4px 14px 4px;padding:4px 6px 4px 12px;background:var(--n1);font-family:var(--kai);font-size:17px;box-shadow:0 2px 5px rgba(70,45,20,.12);transform:rotate(-1deg)}
+.word:nth-child(even){transform:rotate(1deg);background:var(--n2)}
+.word.top{outline:2.5px solid var(--c);outline-offset:1px}
+.word .cnt{min-width:22px;text-align:center;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--c);font-variant-numeric:tabular-nums}
+.word button{border:none;background:color-mix(in srgb,var(--paper) 70%,transparent);color:var(--ink);width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;font-family:var(--sans)}
+.word button.x{background:transparent;color:var(--ink3)}
+.mdraft{font-family:var(--kai)!important;font-size:18px!important;min-height:190px!important;line-height:1.95!important;background-color:var(--paper)!important;background-image:repeating-linear-gradient(transparent 0 calc(1.95em - 1px),color-mix(in srgb,var(--b2) 13%,transparent) calc(1.95em - 1px) 1.95em)!important;background-attachment:local!important;padding-top:6px!important}
+.ftgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ftgrid .card{padding:18px;box-shadow:none;background:var(--bg);outline-offset:-6px}
+.ftgrid .card h4{font-size:20px;color:var(--c)}
+.oo{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+.oo td{padding:4px 4px}
+.oo input{padding:6px 10px!important;font-size:14px!important}
+.ws{display:grid;grid-template-columns:160px 1fr 1fr;gap:10px 14px;align-items:start;margin-top:10px}
+.ws .h{font-weight:700;font-family:var(--kai);color:var(--c);font-size:17px;padding-top:8px;line-height:1.45}
+.ws .q{font-size:13.5px;color:var(--ink2);padding-top:8px;line-height:1.6}
+.ws textarea{min-height:56px}
+.ws .hd{font-size:12px;color:var(--ink3);letter-spacing:.1em}
+
+/* gift test */
+.gtest{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.gq{background:var(--bg);border:1.5px dashed var(--line);border-radius:16px;padding:16px}
+.gq h5{margin:0 0 8px;font-size:20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.gq h5 em{font-style:normal;font-family:var(--sans);font-size:12.5px;padding:2px 10px;border-radius:999px;background:var(--soft);color:var(--ink2);white-space:nowrap}
+.gq h5 em.a{background:var(--cs);color:var(--c)} .gq h5 em.h{background:var(--c);color:var(--paper)}
+.gitem{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink2);line-height:1.55}
+.seg{display:flex;gap:3px}
+.seg button{border:1.5px solid var(--line);background:var(--paper);color:var(--ink2);width:28px;height:28px;border-radius:50%;font:inherit;font-size:13px;cursor:pointer;padding:0}
+.seg button.on{background:var(--c);border-color:var(--c);color:var(--paper);font-weight:700;transform:rotate(-8deg)}
+.gscale{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--ink3);margin-top:12px;align-items:center}
+
+/* checklist: notebook */
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.check label{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px 18px;cursor:pointer;transition:.2s;box-shadow:var(--shadow);background-image:linear-gradient(90deg,transparent 52px,color-mix(in srgb,var(--b2) 22%,transparent) 52px 53.5px,transparent 53.5px)}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;border:2.2px solid var(--ink2);border-radius:5px 8px 4px 7px;margin:2px 6px 0 0;display:grid;place-items:center;transition:.15s;cursor:pointer;background:var(--paper);transform:rotate(-3deg)}
+.check input:checked{border-color:var(--c)}
+.check input:checked::after{content:"";width:8px;height:15px;border:solid var(--c);border-width:0 3px 3px 0;transform:rotate(40deg) translate(1px,-3px)}
+.check label:has(input:checked){opacity:.6}
+.check label:has(input:checked) b{text-decoration:line-through;text-decoration-color:var(--c);text-decoration-thickness:2px}
+.check b{font-family:var(--kai);font-size:18px;display:block;line-height:1.45}
+.check span{font-size:13.5px;color:var(--ink2);display:block;margin-top:2px}
+.check .src{font-size:11.5px;color:var(--ink3);margin-top:6px}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.progress .track{flex:1;height:12px;background:var(--paper);border:1.5px dashed var(--line);border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:repeating-linear-gradient(-45deg,var(--c) 0 8px,color-mix(in srgb,var(--c) 75%,var(--paper)) 8px 16px);transition:width .35s}
+.progress .txt{font-family:var(--kai);font-size:18px;color:var(--ink2);min-width:64px;text-align:right}
+
+footer{padding:52px 0 74px;text-align:center;font-size:13px;color:var(--ink3);line-height:1.9;position:relative}
+footer::before{content:"";position:absolute;top:0;left:50%;width:min(1072px,calc(100% - 48px));transform:translateX(-50%);border-top:2px dashed color-mix(in srgb,var(--twine) 40%,transparent)}
+footer .sign{font-family:var(--kai);font-size:20px;color:var(--ink2);display:block;margin-bottom:6px}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.story.reveal.in,.ms.reveal.in{transform:rotate(var(--rot,-.6deg))}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.story,.pola{transition:none}}
+@media print{.reveal{opacity:1;transform:none}nav.top{position:static}}
+
+@media (max-width:980px){
+  .wrow{grid-template-columns:1fr;gap:6px}
+  .wnote{margin-top:0;max-width:520px}
+  .pins{justify-content:center}
+  .gifts{grid-template-columns:repeat(3,1fr)}
+  .stats,.grid4,.ft,.wl,.auto,.cancer{grid-template-columns:1fr 1fr}
+  .five,.weeks,.trad{grid-template-columns:repeat(3,1fr)}
+  .grid3,.three,.warn3,.three-q,.laws{grid-template-columns:1fr 1fr}
+  .circ{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .flow3{grid-template-columns:1fr}
+  .flow3 .ar{transform:rotate(90deg);justify-self:center}
+  .stairs{grid-template-columns:1fr 1fr}
+  .stair{min-height:0!important}
+  .ws{grid-template-columns:1fr}
+  .ws .hd{display:none}
+  .cancer div{aspect-ratio:auto;border-radius:999px;padding:14px}
+  .cancer div::after{display:none}
+}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .cover{padding:30px 20px 24px}
+  .grid2,.grid3,.three,.gifts,.stats,.grid4,.ft,.wl,.auto,.five,.weeks,.trad,.warn3,.three-q,.laws,.cancer,.check,.gtest,.lang,.dlg,.jar,.ftgrid,.forces,.stairs{grid-template-columns:1fr}
+  .quotes,.teen{columns:1}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .sec-head .big{width:70px;height:70px;font-size:42px}
+  .tlayer,.tree .hdr{grid-template-columns:72px 1fr 72px;gap:8px}
+  .tlayer .side{font-size:11.5px}
+  .tlayer .side b{font-size:13px}
+  .sum .row{grid-template-columns:1fr;gap:4px}
+  .pola{width:100%;max-width:300px;margin:0 auto}
+  .pins{flex-direction:column;align-items:center}
+  .pins .arr{transform:rotate(90deg);margin:-8px 0}
+  .laws div{aspect-ratio:auto;padding:14px;border-radius:999px}
+  .thesis{padding:16px 18px 16px 44px}
+  .thesis::after{left:30px}
+  .axis-lbl{flex-direction:column}
+}
+
+/* ===== floating roadmap button + drawer ===== */
+.fab{position:fixed;right:22px;bottom:22px;z-index:60;font-family:var(--kai);font-size:20px;font-weight:700;background:var(--n1);color:var(--ink);border:none;padding:18px 20px 12px 18px;border-radius:3px 3px 22px 3px;box-shadow:var(--lift);transform:rotate(-3deg);cursor:pointer;display:flex;align-items:center;gap:10px;transition:transform .25s}
+.fab:hover,.fab:focus-visible{transform:rotate(0) translateY(-3px)}
+.fab:focus-visible{outline:3px solid var(--b1);outline-offset:3px}
+.fab::before{content:"";position:absolute;top:5px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8 0 25%,transparent 30%),var(--pin);box-shadow:0 2px 3px rgba(0,0,0,.25)}
+.fab .fp{font-family:var(--sans);font-size:12px;font-weight:700;background:var(--b1);color:var(--paper);border-radius:999px;padding:1px 8px}
+.scrim{position:fixed;inset:0;background:rgba(40,25,15,.4);opacity:0;pointer-events:none;transition:opacity .3s;z-index:70}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(470px,94vw);z-index:80;background-color:var(--bg);background-image:radial-gradient(var(--dots) 1.1px,transparent 1.4px);background-size:22px 22px;transform:translateX(104%);transition:transform .38s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-14px 0 34px rgba(30,15,5,.22);border-left:2px dashed color-mix(in srgb,var(--twine) 55%,transparent);visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.dr-head{padding:18px 20px 14px;background:var(--paper);border-bottom:2px dashed color-mix(in srgb,var(--twine) 40%,transparent);position:relative}
+.dr-head h3{font-size:26px;display:flex;align-items:center;gap:10px}
+.dr-head h3::before{content:"";width:28px;height:12px;background:var(--tape);transform:rotate(-10deg)}
+.dr-head p{font-size:12.5px;color:var(--ink3);margin:2px 0 10px;line-height:1.6}
+.dr-x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:20px;cursor:pointer;line-height:1}
+.dr-x:focus-visible{outline:3px solid var(--b1);outline-offset:2px}
+.modes{display:flex;gap:6px;flex-wrap:wrap}
+.modes button{border:1.5px solid var(--line);background:var(--bg);color:var(--ink2);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
+.modes button.on{background:var(--b1);border-color:var(--b1);color:var(--paper);font-weight:700}
+.dr-prog{display:flex;align-items:center;gap:10px;margin-top:12px}
+.dr-prog .track{flex:1;height:10px;border-radius:999px;border:1.5px dashed var(--line);background:var(--bg);overflow:hidden}
+.dr-prog .fill{height:100%;width:0;background:repeating-linear-gradient(-45deg,var(--b1) 0 7px,color-mix(in srgb,var(--b1) 72%,var(--paper)) 7px 14px);transition:width .3s}
+.dr-prog span{font-family:var(--kai);font-size:16px;color:var(--ink2);min-width:52px;text-align:right}
+.dr-body{flex:1;overflow-y:auto;padding:8px 18px 40px;overscroll-behavior:contain}
+.stage{margin-top:22px}
+.stage h4{font-size:21px;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.stage h4 .sn{flex:none;width:32px;height:32px;border-radius:50%;background:var(--sc,var(--b1));color:var(--paper);display:grid;place-items:center;font-size:18px;transform:rotate(-8deg)}
+.stage .sd{font-size:12.5px;color:var(--ink3);margin:0 0 10px 42px}
+.stage.s2{--sc:var(--b2)} .stage.s3{--sc:var(--b3)} .stage.s4{--sc:#8a6040}
+.ritem{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;cursor:pointer;box-shadow:var(--shadow)}
+.stage.s4 .ritem{background:var(--n5);border-color:transparent}
+.ritem input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border:2.2px solid var(--ink2);border-radius:5px 8px 4px 7px;margin-top:2px;display:grid;place-items:center;cursor:pointer;background:var(--paper);transform:rotate(-3deg)}
+.ritem input:checked{border-color:var(--sc,var(--b1))}
+.ritem input:checked::after{content:"";width:7px;height:13px;border:solid var(--sc,var(--b1));border-width:0 3px 3px 0;transform:rotate(40deg) translate(1px,-2px)}
+.ritem input:focus-visible{outline:3px solid var(--b1);outline-offset:2px}
+.ritem:has(input:checked){opacity:.6}
+.ritem:has(input:checked) b{text-decoration:line-through;text-decoration-color:var(--sc,var(--b1));text-decoration-thickness:2px}
+.ritem b{font-family:var(--kai);font-size:17px;display:block;line-height:1.45}
+.ritem span{display:block;font-size:13.2px;color:var(--ink2);line-height:1.65;margin-top:2px}
+.ritem .chk{display:block;font-size:12.8px;color:var(--ink);background:var(--n3);border-radius:8px;padding:5px 9px;margin-top:6px}
+.ritem .src{display:block;font-size:11.5px;color:var(--ink3);margin-top:5px}
+.dr-foot{font-size:12px;color:var(--ink3);margin-top:20px;text-align:center}
+body.dr-open{overflow:hidden}
+@media (max-width:640px){
+  .fab{right:14px;bottom:14px;font-size:18px;padding:16px 16px 10px 14px}
+  .drawer{top:0;left:0;right:0;bottom:0;width:100%;transform:translateY(104%);border-left:none;border-top:2px dashed color-mix(in srgb,var(--twine) 55%,transparent)}
+  .drawer.on{transform:none}
+  .dr-head{padding-top:16px}
+}
+@media (prefers-reduced-motion:reduce){.drawer,.scrim,.fab{transition:none}}
+@media print{.fab,.drawer,.scrim{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="章节导航">
+  <div class="wrap">
+    <span class="brand">高效能家庭的<i>7</i>个习惯</span>
+    <a href="#overview">总览</a>
+    <a href="#h1">1 积极主动</a>
+    <a href="#h2">2 先有目标</a>
+    <a href="#h3">3 要事第一</a>
+    <a href="#h4">4 双赢</a>
+    <a href="#h5">5 先理解</a>
+    <a href="#h6">6 协作</a>
+    <a href="#h7">7 磨锯子</a>
+    <a href="#finale">生存→辉煌</a>
+    <a href="#quotes">金句</a>
+    <a href="#tools">小工具</a>
+    <a href="#todo">清单</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="cover">
+      <span class="eyebrow">STEPHEN R. COVEY · THE 7 HABITS OF HIGHLY EFFECTIVE FAMILIES · 一页读懂</span>
+      <h1>高效能家庭的<span class="seven">7</span>个习惯</h1>
+      <p class="lead">再好的家庭也有 <em>90%</em> 的时间偏离轨道。关键在于知道目的地在哪，然后<em>由内而外</em>，一次次把家拉回航线。</p>
+    </div>
+    <p class="sub2">柯维说，飞机在飞行中大部分时间都偏离计划航线，靠不断接收反馈、不断修正，最后还是能到达目的地。他把这个比作家庭：吵架、发脾气、搞砸都没关系，要紧的是有目标，有飞行计划，有指南针，并且有一次次回到正轨的勇气。</p>
+
+    <div class="thread">
+      <span>⏸ 按下暂停键</span><i>→</i>
+      <span>🧭 写下家庭使命宣言</span><i>→</i>
+      <span>📅 每周家庭时间 + 一对一</span><i>→</i>
+      <span>🤝 双赢 · 先理解 · 协作</span><i>→</i>
+      <span>🔁 用传统不断革新</span><i>→</i>
+      <span>🏡 美妙的家庭文化</span>
+    </div>
+
+    <div class="three">
+      <div class="tcard c1">
+        <div class="num">法宝一</div>
+        <h3>目标</h3>
+        <span class="role">家庭使命宣言</span>
+        <p>全家共同的愿景和价值观。“愿景比包袱更重要”：对更好未来的展望，比过去积下的痛苦和眼下的现状都更有力量。</p>
+      </div>
+      <div class="tcard c2">
+        <div class="num">法宝二</div>
+        <h3>飞行计划</h3>
+        <span class="role">7 个习惯这套原则体系</span>
+        <p>它不告诉你具体怎么做，而是教你一种思考方式，让你判断该做什么、什么时候做。“授人以渔”，重点在原则，不在技巧。</p>
+      </div>
+      <div class="tcard c3">
+        <div class="num">法宝三</div>
+        <h3>指南针</h3>
+        <span class="role">四种独特的人性天赋</span>
+        <p>自我意识、是非观、想象力、独立意志。它们是内在的指引，在纷乱的社会环境中帮你和家人保持方向。</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="block" id="overview" style="--c:var(--b1);--cs:var(--b1s)">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag">OVERVIEW</div><h2>家里的照片墙：7 个习惯</h2></div></div>
+    <p class="thesis reveal">书中所说的“高效能”，指的是<strong>美妙的家庭文化</strong>：家人发自内心地享受彼此相处，有共同的信念和价值观，相处方式真正管用。这是一种从“我”走向“我们”的文化。“如果你的快乐主要来自他人的快乐，那么你就知道自己已经从‘我’走向了‘我们’。”</p>
+
+    <div class="wall reveal">
+      <div class="wrow c1">
+        <div class="wnote"><b>习惯 1–3</b><strong>设置“暂停键”，由内而外</strong>书中说，怎样在刺激和回应之间按下暂停键，让回应建立在原则上，就是前三个习惯的重点。习惯 1 是最基础的决定，习惯 2 是战略决定，习惯 3 是战术。</div>
+        <div class="pins">
+          <a class="pola" href="#h1" style="--rot:-3deg"><div class="ph"><span class="n">1</span><span class="em">⏸</span></div><b>积极主动</b><i>最基础的决定</i><span>做负责任的人，而不是受害者。情感银行账户只存不取。</span></a>
+          <a class="pola" href="#h2" style="--rot:2deg"><div class="ph"><span class="n">2</span><span class="em">🧭</span></div><b>先有目标再行动</b><i>战略决定</i><span>全家一起写家庭使命宣言，定下目的地。</span></a>
+          <a class="pola" href="#h3" style="--rot:-1.5deg"><div class="ph"><span class="n">3</span><span class="em">📅</span></div><b>要事第一</b><i>战术</i><span>用每周家庭时间和一对一时间，把家庭真正放在首位。</span></a>
+        </div>
+      </div>
+      <div class="wrow c2">
+        <div class="wnote"><b>习惯 4–6</b><strong>从“我”到“我们”</strong>三者高度相关，柯维常常先教这三个。它们针对的是“驾驶舱内的气氛”：飞机内部的争吵和指责，比外面的气流更麻烦。</div>
+        <div class="pins">
+          <a class="pola" href="#h4" style="--rot:2.5deg"><div class="ph"><span class="n">4</span><span class="em">🤝</span></div><b>“双赢”的想法</b><i>根源</i><span>寻求共同利益的基本范式。</span></a>
+          <span class="arr">→</span>
+          <a class="pola" href="#h5" style="--rot:-2deg"><div class="ph"><span class="n">5</span><span class="em">👂</span></div><b>首先理解别人，再寻求别人的理解</b><i>途径</i><span>走出自我，进入对方的头脑和内心。</span></a>
+          <span class="arr">→</span>
+          <a class="pola" href="#h6" style="--rot:1.5deg"><div class="ph"><span class="n">6</span><span class="em">🧩</span></div><b>协作</b><i>结果</i><span>找到比“你的”“我的”都更好的第三选择。</span></a>
+        </div>
+      </div>
+      <div class="wrow c3">
+        <div class="wnote"><b>习惯 7</b><strong>革新</strong>给飞机持续加油和维护。</div>
+        <div class="pins">
+          <a class="pola" href="#h7" style="--rot:-2deg"><div class="ph"><span class="n">7</span><span class="em">🪚</span></div><b>把锯子磨利</b><i>通过传统</i><span>在生理、人际、心理、精神四方面持续革新。</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="small reveal" style="margin-top:12px">说明：这本书没有用“个人成功 / 公众成功”这样的标签分组，以上按书里自己的说法组织。习惯 4、5 都可以由一个积极主动的人单方面做到，习惯 6 才需要双方参与。</p>
+
+    <div class="forces reveal">
+      <div class="force"><div class="ic">⛽</div><div><b>习惯 1、2、3、7：激发动力（踩油门）</b><p>给人一种向着高于自身的目标进取的精神，并且不断革新。</p></div></div>
+      <div class="force"><div class="ic">🛑</div><div><b>习惯 4、5、6：解除阻力（松开刹车）</b><p>理解并化解恐惧、焦虑这些情绪上的阻力。“问题人士”被倾听和理解之后，常常会变成解决方案的一部分。</p></div></div>
+    </div>
+
+    <h3 class="sub reveal">指南针：四种人性天赋，外加第五种</h3>
+    <div class="gifts reveal">
+      <div class="gift"><div class="gi">🪞</div><b>自我意识</b><span>能退后一步，旁观自己的想法和感觉。问卷调查里最被忽视的就是它，它也是其他三种天赋的基础。</span></div>
+      <div class="gift"><div class="gi">⚖️</div><b>是非观</b><span>良心，也就是道德感。它不只给我们道德观念，还给我们道德的力量。</span></div>
+      <div class="gift"><div class="gi">🔭</div><b>想象力</b><span>展望未来的能力，让人和过去的经历划清界限，想到一个更好的回应。</span></div>
+      <div class="gift"><div class="gi">💪</div><b>独立的意志</b><span>采取行动的能力。把短期的自我需要放在长远需要之后。</span></div>
+      <div class="gift fifth"><div class="gi">😄</div><b>第 5 种：幽默感</b><span>属于第二层次的天赋，要把前四种融为一体才会出现。柯维家的口头禅是“笑一笑！”</span></div>
+    </div>
+
+    <h3 class="sub reveal">为什么要专门“经营”：由外而内已经不管用了</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4>过去可以“随大溜”，现在不行了</h4>
+        <p>过去，榜样、媒体、法律和社会支持随处可见，家庭可以“由外而内”地经营下去。现在流行文化、法律、经济、技术四股力量都在把家庭往外拉，就像在没有安全网的高空秋千上表演。所以只能由内而外，父母必须亲自成为家庭的中坚力量。</p>
+        <p>柯维用温水煮青蛙打比方：变化是逐渐发生的，人会一点点适应，直到为时已晚。</p>
+        <div class="mini-quote">谁将把我的孩子抚养成人——是如今让人警觉的破坏性文化还是我自己？<cite>习惯 3</cite></div>
+      </div>
+      <div>
+        <table class="tn">
+          <thead><tr><th colspan="2">公立学校老师的首要问题（书中图表）</th></tr><tr><th>1940 年</th><th>1990 年</th></tr></thead>
+          <tbody>
+            <tr><td>随便说话</td><td>吸毒</td></tr>
+            <tr><td>嚼口香糖</td><td>酗酒</td></tr>
+            <tr><td>吵闹</td><td>怀孕</td></tr>
+            <tr><td>在教室里乱跑</td><td>自杀</td></tr>
+            <tr><td>插队</td><td>强奸</td></tr>
+            <tr><td>违反穿着礼仪</td><td>抢劫</td></tr>
+            <tr><td>乱扔垃圾</td><td>暴力攻击</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">书里的关键数字</h3>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">90<small>%</small></div><div class="k">和睦的家庭，甚至是典范式的家庭，偏离轨道的时间</div></div>
+      <div class="stat"><div class="v">7<small>小时</small> : 5<small>分钟</small></div><div class="k">孩子每天看电视的时间，和跟父亲在一起的时间</div></div>
+      <div class="stat"><div class="v">66.7→16.9<small>%</small></div><div class="k">父母一方工作、一方在家陪孩子的家庭比例，1940 年对比 1994 年</div></div>
+      <div class="stat"><div class="v">25<small>万+</small></div><div class="k">接受调查的人数。7 个习惯中，人们给自己打分最低的总是习惯 3</div></div>
+      <div class="stat"><div class="v">8<small>个月</small></div><div class="k">柯维家写家庭使命宣言花的时间，后来共有 4 代人参与</div></div>
+      <div class="stat"><div class="v">12<small>个</small></div><div class="k">每人每天需要的“拥抱”，包括身体的、语言的、视觉的和环境的</div></div>
+      <div class="stat"><div class="v">第5<small>年</small></div><div class="k">竹子头四年只见小芽，第 5 年一下子长到 8 英尺</div></div>
+      <div class="stat"><div class="v">1300<small>英里</small></div><div class="k">铁轨挪动几英寸，开往纽瓦克的火车就到了新奥尔良。方向上的小变化，前方差别巨大</div></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>📖 全书结构一览</summary>
+      <div class="toc-body">
+        <div class="ch"><b>致读者 · 前言</b><span>柯维说家庭关系是一切人际关系的基石，书中约五分之一的故事来自自己家。前言由妻子珊德拉执笔，讲了她因为虚荣心打了 3 岁女儿的往事，以及“懦弱的人当不了母亲”这张字条。</span></div>
+        <div class="ch"><b>序言 你在 90% 的时候都会“偏离轨道”，那又怎样？</b><span>飞行比喻，三件法宝。朋友“重新找回儿子”的故事。社会趋势的变化。建议每周一次家庭时间和一对一时间。竹子的奇迹。</span></div>
+        <div class="ch"><b>习惯 1 积极主动：成为改变关系的动力</b><span>暂停键、四种天赋、爱是一个动词、影响圈和关注圈、情感银行账户的五笔存款、爱的第一法则。</span></div>
+        <div class="ch"><b>习惯 2 先有目标再行动：建立使命宣言</b><span>所有事物都被创造两次。柯维家宣言的来历，建立宣言的三个步骤和三个“注意”，巩固大家庭。</span></div>
+        <div class="ch"><b>习惯 3 要事第一：在动荡的世界中建立人际关系</b><span>五个谎言、四股社会力量、指南针演示。每周家庭时间的四个要素，夫妻和亲子的一对一时间，先放大石头。</span></div>
+        <div class="ch"><b>习惯 4 “双赢”的想法：从“我”到“我们”</b><span>掰手腕演示、输赢模式的后果、匮乏和充足心态、双赢协议的五个要素、“翠绿和整洁”、大照片。</span></div>
+        <div class="ch"><b>习惯 5 首先理解别人，再寻求别人的理解：通过移情建立沟通</b><span>误解是家庭伤害的核心。心理空气、爱的语言、移情式倾听、给予反馈的五个要点、发展阶段。</span></div>
+        <div class="ch"><b>习惯 6 协作：通过庆祝差异改善关系</b><span>拥抱差异，从仰慕到恼怒，沙发练习，家庭免疫系统，电视时间的家庭决定，两种协作。</span></div>
+        <div class="ch"><b>习惯 7 把锯子磨利：通过传统重建家庭精神</b><span>熵，个人和家庭在四方面的革新。晚餐、假期、生日、节日、学习、礼拜、劳作、服务、开心等传统。</span></div>
+        <div class="ch"><b>结束之前 从生存→到稳定→到成功→到辉煌</b><span>四个层次、动力和阻力、家庭领导树的四种角色、三个常见错误、配平调整片、三种误导地图、7 个习惯家庭工作表。</span></div>
+        <div class="ch"><b>后记 为家庭祝福</b><span>中文版后记，作者魏敏是萨提亚家庭治疗方向的从业者。</span></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ HABIT 1 ============ -->
+<section class="block c1" id="h1">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">1</div>
+      <div><div class="tag">习惯 1 · 成为改变关系的动力</div><h2>积极主动</h2></div>
+    </div>
+    <p class="thesis reveal">“在外界刺激和回应之间，存在着一个空间。”在家里，积极主动就是按下<strong>暂停键</strong>，让回应建立在原则和价值观上，而不是一时冲动或环境压力。每个家庭成员都可以成为<strong>改变的使者</strong>。</p>
+
+    <div class="grid2 reveal">
+      <div class="card story">
+        <span class="chap">反面例子 · 柯维自己</span>
+        <h4>拍摄晚归，在电话里冲珊德拉发火</h4>
+        <p>家里有客人等着吃晚饭，他却因为等日落多耽误了近一个小时，于是在电话里冷冷地说：“你安排的晚餐又不是我的错。”挂了电话他马上意识到，自己只是凭当时的感觉在反应，没有按自己知道的原则去做。开车回家的一路他都在想珊德拉，到家先道了歉。</p>
+      </div>
+      <div class="card story">
+        <span class="chap">正面例子 · 一位单亲妈妈</span>
+        <h4>从唠叨、批评的恶性循环里走出来</h4>
+        <p>她发现自己对待孩子的方式，正是当年父母对待她的方式。她还发现自己想借孩子的表现来赢得别人的认可。“痛苦而困惑的童年让我有消极的倾向，但我并非注定如此。”从那以后，遇到挫折她会先停下来，检查一下自己的情绪。</p>
+        <div class="out">柯维用她的经历说明四种天赋：退后一步反省是自我意识，知道唠叨会伤害孩子是是非观，能想象更好的回应是想象力，坚持避免冲动的话语是意志力。</div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">“爱”是一个动词</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <p>研讨会上有人说：“我太太跟我不再拥有以前的感觉。”柯维连说了三遍“去爱她”。<b>如果感情已经不在了，那正是去爱她的理由。</b>爱的感觉是爱这个动作的结果：去牺牲，去聆听，去同情，去感激。</p>
+        <p>好莱坞让人相信爱是一种感觉，婚姻是合同和权宜之计。柯维说，割断一段关系，长远看比治愈它困难得多，也痛苦得多。</p>
+      </div>
+      <div class="card">
+        <h4>车道上的暂停键</h4>
+        <p>柯维的一位朋友每天下班回家，都先把车停在车道上，在车里坐一会儿，想想走进家门时要给家人带去什么样的氛围。他对自己说：“我的家是我生活中最快乐、最有趣的部分。”进门以后，他不挑刺，不只顾自己放松，而是和每个家人打招呼：亲吻妻子，跟孩子在地上打滚，倒垃圾，或者只是听家人说话。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">影响圈和关注圈：听听自己说的话</h3>
+    <div class="circ reveal">
+      <div class="rings"><div class="outer">关注圈：所有你关心的事</div><div class="inner">影响圈<br>你能有所作为的事</div></div>
+      <div>
+        <p class="muted" style="font-size:14.5px;margin-top:0">被动的人把精力放在关注圈，影响圈会越缩越小。积极主动的人专注于影响圈，影响圈反而会扩大。“责任感”这个词的意思，就是可以选择自己的回应。</p>
+        <div class="lang">
+          <div class="col n"><h5>关注圈的语言</h5><p>“我简直不能相信孩子们会做出那样的事情！他们都快把我逼疯了！”</p><p>“我的爱人简直太不体贴了！”</p><p>“为什么我爸爸是个酒鬼？”</p></div>
+          <div class="col p"><h5>影响圈的语言</h5><p>“我可以帮忙建立家中的规则，让孩子们了解行为的后果。”</p><p>“我可以体贴一点。”</p><p>“我可以从爸爸和他的酗酒行为中吸取教训。我也可以试着去理解他、爱他和原谅他。”</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card story"><span class="chap">父母离婚的布伦特</span><p>21 岁时父母分居，他想帮两人“修复关系”，却无能为力。朋友对他说：“不要再为自己难过了，你该看看自己可以做什么，你可分别爱你的爸爸或妈妈。”他意识到父母的婚姻在关注圈里，于是专心不偏不倚地关爱父母双方，也想清楚了自己将来想要什么样的婚姻：团结比争个孰是孰非重要得多。</p></div>
+      <div class="card story"><span class="chap">3×5 卡片的背面</span><p>一位父亲在家等晚归的女儿，打算让她要么改，要么第二天搬出去。他在卡片上列出女儿必须做出的改变，然后把卡片翻过来，在空白的一面写下自己该改进的地方，结果发现自己那一面列得更长。女儿回来后，他们进行了一次很长的谈话，<b>从他那一面开始谈起</b>。</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">柯维的女儿科琳教 3 岁的埃里卡说负责任的话。后来科琳自己说了句“我讨厌那部电影”，埃里卡马上提醒：“妈妈，别说讨厌！你是个负责任的人。”</p>
+
+    <h3 class="sub reveal">情感银行账户：每个问题都是一次存款机会</h3>
+    <div class="grid2 reveal">
+      <div>
+        <table class="ledger">
+          <thead><tr><th class="w">取款，通过——</th><th class="d">存款，通过——</th></tr></thead>
+          <tbody>
+            <tr><td class="w">说话不礼貌，轻视别人，行为方式粗鲁无礼</td><td class="d">善良</td></tr>
+            <tr><td class="w">从来不说“对不起”，或说得不真诚</td><td class="d">道歉</td></tr>
+            <tr><td class="w">在别人不在时批评、抱怨，或以消极的方式谈论他人</td><td class="d">不在人后说是非</td></tr>
+            <tr><td class="w">不做承诺，或做了却不遵守</td><td class="d">做出承诺，信守承诺</td></tr>
+            <tr><td class="w">很容易触怒别人，怨恨，对别人过去的错误斤斤计较，并满腹牢骚</td><td class="d">原谅</td></tr>
+          </tbody>
+        </table>
+        <p class="small" style="margin-top:8px">表格来自书中，这五笔就是柯维说的“五笔巨款”。余额高的时候，即使犯了错，情感储备也能弥补；余额透支的时候，连好意都会被误会。</p>
+      </div>
+      <div class="card">
+        <h4>一个青少年一天收到的信息（书中图表）</h4>
+        <ul class="teen">
+          <li><time>6:55AM</time><span>起床，否则就要迟到了。</span></li>
+          <li><time>7:14AM</time><span>但是，你得吃早饭。</span></li>
+          <li><time>7:16AM</time><span>你看起来像个小流氓，穿上体面的衣服。</span></li>
+          <li><time>7:18AM</time><span>别忘了把垃圾带出去。</span></li>
+          <li><time>7:23AM</time><span>穿上外套，你不知道外面很冷吗？</span></li>
+          <li><time>7:25AM</time><span>放学后直接回家，出去前写完作业。</span></li>
+          <li><time>5:42PM</time><span>你忘了丢垃圾。</span></li>
+          <li><time>5:46PM</time><span>把这些滑板拿开。</span></li>
+          <li><time>5:55PM</time><span>为什么每次吃饭我都得去叫你？</span></li>
+          <li><time>6:06PM</time><span>晚饭好了，我得跟你说多少次？</span></li>
+          <li><time>6:12PM</time><span>把耳朵里的东西取出来。</span></li>
+          <li><time>6:16PM</time><span>你的房间都乱成一团了。</span></li>
+          <li><time>6:36PM</time><span>关上游戏，把碗拿出来。</span></li>
+          <li><time>7:08PM</time><span>看电视可不是什么好事。</span></li>
+          <li><time>7:32PM</time><span>你要我冲你嚷嚷吗？</span></li>
+          <li><time>9:59PM</time><span>去睡觉，否则明天又要迟到了。</span></li>
+        </ul>
+        <p class="small" style="margin-top:8px">原表引用自格伦·C. 格里芬博士，这里做了节选。柯维的问题是：日复一日这样交流，账户余额会变成什么样？</p>
+      </div>
+    </div>
+
+    <div class="grid3 reveal" style="margin-top:16px">
+      <div class="card story"><span class="chap">30 天，每天存“5 块钱”</span><h4>父亲和 15 岁的塔拉</h4><p>一个问题让他差点心碎：“你的存在让家人更加快乐和善良吗？”他的回答是：不，我让女儿更糟。于是他承诺 30 天里每天只存款，绝不取款。女儿回他“关你什么事！”，他也不反击，还把提醒自己的字条贴到了后视镜上。</p><div class="out">两周后女儿问：“爸爸，你有点不一样。”两个多月后，“我爸？我们是朋友，我相信他。”</div></div>
+      <div class="card story"><span class="chap">做出并信守承诺</span><h4>12 岁的辛西娅和旧金山之夜</h4><p>父女俩提前 3 个月就计划好了唐人街、电影、有轨电车和牛奶软糖圣代。到了那天，一位重要的生意熟人热情邀请他们去吃海鲜大餐，柯维婉拒了：“这是我跟我的小姑娘的特殊时间。”</p><div class="out">辛西娅：“我想没有哪个小女孩像我那天晚上一样爱我的父亲。”</div></div>
+      <div class="card story"><span class="chap">原谅</span><h4>4 年不来往的四兄妹</h4><p>父母去世后分遗物时大吵一架，扬言法庭上见，之后 4 年不串门、不打电话。了解了情感银行账户之后，她鼓起勇气拨通了大哥的电话，两个人争着说“对不起”。那一晚她给每个兄弟姐妹都打了电话。</p><div class="out">“除非你能原谅，否则就永远都是一个受害者。”</div></div>
+    </div>
+
+    <h3 class="sub reveal">爱的第一法则：无条件</h3>
+    <div class="laws reveal">
+      <div><b>接受</b><s>而非拒绝</s></div>
+      <div><b>理解</b><s>而非评判</s></div>
+      <div><b>参与</b><s>而非操控</s></div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:14px">
+      <div class="card"><p>只有先遵守爱的第一法则，才谈得上遵守生活的第一法则，比如诚实、负责、正直、奉献。一位校长计划了多年要让儿子上自家三代人读过的学校，儿子拒绝了。父母最终决定，无论儿子怎么选都无条件爱他。儿子先是决定不上学，后来不再需要为自己辩护，反而自己申请了大学。</p></div>
+      <div class="card"><p><b>回想竹子的故事。</b>一对夫妇多年来不断给妻子的父亲“存款”，因为丈夫换了工作，老人一直怨恨女婿。每次妻子进屋看父亲，丈夫就在车里等，有时一等就是一个多小时。直到有一天，老人慢慢地说：“那，去叫他进来吧。”</p><p class="mini-quote">做一盏灯，而不是一个法官；做一个榜样，而不是一个批评家。</p></div>
+    </div>
+
+    <h3 class="sub reveal">小工具：四种天赋自测 <small>书中问卷 · 0 = 从不，2 = 有时，4 = 总是这样</small></h3>
+    <div class="tool reveal" id="giftTool">
+      <div class="gtest" id="gtest"></div>
+      <div class="gscale">每种天赋单独计分：<span>0–7 天赋不活跃</span>·<span>8–12 天赋活跃</span>·<span>13–16 具有高度发展的天赋</span><span style="margin-left:auto"><button class="btn ghost sm" id="gReset">清空</button></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HABIT 2 ============ -->
+<section class="block c1" id="h2">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">2</div>
+      <div><div class="tag">习惯 2 · 建立使命宣言</div><h2>先有目标再行动</h2></div>
+    </div>
+    <p class="thesis reveal">所有事物都会被创造两次，第一次在头脑里，第二次在现实中。家庭使命宣言就是全家共同完成的<strong>第一次创造</strong>：说明我们是什么样的家庭、想成为什么样的人、按什么原则生活。它既是目的地，也是指南针。</p>
+
+    <div class="grid2 reveal">
+      <div class="card story">
+        <span class="chap">“爸爸，我是一个努力劳动的男子汉！”</span>
+        <h4>3 岁半的布伦顿用一瓶水洗盘子</h4>
+        <p>他从冰箱里拿出一瓶 1.5 加仑的水，大半倒在了地上，因为“我够不着水龙头”。妈妈忍住了骂人和打屁股的冲动，问他：“下次你觉得怎么做才可以弄得不这么乱？”两个人商量好，下次在洗碗槽前放个凳子，然后一起擦干了地板。</p>
+        <div class="out">擦地板都要 10 分钟，结果却完全不同。她在那一瞬间想起了目标：重要的不是干净的地板，而是培养孩子。</div>
+      </div>
+      <div class="card">
+        <h4>今晚就可以做的小实验</h4>
+        <p>柯维常让企业高管用一句话写下组织的使命，再互相大声读出来，大家总会惊讶于答案差别之大。在家也可以这样问一问：</p>
+        <p class="mini-quote" style="font-size:15.5px">“我们的家庭目标是什么？我们的家庭到底是什么？”</p>
+        <p>问问配偶，我们的婚姻目标是什么？答案可能会让你大吃一惊。驾驶舱里决不能出现飞行员以为飞往纽约，飞行工程师却以为飞往芝加哥的情况。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">柯维家的宣言是怎么来的</h3>
+    <div class="grid3 reveal">
+      <div class="card"><span class="kicker">结婚当天</span><p>婚礼结束后，柯维和珊德拉在纪念林公园散步，讨论婚礼的意义，决定把原则放在自己和家庭前面。后来又问自己：孩子们长大后需要哪些能力？他们归纳出 10 种：工作、学习、交流、解决问题、后悔、原谅、奉献、崇拜、野外生存、娱乐游戏。为了培养野外生存能力，他们还全家报名参加了一个生存项目。</p></div>
+      <div class="card"><span class="kicker">15 年后 · 全家参与</span><p>每周全家聚在一起讨论：我们希望成为什么样的家庭？你希望请朋友去什么样的家？什么让你想要回家？会写字的孩子都写了自己的使命宣言。十几岁满脑子橄榄球的肖恩写的是：“我们家真不赖，我们能头球入门！”</p></div>
+      <div class="card"><span class="kicker">8 个月 · 4 代人</span><p>宣言挂在墙上，他们常常对照着自问：我们的家真的是一个能听到爱的声音的地方吗？我们的幽默是否伤人？有了目标，反馈才有意义。</p><div class="ms" style="margin-top:10px;font-size:15px;padding:14px 16px">我们的家庭使命是建立一个有信念、秩序、真理、爱、幸福、轻松的地方，并且为每个人都成为有责任感、独立、能有效互动的人提供机会，这样我们可以为社会做出有益的贡献。<span class="who">柯维家的宣言</span></div></div>
+    </div>
+
+    <h3 class="sub reveal">建立家庭使命宣言的三个步骤</h3>
+    <div class="steps reveal">
+      <div class="step">
+        <h4>探索你的家庭是什么样的</h4>
+        <p>让每个人都拿出自己的感觉和意见。两个人的家庭，可以找个地方单独待几天，回想婚礼上说过的话。有孩子的家庭，可以开有趣的家庭会议，准备彩笔、贴纸和小吃；对抵触的大孩子，先在饭桌上随便聊，或者一对一地谈。</p>
+        <ul><li><b>满怀尊重地倾听。</b>“没有参与就没有承诺”</li><li><b>准确复述</b>，直到对方满意</li><li><b>记下各种观点</b>，先不评价</li></ul>
+        <p>精炼的时候，可以让每个人写下最看重的 5 件事，一次淘汰一件。</p>
+      </div>
+      <div class="step">
+        <h4>记录家庭使命宣言</h4>
+        <p>请一位家庭成员把大家的意见提炼汇总，反映所有人心里的感觉。写下来的过程会让想法更清楚。</p>
+        <p>第一稿只是初稿。要反复阅读、讨论、调整，直到大家都说：“那就是家庭的真正含义，就是我们的使命。”</p>
+        <p>宣言不一定是正式文件。可以是一个字、一幅画、一首歌，或者一根一端弯曲的手杖，提醒家人“如果你选择了手杖的这一端，也就选择了另外一端”。</p>
+      </div>
+      <div class="step">
+        <h4>用宣言来坚持正确的方向</h4>
+        <p>使命宣言不是用来检查的做事清单，而是家庭生活的<b>章程</b>，像美国宪法一样延续几十年甚至几代人。</p>
+        <p>写下来的东西和看到的东西，最能给头脑留下印象。可以装裱起来挂在壁炉上方，给每人一份，或者放进钱包。</p>
+        <p>每周讲讲某个词或某句话对某个人意味着什么，宣言就会鲜活起来。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">一位父亲的“五周法”</h3>
+    <div class="weeks reveal">
+      <div><b>第 1 周</b>给每个人 5 张 3×5 的纸，每张写一个形容这个家庭的词。去掉重复的，得到 28 个词。</div>
+      <div><b>第 2 周</b>每个人解释自己的词。8 岁的女儿写了“酷”，就请她说说很酷的家庭是什么样的。</div>
+      <div><b>第 3 周</b>把所有词写在一张大表上。每人 10 票，一个词最多投 3 票。选出大约 10 个词。</div>
+      <div><b>第 4 周</b>第二轮投票，缩小到 6 个词。分成 3 组，每组用一两段话解释两个词。</div>
+      <div><b>第 5 周</b>讨论这几段话，修改语法，定稿成为使命宣言。</div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:14px">
+      <div class="ms">我们的家庭使命：<br>保持善良、尊敬，彼此支持，<br>相互之间做到诚实和开放，<br>保持对家的感觉，<br>互相付出无条件的爱，<br>对拥有快乐、健康和充实的生活负责，<br>把这所房子变成我们想要回来的家。<span class="who">五周法的成果。他们把宣言装裱起来挂在壁炉上方，谁能背下来，就能得到一块想要的糖果。</span></div>
+      <div class="card">
+        <h4>讨论时可以问的问题（书中节选）</h4>
+        <div class="qs">
+          <span>我们家的目标是什么？</span><span>我们希望家中有什么样的感觉？</span><span>我们希望如何对待家人，如何交流？</span><span>对于我们家来说，什么是真正重要的？</span><span>家庭成员独特的天赋和能力是什么？</span><span>我们希望能遵循什么样的原则和指导方针？</span><span>谁是我们的英雄？</span><span>哪些家庭鼓舞了我们？为什么？</span><span>我们全家如何为社会做出贡献？</span>
+        </div>
+        <p style="margin-top:12px"><b>夫妻还可以问：</b>我们要怎么处理彼此的不同之处？怎么处理经济问题？想成为什么样的父母？各自从原生家庭带来了什么传统？柯维指出，婚姻冲突几乎都来自对夫妻角色的期望不同，再加上解决问题的方式不同。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">宣言的力量</h3>
+    <div class="grid3 reveal">
+      <div class="card story"><span class="chap">史密斯团队</span><p>一家人为暑假旅行写了宣言，自称“史密斯团队”，还穿上了同样的 T 恤。6 岁的女儿当啦啦队长，一有争吵就喊口号。3 个月后，3 岁的儿子被诊断出白血病，每次去化疗他都要穿那件 T 恤。熬过最危险的两周回到家时，全家人都穿上了 T 恤。</p></div>
+      <div class="card story"><span class="chap">“没有空椅子”</span><p>柯维的哥哥约翰和嫂子简已经是祖父母，孩子们住在全国各地。他们花了一年半时间和家人沟通，最后得出这句话：“我们要互相帮助，互相支持，互相原谅。”</p></div>
+      <div class="card story"><span class="chap">9 岁的“小霸王”</span><p>一位顾问没有直接告诉这个男孩该怎么做，而是请他写一份个人使命宣言，想想自己希望怎样度过一生。几个月后，男孩变成了“模范公民”。</p></div>
+    </div>
+
+    <h3 class="sub reveal">三个“注意”</h3>
+    <div class="warn3 reveal">
+      <div><b>不要“宣布”</b><p>别自己或和配偶写好了再向孩子宣布。一位母亲说：“你什么时候洗过你租来的车？”除了很小的孩子，没有参与就没有承诺。</p></div>
+      <div><b>不要着急</b><p>催着家人写，他们只会顺着你，好赶紧去做别的事。过程和结果一样重要。</p></div>
+      <div><b>不要忽视</b><p>写下来只是开始。有个家庭在门铃上方挂了块匾：“在这个房间里充满爱的声音和奉献精神。”</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:14px">
+      <p><b>如果青春期的孩子抗拒</b>，尤其是在再婚家庭里，孩子会说：“这个家庭不是我选择的。”柯维的建议是：你最大的力量来自坚守你的个人使命宣言和婚姻使命宣言，做他们生活中坚实的存在；一对一地做你能做的，坚持往他们的账户里存款。书里一对父母为吸毒、自残的女儿奋斗了 5 年，自己先写了婚姻使命宣言，忠于原则而不是各种流行方法。女儿 12 年级时戒掉了毒品，后来第一次每科都拿了 A。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HABIT 3 ============ -->
+<section class="block c1" id="h3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">3</div>
+      <div><div class="tag">习惯 3 · 在动荡的世界中建立人际关系</div><h2>要事第一</h2></div>
+    </div>
+    <p class="thesis reveal">习惯 2 告诉你什么是首要之事，习惯 3 则检验你是不是真的做到了。光说家庭“很重要”不够，必须<strong>提前安排，并坚持计划</strong>。书里给出两个组织机制：<strong>每周家庭时间</strong>和<strong>一对一时间</strong>。</p>
+
+    <div class="grid3 reveal">
+      <div class="card story"><span class="chap">柯维的遗憾</span><p>14 岁的科琳在《西区故事》最后一次彩排时唱出了心声，台下没有她的爸爸。柯维当时独自在 300 多英里外的芝加哥宾馆里。他学到两件事：重要的不是孩子能不能演 A 角，而是你跟他们在一起；如果真把家庭放在首位，就得提前做出安排。</p></div>
+      <div class="card story"><span class="chap">一则电视广告</span><p>小女孩站在埋头写计划的爸爸桌边，爸爸说纸上写的是要谈话的人和要做的事。小女孩犹豫了一会儿，问：</p><p class="mini-quote">“那我的名字也在上面吗？”</p></div>
+      <div class="card story"><span class="chap">“三代同堂屋”</span><p>一位五十多岁的高管说，他爬上了成功的阶梯，却发现梯子放错了地方。他拿出一张海边房子的蓝图，那是为子孙设计的“三代同堂屋”。为了它，他回绝了要搬家的公司领导职位。</p></div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <h4>你的工作是暂时的，家庭身份是永久的</h4>
+        <p>你从职位上退下来，马上有人顶上。但你在家里的角色永远不会结束，没人能替代。临终关怀志愿者说，让人迟迟不愿离去的，往往是家庭中未竟的事。</p>
+        <p>柯维提醒，先别认定工作没得商量，要认定<b>家庭才是没得商量的</b>。这样才能看到各种有创造性的可能：削减开支，换工作，改兼职，在家开工作室。有一对双职工夫妻在咨询后，丈夫不再周六上班，妻子辞职回家，还把患癌的母亲接来同住。他们“选择了时间”。</p>
+      </div>
+      <div class="card">
+        <h4>父母为工作找的五个“合理的谎言”</h4>
+        <p style="font-size:13px;color:var(--ink3);margin-top:0">书中转引自 1997 年《新闻与世界报告》</p>
+        <ol>
+          <li>我们需要更多的钱。（越富裕的家庭，越常把基本需要当作工作理由）</li>
+          <li>儿童看护非常好。（研究显示只有 15% 非常好，70% 一般，15% 非常糟糕）</li>
+          <li>公司不灵活是主要问题。（有利于家庭的规定其实很多，只是常被忽视）</li>
+          <li>如果妻子能赚更多，父亲会乐意待在家里。</li>
+          <li>高税率迫使我们都去工作。</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">机制一：每周家庭时间 <small>奥普拉的话：一周连一个晚上、至少一个小时都没有，家庭就不是你的首要之事</small></h3>
+    <div class="ft reveal">
+      <div class="card"><span class="need">对应需求 · 精神</span><h4>计划</h4><p>暑假开始时，问孩子最想做什么，精简后排进一张大日程表。孩子们不再追问“什么时候去”，因为知道一定会去。另一家把每个人的日程贴在门上的磁板上。</p></div>
+      <div class="card"><span class="need">对应需求 · 头脑</span><h4>教育</h4><p>柯维家去看商城的几百张蓝图，借机讲“所有事物都被创造两次”。另一家玩理财游戏，屋里设了银行、商店、信用卡公司、慈善机构，还有“利息时间”。后来 4 个成家的孩子，没有一个有需要付息的信用卡账户。</p></div>
+      <div class="card"><span class="need">对应需求 · 身体</span><h4>解决问题</h4><p>柯维列出全家的所有责任，问“谁想赚钱养家？谁来缴税？”孩子们这才看到父母付出了多少。一位领养了多个“问题孩子”的妈妈，让大家在家庭时间里放心说出对新成员的担心。</p></div>
+      <div class="card"><span class="need">对应需求 · 人际关系</span><h4>乐趣</h4><p>柯维家最受欢迎的是“神秘系列冒险”：排球、游泳、吃比萨，或者讲鬼故事后在后院露营，事先谁也不知道。一位父亲说：“他们会把‘被喜爱’跟娱乐联系在一起。”</p></div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:14px">
+      <div class="card story"><span class="chap">把宣言变成章程 · 影子家庭</span><p>珊德拉借电影《天荒地老不了情》讲匿名奉献。之后大约 3 个月里，每次家庭之夜，他们都做些爆米花或糖果，放在一户邻居的门廊上，附一张致谢字条，落款“影子家庭又行动了！”，按完门铃就跑。有一次被人报了警。后来他们自己也收到一张字条：“给影子家庭——你们多疑的邻居敬上。”</p></div>
+      <div class="card">
+        <h4>做出承诺：起飞最费力</h4>
+        <p>阿波罗 11 号的大部分能量都花在离开地球的最初几分钟。之后登月舱分离、降落、勘探所需的能量，宇航员形容为“轻过婴儿的呼吸”。建立家庭时间这样的新习惯也一样：先承诺“一周一次，无论发生什么”；真有要事改期，马上另做安排。</p>
+        <p>柯维家的家庭聚会也出过状况：有两个青春期儿子在沙发上睡着，有的以争吵开场、以祈祷收尾，有的闹到父母说“我们受够了”离场。他说，有时你好几年都看不到结果。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">机制二：一对一时间 <small>“让你的孩子拥有你一个下午”</small></h3>
+    <div class="grid3 reveal">
+      <div class="card">
+        <span class="kicker">夫妻</span>
+        <p>柯维和珊德拉多年来每天开着本田汽车去兜风，远离孩子和电话，只是交谈。有对朋友夫妻每周五晚把孩子交给别人照顾，坚持了差不多 30 年。还有一对每晚 10 点半以后回到自己房间，孩子们知道那段时间不能打扰。</p>
+        <p class="mini-quote" style="font-size:15px">“你能为孩子做的最重要的事情是爱你的配偶。”<cite>书中引用</cite></p>
+      </div>
+      <div class="card story">
+        <span class="chap">由孩子决定 · 凯瑟琳</span>
+        <p>10 岁的凯瑟琳想第 5 次看《星球大战》，而爸爸“宁愿拔牙也不愿意看科幻电影”。爸爸却说：“这是你的夜晚。”她在黑暗里轻声给爸爸讲解“原力”和帝国。</p>
+        <div class="out">“我从来都不知道他是否像我那样爱《星球大战》，但是我确切地知道他爱我。”</div>
+      </div>
+      <div class="card story">
+        <span class="chap">只听，不评判 · 辛西娅</span>
+        <p>从爱尔兰回美国后，8 岁的辛西娅偷看卡片抄数学答案，还被选为模范生，骑虎难下。柯维家每月有“个别见面”，规则是父母只能听，除非孩子要求，否则不批评、不建议。在一次见面里，她终于喊出：“我在数学上作弊了！”</p>
+        <div class="out">父母陪她去见老师，请了一位 6 年级同学帮她辅导。“我的巨大亏空并不能让我马上破产。相反，那一天我还收获了利息。”</div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">先放大石头</h3>
+    <div class="jar reveal">
+      <div class="jarbox">
+        <b>先装小石子</b>
+        <div class="glass"><div class="pebbles" style="top:12%"></div><div class="rock" style="width:46px;height:34px;left:36px;top:-8px;opacity:.85"></div></div>
+        <span>瓶子很快满了，大石头只塞得进一两块</span>
+      </div>
+      <div class="jarbox">
+        <b>先放大石头，再倒入小石子</b>
+        <div class="glass"><div class="rock" style="width:50px;height:38px;left:8px;bottom:6px"></div><div class="rock" style="width:44px;height:36px;left:62px;bottom:10px"></div><div class="rock" style="width:46px;height:34px;left:30px;bottom:48px"></div><div class="rock" style="width:40px;height:30px;left:68px;bottom:56px;opacity:.85"></div><div class="pebbles" style="top:22%;opacity:.4"></div></div>
+        <span>小石子会填进大石头的缝隙里</span>
+      </div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:14px">
+      <div class="card"><p>瓶子代表你下一周的时间，小石子是常规事务，大石头是家庭时间、一对一时间这类你心里知道该做、却很难“塞进”日程的事。柯维夫妇每学年开学都会要一份学校校历，提前两三年甚至四年就计划家庭活动。辛西娅回忆，爸爸常出差，但跟她的一对一时间比朝九晚五爸爸的孩子还多：周一晚上是家庭之夜，周日哪儿都不去。</p></div>
+      <div class="card"><p>有人说：“我们没有时间来做这样的事情！”柯维的回答是：“你没有时间不去做！”不给关系预留时间，以后要花更多时间去修补破碎的关系。他们还按<b>职责</b>来安排每周的目标。比如珊德拉某周要去帮女儿照顾新生儿，那一周就有意放下其他职责的目标，下周再重建。</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">柯维也提醒：在阿根廷，很多拉美父母几乎每晚都是家庭时间，根本不用专门规定。如果你现在还接受不了这些条条框框，就从做出并信守一个承诺开始。“在学代数之前你不会做微积分。”</p>
+  </div>
+</section>
+
+<!-- ============ HABIT 4 ============ -->
+<section class="block c2" id="h4">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">4</div>
+      <div><div class="tag">习惯 4 · 从“我”到“我们”</div><h2>“双赢”的想法</h2></div>
+    </div>
+    <p class="thesis reveal">家庭里唯一可行的长期选择是<strong>双赢</strong>。赢-输和输-赢最终都会让双方失败。关键是让家人问一个问题，再做出一个承诺。问题是：<strong>“你能不能找到一个比我们现在提出的更好的建议？”</strong>承诺是：<strong>“让我先听听你的。”</strong></p>
+
+    <div class="grid2 reveal">
+      <div class="card story">
+        <span class="chap">掰手腕演示</span>
+        <p>柯维从听众里挑一个高大强壮的年轻人，先放狠话激起他的斗志，并约定每赢一次，前排观众付 10 美分。比赛一开始，柯维就松劲让对方赢，然后说：“你看，我们为什么不能双赢呢？”最后两人都不用力，快速地来回把对方掰倒。</p>
+        <div class="out">“好了，现在你们欠我们多少钱了？”改变整个局面的关键，是其中<b>一个人</b>先开始考虑双赢。</div>
+      </div>
+      <div>
+        <div class="flow3">
+          <div class="card"><b>根源</b><h4>习惯 4 双赢</h4><p class="small">寻求共同利益的“黄金法则”范式，是潜在的动机</p></div>
+          <div class="ar">→</div>
+          <div class="card"><b>途径</b><h4>习惯 5 先理解</h4><p class="small">走出自我，进入他人头脑和心灵的能力</p></div>
+          <div class="ar">→</div>
+          <div class="card"><b>结果</b><h4>习惯 6 协作</h4><p class="small">不是“你的方式”，也不是“我的方式”，而是更好的方式</p></div>
+        </div>
+        <p class="small" style="margin-top:10px">习惯 4 和习惯 5 都可以由一个积极主动的人完成，习惯 6 需要双方参与。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">四种模式</h3>
+    <div class="wl reveal">
+      <div><b>赢-输</b><span>“我赢，你输。”父母年长、强壮，短期内能推行，但到孩子的青春期，情感银行账户会破产。</span></div>
+      <div><b>输-赢</b><span>“我是殉道者，踩着我向前吧。”短期受欢迎，但没有远见、准则，也得不到尊重。</span></div>
+      <div><b>双输</b><span>两种输赢模式长期下去的结局。圣诞晚会上她赢他输，两个月后招待会上他赢她输，最后谁也没赢。</span></div>
+      <div class="win"><b>双赢</b><span>美妙家庭文化的本质，也是建立长期信任和无条件的爱的唯一方式。</span></div>
+    </div>
+    <div class="grid3 reveal" style="margin-top:16px">
+      <div class="card story"><span class="chap">“我就是受不了每次都输”</span><p>旅行途中，12 岁的哥哥要求自己坐车回家，说受不了弟弟总说气人的话。父亲带两人爬上山脊，弟弟哭着说出原因：“我就是受不了每次都输，所以说一些话让你生气……我喜欢跟你在一起。”</p></div>
+      <div class="card story"><span class="chap">充足心态 · 分遗物</span><p>母亲和继父死于空难。一个儿子提议先把遗物放进仓库，过几个月再分，每人列出最想要的 5 件，“同时请考虑其他的家庭成员”。分配当天大家约定：“除非我们所有人都彼此感觉愉快，否则我们不会结束。”最后几乎没有重合，有人说：“我看得出那对你有多重要，我希望那件东西能属于你。”</p></div>
+      <div class="card story"><span class="chap">把球传给帕姆</span><p>队友帕姆因为嫉妒故意不传球给她。父亲的建议是“每次都把球传给帕姆”，她当时觉得愚蠢透了。下一场比赛，看台上传来父亲的喊声“把球给她！”，她传了。后来两人成了当地报纸报道的传奇搭档。</p></div>
+    </div>
+
+    <h3 class="sub reveal">在家里怎么培养双赢</h3>
+    <div class="grid3 reveal">
+      <div class="card"><h4>小事上让孩子赢</h4><p>孩子小的时候，百分之九十都是小事。想在屋里放个秋千、把自己弄脏、把玩具堡垒扔在家里一周，柯维家一般都让他们去做。要区分原则性的事和喜好性的事。</p></div>
+      <div class="card"><h4>大事上和孩子互动</h4><p>让孩子知道你能接受他的影响，一起找解决办法，孩子有可能想出比你更好的主意。必须做不受欢迎的决定时，比如上学、打疫苗，就多花时间理解和解释。</p></div>
+      <div class="card"><h4>抵消竞争带来的紧张</h4><p>孙女的足球赛踢平了，队员们垂头丧气。柯维站起来说：你们有 5 个目标，尽力、乐趣、团队协作、学习、取胜，实现了 4 个半，“那是百分之九十！”</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">柯维还借赫兹伯格的理论提醒父母：理解、支持、鼓励、爱是家里的“空气”，没有它们孩子会不满，但有了也不一定就快乐。所以不要期待从孩子那里得到很多肯定和感谢，也不要把孩子的抱怨当作你努力价值的衡量标准。</p>
+
+    <h3 class="sub reveal">双赢协议的 5 个要素：“翠绿和整洁”</h3>
+    <div class="five reveal">
+      <div><b>愿望</b>带小史蒂芬去看邻居的院子：“那就是我们以后的目标：翠绿和整洁。”<i>想要什么结果</i></div>
+      <div><b>指导</b>“怎么做到翠绿是你的事情。”用喷水装置、水桶都行，哪怕“整天吐口水”。<i>只给方针，不规定方法</i></div>
+      <div><b>资源</b>“你就是自己的老板。”爸爸是帮手，“如果我有时间”。<i>可以找谁帮忙</i></div>
+      <div><b>职责</b>“你评判你自己的工作。”每周两次一起绕院子走一圈，由他汇报。<i>谁来评判</i></div>
+      <div><b>结果</b>不给零花钱，重点让他体会努力带来的内在满足和自然结果。<i>会有什么后果</i></div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:14px">
+      <div class="card story">
+        <span class="chap">两周，两个词</span>
+        <p>周六、周日、周一、周二，儿子都什么也没做，草坪在 7 月的阳光下渐渐枯黄。柯维忍住了吼他的冲动，晚饭后提议“让我们按协议做事”。走到院子中间，儿子哭了：“太难了，爸。”“我能帮你什么忙吗？”儿子请他收拾上周六烧烤留下的垃圾。</p>
+        <div class="out">那个夏天儿子只让爸爸帮过两三次，院子比柯维自己打理时还好。兄弟姐妹把糖纸扔在草坪上，他还会批评他们。</div>
+      </div>
+      <div class="card">
+        <h4>让协议做主</h4>
+        <p>一位母亲给十几岁的孩子发“衣服津贴”，孩子负责自己洗、叠、收拾衣服；乱扔的衣服放进“废物箱”，每件扣 25 美分。后来孩子们开始懈怠，她发现自己一提醒，责任就又回到了自己身上。于是她闭上嘴，每周照记录结账。没过多久孩子们衣服不够穿了，她只说：“你们有自己的衣服津贴。”</p>
+        <p>如果不在一开始就讲清这 5 个要素，等事情走下坡路时就会听到：“你从来没说过我今天一定要做。”</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">大照片：从长远看一个人</h3>
+    <div class="grid2 reveal">
+      <div class="card"><p>珊德拉把家里一面墙从地板到天花板贴满了家人各个阶段的照片：没长牙的、长雀斑的、戴牙箍的，高中、婚礼，还有几代人的合影。看着 34 岁的儿子，她同时看到的是那个跑来要创可贴的 4 岁孩子。柯维说，也许每个人都穿着一件 T 恤，上面写着：“耐心点，我们还没完呢。”</p></div>
+      <div class="card"><h4>惩罚和训诫的区别</h4><p>惩罚说：“好，你到休息室去待半小时。”训诫则说：“好，你需要去休息室待着，直到你决定按我们说好的做。”待一分钟还是一小时不重要，重要的是孩子拿出做对事的主动性。要对事不对人，承认孩子有做决定的能力。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HABIT 5 ============ -->
+<section class="block c2" id="h5">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">5</div>
+      <div><div class="tag">习惯 5 · 通过移情建立沟通</div><h2>首先理解别人，再寻求别人的理解</h2></div>
+    </div>
+    <p class="thesis reveal"><strong>误解是真正的家庭伤害的核心。</strong>每个人都戴着自己的“眼镜”看世界。先给对方“心理空气”，倾听到他觉得被理解为止，再说自己的看法。真正理解了，也就不再急着评判。</p>
+
+    <div class="grid3 reveal">
+      <div class="card story"><span class="chap">北极牌家电</span><p>珊德拉坚持只买北极牌家电，宁可开车 50 英里去城里买，柯维觉得这毫无逻辑。在夏威夷甘蔗田骑车时，她第一次讲起往事：父亲白天教书，晚上开家电店，她会给躺在沙发上的父亲挠脚、唱歌；经济危机时，店能撑下去，全靠北极牌允许赊账进货。</p><div class="out">“心灵有其自身的理由，对此，理智毫不知情。”（帕斯卡）</div></div>
+      <div class="card story"><span class="chap">孩子没说出口的事</span><p>一位父亲一再惩罚在街角乱跑的儿子，直到儿子问：“爸，‘街角’是什么意思？”凯瑟琳 3 岁的儿子总是半路哭着跑回家，原来是怕在朋友家找不到卫生间。一个女孩学不会减法，直到父亲摆出 9 个苹果再拿走两个：“哦，没有人告诉我那就是拿走东西。”</p></div>
+      <div class="card story"><span class="chap">“凯伦，你都透不过气来了！”</span><p>16 岁的凯伦对父母越来越刻薄。父亲先列举为她做过的一切，换来一句“那又怎样？”后来他去她房间道歉，只说想理解她。她讲起高中、新驾照、兼职、上钢琴课、教钢琴……</p><div class="out">她决定不再上钢琴课，也不再教。下一周，凯伦像换了一个人。</div></div>
+    </div>
+
+    <h3 class="sub reveal">理解为什么是最重要的存款</h3>
+    <div class="grid3 reveal">
+      <div class="card"><h4>心理空气</h4><p>除了生理上的生存，人最强的需要是心理上的生存，也就是被理解。人们冲对方嚷嚷，实际是在说：“理解我！倾听我！尊重我！”没空气的时候，别的什么都不重要。</p></div>
+      <div class="card"><h4>用对方的爱的语言</h4><p>丈夫多年来说“我爱你”、送玫瑰，在妻子那里只算存了 10 美元；挂窗帘、刷墙却算 100 美元，因为她父亲就是靠干家务表达爱的。“除非已经理解了一个人，否则你不可能知道什么在他的账户中才算是存款。”</p></div>
+      <div class="card"><h4>有时只需要抱着</h4><p>10 岁的安柏感冒了，不能去和祖父骑一整天马，哭得很伤心。爸爸没说“以后再骑”，只是坐下默默抱着她。几分钟后，她亲了亲爸爸的脸：“谢谢你，爸。”就是那样。</p></div>
+    </div>
+
+    <h3 class="sub reveal">五种倾听，只有一种进入了对方的世界</h3>
+    <div class="grid2 reveal">
+      <div class="ladder">
+        <div class="rung" style="--w:100"><span class="lv">5</span><div><b>移情式倾听</b><span>进入别人的参照标准体系</span></div></div>
+        <div class="rung" style="--w:72"><span class="lv">4</span><div><b>聚精会神地倾听</b></div></div>
+        <div class="rung" style="--w:52"><span class="lv">3</span><div><b>选择性倾听</b></div></div>
+        <div class="rung" style="--w:34"><span class="lv">2</span><div><b>假装倾听</b></div></div>
+        <div class="rung" style="--w:16"><span class="lv">1</span><div><b>忽视</b><span>没有自己的参照标准体系</span></div></div>
+      </div>
+      <div class="card">
+        <h4>做一个“忠实的翻译者”</h4>
+        <p>在雅加达讲课时，柯维请戴着耳机的听众想一想同声传译：他们必须听清每一句话并准确转述，两位翻译要轮班，因为太累了。移情式倾听也是这样，要把对方字面的和更深层的意思翻译回去。</p>
+        <p>有用的问题：你担心什么？什么对你来说真正重要？你最迫切的需求是什么？<br>反馈式句子：“我觉得你潜在的担心是……”“如果我想错了就告诉我，但是我觉得……”</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">四种从自己出发的回应 <small>女儿抱怨不能约会，被朋友议论时</small></h3>
+    <div class="auto reveal">
+      <div><b>评判</b><q>宝贝，别担心，没有人会不理你。</q><span>基于你自己的需要和价值观</span></div>
+      <div><b>建议</b><q>走你自己的路，别管别人怎么说怎么想。</q><span>从你自己的角度出发</span></div>
+      <div><b>刺探</b><q>告诉我他们说你什么。</q><span>打听你认为重要的信息</span></div>
+      <div><b>解释</b><q>你所感受到的不过是正常的不安。</q><span>按你的看法解读她和她的朋友</span></div>
+    </div>
+    <p class="muted reveal" style="font-size:14.5px;margin-top:12px">理解的回应是：“你看起来心里有点纠结……还是因为别人可以约会而你只能说不而感到丢脸，对吗？”女儿接着说出了真正的担心：以后开始约会了，不知道怎么和男孩子相处。</p>
+    <div class="dlg reveal" style="margin-top:14px">
+      <div class="card bad">
+        <h4>寻求被理解的妈妈</h4>
+        <p><b>辛迪：</b>哦，妈妈，我有个坏消息。玛姬被啦啦队开除了。</p>
+        <p><b>妈妈：</b>……我觉得玛姬是咎由自取，谁让她结交坏朋友呢。我已经警告过你……你在吗？啊？</p>
+        <p><b>辛迪：</b>妈，行了！……我要去睡觉了。</p>
+      </div>
+      <div class="card good">
+        <h4>首先尝试理解的妈妈</h4>
+        <p><b>辛迪：</b>哦，妈妈，我有个坏消息。玛姬被啦啦队开除了。</p>
+        <p><b>妈妈：</b>嗯，宝贝，你看起来很难过。</p>
+        <p><b>辛迪：</b>……那不是她的错，是她男朋友的错。</p>
+        <p><b>妈妈：</b>你觉得他对玛姬有不好的影响，而且因为玛姬是你的好朋友，因此你也觉得受伤害。</p>
+        <p><b>辛迪：</b>我希望她能甩了这个男孩……糟糕的男朋友会给你带来麻烦。</p>
+      </div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">技巧只是冰山一角，真诚想要理解的心才是冰山的山体。书里有个军人向牧师抱怨，牧师只会机械地重复他的话，最后军人问：“见鬼，我说话的方式有什么不对吗？”</p>
+
+    <h3 class="sub reveal">习惯的另一半：寻求被理解，给予反馈的 5 个要点</h3>
+    <div class="five reveal">
+      <div><b>先问动机</b>这些反馈真对他有帮助吗？还是只满足了我自己想直说的需要？心怀不满时，不是时候。</div>
+      <div><b>首先理解</b>理解什么对他最重要，用他的爱的语言来说。</div>
+      <div><b>就事论事</b>说清行为的后果和自己的感受，不贴“懒惰”“自私”这类标签。</div>
+      <div><b>体谅盲点</b>盲点太敏感，对方没准备好时说了只会适得其反。也别说对方无能为力的事。</div>
+      <div><b>说“我”的信息</b>“我担心的是……”，而不是“你太自我中心了”。</div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:14px">
+      <div class="card story"><span class="chap">眼中的光芒消失了</span><p>出差回来，柯维看到儿子花了一整天打扫工作室，第一反应却是“为什么你不做那个？”他看着儿子眼中的光芒渐渐消失，怎么道歉也找不回来了。他从此认定：别人尽了全力的时候，先表达敬佩和赞赏，建设性意见留到对方准备好了再说。</p></div>
+      <div class="card story"><span class="chap">家规 · 复述到对方满意为止</span><p>两个十几岁的儿子总吵架。妈妈把他们关在一个房间里：大卫要先把安德鲁的意思说到安德鲁满意，才能讲自己的。第一次花了 45 分钟。多年以后兄弟俩一起来分祖父的遗物，互相说：“这个你用得上——给你吧。”</p></div>
+    </div>
+
+    <h3 class="sub reveal">分清问题出在哪：三个问题</h3>
+    <div class="three-q reveal">
+      <div><span>价值问题</span><b>应该让这个孩子做吗？</b><p>办法是建立情感银行账户和教育</p></div>
+      <div><span>能力问题</span><b>这个孩子能做吗？</b><p>办法是训练。小儿子总把衣服扔一地，其实是不会挂，花半小时教会就好了</p></div>
+      <div><span>动机问题</span><b>这个孩子想做吗？</b><p>办法是强化，可以用外在的好处，也可以靠做对事的内心满足</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">珊德拉学的是儿童发展。她提醒，要了解“可怕的 2 岁”“信任的 3 岁”这些成长阶段，不要把孩子发脾气当成自己的失败。柯维家还有一条教训：吃饭时间应该是享受食物和交谈的时光，绝不是训诫、纠错和评判的时间。</p>
+  </div>
+</section>
+
+<!-- ============ HABIT 6 ============ -->
+<section class="block c2" id="h6">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">6</div>
+      <div><div class="tag">习惯 6 · 通过庆祝差异改善关系</div><h2>协作</h2></div>
+    </div>
+    <p class="thesis reveal">协作是所有习惯的至高之善：<strong>一加一至少等于三</strong>。关键在于真正<strong>拥抱差异</strong>，而不只是容忍差异，然后一起找到“你的方式”和“我的方式”之外的<strong>第三选择</strong>。</p>
+
+    <div class="grid2 reveal">
+      <div class="card story">
+        <span class="chap">“我/你就可以做教练！”</span>
+        <p>训练了一周，儿子想退出高中篮球队。父亲讲了一通道理，然后生气地走开了。后来他问出了真相：儿子一直被拿来和哥哥们比较，觉得爸爸更喜欢哥哥。父亲道了歉，但儿子退队的决定没变。他说自己其实喜欢篮球，只想去教区队打着玩，“不过我们需要一个教练”。</p>
+        <div class="out">父子俩几乎同时喊出那个主意。那个篮球季改变了他们的关系，儿子很乐意听爸爸在场边喊：“跑起来，儿子！”</div>
+      </div>
+      <div class="card">
+        <h4>同样是一加一</h4>
+        <div class="sum">
+          <div class="row"><b>负面合作</b><div class="bar"><i style="--w:28%;--o:14%">&lt; 1，一半精力用来争吵和自我辩护</i></div></div>
+          <div class="row"><b>妥协</b><div class="bar"><i style="--w:45%;--o:24%">= 1.5</i></div></div>
+          <div class="row"><b>简单的相互作用</b><div class="bar"><i style="--w:62%;--o:34%">= 2</i></div></div>
+          <div class="row"><b>协作</b><div class="bar"><i style="--w:100%;--o:62%">≥ 3，创造出前所未有的东西</i></div></div>
+        </div>
+        <p style="margin-top:12px">两个人之间的关系，本身就像“第三方”。在家庭里，它就是家庭文化本身，也会成为一种更高的道德权威。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">拥抱差异：从仰慕到恼怒，再到感激</h3>
+    <div class="grid3 reveal">
+      <div class="card story"><span class="chap">经典故事书</span><p>她 11 岁时读完那套书哭了，就小心地保留下来，等女儿凯茜 11 岁时送给她。凯茜勉强看了两章就扔上了书架。她多年来暗暗希望女儿像自己。某天清晨，她脑中闪过一个画面：两个成年女人手挽着手相视而笑，就像她和自己性格迥异的姐姐。“亲密的朋友没有必要彼此相像。”</p></div>
+      <div class="card story"><span class="chap">要细节的丈夫，讲感觉的妻子</span><p>午餐时，丈夫像审案一样逼问妻子：“赶快给我一个痛快的‘是’或者‘不是’。”柯维问：“你们有孩子吗？”“有，两个。”“你们怎么办到的？……你们在协作！”另一对角色相反的夫妻后来发现，两人一起写作最好：他出大的想法，她整理成文。</p></div>
+      <div class="card story"><span class="chap">上床时间</span><p>柯维常出差，心怀内疚就纵容孩子，珊德拉只好更强硬，他又因此更软。孩子们看到车灯就说：“嘿，肖恩，他还不错。”最后夫妻俩意识到，上床时间在他们家没那么重要，睡前反而成了孩子和珊德拉聊天、吃东西的家庭时光。</p></div>
+    </div>
+
+    <h3 class="sub reveal">练一练：13.5 美元的沙发 <small>书中设计成可以暂停思考的练习</small></h3>
+    <div class="grid2 reveal">
+      <div class="sofa">
+        <div>刚买下小房子，前屋放着婆婆送的旧沙发。家具店里有张早期美国式沙发，价格比预想的高一倍。售货员说可以两个月后再付款，丈夫说：“好。我们买吧。”</div>
+        <div class="p">暂停：如果你是那位女士，会怎么办？</div>
+        <div>她告诉售货员还要考虑一下，挽着生气的丈夫走开了。<span class="h">习惯 1 暂停键</span></div>
+        <div>坐在公园长椅上，她先让丈夫知道自己理解他。丈夫说旧沙发让他丢脸，兄弟们都比他挣得多，新沙发能让他觉得自己还不错。<span class="h">习惯 4 · 5</span></div>
+        <div>她问他愿不愿意听听自己的想法：她为他骄傲，但她夜里会担心账单，两个月内根本付不出这笔钱。<span class="h">习惯 5 后半</span></div>
+        <div class="p">暂停：你能找到第三种办法吗？</div>
+        <div>两人开始讨论怎样不买新的也能让前屋好看些。在二手货市场，他们花 13.5 美元买了个木沙发。她去上室内装修班做新坐垫，他修好木头部分。3 周后，他们有了一张可爱的早期美国式沙发。<span class="h">习惯 6 协作</span></div>
+      </div>
+      <div>
+        <div class="card">
+          <h4>协作练习：四个问题</h4>
+          <ol>
+            <li><b>从不同人的角度看，问题是什么？</b>每个人都复述别人的想法，直到对方满意。注意利益，而不是立场。</li>
+            <li><b>最关键的问题是什么？</b></li>
+            <li><b>什么可以带来可接受的解决办法？</b>列出让每个人都满意的标准，排出优先顺序。</li>
+            <li><b>什么样的办法能达到这样的标准？</b>围绕创造性的新方案展开协作。</li>
+          </ol>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h4>不是所有情况都需要协作</h4>
+          <p>柯维和珊德拉会问对方：“你在哪儿？”意思是，按 1 到 10 分，你的感觉有多强烈？一个说 9，一个说 3，就听感觉强烈的那个；两人都说 5，就迅速折中。前提是彼此诚实。车上孩子们想去不同地方时，他们也这样做。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">家庭免疫系统</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <p>习惯 4、5、6 建立起来的文化，就像身体的免疫系统。小问题像疫苗，能让家庭产生更强的抗体。家庭不会因为某个问题而崩溃，而是因为免疫系统停止工作。<b>家庭文化的关键，在于你如何对待最麻烦的那个孩子</b>：如果你能无条件地爱他，其他人就知道你对他们的爱也是无条件的。</p>
+        <p class="mini-quote">“你有不同的看法。不错！帮我弄明白。”</p>
+      </div>
+      <div>
+        <p class="small" style="margin:0 0 8px">健康的免疫系统要对抗的四种“癌症”：</p>
+        <div class="cancer"><div>批评</div><div>抱怨</div><div>比较</div><div>竞争</div></div>
+        <div class="card story" style="margin-top:12px"><span class="chap">7 岁的黛比</span><p>她一不如意就跑回房间哭。父亲后来意识到，她的情绪化背后是一颗善良的心和表达爱的天赋，于是不再说“到你自己的房间去”，而是等她平静后坐下来一起找办法：“过来，让我们共同承受并解决问题。”</p></div>
+      </div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card story">
+        <span class="chap">让孩子们自己决定看多少电视</span>
+        <p>柯维想把电视扔进仓库，珊德拉想要一个以原则为中心的办法。在家庭时间里，他们先听孩子们讲完理由，复述到孩子们满意，再一起读了两篇文章：毕业时一个人在学校待了 13,000 小时，在电视前却有 16,000 小时，看过 24,000 次杀人场面。然后父母离开房间：“我们会尊重你们的决定。”</p>
+        <div class="out">大哥先发言，一个小弟弟说有个节目让他睡觉时害怕。最后孩子们定下每周 7 小时，由一个女儿监督。后来电视在他们家不再是问题。</div>
+      </div>
+      <div class="card">
+        <h4>两种协作</h4>
+        <p><b>转换性协作：</b>双方的思想融合，像分子层面的反应，创造出全新的东西。</p>
+        <p><b>交换相加式协作（补偿）：</b>用一个人的长处弥补另一个人的弱点，需要很强的自我意识和谦逊，连小孩子都能学会。一位经理说：“我的任务不是批评，而是弥补。”</p>
+        <p class="small">在一所大学的 MBA 课堂上，两名立场对立的学生就堕胎问题练习“复述到对方满意”。约 45 分钟后两人才真正开始倾听，两小时后都说：“我们以前对倾听意味着什么一无所知！”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HABIT 7 ============ -->
+<section class="block c3" id="h7">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">7</div>
+      <div><div class="tag">习惯 7 · 通过传统重建家庭精神</div><h2>把锯子磨利</h2></div>
+    </div>
+    <p class="thesis reveal">“熵”：任何没有得到关注和更新的东西都会损坏。婚姻也不例外。家庭要在<strong>生理、人际关系、心理、精神</strong>四个方面不断革新，而在家里，这种重复性的革新就叫<strong>传统</strong>。</p>
+
+    <div class="grid2 reveal">
+      <div class="card story">
+        <span class="chap">锯树的人</span>
+        <p>你锯了一整天，累得快撑不住了。旁边那个人和你同时开工，树一样粗，他每小时都歇一会儿，却快锯完了。“你没看到每次我停下来的时候，都在磨我的锯子。”</p>
+        <p>柯维坐过 F-15，参观过核潜艇。他发现，最有经验的飞行员和海员也要反复练最基本的步骤。</p>
+      </div>
+      <div class="card story">
+        <span class="chap">一个离婚的男人</span>
+        <p>结婚头一年，他们常去公园散步、骑车、去湖边。搬家后两人都忙于事业，她上晚班，他上白班，有时一整天都见不到面，各自有了朋友圈，越走越远。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">四个方面的革新 <small>据书中两幅环形图整理</small></h3>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="renew">
+        <thead><tr><th></th><th>个人革新</th><th>家庭革新</th></tr></thead>
+        <tbody>
+          <tr><td>生理方面</td><td>运动、吃健康的食物、调整压力</td><td>一起运动，重新说明财务和物质方面的目标</td></tr>
+          <tr><td>人际关系</td><td>结交新朋友、提供服务、付出同情并创造协作</td><td>相亲相爱，讲“内部笑话”并一起放松，建立信任和无条件的爱的关系</td></tr>
+          <tr><td>心理方面</td><td>阅读、计划和协作，发挥潜能，学习新的技术</td><td>一起学习新事物，分享和讨论大家的想法</td></tr>
+          <tr><td>精神方面</td><td>祈祷、思考、阅读能提升心灵的文学作品、革新对原则的联系与承诺</td><td>更新承诺，重新说明方向和目标，一起祷告和做礼拜，一起阅读能提升心灵的文学作品</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub reveal">书中列举的家庭传统</h3>
+    <div class="trad reveal">
+      <div><div class="e">🍽</div><b>家庭晚餐</b><span>一周一次也算重要的家庭时间。有家人在餐桌旁贴使命宣言；有家人玩“一分钟演讲”；还有家人在餐桌上放一套百科全书，查出得克萨斯州是特拉华州的 131 倍大。</span></div>
+      <div><div class="e">🏕</div><b>家庭假期</b><span>去哪里没那么重要，重要的是一起去。“让心灵的花园总有花开。”</span></div>
+      <div><div class="e">🎂</div><b>生日</b><span>柯维家过的是“生周”：整整一周都让孩子知道他对家人有多重要。</span></div>
+      <div><div class="e">🎄</div><b>节日</b><span>每年都有，天然适合培养传统，给人稳定感和家庭身份感。</span></div>
+      <div><div class="e">👵</div><b>大家庭 · 几代同堂</b><span>请亲属来看孩子的演出和比赛，表兄弟姐妹因此成了好朋友，就像一张安全网。</span></div>
+      <div><div class="e">📚</div><b>一起学习</b><span>旅行时在车里一起唱老歌。儿子乔舒亚问柯维“你看书吗？”，他这才意识到孩子从没见过他读书。</span></div>
+      <div><div class="e">⛪</div><b>一起做礼拜</b><span>研究表明这往往是健康快乐家庭的特征之一，前提是出于内在驱动。柯维家每天早上会一起祷告几分钟。</span></div>
+      <div><div class="e">🧹</div><b>共同劳作</b><span>“10 分钟活动”：全家一起狠狠收拾 10 分钟，18 只手总比两只快。还有边干活边吃喝说笑的“工作派对”。</span></div>
+      <div><div class="e">🤲</div><b>共同服务</b><span>一起为他人服务，是精神上的革新，也能充实家庭使命宣言。</span></div>
+      <div><div class="e">🎬</div><b>共同开心</b><span>柯维家有一批“柯维热爱的电影”，全家能逐字模仿台词，外人听不懂。</span></div>
+    </div>
+    <div class="grid3 reveal" style="margin-top:16px">
+      <div class="card story"><span class="chap">珊德拉 · 热情的迎来送往</span><p>孩子放学回家，花几分钟问候他们，一边聊一边准备点心。朋友萨布拉见到迟到 45 分钟的丈夫伍迪时满脸喜悦。大约一年后伍迪急病去世，珊德拉想，萨布拉会庆幸自己表达过那份爱。</p></div>
+      <div class="card story"><span class="chap">肖恩 · “收养”孩子的朋友</span><p>父母几乎把每场橄榄球比赛都录下来，再请队友来家里吃比萨看录像。“几乎所有的朋友都受到我的家庭的影响，而不是外面的环境。”</p></div>
+      <div class="card story"><span class="chap">传统为家庭疗伤</span><p>一位在充满怀疑的家庭里长大的男人，快 40 岁时请求去岳父母家住一个周末，就像回到童年。“那就好像重新受洗、洗心革面一样。”后来他帮自己的母亲重建了家庭的稳定和希望。</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">传统也不总是顺利。柯维家圣诞早晨孩子们按年龄排队冲下楼，最小的摔倒大哭，还有人吵架。可大家记得的偏偏就是这些。</p>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="block" id="finale" style="--c:var(--b1);--cs:var(--b1s)">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag">结束之前</div><h2>从生存 → 到稳定 → 到成功 → 到辉煌</h2></div></div>
+    <p class="thesis reveal">家庭的四个层次。一位 19 岁就离婚、带着 2 岁孩子的母亲，从饿着肚子让孩子先吃，到拿下本科和商务管理硕士两个文凭，再到推动为需要救济的母亲设立奖学金，一步步走完了这四级。柯维说，<strong>从生存到辉煌，几乎和外部环境无关</strong>。</p>
+
+    <div class="stairs reveal">
+      <div class="stair"><span class="lv">层次一</span><h4>生存</h4><p>生活充满不确定和恐惧，常觉得自己是别人不公正造成的环境的牺牲品，像急诊室里生命体征不稳定的病人。</p><div class="drag">↓ 阻力：混乱，畏惧，上当受骗的感觉</div><div class="push">↑ 动力：反应（一个人的理智），本能，仓促行事</div></div>
+      <div class="stair"><span class="lv">层次二</span><h4>稳定</h4><p>不愁生存，账单也付得上，但解决问题还停留在“不是回避就是争吵”。“家”只是一个能进去的地方。</p><div class="drag">↓ 阻力：组织崩溃，忽视，徒劳</div><div class="push">↑ 动力：组织（结构），希望，知识</div></div>
+      <div class="stair"><span class="lv">层次三</span><h4>成功</h4><p>能建立并实现有意义的目标，包括经济、学业、关系和精神上的。家人在一起有真正的幸福感，会计划家庭活动，也有自己的传统。</p><div class="drag">↓ 阻力：懒惰，空虚和逃避现实</div><div class="push">↑ 动力：创造（目标），兴奋，信心</div></div>
+      <div class="stair"><span class="lv">层次四</span><h4>辉煌</h4><p>家庭参与到超越自身的事情中，对“人类大家庭”负有责任，留下遗产，比如每年新年夜为无家可归者做饭。</p><div class="drag">↓ 阻力：满足，占有感，自我中心</div><div class="push">↑ 动力：发现（使命），责任感和奉献精神</div></div>
+    </div>
+    <div class="axis-lbl reveal"><span>解决问题：“我们怎么才能还清债务？”</span><span>创造：“全家人如何共同努力创造不同？”</span></div>
+    <p class="small reveal" style="margin-top:12px">柯维建议先从消除阻力入手，就像一脚踩油门一脚踩刹车时，应该先松开刹车。书中图表的标题位置是“目标”，左上角写着“阻力环境/趋势”，右下角写着“积极的动力”。</p>
+
+    <h3 class="sub reveal">以原则为中心的家庭领导树：四种角色</h3>
+    <div class="tree reveal">
+      <div class="hdr"><span>满足的需求 · 天赋</span><span>角色（自下而上生长）</span><span>家人体验到 → 相信</span></div>
+      <div class="tlayer l4"><div class="side"><b>学习（心理）</b>想象力</div><div class="tnode"><span class="part">树叶和果实</span><h4>教育者</h4><p>给原则注入活力。注意场合，控制情绪，区分该教的时候和该帮的时候</p><span class="eff">倾听 / 实践 → 相信原则和他们自己</span></div><div class="side"><b>赋予能力</b></div></div>
+      <div class="tlayer"><div class="side"><b>生活（身体/经济）</b>意志力</div><div class="tnode"><span class="part">树枝</span><h4>组织者</h4><p>为使命调整结构：家庭使命宣言、每周家庭时间、一对一时间</p><span class="eff">体验 → 相信结构</span></div><div class="side"><b>路线和秩序</b></div></div>
+      <div class="tlayer"><div class="side"><b>爱（人际关系）</b>自我意识</div><div class="tnode"><span class="part">树干</span><h4>导师</h4><p>尊敬和关爱的关系：移情、分享、肯定、祈祷、牺牲</p><span class="eff">感觉 → 相信自己的价值</span></div><div class="side"><b>信任</b></div></div>
+      <div class="ground"></div>
+      <div class="tlayer l1"><div class="side"><b>留下遗产（精神）</b>良知</div><div class="tnode"><span class="part">根部</span><h4>榜样</h4><p>值得信任的模范。史怀哲说：“第一，榜样；第二，榜样；第三，榜样。”</p><span class="eff">看到 → 相信你</span></div><div class="side"><b>可信赖</b></div></div>
+    </div>
+
+    <div class="grid3 reveal" style="margin-top:22px">
+      <div class="card story"><span class="chap">榜样 · 打猎的父亲</span><p>别的猎人 7:45 就开了枪，父亲只是看着表：“儿子，打猎时间 8 点才开始。”8 点进场时鸟已经飞光了，那天他们什么也没打到。“我得到了令我永生难忘的关于一个男人的记忆。”</p></div>
+      <div class="card story"><span class="chap">导师 · 只想教的父亲</span><p>他花几个小时向两位准女婿传授人生智慧。女儿们对妈妈说：“爸爸就想教育我们，他不想了解我们。”</p><p class="mini-quote" style="font-size:15px">“我不管你知道多少，除非我知道你有多在乎。”</p></div>
+      <div class="card story"><span class="chap">教育者 · 珊德拉</span><p>儿子初中成绩很差，珊德拉发现他考试前没看懂题目说明，也不会找重点。两人每晚花一小时一起读书、划重点，学期末成绩从 40 分变成了全 A 和 A+。</p></div>
+    </div>
+
+    <h3 class="sub reveal">三个常见错误</h3>
+    <div class="grid3 reveal">
+      <div class="card"><h4>① 以为扮演一种角色就够了</h4><p>只当好榜样，只给爱，只建系统，或者只靠说教，都不够。孩子不仅需要看到和感觉到，也需要体验到和听到。</p></div>
+      <div class="card"><h4>② 忽视先后顺序</h4><p>顺序是榜样、导师、组织、教育，像树一样由根部长出。没有良好的关系，教育就进不去。下次想教育孩子前，先按暂停键问一问：我在他的情感银行账户里存够了吗？</p></div>
+      <div class="card"><h4>③ 以为做一次就够了</h4><p>这四种角色都是“现在时态的动词”。你永远不会从家庭中“退休”。柯维夫妇认为，祖父母的首要工作是确保孩子们担当起自己孩子的父母。</p></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <h4>你就是家里的配平调整片</h4>
+        <p>飞机和船上都有一个小小的配平调整片，它一动，就会带动更大的舵面，最终改变整个航向。父母、子女、叔叔阿姨、祖父母都可以是这个小片。书中一个在救济和虐待中长大的男孩，因为和姐姐一起度过的一个周末，看到了另一种生活，鼓起勇气搬到西部去上学。</p>
+        <p>多数家庭管理太多、领导太少。高效能的人把重点放在<b>重要</b>的事情上，而不仅仅是<b>紧急</b>的事情。在重要但不紧急的事上多花时间，比如存款、写宣言、家庭时间、传统，紧急的“火灾”就会变少。</p>
+      </div>
+      <div class="card">
+        <h4>三种误导人的地图</h4>
+        <ol>
+          <li><b>“其他人的建议”地图：</b>你的眼镜别人戴着合适吗？</li>
+          <li><b>社会价值地图：</b>比如因为孩子表现好才爱他，孩子就学会了用行为换取爱。</li>
+          <li><b>“决定论”地图：</b>“我外婆是这个样子，妈妈也是这个样子，所以我也是。”“他让我气死了！”</li>
+        </ol>
+        <p>柯维的母亲在讲座上对前排一直说话的两个人很生气，后来才知道那是一位韩国女士和她的翻译。地图一换，态度马上就变了。</p>
+      </div>
+    </div>
+    <p class="small reveal" style="margin-top:12px">柯维还讲了第一次绳降的恐惧：“把钱放在左手，把胆子放在右手，起跳。”他建议把“勇气”当作动词来用。全书以母亲墓碑上刻的莎士比亚诗句收尾：“一想起你的爱使我那么富有……”</p>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section class="block" id="quotes" style="--c:var(--b2);--cs:var(--b2s)">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag">QUOTES</div><h2>金句（逐字摘自原书）</h2></div></div>
+    <div class="quotes reveal">
+      <div class="quote">和睦的家庭——甚至是典范式的家庭——也有90%的时候偏离轨道！关键在于他们确切地知道目标所在。<cite>序言</cite></div>
+      <div class="quote">在外界刺激和回应之间，存在着一个空间<br>我们的回应就存在于这个空间之中<br>我们的成长和幸福蕴含在我们的回应中<cite>习惯 1 · 柯维在夏威夷一所大学图书馆读到的话</cite></div>
+      <div class="quote">朋友，‘爱’是一个动词。爱——这种感觉——是爱这个动作的结果。<cite>习惯 1</cite></div>
+      <div class="quote">记住，被蛇咬过的伤口并不可怕，但是追赶毒蛇却会造成蛇毒攻心。<cite>习惯 1 · 原谅</cite></div>
+      <div class="quote">因为所有的事物都被创造两次，如果你不主动创造第一次，别的人或别的事物就会掌握那个权力。<cite>习惯 2</cite></div>
+      <div class="quote">如果一周中你没有时间跟家人聚上一个晚上，至少一个小时，那么家庭就不是你的首要之事。<cite>习惯 3 · 奥普拉·温弗瑞</cite></div>
+      <div class="quote">家庭身份是生活中为数不多的永久身份之一，可能也是唯一的。<cite>习惯 3</cite></div>
+      <div class="quote">如果你的快乐主要来自他人的快乐，那么你就知道自己已经从“我”走向了“我们”。<cite>序言</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<section class="block" id="tools" style="--c:var(--b1);--cs:var(--b1s)">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag">TOOLS</div><h2>小工具：照着书里的方法动手</h2></div></div>
+    <p class="muted reveal" style="margin-top:-12px">内容自动保存在本机浏览器，不会上传。</p>
+    <div class="tabs reveal" role="tablist">
+      <button class="tab on" data-pane="pMission">🧭 家庭使命宣言草拟卡</button>
+      <button class="tab" data-pane="pTime">📅 每周家庭时间计划</button>
+      <button class="tab" data-pane="pWork">🗂 7 个习惯家庭工作表</button>
+    </div>
+
+    <div class="pane on" id="pMission">
+      <div class="tool">
+        <h4>按“五周法”收集、投票、成文</h4>
+        <p class="hint">记住三个“注意”：不要宣布，不要着急，不要忽视。这张卡只是帮你记录，词要由全家一起来提。</p>
+        <label class="f">① 收集词语：每人写下形容这个家庭的词（第 1–2 周）</label>
+        <div style="display:flex;gap:8px"><input type="text" id="mWord" placeholder="例如：善良、诚实、有趣、整洁、无条件的爱……用逗号或空格分隔"><button class="btn" id="mAdd">加入</button></div>
+        <label class="f">② 投票：每人 10 票，一个词最多 3 票（第 3–4 周），票数最多的 6 个会高亮</label>
+        <div class="words" id="mWords"></div>
+        <label class="f">③ 用一两段话把选出的词写成宣言（第 5 周）</label>
+        <textarea id="mDraft" class="mdraft" placeholder="我们的家庭使命："></textarea>
+        <div class="btns"><button class="btn ghost" id="mFill">用前 6 个词生成初稿骨架</button><button class="btn ghost" id="mCopy">复制宣言</button><button class="btn ghost" id="mClear">全部清空</button><span class="saved" id="mSaved">已保存</span></div>
+        <details class="toc" style="margin-top:16px"><summary>可以拿来讨论的问题（摘自书中）</summary><div class="toc-body"><div class="qs" style="padding-top:6px"><span>我们希望成为什么样的家庭？</span><span>你希望请你的朋友去什么样的家？</span><span>在家里，什么让你感觉舒服？</span><span>什么让你想要回家？</span><span>我们希望被人记住什么？</span><span>我们希望彼此之间有什么样的关系？</span><span>我们首要的目标是什么？</span><span>我们对家人有什么责任？</span><span>我们全家如何为社会做出贡献？</span></div></div></details>
+      </div>
+    </div>
+
+    <div class="pane" id="pTime">
+      <div class="tool">
+        <h4>本周家庭时间 + 一对一时间</h4>
+        <p class="hint">书中成功的家庭时间有四个要素。一开始不必样样齐全，可以从一顿家庭晚餐做起。</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div><label class="f">时间</label><select id="tDay"><option>周一晚上</option><option>周二晚上</option><option>周三晚上</option><option>周四晚上</option><option>周五晚上</option><option>周六</option><option>周日</option></select></div>
+          <div><label class="f">主持人 / 负责小吃</label><input type="text" id="tHost" placeholder="轮流担任，让孩子负责一部分"></div>
+        </div>
+        <div class="ftgrid" style="margin-top:12px">
+          <div class="card"><h4>计划</h4><textarea id="tPlan" placeholder="看看日程：谁有比赛、演出？下个月想一起做什么？"></textarea></div>
+          <div class="card"><h4>教育</h4><textarea id="tTeach" placeholder="讲一个原则或使命宣言里的一个词，比如“所有事物都被创造两次”"></textarea></div>
+          <div class="card"><h4>解决问题</h4><textarea id="tSolve" placeholder="冰箱上的议题纸：谁提的议题，谁就负责组织讨论"></textarea></div>
+          <div class="card"><h4>乐趣</h4><textarea id="tFun" placeholder="神秘冒险？特长秀？影子家庭？"></textarea></div>
+        </div>
+        <label class="f" style="margin-top:16px">一对一时间：由对方决定做什么（夫妻 + 每个孩子）</label>
+        <table class="oo" id="ooTable"></table>
+        <div class="btns"><button class="btn ghost" id="ooAdd">+ 添加一位家人</button><label class="f" style="margin:0 0 0 8px;font-weight:400"><input type="checkbox" id="tRocks"> 已经先把这些“大石头”放进了日历</label><span class="saved" id="tSaved">已保存</span></div>
+      </div>
+    </div>
+
+    <div class="pane" id="pWork">
+      <div class="tool">
+        <h4>把原则运用于你的挑战中</h4>
+        <p class="hint">“你是你生活的专家。”选一个你正在处理的挑战，用 7 个习惯想出一种真正有原则的回应。可以找一位家人或朋友一起做。问题摘自书中工作表。</p>
+        <label class="f">情况：你面临什么样的挑战？从什么时候开始？在什么样的环境下？</label>
+        <textarea id="wSit"></textarea>
+        <div class="ws" id="wsGrid"><span class="hd">习惯</span><span class="hd">问你自己这些问题</span><span class="hd">可以利用 7 个习惯做出的回应</span></div>
+        <div class="btns"><button class="btn ghost" id="wClear">清空工作表</button><span class="saved" id="wSaved">已保存</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TODO ============ -->
+<section class="block" id="todo" style="--c:var(--b2);--cs:var(--b2s)">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag">START HERE</div><h2>可执行清单：从这周开始</h2></div></div>
+    <div class="progress"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 16</div></div>
+    <div class="check" id="check"></div>
+    <p class="small" style="margin-top:14px">柯维的提醒：“要有耐心，甚至要对自己的耐心有耐心。”想想竹子，前四年只长根。</p>
+  </div>
+</section>
+
+<footer>
+  <span class="sign">“生活的真理就存在于回家之中。”</span>根据史蒂芬·R. 柯维《高效能家庭的7个习惯》（李耘 译）全文整理，内容只取自原书<br>
+  勾选进度、自测分数和工具里填写的内容都只保存在本机浏览器
+</footer>
+
+<button class="fab" id="fab" type="button" aria-haspopup="dialog" aria-controls="drawer" aria-expanded="false">我要怎么做？<span class="fp" id="fabP">0/0</span></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" aria-hidden="true">
+  <div class="dr-head">
+    <h3 id="drTitle">我要怎么做？</h3>
+    <p>按书里的方法排出的落地路线，每一步都注明出处。书里给“成人和青春期孩子”与“儿童”分别设计了分享活动，也把“两个人”和“三人以上”的家庭使命宣言分开讲，所以这里分三种情况。</p>
+    <div class="modes" id="drModes" role="group" aria-label="家庭情况">
+      <button type="button" data-m="young">家有年幼孩子</button>
+      <button type="button" data-m="teen">家有青春期孩子</button>
+      <button type="button" data-m="couple">只有夫妻两人</button>
+    </div>
+    <div class="dr-prog"><div class="track"><div class="fill" id="drFill"></div></div><span id="drTxt">0 / 0</span></div>
+    <button class="dr-x" id="drX" type="button" aria-label="关闭">×</button>
+  </div>
+  <div class="dr-body" id="drBody"></div>
+</aside>
+
+<script>
+(function(){
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function flash(id){const el=document.getElementById(id);if(!el)return;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),1200)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+/* ---- gift self test ---- */
+const G=[
+ ["自我意识",["我是否能够旁观我的想法和感觉，并做出改变？","我是否能意识到我的思考方式，以及其对我生活的态度、行为和结果的影响？","我是否了解自己的生理、遗传、身体和社会描述和我自己内心深处的想法有所不同？","当别人对我的反应挑战我对自己的看法时，我是否能根据深层的自我认识反复考量那种反馈，并有所收获？"]],
+ ["是非观",["我是否有来自内心的动力，告诉我应该做某事或不应该做某事？","我是否能意识到所谓的“社会观念”和我自己的内在趋势有所不同？","对于那些真正的普遍法则，例如正直和信任，我是否有内心的认识？","我是否从人类的体验中认识到让这些原则的现实性得以生效的方式？"]],
+ ["想象力",["我是否具有前瞻性？","我是否从目前的生活中看到未来？","我是否运用远见来确认和实现目标？","我是否寻求新的、有创造性的方式来解决不同的生活问题，并能肯定他人的不同观点？"]],
+ ["独立的意志",["不管是对自己还是他人，我是否能许下承诺并信守承诺？","我是否能把我真正的内在需求付诸实践，即使那意味着逆水行舟？","我是否发展了自己建立和达到生活中有意义的目标的能力？","我是否把责任放在情绪之前？"]]
+];
+const GK='k7fam-gifts-v1';let gv=LS.get(GK,{});
+const gt=document.getElementById('gtest');
+gt.innerHTML=G.map((g,gi)=>`<div class="gq"><h5>${g[0]}<em id="gs${gi}">— / 16</em></h5>${g[1].map((q,qi)=>`<div class="gitem"><span>${qi+1}. ${q}</span><div class="seg" data-k="${gi}-${qi}">${[0,1,2,3,4].map(n=>`<button type="button" data-n="${n}" aria-label="${n} 分">${n}</button>`).join('')}</div></div>`).join('')}</div>`).join('');
+function gRender(){
+  gt.querySelectorAll('.seg').forEach(s=>{const v=gv[s.dataset.k];s.querySelectorAll('button').forEach(b=>b.classList.toggle('on',v!==undefined&&+b.dataset.n===v))});
+  G.forEach((g,gi)=>{let sum=0,n=0;for(let qi=0;qi<4;qi++){const v=gv[gi+'-'+qi];if(v!==undefined){sum+=v;n++}}
+    const el=document.getElementById('gs'+gi);el.className='';
+    if(!n){el.textContent='— / 16';return}
+    let lab=sum<=7?'不活跃':sum<=12?'活跃':'高度发展';
+    if(n<4)lab='已答 '+n+'/4';
+    el.textContent=sum+' / 16 · '+lab;
+    if(n===4)el.className=sum>=13?'h':sum>=8?'a':'';
+  });
+}
+gt.addEventListener('click',e=>{const b=e.target.closest('.seg button');if(!b)return;const k=b.parentElement.dataset.k;gv[k]=+b.dataset.n;LS.set(GK,gv);gRender()});
+document.getElementById('gReset').onclick=()=>{gv={};LS.set(GK,gv);gRender()};
+gRender();
+
+/* ---- tabs ---- */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');document.getElementById(t.dataset.pane).classList.add('on');
+});
+
+/* ---- mission tool ---- */
+const MK='k7fam-mission-v1';let M=LS.get(MK,{words:[],draft:''});
+const mw=document.getElementById('mWords'),md=document.getElementById('mDraft');
+md.value=M.draft||'';
+function mSave(){LS.set(MK,M);flash('mSaved')}
+function topWords(){return M.words.slice().sort((a,b)=>b.v-a.v).filter(w=>w.v>0).slice(0,6).map(w=>w.t)}
+function mRender(){
+  const tops=new Set(topWords());
+  mw.innerHTML=M.words.length?M.words.map((w,i)=>`<span class="word${tops.has(w.t)?' top':''}"><span>${esc(w.t)}</span><button type="button" data-a="-" data-i="${i}" aria-label="减一票">−</button><span class="cnt">${w.v}</span><button type="button" data-a="+" data-i="${i}" aria-label="加一票">+</button><button type="button" class="x" data-a="x" data-i="${i}" aria-label="删除">×</button></span>`).join(''):'<span class="small">还没有词。先请每个家人说说：用一个词形容我们家，或者我们希望成为的家。</span>';
+}
+function mAdd(){const inp=document.getElementById('mWord');const parts=inp.value.split(/[,，、;；\s]+/).map(s=>s.trim()).filter(Boolean);
+  parts.forEach(p=>{if(!M.words.some(w=>w.t===p))M.words.push({t:p,v:0})});inp.value='';mRender();mSave()}
+document.getElementById('mAdd').onclick=mAdd;
+document.getElementById('mWord').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();mAdd()}});
+mw.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;
+  if(b.dataset.a==='+')M.words[i].v++;else if(b.dataset.a==='-')M.words[i].v=Math.max(0,M.words[i].v-1);else M.words.splice(i,1);mRender();mSave()});
+md.addEventListener('input',()=>{M.draft=md.value;mSave()});
+document.getElementById('mFill').onclick=()=>{const t=topWords();if(!t.length){alert('先给词语投票吧。');return}
+  const add='我们的家庭使命：\n'+t.map(w=>`${w}：（我们说的“${w}”，是指……）`).join('\n');
+  md.value=md.value.trim()?md.value.trim()+'\n\n'+add:add;M.draft=md.value;mSave()};
+document.getElementById('mCopy').onclick=()=>{const v=md.value;if(navigator.clipboard)navigator.clipboard.writeText(v).then(()=>flash('mSaved'));else{md.select();document.execCommand('copy')}};
+document.getElementById('mClear').onclick=()=>{if(confirm('确定清空所有词语和草稿？')){M={words:[],draft:''};md.value='';mRender();mSave()}};
+mRender();
+
+/* ---- family time tool ---- */
+const TK='k7fam-time-v1';let T=LS.get(TK,{day:'周一晚上',host:'',plan:'',teach:'',solve:'',fun:'',rocks:false,oo:[{who:'配偶',what:'',when:''},{who:'',what:'',when:''}]});
+const tf={tDay:'day',tHost:'host',tPlan:'plan',tTeach:'teach',tSolve:'solve',tFun:'fun'};
+Object.entries(tf).forEach(([id,k])=>{const el=document.getElementById(id);el.value=T[k]||el.value;el.addEventListener('input',()=>{T[k]=el.value;LS.set(TK,T);flash('tSaved')});el.addEventListener('change',()=>{T[k]=el.value;LS.set(TK,T);flash('tSaved')})});
+const tr=document.getElementById('tRocks');tr.checked=!!T.rocks;tr.onchange=()=>{T.rocks=tr.checked;LS.set(TK,T);flash('tSaved')};
+const oo=document.getElementById('ooTable');
+function ooRender(){oo.innerHTML=T.oo.map((r,i)=>`<tr><td style="width:22%"><input type="text" data-i="${i}" data-k="who" value="${esc(r.who)}" placeholder="谁"></td><td><input type="text" data-i="${i}" data-k="what" value="${esc(r.what)}" placeholder="由 TA 决定做什么"></td><td style="width:22%"><input type="text" data-i="${i}" data-k="when" value="${esc(r.when)}" placeholder="哪天"></td><td style="width:30px"><button class="btn ghost sm" data-del="${i}" type="button" aria-label="删除">×</button></td></tr>`).join('')}
+oo.addEventListener('input',e=>{const t=e.target;if(t.dataset.k){T.oo[+t.dataset.i][t.dataset.k]=t.value;LS.set(TK,T);flash('tSaved')}});
+oo.addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(b){T.oo.splice(+b.dataset.del,1);ooRender();LS.set(TK,T)}});
+document.getElementById('ooAdd').onclick=()=>{T.oo.push({who:'',what:'',when:''});ooRender();LS.set(TK,T)};
+ooRender();
+
+/* ---- worksheet ---- */
+const W=[["习惯 1：积极主动","我对自己的行为负责吗？我如何在原则的基础上按下我的暂停键，而不是做出被动反应？"],["习惯 2：先有目标再行动","在我头脑中有什么目标？一份个人的或家庭的使命宣言（或实践宣言）如何起到帮助作用？"],["习惯 3：要事第一","我所做的是最重要的事吗？我如何能更加突出重点？家庭时间和一对一时间如何提供帮助？"],["习惯 4：“双赢”的想法","我真的希望每个人都成功吗？我是否对寻求一种对每个人都有利的第三选择持开放的态度？"],["习惯 5：首先理解别人，再寻求别人的理解","我如何能更加渴望去理解他人？如何在表达自己的观点方面充满勇气并为他人考虑？"],["习惯 6：协作","在有创造性的互动方面，怎么跟何人一起找到应对挑战的解决方法？"],["习惯 7：把锯子磨利","如何开展个人和家庭的革新，这样我们可以更好地应对挑战？"]];
+const WK='k7fam-work-v1';let WV=LS.get(WK,{sit:'',a:[]});
+const wg=document.getElementById('wsGrid');
+wg.insertAdjacentHTML('beforeend',W.map((w,i)=>`<div class="h">${w[0]}</div><div class="q">${w[1]}</div><textarea data-i="${i}" aria-label="${w[0]} 的回应">${esc(WV.a[i]||'')}</textarea>`).join(''));
+const ws=document.getElementById('wSit');ws.value=WV.sit||'';
+ws.addEventListener('input',()=>{WV.sit=ws.value;LS.set(WK,WV);flash('wSaved')});
+wg.addEventListener('input',e=>{const t=e.target;if(t.dataset.i!==undefined){WV.a[+t.dataset.i]=t.value;LS.set(WK,WV);flash('wSaved')}});
+document.getElementById('wClear').onclick=()=>{if(confirm('确定清空工作表？')){WV={sit:'',a:[]};ws.value='';wg.querySelectorAll('textarea').forEach(t=>t.value='');LS.set(WK,WV)}};
+
+/* ---- checklist ---- */
+const C=[
+["约定一个家庭“暂停键”","手势、开关灯、吹哨，或者一个词都行。一旦有人按下，争吵就先停下，大家想一想。","习惯 1 · 分享建议"],
+["给一段关系存 30 天款，不取款","像塔拉的父亲那样：不反击挑衅的话，做一些不是非做不可的好事，把提醒字条贴在后视镜上。","习惯 1"],
+["做一次“语言实验”","挑一个家庭问题，先用完全消极的方式讲一遍，再从影响圈的角度讲一遍，比较两种说法的差别。","习惯 1"],
+["道歉不附加条件","真诚地承认，直接说对不起，绝不说“如果你道歉，我才道歉”。","习惯 1 · 道歉"],
+["像家人就在场一样谈论他们","不在背后说是非。有人说闲话时，讲一个关于那位家人的好故事。","习惯 1 · 忠诚"],
+["今晚问每位家人：我们的家庭目标是什么？","再问问配偶：我们的婚姻目标是什么？","习惯 2"],
+["启动家庭使命宣言，用几周时间","尊重地倾听，复述到对方满意，把观点都记下来。不要宣布，不要着急，不要忽视。","习惯 2"],
+["在日历上固定每周家庭时间","包含计划、教育、解决问题、乐趣四个要素。可以先从一顿家庭晚餐开始。","习惯 3"],
+["和每个孩子约一次一对一时间","由孩子决定做什么。规则是只听，除非孩子要求，否则不批评、不建议。","习惯 3"],
+["拿到学校校历，先放大石头","比赛、演出、家庭之夜先写进日程，其他事情再往缝隙里填。","习惯 3"],
+["和孩子签一份双赢协议","写清愿望、指导、资源、职责、结果。之后让协议做主，不再唠叨。","习惯 4"],
+["定一条家规：先复述，再表态","在把对方的意思说到对方满意之前，不能坚持自己的立场。","习惯 5"],
+["让吃饭时间远离训诫","饭桌上只聊有趣的事、学东西，纠错和评判另找时间。","习惯 5"],
+["分歧不大时，用 1–10 分打分","“你在哪儿？”诚实说出感觉有多强烈，尊重感觉最强烈的那个人。","习惯 6"],
+["建立或恢复一个家庭传统","生周、10 分钟活动、工作派对、车上唱歌，都可以。","习惯 7"],
+["全家一起为别人做一件事","比如做一次“影子家庭”，去养老院，或者为邻居做顿饭。","习惯 3 · 结束之前"]
+];
+const KEY='k7fam-check-v1',saved=LS.get(KEY,[]);
+const ck=document.getElementById('check');
+ck.innerHTML=C.map((t,i)=>`<label><input type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`).join('');
+function prog(save){const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);if(save)LS.set(KEY,on);
+  document.getElementById('pfill').style.width=(on.length/C.length*100)+'%';document.getElementById('ptxt').textContent=on.length+' / '+C.length}
+ck.addEventListener('change',()=>prog(true));prog(false);
+
+
+/* ---- roadmap drawer ---- */
+const ROAD=[
+ {k:'s1',n:'①',t:'今天就做',d:'3 件 15 分钟内能完成的小事',items:[
+  {id:'a1',t:'和家人约定一个“暂停键”',d:'可以是一个手势、跳一下、开关灯、吹哨子、模仿一种动物的叫声，或者一个词。一旦有人按下，交谈、争吵、辩论都先停下，大家想一想继续下去会有什么后果。',src:'习惯 1 · 章末分享活动'},
+  {id:'a2',t:'往一位家人的情感银行账户里存一笔',d:'说“谢谢”“请”“对不起”“你先来”“我能帮忙吗”；或者下班路上打电话问问要不要带东西回家；或者在饭盒、公文包上贴一张小条。',src:'习惯 1 · 善良'},
+  {id:'a3y',m:['young'],t:'今晚在饭桌上讲一个书里的故事',d:'比如竹子的奇迹，或者“翠绿和整洁”。书里说，一开始你可能只是在餐桌上给大家讲讲故事。要有耐心，慢慢来，尊重每个人的理解能力。',src:'序言 · 现在就让全家参与'},
+  {id:'a3t',m:['teen'],t:'找个一起做事的机会，单独和孩子聊聊',d:'问问他对这个家的看法，希望家里有什么变化，先不提“使命宣言”几个字。对可能有抵触的大孩子，书里建议先一对一地私下谈。',src:'习惯 2 · 三人以上的使命宣言'},
+  {id:'a3c',m:['couple'],t:'问对方：“我们的婚姻目标是什么？”',d:'再问：要维系这样的婚姻，最重要的理由是什么？什么是我们婚姻的首要目标？得到的答案可能会让你大吃一惊。',src:'习惯 2 · 你头脑中的结果'}
+ ]},
+ {k:'s2',n:'②',t:'第一周',d:'把要事放进日程，建立第一批做法',items:[
+  {id:'b1',m:['young','teen'],t:'定下每周固定的家庭时间，开第一次',d:'在家庭日程上安排一个固定的晚上（柯维家是周一晚上）。第一次可以只是一顿家庭晚餐。完整的家庭时间有四个要素：计划、教育、解决问题、乐趣。',chk:'检验：这一周是否“无论发生什么”都开成了？必须改期时，有没有马上另做安排？',src:'习惯 3 · 每周家庭时间、做出承诺'},
+  {id:'b1c',m:['couple'],t:'定下你们俩固定的相处时间',d:'书里有对朋友夫妻每周五晚上出去吃饭、看电影或散步，坚持了差不多 30 年。柯维夫妇则是每天开车兜风，远离电话和工作，只是交谈。',src:'习惯 3 · 夫妻间的一对一时间'},
+  {id:'b2y',m:['young'],t:'和每个孩子各约一次一对一时间',d:'由孩子决定做什么，就像 10 岁的凯瑟琳选了第 5 次看《星球大战》。“这是你的夜晚。”一旦有第三个人介入，情况就会改变。',src:'习惯 3 · 跟孩子的一对一时间'},
+  {id:'b2t',m:['teen'],t:'和青春期的孩子约一次一对一时间',d:'让他决定做什么。柯维家“个别见面”的规则是：孩子可以说任何想说的事，父母只听，除非孩子要求，否则不批评、不提建议。',src:'习惯 3 · 辛西娅的故事'},
+  {id:'b2c',m:['couple'],t:'安排一段只属于你们俩的“休养”时间',d:'去一个可以单独待几个小时或几天的地方，先放松，再谈谈未来 10 年、25 年、50 年希望关系怎样发展，回忆婚礼上说过的话。',src:'习惯 2 · 两个人的家庭使命宣言'},
+  {id:'b3',t:'为最紧张的一段关系，开始 30 天“只存不取”',d:'像塔拉的父亲那样：忍住不回击挑衅的话，做一些不是非做不可的小事，把提醒自己的字条贴在后视镜上。',src:'习惯 1 · 建立情感银行账户'},
+  {id:'b4',t:'先把“大石头”放进下一周',d:'先排家庭时间、一对一时间这些重要的事，常规事务再填进缝隙。有孩子的家庭，可以向学校要一份校历，提前把比赛和演出写进日程。',src:'习惯 3 · 先放大石头'}
+ ]},
+ {k:'s3',n:'③',t:'一个月后',d:'要形成的习惯，以及怎么检验',items:[
+  {id:'c1',m:['young','teen'],t:'完成家庭使命宣言的初稿',d:'可以用“五周法”：每人写词，逐个解释，每人 10 票，选出 6 个词，再写成段落。小孩子注意力集中的时间有限，每周花一点时间、坚持几周，比一次长谈好。',chk:'检验：每个人都参与了吗？大家会不会说“那就是我们的使命”？宣言有没有放在看得见的地方，每周讲讲其中一个词？',src:'习惯 2 · 建立你自己的家庭使命宣言'},
+  {id:'c1c',m:['couple'],t:'写下你们的婚姻使命宣言',d:'把角色期望、解决问题的方式、对关系的看法放在一起谈，达成一致。书里的查克把自己想从婚姻中得到的东西列成清单，贴在了冰箱门上。',chk:'检验：生气或不满时，你们能不能马上告诉对方，而不是在心里记账？',src:'习惯 2 · 两个人的家庭使命宣言'},
+  {id:'c2',m:['young','teen'],t:'家庭时间连续开了 4 次',d:'出状况也没关系。柯维家就有过孩子在沙发上睡着、以争吵开场的时候。',chk:'检验：孩子们是否开始期待？书里一位父亲说，孩子们成了确保活动如期举行的人。',src:'习惯 3 · 享受乐趣的时间、做出承诺'},
+  {id:'c2c',m:['couple'],t:'你们的固定时间坚持了一个月',d:'书里一位母亲说，每周三四个晚上的两人时间，让她下班后能先全心照顾家里，“因为我们知道在一天的最后，我们还有一些在一起的好时光”。',chk:'检验：它有没有被工作挤掉？被挤掉时有没有马上补上？',src:'习惯 3 · 夫妻间的一对一时间'},
+  {id:'c3y',m:['young'],t:'和孩子签一份家务双赢协议',d:'写清五个要素：愿望、指导、资源、职责、结果。像“翠绿和整洁”那样，让孩子当自己的老板和裁判，你只当“有时间时的帮手”。',chk:'检验：你忍住提醒和唠叨了吗？是协议在做主，还是你在做主？',src:'习惯 4 · 双赢协议的 5 个要素'},
+  {id:'c3t',m:['teen'],t:'和青春期的孩子签一份双赢协议',d:'先听他想要什么，比如更多自由、活动、开车许可，再说你的担心，比如成绩、家务、回家时间。都写下来，双方签字。书里的女儿把协议放在了自己房间里。',chk:'检验：遇到问题时，你们是在翻协议，还是在比谁的力气大？',src:'习惯 4 · 建立双赢协议'},
+  {id:'c3c',m:['couple'],t:'在一件有分歧的事上，找到第三选择',d:'先把对方的意思复述到他满意，再讲自己的看法；或者问“你在哪儿？”，用 1 到 10 分说出感觉有多强烈。',chk:'检验：结果是不是比“你的方式”和“我的方式”都更好？',src:'习惯 5 · 习惯 6'},
+  {id:'c4',t:'回答那个让人心碎的问题',d:'“你的存在让家人更加快乐和善良吗？”再听听自己这个月说的话，是关注圈的语言，还是影响圈的语言。',src:'习惯 1 · 倾听你自己的语言'},
+  {id:'c5',t:'建立或恢复一个家庭传统',d:'家庭晚餐、生日“生周”、节日、10 分钟活动、工作派对、一起服务，挑一个开始。',src:'习惯 7 · 家庭革新的关键：传统'}
+ ]},
+ {k:'s4',n:'④',t:'卡住了怎么办',d:'书里提到的常见障碍和对策，试过就勾上',items:[
+  {id:'d1',t:'刚开始就有人冷嘲热讽',d:'“那我到底做错了什么？”“我饿了，咱们先吃饭吧。”书里的说法是：保持微笑并继续向前，努力是值得的。',src:'序言 · 现在就让全家参与'},
+  {id:'d2',m:['teen'],t:'孩子不愿参与，甚至说“这个家庭不是我选择的”',d:'不要催。你最大的力量来自坚守自己的个人使命宣言和婚姻使命宣言，做他生活中坚实的东西。一对一地做你能做的，坚持存款，不要放弃家庭使命宣言。',src:'习惯 2 · 记住竹子的故事'},
+  {id:'d3',m:['young','teen'],t:'家庭时间吵吵闹闹，好像没什么用',d:'别垂头丧气。有时你好几年都看不到结果。铁轨挪动几英寸，火车就会偏离 1300 英里，现在方向上的小变化，将来会有很大不同。',src:'习惯 3 · 做出承诺'},
+  {id:'d4',t:'“我们实在没有时间”',d:'“你没有时间不去做！”关键是提前计划，坚持计划。不要把工作当成没得商量的事，削减开支、改兼职、换离家近的工作，都是可以考虑的选择。',src:'习惯 3 · 先放大石头、为什么要把首要之事放在首位'},
+  {id:'d5',t:'伴侣不认同，觉得问题都在对方',d:'做一盏灯，而不是一个法官：停止改变配偶的企图，先改变自己，不再试图控制，也不再有条件地爱。书里也说明，遭遇真正的虐待时，这个建议并不适用。',src:'习惯 1 · 回想竹子的故事'},
+  {id:'d6',t:'存款很久了，一点变化都看不到',d:'想想竹子，前四年只长根。书里那对夫妇常常驱车 60 英里去看怨恨女婿的父亲，坚持了多年，才等来一句“去叫他进来吧”。',src:'习惯 1 · 回想竹子的故事'},
+  {id:'d7',m:['young','teen'],t:'说了很多遍，孩子就是不听',d:'先按暂停键问自己：我在他的情感银行账户里存够了吗？在建立良好关系之前就去教育，是最大的错误之一。再分清这是价值、能力还是动机问题，如果是不会挂衣服，就花半小时教会他。',src:'结束之前 · 导师；习惯 5 · 理解发展的阶段'},
+  {id:'d8',t:'规矩和条条框框让人反感，做不下去',d:'那没关系，做你力所能及的事。可以先做出一个承诺并坚守它，再慢慢选择更大的目标。“在学代数之前你不会做微积分。”',src:'习惯 3 · 快速回顾和前瞻'},
+  {id:'d9',t:'自己又发火了',d:'尽快真诚地道歉，绝不说“如果你道歉，我才道歉”。偏离航道没关系，关键是回到轨道上来。',src:'习惯 1 · 道歉；序言'}
+ ]}
+];
+const RK='k7fam-road-v1',RMK='k7fam-road-mode-v1';
+let rDone=LS.get(RK,[]),rMode=LS.get(RMK,'young');
+const drawer=document.getElementById('drawer'),scrim=document.getElementById('scrim'),fab=document.getElementById('fab'),drBody=document.getElementById('drBody');
+function vis(it){return !it.m||it.m.includes(rMode)}
+function rRender(){
+  document.querySelectorAll('#drModes button').forEach(b=>{b.classList.toggle('on',b.dataset.m===rMode);b.setAttribute('aria-pressed',b.dataset.m===rMode)});
+  drBody.innerHTML=ROAD.map((st,si)=>`<div class="stage s${si+1}"><h4><span class="sn">${si+1}</span>${st.t}</h4><p class="sd">${st.d}</p>${st.items.filter(vis).map(it=>`<label class="ritem"><input type="checkbox" data-id="${it.id}" ${rDone.includes(it.id)?'checked':''}><div><b>${it.t}</b><span>${it.d}</span>${it.chk?`<em class="chk" style="font-style:normal">${it.chk}</em>`:''}<span class="src">出处：${it.src}</span></div></label>`).join('')}</div>`).join('')+'<p class="dr-foot">勾选进度只保存在本机浏览器，切换家庭情况不会丢失。</p>';
+  rProg();
+}
+function rProg(){const ids=[];ROAD.forEach(st=>st.items.filter(vis).forEach(it=>ids.push(it.id)));const d=ids.filter(i=>rDone.includes(i)).length;
+  document.getElementById('drFill').style.width=(ids.length?d/ids.length*100:0)+'%';document.getElementById('drTxt').textContent=d+' / '+ids.length;document.getElementById('fabP').textContent=d+'/'+ids.length}
+drBody.addEventListener('change',e=>{const t=e.target;if(!t.dataset.id)return;rDone=rDone.filter(x=>x!==t.dataset.id);if(t.checked)rDone.push(t.dataset.id);LS.set(RK,rDone);rProg()});
+document.getElementById('drModes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;rMode=b.dataset.m;LS.set(RMK,rMode);rRender()});
+let lastFocus=null;
+function openDr(){lastFocus=document.activeElement;drawer.classList.add('on');scrim.classList.add('on');drawer.setAttribute('aria-hidden','false');fab.setAttribute('aria-expanded','true');document.body.classList.add('dr-open');setTimeout(()=>document.getElementById('drX').focus(),60)}
+function closeDr(){drawer.classList.remove('on');scrim.classList.remove('on');drawer.setAttribute('aria-hidden','true');fab.setAttribute('aria-expanded','false');document.body.classList.remove('dr-open');(lastFocus||fab).focus()}
+fab.onclick=openDr;scrim.onclick=closeDr;document.getElementById('drX').onclick=closeDr;
+document.addEventListener('keydown',e=>{if(!drawer.classList.contains('on'))return;if(e.key==='Escape'){closeDr();return}
+  if(e.key==='Tab'){const f=[...drawer.querySelectorAll('button,input')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+rRender();
+if(location.hash==='#roadmap')openDr();
+
+/* ---- reveal + nav ---- */
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+const links=[...document.querySelectorAll('nav.top a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+function onScroll(){let k=-1;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<120)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k))}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+</body>
+</html>

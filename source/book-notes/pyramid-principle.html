@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金字塔原理 · 读书简报</title>
+<style>
+:root{
+  --bg:#eceef2; --paper:#ffffff; --ink:#1a1f2b; --ink2:#4a5162; --ink3:#878d9c;
+  --line:#dadee6; --line2:#b4bbc8; --soft:#f5f6f9;
+  --navy:#172554; --blue:#1e40af; --blues:#e9eefb; --gold:#a8822f; --golds:#f7f1e3;
+  --rootFill:#172554; --rootText:#ffffff; --keyStroke:#1e40af;
+  --sans:"PingFang SC","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0a0d13; --paper:#121722; --ink:#e7eaf0; --ink2:#a9b0bf; --ink3:#727a8b;
+    --line:#252c3a; --line2:#3b4456; --soft:#171e2c;
+    --navy:#cbd7ff; --blue:#7fa4ff; --blues:#18223b; --gold:#d9b35f; --golds:#262013;
+    --rootFill:#7fa4ff; --rootText:#0a0f1c; --keyStroke:#7fa4ff;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.7 var(--sans);-webkit-font-smoothing:antialiased;counter-reset:pg}
+body.locked{overflow:hidden}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-weight:700}
+p{margin:0 0 .5em}
+b,strong{font-weight:600;color:var(--ink)}
+ul,ol{margin:0;padding-left:1.15em}
+li{margin:.12em 0}
+button{font-family:var(--sans)}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .in{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:stretch;height:48px;overflow-x:auto;scrollbar-width:none}
+nav.top .in::-webkit-scrollbar{display:none}
+nav.top .brand{display:flex;align-items:center;font-weight:700;color:var(--navy);white-space:nowrap;margin-right:auto;padding-right:16px;font-size:14px;letter-spacing:.04em}
+nav.top .brand i{display:inline-block;width:8px;height:8px;background:var(--gold);margin-right:8px}
+nav.top a{display:flex;align-items:center;text-decoration:none;font-size:13px;color:var(--ink2);padding:0 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s}
+nav.top a:hover{color:var(--navy)}
+nav.top a.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+
+/* deck */
+.deck{max-width:1160px;margin:0 auto;padding:12px 24px 40px}
+.slide{position:relative;background:var(--paper);border:1px solid var(--line);aspect-ratio:16/9;margin:26px 0 0;padding:28px 44px 50px;display:flex;flex-direction:column;counter-increment:pg}
+.slide.free{aspect-ratio:auto}
+.trk{display:flex;gap:10px;align-items:center;font-size:11px;letter-spacing:.16em;color:var(--blue);font-weight:700;flex-wrap:wrap}
+.trk span+span{color:var(--ink3);font-weight:500;letter-spacing:.08em}
+.slide h2{font-size:22px;line-height:1.4;color:var(--navy);margin-top:6px;letter-spacing:.01em;max-width:1010px}
+.rule{position:relative;border-top:1px solid var(--navy);margin:12px 0 16px;flex:none}
+.rule::before{content:"";position:absolute;left:0;top:-2px;width:48px;border-top:3px solid var(--gold)}
+.bd{flex:1;display:flex;flex-direction:column}
+.g.grow,.ba.grow{flex:none}
+.ft{position:absolute;left:44px;right:44px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:10.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:7px;letter-spacing:.03em}
+.ft .pg{font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.ft .pg::before{content:counter(pg,decimal-leading-zero)}
+.anchor{display:block;position:relative;top:-8px}
+
+/* layout */
+.g{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g64{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.g46{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+.g37{grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr)}
+.mt{margin-top:14px}
+.grow{flex:1}
+
+.box{border:1px solid var(--line);padding:12px 14px;background:var(--paper)}
+.box.top{border-top:3px solid var(--navy)}
+.box.acc{border-color:var(--blue)}
+.box.fill{background:var(--soft)}
+.box h4{font-size:14.5px;color:var(--navy);margin-bottom:5px;line-height:1.45}
+.box p,.box li{font-size:13.5px;color:var(--ink2)}
+.box p:last-child{margin-bottom:0}
+.lbl{font-size:10.5px;letter-spacing:.14em;color:var(--blue);font-weight:700;margin-bottom:5px;display:block}
+.muted{color:var(--ink2)}
+.sm{font-size:12px;color:var(--ink3)}
+.box p.sm{color:var(--ink3);font-size:12px}
+.so{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);display:flex;gap:12px;align-items:baseline}
+.so::before{content:"要点";flex:none;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--paper);background:var(--navy);padding:1px 7px}
+.callout{border-left:3px solid var(--gold);background:var(--golds);padding:9px 14px;font-size:13px;color:var(--ink2)}
+.tag{display:inline-block;font-size:11.5px;border:1px solid var(--blue);color:var(--blue);padding:0 6px;margin:1px 3px 1px 0;font-weight:600;line-height:1.6}
+.tag.s{border-color:var(--line2);color:var(--ink2);font-weight:500}
+.nlist{list-style:none;padding:0;counter-reset:nl}
+.nlist li{counter-increment:nl;position:relative;padding-left:28px;margin:5px 0;font-size:13.5px;color:var(--ink2)}
+.nlist li::before{content:counter(nl);position:absolute;left:0;top:2px;width:19px;height:19px;background:var(--navy);color:var(--paper);font-size:11px;font-weight:700;display:grid;place-items:center}
+.nlist li b{color:var(--ink)}
+
+/* figures */
+.fig{display:flex;justify-content:center;align-items:center}
+.fig svg{display:block;width:100%;height:auto}
+svg.dg text{font-family:var(--sans);fill:var(--ink)}
+svg.dg .n0 rect{fill:var(--rootFill);stroke:var(--rootFill)}
+svg.dg .n0 text{fill:var(--rootText);font-weight:600}
+svg.dg .n1 rect{fill:var(--paper);stroke:var(--keyStroke);stroke-width:1.4}
+svg.dg .n1 text{fill:var(--ink);font-weight:600}
+svg.dg .n2 rect{fill:var(--paper);stroke:var(--line2)}
+svg.dg .n2 text{fill:var(--ink2)}
+svg.dg .ng rect{fill:var(--golds);stroke:var(--gold)}
+svg.dg .ng text{fill:var(--ink);font-weight:600}
+svg.dg .nx rect{fill:var(--soft);stroke:var(--line2);stroke-dasharray:3 3}
+svg.dg .nx text{fill:var(--ink3)}
+svg.dg .cn{stroke:var(--line2);stroke-width:1.2;fill:none}
+svg.dg .cnb{stroke:var(--blue);stroke-width:1.4;fill:none}
+svg.dg .cng{stroke:var(--gold);stroke-width:1.4;fill:none;stroke-dasharray:4 3}
+svg.dg .ah{fill:var(--blue)}
+svg.dg .ahg{fill:var(--ink3)}
+svg.dg .q{fill:var(--blue);font-size:12px;font-weight:600}
+svg.dg .an{fill:var(--blue);font-size:12px;font-weight:700;letter-spacing:.08em}
+svg.dg .ang{fill:var(--gold);font-size:12.5px;font-weight:700}
+svg.dg .mut{fill:var(--ink2);font-size:12.5px}
+svg.dg .cap{fill:var(--ink3);font-size:11.5px;letter-spacing:.06em}
+svg.dg .bgp{fill:var(--paper)}
+
+/* cover */
+.cover .ct{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:center;flex:1}
+.cover h1{font-size:60px;line-height:1.1;color:var(--navy);letter-spacing:.04em;margin:14px 0 10px}
+.cover .st{font-size:16px;color:var(--ink2)}
+.cover .four{display:flex;flex-wrap:wrap;margin-top:26px;border:1px solid var(--navy)}
+.cover .four span{flex:1 1 25%;text-align:center;padding:9px 6px;font-size:14px;font-weight:600;color:var(--navy);border-right:1px solid var(--line)}
+.cover .four span:last-child{border-right:none}
+.cover .au{margin-top:22px;font-size:12.5px;color:var(--ink3);line-height:1.8}
+
+/* agenda */
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.agenda a{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.agenda a:hover h4{color:var(--blue)}
+.agenda .no{font-size:20px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+.agenda h4{font-size:15px;color:var(--navy)}
+.agenda span{font-size:12.5px;color:var(--ink2)}
+.agenda em{font-style:normal;font-size:11.5px;color:var(--ink3)}
+
+/* chevrons */
+.chev{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:4px}
+.chev>div{background:var(--blues);padding:11px 26px 11px 30px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%,14px 50%)}
+.chev>div:first-child{clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%);padding-left:16px}
+.chev>div.last{background:var(--navy)}
+.chev>div.last *{color:var(--paper)!important}
+.chev .L{font-size:22px;font-weight:800;color:var(--blue);line-height:1}
+.chev h4{font-size:14px;color:var(--navy);margin:3px 0 2px}
+.chev p{font-size:12px;color:var(--ink2);margin:0;line-height:1.55}
+
+/* tables */
+table.t{width:100%;border-collapse:collapse;font-size:13.5px}
+.t th{text-align:left;font-size:12px;color:var(--navy);font-weight:700;border-bottom:2px solid var(--navy);padding:6px 10px}
+.t td{border-bottom:1px solid var(--line);padding:7px 10px;color:var(--ink2);vertical-align:top}
+.t td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+
+/* patterns */
+.pat dl{margin:6px 0 0;display:grid;grid-template-columns:16px 1fr;gap:1px 8px;font-size:12.5px}
+.pat dt{font-weight:800;color:var(--blue)}
+.pat dd{margin:0;color:var(--ink2)}
+
+/* QA ladder */
+.ladder{display:flex;flex-direction:column;gap:6px}
+.ladder div{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:baseline;font-size:13px}
+.ladder .who{font-size:11px;font-weight:700;letter-spacing:.1em;text-align:right}
+.ladder .a .who{color:var(--navy)}
+.ladder .r .who{color:var(--gold)}
+.ladder .a p{margin:0;border-left:2px solid var(--navy);padding:4px 10px;background:var(--soft);color:var(--ink)}
+.ladder .r p{margin:0;padding:2px 10px;color:var(--ink2);font-style:italic}
+
+/* before/after */
+.ba{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);align-items:stretch}
+.ba .arr{display:grid;place-items:center;color:var(--blue);font-size:22px;font-weight:300}
+.box.bad{border-style:dashed}
+.box.bad li,.box.bad p{color:var(--ink3)}
+mark{background:var(--blues);color:var(--blue);font-weight:600;padding:0 2px}
+
+/* types */
+.types .box{padding:9px 11px}
+.types h4{font-size:13.5px}
+.types .k{font-size:10.5px;color:var(--ink3);letter-spacing:.08em}
+.types .r{font-size:12px;color:var(--ink2);line-height:1.55}
+.types .r b{color:var(--blue);margin-right:4px;font-weight:800}
+
+/* stats */
+.stat{border-top:3px solid var(--navy);padding:12px 2px 4px}
+.stat .v{font-size:32px;font-weight:700;color:var(--navy);line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .v small{font-size:14px;margin-left:2px;font-weight:600}
+.stat .k{font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.55}
+
+/* quotes */
+.qt{border-top:1px solid var(--line2);padding:12px 0 0 30px;position:relative;font-size:14.5px;line-height:1.75;color:var(--ink)}
+.qt::before{content:"“";position:absolute;left:0;top:2px;font-size:38px;line-height:1;color:var(--gold);font-family:Georgia,serif}
+.qt cite{display:block;font-style:normal;font-size:11.5px;color:var(--ink3);margin-top:4px}
+
+/* details */
+details.appx{background:var(--paper);border:1px solid var(--line);border-top:none;margin:0}
+details.appx summary{cursor:pointer;list-style:none;padding:11px 44px;font-size:13px;font-weight:600;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px}
+details.appx summary::-webkit-details-marker{display:none}
+details.appx summary::after{content:"展开 +";font-size:12px;color:var(--blue);font-weight:600;flex:none}
+details.appx[open] summary::after{content:"收起 −"}
+details.appx .inner{padding:0 44px 18px}
+.ch{display:grid;grid-template-columns:240px 1fr;gap:14px;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
+.ch b{color:var(--navy)}
+.ch span{color:var(--ink2)}
+.part h5{font-size:12px;letter-spacing:.12em;color:var(--blue);margin:14px 0 4px}
+
+/* tool */
+.tabs{display:flex;margin-bottom:16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tab{border:none;background:none;border-bottom:2px solid transparent;color:var(--ink2);padding:8px 16px;font-weight:600;font-size:13.5px;cursor:pointer;margin-bottom:-1px}
+.tab.on{color:var(--navy);border-bottom-color:var(--navy)}
+.panel{display:none}
+.panel.on{display:block}
+.fld{display:block;margin-bottom:10px}
+.fld>span{display:flex;align-items:baseline;gap:8px;font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.fld>span em{font-style:normal;color:var(--blue);font-weight:800}
+.fld>span small{font-weight:400;color:var(--ink3);font-size:11.5px}
+.fld input,.fld textarea,.fld select{width:100%;border:1px solid var(--line2);background:var(--paper);color:var(--ink);border-radius:0;padding:7px 10px;font:13.5px/1.6 var(--sans);outline:none;resize:vertical}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.opts{display:flex;flex-wrap:wrap;margin-bottom:10px;border:1px solid var(--line2);width:max-content;max-width:100%}
+.opt{border:none;border-right:1px solid var(--line2);background:var(--paper);color:var(--ink2);padding:6px 12px;font-size:12.5px;cursor:pointer}
+.opt:last-child{border-right:none}
+.opt.on{background:var(--navy);color:var(--paper);font-weight:600}
+.out{border:1px solid var(--line);border-left:3px solid var(--navy);background:var(--soft);padding:14px 16px;font-size:14.5px;line-height:1.85;min-height:110px;white-space:pre-wrap;color:var(--ink)}
+.btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--navy);background:var(--navy);color:var(--paper);padding:6px 14px;font-weight:600;font-size:12.5px;cursor:pointer;border-radius:0}
+.btn.ghost{background:transparent;color:var(--navy)}
+.hints{list-style:none;padding:0;margin:10px 0 0;font-size:12.5px}
+.hints li{padding:5px 10px 5px 28px;position:relative;border-bottom:1px solid var(--line);color:var(--ink2);margin:0}
+.hints li::before{position:absolute;left:8px;top:5px;font-weight:800}
+.hints li.ok::before{content:"✓";color:#15803d}
+.hints li.warn::before{content:"!";color:#b45309}
+.drow{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px}
+.dkeys{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.kp{border:1px solid var(--line);padding:10px 10px 0;background:var(--soft)}
+.draft{border:1px solid var(--line);padding:16px;overflow-x:auto;background:var(--paper)}
+.draft svg{width:auto;max-width:none;margin:0 auto;display:block}
+
+/* checklist */
+.check{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.ckb{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;border:1.5px solid var(--navy);margin:2px 0 0;display:grid;place-items:center;cursor:pointer;border-radius:0;background:var(--paper)}
+.ckb:checked{background:var(--navy)}
+.ckb:checked::after{content:"";width:5px;height:9px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check label:has(.ckb:checked) b{text-decoration:line-through;color:var(--ink3)}
+.check b{font-size:14px;display:block;color:var(--ink)}
+.check span{font-size:12.5px;color:var(--ink2);display:block}
+.check .src{font-size:11px;color:var(--ink3);margin-top:3px}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.progress .track{flex:1;height:6px;background:var(--soft);border:1px solid var(--line)}
+.progress .fill{height:100%;width:0;background:var(--navy);transition:width .3s}
+.progress .txt{font-size:13px;color:var(--navy);font-weight:700;min-width:56px;text-align:right;font-variant-numeric:tabular-nums}
+
+footer{max-width:1160px;margin:0 auto;padding:30px 24px 90px;font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* how-to drawer */
+.fab{position:fixed;right:24px;bottom:24px;z-index:80;display:flex;align-items:center;gap:10px;background:var(--navy);color:var(--paper);border:1px solid var(--navy);padding:11px 18px 11px 14px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(10,20,50,.22);letter-spacing:.02em}
+.fab::before{content:"";width:8px;height:8px;background:var(--gold);flex:none}
+.fab small:empty{display:none}
+.fab small{font-weight:500;font-size:11.5px;opacity:.8;font-variant-numeric:tabular-nums}
+.fab:hover{transform:translateY(-1px)}
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(8,12,24,.42);opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(480px,100%);background:var(--paper);border-left:1px solid var(--line2);transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.dw-hd{padding:18px 22px 0;border-bottom:1px solid var(--line);flex:none}
+.dw-hd .row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dw-hd h3{font-size:18px;color:var(--navy);line-height:1.4}
+.dw-hd .sub{font-size:12px;color:var(--ink3);margin-top:2px}
+.dw-x{border:1px solid var(--line2);background:var(--paper);color:var(--ink2);width:32px;height:32px;font-size:18px;line-height:1;cursor:pointer;flex:none}
+.dw-x:hover{border-color:var(--navy);color:var(--navy)}
+.scenes{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px;border:1px solid var(--line2)}
+.scene{border:none;border-right:1px solid var(--line2);background:var(--paper);color:var(--ink2);padding:8px 4px;font-size:12.5px;font-weight:600;cursor:pointer;line-height:1.35}
+.scene:last-child{border-right:none}
+.scene small{display:block;font-weight:400;font-size:10.5px;color:var(--ink3);margin-top:1px}
+.scene.on{background:var(--navy);color:var(--paper)}
+.scene.on small{color:var(--paper);opacity:.75}
+.dw-prog{display:flex;align-items:center;gap:10px;padding:12px 0 12px}
+.dw-prog .track{flex:1;height:5px;background:var(--soft);border:1px solid var(--line)}
+.dw-prog .fill{height:100%;width:0;background:var(--gold);transition:width .3s}
+.dw-prog .txt{font-size:12px;color:var(--navy);font-weight:700;font-variant-numeric:tabular-nums;min-width:48px;text-align:right}
+.dw-bd{flex:1;overflow-y:auto;padding:6px 22px 30px;overscroll-behavior:contain}
+.stage{margin-top:16px}
+.stage-hd{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--navy);padding-bottom:5px;margin-bottom:2px}
+.stage-hd .no{font-size:12px;font-weight:800;color:var(--paper);background:var(--navy);padding:0 6px;line-height:1.6}
+.stage-hd h4{font-size:15px;color:var(--navy)}
+.stage-hd span{font-size:11.5px;color:var(--ink3);margin-left:auto;white-space:nowrap}
+.stage.stuck .stage-hd{border-bottom-color:var(--gold)}
+.stage.stuck .stage-hd .no{background:var(--gold)}
+.step{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.step b{display:block;font-size:13.5px;color:var(--ink);line-height:1.5}
+.step span{display:block;font-size:12.5px;color:var(--ink2);margin-top:2px;line-height:1.6}
+.step .ob{color:var(--gold);font-weight:700}
+.step em{display:inline-block;font-style:normal;font-size:10.5px;color:var(--blue);border:1px solid var(--line2);padding:0 5px;margin-top:4px;letter-spacing:.04em}
+.step:has(.ckb:checked) b{text-decoration:line-through;color:var(--ink3)}
+.dw-ft{flex:none;border-top:1px solid var(--line);padding:10px 22px;font-size:11.5px;color:var(--ink3);display:flex;justify-content:space-between;gap:10px}
+.dw-ft button{border:none;background:none;color:var(--blue);font-size:11.5px;cursor:pointer;padding:0}
+
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.drawer,.scrim{transition:none}}
+
+@media (max-width:980px){
+  .slide{aspect-ratio:auto;padding:24px 26px 48px}
+  .ft{left:26px;right:26px}
+  details.appx summary,details.appx .inner{padding-left:26px;padding-right:26px}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover .ct{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .g2,.g3,.g4,.g64,.g46,.g37,.agenda,.check,.drow{grid-template-columns:minmax(0,1fr)}
+  .chev{grid-template-columns:minmax(0,1fr)!important}
+  .chev>div,.chev>div:first-child{clip-path:none;padding:10px 14px}
+  .ba{grid-template-columns:minmax(0,1fr)}
+  .ba .arr{transform:rotate(90deg);height:30px}
+  .slide h2{font-size:18.5px}
+  .cover h1{font-size:44px}
+  .cover .four span{flex-basis:50%;border-bottom:1px solid var(--line)}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .deck{padding:4px 12px 30px}
+  .slide{padding:20px 18px 46px}
+  .ft{left:18px;right:18px}
+  .ft span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  details.appx summary,details.appx .inner{padding-left:18px;padding-right:18px}
+  .fab{right:14px;bottom:14px;padding:10px 14px 10px 12px}
+  .drawer{top:0;left:0;right:0;bottom:0;width:100%;border-left:none;transform:translateY(100%)}
+  .drawer.on{transform:none}
+  .dw-hd{padding:14px 16px 0}
+  .dw-bd{padding:4px 16px 30px}
+  .dw-ft{padding:10px 16px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="in">
+    <span class="brand"><i></i>金字塔原理 · 读书简报</span>
+    <a href="#s-summary">摘要</a>
+    <a href="#s-pyramid">金字塔</a>
+    <a href="#s-scqa">序言 SCQA</a>
+    <a href="#s-logic">演绎·归纳</a>
+    <a href="#s-order">逻辑顺序</a>
+    <a href="#s-sum">概括</a>
+    <a href="#s-problem">解决问题</a>
+    <a href="#s-present">演示</a>
+    <a href="#s-parts">全书</a>
+    <a href="#s-quotes">金句</a>
+    <a href="#s-tool">小工具</a>
+    <a href="#s-todo">清单</a>
+  </div>
+</nav>
+
+<main class="deck">
+
+<!-- ===== COVER ===== -->
+<section class="slide cover" id="s-cover">
+  <div class="ct">
+    <div>
+      <div class="trk"><span>BARBARA MINTO</span><span>THE PYRAMID PRINCIPLE</span></div>
+      <h1>金字塔原理</h1>
+      <div class="st">麦肯锡40年经典培训教材 · 读书简报</div>
+      <div class="four"><span>结论先行</span><span>以上统下</span><span>归类分组</span><span>逻辑递进</span></div>
+      <div class="au">一句话主旨：先说结论，再给论据；上层概括下层，同组属于一类，组内按逻辑排序。<br>作者芭芭拉·明托，麦肯锡第一位女咨询顾问。本简报内容全部来自原书。</div>
+    </div>
+    <div class="fig" data-fig="cover"></div>
+  </div>
+  <div class="ft"><span>根据《金字塔原理：麦肯锡40年经典培训教材》中文版（南海出版公司）整理</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== SUMMARY ===== -->
+<span class="anchor" id="s-summary"></span>
+<section class="slide reveal">
+  <div class="trk"><span>执行摘要</span><span>前言 · 附录3</span></div>
+  <h2>文章条理不清，多半不是文笔问题，而是思想的顺序和读者的理解方式冲突：先把思想组织成金字塔，再动笔</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g64 grow">
+      <div>
+        <span class="lbl">金字塔原理的 4 个基本原则</span>
+        <table class="t">
+          <tbody>
+            <tr><td>结论先行</td><td>每篇文章只有一个中心思想，并放在文章的最前面。</td></tr>
+            <tr><td>以上统下</td><td>每一层次上的思想必须是对下一层次思想的总结概括。</td></tr>
+            <tr><td>归类分组</td><td>每一组中的思想必须属于同一逻辑范畴。</td></tr>
+            <tr><td>逻辑递进</td><td>每一组中的思想必须按照逻辑顺序排列。</td></tr>
+          </tbody>
+        </table>
+        <div class="callout mt">中文版序的概括：<b>自上而下表达，自下而上思考，纵向总结概括，横向归类分组，序言讲故事，标题提炼思想精华。</b></div>
+      </div>
+      <div>
+        <span class="lbl">全书 4 篇</span>
+        <table class="t">
+          <thead><tr><th>篇</th><th>解决的问题</th></tr></thead>
+          <tbody>
+            <tr><td>表达的逻辑</td><td>搭出基本的金字塔，写好序言</td></tr>
+            <tr><td>思考的逻辑</td><td>检查分组和概括是否真想清楚了</td></tr>
+            <tr><td>解决问题的逻辑</td><td>写报告前先界定、分析问题</td></tr>
+            <tr><td>演示的逻辑</td><td>在纸面、幻灯片和句子里呈现金字塔</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="so">作者承诺：强迫自己“先想后写”，就能缩短完成终稿的时间，提高条理性，并缩短文章长度。</div>
+  </div>
+  <div class="ft"><span>资料来源：前言；中文版序；附录3</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>执行摘要</span><span>前言里的例子</span></div>
+  <h2>同一组信息，把结论放在最前面后，一句话就能讲清楚</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="ba grow">
+      <div class="box bad">
+        <span class="lbl" style="color:var(--ink3)">作者未组织的思想</span>
+        <p style="font-size:14px">约翰·科林斯来电话说他不能参加下午3点会议了。哈尔·约翰逊说他不介意晚一点开会，明天开也可以，但明天10:30以前不行。唐克利福德的秘书说，唐克利福德明天晚些时候才能从法兰克福赶回来。会议室明天已经有人预订了，但星期四还没有人预订。会议时间定在星期四上午11点似乎比较合适。您看行吗？</p>
+      </div>
+      <div class="arr">→</div>
+      <div class="box acc">
+        <span class="lbl">用金字塔结构组织的思想</span>
+        <p style="font-size:14px;color:var(--ink)"><mark>今天的会议可以改在星期四上午11点开吗？</mark>因为这样对科林斯和约翰逊都更方便，唐克利福德也能参加，并且本周只有这一天会议室还没有被预订。</p>
+        <div class="fig mt" data-fig="meeting"></div>
+      </div>
+    </div>
+    <div class="so">1967年时还很少有人接受这套理论；后来它成了麦肯锡的标准，作者也把它讲授给了全世界约1万人。</div>
+  </div>
+  <div class="ft"><span>资料来源：前言</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>目录</span><span>AGENDA</span></div>
+  <h2>本简报按全书四篇的顺序展开，最后附两个小工具和一份清单</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="agenda">
+      <a href="#s-pyramid"><span class="no">01</span><div><h4>为什么是金字塔</h4><span>7±2、三条规则、纵向疑问/回答、怎么搭</span></div><em>第1–3章</em></a>
+      <a href="#s-problem"><span class="no">05</span><div><h4>界定问题与结构化分析</h4><span>R1/R2、七种问题、诊断框架、逻辑树</span></div><em>第8–9章</em></a>
+      <a href="#s-scqa"><span class="no">02</span><div><h4>序言 SCQA</h4><span>背景、冲突、疑问、回答与常见模式</span></div><em>第4章</em></a>
+      <a href="#s-present"><span class="no">06</span><div><h4>演示的逻辑</h4><span>书面、幻灯片、字里行间</span></div><em>第10–12章</em></a>
+      <a href="#s-logic"><span class="no">03</span><div><h4>演绎与归纳</h4><span>横向只有两种关系</span></div><em>第5章</em></a>
+      <a href="#s-parts"><span class="no">07</span><div><h4>全书结构与金句</h4><span>四篇要点、章节一览、原文摘录</span></div><em>全书</em></a>
+      <a href="#s-order"><span class="no">04</span><div><h4>逻辑顺序与概括</h4><span>时间、结构、程度；MECE；避免“缺乏思想”</span></div><em>第6–7章</em></a>
+      <a href="#s-tool"><span class="no">08</span><div><h4>小工具与清单</h4><span>SCQA 开头生成、三层金字塔草稿、动笔前清单</span></div><em>实践</em></a>
+    </div>
+    <div class="so">右下角的“我要怎么做？”按场景给出落地路线：写邮件或报告、做汇报幻灯片、分析问题。</div>
+  </div>
+  <div class="ft"><span>点击任一行跳转</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== 01 PYRAMID ===== -->
+<span class="anchor" id="s-pyramid"></span>
+<section class="slide reveal">
+  <div class="trk"><span>01 为什么是金字塔</span><span>第1章</span></div>
+  <h2>大脑一次只能处理约7个项目；归类分组并提高一个抽象层次，要记的9项就变成3项</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g37 grow" style="align-items:center">
+      <div>
+        <ul class="muted" style="font-size:13px">
+          <li>米勒《奇妙的数字7±2》：短期记忆一次无法容纳约7个以上的项目；最容易记住的是3个，最好是1个。</li>
+          <li>项目超过4个或5个时，大脑会自动把它们归到不同的逻辑范畴里。</li>
+          <li>书中例子：出门买报纸，妻子一路追着说了9样东西。多数人回家只买了报纸和葡萄。</li>
+          <li>仅仅分组不够：分成4、3、2个的三组，合起来还是9个。要<b>提高一个抽象层次</b>，只记3个组。</li>
+        </ul>
+      </div>
+      <div class="fig" data-fig="grocery"></div>
+    </div>
+    <div class="so">所以表达时要自上而下：先提出总的概念，再列出具体项目。读者会假定一同出现的思想有逻辑关系，你不先说，他就自己猜。</div>
+  </div>
+  <div class="ft"><span>资料来源：第1章；图1-2</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>01 为什么是金字塔</span><span>第2章 · 图2-3</span></div>
+  <h2>一座金字塔：纵向是疑问与回答，横向是演绎或归纳，序言位于结构顶端之外</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="fig grow" data-fig="leyland"></div>
+    <div class="so">这是一份20页商业备忘录的结构。顶端是中心思想，下面一层叫关键句（key line）；它回答“为什么”，所以三个要点都必须是“原因”。</div>
+  </div>
+  <div class="ft"><span>资料来源：第2章，图2-3“所有文章都应当具有疑问/回答式对话结构”</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>01 为什么是金字塔</span><span>第1章</span></div>
+  <h2>金字塔中的思想必须遵守三条规则，而组织一组思想只有四种逻辑顺序</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3">
+      <div class="box top"><span class="lbl">规则 1 · 纵向</span><h4>任一层次的思想，必须是其下一层次思想的概括</h4><p>段落的主题概括句子，章节的主题概括段落。写作的主要活动，就是把较具体的思想概括成新的思想。</p></div>
+      <div class="box top"><span class="lbl">规则 2 · 横向</span><h4>每组中的思想必须属于同一逻辑范畴</h4><p>苹果和梨能概括成“水果”；苹果和椅子只能概括成“物品”，太宽泛。检验法：能否用<b>一个名词</b>称呼整组，如“原因”“问题”“步骤”。</p></div>
+      <div class="box top"><span class="lbl">规则 3 · 横向</span><h4>每组中的思想必须按逻辑顺序组织</h4><p>必须有明确的理由说明，为什么第二个思想放在第二位，而不是第一位或第三位。</p></div>
+    </div>
+    <span class="lbl mt">四种逻辑顺序，对应大脑仅有的四种分析活动</span>
+    <div class="g g4">
+      <div class="box fill"><h4>演绎顺序</h4><p>大前提、小前提、结论</p><p class="sm">来自演绎推理</p></div>
+      <div class="box fill"><h4>时间（步骤）顺序</h4><p>第一、第二、第三</p><p class="sm">来自发现因果关系</p></div>
+      <div class="box fill"><h4>结构（空间）顺序</h4><p>波士顿、纽约、华盛顿</p><p class="sm">来自化整为零</p></div>
+      <div class="box fill"><h4>程度（重要性）顺序</h4><p>最重要、次重要……</p><p class="sm">来自归纳总结、分类</p></div>
+    </div>
+    <div class="so">写作前先把思想放进金字塔，用这些规则检验。不符合任何一条，说明思路有问题，或思想还没充分完善。</div>
+  </div>
+  <div class="ft"><span>资料来源：第1章“提示”</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>01 为什么是金字塔</span><span>第2章 · 纵向关系</span></div>
+  <h2>每个新表述都会引发读者的疑问，下一层必须逐一回答，直到读者不再发问</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g2 grow">
+      <div>
+        <div class="box top" style="margin-bottom:12px"><span class="lbl">书中对“思想”的定义</span><p style="font-size:14px;color:var(--ink)">向受众发出新信息并引发受众疑问的语句。</p></div>
+        <ul class="muted" style="font-size:13px">
+          <li>新表述必然让读者问“为什么”“怎样才能这样”。作者在下一层横向回答；回答又是新信息，于是继续往下。</li>
+          <li>两个禁忌：在准备好回答之前，<b>避免引起疑问</b>；在读者产生疑问之前，<b>避免先给答案</b>。</li>
+          <li>正文前先写一节“我们的假设”，就是没给读者提问的机会就先给了答案。</li>
+          <li>读者不一定同意，但至少能明确了解作者的思路，这是作者能期望的最好效果。</li>
+        </ul>
+      </div>
+      <div>
+        <span class="lbl">图2-2 · 切斯特顿“猪应当被当作宠物养”</span>
+        <div class="ladder">
+          <div class="a"><span class="who">作者</span><p>猪应当被当作宠物养。</p></div>
+          <div class="r"><span class="who">读者</span><p>为什么这么说？</p></div>
+          <div class="a"><span class="who">作者</span><p>有两个原因：猪很漂亮；猪可以培育出很多品种。</p></div>
+          <div class="r"><span class="who">读者</span><p>为什么说猪很漂亮？</p></div>
+          <div class="a"><span class="who">作者</span><p>猪很肥，而且具有典型的英国特征。</p></div>
+          <div class="r"><span class="who">读者</span><p>肥胖有什么漂亮的？</p></div>
+          <div class="a"><span class="who">作者</span><p>肥胖能使其他人显得苗条，也能使肥胖者更谦虚。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第2章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>01 为什么是金字塔</span><span>第3章 · 图3-1</span></div>
+  <h2>构建金字塔：先尝试自上而下；想不清顶部时，再自下而上</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g64 grow">
+      <div class="box top">
+        <span class="lbl">自上而下法 · 通常更容易</span>
+        <div class="g g2" style="gap:6px 16px">
+          <ol class="nlist" style="margin:0">
+            <li><b>画出主题方框</b>，填入要讨论的主题</li>
+            <li><b>设想主要疑问</b>：读者头脑中关于该主题的疑问</li>
+            <li><b>写出答案</b>，不清楚就注明能够回答</li>
+            <li><b>说明背景</b>：第一个不会引起争议的表述</li>
+          </ol>
+          <ol class="nlist" style="margin:0;counter-reset:nl 4">
+            <li><b>指出冲突</b>：背景中发生了什么，引发疑问</li>
+            <li><b>检查</b>冲突是否直接导致主要疑问，答案是否对应</li>
+            <li><b>确定关键句</b>：答案引发的新疑问，用演绎还是归纳</li>
+            <li><b>重复</b>疑问/回答式对话，组织支持论据</li>
+          </ol>
+        </div>
+        <div class="callout mt">例：大客户建议改变记账方式。疑问：该建议可行吗？答案：可行。关键句都是“原因”：提供所需的信息；增加现金流；减少工作量。</div>
+      </div>
+      <div class="box top">
+        <span class="lbl">自下而上法 · 三步走</span>
+        <ol class="nlist" style="margin:0 0 10px">
+          <li><b>列出</b>你想表达的所有思想要点</li>
+          <li><b>找出</b>各要点之间的逻辑关系</li>
+          <li><b>得出结论</b>，再倒推出序言</li>
+        </ol>
+        <p>TTW 印刷厂的例子：理出两条因果思路后，结合读者已知的情况，主题定为“排版成本”；疑问“能降低吗”；关键句是省略不必要的步骤，并把员工工资提高到有竞争力的水平。</p>
+        <p class="sm">改写前后的措辞几乎没变。清晰来自结构，而不是写作风格。</p>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第3章；图3-1、表3-4</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>01 为什么是金字塔</span><span>第3章 · 初学者注意事项</span></div>
+  <h2>初学者常见的六个问题，大多出在跳过结构和序言、急于写正文</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3 grow" style="grid-auto-rows:1fr">
+      <div class="box"><span class="lbl">1</span><h4>一定先搭结构，先尝试自上而下</h4><p>思想一旦变成文字，就像戴上了最美丽的光环，“字字珠玑”，你会不愿意修改。</p></div>
+      <div class="box"><span class="lbl">2</span><h4>序言先写背景</h4><p>四个要素可以按任何顺序写出，但一定从“背景”开始构思，这样更容易找准冲突和疑问。</p></div>
+      <div class="box"><span class="lbl">3</span><h4>先多花时间思考序言，不要省略</h4><p>否则开始论证时还在整理背景或冲突，会陷入复杂、混乱的论证中。</p></div>
+      <div class="box"><span class="lbl">4</span><h4>将历史背景放在序言中</h4><p>正文只包括思想。简单的历史事件不是逻辑思考的结果，不能算作思想。</p></div>
+      <div class="box"><span class="lbl">5</span><h4>序言只涉及读者不会质疑的内容</h4><p>能由客观第三方轻易证实的信息，可以假定读者“知道”。读者已知的信息，也不要放进金字塔。</p></div>
+      <div class="box"><span class="lbl">6</span><h4>关键句层次宜用归纳，不宜用演绎</h4><p>思维的发展常是演绎顺序，但以演绎法发展的思想，大多可以用归纳法的形式表达。</p></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第3章“初学者注意事项”</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== 02 SCQA ===== -->
+<span class="anchor" id="s-scqa"></span>
+<section class="slide reveal">
+  <div class="trk"><span>02 序言 SCQA</span><span>第4章 · 表4-1</span></div>
+  <h2>序言要讲一个读者已经知道的故事，让读者先和你“站在同一位置上”</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="chev">
+      <div><div class="L">S</div><h4>背景 Situation</h4><p>关于主题的公认事实，把读者锁定在特定时空。读者会点头：“是的，那又怎么样？”</p></div>
+      <div><div class="L">C</div><h4>冲突 Complication</h4><p>推动故事情节发展、引发读者疑问的因素。常是不利变化，但不一定。</p></div>
+      <div><div class="L">Q</div><h4>疑问 Question</h4><p>由冲突引出，常常隐含不写；但动笔前你必须替自己写清楚。</p></div>
+      <div class="last"><div class="L">A</div><h4>回答 Answer</h4><p>即金字塔顶端的中心思想，它又引出关键句要回答的新疑问。</p></div>
+    </div>
+    <span class="lbl mt">表4-1 · 多数文章回答以下4种疑问之一</span>
+    <table class="t">
+      <thead><tr><th>背景（关于文章主题的公认事实）</th><th>冲突（推动情节发展并引发读者提出疑问的因素）</th><th>读者的疑问</th></tr></thead>
+      <tbody>
+        <tr><td>需要完成某项任务</td><td>发生了妨碍完成该任务的事情</td><td>我们应该怎么做？</td></tr>
+        <tr><td>存在某个问题</td><td>知道解决问题的方案</td><td>如何实施解决方案？</td></tr>
+        <tr><td>存在某个问题</td><td>有人提出了一个解决方案</td><td>该方案是否正确？</td></tr>
+        <tr><td>采取了某项行动</td><td>行动未达到预期效果</td><td>为什么没达到预期效果？</td></tr>
+      </tbody>
+    </table>
+    <div class="so">为什么讲故事：未讲完的故事有悬念，能让读者轻易抛开其他思想；先传递读者肯定认可的信息，再提他可能不同意的观点。</div>
+  </div>
+  <div class="ft"><span>资料来源：第4章；表4-1</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>02 序言 SCQA</span><span>第4章 · 为什么要用这种顺序</span></div>
+  <h2>背景、冲突、疑问、回答可以换顺序，改变的只是文章的口吻</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g4" style="gap:0;border:1px solid var(--line)">
+      <div class="box" style="border:none;border-right:1px solid var(--line)"><span class="lbl">S</span><p>业务多元化研究服务在过去5年中增长了40%。</p></div>
+      <div class="box" style="border:none;border-right:1px solid var(--line)"><span class="lbl">C</span><p>无法证明我们的工作对客户有明显益处。</p></div>
+      <div class="box" style="border:none;border-right:1px solid var(--line)"><span class="lbl">Q</span><p>如何确保多元化研究确实对客户有明显益处？</p></div>
+      <div class="box" style="border:none"><span class="lbl">A</span><p>实施“公司发展项目”，以研究该问题。</p></div>
+    </div>
+    <div class="g g2 mt grow" style="gap:12px">
+      <div class="box"><h4>标准式 <span class="tag s">背景</span><span class="tag s">冲突</span><span class="tag">答案</span></h4><p>近几年来，本公司已经因为提供多元化研究服务而向许多客户收取了大量费用。但是至今伦敦办事处也没有一个员工能够证明……因此，现在应该实施一项“公司发展项目”。</p></div>
+      <div class="box"><h4>开门见山式 <span class="tag">答案</span><span class="tag s">背景</span><span class="tag s">冲突</span></h4><p>我们实施“公司发展项目”的首要目标，是提高我们帮助客户实施业务多元化的能力。仅在伦敦办事处……增长了40%，但是我们不能证明……</p></div>
+      <div class="box"><h4>突出忧虑式 <span class="tag s">冲突</span><span class="tag s">背景</span><span class="tag">答案</span></h4><p>据我了解，目前伦敦办事处还没有一个员工可以说……这种情况令人吃惊，因为……已经增长了40%……因此，我建议实施一项“公司发展项目”。</p></div>
+      <div class="box"><h4>突出信心式 <span class="tag s">疑问</span><span class="tag s">背景</span><span class="tag s">冲突</span><span class="tag">答案</span></h4><p>我们如何确保业务多元化研究继续成为我们的重要服务项目？……如果不采取措施提高我们工作的价值，我们就会面临……实际风险。为此，我建议……</p></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第4章（原文节选）</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>02 序言 SCQA</span><span>第4章 · 写好序言的原则</span></div>
+  <h2>序言是“提示”而不是“告诉”：只放读者已知的事，长度够读者站稳即可</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3">
+      <div class="box top"><span class="lbl">原则 1</span><h4>提示读者，而不是告诉读者</h4><p>不含读者需要证明后才能接受的信息，例如图表。在序言里到处用图表，说明你过分强调了已知事实。</p></div>
+      <div class="box top"><span class="lbl">原则 2</span><h4>背景、冲突、答案三要素齐全</h4><p>不一定按标准顺序，但缺一不可，还要组织成故事。较长的文章还要解释接下来讨论的内容。</p></div>
+      <div class="box top"><span class="lbl">原则 3</span><h4>长度取决于读者和主题</h4><p>人腿该多长？足以站在地面上。一般2–3段；背景和冲突最多3–4段；关系近时，一句“你在1月15日发给我的信中问我……”也行。</p></div>
+    </div>
+    <div class="g g2 mt grow">
+      <div class="box fill">
+        <span class="lbl">关键句要点必须是完整的思想</span>
+        <p>反例：“本备忘录……分为以下6个部分：背景、项目组的方法原则、项目工作内容、如何组织计划、具体收益和效果、成功的前提条件。”这些只是名词，读者无法理解。最好永远不要用“背景”或“介绍”作章节标题。</p>
+        <p class="sm">列出关键句，读者在最初30秒内就能了解全部思路。</p>
+      </div>
+      <div class="box fill">
+        <span class="lbl">每个关键句也要一段小序言</span>
+        <p>“对流程的效率进行标杆比对”：<b>S</b> 已用全面质量管理把贷款申请时间从两天缩到2小时；<b>C</b> 可以假定这足以获得竞争优势；<b>Q</b> 是否足够？<b>A</b> 只有与竞争者对比后才能知道。</p>
+        <p class="sm">全文序言提示主题；第一个关键句的引言说明它为何与主题相关；其余说明与前文的关系。</p>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第4章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>02 序言 SCQA</span><span>第4章 · 序言的常见模式</span></div>
+  <h2>商务文章的序言只有少数几种模式，选定模式，关键句的类型也就确定了</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3 grow" style="grid-auto-rows:1fr;gap:12px">
+      <div class="box pat"><h4>发出指示式</h4><span class="sm">针对“应该做什么 / 如何做”</span><dl><dt>S</dt><dd>我们打算做X</dd><dt>C</dt><dd>需要你们做Y</dd><dt>Q</dt><dd>我们如何做Y？</dd></dl><p class="sm" style="margin-top:6px">回答必然是“步骤”；疑问常是隐含的。</p></div>
+      <div class="box pat"><h4>请求支持式</h4><span class="sm">针对“是否应该这样做”</span><dl><dt>S</dt><dd>我们遇到了一个问题</dd><dt>C</dt><dd>解决方案需要＿＿美元经费</dd><dt>Q</dt><dd>我应该批准吗？</dd></dl><p class="sm" style="margin-top:6px">标准理由：刻不容缓；方案能解决问题；节约超过支出；（若成立）其他好处。</p></div>
+      <div class="box pat"><h4>解释做法式</h4><span class="sm">针对“应该如何做”</span><dl><dt>S</dt><dd>你们目前的系统是X</dd><dt>C</dt><dd>该系统不能正常工作</dd><dt>Q</dt><dd>如何改进？</dd></dl><p class="sm" style="margin-top:6px">先在纸上列出现有流程和正确流程，差异决定关键句（图4-8）。</p></div>
+      <div class="box pat"><h4>比较选择式</h4><span class="sm">针对“应该做什么”</span><dl><dt>S</dt><dd>我们希望做X</dd><dt>C</dt><dd>有各种不同的做X的方案</dd><dt>Q</dt><dd>哪一种方案最合理？</dd></dl><p class="sm" style="margin-top:6px">最好围绕评估标准写关键句；都达不到目标时，围绕“替代目标”而非“替代方案”。</p></div>
+      <div class="box pat"><h4>项目建议书</h4><span class="sm">咨询公司的生命线</span><dl><dt>S</dt><dd>你遇到一个问题</dd><dt>C</dt><dd>你已决定请第三方帮助</dd><dt>Q</dt><dd>你是我们应该聘请的第三方吗？</dd></dl><p class="sm" style="margin-top:6px">关键句：理解问题；方法合理；经验丰富；项目安排合理。</p></div>
+      <div class="box pat"><h4>项目进度小结</h4><span class="sm">每个阶段结束时</span><dl><dt>S</dt><dd>我们告诉过你X</dd><dt>C</dt><dd>你要求我们调查Y，已完成</dd><dt>Q</dt><dd>你们发现了什么？</dd></dl><p class="sm" style="margin-top:6px">第一份的冲突是：分析第一步是确定Y是否成立，现已完成。</p></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第4章；附录2</span><span class="pg"></span></div>
+</section>
+<details class="appx reveal">
+  <summary>附页 · 附录2 序言结构范例：按读者的问题分 3 大类</summary>
+  <div class="inner">
+    <div class="part"><h5>我们应该做什么？</h5>
+      <div class="ch"><b>如何解决问题</b><span>做了或想做X / 行不通或不能做 → 怎么办？</span></div>
+      <div class="ch"><b>如何得到满意的行动方案</b><span>有问题 / 想要X解决方案 → 如何得到该解决方案？</span></div>
+      <div class="ch"><b>备选方案</b><span>想做X / 有不同方案可供选择 → 选哪一种？</span></div>
+      <div class="ch"><b>探讨</b><span>按照目前流程得到X / 对是否需要改变进行了探讨 → 是否需要改变？</span></div>
+      <div class="ch"><b>建议改变读者并未提出疑问的某一做法</b><span>准备进行X活动 / 两种选择：与过去一样、作某些改变 → 哪种是更明智的选择？</span></div>
+    </div>
+    <div class="part"><h5>我们是否应该按计划做？</h5>
+      <div class="ch"><b>该行动方案是否正确</b><span>有情况/问题 / 策划了行动方案 → 该行动方案是否正确？</span></div>
+      <div class="ch"><b>是否会有问题</b><span>有问题也有解决方案 / 担心实施时会遇到问题 → 是否会有问题？</span></div>
+      <div class="ch"><b>解决方案行得通吗</b><span>有问题也有解决方案 / 测试解决方案 → 行得通吗？</span></div>
+      <div class="ch"><b>解决方案能否实现目标</b><span>策划行动方案 / 除非能实现Y否则不打算实施 → 该方案能否实现Y？</span></div>
+      <div class="ch"><b>项目建议书（B）</b><span>有问题 / 希望通过咨询解决问题 → 你是不是我们要聘请的咨询顾问？</span></div>
+    </div>
+    <div class="part"><h5>我们应该如何做（如何做的）？</h5>
+      <div class="ch"><b>如何做必须做的事情</b><span>为了解决问题必须做X / 要做X必须先做Y → 如何做Y？</span></div>
+      <div class="ch"><b>如何实施解决方案</b><span>有问题 / 有解决方案，不知道如何实施 → 如何实施？</span></div>
+      <div class="ch"><b>你是如何做某事的</b><span>过去有问题 / 通过做X得以解决 → 你是如何做X的？</span></div>
+      <div class="ch"><b>讲述如何做新事情</b><span>必须做X / 不知道怎么做 → 我们应该怎么做？</span></div>
+      <div class="ch"><b>讲述如何正确做某事</b><span>目前有系统X / 不能正确工作 → 如何使它正确工作？</span></div>
+      <div class="ch"><b>发出指示</b><span>我们想做X / 我们需要你做Y → 我如何做Y？</span></div>
+      <div class="ch"><b>讲述它如何运行</b><span>有目标 / 安装系统或流程以实现目标 → 它如何运行？</span></div>
+      <div class="ch"><b>项目建议书（A）</b><span>有问题 / 希望通过咨询解决问题 → 你如何帮助我们解决问题？</span></div>
+    </div>
+  </div>
+</details>
+
+<!-- ===== 03 LOGIC ===== -->
+<span class="anchor" id="s-logic"></span>
+<section class="slide reveal">
+  <div class="trk"><span>03 演绎与归纳</span><span>第5章 · 图5-1</span></div>
+  <h2>同一组思想之间只有两种逻辑关系：演绎或归纳，不可同时兼有</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g2 grow">
+      <div class="box top">
+        <span class="lbl">演绎推理 · 线性，每个思想由前一个导出</span>
+        <div class="fig" data-fig="deduce"></div>
+        <p style="margin-top:8px">三步：①阐述世界上已存在的某种情况；②阐述同时存在的相关情况，它针对第一句的主语或谓语；③说明两者同时存在时隐含的意义。也可以是：问题或现象 → 根源、原因 → 解决方案。</p>
+        <p class="sm">概括时以最后一步，即“因此”引出的结论为主体。</p>
+      </div>
+      <div class="box top">
+        <span class="lbl">归纳推理 · 把有共同点的思想归为一组</span>
+        <div class="fig" data-fig="induce"></div>
+        <p style="margin-top:8px">两项技能：①正确定义这组思想，找到能表示全部思想的<b>单一名词</b>，这里是“军事行动”；②识别并剔除与其他思想不相称的思想。</p>
+        <p class="sm">若定义成“波兰的盟国在为进攻其他欧洲国家做准备”，就会得出完全不同的推论。</p>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第2章、第5章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>03 演绎与归纳</span><span>第5章 · 图5-4、图5-5</span></div>
+  <h2>关键句层次尽量用归纳：同样的推理，把行动放上来，读者就不必重走作者的思考过程</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="fig grow" data-fig="rotate"></div>
+    <div class="so">书中的说法：把“调研结果—结论—建议”的工作表逆时针旋转90度，让“建议”成为关键句。两种例外要用演绎：结论出乎读者意料（“别想着降低成本了，还是考虑考虑把公司卖了吧”）；不先解释方法，读者就无法理解行动。</div>
+  </div>
+  <div class="ft"><span>资料来源：第5章；表5-1</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>03 演绎与归纳</span><span>第5章 · 两者的区别</span></div>
+  <h2>判断方法很简单：第二句评述第一句的主语或谓语就是演绎，与它同类就是归纳</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <table class="t">
+      <thead><tr><th style="width:110px"></th><th>演绎推理</th><th>归纳推理</th></tr></thead>
+      <tbody>
+        <tr><td>判断标准</td><td>第二点是对第一点主语或谓语的论述</td><td>同组中的思想具有类似的主语或谓语</td></tr>
+        <tr><td>如何概括</td><td>以最后一个结论为主体，概括整个推理过程</td><td>根据各要点具有的共同性得出结论</td></tr>
+        <tr><td>难易</td><td>更容易，人们思考时更多使用；写作时笨拙、繁琐</td><td>更难，更需要创造性思维</td></tr>
+        <tr><td>放在哪里</td><td>金字塔较低的层次，段落里很合适</td><td>关键句层次</td></tr>
+        <tr><td>上限</td><td>连环演绎不超过4个步骤，推导出的结论不超过2个</td><td>结论不可超越本组思想</td></tr>
+        <tr><td>书中例子</td><td>日本商人正在增加对中国市场的投资 → 美国商人将很快进入中国市场，必将进一步促进日商的行动</td><td>日本商人正在增加对中国市场的投资 → 美国商人正在增加对中国市场的投资</td></tr>
+      </tbody>
+    </table>
+    <div class="g g2 mt">
+      <div class="callout"><b>新闻不是思想。</b>“日本商人正在增加对中国、冰岛、秘鲁市场的投资”：三国之间没有共同点，得不出更概括的观点。在表达思想的文章中，新闻没有立足之地。</div>
+      <div class="callout"><b>第三种推理：不明推论（abduction）。</b>先提出一个假设，再寻找支持它的信息；一旦获得支持信息，就又变成了归纳法。详见附录1。</div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第5章</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== 04 ORDER ===== -->
+<span class="anchor" id="s-order"></span>
+<section class="slide reveal">
+  <div class="trk"><span>04 逻辑顺序</span><span>第2篇 思考的逻辑 · 第6章 · 图6-1</span></div>
+  <h2>归纳组里排什么顺序，暴露了你当初是怎么分组的；找不到顺序，说明分组有问题</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3 grow">
+      <div class="box top"><span class="lbl">① 确定前因后果关系 → 时间顺序</span><div class="fig" data-fig="o1"></div><p style="margin-top:8px">采取多种行动以取得某一结果，这些行动就构成一个过程，只能按时间顺序；对它们的概括必定是要达到的结果。</p></div>
+      <div class="box top"><span class="lbl">② 化整为零或积零为整 → 结构顺序</span><div class="fig" data-fig="o2"></div><p style="margin-top:8px">先画出整体结构图，再确定各部分。各部分的顺序与结构图中的关系一一对应。</p></div>
+      <div class="box top"><span class="lbl">③ 按重要性归为一组 → 程度顺序</span><div class="fig" data-fig="o3"></div><p style="margin-top:8px">“3个问题”是从所有问题中挑出来的，它们共有某一特性；按具有该特性的程度从高到低排列。</p></div>
+    </div>
+    <div class="so">第2篇称这一过程为“冷静思考”（Hard-Headed Thinking）：找出把思想联系起来的逻辑框架、确定顺序，再完成“归纳跃进”，概括出隐含的意义。</div>
+  </div>
+  <div class="ft"><span>资料来源：第2篇引言；第6章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>04 逻辑顺序</span><span>第6章 · 结构顺序</span></div>
+  <h2>MECE：把整体划分为部分时，各部分必须相互独立、完全穷尽</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g2 grow">
+      <div>
+        <div class="fig" data-fig="akron"></div>
+        <div class="g g2 mt" style="gap:10px">
+          <div class="box fill"><h4>相互独立</h4><p>mutually exclusive：各部分没有重叠。轮胎部、硬件部、体育设备部的组成互不相同。</p></div>
+          <div class="box fill"><h4>完全穷尽</h4><p>collectively exhaustive：没有遗漏。三个部门加起来就是阿克伦轮胎橡胶公司的全部。</p></div>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">划分方式决定排序方式</span>
+        <table class="t">
+          <thead><tr><th>划分时强调</th><th>呈现的是</th><th>应采用</th></tr></thead>
+          <tbody>
+            <tr><td>活动本身</td><td>逻辑过程（研发、生产、营销）</td><td>时间顺序</td></tr>
+            <tr><td>活动地点</td><td>地理状况（东部、中西部、西部）</td><td>结构顺序</td></tr>
+            <tr><td>产品、市场、客户</td><td>一种归类（各事业部）</td><td>重要性顺序</td></tr>
+          </tbody>
+        </table>
+        <div class="callout mt"><b>用结构检查思路：交通局。</b>一份文件列了5项工作目标。第5项“找出各领域优劣势”针对前4项，先剔除；其余4项其实是道路建设的四步：<span class="tag">设计</span><span class="tag">建造</span><span class="tag">运营</span><span class="tag">维护</span>。改写为：检查交通局的组织结构和管理是否适应这四方面职责。</div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第6章；图6-3</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>04 逻辑顺序</span><span>第6章 · 检查与调整分组</span></div>
+  <h2>三种顺序各有检查方法，书中的例子都把冗长的罗列压缩成了三条</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3 grow">
+      <div class="box top"><span class="lbl">时间顺序 · 想象自己亲自去做</span><p>常见错误是区分不了原因和结果。超过7个就必须分组，作者建议每组最好不超过4或5个。</p><p><b>提高生产效率 8 步 → 3 步：</b>确定关键业务环节（谈话、跟踪工作流程）→ 找出存在的弱点（组织结构、服务和绩效措施、评估绩效）→ 提出实用可行的改革建议。</p></div>
+      <div class="box top"><span class="lbl">结构顺序 · 套进已有的结构</span><p>建立结构后，自上而下、自左而右依次描述。</p><p><b>反对自产塑料瓶的 11 条理由</b>，套进投资回报率树形图和股价树形图：法律若禁止就无法上马；即使不禁止，近期降低每股收益，远期降低投资回报率。</p></div>
+      <div class="box top"><span class="lbl">程度顺序 · 最重要的放第一</span><p>先弱后强更有戏剧性，但那是情绪和风格的考虑，不是逻辑。</p><p><b>纽约衰退的 8 个原因</b>，找出相似之处后归为3类：成本过高；工作条件差；来自其他城市的竞争。</p></div>
+    </div>
+    <span class="lbl mt">附录3 · 检查一组思想逻辑顺序的三步</span>
+    <div class="chev" style="--n:3">
+      <div><h4>改写成短句</h4><p>只保留主语、谓语、宾语，只留动词和名词</p></div>
+      <div><h4>合并同类项</h4><p>把相匹配、有共同点的句子组织在一起</p></div>
+      <div class="last"><h4>选择顺序</h4><p>时间、结构或程度，并检查有无遗漏</p></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第6章；附录3</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== 05 SUMMARIZE ===== -->
+<span class="anchor" id="s-sum"></span>
+<section class="slide reveal">
+  <div class="trk"><span>04 概括各组思想</span><span>第7章</span></div>
+  <h2>“缺乏思想”的句子只说明了下面是哪一类思想，还掩盖了思考不完整的事实</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3" style="margin-bottom:14px">
+      <div class="box bad"><p style="font-size:14px">该公司应当确立3个目标。</p></div>
+      <div class="box bad"><p style="font-size:14px">该公司存在2个问题。</p></div>
+      <div class="box bad"><p style="font-size:14px">我们建议进行5项改革。</p></div>
+    </div>
+    <div class="g g2 grow">
+      <div class="box top">
+        <span class="lbl">收音机里的对话</span>
+        <p>甲：约翰·韦恩说他是最适合写塞缪尔·约翰逊传记的人，他有3个理由：都来自贫困的斯塔福德县；都在牛津大学学习过；有类似的文学爱好。</p>
+        <p>乙：我不同意。斯塔福德县根本没有人说真话。</p>
+        <p class="sm">听众只听进了第一点。若甲说“因为他和约翰逊属于同一类人”，回答会更有针对性。</p>
+      </div>
+      <div class="box top">
+        <span class="lbl">概括推动思维发展</span>
+        <p>作者的一位同事写“该公司存在两个组织问题”，被要求重写。他被迫思考两者的根源，发现讨论的其实是“公司中需要更多授权的领域”，而且不是2个，是4个。</p>
+        <p style="color:var(--ink)">重写后：<b>该公司的主要组织问题是没有进行授权。</b></p>
+        <p class="sm">得出概括后，可以对它进一步评论（演绎），或找出与之类似的思想（归纳）。</p>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第7章；图7-2</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>04 概括各组思想</span><span>第7章 · 图7-3</span></div>
+  <h2>行动性思想要概括出行动的直接结果，描述性思想要概括出共同点的含义</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g2 grow">
+      <div class="box top">
+        <span class="lbl">行动性思想 · 步骤、措施、建议、目标</span>
+        <div class="fig" data-fig="act"></div>
+        <ol class="nlist">
+          <li>先用<b>明确的语句</b>描述各行动：不说“提高利润”，说“在明年1月15日以前将利润提高10个百分点”</li>
+          <li>找出因果关系，每组控制在<b>5个以下</b>；做A再做B是同一层，做A是为了B则A在下一层</li>
+          <li><b>直接</b>从行动概括出结果</li>
+        </ol>
+        <p class="sm">反例：“我们必须培养一种全球意识”。分不出谁做到了，也就答不出“如何做到”。</p>
+      </div>
+      <div class="box top">
+        <span class="lbl">描述性思想 · 原因、问题、结论</span>
+        <div class="fig" data-fig="desc"></div>
+        <ol class="nlist">
+          <li>找出<b>结构上的共性</b>：同一类主语、同一类谓语，或同一类隐含思想</li>
+          <li>寻找<b>更密切的关系</b>，确定包括这些思想的最小范畴</li>
+          <li>完成<b>归纳跃进</b>（inductive leap），概括出主题思想</li>
+        </ol>
+        <p class="sm">例：信息系统的5条意见分为“信息不存在”和“存在但不充分”，概括为：所产生的信息对计划目的没有帮助。</p>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第7章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>04 概括各组思想</span><span>第2篇引言 · 表6-1</span></div>
+  <h2>改写示范：8条罗列的客户意见，归成时机、数据、格式三类问题后才有了观点</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="ba grow">
+      <div class="box bad">
+        <span class="lbl" style="color:var(--ink3)">原文</span>
+        <h4 style="color:var(--ink3)">客户对销售报告和库存报告不满意。</h4>
+        <ol style="font-size:13px"><li>提交报告的周期不恰当</li><li>库存数据不可靠</li><li>获得库存数据的时间太迟</li><li>库存数据与销售数据不吻合</li><li>客户希望改进报告的格式</li><li>客户希望删除无意义的数据</li><li>客户希望突出说明特殊情况</li><li>客户希望减少手工计算</li></ol>
+      </div>
+      <div class="arr">→</div>
+      <div class="box acc">
+        <span class="lbl">修改后</span>
+        <h4>销售系统和库存系统生成的月度报告存在问题。</h4>
+        <div class="fig" data-fig="report"></div>
+        <p class="sm" style="margin-top:8px">方框中的数字对应左侧原文的条目。三类按什么顺序排，取决于你讨论的是编制报告、阅读报告还是解决问题的过程。</p>
+      </div>
+    </div>
+    <div class="so">每次分组都问自己：为什么只列这些思想，而不列别的？答案只能是“它们有某种共性”或“它们共同产生某一结果”。</div>
+  </div>
+  <div class="ft"><span>资料来源：第2篇引言；第6章表6-1；第7章</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== 06 PROBLEM ===== -->
+<span class="anchor" id="s-problem"></span>
+<section class="slide reveal">
+  <div class="trk"><span>05 界定问题</span><span>第3篇 解决问题的逻辑 · 第8章 · 图8-2</span></div>
+  <h2>问题是现状R1与目标R2之间的差距；界定它需要序幕、困扰、R1、R2四个要素</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g64 grow" style="align-items:center">
+      <div class="fig" data-fig="r1r2"></div>
+      <div>
+        <table class="t">
+          <tbody>
+            <tr><td>切入点/序幕</td><td>大幕拉开，看到某个时空里的结构或流程。尽量简单，写序言时再展开。</td></tr>
+            <tr><td>困扰/困惑</td><td>打乱稳定的事件：外部原因、内部原因，或近期认识到的其他原因。</td></tr>
+            <tr><td>R1 现状</td><td>非期望结果：读者需要设法解决的问题，或可能抓住的机会。</td></tr>
+            <tr><td>R2 目标</td><td>期望结果：尽可能具体和定量，如“将产品上市时间缩短1/3”。</td></tr>
+          </tbody>
+        </table>
+        <div class="callout mt">转换成序言：<b>从左到右再往下</b>，读者最后知道的事实就是“冲突”。</div>
+      </div>
+    </div>
+    <div class="so">提高写咨询报告效率的秘诀：先界定问题，再有条理地收集和分析数据。前两个阶段组织好了，就是在预先搭建金字塔。</div>
+  </div>
+  <div class="ft"><span>资料来源：第3篇引言；第8章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>05 界定问题</span><span>第8章 · 表8-1、图8-10</span></div>
+  <h2>先判断读者处在哪一种问题里，序言的写法和金字塔的结构随之确定</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <span class="lbl">序列分析：五个按逻辑顺序回答的问题</span>
+    <div class="chev" style="--n:5">
+      <div><h4>是否有问题？</h4><p>或机会</p></div>
+      <div><h4>问题在哪里？</h4><p>前两问＝界定问题→序言</p></div>
+      <div><h4>为什么存在？</h4><p>寻找原因</p></div>
+      <div><h4>我们能做什么？</h4><p>寻找方案</p></div>
+      <div class="last"><h4>应该做什么？</h4><p>后三问→金字塔</p></div>
+    </div>
+    <span class="lbl mt">读者希望解决的 7 种问题</span>
+    <div class="g g4 types grow" style="gap:8px">
+      <div class="box"><span class="k">最常见 · 1</span><h4>不知道如何从R1到R2</h4><div class="r"><b>S</b>背景</div><div class="r"><b>C</b>R1，R2</div><div class="r"><b>Q</b>如何从R1到R2？</div></div>
+      <div class="box"><span class="k">最常见 · 2</span><h4>知道方案，不敢肯定对不对</h4><div class="r"><b>S</b>背景，R1，R2</div><div class="r"><b>C</b>解决方案</div><div class="r"><b>Q</b>解决方案是否正确？</div></div>
+      <div class="box"><span class="k">最常见 · 3</span><h4>知道正确方案，不知如何实施</h4><div class="r"><b>S</b>背景，R1，R2</div><div class="r"><b>C</b>解决方案</div><div class="r"><b>Q</b>如何实施该解决方案？</div></div>
+      <div class="box"><span class="k">变形 · 4</span><h4>方案已实施，但行不通</h4><div class="r"><b>S</b>背景，R1，R2，解决方案</div><div class="r"><b>C</b>解决方案行不通</div><div class="r"><b>Q</b>我们应该做什么？</div></div>
+      <div class="box"><span class="k">变形 · 5</span><h4>好几个方案，不知选哪个</h4><div class="r"><b>S</b>背景，R1，R2</div><div class="r"><b>C</b>我们有不同的解决方案</div><div class="r"><b>Q</b>哪一个是最好的方案？</div></div>
+      <div class="box"><span class="k">不常见 · 6</span><h4>知道R1，说不清R2</h4><div class="r"><b>S</b>背景，R1</div><div class="r"><b>C</b>知道必须改革，目标不确定</div><div class="r"><b>Q</b>目标和战略应该是什么？</div></div>
+      <div class="box"><span class="k">不常见 · 7</span><h4>知道R2，不清楚是否处在R1</h4><div class="r"><b>S</b>背景，R2</div><div class="r"><b>C</b>不确定现在是否处于R1</div><div class="r"><b>Q</b>是否存在问题？（标杆比对）</div></div>
+      <div class="box fill"><span class="k">实战 · 家庭用品零售商</span><h4>两年后仓储能力将不够用</h4><div class="r">方案：扩建、新建、改进流程、继续依赖第三方。属于第5种的变形：选哪个？</div></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第8章；图8-10、图8-18</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>05 结构化分析</span><span>第9章 · 图9-1</span></div>
+  <h2>先假设、再收集资料：用诊断框架设想问题可能出在哪里，再去证实或排除</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g46 grow">
+      <div>
+        <div class="box bad" style="margin-bottom:10px"><span class="lbl" style="color:var(--ink3)">老办法 · 从信息资料入手</span><p>不论客户有什么问题，都先做全公司、全行业分析。事实堆积如山，结论寥寥；一家大咨询公司估计，收集和分析工作中<b>高达60%是无用功</b>。</p></div>
+        <div class="box acc"><span class="lbl">新办法 · 重复传统的科学方法</span>
+          <ol class="nlist" style="margin:0"><li>提出各种假设</li><li>设计一项或几项重要实验，排除一个或多个假设</li><li>通过实验得出明确结论</li><li>相应地采取补救措施</li></ol>
+        </div>
+      </div>
+      <div class="box top">
+        <span class="lbl">诊断框架示例 · 头痛的可能原因（相互独立，完全穷尽）</span>
+        <div class="fig" data-fig="headache"></div>
+        <p class="sm" style="margin-top:6px">按排除的难易程度逐项筛选：如果头痛是天气造成的，就没有必要检查脑瘤。</p>
+      </div>
+    </div>
+    <div class="g g3 mt" style="gap:10px">
+      <div class="box fill"><h4>① 呈现有形的结构</h4><p>画出系统现状或理想状况：零售商的销售与营销要素、行业结构。</p></div>
+      <div class="box fill"><h4>② 寻找因果关系</h4><p>财务结构、任务结构（从每股收益出发）、活动结构（安装时间超出预期）。</p></div>
+      <div class="box fill"><h4>③ 把可能的原因分类</h4><p>按相似性分类，或做选择结构：每一步只做是非二选一。</p></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第9章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>05 结构化分析</span><span>第9章 · 图9-13</span></div>
+  <h2>逻辑树把可能的方案穷尽展开；“是非问题”给出直截了当的回答，还能告诉你何时可以结束调研</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g64 grow">
+      <div class="box top">
+        <span class="lbl">逻辑树 · 削减直接人工成本（烟草公司）</span>
+        <div class="fig" data-fig="costtree"></div>
+        <p class="sm" style="margin-top:6px">逐层展开后，计算相关收益并评估每种方案的风险，确定最终行动方案。写完文章后，也可以用逻辑树找出各组观点的缺陷。</p>
+      </div>
+      <div>
+        <div class="box top" style="margin-bottom:10px">
+          <span class="lbl">是非问题（issue）</span>
+          <p>严格说，是措辞上需要用“是”或“否”回答的问题，源自法律名词 at issue。</p>
+          <p>“我们应该如何改组”不是 issue；“我们应不应该进行机构改组”才是。“必要的存货投资水平是多少”应改为“现有的存货水平是否太高”。</p>
+        </div>
+        <div class="box fill">
+          <span class="lbl">“立论分析”的常见误解</span>
+          <ul><li>是非问题应来自导致R1的背景，而不是客户的问题</li><li>从客户的问题跳到主要、次要是非问题，无法判断是否穷尽</li><li>把形成方案的逻辑树也叫“是非问题分析”，与诊断框架混淆</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第9章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>05 结构化分析</span><span>附录1 · 图附录1-1</span></div>
+  <h2>演绎、归纳、外展推理用到的是同样三个实体，区别只在推理的起点</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="fig" data-fig="reason"></div>
+    <div class="g g3 mt">
+      <div class="box fill"><h4>三个实体（皮尔斯）</h4><p><b>规则</b>：关于世界组成方式的看法。<b>情况</b>：世界上存在的已知事实。<b>结果</b>：把规则用于该情况时，预期将发生的事情。</p></div>
+      <div class="box fill"><h4>分析性 vs 科学性</h4><p>分析解决问题时，我们知道导致结果的结构；科学家不知道，必须先创造第二个要素，才能推理出第三个。</p></div>
+      <div class="box fill"><h4>伽利略与炮弹</h4><p>力停止作用后炮弹仍在运动，说明亚里士多德的力的概念有误。用斜面滚球检验“距离与时间的平方成正比”，得出明确的是或否。</p></div>
+    </div>
+    <div class="so">设计实验的诀窍：结果必须是明确的“是”或“不是”。达尔文：所有的观察结果，如果要起作用的话，必须支持或反对某一观点。</div>
+  </div>
+  <div class="ft"><span>资料来源：附录1</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== 07 PRESENT ===== -->
+<span class="anchor" id="s-present"></span>
+<section class="slide reveal">
+  <div class="trk"><span>06 演示的逻辑</span><span>第4篇 · 第10章</span></div>
+  <h2>书面呈现：标题、编号和缩进必须对应金字塔中思想的层次，让读者30秒内看清整体构架</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3 grow">
+      <div class="box top">
+        <span class="lbl">形式取决于内容长短与人数</span>
+        <table class="t"><tbody>
+          <tr><td>短 · 一两人</td><td>书面备忘录或报告，自行阅读</td></tr>
+          <tr><td>短 · 很多人</td><td>要点备忘录或视觉资料，坐在一起讨论</td></tr>
+          <tr><td>长 · 很多人</td><td>幻灯片，投影放映</td></tr>
+        </tbody></table>
+        <span class="lbl mt">呈现层级的五种方法</span>
+        <p><span class="tag">多级标题</span><span class="tag s">下划线</span><span class="tag s">数字编号</span><span class="tag s">行首缩进</span><span class="tag s">项目符号</span></p>
+        <p class="sm">作者偏爱多级标题；数字编号最好和多级标题配合使用。</p>
+      </div>
+      <div class="box top">
+        <span class="lbl">使用标题的六条规则</span>
+        <ol class="nlist" style="margin:0">
+          <li>每一层级的标题不可能只有一个</li>
+          <li>相同的思想使用相同的句型</li>
+          <li>标题用词应提炼思想的精髓</li>
+          <li>标题与正文应分开考虑</li>
+          <li>每组标题应提前集中介绍</li>
+          <li><b>不要滥用标题</b>（最重要的一条）</li>
+        </ol>
+        <p class="sm" style="margin-top:6px">切忌用“序言”“背景”作标题。下划线法的论点超过12个单词就要简化。</p>
+      </div>
+      <div class="box top">
+        <span class="lbl">上下文之间的过渡</span>
+        <ul>
+          <li><b>讲故事</b>：用缩小范围的背景—冲突—疑问引出关键句</li>
+          <li><b>承上启下</b>：从前一部分挑一个词、短语或中心思想，用在下一部分的起始句</li>
+          <li><b>总结各部分</b>：特别长的章节，凝练复述主要论点和基调</li>
+        </ul>
+        <span class="lbl mt">结尾</span>
+        <p>写不好结论还不如不写。必须写的是<b>“下一步措施”</b>：读者决定采纳后马上要做、且在逻辑上理所当然的事。</p>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第4篇引言；第10章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>06 演示的逻辑</span><span>第11章</span></div>
+  <h2>幻灯片：文字页只放经过分组和总结的结论，图表页的标题就是图表要回答的答案</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g3 grow">
+      <div class="box top">
+        <span class="lbl">文字幻灯片</span>
+        <ul>
+          <li>每次只演示和说明一个论点</li>
+          <li>用完整的陈述句：“销售前景看好”，而不是“销售前景”</li>
+          <li>每张最好不超过6行、约30个单词</li>
+          <li>用简单的词汇和数字：490万美元比4876987美元好记</li>
+          <li>字号足够大：最远距离（英尺）÷32＝最小字号（英寸）</li>
+          <li>注意趣味性，可逐级展开呈现</li>
+        </ul>
+        <p class="sm" style="margin-top:6px">逐字念项目清单，泽拉兹尼称之为“视觉朗诵”。</p>
+      </div>
+      <div class="box top">
+        <span class="lbl">图表幻灯片 · 先确定要回答的问题</span>
+        <div class="fig" data-fig="charts"></div>
+        <p style="margin-top:8px">把答案作为标题，再选最合适的图表样式。“各地区利润份额”包含的信息，远少于<b>“西部地区约占利润的一半”</b>。</p>
+        <p class="sm">理想比例：图表约占90%，文字约占10%。</p>
+      </div>
+      <div class="box top">
+        <span class="lbl">从金字塔到演示 · 故事梗概</span>
+        <ol class="nlist" style="margin:0">
+          <li>序言尽量写详细，逐字写下</li>
+          <li>按序言要素、关键句、下一层论点写故事梗概</li>
+          <li>初步决定每页的呈现方法</li>
+          <li>准备每张幻灯片的讲稿，像讲故事一样流畅</li>
+          <li>完成幻灯片的设计和绘图</li>
+          <li><b>排练，排练，再排练！</b></li>
+        </ol>
+      </div>
+    </div>
+    <div class="so">演示者才是明星，幻灯片只是视觉辅助。作者最喜欢安东尼·杰伊的一句话：“演示是参会者给予演讲者的一种恩惠”。</div>
+  </div>
+  <div class="ft"><span>资料来源：第11章</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>06 演示的逻辑</span><span>第12章</span></div>
+  <h2>字里行间：先在脑中“看见”要说的内容，再把图像复制成文字</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g46 grow">
+      <div class="box top">
+        <span class="lbl">画脑图</span>
+        <p>我们通过图像而不是文字进行理性思维，因为图像能把大量事实综合成简单抽象的概念。读梭罗《瓦尔登湖》的一段，脑中会逐步出现一幅“记忆图像”。</p>
+        <p>抽象的内容可以画成<b>骨架图</b>：圆形、直线、长方形，加上表示方向和关系的箭头。</p>
+        <div class="callout">诀窍：找出句中的具体名词，看清它们之间的关系，把它们当作视觉图像。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="box bad"><span class="lbl" style="color:var(--ink3)">原句</span><p>可能进行改进的一个主要领域，是提高现场销售人员配置（和组织）的成本效益，以便在商店和间接的层次上，反映由交易环境变化导致的重新定义销售任务的需要。</p></div>
+        <div class="fig" data-fig="nouns"></div>
+        <div class="box acc"><span class="lbl">改写</span><p style="font-size:15px;color:var(--ink);font-weight:600">我们必须重新部署销售人员以适应新的交易环境。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第12章；图12-3</span><span class="pg"></span></div>
+</section>
+
+<section class="slide reveal">
+  <div class="trk"><span>06 演示的逻辑</span><span>全书</span></div>
+  <h2>几个数字足够用来自检：7个、5个、4步、30秒</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g4 grow" style="gap:18px 24px;align-content:center">
+      <div class="stat"><div class="v">7<small>±2</small></div><div class="k">短期记忆一次能容纳的项目数；超过7个就必须分组</div></div>
+      <div class="stat"><div class="v">4–5<small>个</small></div><div class="k">作者建议每组思想的上限；归纳链条不超过5个</div></div>
+      <div class="stat"><div class="v">4<small>步</small> / 2<small>个</small></div><div class="k">连环演绎推理的步骤上限 / 推导结论上限</div></div>
+      <div class="stat"><div class="v">30<small>秒</small></div><div class="k">读者应在最初30秒内了解你的全部思路</div></div>
+      <div class="stat"><div class="v">2–3<small>段</small></div><div class="k">一般序言的长度；背景和冲突最长3–4段</div></div>
+      <div class="stat"><div class="v">60<small>%</small></div><div class="k">从信息资料入手时，被估计为无用功的收集和分析工作</div></div>
+      <div class="stat"><div class="v">90 : 10</div><div class="k">演示文稿中图表与文字幻灯片的理想比例</div></div>
+      <div class="stat"><div class="v">6<small>行</small> / 30<small>词</small></div><div class="k">一张文字幻灯片的上限</div></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：第1、3、4、5、6、9、11章</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== 08 PARTS ===== -->
+<span class="anchor" id="s-parts"></span>
+<section class="slide reveal">
+  <div class="trk"><span>07 全书结构</span><span>4 篇 12 章 + 3 个附录</span></div>
+  <h2>四篇层层递进：先学会表达，再检查思考，再前移到解决问题，最后落到呈现</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g4 grow">
+      <div class="box top"><span class="lbl">第1篇 · 第1–5章</span><h4>表达的逻辑</h4><ul><li>四个原则、三条规则</li><li>纵向疑问/回答，横向演绎/归纳</li><li>自上而下、自下而上构建</li><li>序言的写法与常见模式</li><li>关键句层次优先归纳</li></ul><p class="sm" style="margin-top:6px">足以理解和应用简单的公文写作技巧。</p></div>
+      <div class="box top"><span class="lbl">第2篇 · 第6–7章</span><h4>思考的逻辑</h4><ul><li>冷静思考</li><li>时间、结构、程度顺序</li><li>MECE 原则</li><li>避免“缺乏思想”的句子</li><li>行动概括结果，描述概括含义</li></ul><p class="sm" style="margin-top:6px">保证语句真实、明确地呈现想表达的思想。</p></div>
+      <div class="box top"><span class="lbl">第3篇 · 第8–9章</span><h4>解决问题的逻辑</h4><ul><li>R1/R2 界定问题框架</li><li>读者的7种问题</li><li>诊断框架三种建法</li><li>逻辑树、是非问题</li><li>先假设、后收集资料</li></ul><p class="sm" style="margin-top:6px">面向写研究报告、需要分析复杂问题并作决策的人。</p></div>
+      <div class="box top"><span class="lbl">第4篇 · 第10–12章</span><h4>演示的逻辑</h4><ul><li>五种版面方法</li><li>过渡、结尾、下一步措施</li><li>文字与图表幻灯片</li><li>故事梗概、排练</li><li>画脑图</li></ul><p class="sm" style="margin-top:6px">让读者或观众感受到金字塔结构。</p></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：前言“本书的结构”</span><span class="pg"></span></div>
+</section>
+<details class="appx reveal">
+  <summary>附页 · 全书章节一览（12 章 + 3 个附录）</summary>
+  <div class="inner">
+    <div class="part"><h5>第1篇 表达的逻辑</h5>
+      <div class="ch"><b>1 为什么要用金字塔结构</b><span>大脑自动归类分组；自上而下表达、自下而上思考；三条规则与四种逻辑顺序。</span></div>
+      <div class="ch"><b>2 金字塔内部的结构</b><span>纵向疑问/回答、横向演绎或归纳、讲故事式的序言。</span></div>
+      <div class="ch"><b>3 如何构建金字塔</b><span>自上而下法、自下而上法；饮料公司与 TTW 印刷厂；初学者注意事项。</span></div>
+      <div class="ch"><b>4 序言的具体写法</b><span>讲故事结构、四种顺序、关键句及其引言、常见模式与咨询文章。</span></div>
+      <div class="ch"><b>5 演绎推理与归纳推理</b><span>步骤、应用与区别；关键句层次尽量使用归纳。</span></div>
+    </div>
+    <div class="part"><h5>第2篇 思考的逻辑</h5>
+      <div class="ch"><b>6 应用逻辑顺序</b><span>时间顺序、结构顺序（MECE）、程度顺序；识别并调整不适当的分组。</span></div>
+      <div class="ch"><b>7 概括各组思想</b><span>避免“缺乏思想”的句子；行动性思想说明结果，描述性思想找出共性。</span></div>
+    </div>
+    <div class="part"><h5>第3篇 解决问题的逻辑</h5>
+      <div class="ch"><b>8 界定问题</b><span>序幕、困扰、R1、R2；7种读者疑问；把界定的问题写成序言；实战案例。</span></div>
+      <div class="ch"><b>9 结构化分析问题</b><span>诊断框架、逻辑树、是非问题分析的来历和误区。</span></div>
+    </div>
+    <div class="part"><h5>第4篇 演示的逻辑</h5>
+      <div class="ch"><b>10 在书面上呈现金字塔</b><span>多级标题、下划线、数字编号、行首缩进、项目符号；过渡与结尾。</span></div>
+      <div class="ch"><b>11 在PPT演示文稿中呈现金字塔</b><span>文字幻灯片、图表幻灯片、故事梗概。</span></div>
+      <div class="ch"><b>12 在字里行间呈现金字塔</b><span>画脑图，把图像复制成文字。</span></div>
+    </div>
+    <div class="part"><h5>附录</h5>
+      <div class="ch"><b>附录1 在无结构情况下解决问题</b><span>分析性外展推理与科学性外展推理。</span></div>
+      <div class="ch"><b>附录2 序言结构范例</b><span>各类序言全文；项目建议书、备选方案、流程改进的写法。</span></div>
+      <div class="ch"><b>附录3 本书要点汇总</b><span>逐章要点与关键概念。</span></div>
+    </div>
+  </div>
+</details>
+
+<span class="anchor" id="s-quotes"></span>
+<section class="slide reveal">
+  <div class="trk"><span>07 原文摘录</span><span>QUOTES</span></div>
+  <h2>八句原文，几乎就是全书的要求：先想清楚，再按读者需要的顺序说清楚</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="g g2 grow" style="gap:12px 32px;align-content:start">
+      <div class="qt">实际上，如果读者在阅读的最初30秒内还不能清楚了解你的全部思路，你就应该重写这篇文章。<cite>第3章 如何构建金字塔</cite></div>
+      <div class="qt">这说明，改写后的文章的清晰思路来自于金字塔结构，而不是写作风格的变化。<cite>第3章 如何构建金字塔</cite></div>
+      <div class="qt">序言的目的是“提示”读者而不是“告诉”读者某些信息<cite>第4章 序言的具体写法</cite></div>
+      <div class="qt">写出这些句子纯粹是为了传递新闻，而在一篇旨在表达作者思想的文章中是没有新闻的立足之地的。<cite>第5章 演绎推理与归纳推理</cite></div>
+      <div class="qt">概括各组思想的行为实际上就是完成思考的行为。<cite>第7章 概括各组思想</cite></div>
+      <div class="qt">采用C方法的原因其实并不是A和B不好，而是C方法行之有效。<cite>第8章 界定问题</cite></div>
+      <div class="qt">好的思想观点不应该用不好的文章来装扮。<cite>第12章 在字里行间呈现金字塔</cite></div>
+      <div class="qt">写作时，你好像一位司令官，指挥着千军万马，排队通过一个每次只能通过一个人的狭隘关口；而你的读者则在另一边迎接，将部队进行重新编队和重新组织。<cite>第12章 引威廉·明托教授</cite></div>
+    </div>
+  </div>
+  <div class="ft"><span>资料来源：原书正文，逐字摘录</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== TOOL ===== -->
+<span class="anchor" id="s-tool"></span>
+<section class="slide free reveal">
+  <div class="trk"><span>08 小工具</span><span>内容自动保存在本机浏览器</span></div>
+  <h2>动手试一试：按SCQA写一段开头，或搭一座三层金字塔草稿</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="tabs">
+      <button class="tab on" data-p="p-scqa">SCQA 开头生成器</button>
+      <button class="tab" data-p="p-pyr">三层金字塔草稿</button>
+    </div>
+
+    <div class="panel on" id="p-scqa">
+      <div class="g g2">
+        <div>
+          <label class="fld"><span><em>S</em>背景 <small>读者已知、不会质疑的事实</small></span><textarea id="s_s" rows="2"></textarea></label>
+          <label class="fld"><span><em>C</em>冲突 <small>背景中发生了什么，引发疑问</small></span><textarea id="s_c" rows="2"></textarea></label>
+          <label class="fld"><span><em>Q</em>疑问 <small>冲突引出的问题，正文常不写出</small></span><input id="s_q"></label>
+          <label class="fld"><span><em>A</em>回答 <small>即金字塔顶端的中心思想</small></span><textarea id="s_a" rows="2"></textarea></label>
+        </div>
+        <div>
+          <div class="opts" id="ordOpts">
+            <button class="opt on" data-o="std">标准式 S-C-A</button>
+            <button class="opt" data-o="direct">开门见山 A-S-C</button>
+            <button class="opt" data-o="worry">突出忧虑 C-S-A</button>
+            <button class="opt" data-o="conf">突出信心 Q-S-C-A</button>
+          </div>
+          <div class="out" id="s_out"></div>
+          <ul class="hints" id="s_hints"></ul>
+          <div class="btns"><button class="btn" id="s_copy">复制这段开头</button><button class="btn ghost" id="s_eg">填入书中例子</button><button class="btn ghost" id="s_clear">清空</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-pyr">
+      <div class="drow">
+        <label class="fld"><span>中心思想 <small>一句完整的话，有主语有谓语</small></span><input id="d_top"></label>
+        <label class="fld"><span>它引发的读者疑问</span>
+          <select id="d_q"><option>为什么？</option><option>如何做到？</option><option>具体是哪些？</option><option>你们发现了什么？</option></select>
+        </label>
+      </div>
+      <div id="d_keys" class="dkeys"></div>
+      <div class="btns"><button class="btn ghost" id="d_add">＋ 加一个关键句要点</button><button class="btn ghost" id="d_del">－ 删掉最后一个</button></div>
+      <div class="draft mt"><div id="d_tree"></div></div>
+      <ul class="hints" id="d_hints"></ul>
+      <div class="btns"><button class="btn" id="d_copy">复制为大纲</button><button class="btn ghost" id="d_eg">填入书中例子</button><button class="btn ghost" id="d_clear">清空</button></div>
+    </div>
+  </div>
+  <div class="ft"><span>序言四种顺序出自第4章；金字塔检查规则出自第1、5、6、7章</span><span class="pg"></span></div>
+</section>
+
+<!-- ===== CHECKLIST ===== -->
+<span class="anchor" id="s-todo"></span>
+<section class="slide free reveal">
+  <div class="trk"><span>08 可执行清单</span><span>下次动笔前逐项勾选 · 进度保存在本机</span></div>
+  <h2>动笔前的14项检查：前5项管结构和序言，中间5项管分组和概括，最后4项管分析和呈现</h2>
+  <div class="rule"></div>
+  <div class="bd">
+    <div class="progress"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 14</div></div>
+    <div class="check" id="check"></div>
+  </div>
+  <div class="ft"><span>每项均注明出处章节</span><span class="pg"></span></div>
+</section>
+
+</main>
+
+<footer>
+  <span>根据《金字塔原理：麦肯锡40年经典培训教材》（芭芭拉·明托 著，南海出版公司）全文整理</span>
+  <span>单文件 · 无外部资源 · 勾选与工具内容仅保存在本机</span>
+</footer>
+
+<!-- ===== HOW-TO DRAWER ===== -->
+<button class="fab" id="fab" aria-haspopup="dialog" aria-controls="drawer">我要怎么做？<small id="fabProg"></small></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true">
+  <div class="dw-hd">
+    <div class="row">
+      <div>
+        <h3 id="dwTitle">我要怎么做？按书中方法的落地路线</h3>
+        <div class="sub">每一步都只用书里的内容，并注明出处章节</div>
+      </div>
+      <button class="dw-x" id="dwClose" aria-label="关闭">×</button>
+    </div>
+    <div class="scenes" id="scenes" role="tablist"></div>
+    <div class="dw-prog"><div class="track"><div class="fill" id="dwFill"></div></div><div class="txt" id="dwTxt">0 / 0</div></div>
+  </div>
+  <div class="dw-bd" id="dwBody"></div>
+  <div class="dw-ft"><span>Esc 或点击遮罩关闭 · 进度保存在本机</span><button id="dwReset">清空本场景进度</button></div>
+</aside>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- SVG diagram engine ---------- */
+function wrapText(t,max){
+  const out=[];let line='',len=0;max=Math.max(2,max);
+  for(const ch of String(t)){const w=/[\x00-\xff]/.test(ch)?0.56:1;if(len+w>max&&line){out.push(line);line='';len=0}line+=ch;len+=w}
+  if(line)out.push(line);return out.length?out:[''];
+}
+function txt(x,y,lines,fs,lh){
+  const h=lines.length*fs*lh;let s='';
+  lines.forEach((l,i)=>{s+=`<text x="${x.toFixed(1)}" y="${(y-h/2+fs*lh*(i+.5)+fs*.35).toFixed(1)}" font-size="${fs}" text-anchor="middle">${esc(l)}</text>`});
+  return s;
+}
+function nodeBox(x,y,w,h,label,cls,fs,lh,pad){
+  const lines=wrapText(label,Math.floor((w-pad*2)/fs));
+  return `<g class="${cls}"><rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w}" height="${h.toFixed(1)}"/>${txt(x+w/2,y+h/2,lines,fs,lh)}</g>`;
+}
+const at=(a,d)=>a[Math.min(d,a.length-1)];
+/* top-down tree */
+function vtree(root,o){
+  o=Object.assign({bw:[220,150,100],fs:[15,13.5,12.5],gx:10,gy:[38,30,30],lh:1.4,pad:8,x:0,y:0,cls:['n0','n1','n2']},o||{});
+  (function m(n,d){n.d=d;n.bw=n.w||at(o.bw,d);n.fs=at(o.fs,d);n.lines=wrapText(n.t,Math.floor((n.bw-o.pad*2)/n.fs));
+    if(n.c&&n.c.length){n.c.forEach(c=>m(c,d+1));const cw=n.c.reduce((a,c)=>a+c.sw,0)+o.gx*(n.c.length-1);n.sw=Math.max(n.bw,cw);n.cw=cw}else n.sw=n.bw})(root,0);
+  const lvH=[];(function h(n){const v=n.lines.length*n.fs*o.lh+o.pad*2;lvH[n.d]=Math.max(lvH[n.d]||0,v);(n.c||[]).forEach(h)})(root);
+  const lvY=[];let yy=o.y;lvH.forEach((v,i)=>{lvY[i]=yy;yy+=v+at(o.gy,i)});
+  const H=yy-at(o.gy,lvH.length-1)-o.y;
+  (function p(n,x0){
+    if(n.c&&n.c.length){let cx=x0+(n.sw-n.cw)/2;n.c.forEach(c=>{p(c,cx);cx+=c.sw+o.gx});n.cx=(n.c[0].cx+n.c[n.c.length-1].cx)/2}
+    else n.cx=x0+n.sw/2;
+    n.y=lvY[n.d];n.h=lvH[n.d];n.x=n.cx-n.bw/2;
+  })(root,o.x);
+  let lines='',boxes='',labels='';
+  (function r(n){
+    boxes+=`<g class="${n.cls||at(o.cls,n.d)}"><rect x="${n.x.toFixed(1)}" y="${n.y.toFixed(1)}" width="${n.bw}" height="${n.h.toFixed(1)}"/>${txt(n.cx,n.y+n.h/2,n.lines,n.fs,o.lh)}</g>`;
+    if(n.c&&n.c.length){
+      const gy=at(o.gy,n.d),y1=n.y+n.h,ym=y1+gy/2,y2=y1+gy;
+      lines+=`<path class="cn" d="M${n.cx.toFixed(1)} ${y1.toFixed(1)}V${ym.toFixed(1)}"/>`;
+      if(n.c.length>1)lines+=`<path class="cn" d="M${n.c[0].cx.toFixed(1)} ${ym.toFixed(1)}H${n.c[n.c.length-1].cx.toFixed(1)}"/>`;
+      n.c.forEach(c=>{lines+=`<path class="cn" d="M${c.cx.toFixed(1)} ${ym.toFixed(1)}V${y2.toFixed(1)}"/>`;r(c)});
+      if(n.q){const qw=wrapText(n.q,99)[0].length*12+8;labels+=`<rect class="bgp" x="${(n.cx+5).toFixed(1)}" y="${(y1+2).toFixed(1)}" width="${qw}" height="15"/><text class="q" x="${(n.cx+9).toFixed(1)}" y="${(y1+13).toFixed(1)}">${esc(n.q)}</text>`}
+    }
+  })(root);
+  return {s:lines+boxes+labels,w:root.sw,h:H,root,lvY,lvH};
+}
+/* left-to-right tree */
+function htree(root,o){
+  o=Object.assign({cw:[110,120,130,130],fs:[14,13,12.5,12],gx:[34,30,26],gy:8,lh:1.35,pad:6,x:0,y:0,cls:['n0','n1','n2','n2']},o||{});
+  (function m(n,d){n.d=d;n.bw=n.w||at(o.cw,d);n.fs=at(o.fs,d);n.lines=wrapText(n.t,Math.floor((n.bw-o.pad*2)/n.fs));n.bh=n.lines.length*n.fs*o.lh+o.pad*2;
+    if(n.c&&n.c.length){n.c.forEach(c=>m(c,d+1));const ch=n.c.reduce((a,c)=>a+c.sh,0)+o.gy*(n.c.length-1);n.sh=Math.max(n.bh,ch);n.ch=ch}else n.sh=n.bh})(root,0);
+  const colX=[];let xx=o.x;for(let d=0;d<8;d++){colX[d]=xx;xx+=at(o.cw,d)+at(o.gx,d)}
+  let maxX=0;
+  (function p(n,y0){
+    if(n.c&&n.c.length){let cy=y0+(n.sh-n.ch)/2;n.c.forEach(c=>{p(c,cy);cy+=c.sh+o.gy});n.cy=(n.c[0].cy+n.c[n.c.length-1].cy)/2}
+    else n.cy=y0+n.sh/2;
+    n.x=colX[n.d];n.y=n.cy-n.bh/2;maxX=Math.max(maxX,n.x+n.bw);
+  })(root,o.y);
+  let lines='',boxes='';
+  (function r(n){
+    boxes+=`<g class="${n.cls||at(o.cls,n.d)}"><rect x="${n.x.toFixed(1)}" y="${n.y.toFixed(1)}" width="${n.bw}" height="${n.bh.toFixed(1)}"/>${txt(n.x+n.bw/2,n.cy,n.lines,n.fs,o.lh)}</g>`;
+    if(n.c&&n.c.length){
+      const x1=n.x+n.bw,xm=x1+at(o.gx,n.d)/2;
+      lines+=`<path class="cn" d="M${x1.toFixed(1)} ${n.cy.toFixed(1)}H${xm.toFixed(1)}"/>`;
+      if(n.c.length>1)lines+=`<path class="cn" d="M${xm.toFixed(1)} ${n.c[0].cy.toFixed(1)}V${n.c[n.c.length-1].cy.toFixed(1)}"/>`;
+      n.c.forEach(c=>{lines+=`<path class="cn" d="M${xm.toFixed(1)} ${c.cy.toFixed(1)}H${c.x.toFixed(1)}"/>`;r(c)});
+    }
+  })(root);
+  return {s:lines+boxes,w:maxX-o.x,h:root.sh,root};
+}
+const defs=`<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ahg" d="M0 0L10 5L0 10z"/></marker></defs>`;
+function svg(inner,w,h,maxw){const W=Math.ceil(w);return `<svg class="dg" viewBox="0 0 ${W} ${Math.ceil(h)}" style="max-width:${Math.min(maxw||W,W)}px" role="img">${defs}${inner}</svg>`}
+const L=t=>({t});
+const T=(t,c,extra)=>Object.assign({t,c:c.map(x=>typeof x==='string'?L(x):x)},extra||{});
+
+const FIG={
+  cover(){
+    const r=vtree(T('中心思想',[T('关键句要点',['论据','论据','论据']),T('关键句要点',['论据','论据','论据']),T('关键句要点',['论据','论据','论据'])],{q:'为什么？'}),{bw:[200,132,40],fs:[15,13,12],gx:6,gy:[46,34],x:2,y:70});
+    const cx=r.root.cx;
+    let s=`<ellipse cx="${cx}" cy="26" rx="150" ry="20" class="cng"/><text class="ang" x="${cx}" y="31" text-anchor="middle">序言：背景 → 冲突 → 疑问</text><path class="cng" d="M${cx} 46V70"/>`+r.s;
+    s+=`<text class="cap" x="${cx}" y="${70+r.h+26}" text-anchor="middle">自上而下表达 · 自下而上思考</text>`;
+    return svg(s,r.w+4,70+r.h+34,520);
+  },
+  meeting(){
+    const r=vtree(T('周四上午11点开会？',['科林斯和约翰逊更方便','唐克利福德也能参加','只有这天会议室未被预订'],{q:'为什么？'}),{bw:[210,140],fs:[13.5,12.5],gx:10,gy:[36],x:2,y:2});
+    return svg(r.s,r.w+4,r.h+4,460);
+  },
+  grocery(){
+    const o={bw:[120,74],fs:[14,13],gx:8,gy:[30],y:2};
+    const a=vtree(T('蛋奶产品',['牛奶','鸡蛋','咸鸭蛋','酸奶']),Object.assign({},o,{x:2}));
+    const b=vtree(T('水果',['葡萄','橘子','苹果']),Object.assign({},o,{x:2+a.w+34}));
+    const c=vtree(T('蔬菜',['土豆','胡萝卜']),Object.assign({},o,{x:2+a.w+34+b.w+34}));
+    const W=2+a.w+34+b.w+34+c.w+2,H=a.h+40;
+    return svg(a.s+b.s+c.s+`<text class="cap" x="${W/2}" y="${H-6}" text-anchor="middle">9 个项目 → 3 个组：需要记住的只是更高一层的 3 个概念</text>`,W,H,760);
+  },
+  leyland(){
+    const X=96,Y=78;
+    const r=vtree(T('购买英国莱兰公司的特许经营权',[T('将快速增长',['市场份额大','零售竞争小']),T('将产生经济效益',['成本低','销售额增长','利润增长']),T('容易引入',['独立业务','可以用相同的管理人员','管理流程简单'])],{q:'读者：为什么？'}),{bw:[300,160,92],fs:[16,14,12.5],gx:9,gy:[50,40],x:X,y:Y});
+    const cx=r.root.cx;
+    let s=`<ellipse cx="${cx}" cy="28" rx="215" ry="22" class="cng"/><text class="ang" x="${cx}" y="33" text-anchor="middle">序言（结构之外）：背景 → 冲突 → 疑问“该不该买？”</text><path class="cng" d="M${cx} 50V${Y}"/>`+r.s;
+    const top=Y,bot=Y+r.h,mid=(top+bot)/2;
+    s+=`<path class="cnb" d="M44 ${top}V${bot}" marker-end="url(#ah)"/><text class="an" x="28" y="${mid}" text-anchor="middle" transform="rotate(-90 28 ${mid})">纵向 · 疑问 / 回答</text>`;
+    const k=r.root.c,kx1=k[0].x,kx2=k[2].x+k[2].bw,ky=r.lvY[1]+r.lvH[1]+13;
+    s+=`<path class="cnb" d="M${kx1} ${ky}H${kx2}" marker-end="url(#ah)" marker-start="url(#ah)"/><rect class="bgp" x="${(kx1+kx2)/2-118}" y="${ky-9}" width="236" height="18"/><text class="an" x="${(kx1+kx2)/2}" y="${ky+4}" text-anchor="middle">横向 · 演绎或归纳（关键句层次）</text>`;
+    const lx=X+r.w+10;
+    s+=`<text class="cap" x="${lx}" y="${r.lvY[0]+r.lvH[0]/2+4}">中心思想</text><text class="cap" x="${lx}" y="${r.lvY[1]+r.lvH[1]/2+4}">关键句</text><text class="cap" x="${lx}" y="${r.lvY[2]+r.lvH[2]/2+4}">支持论点</text>`;
+    return svg(s,lx+60,Y+r.h+6,1040);
+  },
+  deduce(){
+    const bw=128,bh=40,g=34,y=96;let s='';
+    ['鸟会飞','我是一只鸟','因此我会飞'].forEach((t,i)=>{s+=nodeBox(2+i*(bw+g),y,bw,bh,t,i==2?'n1':'n2',13.5,1.4,6);if(i<2)s+=`<path class="cnb" d="M${2+i*(bw+g)+bw} ${y+bh/2}H${2+(i+1)*(bw+g)-2}" marker-end="url(#ah)"/>`});
+    const W=2+3*bw+2*g+2;
+    s+=nodeBox(W/2-110,4,220,42,'我会飞，因为我是鸟','n0',14,1.4,6);
+    s+=`<path class="cnb" d="M${2+2*(bw+g)+bw/2} ${y}L${W/2+60} 48" marker-end="url(#ah)"/><text class="q" x="${W/2-120}" y="76">概括的重点在“因此”引出的结论</text>`;
+    return svg(s,W,y+bh+4,470);
+  },
+  induce(){
+    const r=vtree(T('波兰将受到坦克入侵',['法国坦克已抵达波兰边境','德国坦克已抵达波兰边境','俄国坦克已抵达波兰边境']),{bw:[200,132],fs:[14,12.5],gx:10,gy:[44],x:2,y:4});
+    return svg(r.s+`<rect class="bgp" x="${r.root.cx+5}" y="${r.lvY[0]+r.lvH[0]+3}" width="170" height="15"/><text class="q" x="${r.root.cx+8}" y="${r.lvY[0]+r.lvH[0]+15}">共同点：针对波兰的军事行动</text>`,r.w+4,r.h+8,470);
+  },
+  rotate(){
+    let s='';const bw=104,bh=30,gx=40,gy=10,x0=2,y0=70;
+    const cols=[['存在的问题',['问题一','问题二','问题三']],['产生问题的原因',['原因一','原因二','原因三']],['应采取的措施',['措施一','措施二','措施三']]];
+    cols.forEach((c,i)=>{const x=x0+i*(bw+gx);s+=`<text class="cap" x="${x+bw/2}" y="${y0-10}" text-anchor="middle">${c[0]}</text>`;
+      c[1].forEach((t,j)=>{const y=y0+j*(bh+gy);s+=nodeBox(x,y,bw,bh,t,i==2?'n1':'n2',12.5,1.3,4);if(i<2)s+=`<path class="cn" d="M${x+bw} ${y+bh/2}H${x+bw+gx-3}" marker-end="url(#ahg)"/>`})});
+    const LW=x0+3*bw+2*gx;
+    s+=nodeBox(LW/2-120,4,240,34,'因此，你必须进行改革','n0',13.5,1.3,4);
+    const by=y0+3*(bh+gy)+22;
+    s+=`<text class="an" x="${LW/2}" y="${by}" text-anchor="middle">演绎呈现：读者要把三列逐项对应</text>`;
+    const RX=LW+96;
+    s+=`<path class="cnb" d="M${LW+18} ${y0+50}H${RX-20}" marker-end="url(#ah)"/><text class="q" x="${(LW+RX)/2}" y="${y0+40}" text-anchor="middle">旋转90°</text>`;
+    const r=vtree(T('你必须进行改革',[T('措施一',['问题一','原因一']),T('措施二',['问题二','原因二']),T('措施三',['问题三','原因三'])],{q:'如何进行？'}),{bw:[200,104,54],fs:[13.5,12.5,12],gx:8,gy:[42,34],x:RX,y:4});
+    s+=r.s;
+    const c0=r.root.c[0];
+    s+=`<rect class="bgp" x="${c0.cx+5}" y="${c0.y+c0.h+2}" width="56" height="15"/><text class="q" x="${c0.cx+8}" y="${c0.y+c0.h+14}">为什么？</text>`;
+    s+=`<text class="an" x="${RX+r.w/2}" y="${by}" text-anchor="middle">归纳呈现：先答“如何做”，再答“为什么”</text>`;
+    return svg(s,RX+r.w+4,by+8,1040);
+  },
+  o1(){const r=vtree(T('结果',['原因一','原因二','原因三']),{bw:[120,84],fs:[13.5,12.5],gx:8,gy:[30],x:2,y:2});return svg(r.s,r.w+4,r.h+4,300)},
+  o2(){const r=vtree(T('某公司',['部门甲','部门乙','部门丙']),{bw:[120,84],fs:[13.5,12.5],gx:8,gy:[30],x:2,y:2});return svg(r.s,r.w+4,r.h+4,300)},
+  o3(){const r=vtree(T('所有问题',[L('这3个问题'),{t:'其他问题',cls:'nx'}]),{bw:[120,110],fs:[13.5,12.5],gx:26,gy:[30],x:2,y:2});return svg(r.s,r.w+4,r.h+4,300)},
+  akron(){const r=vtree(T('阿克伦轮胎橡胶公司',['轮胎部','硬件部','体育设备部']),{bw:[210,130],fs:[14,13],gx:14,gy:[36],x:2,y:2});return svg(r.s,r.w+4,r.h+4,460)},
+  act(){const r=vtree(T('行动的结果',['行动一','行动二','行动三']),{bw:[150,92],fs:[13.5,12.5],gx:10,gy:[30],x:2,y:2});return svg(r.s,r.w+4,r.h+4,330)},
+  desc(){const r=vtree(T('共同点的含义',['信息一','信息二','信息三']),{bw:[150,92],fs:[13.5,12.5],gx:10,gy:[30],x:2,y:2});return svg(r.s,r.w+4,r.h+4,330)},
+  report(){const r=vtree(T('月度报告存在问题',[T('数据不可靠',['2','4','6']),T('格式混乱',['5','7','8']),T('生成太晚',['1','3'])]),{bw:[180,112,30],fs:[13.5,13,12],gx:8,gy:[30,24],x:2,y:2});return svg(r.s,r.w+4,r.h+4,470)},
+  r1r2(){
+    let s='';const y=40;
+    s+=`<text class="an" x="2" y="22">背景 · 切入点/序幕</text>`;
+    const bx=[[2,'列出潜在客户的名单',112],[150,'写推销信',96],[282,'邮寄',72]];
+    bx.forEach((b,i)=>{s+=nodeBox(b[0],y,b[2],46,b[1],'n2',13,1.35,6);if(i<2)s+=`<path class="cn" d="M${b[0]+b[2]} ${y+23}H${bx[i+1][0]-3}" marker-end="url(#ahg)"/>`});
+    s+=`<text class="an" x="2" y="${y+84}">困扰/困惑</text><text class="mut" x="2" y="${y+104}">销售额预测将降低10%</text>`;
+    s+=`<text class="an" x="392" y="22">R1 现状</text><text class="mut" x="392" y="42">对年增长率造成影响</text>`;
+    s+=`<text class="an" x="540" y="22">R2 目标</text><text class="mut" x="540" y="42">继续保持10%</text><text class="mut" x="540" y="60">的年增长率</text>`;
+    s+=`<path class="cnb" d="M420 64L500 170L568 76"/>`;
+    s+=nodeBox(380,180,240,34,'疑问：如何从R1到R2？','ng',13.5,1.3,6);
+    s+=`<text class="cap" x="500" y="238" text-anchor="middle">可能的原因藏在序幕里：</text><text class="mut" x="500" y="258" text-anchor="middle">名单过期 / 推销信没有说服力 / 邮寄效率低</text>`;
+    return svg(s,640,266,640);
+  },
+  headache(){
+    const r=htree(T('头痛',[T('身体',[T('外部',['撞伤','过敏','恶劣天气']),T('内部',['流感','脑瘤','脑积水'])]),T('精神',['压力，紧张','多疑'])]),{cw:[64,70,70,96],fs:[13.5,13,12.5,12.5],gx:[28,28,24],gy:6,x:2,y:2});
+    return svg(r.s,r.w+4,r.h+4,520);
+  },
+  costtree(){
+    const r=htree(T('削减直接人工成本',[L('初始准备过程成本'),T('生产部门每根香烟成本',[T('削减每小时成本',['尽量减少加班时间','使用廉价劳动力','尽量减少工资支出']),T('削减每百万根香烟生产时间',['减少每台机器的工人数','提高机器运转速度','提高机器效率'])]),L('包装部门成本'),L('其他成本')]),{cw:[92,120,120,150],fs:[13,12.5,12.5,12],gx:[26,26,24],gy:6,x:2,y:2});
+    return svg(r.s,r.w+4,r.h+4,640);
+  },
+  reason(){
+    let s='';const groups=[['演绎推理',['规则','情况','结果']],['归纳推理',['情况','结果','规则']],['外展推理',['结果','规则','情况']]];
+    const gw=310,bw=70,bh=32,notes=['从规则出发，推出预期的结果','从情况和结果出发，概括出规则','从观察到的结果出发，假设规则，再检验情况'];
+    groups.forEach((g,i)=>{const x0=2+i*(gw+24);s+=`<text class="an" x="${x0}" y="16">${g[0]}</text>`;
+      g[1].forEach((t,j)=>{const x=x0+j*(bw+30);s+=nodeBox(x,28,bw,bh,(j+1)+' '+t,j==0?'n1':'n2',13,1.3,4);if(j<2)s+=`<path class="cnb" d="M${x+bw} ${28+bh/2}H${x+bw+27}" marker-end="url(#ah)"/>`});
+      s+=`<text class="cap" x="${x0}" y="82">${notes[i]}</text>`});
+    return svg(s,3*gw+48+4,90,1040);
+  },
+  charts(){
+    let s='';['有哪些组成部分？','数量如何比较？','有何变化？','各项如何分布？','各项之间的相关性？'].forEach((t,i)=>{s+=nodeBox(2,2+i*34,220,28,t,i==1?'n1':'n2',12.5,1.3,4)});
+    s+=`<path class="cn" d="M222 53H234"/><text class="cap" x="238" y="50">与总数、相互之间、</text><text class="cap" x="238" y="66">随时间比较</text>`;
+    return svg(s,340,2+5*34,340);
+  },
+  nouns(){
+    let s='';
+    s+=nodeBox(2,24,110,34,'销售人员','n1',13.5,1.3,4);
+    s+=nodeBox(232,24,90,34,'商店','n2',13.5,1.3,4);
+    s+=`<path class="cnb" d="M112 41H229" marker-end="url(#ah)"/><text class="q" x="171" y="34" text-anchor="middle">重新部署</text>`;
+    s+=`<rect x="200" y="4" width="150" height="74" class="cng"/><text class="ang" x="275" y="72" text-anchor="middle">新的交易环境</text>`;
+    return svg(s,354,82,360);
+  }
+};
+document.querySelectorAll('[data-fig]').forEach(el=>{const f=FIG[el.dataset.fig];if(f)el.innerHTML=f()});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===b.dataset.p));
+});
+function copyText(t,btn){
+  const done=()=>{const o=btn.textContent;btn.textContent='已复制';setTimeout(()=>btn.textContent=o,1400)};
+  const fb=()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();done()};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,fb);else fb();
+}
+
+/* ---------- SCQA generator ---------- */
+const SK='pyramid-scqa-v2';
+const sEg={s:'业务多元化研究服务在过去5年中增长了40%',c:'无法证明我们的工作对客户有明显益处',q:'如何确保多元化研究确实对客户有明显益处？',a:'实施“公司发展项目”，以研究该问题'};
+let sState=Object.assign({s:'',c:'',q:'',a:'',o:'std'},store.get(SK,{}));
+const end=t=>{t=t.trim();if(!t)return '';return /[。！？!?…”」]$/.test(t)?t:t+'。'};
+const endQ=t=>{t=t.trim();if(!t)return '';return /[？?]$/.test(t)?t:t.replace(/[。.]$/,'')+'？'};
+const strip=(t,re)=>t.replace(re,'');
+function renderS(){
+  ['s','c','q','a'].forEach(k=>{const el=$('s_'+k);if(el.value!==sState[k])el.value=sState[k]});
+  document.querySelectorAll('#ordOpts .opt').forEach(c=>c.classList.toggle('on',c.dataset.o===sState.o));
+  const S=end(sState.s),C=end(sState.c),Q=endQ(sState.q),A=end(sState.a);
+  const Cb=C?'但是，'+strip(C,/^(但是|但|然而|可是)[，,]?/):'';
+  const Ab=A?'因此，'+strip(A,/^(因此|所以|为此)[，,]?/):'';
+  let parts;
+  switch(sState.o){
+    case 'direct':parts=[A,S,Cb];break;
+    case 'worry':parts=[C,S?'而与此同时，'+S:'',Ab];break;
+    case 'conf':parts=[Q,S,Cb,A?'为此，我建议'+strip(A,/^(因此|所以|为此|我建议)[，,]?/):''];break;
+    default:parts=[S,Cb,Ab];
+  }
+  let out=parts.filter(Boolean).join('');
+  if(sState.o!=='conf'&&Q)out+=(out?'\n\n':'')+'（读者心中的疑问：'+Q+'）';
+  $('s_out').textContent=out||'在左边填入背景、冲突、疑问和回答，这里会按所选顺序拼成一段开头。';
+  const h=[];
+  if(!sState.s.trim()||!sState.c.trim()||!sState.a.trim())h.push(['warn','序言必须包含背景、冲突和答案3个要素，缺一不可。']);else h.push(['ok','背景、冲突、答案三要素齐全。']);
+  if(/(图|表)\s*\d/.test(sState.s+sState.c))h.push(['warn','序言是“提示”而不是“告诉”，不应当含有图表。']);
+  if(sState.q.trim()&&!/[？?]\s*$/.test(sState.q.trim())&&!/(吗|呢|如何|怎么|什么|哪|是否|为什么)/.test(sState.q))h.push(['warn','疑问最好写成一个真正的问句；全文只回答这一个初始疑问。']);
+  if(/^\s*(本文|本备忘录|本报告).{0,10}(讨论|介绍|说明|分为)/.test(sState.a))h.push(['warn','回答应当是一个观点，而不是“本文将讨论……”。']);
+  if(/(\d+|两|三|四|五|几)\s*(个|项|点)\s*(问题|原因|建议|目标|改革|方面|因素)/.test(sState.a))h.push(['warn','回答里出现了“几个问题 / 几项建议”这类“缺乏思想”的说法，试着直接说出它们的共同含义。']);
+  $('s_hints').innerHTML=h.map(x=>`<li class="${x[0]}">${esc(x[1])}</li>`).join('');
+  store.set(SK,sState);
+}
+['s','c','q','a'].forEach(k=>$('s_'+k).addEventListener('input',e=>{sState[k]=e.target.value;renderS()}));
+document.querySelectorAll('#ordOpts .opt').forEach(c=>c.onclick=()=>{sState.o=c.dataset.o;renderS()});
+$('s_eg').onclick=()=>{sState=Object.assign({},sEg,{o:sState.o});renderS()};
+$('s_clear').onclick=()=>{sState={s:'',c:'',q:'',a:'',o:sState.o};renderS()};
+$('s_copy').onclick=e=>copyText($('s_out').textContent,e.target);
+renderS();
+
+/* ---------- Pyramid draft ---------- */
+const DK='pyramid-draft-v2';
+const dEg={top:'购买英国莱兰公司的特许经营权',q:'为什么？',keys:[{t:'将快速增长',s:'市场份额大\n零售竞争小'},{t:'将产生经济效益',s:'成本低\n销售额增长\n利润增长'},{t:'容易引入',s:'独立业务\n可以用相同的管理人员\n管理流程简单'}]};
+const blank=()=>({top:'',q:'为什么？',keys:[{t:'',s:''},{t:'',s:''},{t:'',s:''}]});
+let dState=store.get(DK,null)||blank();
+const lines=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
+const emptyRe=/(\d+|两|二|三|四|五|六|七|八|九|十|几)\s*(个|项|点|大|条)\s*(问题|原因|理由|建议|目标|改革|方面|因素|特点|步骤|措施)/;
+function buildKeys(){
+  $('d_keys').innerHTML=dState.keys.map((k,i)=>`<div class="kp"><label class="fld"><span>关键句要点 ${i+1}</span><input data-i="${i}" data-f="t" value="${esc(k.t)}"></label><label class="fld"><span>支持论点 <small>一行一个</small></span><textarea rows="3" data-i="${i}" data-f="s">${esc(k.s)}</textarea></label></div>`).join('');
+}
+function renderD(){
+  if($('d_top').value!==dState.top)$('d_top').value=dState.top;
+  $('d_q').value=dState.q;
+  const ks=dState.keys;
+  const root=T(dState.top||'（中心思想）',ks.map(k=>{const sub=lines(k.s);return sub.length?T(k.t||'（关键句要点）',sub):{t:k.t||'（关键句要点）'}}),{q:'读者：'+dState.q});
+  const r=vtree(root,{bw:[260,150,96],fs:[15,13.5,12.5],gx:10,gy:[46,34],x:2,y:2});
+  $('d_tree').innerHTML=svg(r.s,r.w+4,r.h+4);
+  const h=[];const filled=ks.filter(k=>k.t.trim());
+  if(!dState.top.trim())h.push(['warn','先写出中心思想：一个包括主语和谓语的句子。']);
+  else if(emptyRe.test(dState.top))h.push(['warn','中心思想像是“缺乏思想”的句子（如“存在3个问题”），试着说出这些要点共同的含义或行动的结果。']);
+  else h.push(['ok','中心思想是一句完整的话。']);
+  if(filled.length<2)h.push(['warn','每一层级不可能只有一个要点，至少要两个。']);
+  if(ks.length>5)h.push(['warn','关键句要点超过5个，很可能还可以再分组。']);
+  if(ks.some(k=>lines(k.s).length>5))h.push(['warn','有一组支持论点超过5个。归纳组最好不超过5个，演绎链不超过4步。']);
+  ks.forEach((k,i)=>{if(k.t.trim()&&emptyRe.test(k.t))h.push(['warn',`要点 ${i+1} 是“缺乏思想”的写法，改成完整的观点。`])});
+  const kw={'为什么？':'原因','如何做到？':'步骤','具体是哪些？':'类别','你们发现了什么？':'发现'}[dState.q];
+  if(filled.length>=2)h.push(['ok',`检查：这 ${filled.length} 个要点能否都用同一个名词“${kw}”来称呼？它们是否按时间、结构或程度顺序排列？`]);
+  $('d_hints').innerHTML=h.map(x=>`<li class="${x[0]}">${esc(x[1])}</li>`).join('');
+  store.set(DK,dState);
+}
+$('d_keys').addEventListener('input',e=>{const i=e.target.dataset.i,f=e.target.dataset.f;if(i==null)return;dState.keys[i][f]=e.target.value;renderD()});
+$('d_top').addEventListener('input',e=>{dState.top=e.target.value;renderD()});
+$('d_q').addEventListener('change',e=>{dState.q=e.target.value;renderD()});
+$('d_add').onclick=()=>{if(dState.keys.length<7){dState.keys.push({t:'',s:''});buildKeys();renderD()}};
+$('d_del').onclick=()=>{if(dState.keys.length>1){dState.keys.pop();buildKeys();renderD()}};
+$('d_eg').onclick=()=>{dState=JSON.parse(JSON.stringify(dEg));buildKeys();renderD()};
+$('d_clear').onclick=()=>{dState=blank();buildKeys();renderD()};
+$('d_copy').onclick=e=>{
+  let t=(dState.top||'（中心思想）')+'\n  读者：'+dState.q+'\n';
+  dState.keys.forEach((k,i)=>{t+=`${i+1}. ${k.t||'（要点）'}\n`;lines(k.s).forEach(x=>t+=`   - ${x}\n`)});
+  copyText(t,e.target);
+};
+buildKeys();renderD();
+
+/* ---------- checklist ---------- */
+const TODO=[
+["动笔前先搭结构","不要一坐下来就写。先试自上而下；顶部想不清，再自下而上：列要点、找关系、得结论。","第3章"],
+["写下读者的那一个疑问","全文只回答一个初始疑问；若有两个，它们必定相关，可合并为一个。","第4章"],
+["序言从“背景”开始构思","背景和冲突只放读者已知、不会质疑的信息，不放图表；历史背景放在序言，不进正文。","第3、4章"],
+["序言三要素齐全","背景、冲突、答案缺一不可；顺序可以按想要的口吻调整。","第4章"],
+["做一次“30秒测试”","让人只读开头：能否说出你的中心思想和关键句要点？不能就重写。","第3、10章"],
+["关键句层次用归纳","把“问题—原因—措施”的演绎链旋转90度，措施放上来；演绎留在较低层次，不超过4步。","第5章"],
+["数一数每组有几个","超过7个必须分组，最好不超过4到5个；每一层至少两个。","第1、6、10章"],
+["用一个名词检验每组","能否用“原因”“步骤”“问题”这样的单一名词称呼整组？不能就重新分组。","第1、5章"],
+["给每组找出逻辑顺序","时间、结构还是程度？找不到，说明分组有问题，或者思考还不周全。","第6章"],
+["划掉“缺乏思想”的句子","把“存在3个问题”改成共同点的含义，把“采取5项措施”改成行动的直接结果；措辞要明确到能判断是否完成。","第7章"],
+["先界定R1和R2，再收集资料","写清序幕、困扰、现状和目标，判断读者处在7种问题中的哪一种。","第8章"],
+["先假设，再求证","用诊断框架设想可能原因，设计能用“是 / 否”回答的问题，只收集能证实或排除假设的资料。","第9章"],
+["标题写成观点","不用“背景”“我们的发现”“结论”；同组标题句型相同，每组标题前有一段介绍。","第3、10章"],
+["幻灯片标题写成结论","写“西部地区约占利润的一半”，而不是“各地区利润份额”。然后排练，排练，再排练！","第11章"]
+];
+const CK='pyramid-check-v2',saved=store.get(CK,[]);
+const ck=$('check');
+ck.innerHTML=TODO.map((t,i)=>`<label><input class="ckb" type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${String(i+1).padStart(2,'0')}　${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  store.set(CK,on);
+  $('pfill').style.width=(on.length/TODO.length*100)+'%';
+  $('ptxt').textContent=on.length+' / '+TODO.length;
+}
+ck.addEventListener('change',prog);prog();
+
+/* ---------- How-to drawer ---------- */
+const HOW={
+  write:{name:'写邮件 / 报告',sub:'第1、2篇 · 第10章',stages:[
+    ['今天就做','3 件 15 分钟内能完成的事',[
+      ['把结论挪到第一句','拿出手头一封待发的邮件或备忘录，把要对方回答或决定的事写成第一句，理由放到后面。就像前言里的例子：“今天的会议可以改在星期四上午11点开吗？因为……”','前言'],
+      ['写下这份文字的 S、C、Q','各用一句话写出背景（读者不会质疑的事实）、冲突（发生了什么）和读者的疑问，检查你的第一句是否正面回答了这个疑问。','第3、4章'],
+      ['数一数下面的要点','要点超过5个，就按共同点归成几组，每组能用一个名词概括，比如“原因”“步骤”“问题”。','第1、6章']
+    ]],
+    ['第一周','要建立的做法',[
+      ['动笔前先搭结构','每次先画主题方框，写疑问、答案、背景、冲突，再确定关键句（自上而下）；顶部想不清，就列出所有要点、找关系、得结论（自下而上）。','第3章'],
+      ['关键句层次用归纳','需要说服时，先说“如何做”的措施，每条措施下再说“为什么”；演绎推理留在段落里，不超过4步。','第5章'],
+      ['改写“缺乏思想”的句子','“存在3个问题”“建议5项改革”这类总结句一律改写：行动类写出直接结果，描述类写出共同点的含义。','第7章'],
+      ['长文用多级标题','标题写成观点，同组标题句型相同，每组标题前先写一段集中介绍；不用“背景”“我们的发现”当标题。','第10章']
+    ]],
+    ['一个月后','要形成的习惯和检验方法',[
+      ['习惯：先想后写','动笔前先把思想放进金字塔，用三条规则检查。检验：读者能否在最初30秒内了解你的全部思路，不能就重写。','前言，第3章'],
+      ['习惯：每组都有逻辑顺序','检验：对每一组都说得出为什么第二个排在第二位，以及它属于时间、结构还是程度顺序。','第1、6章'],
+      ['检验作者承诺的三个变化','对比一个月前后：完成终稿的时间是否缩短，条理是否更清楚，篇幅是否更短。','前言']
+    ]],
+    ['卡住了怎么办','书里提到的常见障碍与对策',[
+      ['一坐下来就不知道从哪里写','不要幻想一坐下就组织成金字塔。顶部想不清，就从关键句层次开始，或者先列出所有想表达的要点，自下而上。','第2、3章'],
+      ['写成了一长串并列要点','先把每句改写成只留主谓宾的短句，合并同类项，再选顺序。看不出共性，说明思考还不周全。','第6章，附录3'],
+      ['舍不得删已经写好的句子','思想一旦变成文字就显得“字字珠玑”。所以先搭结构再写，不要试图一下子把整篇写出来。','第3章'],
+      ['不确定读者的疑问是什么','看看你打算放进正文的素材：它们回答了什么问题？用倒推法想出疑问和序言。','第4章']
+    ]]
+  ]},
+  slides:{name:'做汇报幻灯片',sub:'第11章 · 第4章',stages:[
+    ['今天就做','3 件 15 分钟内能完成的事',[
+      ['在一张白纸上画故事梗概','把白纸分成若干格，每格代表一张幻灯片，写上要阐述的要点，标明哪些用文字页、哪些用图表页。','第11章'],
+      ['把每页标题改成结论句','用完整的陈述句：写“销售前景看好”，而不是“销售前景”。','第11章'],
+      ['给每张图表先写出它要回答的问题','组成部分？数量比较？变化？分布？相关性？把答案写成图表标题，例如“西部地区约占利润的一半”。','第11章']
+    ]],
+    ['第一周','要建立的做法',[
+      ['先把序言逐字写出来','把想说的每个词按顺序写下，并再次检查你回答的问题是否仍是受众想问的。','第11章'],
+      ['按金字塔排页','从上到下依次是序言各要素、关键句要点、关键句下一层的论点。','第11章'],
+      ['文字页只放结论','只放最重要、经过分组和总结的思想；每次只讲一个论点，每页不超过6行、约30个单词。','第11章'],
+      ['用简单的词和数字','少用技术术语和长串单词；490万美元比4876987美元好记；复杂图表全片不超过一两个。','第11章']
+    ]],
+    ['一个月后','要形成的习惯和检验方法',[
+      ['习惯：排练，排练，再排练','每次演示前都按讲稿完整排练，确保整个演示像讲故事一样流畅。','第11章'],
+      ['检验：你是明星，幻灯片是辅助','你说的和屏幕上显示的应明显不同，没有逐字念项目清单的“视觉朗诵”；图表页约占90%，文字页约占10%。','第11章'],
+      ['检验：最远的人也能看清','最远观众到屏幕的距离（英尺）除以32，就是可以看清的最小字号（英寸）。','第11章']
+    ]],
+    ['卡住了怎么办','书里提到的常见障碍与对策',[
+      ['幻灯片变成一页页项目清单','这就是“视觉朗诵”。文字页只用来说明框架结构、强调重要结论，其余用图表说明数据和关系。','第11章'],
+      ['一页放不下一个观点','用多张幻灯片；也可以让各部分逐一显示，边演示边解释。','第11章'],
+      ['担心遗漏，想把讲稿全放上去','讲稿和幻灯片要分开。需要发给未参会者时，可以把幻灯片和写成大纲形式的讲稿糅合在一起。','第11章'],
+      ['听众注意力不集中','商业演示也需要“作秀”：故事情节、时机、节奏和悬念。可以用背景—冲突—疑问把听众带进每个要点。','第10、11章']
+    ]]
+  ]},
+  analyze:{name:'分析问题',sub:'第3篇 · 附录1、2',stages:[
+    ['今天就做','3 件 15 分钟内能完成的事',[
+      ['写出问题的四要素','序幕（相关的结构或流程）、困扰（打乱稳定的事件）、R1（你不喜欢的现状）、R2（尽量具体、定量的目标）。','第8章'],
+      ['判断读者处在哪一种问题','对照7种情形：不知如何从R1到R2、有方案不确定对不对、不知如何实施、方案行不通、不知选哪个……写出对应的S-C-Q。','第8章'],
+      ['把“关键问题”改成是非问题','把“必要的存货水平是多少”改成“现有的存货水平是否太高”这样能用“是/否”回答的问题。','第9章']
+    ]],
+    ['第一周','要建立的做法',[
+      ['收集资料前先建诊断框架','呈现有形结构、寻找因果关系或把可能原因分类，各分支做到相互独立、完全穷尽。','第9章'],
+      ['先假设，再收集','提出可能的原因，只收集能证实或排除这些假设的资料；事先确定资料来源、分派任务、制定时间表。','第9章'],
+      ['用逻辑树展开方案','按MECE把所有可能的做法逐层展开，再计算收益、评估每种方案的风险。','第9章'],
+      ['按序列分析推进','是否有问题 → 问题在哪里 → 为什么存在 → 我们能做什么 → 我们应该做什么。','第8、9章']
+    ]],
+    ['一个月后','要形成的习惯和检验方法',[
+      ['习惯：先界定R2','解决问题的第一步通常就是界定R2；对方要“备选方案”时，围绕可供选择的R2来构思。','第8章，附录2'],
+      ['检验：分析能直接变成文章','前两问的答案能直接写成序言，后三问的答案能直接转成金字塔。','第8章'],
+      ['检验：知道何时停止调研','你的是非问题能否给出明确的是或否，并提前告诉你何时可以结束调研。','第9章']
+    ]],
+    ['卡住了怎么办','书里提到的常见障碍与对策',[
+      ['被淹没在资料里','停止面面俱到地收集。从资料入手的方式被估计有高达60%是无用功；回到诊断框架，只找能证实或排除假设的资料。','第9章'],
+      ['在几个方案之间比来比去','采用C的理由是C行之有效，而不是A和B不好；不要把备选方案罗列出来再一一否定。','第8章，附录2'],
+      ['说不清目标是什么','这正是第6种情形：知道R1、说不清R2。先确定具体的R2，再寻找方案。','第8章'],
+      ['结构根本不存在或看不见','用外展推理：先假设一个能解释结果的结构，再设计能得出明确“是”或“否”的实验。','附录1']
+    ]]
+  ]}
+};
+const HK='pyramid-howto-v1';
+let hState=Object.assign({scene:'write',done:{}},store.get(HK,{}));
+const scenesEl=$('scenes'),body=$('dwBody');
+scenesEl.innerHTML=Object.entries(HOW).map(([k,v])=>`<button class="scene" role="tab" data-k="${k}">${v.name}<small>${v.sub}</small></button>`).join('');
+function renderHow(){
+  const sc=HOW[hState.scene];
+  scenesEl.querySelectorAll('.scene').forEach(b=>{const on=b.dataset.k===hState.scene;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
+  body.innerHTML=sc.stages.map((st,si)=>`<div class="stage${si==3?' stuck':''}"><div class="stage-hd"><span class="no">${['①','②','③','④'][si]}</span><h4>${st[0]}</h4><span>${st[1]}</span></div>${st[2].map((it,ii)=>{const id=hState.scene+'-'+si+'-'+ii;return `<label class="step"><input class="ckb" type="checkbox" data-id="${id}" ${hState.done[id]?'checked':''}><div><b>${si==3?'<span class="ob">障碍：</span>':''}${esc(it[0])}</b><span>${si==3?'对策：':''}${esc(it[1])}</span><em>出处：${esc(it[2])}</em></div></label>`}).join('')}</div>`).join('');
+  updHow();
+}
+function updHow(){
+  const sc=HOW[hState.scene];let n=0,d=0;
+  sc.stages.forEach((st,si)=>st[2].forEach((it,ii)=>{n++;if(hState.done[hState.scene+'-'+si+'-'+ii])d++}));
+  $('dwFill').style.width=(n?d/n*100:0)+'%';$('dwTxt').textContent=d+' / '+n;
+  let N=0,D=0;Object.keys(HOW).forEach(k=>HOW[k].stages.forEach((st,si)=>st[2].forEach((it,ii)=>{N++;if(hState.done[k+'-'+si+'-'+ii])D++})));
+  $('fabProg').textContent=D?D+'/'+N:'';
+  store.set(HK,hState);
+}
+scenesEl.addEventListener('click',e=>{const b=e.target.closest('.scene');if(!b)return;hState.scene=b.dataset.k;renderHow();body.scrollTop=0});
+body.addEventListener('change',e=>{const id=e.target.dataset.id;if(!id)return;if(e.target.checked)hState.done[id]=1;else delete hState.done[id];updHow()});
+$('dwReset').onclick=()=>{Object.keys(hState.done).forEach(k=>{if(k.startsWith(hState.scene+'-'))delete hState.done[k]});renderHow()};
+const drawer=$('drawer'),scrim=$('scrim'),fab=$('fab');
+function openHow(){drawer.classList.add('on');scrim.classList.add('on');drawer.setAttribute('aria-hidden','false');fab.setAttribute('aria-expanded','true');document.body.classList.add('locked');setTimeout(()=>$('dwClose').focus(),60)}
+function closeHow(){drawer.classList.remove('on');scrim.classList.remove('on');drawer.setAttribute('aria-hidden','true');fab.setAttribute('aria-expanded','false');document.body.classList.remove('locked');fab.focus()}
+fab.onclick=openHow;$('dwClose').onclick=closeHow;scrim.onclick=closeHow;
+addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('on'))closeHow()});
+renderHow();
+
+/* ---------- reveal & nav ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('nav.top a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  let k=-1;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<140)k=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===k));
+},{passive:true});
+</script>
+</body>
+</html>
