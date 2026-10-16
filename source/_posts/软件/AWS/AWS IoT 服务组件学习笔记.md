@@ -14,6 +14,8 @@ source_url: https://blog.csdn.net/weixin_38781498/article/details/138570018
 source_title: Amazon IoT 服务的组件
 ---
 
+> 来自课程翻译。
+
 [AWS 实战与学习笔记：系列目录](/series/aws/)
 
 

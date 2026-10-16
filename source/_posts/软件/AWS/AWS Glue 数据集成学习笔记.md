@@ -14,6 +14,8 @@ source_url: https://blog.csdn.net/weixin_38781498/article/details/136683308
 source_title: 亚马逊云科技Glue
 ---
 
+> 来自课程翻译。
+
 [AWS 实战与学习笔记：系列目录](/series/aws/)
 
 

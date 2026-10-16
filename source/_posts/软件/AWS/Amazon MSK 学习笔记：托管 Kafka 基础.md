@@ -14,6 +14,8 @@ source_url: https://blog.csdn.net/weixin_38781498/article/details/136692826
 source_title: Fundamentals of Amazon MSK (Amazon Managed Streaming for kafka)
 ---
 
+> 来自课程翻译。
+
 [AWS 实战与学习笔记：系列目录](/series/aws/)
 
 
