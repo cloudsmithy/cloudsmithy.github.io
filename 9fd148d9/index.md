@@ -1,0 +1,68 @@
+# 懒猫微服实战入门（十九）：我最喜欢的 RSS 阅读器-FreshRSS
+
+- URL: https://blog.no-claw.com/9fd148d9/
+- 日期: 2025-07-10
+- 分类: 懒猫微服 / 入门
+- 标签: 懒猫微服
+
+自建的博客都可以接入 RSS 订阅，我之很喜欢的一款 FreshRSS 在懒猫微服的商店上架了，可以联动一下了。
+
+[图：image-20250710111228317]
+
+我的博客 RSS 订阅是：https://cloudsmithy.github.io/atom.xml
+
+然后点击左上角的订阅管理，先新建一个分类，然后是输入 RSS 订阅地址即可。
+
+[图：image-20250710111327135]
+
+我也添加了懒猫微服王总的博客订阅：https://manateelazycat.github.io/feed.xml
+
+[图：fdb69d74740805003e9eba315c23c30b]
+
+这个是我博客的订阅效果，这样在 PC 和移动端都可以访问了：
+
+[图：image-20250710110130424]
+
+那如果想让用其他的软件订阅这个 FreshRSS 呢，在右上角点击设置，然后选择认证，点击允许 API 访问。然后就可以通过抓数据的方式进行访问。
+
+[图：image-20250710110209454]
+
+然后回到账户管理，这个时候下面就出来了 API 管理这个选项，设置 token 然后就可以使用了。
+
+[图：image-20250710110308889]
+
+然后我们访问 API 端点：https://freshrss.<机器名字>.heiyu.space/api/
+
+这里可以看到 Google Reader compatible API 和 Fever compatible API。
+
+```
+FreshRSS API endpoints
+Google Reader compatible API
+Your API address:
+https://freshrss.<机器名字>.heiyu.space/api/greader.php
+Google Reader API configuration test:
+✔️ PASS
+Fever compatible API
+Your API address:
+https://freshrss.micro.<机器名字>.space/api/fever.php
+Fever API configuration test:
+✔️ PASS
+```
+
+那接下来使用 fluent-reader 订阅微服里的 FreshRSS。选择 Fever API，输入上边 RSS API 返回的 URL。
+
+[图：22a10f7d54a372eee2250cd11700ed11]
+
+用户名和密码是登录 FreshRSS 的用户密码，然后端点是 Fever compatible API。（这里没有用到 token）
+
+[图：776b56ff7038d900f9d7d8c7c08f0b27]
+
+这个就是订阅的效果了。（FreshRSS 夹带私货自动订阅 release）
+
+[图：image-20250710113632046]
+
+在 APP 里还挺好看的。（除了 fluent-reader 不支持检索）
+
+[图：2bb3f4399b86b3d27f86988571d8018b]
+
+用懒猫微服当作一个 RSS 存储的后端，同时也提供了一个 FreshRSS 的部署版本，很多记忆再也不会丢了。
