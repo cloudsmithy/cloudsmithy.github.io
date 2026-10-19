@@ -45,7 +45,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{margin:0;color:var(--ink);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased;
-  background:radial-gradient(1100px 520px at 50% -80px,var(--glow),transparent 70%),var(--bg)}
+  background:radial-gradient(1100px 520px at 50% -80px,var(--glow),transparent 70%) no-repeat,var(--bg)}
 a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.35;margin:0}
@@ -160,7 +160,7 @@ h3.sub small{font-family:var(--sans);font-weight:400;font-size:13px;color:var(--
 .laws{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:lw}
 .laws.c2col{grid-template-columns:repeat(2,1fr)}
 .laws.c4col{grid-template-columns:repeat(4,1fr)}
-.law{position:relative;counter-increment:lw;background-color:var(--paper);border:1px solid var(--line);border-radius:3px;padding:14px 16px 16px;box-shadow:0 1px 0 var(--line),0 6px 14px -8px rgba(60,40,20,.3);
+.law{position:relative;counter-increment:lw;background-color:var(--paper);border:1px solid var(--line);border-radius:3px;padding:14px 16px 26px;box-shadow:0 1px 0 var(--line),0 6px 14px -8px rgba(60,40,20,.3);
   background-image:repeating-linear-gradient(180deg,transparent 0 23px,var(--rule) 23px 24px);background-position:0 54px;transition:transform .2s,box-shadow .2s}
 .law:hover{transform:translateY(-2px);box-shadow:0 1px 0 var(--line),0 12px 20px -10px rgba(60,40,20,.4)}
 .law::before{content:"No." counter(lw,decimal-leading-zero);font-family:var(--serif);color:var(--c);font-weight:700;font-size:12px;letter-spacing:.08em}
@@ -255,6 +255,7 @@ h3.sub small{font-family:var(--sans);font-weight:400;font-size:13px;color:var(--
 .quotes{columns:2;column-gap:18px}
 .quote{break-inside:avoid;background:var(--page);border:1px solid var(--line);border-radius:2px;padding:22px 24px 16px 26px;margin-bottom:18px;position:relative;font-family:var(--serif);font-size:17px;line-height:1.85;box-shadow:4px 4px 0 -1px var(--paper),4px 4px 0 0 var(--line),var(--shadow)}
 .quote::before{content:"「";color:var(--c);font-size:26px;position:absolute;left:6px;top:4px;line-height:1}
+.quote::after{content:"」";color:var(--c);font-size:20px;line-height:1;margin-left:2px}
 .quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12px;color:var(--ink3);margin-top:8px;letter-spacing:.06em}
 .quote cite::before{content:"—— "}
 
@@ -285,13 +286,14 @@ details.toc[open] summary::after{transform:rotate(45deg)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink3);margin-top:14px;align-items:center}
 .legend i{display:inline-block;width:10px;height:18px;border-radius:2px;vertical-align:-4px;margin-right:6px}
 .tbl-wrap{overflow-x:auto;border-radius:4px;box-shadow:var(--shadow)}
-table.cmp{width:100%;min-width:1000px;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;font-size:13.5px}
+table.cmp{width:100%;min-width:1000px;table-layout:fixed;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;font-size:13.5px}
 .cmp th,.cmp td{padding:12px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.65}
 .cmp td+td,.cmp th+th{border-left:1px dotted var(--line)}
 .cmp tr:last-child td{border-bottom:none}
 .cmp thead th{font-family:var(--serif);font-size:14px;background:var(--page);color:var(--c);box-shadow:inset 0 4px 0 var(--c)}
 .cmp thead th:first-child{color:var(--ink3);box-shadow:inset 0 4px 0 var(--brand)}
-.cmp td:first-child{font-family:var(--serif);font-weight:700;color:var(--brand);font-size:14.5px;width:118px;background:var(--page)}
+.cmp td:first-child{font-family:var(--serif);font-weight:700;color:var(--brand);font-size:14.5px;background:var(--page)}
+.cmp th:first-child{width:104px}
 .cmp td{color:var(--ink2)}
 .cmp td.no{color:var(--ink3);opacity:.5;text-align:center}
 
@@ -341,7 +343,10 @@ footer .wrap{opacity:.9}
 @media (max-width:620px){
   .wrap{padding:0 16px}
   .catalog,.grid3,.laws,.laws.c2col,.laws.c4col,.claims,.check,.stats,.grid4{grid-template-columns:1fr}
-  .tiles,.steps{grid-template-columns:1fr!important}
+  .steps{grid-template-columns:1fr!important}
+  .tiles{grid-template-columns:1fr 1fr!important}
+  #heat{min-width:0!important}
+  .tbl-hint{display:block!important}
   .quotes{columns:1}
   .chl{grid-template-columns:1fr;gap:2px}
   .rung{grid-template-columns:1fr;gap:4px}
@@ -371,6 +376,8 @@ footer .wrap{opacity:.9}
 .dw-k{font-size:11.5px;letter-spacing:.2em;color:var(--c);font-weight:700}
 .dw-head h2{font-size:24px;margin-top:4px}
 .dw-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink2);font-size:22px;line-height:1;cursor:pointer}
+.dw-x:focus-visible,.dw-x:focus{outline:2px solid var(--c);outline-offset:2px}
+.tbl-hint{display:none;font-size:12px;color:var(--ink3);margin:0 0 8px}
 .dw-x:hover{color:var(--ink);border-color:var(--c)}
 .dw-tabs{display:flex;gap:6px;padding:12px 22px 10px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);background:var(--bg2)}
 .dw-tabs::-webkit-scrollbar{display:none}
@@ -484,7 +491,7 @@ body.dw-lock{overflow:hidden}
         <div class="en">Focal Point · 博恩·崔西 著 · 史雷 译</div>
       </div>
     </div>
-    <p class="thesis reveal">序言里有个故事：核电站请来的专家只在一根管子上画了个“×”，账单上写着：在测量仪上面画“×”，收费1美元；查找应该在哪个测量仪上面画“×”，收费9999美元。这个 × 就是<strong>关键点</strong>：在特定时刻、特定领域里，能带来最好结果的那件事。全书教你在工作、家庭、财务、健康、成长、社会贡献、精神这 7 个领域，各自找到自己的“×”。</p>
+    <p class="thesis reveal">序言里有个故事：核电站请来的专家只在一个测量仪上画了个“×”，账单上写着：在测量仪上面画“×”，收费1美元；查找应该在哪个测量仪上面画“×”，收费9999美元。这个 × 就是<strong>关键点</strong>：在特定时刻、特定领域里，能带来最好结果的那件事。全书教你在工作、家庭、财务、健康、成长、社会贡献、精神这 7 个领域，各自找到自己的“×”。</p>
 
     <div class="claims reveal">
       <div class="claim"><span class="k">改变的 4 种途径</span><b>多做 · 少做 · 开始做 · 停止做</b><span>改善生活和工作只需做好这 4 件事。书里从序言一直讲到第 12 章。</span></div>
@@ -697,7 +704,7 @@ body.dw-lock{overflow:hidden}
       <div class="part-lbl">第二部分 提高效率</div>
       <div class="law"><h4>提高生产力的11种方法</h4><p>从写下目标、列计划、定优先顺序，一直到整合工作、简化步骤。</p></div>
       <div class="law"><h4>帕累托法则</h4><p>80% 的成就来自 20% 的付出。用“每小时工资率”判断一件事值不值得亲自做。</p></div>
-      <div class="law"><h4>归零思考法</h4><p>“就现在所知，如果得从头再来，我会再次这样做吗？”答案是“不会”，就改造或淘汰。</p></div>
+      <div class="law"><h4>归零思考法</h4><p>问自己：如果当初就知道现在知道的事，还会这么做吗？答案是“不会”，就改造或淘汰。</p></div>
       <div class="law"><h4>有效委托</h4><p>10 个基本原则。“有效委托并不是退位让权”。</p></div>
       <div class="law"><h4>杠杆的力量</h4><p>借用他人的精力、知识、金钱、成功、失败、点子和关系网，共 7 种杠杆。</p></div>
       <div class="law"><h4>李嘉图的比较优势法则</h4><p>专业化带来财富。把别人能做到你 75% 水平的工作交出去。</p></div>
@@ -729,20 +736,23 @@ body.dw-lock{overflow:hidden}
       <svg viewBox="0 0 900 300" role="img" aria-label="S形曲线三个阶段">
         <line x1="60" y1="260" x2="860" y2="260" stroke="var(--line)" stroke-width="2"/>
         <line x1="60" y1="260" x2="60" y2="30" stroke="var(--line)" stroke-width="2"/>
-        <rect x="60" y="30" width="240" height="230" fill="var(--cs)" opacity=".35"/>
-        <rect x="560" y="30" width="300" height="230" fill="var(--cs)" opacity=".2"/>
-        <path d="M60 235 C150 250 230 245 300 200 S420 70 520 60 S640 70 700 130" fill="none" stroke="var(--c)" stroke-width="4" stroke-linecap="round"/>
-        <path d="M640 230 C700 245 760 238 820 195" fill="none" stroke="var(--c)" stroke-width="3" stroke-dasharray="7 7" opacity=".75"/>
-        <path d="M700 130 Q690 190 652 224" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-dasharray="3 5"/>
-        <text x="180" y="58" text-anchor="middle" class="t-c">阶段一 · 学习期</text>
-        <text x="180" y="80" text-anchor="middle" class="t-s">机遇与困难并存，多数新企业过不了这关</text>
-        <text x="180" y="98" text-anchor="middle" class="t-s">对策：勇气、毅力、策略上的灵活性</text>
-        <text x="420" y="160" text-anchor="middle" class="t-c">阶段二 · 成长期</text>
-        <text x="420" y="182" text-anchor="middle" class="t-s">业务量和收益大增</text>
-        <text x="420" y="200" text-anchor="middle" class="t-s">对策：别被成功冲昏头，建立现金储备</text>
-        <text x="710" y="58" text-anchor="middle" class="t-c">阶段三 · 下降期</text>
-        <text x="710" y="80" text-anchor="middle" class="t-s">收益、热情、士气都在下滑</text>
-        <text x="760" y="178" text-anchor="middle" class="t-s">重做战略规划 → 新的阶段一</text>
+        <rect x="60" y="30" width="240" height="230" fill="var(--cs)" opacity=".45"/>
+        <rect x="300" y="30" width="300" height="230" fill="var(--cs)" opacity=".18"/>
+        <rect x="600" y="30" width="260" height="230" fill="var(--cs)" opacity=".45"/>
+        <path d="M60 228 C150 248 240 244 300 200 S440 70 520 62 S600 80 640 140" fill="none" stroke="var(--c)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M640 140 Q648 200 664 236" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-dasharray="3 5"/>
+        <path d="M664 240 C720 252 790 246 850 200" fill="none" stroke="var(--c)" stroke-width="3" stroke-dasharray="7 7" opacity=".8"/>
+        <text x="180" y="62" text-anchor="middle" class="t-c">阶段一 · 学习期</text>
+        <text x="180" y="84" text-anchor="middle" class="t-s">机遇与困难并存</text>
+        <text x="180" y="102" text-anchor="middle" class="t-s">多数新企业过不了这关</text>
+        <text x="180" y="120" text-anchor="middle" class="t-s">对策：勇气、毅力、灵活</text>
+        <text x="410" y="172" text-anchor="middle" class="t-c">阶段二 · 成长期</text>
+        <text x="410" y="194" text-anchor="middle" class="t-s">业务量和收益大增</text>
+        <text x="410" y="212" text-anchor="middle" class="t-s">对策：别被成功冲昏头，存现金</text>
+        <text x="760" y="62" text-anchor="middle" class="t-c">阶段三 · 下降期</text>
+        <text x="760" y="84" text-anchor="middle" class="t-s">收益、热情、士气下滑</text>
+        <text x="760" y="102" text-anchor="middle" class="t-s">对策：重做战略规划</text>
+        <text x="790" y="190" text-anchor="middle" class="t-s">→ 新的阶段一</text>
         <text x="460" y="285" text-anchor="middle" class="t-s">时间 →</text>
       </svg>
       <p class="cap">职业、企业、产品、关系、组织甚至国家，都会走一条横放着的“S”形。成功的人经常检查自己在曲线上的位置，在下滑之前就开始“再创造”。</p>
@@ -988,7 +998,7 @@ body.dw-lock{overflow:hidden}
 
     <div class="claims reveal">
       <div class="claim"><span class="k">两大障碍</span><b>害怕失败，害怕拒绝</b><span>一个来自童年受到的破坏性批评，一个来自父母“有条件的爱”。对策是“驱除恐惧”：允许犯错，对员工无条件接受。</span></div>
-      <div class="claim"><span class="k">X 要素</span><b>心理因素，即自我概念</b><span>二战后英德两国车厂产量相差 4 倍，设备和技术都解释不了。差别在心理，核心是自尊。</span></div>
+      <div class="claim"><span class="k">X 要素</span><b>心理因素，即自我概念</b><span>二战后英德两国车厂的产量比高达 4：1，设备和技术都解释不了。差别在心理，核心是自尊。</span></div>
       <div class="claim"><span class="k">行动</span><b>觉得有用，当天就用</b><span>每章末尾都有两条“行为实践”。作者希望你读到有用的方法，当天就付诸实践。</span></div>
     </div>
 
@@ -1601,6 +1611,7 @@ body.dw-lock{overflow:hidden}
     </div>
 
     <h3 class="sub reveal">对照表：同一条法则，各本怎么讲</h3>
+    <p class="tbl-hint">表格较宽，可左右滑动查看 7 本。</p>
     <div class="tbl-wrap reveal">
       <table class="cmp">
         <thead><tr>
@@ -1707,10 +1718,10 @@ body.dw-lock{overflow:hidden}
   </div>
 </section>
 
-<footer class="wood">
+<footer class="wood"><div class="wrap">
   根据《博恩·崔西工作法则（7册装）》全文整理：《高效人生的12个关键点》《涡轮教练：教练式领导力手册》《涡轮战略：快速引爆利润 成就企业蜕变》《激励》《谈判》《授权》《魅力的力量》（博恩·崔西 等著，机械工业出版社）<br>
   引文均摘自中译本原文 · 勾选进度只保存在本机浏览器
-</footer>
+</div></footer>
 
 <!-- ============ 我要怎么做？ 抽屉 ============ -->
 <button class="fab" id="fab" type="button" aria-haspopup="dialog" aria-controls="drawer"><span class="fab-ic" aria-hidden="true">✎</span><span>我要怎么做？</span></button>
@@ -1733,7 +1744,7 @@ const BK=["Ⅰ","Ⅱ","Ⅲ","Ⅳ","Ⅴ","Ⅵ","Ⅶ"];
 
 /* ---------- 书架：书脊说明 ---------- */
 (function(){
-  const cap=document.getElementById('shelfcap'),def=cap.innerHTML;
+  const cap=document.getElementById('shelfcap');if(matchMedia('(hover:none)').matches)cap.textContent='点一下书脊，就翻到那一本。';const def=cap.innerHTML;
   document.querySelectorAll('.spine').forEach(sp=>{
     const show=()=>{cap.style.setProperty('--c',getComputedStyle(sp).getPropertyValue('--sp'));cap.innerHTML=`<b>${sp.dataset.t}</b>${sp.dataset.g}`};
     sp.addEventListener('mouseenter',show);sp.addEventListener('focus',show);
@@ -1934,6 +1945,7 @@ b7:{n:"Ⅶ 魅力",s:"s7",intro:"《魅力的力量》：魅力是能够习得�
     cur=k;const d=HOW[k];
     dw.className='drawer open '+(k==='all'?'cb':'c'+k.slice(1));
     tabs.querySelectorAll('.dw-tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.k===k));
+    const at=tabs.querySelector(`[data-k="${k}"]`);if(at)tabs.scrollLeft=at.offsetLeft-tabs.clientWidth/2+at.offsetWidth/2;
     body.innerHTML=`<p class="dw-intro">${d.intro}</p>`+d.st.map((items,si)=>`<section class="stg"><h3><span class="n">${si+1}</span>${STG[si][0]}<small>${STG[si][1]}</small></h3>`+
       items.map((it,ii)=>{const id=`${k}-${si}-${ii}`;return `<label class="dw-item"><input type="checkbox" data-id="${id}" ${done[id]?'checked':''}><div><b>${it[0]}</b><span>${it[1]}</span><em>出处：${it[2]}</em></div></label>`}).join('')+'</section>').join('');
     prog();

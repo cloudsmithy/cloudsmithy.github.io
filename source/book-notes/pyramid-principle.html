@@ -126,7 +126,7 @@ svg.dg .bgp{fill:var(--paper)}
 .cover .au{margin-top:22px;font-size:12.5px;color:var(--ink3);line-height:1.8}
 
 /* agenda */
-.agenda{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.agenda{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:0 40px}
 .agenda a{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none}
 .agenda a:hover h4{color:var(--blue)}
 .agenda .no{font-size:20px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
@@ -280,13 +280,13 @@ footer{max-width:1160px;margin:0 auto;padding:30px 24px 90px;font-size:12px;colo
 .stage-hd{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--navy);padding-bottom:5px;margin-bottom:2px}
 .stage-hd .no{font-size:12px;font-weight:800;color:var(--paper);background:var(--navy);padding:0 6px;line-height:1.6}
 .stage-hd h4{font-size:15px;color:var(--navy)}
-.stage-hd span{font-size:11.5px;color:var(--ink3);margin-left:auto;white-space:nowrap}
+.stage-hd .meta{font-size:11.5px;color:var(--ink3);margin-left:auto;white-space:nowrap}
 .stage.stuck .stage-hd{border-bottom-color:var(--gold)}
 .stage.stuck .stage-hd .no{background:var(--gold)}
 .step{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
 .step b{display:block;font-size:13.5px;color:var(--ink);line-height:1.5}
 .step span{display:block;font-size:12.5px;color:var(--ink2);margin-top:2px;line-height:1.6}
-.step .ob{color:var(--gold);font-weight:700}
+.step b .ob{display:inline;color:var(--gold);font-weight:700;margin:0;font-size:inherit}
 .step em{display:inline-block;font-style:normal;font-size:10.5px;color:var(--blue);border:1px solid var(--line2);padding:0 5px;margin-top:4px;letter-spacing:.04em}
 .step:has(.ckb:checked) b{text-decoration:line-through;color:var(--ink3)}
 .dw-ft{flex:none;border-top:1px solid var(--line);padding:10px 22px;font-size:11.5px;color:var(--ink3);display:flex;justify-content:space-between;gap:10px}
@@ -305,6 +305,7 @@ footer{max-width:1160px;margin:0 auto;padding:30px 24px 90px;font-size:12px;colo
 }
 @media (max-width:720px){
   .g2,.g3,.g4,.g64,.g46,.g37,.agenda,.check,.drow{grid-template-columns:minmax(0,1fr)}
+  .agenda{grid-auto-flow:row;grid-template-rows:none}
   .chev{grid-template-columns:minmax(0,1fr)!important}
   .chev>div,.chev>div:first-child{clip-path:none;padding:10px 14px}
   .ba{grid-template-columns:minmax(0,1fr)}
@@ -317,6 +318,8 @@ footer{max-width:1160px;margin:0 auto;padding:30px 24px 90px;font-size:12px;colo
   .slide{padding:20px 18px 46px}
   .ft{left:18px;right:18px}
   .ft span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .fig.wide{overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  .fig.wide svg{min-width:var(--mw)}
   details.appx summary,details.appx .inner{padding-left:18px;padding-right:18px}
   .fab{right:14px;bottom:14px;padding:10px 14px 10px 12px}
   .drawer{top:0;left:0;right:0;bottom:0;width:100%;border-left:none;transform:translateY(100%)}
@@ -431,12 +434,12 @@ footer{max-width:1160px;margin:0 auto;padding:30px 24px 90px;font-size:12px;colo
   <div class="bd">
     <div class="agenda">
       <a href="#s-pyramid"><span class="no">01</span><div><h4>为什么是金字塔</h4><span>7±2、三条规则、纵向疑问/回答、怎么搭</span></div><em>第1–3章</em></a>
-      <a href="#s-problem"><span class="no">05</span><div><h4>界定问题与结构化分析</h4><span>R1/R2、七种问题、诊断框架、逻辑树</span></div><em>第8–9章</em></a>
       <a href="#s-scqa"><span class="no">02</span><div><h4>序言 SCQA</h4><span>背景、冲突、疑问、回答与常见模式</span></div><em>第4章</em></a>
-      <a href="#s-present"><span class="no">06</span><div><h4>演示的逻辑</h4><span>书面、幻灯片、字里行间</span></div><em>第10–12章</em></a>
       <a href="#s-logic"><span class="no">03</span><div><h4>演绎与归纳</h4><span>横向只有两种关系</span></div><em>第5章</em></a>
-      <a href="#s-parts"><span class="no">07</span><div><h4>全书结构与金句</h4><span>四篇要点、章节一览、原文摘录</span></div><em>全书</em></a>
       <a href="#s-order"><span class="no">04</span><div><h4>逻辑顺序与概括</h4><span>时间、结构、程度；MECE；避免“缺乏思想”</span></div><em>第6–7章</em></a>
+      <a href="#s-problem"><span class="no">05</span><div><h4>界定问题与结构化分析</h4><span>R1/R2、七种问题、诊断框架、逻辑树</span></div><em>第8–9章</em></a>
+      <a href="#s-present"><span class="no">06</span><div><h4>演示的逻辑</h4><span>书面、幻灯片、字里行间</span></div><em>第10–12章</em></a>
+      <a href="#s-parts"><span class="no">07</span><div><h4>全书结构与金句</h4><span>四篇要点、章节一览、原文摘录</span></div><em>全书</em></a>
       <a href="#s-tool"><span class="no">08</span><div><h4>小工具与清单</h4><span>SCQA 开头生成、三层金字塔草稿、动笔前清单</span></div><em>实践</em></a>
     </div>
     <div class="so">右下角的“我要怎么做？”按场景给出落地路线：写邮件或报告、做汇报幻灯片、分析问题。</div>
@@ -1519,7 +1522,7 @@ const FIG={
     return svg(s,354,82,360);
   }
 };
-document.querySelectorAll('[data-fig]').forEach(el=>{const f=FIG[el.dataset.fig];if(f)el.innerHTML=f()});
+document.querySelectorAll('[data-fig]').forEach(el=>{const f=FIG[el.dataset.fig];if(!f)return;el.innerHTML=f();const W=+el.querySelector('svg').getAttribute('viewBox').split(' ')[2];if(W>540){el.classList.add('wide');el.style.setProperty('--mw',Math.min(W,700)+'px')}});
 
 /* ---------- tabs ---------- */
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
@@ -1725,7 +1728,7 @@ scenesEl.innerHTML=Object.entries(HOW).map(([k,v])=>`<button class="scene" role=
 function renderHow(){
   const sc=HOW[hState.scene];
   scenesEl.querySelectorAll('.scene').forEach(b=>{const on=b.dataset.k===hState.scene;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
-  body.innerHTML=sc.stages.map((st,si)=>`<div class="stage${si==3?' stuck':''}"><div class="stage-hd"><span class="no">${['①','②','③','④'][si]}</span><h4>${st[0]}</h4><span>${st[1]}</span></div>${st[2].map((it,ii)=>{const id=hState.scene+'-'+si+'-'+ii;return `<label class="step"><input class="ckb" type="checkbox" data-id="${id}" ${hState.done[id]?'checked':''}><div><b>${si==3?'<span class="ob">障碍：</span>':''}${esc(it[0])}</b><span>${si==3?'对策：':''}${esc(it[1])}</span><em>出处：${esc(it[2])}</em></div></label>`}).join('')}</div>`).join('');
+  body.innerHTML=sc.stages.map((st,si)=>`<div class="stage${si==3?' stuck':''}"><div class="stage-hd"><span class="no">${['①','②','③','④'][si]}</span><h4>${st[0]}</h4><span class="meta">${st[1]}</span></div>${st[2].map((it,ii)=>{const id=hState.scene+'-'+si+'-'+ii;return `<label class="step"><input class="ckb" type="checkbox" data-id="${id}" ${hState.done[id]?'checked':''}><div><b>${si==3?'<span class="ob">障碍：</span>':''}${esc(it[0])}</b><span>${si==3?'对策：':''}${esc(it[1])}</span><em>出处：${esc(it[2])}</em></div></label>`}).join('')}</div>`).join('');
   updHow();
 }
 function updHow(){

@@ -459,7 +459,7 @@ footer .orn{margin-bottom:18px}
 @media (max-width:640px){
   .wrap{padding:0 18px}
   body{font-size:16px}
-  .pillars,.grid3,.stories,.six,.check,.tgrid,.grid4,.dims,.renew,.alloc,.circles,.gens,.steps{grid-template-columns:1fr}
+  .pillars,.grid3,.stories,.six,.check,.tgrid,.grid4,.dims,.renew,.circles,.gens,.steps{grid-template-columns:1fr}
   .gen+.gen{border-left:none;border-top:1px solid var(--line)}
   .quotes{columns:1}
   .ch{grid-template-columns:1fr;gap:2px}
@@ -475,7 +475,10 @@ footer .orn{margin-bottom:18px}
   .cover::before{inset:10px}
   .hero{padding:28px 0 30px}
   .roles-head{display:none}
-  .role-row{grid-template-columns:1fr 1fr;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+  .role-row{grid-template-columns:1fr 100px 34px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+  .alloc{grid-template-columns:1fr 1fr!important}
+  .thread i{display:none}
+  .quad .rn{position:static;display:block;font-size:26px;margin-bottom:2px}
   .role-row input:nth-child(2){grid-column:1/-1;order:-1}
   .week{grid-template-columns:repeat(2,1fr)}
   .day,.day+.day{border-left:none;border-top:1px solid var(--line)}
@@ -503,6 +506,8 @@ footer .orn{margin-bottom:18px}
 .dw-head h3{font-size:24px;color:var(--c);letter-spacing:.1em}
 .dw-head p{font-size:13.5px;color:var(--ink3);margin:4px 0 10px}
 .dw-close{position:absolute;right:16px;top:16px;width:34px;height:34px;border:1px solid var(--line2);background:var(--paper);color:var(--ink2);font-size:20px;line-height:1;cursor:pointer}
+.dw-close:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.dw-close:focus{outline:none}.dw-close:focus-visible{outline:2px solid var(--gold)}
 .dw-close:hover{border-color:var(--wine);color:var(--c)}
 .dw-prog{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink2);font-family:var(--sans)}
 .dw-prog .track{flex:1;height:7px;border:1px solid var(--ink2)}

@@ -1539,7 +1539,7 @@ md.addEventListener('input',()=>{M.draft=md.value;mSave()});
 document.getElementById('mFill').onclick=()=>{const t=topWords();if(!t.length){alert('先给词语投票吧。');return}
   const add='我们的家庭使命：\n'+t.map(w=>`${w}：（我们说的“${w}”，是指……）`).join('\n');
   md.value=md.value.trim()?md.value.trim()+'\n\n'+add:add;M.draft=md.value;mSave()};
-document.getElementById('mCopy').onclick=()=>{const v=md.value;if(navigator.clipboard)navigator.clipboard.writeText(v).then(()=>flash('mSaved'));else{md.select();document.execCommand('copy')}};
+document.getElementById('mCopy').onclick=()=>{const v=md.value;const fb=()=>{md.select();document.execCommand('copy');flash('mSaved')};if(navigator.clipboard)navigator.clipboard.writeText(v).then(()=>flash('mSaved'),fb);else fb()};
 document.getElementById('mClear').onclick=()=>{if(confirm('确定清空所有词语和草稿？')){M={words:[],draft:''};md.value='';mRender();mSave()}};
 mRender();
 

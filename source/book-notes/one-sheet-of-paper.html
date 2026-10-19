@@ -294,7 +294,7 @@ table.t tr.keep td{background:var(--cs);color:var(--ink);font-weight:600}
 .tmap .ansbox{margin:12px auto 0;max-width:230px;border:1.5px solid var(--red);text-align:center;padding:6px 10px;font-family:var(--hand);font-size:15px;background:var(--paper);position:relative;z-index:1}
 .tmap .ansbox small{display:block;font-family:var(--sans);font-size:11px;color:var(--red);letter-spacing:.12em;font-weight:700}
 .tmap .ctr{grid-area:2/2;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;padding:10px 0}
-.tmap .ctr div{width:min(100%,250px);aspect-ratio:1.45;border-radius:50%;border:1.5px solid var(--ink);background:var(--blues);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 26px;font-family:var(--hand);font-size:14px;line-height:1.5}
+.tmap .ctr div{width:min(100%,250px);aspect-ratio:1.45;border-radius:50%;border:1.5px solid var(--ink);background:color-mix(in srgb,var(--blue) 9%,var(--paper));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 26px;font-family:var(--hand);font-size:14px;line-height:1.5}
 .tmap .ctr small{font-family:var(--sans);font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.12em}
 .tmap .botc{grid-area:3/2;display:flex;align-items:flex-end;justify-content:center;padding:10px;font-size:12px;color:var(--ink3);text-align:center;position:relative;z-index:1}
 .five{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;counter-reset:n}
@@ -510,7 +510,7 @@ input.f{height:30px}
 .sheet .snote .body .f{height:260px}
 .sk{display:grid;grid-template-columns:1fr 1fr}
 .sk .kwf{display:grid;grid-template-rows:repeat(8,1fr);grid-auto-flow:column;grid-template-columns:1fr 1fr;border-right:1.5px solid var(--ink)}
-.sk .kwf .f{border-bottom:1px solid var(--line);border-right:1px solid var(--line);height:44px;font-size:13.5px}
+.sk .kwf .f{border-bottom:1px solid var(--line);border-right:1px solid var(--line);height:auto;min-height:44px;font-size:13.5px}
 .sk .kwf .f:nth-child(8n){border-bottom:none}
 .sk .kwf .f:nth-child(n+9){border-right:none}
 .sk .rp .tri{max-width:380px}
@@ -524,6 +524,7 @@ input.f{height:30px}
 .sk .bx2>div:last-child small{color:var(--red)}
 .sk .bx2 .f{height:58px}
 .sk .bx2>div:first-child .f{text-align:center}
+.sk .bx2>div:first-child small{padding-left:22px}
 .tm-t .bx{padding:0}
 .tm-t .bx .f{height:118px}
 .tm-t .bx input.f{height:30px;border-bottom:1px dashed var(--line);font-size:13px}

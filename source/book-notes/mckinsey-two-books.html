@@ -33,5 +33,6 @@ function show(i){i=Math.max(0,Math.min(T.length-1,i|0));
  history.replaceState(null,"","#"+i);document.title=bt[i].querySelector("span").firstChild.textContent+" · 麦肯锡精英 · 两本";}
 bt.forEach((b,i)=>b.onclick=()=>show(i));
 addEventListener("keydown",e=>{if(e.altKey&&/^[1-9]$/.test(e.key))show(+e.key-1)});
+addEventListener("message",e=>{const d=e.data;if(!d||d.tab==null)return;show(d.tab);if(!d.plan)return;let n=0;const f=fr[d.tab];const t=setInterval(()=>{n++;try{const b=[...f.contentDocument.querySelectorAll("button,a,[role=button]")].find(x=>/我要怎么做/.test(x.textContent));if(b){b.click();clearInterval(t)}}catch(_){clearInterval(t)}if(n>40)clearInterval(t)},100)});
 show(+location.hash.slice(1)||0);
 </script></body></html>
