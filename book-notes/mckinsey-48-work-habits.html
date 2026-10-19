@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>麦肯锡精英的48个工作习惯 · 一页读懂</title>
+<style>
+:root{
+  --bg:#f8f7f2; --grid:rgba(40,60,110,.075); --grid2:rgba(40,60,110,.13);
+  --paper:#ffffff; --ink:#1c1c1e; --ink2:#47474d; --ink3:#77777f;
+  --line:#e2e0d8; --soft:#f2f1ec; --hole:#d9d6cc;
+  --red:#b91c1c; --char:#2b2d31; --on:#ffffff;
+  --k1:#b91c1c; --s1:#fbe7e5;
+  --k2:#c2410c; --s2:#fdebdf;
+  --k3:#a16207; --s3:#fbf1d5;
+  --k4:#15803d; --s4:#e1f2e6;
+  --k5:#1d4ed8; --s5:#e3eafc;
+  --k6:#7e22ce; --s6:#f1e6fb;
+  --kx:#3f3f46; --sx:#ebebee;
+  --note:#fff1a6; --note-ink:#3a3000; --note2:#ffd9d4;
+  --c:var(--kx); --cs:var(--sx);
+  --sans:-apple-system,"PingFang SC","Heiti SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --hand:"Kaiti SC","STKaiti","KaiTi","BiauKai",serif;
+  --mono:"SF Mono",Menlo,Consolas,monospace;
+  --r:8px; --shadow:0 1px 2px rgba(20,20,30,.05),0 6px 18px rgba(20,20,30,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#16171a; --grid:rgba(255,255,255,.035); --grid2:rgba(255,255,255,.07);
+    --paper:#202226; --ink:#ececef; --ink2:#b9b9c0; --ink3:#8a8a92;
+    --line:#34363c; --soft:#2a2c31; --hole:#0d0e10;
+    --red:#f87171; --char:#0e0f11; --on:#141414;
+    --k1:#f87171; --s1:#3b1f1f;
+    --k2:#fb923c; --s2:#3a2416;
+    --k3:#facc15; --s3:#383114;
+    --k4:#4ade80; --s4:#16301f;
+    --k5:#82a7ff; --s5:#1c2642;
+    --k6:#c58cfc; --s6:#2f2142;
+    --kx:#b4b4bc; --sx:#2c2d32;
+    --note:#4b4418; --note-ink:#fbf3c4; --note2:#4a2525;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3);
+  }
+}
+.ch1{--c:var(--k1);--cs:var(--s1)} .ch2{--c:var(--k2);--cs:var(--s2)} .ch3{--c:var(--k3);--cs:var(--s3)}
+.ch4{--c:var(--k4);--cs:var(--s4)} .ch5{--c:var(--k5);--cs:var(--s5)} .ch6{--c:var(--k6);--cs:var(--s6)}
+.chx{--c:var(--kx);--cs:var(--sx)} .chr{--c:var(--red);--cs:var(--s1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;color:var(--ink);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased;
+  background-color:var(--bg);
+  background-image:linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  padding-left:72px}
+/* binder holes */
+body::before{content:"";position:fixed;left:58px;top:0;bottom:0;width:22px;z-index:1;pointer-events:none;
+  background:radial-gradient(circle at 11px 30px,var(--hole) 0 7px,transparent 7.5px) 0 0/22px 60px repeat-y}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px 0 36px}
+h1,h2,h3,h4{font-family:var(--sans);font-weight:700;line-height:1.35;margin:0;letter-spacing:.01em}
+p{margin:.4em 0}
+strong{font-weight:700;color:var(--ink);background:linear-gradient(transparent 58%,var(--cs) 58%);padding:0 2px}
+b{font-weight:600;color:var(--ink)}
+.muted{color:var(--ink2)}
+.small{font-size:13px;color:var(--ink3)}
+
+/* index tabs */
+nav.tabs{position:fixed;left:0;top:0;bottom:0;width:58px;z-index:60;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:12px 0;overflow-y:auto;scrollbar-width:none;background:var(--char)}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{display:block;text-decoration:none;writing-mode:vertical-rl;font-size:13px;font-weight:600;letter-spacing:.12em;
+  color:var(--on);background:var(--c);padding:12px 0;width:40px;margin-left:10px;border-radius:0 7px 7px 0;text-align:center;transition:width .2s,margin .2s,filter .2s;white-space:nowrap;line-height:40px;opacity:.9}
+nav.tabs a:hover{opacity:1}
+nav.tabs a.on{width:50px;opacity:1;box-shadow:2px 2px 8px rgba(0,0,0,.25)}
+nav.tabs a.chx{background:#62646d;color:#fff}
+nav.tabs a.home{background:transparent;color:#e7e7ea;border:1px solid rgba(255,255,255,.25)}
+
+/* hero / cover */
+.hero{padding:44px 0 40px}
+.cover{position:relative;background:var(--char);color:#f2f2f4;border-radius:14px;padding:58px 120px 52px 56px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.cover::after{content:"";position:absolute;top:0;bottom:0;right:56px;width:20px;background:#b91c1c;box-shadow:inset 3px 0 0 rgba(255,255,255,.12),inset -3px 0 0 rgba(0,0,0,.18)}
+@media (prefers-color-scheme:dark){.cover{border:1px solid #33353a}}
+.eyebrow{display:inline-block;font:600 12px/1 var(--mono);letter-spacing:.22em;color:#b5b5bd;border:1px solid rgba(255,255,255,.22);padding:7px 12px;border-radius:4px;margin-bottom:26px}
+.hero h1{font-size:clamp(34px,5.8vw,64px);font-weight:800;letter-spacing:.02em;line-height:1.2;color:#fff}
+.hero h1 .n{color:#f87171;font-family:var(--sans)}
+.hero .by{margin-top:16px;font-size:14.5px;color:#b5b5bd}
+.hero .lead{font-size:clamp(16px,1.9vw,19px);color:#dcdce0;max-width:740px;margin:22px 0 0}
+.hero .lead strong{color:#fff;background:linear-gradient(transparent 60%,rgba(248,113,113,.45) 60%)}
+.path{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:34px 0 0}
+.path span{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:7px 14px;font-size:14.5px;line-height:1.5;color:#f2f2f4}
+.path span small{display:block;font-size:12px;color:#a9a9b1}
+.path i{font-style:normal;color:#8a8a92}
+
+.lbl{font:700 12px/1 var(--mono);letter-spacing:.2em;color:var(--ink3);margin:40px 0 12px;display:flex;align-items:center;gap:10px}
+.lbl::after{content:"";flex:1;height:1px;background:var(--line)}
+.elements{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.el{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:6px;padding:14px 16px;box-shadow:var(--shadow)}
+.el b{font:800 22px/1 var(--sans);color:var(--red);display:block}
+.el span{font-size:15px;display:block;margin-top:8px;line-height:1.55;font-weight:600}
+.el-cap{font-size:13px;color:var(--ink3);margin-top:10px}
+
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 14px;padding-top:26px}
+.book{display:block;background:var(--paper);border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:20px 20px 18px;box-shadow:var(--shadow);position:relative;text-decoration:none;transition:transform .2s}
+.book:hover{transform:translateY(-2px)}
+.book::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:4px;background:var(--c);border-radius:0 8px 0 0}
+.book .top{display:flex;justify-content:space-between;align-items:center}
+.book .num{position:absolute;top:-24px;left:-1px;height:24px;padding:0 12px;background:var(--c);color:var(--on);font:700 12px/24px var(--mono);letter-spacing:.12em;border-radius:6px 6px 0 0}
+.book .num::before{content:"CH."}
+.book .cnt{font-size:12.5px;color:var(--c);font-weight:700}
+.book h3{font-size:17.5px;margin-top:4px;line-height:1.45}
+.book p{font-size:14px;color:var(--ink2);margin-top:8px;line-height:1.7}
+
+/* sections */
+section.block{padding:64px 0 40px}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:26px;padding-bottom:16px;border-bottom:3px solid var(--c);flex-wrap:wrap;position:relative}
+.sec-head .big{font:800 64px/.9 var(--sans);color:var(--c);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.sec-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:800}
+.sec-head .tag{display:inline-block;font:700 12px/1 var(--mono);letter-spacing:.14em;color:var(--on);background:var(--c);padding:5px 9px;border-radius:4px;margin-bottom:8px}
+.thesis{font-size:clamp(17px,2vw,19.5px);line-height:1.85;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:6px;padding:18px 24px;margin:0 0 34px;max-width:940px;box-shadow:var(--shadow);font-weight:500}
+h3.sub{font-size:20px;font-weight:800;margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+h3.sub::before{content:"";flex:none;width:12px;height:12px;border-radius:2px;background:var(--c)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow)}
+.card h4{font-size:16.5px;margin-bottom:6px;font-weight:700}
+.card p,.card li{font-size:14.5px;color:var(--ink2)}
+.card ul,.card ol{margin:4px 0 0;padding-left:1.25em}
+.card li::marker{color:var(--c);font-weight:700}
+.card .k{display:inline-block;font-size:12px;color:var(--c);font-weight:700;letter-spacing:.08em;border:1px solid var(--c);border-radius:4px;padding:1px 7px;margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.note{font-size:13.5px;color:var(--ink3);margin-top:12px}
+
+/* numbered steps */
+.np{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:10px;counter-reset:n}
+.np>div{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:6px;padding:14px 16px;counter-increment:n;font-size:14px;color:var(--ink2);line-height:1.7}
+.np>div::before{content:counter(n,decimal-leading-zero);display:block;font:800 22px/1 var(--sans);color:var(--c);margin-bottom:6px}
+.np b{display:block;color:var(--ink);font-size:15.5px;font-weight:700;margin-bottom:4px;line-height:1.5}
+
+/* scene */
+.scene{display:grid;grid-template-columns:1fr auto 1fr;gap:8px 14px;align-items:center;font-size:14.5px}
+.scene .a{text-align:right;color:var(--ink2)}
+.scene .b{font-weight:700}
+.scene i{font-style:normal;color:var(--c);font-weight:800}
+.scene .hd{font:700 11px/1 var(--mono);color:var(--ink3);letter-spacing:.15em}
+
+/* sticky-note chain */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;padding:8px 0}
+.chain .nd{flex:1;min-width:140px;background:var(--note);color:var(--note-ink);border-radius:2px;padding:16px 14px 18px;text-align:center;font-size:16px;font-weight:700;box-shadow:0 2px 3px rgba(0,0,0,.08),0 8px 14px -6px rgba(0,0,0,.18);position:relative;transform:rotate(-1.2deg)}
+.chain .nd:nth-child(4n+3){transform:rotate(1deg)}
+.chain .nd::before{content:"";position:absolute;top:-7px;left:50%;width:44px;height:14px;margin-left:-22px;background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.05);transform:rotate(-2deg)}
+@media (prefers-color-scheme:dark){.chain .nd::before{background:rgba(255,255,255,.12)}}
+.chain .nd small{display:block;font:700 11px/1 var(--mono);opacity:.65;letter-spacing:.12em;margin-bottom:8px}
+.chain .nd.end{background:var(--note2)}
+.chain .lk{flex:none;width:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12.5px;color:var(--c);font-weight:800;padding:0 4px}
+.chain .lk::after{content:"";display:block;width:62px;height:14px;margin-top:4px;background:var(--c);clip-path:polygon(0 40%,80% 40%,80% 0,100% 50%,80% 100%,80% 60%,0 60%)}
+.chain .lk span{white-space:nowrap}
+.why{display:grid;grid-template-columns:auto auto 1fr;gap:14px;align-items:center;margin-top:18px}
+.why .nd{background:var(--note);color:var(--note-ink);border-radius:2px;padding:14px 16px;font-size:16px;font-weight:700;box-shadow:0 8px 14px -6px rgba(0,0,0,.2);transform:rotate(-1deg)}
+.why .lk{font-size:12.5px;color:var(--c);font-weight:800;white-space:nowrap}
+.why .outs{display:flex;flex-direction:column;gap:8px;max-width:520px}
+.why .outs div{background:var(--paper);border:1px dashed var(--c);border-radius:4px;padding:8px 14px;font-size:14.5px;font-weight:600}
+
+/* ratio bars */
+.ratio{display:flex;height:40px;border-radius:4px;overflow:hidden;font-size:13.5px;font-weight:700;margin:10px 0 6px;border:1px solid var(--line)}
+.ratio div{display:flex;align-items:center;padding:0 14px;white-space:nowrap;overflow:hidden}
+.ratio .x{background:var(--c);color:var(--on)}
+.ratio .y{background:var(--cs);color:var(--c)}
+.ratio .z{background:var(--soft);color:var(--ink2)}
+.rlabel{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--ink3)}
+
+/* day planner */
+.day{display:grid;grid-template-columns:120px 1fr;gap:0;align-items:stretch;border-top:1px solid var(--line)}
+.day .t{font:600 13px/1.4 var(--mono);color:var(--ink3);text-align:right;padding:10px 14px 10px 0;border-bottom:1px solid var(--line);border-right:2px solid var(--c);display:flex;align-items:center;justify-content:flex-end}
+.day .bar{margin:6px 0 6px 12px;border-radius:4px;display:flex;align-items:center;padding:6px 12px;font-size:14px;font-weight:600;line-height:1.5}
+.day>.bar{border-bottom:none}
+.day .bar.hi{background:var(--c);color:var(--on)}
+.day .bar.lo{background:var(--cs);color:var(--ink)}
+.day .bar.mid{background:var(--soft);color:var(--ink2)}
+.day.cmp{border-top:none}
+.day.cmp .t{border-bottom:none}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.stat .v{font:800 30px/1.1 var(--sans);color:var(--c)}
+.stat .v small{font-size:14px;margin-left:3px}
+.stat .k{font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.55}
+
+/* priority matrix */
+.pm{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;align-items:center}
+.mx{display:grid;grid-template-columns:34px 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:8px}
+.mx .ax{font-size:12px;color:var(--ink3);font-weight:700;letter-spacing:.08em;text-align:center;align-self:end}
+.mx .ay{writing-mode:vertical-rl;font-size:12px;color:var(--ink3);font-weight:700;letter-spacing:.08em;text-align:center;align-self:center;justify-self:center}
+.q{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:16px;min-height:132px;position:relative}
+.q .L{font:800 30px/1 var(--sans);color:var(--c)}
+.q p{font-size:13.5px;color:var(--ink2);margin-top:8px;line-height:1.6}
+.q .ord{position:absolute;top:12px;right:12px;font:700 12px/1 var(--mono);color:var(--ink3)}
+.q.hot{background:var(--c);border-color:var(--c)}
+.q.hot .L,.q.hot p,.q.hot .ord{color:var(--on)}
+.q.warm{background:var(--cs);border-color:var(--c)}
+.q.warm p{color:var(--ink)}
+.seq{display:flex;flex-direction:column;gap:6px;counter-reset:s}
+.seq div{display:flex;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:9px 14px;font-size:14.5px;counter-increment:s}
+.seq div::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:4px;background:var(--c);color:var(--on);font-weight:800;font-size:13px;display:grid;place-items:center}
+.seq div b{color:var(--c);font-size:16px;font-weight:800;min-width:56px}
+.seq div span{color:var(--ink2);font-size:13.5px}
+
+/* timeline */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.timeline>div{position:relative;padding:34px 14px 0;text-align:center}
+.timeline>div::before{content:"";position:absolute;top:10px;left:0;right:0;height:3px;background:var(--line)}
+.timeline>div:first-child::before{left:50%}.timeline>div:last-child::before{right:50%}
+.timeline>div::after{content:"";position:absolute;top:3px;left:50%;margin-left:-8px;width:16px;height:16px;border-radius:3px;background:var(--paper);border:3px solid var(--c)}
+.timeline>div.on::after{background:var(--c)}
+.timeline b{display:block;font-size:15.5px;font-weight:800}
+.timeline span{display:block;font-size:13px;color:var(--ink2);line-height:1.6;margin-top:4px}
+
+/* slide mock */
+.mock{display:grid;grid-template-columns:1fr 1.1fr;gap:22px;align-items:center}
+.slide{background:#fff;color:#111;border:1px solid #d9d4ca;border-radius:4px;aspect-ratio:4/3;padding:18px 20px;display:flex;flex-direction:column;box-shadow:var(--shadow);font-family:var(--sans)}
+.slide .msg{font-size:13.5px;font-weight:700;border-bottom:1.5px solid #111;padding-bottom:8px;line-height:1.5}
+.slide .ttl{font-size:11.5px;color:#555;margin:8px 0 6px}
+.slide .chart{flex:1;display:flex;align-items:flex-end;gap:10%;padding:0 6%;border-left:1.5px solid #111;border-bottom:1.5px solid #111;min-height:0}
+.slide .chart div{flex:1;background:#222}
+.slide .chart div.hl{background:#b91c1c}
+.slide .src{font-size:10px;color:#777;margin-top:6px}
+.anno{display:flex;flex-direction:column;gap:12px}
+.anno div{border-left:4px solid var(--c);padding:2px 0 2px 14px}
+.anno b{font-size:16px;display:block;font-weight:800}
+.anno span{font-size:13.5px;color:var(--ink2)}
+
+/* role matrix */
+.roles{display:grid;grid-template-columns:150px repeat(3,1fr);gap:6px;font-size:13.5px}
+.roles .h{font-weight:700;color:var(--ink);padding:10px;line-height:1.5;font-size:13px}
+.roles .h small{display:block;font-weight:400;color:var(--ink3);font-size:12px}
+.roles .rh{background:var(--soft);border-radius:4px}
+.roles .cell{background:var(--paper);border:1px dashed var(--line);border-radius:4px;padding:10px;color:var(--ink3);display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;font-family:var(--mono);font-size:12.5px}
+.roles .cell.on{background:var(--c);border:1px solid var(--c);color:var(--on);font-weight:700;line-height:1.5;font-family:var(--sans);font-size:13.5px}
+
+/* ladder */
+.ladder{display:flex;align-items:flex-end;gap:10px}
+.ladder div{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:6px 6px 2px 2px;padding:14px;text-align:center}
+.ladder div:nth-child(1){min-height:90px}
+.ladder div:nth-child(2){min-height:130px;background:var(--cs);border-color:var(--c)}
+.ladder div:nth-child(3){min-height:170px;background:var(--c);border-color:var(--c);color:var(--on)}
+.ladder div:nth-child(3) b{color:var(--on)}
+.ladder b{font-size:16px;display:block;font-weight:800}
+.ladder span{font-size:12.5px;display:block;margin-top:4px;opacity:.9;line-height:1.55}
+.ring{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.ring span{border:2px solid var(--c);color:var(--c);border-radius:4px;padding:3px 14px;font-size:13.5px;font-weight:700}
+
+/* quotes: ruled memo */
+.quotes{columns:2;column-gap:16px}
+.quote{break-inside:avoid;position:relative;margin-bottom:16px;padding:10px 22px 10px 58px;background-position:0 0,0 10px!important;border-radius:4px;border:1px solid var(--line);box-shadow:var(--shadow);
+  background:linear-gradient(90deg,transparent 42px,rgba(185,28,28,.35) 42px,rgba(185,28,28,.35) 43.5px,transparent 43.5px),repeating-linear-gradient(var(--paper) 0 31px,var(--line) 31px 32px);
+  background-color:var(--paper);font-family:var(--hand);font-size:19px;line-height:32px;color:var(--ink)}
+.quote::before{content:"“";position:absolute;left:12px;top:8px;font:800 34px/1 var(--sans);color:var(--red)}
+.quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12.5px;line-height:32px;color:var(--ink3)}
+
+/* details */
+details.toc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);margin-top:26px;overflow:hidden;box-shadow:var(--shadow)}
+details.toc summary{cursor:pointer;padding:14px 20px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;border-left:6px solid var(--c)}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";font:800 20px/1 var(--sans);color:var(--c);transition:.2s}
+details.toc[open] summary::after{transform:rotate(45deg)}
+.toc-body{padding:0 20px 16px 26px}
+.toc-body ul.star{margin:0;padding:0;list-style:none}
+.toc-body ul.star li{padding:8px 0 8px 26px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink2);position:relative}
+.toc-body ul.star li::before{content:"☆";position:absolute;left:2px;color:var(--c)}
+.ch{display:grid;grid-template-columns:300px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
+.ch b{font-weight:700}
+.ch span{color:var(--ink2)}
+
+/* habits: punched cards */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.chip{border:1px solid var(--line);border-left:5px solid var(--c);background:var(--paper);color:var(--ink2);padding:6px 12px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.chip.on{background:var(--c);border-color:var(--c);color:var(--on)}
+.search{margin-left:auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:8px 14px;border-radius:4px;font-size:14px;min-width:220px;font-family:inherit;outline:none}
+.search:focus{border-color:var(--ink2)}
+.hcount{font:600 12.5px/1 var(--mono);color:var(--ink3);margin:0 0 18px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcard{position:relative;background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:4px;padding:30px 18px 16px;box-shadow:var(--shadow);transition:transform .2s}
+.pcard:hover{transform:translateY(-2px)}
+.pcard::before,.pcard::after{content:"";position:absolute;top:10px;width:11px;height:11px;border-radius:50%;background:var(--bg);box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
+.pcard::before{left:calc(50% - 26px)}.pcard::after{left:calc(50% + 15px)}
+.pcard .no{position:absolute;top:18px;right:16px;font:800 30px/1 var(--sans);color:var(--c);font-variant-numeric:tabular-nums;opacity:.95}
+.pcard .pt{display:inline-block;font-size:11.5px;font-weight:700;color:var(--c);background:var(--cs);padding:1px 8px;border-radius:3px}
+.pcard h4{font-size:16px;font-weight:800;margin:10px 46px 8px 0;line-height:1.5}
+.pcard p{font-size:13.5px;color:var(--ink2);margin:0;line-height:1.65;padding-top:8px;border-top:1px dashed var(--line)}
+.pcard.hide{display:none}
+.empty{display:none;text-align:center;color:var(--ink3);padding:30px}
+
+/* checklist: ledger */
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:0 18px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:6px 20px;box-shadow:var(--shadow)}
+.check label{display:flex;gap:14px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer;transition:.2s}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border:2px solid var(--ink2);border-radius:3px;margin:2px 0 0;display:grid;place-items:center;transition:.15s;cursor:pointer;background:var(--paper)}
+.check input:checked{background:var(--c);border-color:var(--c)}
+.check input:checked::after{content:"";width:6px;height:11px;border:solid var(--on);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check label:has(input:checked){opacity:.55}
+.check label:has(input:checked) b{text-decoration:line-through;text-decoration-thickness:2px}
+.check b{font-size:15.5px;display:block;font-weight:700}
+.check span{font-size:13.5px;color:var(--ink2);display:block;margin-top:2px}
+.check .src{display:inline-block;font-size:11.5px;font-weight:700;color:var(--c);background:var(--cs);padding:0 7px;border-radius:3px;margin-top:6px}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.progress .track{flex:1;height:10px;background:var(--paper);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:var(--red);transition:width .35s}
+.progress .txt{font:700 14px/1 var(--mono);color:var(--ink2);min-width:64px;text-align:right}
+.reset{border:1px solid var(--line);background:var(--paper);color:var(--ink3);font:inherit;font-size:13px;padding:4px 12px;border-radius:4px;cursor:pointer}
+
+footer{padding:40px 0 64px;text-align:center;font-size:13px;color:var(--ink3)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.chain .nd,.why .nd{transform:none!important}}
+
+@media (max-width:920px){
+  body{padding-left:0}
+  body::before{display:none}
+  html{scroll-padding-top:60px}
+  nav.tabs{position:sticky;top:0;bottom:auto;width:auto;flex-direction:row;justify-content:flex-start;gap:4px;padding:0 10px;overflow-x:auto;overflow-y:hidden;height:44px;align-items:flex-start}
+  nav.tabs a{writing-mode:horizontal-tb;width:auto;margin:0;padding:0 11px;line-height:34px;height:34px;border-radius:0 0 6px 6px;font-size:12.5px;letter-spacing:.04em;transition:height .2s}
+  nav.tabs a.on{width:auto;height:40px;line-height:40px}
+  nav.tabs a.home{border:none;border-bottom:1px solid rgba(255,255,255,.25)}
+  .wrap{padding:0 20px}
+  .cover{padding:44px 64px 40px 28px}
+  .cover::after{right:24px;width:14px}
+  .books,.grid3,.pgrid{grid-template-columns:1fr 1fr}
+  .elements,.stats{grid-template-columns:1fr 1fr}
+  .np{grid-template-columns:repeat(2,1fr)}
+  .grid2,.pm,.mock{grid-template-columns:1fr}
+  .books{row-gap:34px}
+  .chain{flex-direction:column;align-items:stretch;padding:8px 10px}
+  .chain .lk{width:auto;padding:8px 0}
+  .chain .lk::after{width:14px;height:22px;clip-path:polygon(40% 0,60% 0,60% 70%,100% 70%,50% 100%,0 70%,40% 70%)}
+  .timeline{grid-template-columns:1fr 1fr;row-gap:18px}
+  .roles{grid-template-columns:110px repeat(3,1fr)}
+  .mock .slide{max-width:420px;width:100%;margin:0 auto}
+}
+@media (max-width:620px){
+  .books,.grid3,.pgrid,.check,.stats,.elements,.np{grid-template-columns:1fr}
+  .check{padding:4px 14px}
+  .quotes{columns:1}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .search{margin-left:0;width:100%}
+  .sec-head .big{font-size:48px}
+  .cover{padding:36px 48px 32px 22px}
+  .cover::after{right:16px;width:12px}
+  .path{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .path i{display:none}
+  .why{grid-template-columns:1fr}
+  .day{grid-template-columns:84px 1fr}
+  .day .t{font-size:12px;padding-right:8px}
+  .scene{font-size:13.5px}
+  .timeline{grid-template-columns:1fr}
+  .roles{grid-template-columns:76px repeat(3,1fr);font-size:12px}
+  .roles .h{padding:6px;font-size:12px}
+  .roles .cell{padding:6px;min-height:48px}
+  .roles .cell.on{font-size:12px}
+  .ladder div{padding:12px 8px}
+  .ladder b{font-size:14px;white-space:nowrap}
+  .ladder span{font-size:11.5px}
+  .quote{font-size:17.5px}
+}
+
+/* action drawer */
+.fab{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:8px;background:var(--red);color:var(--on);border:none;font:700 15px/1 var(--sans);padding:14px 18px;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;letter-spacing:.04em}
+.fab::before{content:"";width:14px;height:14px;border:2px solid currentColor;border-radius:2px;background:linear-gradient(currentColor,currentColor) 50% 30%/8px 2px no-repeat,linear-gradient(currentColor,currentColor) 50% 70%/8px 2px no-repeat}
+.fab:hover{filter:brightness(1.08)}
+.fab:focus-visible,.drawer .x:focus-visible{outline:3px solid var(--k5);outline-offset:2px}
+.fab .pc{font:700 12px/1 var(--mono);background:rgba(255,255,255,.22);padding:4px 6px;border-radius:3px}
+.scrim{position:fixed;inset:0;background:rgba(10,10,15,.45);z-index:90;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.scrim.show{opacity:1;visibility:visible;transition:opacity .25s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,94vw);z-index:100;display:flex;flex-direction:column;
+  background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;
+  box-shadow:-12px 0 30px rgba(0,0,0,.2);transform:translateX(100%);visibility:hidden;transition:transform .3s ease,visibility 0s .3s;border-left:6px solid var(--red)}
+.drawer.open{transform:none;visibility:visible;transition:transform .3s ease}
+.drawer .dh{display:flex;align-items:flex-start;gap:12px;padding:20px 22px 14px;background:var(--paper);border-bottom:1px solid var(--line)}
+.drawer .dh .tag{display:inline-block;font:700 11px/1 var(--mono);letter-spacing:.16em;color:var(--on);background:var(--red);padding:5px 8px;border-radius:3px}
+.drawer .dh h2{font-size:22px;font-weight:800;margin-top:8px}
+.drawer .dh p{font-size:13.5px;color:var(--ink2);margin:4px 0 0}
+.drawer .x{margin-left:auto;flex:none;width:36px;height:36px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:4px;font:400 22px/1 var(--sans);cursor:pointer}
+.drawer .dprog{padding:12px 22px;background:var(--paper);border-bottom:1px solid var(--line);margin:0}
+.drawer .dbody{flex:1;overflow-y:auto;padding:6px 22px 30px;overscroll-behavior:contain}
+.phase{margin-top:20px}
+.phase h3{display:flex;align-items:center;gap:10px;font-size:16.5px;font-weight:800;margin-bottom:4px}
+.phase h3 i{font-style:normal;flex:none;width:28px;height:28px;border-radius:4px;background:var(--c);color:var(--on);display:grid;place-items:center;font:800 14px/1 var(--sans)}
+.phase .pd{font-size:13px;color:var(--ink3);margin:0 0 8px 38px}
+.phase .items{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:6px;padding:2px 14px}
+.phase label{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.phase label:last-child{border-bottom:none}
+.phase input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;border:2px solid var(--ink2);border-radius:3px;margin:3px 0 0;display:grid;place-items:center;cursor:pointer;background:var(--paper)}
+.phase input:checked{background:var(--c);border-color:var(--c)}
+.phase input:checked::after{content:"";width:5px;height:10px;border:solid var(--on);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.phase label:has(input:checked){opacity:.55}
+.phase label:has(input:checked) b{text-decoration:line-through}
+.phase b{display:block;font-size:15px;font-weight:700;line-height:1.5}
+.phase span{display:block;font-size:13.5px;color:var(--ink2);line-height:1.65;margin-top:2px}
+.phase em{display:inline-block;font-style:normal;font-size:11.5px;font-weight:700;color:var(--c2,var(--ink2));background:var(--soft);padding:0 7px;border-radius:3px;margin-top:6px}
+body.lock{overflow:hidden}
+@media (max-width:620px){
+  .fab{right:14px;bottom:14px;padding:12px 15px;font-size:14px}
+  .drawer{top:0;left:0;right:0;bottom:0;width:100%;border-left:none;border-top:6px solid var(--red);transform:translateY(100%)}
+  .drawer.open{transform:none}
+  .drawer .dh,.drawer .dprog,.drawer .dbody{padding-left:16px;padding-right:16px}
+}
+@media print{.fab,.drawer,.scrim,nav.tabs{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="tabs" aria-label="章节索引">
+  <a class="home chx" href="#overview">封面</a>
+  <a class="ch1" href="#c1">一 人脉</a>
+  <a class="ch2" href="#c2">二 内外</a>
+  <a class="ch3" href="#c3">三 时间</a>
+  <a class="ch4" href="#c4">四 沟通</a>
+  <a class="ch5" href="#c5">五 资料</a>
+  <a class="ch6" href="#c6">六 全球</a>
+  <a class="chx" href="#habits">习惯卡</a>
+  <a class="chr" href="#quotes">金句</a>
+  <a class="chr" href="#todo">清单</a>
+</nav>
+
+<header class="hero" id="overview">
+  <div class="wrap">
+   <div class="cover">
+    <span class="eyebrow">TAKAMASA TOTSUKA · 2013</span>
+    <h1>麦肯锡精英的<span class="n">48</span>个工作习惯</h1>
+    <p class="by">[日] 户塚隆将 著 · 千太阳 译 · 中信出版社 2015</p>
+    <p class="lead">作者回看自己在高盛、哈佛商学院、麦肯锡遇到的上司、同事和同学，发现他们的共同点<strong>与能力和经验无关</strong>：都在实践那些人人都知道、却很难坚持下去的基本功。</p>
+
+    <div class="path">
+      <span>高盛集团<small>应届入职 · 投资银行家</small></span><i>→</i>
+      <span>哈佛商学院<small>自费留学两年 · MBA</small></span><i>→</i>
+      <span>麦肯锡咨询公司<small>经营顾问</small></span><i>→</i>
+      <span>独立创业<small>全球事业研发与人才研发</small></span>
+    </div>
+   </div>
+
+    <p class="lbl reveal">4 个成功要素</p>
+
+    <div class="elements reveal">
+      <div class="el"><b>1</b><span>重视人脉投资</span></div>
+      <div class="el"><b>2</b><span>不断充实自己的内在与外在</span></div>
+      <div class="el"><b>3</b><span>保证每天定量完成任务</span></div>
+      <div class="el"><b>4</b><span>以宏观的眼光看问题</span></div>
+    </div>
+    <p class="el-cap reveal">三家机构推崇的 4 个成功要素，全书把它们细分为 48 个习惯、分 6 章来讲</p>
+
+    <p class="lbl reveal">6 章索引</p>
+    <div class="books reveal">
+      <a class="book ch1" href="#c1"><div class="top"><span class="num">01</span><span class="cnt">7 个习惯</span></div><h3>如何投资人脉</h3><p>超越利害关系的人脉、记名字、真挚提问、变换相处场合、每周见一个公司外的人。</p></a>
+      <a class="book ch2" href="#c2"><div class="top"><span class="num">02</span><span class="cnt">13 个习惯</span></div><h3>磨炼内在与外在</h3><p>礼让与道谢，读书读报的思考法，So what / Why so，三个关键，身体、健身、服装和鞋。</p></a>
+      <a class="book ch3" href="#c3"><div class="top"><span class="num">03</span><span class="cnt">6 个习惯</span></div><h3>养成不被时间操纵的工作习惯</h3><p>提前 10 分钟、周末自我投资、清晨一小时、前一晚的整理、周日晚的切换、优先顺序。</p></a>
+      <a class="book ch4" href="#c4"><div class="top"><span class="num">04</span><span class="cnt">8 个习惯</span></div><h3>决定性的沟通创造出成果</h3><p>笔记、5W1H 当场确认、5 分钟开工、回邮件速度、先发制人的汇报、第二天一早报 70%。</p></a>
+      <a class="book ch5" href="#c5"><div class="top"><span class="num">05</span><span class="cnt">8 个习惯</span></div><h3>在能间接产生利益的资料及会议方面做出自己的贡献</h3><p>资料是产品、黑白与 3 色、3W 与开场白、手绘草稿、一图一信息、注意细节、发言、白板。</p></a>
+      <a class="book ch6" href="#c6"><div class="top"><span class="num">06</span><span class="cnt">6 个习惯</span></div><h3>提高全球化的职业技能</h3><p>爱国心与英语、逻辑胜过流利、900 分目标、更高标准、“毕业”而不是“退学”、私人笔记。</p></a>
+    </div>
+
+    <details class="toc reveal chr">
+      <summary>全书结构一览</summary>
+      <div class="toc-body">
+        <div class="ch"><b>序言1</b><span>写给中国读者：书里的经验“放之四海而皆准”，要“读书，举一反三，加以实践”。</span></div>
+        <div class="ch"><b>序言2 世界顶级公司教会我的东西</b><span>高盛、麦肯锡、哈佛商学院的关系，以及精英们遵循的 4 个成功要素。</span></div>
+        <div class="ch"><b>第一章 如何投资人脉</b><span>7 个习惯 · 附“国际商务小课堂：与外国人问候时应注意‘握手的质量’”</span></div>
+        <div class="ch"><b>第二章 磨炼内在与外在</b><span>13 个习惯</span></div>
+        <div class="ch"><b>第三章 养成不被时间操纵的工作习惯</b><span>6 个习惯</span></div>
+        <div class="ch"><b>第四章 决定性的沟通创造出成果</b><span>8 个习惯</span></div>
+        <div class="ch"><b>第五章 在能间接产生利益的资料及会议方面做出自己的贡献</b><span>8 个习惯 · 附“国际商务小课堂：与外国人开会时展示存在感的方式”</span></div>
+        <div class="ch"><b>第六章 提高全球化的职业技能</b><span>6 个习惯</span></div>
+        <div class="ch"><b>后记</b><span>介绍作者的公司和以哈佛商学院案例为教材的英语项目“CLUB900”。</span></div>
+        <p class="small" style="margin-top:10px">适合读者（序言原话）：今后走向社会的学生、进入公司 1~3 年的商业人士、以提高能力为目标的 25~30 岁商业人士，以及承担年轻员工教育工作的管理层。</p>
+      </div>
+    </details>
+  </div>
+</header>
+
+<!-- ============ 第一章 ============ -->
+<section class="block ch1" id="c1">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">01</div>
+      <div><div class="tag">第一章 · 7 个习惯</div><h2>如何投资人脉</h2></div>
+    </div>
+    <p class="thesis reveal">刚认识一个人时，看不出你们将来会怎样；回头看时，点点滴滴才会串起来（connecting the dot）。所以要信赖<strong>超越利害关系的人脉</strong>，舍得在上面花时间和金钱，并把感恩的心情传达给对方。</p>
+
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">读 MBA 的价值</span>
+        <h4>作者的回答：三点</h4>
+        <ol><li>收获友谊</li><li>开阔视野</li><li>获得一定的自信</li></ol>
+        <p style="margin-top:8px">HBS 的同学也一致认为<b>友谊最重要</b>。哪怕每天自习 10 小时以上，他们也舍得花时间去舞会和酒会，HBS 因此被称为“舞会大学”。</p>
+      </div>
+      <div class="card">
+        <span class="k">榜样</span>
+        <h4>记得 7 年前学生名字的教授</h4>
+        <p>里夫金教授每年面对几千名学生，2013 年访日时仍叫出了作者的名字。HBS 的教授会先瞄一眼姓名卡，几秒后看着学生的脸叫出名字。</p>
+        <p>作者的看法：人的大脑没有太大差别，只是优先顺序不同。与人交往时，应把<b>记住名字放在第一位</b>。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">初次见面，叫对方的名字三次</h3>
+    <div class="np reveal" style="--n:3">
+      <div><b>自我介绍时</b>说出对方的名字，用自己的嘴和耳朵再确认一遍。</div>
+      <div><b>提问时</b>自我介绍后马上带着名字提问：“×××，您的老家在哪儿啊？”</div>
+      <div><b>告别时</b>“×××，今天非常感谢，期待下次再见。”最初的三次就算叫错了也可以原谅。</div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <h4>真挚地提问</h4>
+        <p>最普遍也最有力的问题：<b>“Where are you from？”</b></p>
+        <p>接着问：那座城市是个什么样的地方？有什么美食？去旅行哪里值得一看？你是怎样掌握这些本领的？工作中什么环节让你开心？</p>
+        <p class="note" style="margin-top:6px">不只关心吃喝玩乐，要带着好奇心，关注这次碰面能学到什么新东西。</p>
+      </div>
+      <div class="card">
+        <h4>相处时注意变换场合</h4>
+        <div class="scene" style="margin-top:8px">
+          <span class="hd" style="text-align:right">这次</span><span></span><span class="hd">下次</span>
+          <span class="a">午餐时遇见</span><i>→</i><span class="b">一起共进晚餐</span>
+          <span class="a">在酒会上遇见</span><i>→</i><span class="b">午餐，或下午喝咖啡</span>
+          <span class="a">在工作中遇见</span><i>→</i><span class="b">约去其他地方</span>
+          <span class="a">衬衫西服</span><i>→</i><span class="b">便装</span>
+          <span class="a">一大群人</span><i>→</i><span class="b">两个人单独见面</span>
+        </div>
+        <p class="note">不同时间和空间的记忆会累积成愉快的回忆；最后可以把对方介绍给家人和朋友。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">办公室以外的交流</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4>不刻意逃避和前辈、上司喝酒</h4>
+        <p>办公室里大家对着电脑、打电话，交谈几乎只关于业务。饭桌和酒桌上能说办公室里说不出口的话，上司也会给出真诚的建议。</p>
+        <p>作者入职高盛第一年冬天，平时很强硬的上司在饭后对他说：“户塚，在这个项目中你做得很好。”这句话让他信心倍增。</p>
+        <p>前提：先<b>敬慕</b>前辈和上司，他们才会加倍关照你。</p>
+      </div>
+      <div class="card">
+        <h4>每周见一次与工作无关的人：三种方法</h4>
+        <ol>
+          <li><b>一周最少安排一次碰面。</b>新名片很久没增加就是危险信号；坚持一周一次，一个月至少多 4~5 张名片。</li>
+          <li><b>见值得信赖的朋友或熟人介绍的人。</b>没参加过交流会就先去几场试试。</li>
+          <li><b>有好感就约定近期再见</b>，下周或近期就见。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:16px">
+      <span class="k">国际商务小课堂</span>
+      <h4>与外国人问候时应注意“握手的质量”</h4>
+      <p>日本式的寒暄是先交换名片、行礼、按座次摆名片；美国人交换名片只为留联系方式，没有仪式意义。给对方留好印象的秘诀是握手：<b>直视对方的眼睛，微笑着伸出手，坚定地握手</b>，用洪亮的声音报出名字，对方没听清就补充拼写（“Hi, I am Taka, T-A-K-A-Taka.”），并把对方的名字说出来确认。握手和自我介绍之后再交换名片，单手爽快递出即可，不必弯腰。</p>
+    </div>
+
+    <details class="toc reveal">
+      <summary>本章小结（原文）</summary>
+      <div class="toc-body"><ul class="star">
+        <li>只要你对超越利害关系的人脉抱有信赖，人际关系就会得到发展。</li>
+        <li>HBS的学生非常注重花费时间和精力去维系人脉。</li>
+        <li>在做自我介绍时，说出对方的名字，然后再通过不断地重复加以确认。</li>
+        <li>对于初次见面的人，要带着诚意和兴趣真挚地问一句：“你来自哪里？”</li>
+        <li>只有发自内心地敬佩上司和前辈，才能从他们身上获得有价值的建议。</li>
+        <li>如果对方是与工作毫不相干的人，那么一旦你对他有好感，就马上约定近期再见面。</li>
+      </ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 第二章 ============ -->
+<section class="block ch2" id="c2">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">02</div>
+      <div><div class="tag">第二章 · 13 个习惯</div><h2>磨炼内在与外在</h2></div>
+    </div>
+    <p class="thesis reveal">内心从容，行为才会从容；行为从容了，内心会更从容。这一章一半讲<strong>思考的习惯</strong>（读书、读报、独立思考、三个关键），一半讲<strong>举止与身体</strong>（礼让、道谢、健康、着装）。</p>
+
+    <h3 class="sub reveal">礼让与道谢</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4>出电梯时要礼让他人</h4>
+        <p>开门进楼、走窄路时，尽量让别人先走。对方下次也会给你让路，为他人着想的心境就会传开。</p>
+        <p>作者在纽约参加高盛新人培训时，和一位新人进电梯时下意识地互相替对方按了楼层：作者替对方按了 7 层，对方替作者按了 13 层。</p>
+      </div>
+      <div class="card">
+        <h4>别把“对不起”挂在嘴边，要多说“谢谢”</h4>
+        <p>“不好意思”既不能充分表达感激，也不能充分表达歉意。作者想说“不好意思”时会停一下：要感谢就说“谢谢”，要道歉就说“对不起”。</p>
+        <div class="ratio" aria-label="说话时的比例"><div class="x" style="flex:90">Thank you · 约 90%</div><div class="y" style="flex:10">10%</div></div>
+        <div class="rlabel"><span>需要表达谢意时尽量说“Thank you”</span><span>“Excuse me”控制在 10% 左右</span></div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">读书：读 1，想 3</h3>
+    <div class="card reveal">
+      <p>麦肯锡日本分公司前社长大前研一：“读完书之后，要花三倍的时间来思考。”读两个小时，就用 6 个小时想。边读边停下来整理的“阅读时思考”，常常读了 4 个小时，脑子里什么都没留下。</p>
+      <div class="ratio"><div class="z" style="flex:1">阅读 2 小时</div><div class="x" style="flex:3">思考 6 小时</div></div>
+      <div class="np" style="--n:3;margin-top:14px">
+        <div><b>写出每章要旨</b>读完一本书，就浓缩成十几段概述。</div>
+        <div><b>按逻辑排列</b>把各章要旨按逻辑构成分列出来，摘出主要信息。</div>
+        <div><b>总结含义</b>最后写出自己理解的含义。</div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">读报：思考“大家的反应”</h3>
+    <div class="np reveal" style="--n:3">
+      <div><b>读完想人们的反应</b>例：“苹果公司延期发售下一代 iPhone”，竞争对手会怎么做？日本零件供应商业绩受什么影响？对自己的工作有什么冲击？</div>
+      <div><b>注意登载方式</b>媒体按自己的标准排版，登载方式会影响人们的反应。纸质报纸还能让你看到专业以外的新闻。</div>
+      <div><b>至少读两份</b>一份作主要来源，上班前读 20 分钟左右；另一份粗读，找出与主报的区别。作者还会读一份海外英文报，对比标题差异。</div>
+    </div>
+
+    <h3 class="sub reveal">So what？ Why so？</h3>
+    <div class="card reveal">
+      <p>麦肯锡顾问的两句“咒语”。<b>So what？</b>（那又怎么样？）用来推出结论；<b>Why so？</b>（为什么会那样？）用来由表及里挖出问题的本质。</p>
+      <div class="chain" style="margin-top:14px">
+        <div class="nd"><small>空</small>天上堆积了很多云</div>
+        <div class="lk"><span>So what？</span></div>
+        <div class="nd"><small>雨</small>可能会下雨</div>
+        <div class="lk"><span>So what？</span></div>
+        <div class="nd"><small>伞</small>出门要带雨伞</div>
+        <div class="lk"><span>So what？</span></div>
+        <div class="nd end"><small>再追问一层</small>要带上一把大伞</div>
+      </div>
+      <div class="why">
+        <div class="nd">销售额上不去</div>
+        <div class="lk">Why so？ →</div>
+        <div class="outs"><div>因为顾客量没有增加</div><div>每位顾客的单笔消费额低</div></div>
+      </div>
+      <p class="note">思考和查找不同。HBS 的案例课不许参考 15~30 页教材以外的材料，课前上网搜答案就等于“作弊”。作者的体会：认真思考时下午 5 点就饿了，查资料要到晚上 7 点才饿。</p>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <h4>比起新颖的想法，更重视坚定的意见</h4>
+        <p>结论经不起推敲，是因为缺少支撑它的逻辑推理。逻辑不是为了让读者好懂而搭配结论，而是<b>强化结论的过程</b>。麦肯锡顾问每天画图表，也是为了整理逻辑、推出可信的结论，而不是为了做提案资料。</p>
+      </div>
+      <div class="card">
+        <h4>离开办公室时，带上笔和纸</h4>
+        <p>作者遇到难题时，会带着笔和纸去附近咖啡馆待 30 分钟左右，反复问 So what / Why so。去找上司讨论也先把疑问列在本子上。</p>
+        <ol><li>先写出头脑中浮现的想法，字迹潦草也没关系</li><li>不介意逻辑构成、因果关系、优先顺序和措辞</li><li>不断审视整理，改写成“金字塔结构”，必要时画成图表</li></ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">用“三个关键”锻炼瞬间思考</h3>
+    <div class="np reveal" style="--n:3">
+      <div><b>分解或总结论点 → 逻辑推理能力</b>分解能看到更深的内涵、解决更具体的问题；总结能把意见归拢。</div>
+      <div><b>区分优先性 → 时间管理能力</b>按轻重缓急排序，选出三个相对重要的点。</div>
+      <div><b>加强说服力 → 交流能力</b>一个论据太少，五个又太多，三个最合适。</div>
+    </div>
+    <p class="note reveal">书中的例子：HBS 一位牛津毕业、在麦肯锡伦敦办事处工作过的英国同学，每次发言都以“我认为……有三个关键点”开头，毕业时获得“成绩优等”。</p>
+
+    <h3 class="sub reveal">身体与仪表</h3>
+    <div class="grid3 reveal">
+      <div class="card">
+        <h4>不迟到、不缺席的体魄</h4>
+        <ol><li>充足的睡眠</li><li>吃早餐</li><li>洗手和漱口</li><li>接种疫苗</li><li>定期体检</li><li>戴口罩</li></ol>
+        <p style="margin-top:6px">每天至少睡 6 小时，理想是 7 小时。感冒咳嗽还勉强出席会议，对别人不负责。</p>
+      </div>
+      <div class="card">
+        <h4>健身的三个技巧</h4>
+        <ol>
+          <li><b>确保时间。</b>作者固定周六日上午去健身房，并向家人承诺。</li>
+          <li><b>在身体感到不适时运动。</b>酸痛两三天就会消失，在“想运动的信号”消失前再去。</li>
+          <li><b>不要太勉强。</b>按当天的状态和心情来，状态好再延长。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>服装与鞋</h4>
+        <p>高盛、麦肯锡的人穿白色或淡蓝色衬衫配深色西服，不讲个性，讲<b>干练感</b>。</p>
+        <p>上半身差别越来越小，要看下半身：<b>裤子有没有裤线</b>（作者推荐压裤线机，不到 30 分钟），<b>鞋跟有没有磨损</b>。</p>
+        <p>隔周周末护理一次鞋，定期修鞋跟；用鞋撑，寿命一般能延长 3 倍。</p>
+      </div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>本章小结（原文）</summary>
+      <div class="toc-body"><ul class="star">
+        <li>要保持心胸宽广，平时就要注意礼让他人。</li>
+        <li>要花三倍于读书的时间来认真思考每章的要旨。</li>
+        <li>要获得新颖的想法，逻辑推理能力必不可少。</li>
+        <li>将思考和查找区分开可以有效利用时间。</li>
+        <li>思考“So what？”和“Why so？”。</li>
+        <li>要保持活力，就不能缺少训练。</li>
+      </ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 第三章 ============ -->
+<section class="block ch3" id="c3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">03</div>
+      <div><div class="tag">第三章 · 6 个习惯</div><h2>养成不被时间操纵的工作习惯</h2></div>
+    </div>
+    <p class="thesis reveal">守时是一切工作的根本。在此之上，把<strong>头脑最清醒的时间</strong>留给需要思考的工作，前一晚和周日晚做好准备，忙乱时先停下来，按优先程度和所需时间排好顺序。</p>
+
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">新人时学到的箴言</span>
+        <h4>“提前10分钟到场是基本中的基本。”</h4>
+        <p>作者和上司准时赶往客户会议，路上却被上司严厉批评。这位上司常说：“一般人认为不寻常的事，在高盛集团就很平常。”新人容易误以为为了眼前的工作迟到 5 分钟也无妨。</p>
+      </div>
+      <div class="card">
+        <span class="k">哈佛 MIP 课程</span>
+        <h4>对私生活感到懊悔的精英们</h4>
+        <p>HBS 最受欢迎的“管理的视角”（MIP）课，每周由不同的顶尖校友讲自己的人生。几乎所有讲师都谈到工作与生活的平衡，很多人对过去的生活感到后悔。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">周末自我投资：按年龄分配</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4>20 多岁：精力放在眼前的工作上</h4>
+        <p>这时考虑平衡还太早。要好好休息，并划分近期目标（近期想取得什么成果）和长期目标（3 年、5 年、10 年后）。自我投资以<b>每周一天</b>为标准，最好是周末一整天。</p>
+        <div class="stats" style="grid-template-columns:1fr 1fr;margin-top:12px"><div class="stat"><div class="v">8<small>小时</small></div><div class="k">每周末拿出一整天</div></div><div class="stat"><div class="v">400<small>小时</small></div><div class="k">一年下来的自我投资时间</div></div></div>
+      </div>
+      <div class="card">
+        <h4>30 多岁：周末半天用于自我投资</h4>
+        <p>要对家人负更多责任，整天很难保证，但仍应坚持<b>周末半天</b>。自我投资包括考资格、学语言、读商业书，或读完全不同专业的书、体验不同领域。</p>
+        <p>作者 40 多岁时仍每周末花半天学语言或读不同领域的书。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">一天里的时间价值</h3>
+    <div class="card reveal">
+      <div class="day">
+        <span class="t">前一天下班前</span><div class="bar mid">整理资料，在纸上写下第二天要做的事</div>
+        <span class="t">上班前 1 小时</span><div class="bar hi">只做需要集中注意力和思考的工作</div>
+        <span class="t">外出的车上</span><div class="bar mid">查看邮件</div>
+        <span class="t">下午 1 点以后</span><div class="bar lo">容易困倦松懈：不适合需要集中精力的工作，可以处理邮件</div>
+      </div>
+      <p class="note" style="margin-top:16px">同一份工作所需的时间（书中的说法）：</p>
+      <div class="day cmp" style="margin-top:6px">
+        <span class="t">早晨</span><div class="bar hi" style="width:33.3%">1 小时</div>
+        <span class="t">下午</span><div class="bar lo" style="width:100%">至少 3 小时</div>
+      </div>
+      <p class="note">清晨没有电话、没有访客，上司同事也很少谈工作，是唯一一个几乎能 100% 投入工作的时间段。</p>
+      <div class="np" style="--n:3;margin-top:14px">
+        <div><b>清晨一小时不理其他事</b>只做需要集中注意力或需要思考的工作。</div>
+        <div><b>不在一大早查邮件</b>延后到外出的车上，或下午效率低的时段。</div>
+        <div><b>前一天列好清单</b>早上只需确认一下。</div>
+      </div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <h4>夺取明日之晨的仪式</h4>
+        <p>作者刚进高盛时，常工作到深夜，第二天九点到公司边吃面包边回邮件，到 10 点还不知道从哪开始。邻座前辈说：“你在家里吃了早饭再来上班吧，千万不要浪费早上这段宝贵的时间！”</p>
+        <p>这位前辈下班前会把多个项目的资料分门别类整理好，再在一张纸上写下第二天要做的事。</p>
+      </div>
+      <div class="card">
+        <h4>周日晚：从 OFF 切换到 ON</h4>
+        <ol>
+          <li><b>回顾刚过去的愉快周末。</b>边吃晚饭边和家人说：“这周末过得很开心，还想再去哪儿啊?!”</li>
+          <li><b>确认下周，尤其是周一一整天该做的工作。</b></li>
+          <li><b>比往常早醒 15 分钟</b>，所以周日要早些休息。</li>
+        </ol>
+        <p class="note" style="margin-top:6px">三件事用不了 30 分钟。看一个人周一上午的状态，就能判断他的能力。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">高盛集团的优先顺序设定法</h3>
+    <div class="card reveal">
+      <p>工作忙不过来时，先停下来，把眼前的事列在一张纸上，按两个维度分类：<b>优先程度</b>和<b>完成所需的时间</b>。</p>
+      <div class="pm" style="margin-top:14px">
+        <div class="mx">
+          <span></span><span class="ax">花费大量时间</span><span class="ax">马上就能完成</span>
+          <span class="ay">优先程度高</span>
+          <div class="q hot"><span class="L">A</span><span class="ord">第 1、3 步</span><p>例：三天后与客户商谈要用的资料</p></div>
+          <div class="q warm"><span class="L">B</span><span class="ord">第 2 步</span><p>例：明确标准后上网搜索、打电话预订聚会的酒店</p></div>
+          <span class="ay">优先程度低</span>
+          <div class="q"><span class="L">D</span><span class="ord">第 5 步</span><p>最后处理</p></div>
+          <div class="q"><span class="L">C</span><span class="ord">第 4 步</span><p>按工作一览表的顺序一一解决</p></div>
+        </div>
+        <div class="seq">
+          <div><b>应对 A</b><span>先处理；期限内怎么都完不成，就事先向对方说明，请对方重设截止日期</span></div>
+          <div><b>处理 B</b><span>马上能做完的先做掉，心情会舒畅</span></div>
+          <div><b>处理 A</b><span>再做截止日期延后的 A</span></div>
+          <div><b>处理 C</b><span>按清单顺序解决</span></div>
+          <div><b>处理 D</b><span>最后处理</span></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>本章小结（原文）</summary>
+      <div class="toc-body"><ul class="star">
+        <li>无论多忙，守时是一切工作的根本。</li>
+        <li>如果一个人懂得如何去平衡工作与生活，那么他的发展潜力就会得到激发。</li>
+        <li>充分利用早上高度的集中力。</li>
+        <li>为了第二天早上顺利地工作，不要忘了在离开公司前做最后的整理工作，还要写出第二天的工作计划一览表。</li>
+        <li>将周一早上的闹铃设置得比平常提前15分钟。</li>
+        <li>工作忙不过来时，先从优先程度高且花费时间的工作开始。</li>
+      </ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 第四章 ============ -->
+<section class="block ch4" id="c4">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">04</div>
+      <div><div class="tag">第四章 · 8 个习惯</div><h2>决定性的沟通创造出成果</h2></div>
+    </div>
+    <p class="thesis reveal">和上司的沟通贯穿一项任务的全过程：接任务时<strong>当场记下、当场确认</strong>，回到座位 5 分钟内开工，在上司开口问之前主动汇报，带着假设去谈，并且尽早拿出中间成果。</p>
+
+    <h3 class="sub reveal">一项任务的沟通节奏</h3>
+    <div class="card reveal">
+      <div class="timeline">
+        <div class="on"><b>接到任务</b><span>笔记本放在 3 秒能打开的地方；当场用 5W1H 确认</span></div>
+        <div class="on"><b>5 分钟内</b><span>再确认指示、订计划、预估时间；有疑问马上问</span></div>
+        <div><b>进行中</b><span>在上司催促前主动汇报、联系、交谈，带上假设</span></div>
+        <div class="on"><b>第二天一大早</b><span>即使只完成 70%，也去汇报</span></div>
+      </div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <h4>做笔记的三个作用</h4>
+        <ol><li>备忘</li><li>整理发言内容</li><li>显示听者理解了发言人所说的话</li></ol>
+        <p style="margin-top:6px">高盛的指示来得突然，没人手把手教。找笔记本时上级已经开始说了，所以要随时带在身边，记完再确认一遍。不打算记，也要带着本子去开会。</p>
+      </div>
+      <div class="card">
+        <h4>当场确认：5W1H + 类似的例子</h4>
+        <p>对谁、做什么、何时、在哪儿、为什么、怎么做。例如准备发言材料：对象是谁、传达什么、何时开会、什么环境、背景是什么、用投影还是纸质。</p>
+        <p>再举一个以前的例子对齐前提：“用我在半年前对××公司做过的那样的资料可以吗？”两三句对话，双方的信息就共享了。</p>
+      </div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <h4>5 分钟内开始安排进程</h4>
+        <p>手头的工作暂时放一放，花 5 分钟：再次确认上司的指示 → 制订计划、预判所需时间 → 着手（需要调整约定就马上发邮件，需要订货就先订货）。</p>
+        <p>制订计划时把截止日期<b>提前一天</b>。</p>
+      </div>
+      <div class="card">
+        <h4>回复邮件的速度 = 别人对你的评价</h4>
+        <p>作者东京时间凌晨两点发出邮件，6 小时内收到了全球近 80% 的回复。越忙的顶级银行家，回得越快。</p>
+        <ol>
+          <li>把回复时间当作你的名片</li>
+          <li>回复要花很多时间，就先发一封简短的邮件告知对方</li>
+          <li>涉及感情、需要整理思路的，敢于搁置一晚再回</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">汇报、联系、交谈：先发制人，带着假设</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">反面教材</span>
+        <h4>“户塚，那件事怎么样了？”</h4>
+        <p>作者本打算下午汇报，被上司先问到，在一连串尖锐的问题下失去自信：通常 3 分钟的报告花了 15 分钟。主动汇报才有时间整理要点和逻辑；被问之后才答，只能被动防守。没空马上汇报，也要先找上司说一声；要外出就先发一封简短的近况邮件。</p>
+      </div>
+      <div class="card">
+        <span class="k">“谨慎疏通型模式”</span>
+        <h4>“我认为……因为……按这个方向展开工作可以吗？”</h4>
+        <p>边向上司确认工作的方向边商量。关键是假设思考：先设想做法，再导出结论；汇报时一定要准备好假设和结论。这样省掉上司问“为什么？”的时间，话题也自然落到双方分歧处。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">让繁忙的上司挤出时间</h3>
+    <div class="card reveal">
+      <p>作者在电梯厅碰到要外出的上司，跟进电梯，在等出租车的 3 分钟里汇报完了项目进展。后来才知道，错过这次就要等到大后天下午。</p>
+      <div class="np" style="--n:3;margin-top:12px">
+        <div><b>充满自信地让上司“挤出时间”</b>要想“对方需要我的汇报、联系和交谈”。</div>
+        <div><b>随时做好沟通的准备</b>在头脑里整理好进展，随时能精简说明。</div>
+        <div><b>简练地说出沟通事项</b>“您能腾出三分钟，听我说说××事吗？”要说的事放在最前面。</div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">第二天一大早报告，哪怕只有 70%</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4>书中的例子</h4>
+        <p>周三下午 5 点，上司要去和客户聚餐前交代了任务，汇报定在下周二下午。作者当晚做完框架，打印放在上司桌上并发邮件，第二天一早当面汇报。</p>
+        <p>如果第二天早上才开工，白天会被电话和商谈打断，拖到晚上加班，再拖就到周五，最后自己和组员的周末都搭进去。</p>
+      </div>
+      <div class="card">
+        <h4>三个理由</h4>
+        <ol>
+          <li><b>早晨安静</b>，没有电话、人少，头脑清醒，可以沉着地沟通。</li>
+          <li><b>可以及时调整方案</b>，第二天就做中期汇报，出错也能马上改。</li>
+          <li><b>可以超出对方的期待值</b>，严苛的上司也会开心。</li>
+        </ol>
+      </div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>本章小结（原文）</summary>
+      <div class="toc-body"><ul class="star">
+        <li>记录下工作指示，之后确认其准确性。</li>
+        <li>5分钟内着手新的任务，制订计划，消除疑点。</li>
+        <li>回复邮件的速度相当于你的名片。</li>
+        <li>和上司的意见相左时，应在汇报、联系、交谈时穿插假设，先发制人。</li>
+        <li>上司工作繁忙，你应该让上司挤出时间来了解你的工作情况。</li>
+        <li>接到任务后，即使只完成了70%，也要在第二天一早就向上司汇报。</li>
+      </ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 第五章 ============ -->
+<section class="block ch5" id="c5">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">05</div>
+      <div><div class="tag">第五章 · 8 个习惯</div><h2>在能间接产生利益的资料及会议方面做出自己的贡献</h2></div>
+    </div>
+    <p class="thesis reveal">会议结束后，留在客户手上的只有资料，所以<strong>资料就是产品</strong>：先有内容，再谈外观，最后抠细节。开会时，发言是义务，坐在白板前是展现价值的方法之一。</p>
+
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">前辈的提醒</span>
+        <h4>“汇报的资料就是我们的产品。”</h4>
+        <p>作者通宵准备了一周，出门前匆忙复印，几十张资料没放整齐，纸夹也弯了。前辈让他重新整理夹好：带着凌乱的资料进会场，客户不会相信这是反复讨论出来的。</p>
+        <p>前辈的意思是：内容再精彩、会议再顺利，留在客户手上的也只是纸质资料，初次见面时对方看到的也只是手头的文件。“看似不重要的资料，实则非常重要。”资料不仅要传达信息、外观精美，还代表你和公司的形象。</p>
+      </div>
+      <div class="card">
+        <span class="k">麦肯锡的资料为什么只有一种颜色</span>
+        <h4>颜色控制在 3 种以内</h4>
+        <p>麦肯锡的资料基本只用黑白两色，是对内容有自信的表现。很多彩色图表的资料，一听说明就发现内容空洞。</p>
+        <div class="seq" style="margin-top:10px">
+          <div><b>信息</b><span>先准备好充足的信息</span></div>
+          <div><b>黑白</b><span>搭整体框架，用黑白两色制作</span></div>
+          <div><b>配色</b><span>最后只给需要强调的部分配色</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">搭框架：开场白与“3W”</h3>
+    <div class="card reveal">
+      <p>先设想开场白，也就是打开资料前说的那番话。书中的例子：“感谢诸位今天出席第二次报告会。这次的报告会主要针对上次会议的存疑事项提出一些改善措施，并报告进展情况。”出席者都参加过上次会议，所以资料不必再写基本事项，只需回顾存疑事项、列出改善措施、展示变化。然后像画“连环画”一样排好资料的流程。</p>
+      <div class="np" style="--n:3;margin-top:12px">
+        <div><b>Who：对象是谁</b>看出席者的职务、立场、背景、年龄。熟悉议题就不必面面俱到；潜在客户要突出优势并预先列出疑点；持反对意见的要准备应对诘问。</div>
+        <div><b>Why：目的是什么</b>推销要强调优点；求董事会认可要触及潜在疑点；业绩说明要拿出实际数据。</div>
+        <div><b>What：传达什么</b>缩小 Who 和 Why 后再定主要信息。对方持反对意见时，开头就亮结论会激起逆反，应先理顺逻辑，最后给结论。</div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">先手绘，再开 PPT</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4>“麦肯锡笔记本”的用法</h4>
+        <p>准备四五张白纸、铅笔、橡皮，暂时离开电脑。麦肯锡内部发一种画有方格的笔记本，方便画出图表的纵轴和横轴。顾问用铅笔、用尺画草稿，画好了才打开电脑。</p>
+        <p>资料要以内容为主导，不以 PPT 为主导；PPT 的图表只是支持文字的素材。</p>
+      </div>
+      <div class="card">
+        <h4>手绘草稿的三点好处</h4>
+        <ol>
+          <li><b>可以集中思考</b>，离开电子设备更有助于高效思考。</li>
+          <li><b>重新制作快</b>，擦掉重画；PPT 往往要花手绘几倍的时间，还容易因厌倦而草草了事。</li>
+          <li><b>重点放在内容上</b>，避开为 PPT 配色的风险。</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">“一张表格，一条信息”</h3>
+    <div class="card reveal">
+      <div class="mock">
+        <div class="slide" aria-label="麦肯锡式资料页示意">
+          <div class="msg">最上面用一两行写这一页的信息（结论）</div>
+          <div class="ttl">下面是图表标题</div>
+          <div class="chart"><div style="height:38%"></div><div style="height:52%"></div><div style="height:61%"></div><div class="hl" style="height:88%"></div></div>
+          <div class="src">黑白为主，只在要强调处配色；粗体很少，顶多加下划线</div>
+        </div>
+        <div class="anno">
+          <div><b>一页 · 一张表格 · 一条信息</b><span>一页放几张图表，信息就散了。资料像树干，树枝是结论信息，支持它的数据编成图表。</span></div>
+          <div><b>不必拘泥</b><span>投资银行的资料追求精致、信息量大，麦肯锡的重逻辑和明确。对潜在客户要突出公司业绩时，适当安排文字和图表更有说服力；要用明确依据说服对方时，就贯彻这个原则。</span></div>
+          <div><b>关键是先有信息，再“制作数据”</b><span>① 想清楚需要什么辅助信息 → ② 借资料、上网检索，做成图表 → ③ 没有现成数据就重新取材，或把不同数据组合起来。</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">将注意细节贯彻到底</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">“注意细节！”</span>
+        <p>作者入职高盛时交给上司的资料被改得面目全非，按上司的标准只完成了 70%。改好再交，5 分钟后又被退回，连助词用法和文字格式都标了红，空白处写着“注意细节”。这种差距与行业经验无关，在于注意力是否集中、有没有高质量完成工作的意识。</p>
+      </div>
+      <div class="card">
+        <h4>两种方法</h4>
+        <ol>
+          <li><b>注重统一感。</b>标题用粗体，全文就都用粗体；一处用标点，全部都用。</li>
+          <li><b>最后阶段无视内容，机械地校对。</b>不再评论内容，只查语法和格式。</li>
+        </ol>
+        <p style="margin-top:6px">在最后的 5 分钟提高注意力。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">会议：不发言等于缺席</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <h4>发言是义务，不是权利</h4>
+        <p>麦肯锡刚毕业的新人也要在会议上发言，有人入职第一年就被要求在白板前讨论。作者遇到过一位入职 3 年的年轻顾问，在不熟悉的行业里整理出了客户问题的要点，让会议顺利了很多。</p>
+        <ol>
+          <li><b>充分做好会议准备：</b>确认主题、出席者、目的；不熟的话题先备好看法和依据。</li>
+          <li><b>想一想自己能做出的贡献：</b>可以从外行、消费者的角度提意见；年轻人在技术和通信方面有优势。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>即使后面有空位，也坐白板前</h4>
+        <p>白板能迅速集中注意力，写完能擦掉，也便于从视觉上整合观点。要用好白板，平时就要琢磨做笔记的方法。作者的前辈记笔记时就画矩阵和纵横轴，像能直接拿去发言的资料。</p>
+        <ol>
+          <li>不要一味表达自己的意见，站在听者的立场上</li>
+          <li>提出恰当的问题，把自己的想法当素材、用疑问的形式引出大家的意见</li>
+          <li>抓住意见的本质，做出书面总结</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">国际商务小课堂：与外国人开会时展示存在感</h3>
+    <div class="card reveal">
+      <p>用外语开会，日本人往往自然成了倾听者。作者建议战略性地选择自己的任务：把<b>会议上的任务</b>和<b>发言内容</b>相乘，找到适合自己的贡献方式。</p>
+      <div class="roles" style="margin-top:14px">
+        <span></span>
+        <span class="h rh">A 知识集约型<small>基于某个知识点</small></span>
+        <span class="h rh">B 想法集约型<small>提供新想法</small></span>
+        <span class="h rh">C 逻辑整理型<small>梳理逻辑</small></span>
+        <span class="h rh">1 主导讨论<small>发表基础方案</small></span>
+        <span class="cell on">1×A<br>以丰富知识为根据，主导议论</span><span class="cell">1×B</span><span class="cell">1×C</span>
+        <span class="h rh">2 追加发言<small>反论、支持或追加</small></span>
+        <span class="cell">2×A</span><span class="cell on">2×B<br>在他人意见上追加新想法</span><span class="cell">2×C</span>
+        <span class="h rh">3 整理意见<small>导出最终结论</small></span>
+        <span class="cell">3×A</span><span class="cell">3×B</span><span class="cell on">3×C<br>理清前提和因果，整合意见</span>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div>
+          <h4 style="font-size:16px">活用“What if？”</h4>
+          <p class="muted" style="font-size:14.5px">作为整理者（3×C），问“前提条件变了，结论会怎样？”例如：“What would the conclusion be if A happens？”讨论越激烈，前提越容易被忘记；快要达成结论时问一句，也能再确认结论是否准确。</p>
+        </div>
+        <div>
+          <h4 style="font-size:16px">不要长篇大论</h4>
+          <p class="muted" style="font-size:14.5px">HBS 课堂上最受称赞的发言，是激烈讨论中冒出的新看法。不用长篇大论，不需要丰富的专业知识，也不需要流畅的英语，只要把焦点放在前提条件上。</p>
+        </div>
+      </div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>本章小结（原文）</summary>
+      <div class="toc-body"><ul class="star">
+        <li>准备发言资料时，不应只注重资料的外表，应该充分思考资料本身有没有说服力。</li>
+        <li>准备资料时，要意识到开场白的作用。</li>
+        <li>“一张表格、一条信息”这一准备材料的秘诀，关键是按照资料信息来“制作数据”。</li>
+        <li>除了确保文件的内容准确无误外，还要贯彻“注意细节”的原则。</li>
+        <li>即使意见拙劣，也不能因为害怕出错而缄默不言，应该大胆突破自己，勇敢发言。</li>
+        <li>了解做笔记的方法，运用白板的技术也会得到提升。</li>
+      </ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 第六章 ============ -->
+<section class="block ch6" id="c6">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">06</div>
+      <div><div class="tag">第六章 · 6 个习惯</div><h2>提高全球化的职业技能</h2></div>
+    </div>
+    <p class="thesis reveal">英语要的不是“流利”，而是<strong>有逻辑、有自信</strong>地表达；职位要靠提前展示出上一级的能力来争取；离开公司时要“毕业”而不是“退学”；中长期目标写在随身的私人笔记里。</p>
+
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">把爱国心转化为动力</span>
+        <h4>在一千多人的会场上向萨默斯提问</h4>
+        <p>时任哈佛校长萨默斯用一个小时讲日本经济的问题。作者第一个举手：“日本经济怎样才能从失去的 15 年中恢复过来？……我认为您没有提出解决方案。”萨默斯很会转移话题，始终没给出方案。</p>
+        <p>作者说自己能毫不犹豫地举手，是因为作为日本人的自豪感；也因为没能用流利的英语反驳而深感不快，从此更重视英语表达。</p>
+      </div>
+      <div class="card">
+        <span class="k">职业英语的三个特征</span>
+        <h4>高盛、麦肯锡的日本专家怎么说英语</h4>
+        <ol>
+          <li><b>日语腔调很浓</b>，但能把关键的音区分开，例如 L 和 R。</li>
+          <li><b>听、说、读、写的基本功很扎实</b>：文件、邮件、资料都是英文，还要听懂各地口音的电话会议。</li>
+          <li><b>富有逻辑并充满自信地交流</b>，按语法规范发言。</li>
+        </ol>
+        <p style="margin-top:6px">要从“流利”的咒语里解放出来。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">英语学习：先定一个“900 分”</h3>
+    <div class="card reveal">
+      <p>书中把短期目标定为“托福（TOEIC）考试取得 900 分”：对从中学就学英语的人来说，短期集中备考并非很难；对日常使用英语的专家，这是最低标准，也是全球型人才在英语这道关卡的入口。考试成绩只是参照，但和实践能力有一定关系。</p>
+      <div class="np" style="--n:3;margin-top:12px">
+        <div><b>明确设定目标</b>目标太低没意义，模糊就感觉不到成果、控制不了进度。</div>
+        <div><b>短时间内取得成果</b>商务英语水平作中长期目标，考试作短期目标，每天接触，一鼓作气。</div>
+        <div><b>认识内在机理，从基础学起</b>像成年后学高尔夫要读书学挥杆一样，认真查字典、脚踏实地。</div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">以更高的标准要求自己</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <p>不是当上部长才有领导能力，而是有了领导能力才当上部长。高盛和麦肯锡在提拔前，都要求员工先展示出担任更高一级职务的能力。</p>
+        <div class="ladder" style="margin-top:12px">
+          <div><b>普通顾问</b><span>起点</span></div>
+          <div><b>项目经理</b><span>升客户经理前先被委任，这期间要得到充分好评</span></div>
+          <div><b>客户经理</b><span>晋升</span></div>
+        </div>
+        <p class="note" style="margin-top:8px">麦肯锡的晋升路径（书中所述）</p>
+      </div>
+      <div class="card">
+        <h4>360 度评估</h4>
+        <p>上司、同期同事、下属按每一个小项，对员工过去一年的工作做全方位评价。</p>
+        <div class="ring"><span>上司</span><span>同期同事</span><span>下属</span></div>
+        <p style="margin-top:10px">只讨好上司、让年轻专家做额外杂活的人，会被下属毫不留情地打分。在上司交给你更大的责任之前，先主动背起来，既能提高视角，也能早点看清自己的不足。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">不从公司“退学”，力争顺利“毕业”</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <p>离开麦肯锡被称为“毕业”，同期会以“毕业仪式”的形式举办，入职第三年时最频繁。麦肯锡的毕业生在各行各业互相帮助。作者并不鼓励辞职，但辞职时<b>至少要得到部分人的支持</b>，即使成绩不是优等，也要拿着“毕业证书”启程。</p>
+      </div>
+      <div class="card">
+        <h4>“毕业证书”重要的两个理由</h4>
+        <ol>
+          <li><b>前任同事是宝贵的财产。</b>世界很小，在上一家公司的声誉会一直跟着你。</li>
+          <li><b>不要逃避。</b>半途而废的工作会留在记忆里；觉得自己没在逃避，才会得到同事的支持。</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">“私人笔记”不离身</h3>
+    <div class="card reveal">
+      <p>作者只用一本私人笔记，不按项目分本子，项目任务也记在里面。它最大的用处是中长期目标管理：写备忘或工作表时，顺手写下想象中将来的样子和要达成的目标。从高盛辞职去留学的前一年开始记，后来也一直坚持，封皮上记下日期。</p>
+      <div class="np" style="--n:2;margin-top:12px">
+        <div><b>多次写下相同的目标</b>重点是书写的过程，不是回顾。写的时候目标会刻进心里，让人想“大干一番”。</div>
+        <div><b>根据情况调整细微之处</b>进展不顺就重排时间表，但要认准中长期的主要目标。</div>
+      </div>
+      <p class="note">每周过半容易松懈时，打开笔记看 5 分钟，确认自己为什么做眼前的工作、接下来做什么。头脑和心情混乱时，也先把让你混乱的事写在纸上。</p>
+    </div>
+
+    <details class="toc reveal">
+      <summary>本章小结（原文）</summary>
+      <div class="toc-body"><ul class="star">
+        <li>相比流利地讲英语，更应该注重发言的逻辑性和庄重的态度。</li>
+        <li>分期设定英语学习目标，先把目标设定在“托福考试取得900分”。</li>
+        <li>工作时以更高的标准要求自己，尽自己最大的努力去完成。</li>
+        <li>换工作不是半途而废，要拥有“不是辍学，而是毕业”的意识。</li>
+        <li>制作“私人笔记”，做中长期的目标管理。</li>
+      </ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 48 个习惯 ============ -->
+<section class="block chx" id="habits">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">48</div>
+      <div><div class="tag">全部习惯 · 标题照原文</div><h2>48 个工作习惯</h2></div>
+    </div>
+    <div class="filters reveal">
+      <button class="chip chx on" data-c="0">全部</button>
+      <button class="chip ch1" data-c="1">一 人脉</button>
+      <button class="chip ch2" data-c="2">二 内在与外在</button>
+      <button class="chip ch3" data-c="3">三 时间</button>
+      <button class="chip ch4" data-c="4">四 沟通</button>
+      <button class="chip ch5" data-c="5">五 资料与会议</button>
+      <button class="chip ch6" data-c="6">六 全球化</button>
+      <input class="search" id="hsearch" type="search" placeholder="搜索：笔记、邮件、早上……">
+    </div>
+    <p class="hcount" id="hcount"></p>
+    <div class="pgrid" id="pgrid"></div>
+    <p class="empty" id="pempty">没有匹配的习惯</p>
+  </div>
+</section>
+
+<!-- ============ 金句 ============ -->
+<section class="block chr" id="quotes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">“</div>
+      <div><div class="tag">逐字引用</div><h2>金句</h2></div>
+    </div>
+    <div class="quotes reveal">
+      <div class="quote">提前10分钟到场是基本中的基本。<cite>第三章 · 作者在高盛时的上司</cite></div>
+      <div class="quote">读完书之后，要花三倍的时间来思考。<cite>第二章 · 大前研一</cite></div>
+      <div class="quote">我认为，人类的大脑没有太大的差别，只是考虑事情的优先顺序不同而已。<cite>第一章</cite></div>
+      <div class="quote">坚定的意见不一定包含新颖的想法和新鲜的信息。即使一个很普通的见解，如果有足够有力的论据来支持的话，它也是宝贵的。<cite>第二章</cite></div>
+      <div class="quote">你在家里吃了早饭再来上班吧，千万不要浪费早上这段宝贵的时间！<cite>第三章 · 作者在高盛时的邻座前辈</cite></div>
+      <div class="quote">汇报的资料就是我们的产品。从始至终，我们都不能松懈，而是应该谨小慎微地、以超出客户预期的效果来完成这些资料。<cite>第五章 · 作者的前辈</cite></div>
+      <div class="quote">出席会议的人不是被赋予了发言的权利，而是被分配了发言的义务。<cite>第五章</cite></div>
+      <div class="quote">一个人不是成了部长之后就能掌握领导能力，而是有了领导能力之后才会赢得统率团队和组织的地位。<cite>第六章</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 清单 ============ -->
+<section class="block chr" id="todo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">✓</div>
+      <div><div class="tag">勾选后保存在本机浏览器</div><h2>可执行清单</h2></div>
+    </div>
+    <div class="progress reveal"><div class="track"><div class="fill" id="pfill"></div></div><span class="txt" id="ptxt">0 / 0</span><button class="reset" id="reset">清空</button></div>
+    <div class="check reveal" id="check"></div>
+    <p class="note reveal">序言里作者的话：最重要的就是“读书，举一反三，加以实践”，最好总结出一套最适合自己的成功经验。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">《麦肯锡精英的48个工作习惯》读书总结 · 内容依据原书整理 · [日] 户塚隆将 著，千太阳 译</div>
+</footer>
+
+<button class="fab" id="fab" type="button" aria-haspopup="dialog" aria-controls="plan" aria-expanded="false">我要怎么做？<span class="pc" id="fabpc">0/0</span></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="plan" role="dialog" aria-modal="true" aria-labelledby="planTitle" aria-hidden="true">
+  <div class="dh">
+    <div><span class="tag">ACTION PLAN</span><h2 id="planTitle">我要怎么做？</h2><p>按书里的方法排成四步，每一条都注明出处章节。勾选后保存在本机浏览器。</p></div>
+    <button class="x" id="planClose" type="button" aria-label="关闭">×</button>
+  </div>
+  <div class="progress dprog"><div class="track"><div class="fill" id="dfill"></div></div><span class="txt" id="dtxt">0 / 0</span></div>
+  <div class="dbody" id="planBody"></div>
+</aside>
+
+<script>
+const CH=["","人脉","内在与外在","时间","沟通","资料与会议","全球化"];
+const H=[
+[1,"珍惜超越利害关系的人脉","结交时看不出将来，回头看点点滴滴会串起来（connecting the dot）；心怀感恩，并传达给对方。"],
+[1,"在人脉上投资珍贵的时间与金钱","读 MBA 的价值：收获友谊、开阔视野、获得自信，友谊最重要。HBS 学生再忙也优先人际投资。"],
+[1,"发展人际关系从记住对方的名字开始","初次见面叫对方名字三次：自我介绍时、提问时、告别时。"],
+[1,"对交谈抱有诚意，并真挚地提问","从“Where are you from？”问起，再追问城市、美食和工作，关注能学到什么。"],
+[1,"要清晰地记住与对方相处的时间","变换相处的场所、时间、着装和人数，累积愉快的回忆来拉近距离。"],
+[1,"不刻意逃避与公司前辈或上司喝酒的场合","办公室外能说办公室里说不出的话；先敬慕前辈和上司，他们会加倍关照你。"],
+[1,"不管多忙，每周都要跟与工作无关的人见一次面","每周至少一次；见可信赖的人介绍的人；有好感就约定近期再见。"],
+[2,"出电梯时要礼让他人","从容的心态和从容的行为互相促进，礼让让人际关系进入良性循环。"],
+[2,"别把“对不起”挂在嘴边，要多说“谢谢”","该感谢就说“谢谢”，该道歉就说“对不起”；“Excuse me”控制在 10% 左右。"],
+[2,"培养思考无固定答案问题的习惯","从现实中自己设定课题、逻辑思考、得出见解；HBS 教授不给“固定答案”。"],
+[2,"麦肯锡咨询公司的读书术——读书后，要花三倍的时间思考","读 2 小时就想 6 小时：写出每章要旨，按逻辑排列，总结含义。"],
+[2,"读报的同时，要思考“大家的反应”","想人们会怎样反应、看新闻的登载方式、至少读两份报纸对照。"],
+[2,"比起新颖的想法，要更加重视坚定的意见","普通的见解有了有力的论据也宝贵；画图表是为了整理逻辑。"],
+[2,"不要靠网络“作弊”，独立思考，然后找出答案","把思考和查找分开，用“So what？”“Why so？”反复追问。"],
+[2,"离开办公室时，请拿着笔和纸","先写出想法，不管逻辑和顺序，再反复整理成金字塔结构。"],
+[2,"用“三个关键”锻炼瞬间思考的能力","总结三点，同时练逻辑推理、时间管理和交流能力。"],
+[2,"养好身体，打造一个不迟到、不缺席的强健体魄","睡眠至少 6 小时、吃早餐、洗手漱口、接种疫苗、定期体检、戴口罩。"],
+[2,"注意健身，让心灵返老还童","确保时间；在运动后的酸痛消失前再去；不要太勉强。"],
+[2,"服装整洁比个性更重要","高盛和麦肯锡的着装不讲个性，讲干练感。"],
+[2,"两周护理一次鞋子","看裤线和鞋跟；隔周周末护理鞋子，用鞋撑防走样。"],
+[3,"无论遇到什么情况，都要提前10分钟到场","守时是一切工作的根本，“提前10分钟到场是基本中的基本”。"],
+[3,"哈佛毕业生教给我的周末自我投资术","20 多岁每周拿一整天自我投资，30 多岁至少用周末半天。"],
+[3,"在工作开始前的一个小时内，高盛集团的管理者都在做什么？","上班前一小时做需要专注和思考的事，邮件推到车上或下午。"],
+[3,"夺取明日之晨的仪式","下班前整理好资料，在纸上写下第二天要做的事。"],
+[3,"在新的一周开始之前，将自己从OFF切换到ON","周日晚回顾周末、确认周一的工作，第二天比往常早醒 15 分钟。"],
+[3,"高盛集团的优先顺序设定法","按优先程度和所需时间分类：应对A→处理B→处理A→处理C→处理D。"],
+[4,"将笔记本放置在三秒钟就能打开的地方","随身带笔记本，开会和洽谈时随时记，记完向上级确认。"],
+[4,"接到任务之后，当场确认任务信息","用 5W1H 确认，再拿以前类似的例子和上司对齐前提。"],
+[4,"接到工作任务后，5分钟内马上开始安排进程","再确认指示、订计划、有疑问马上问；截止日期提前一天。"],
+[4,"回复邮件的速度=别人对你的评价","回复速度就是名片；来不及就先简短告知；涉及感情的搁置一晚。"],
+[4,"向上司报告、联系、交谈时要先发制人","在上司开口问之前主动汇报，才有时间整理要点和逻辑。"],
+[4,"在汇报、联系、交谈时穿插假设来说服对方","“我认为……因为……按这个方向展开工作可以吗？”"],
+[4,"如何让繁忙的上司挤出时间","自信地开口、随时准备好进展、先说事项：“您能腾出三分钟吗？”"],
+[4,"向上司报告工作要选在第二天一大早","接到任务后即使只完成 70%，也在第二天早上汇报。"],
+[5,"要将自己的资料视作“自己的产品”","留在客户手上的只有资料，复印和装订也不能松懈。"],
+[5,"麦肯锡准备的资料为什么只有一种颜色？","颜色控制在 3 种以内；先用黑白做好内容，最后给要强调的地方配色。"],
+[5,"准备资料时要有“连环画”与“3W”的意识","先设想开场白，按 Who、Why、What 搭框架。"],
+[5,"如何用“麦肯锡笔记”说服客户","先在方格纸上用铅笔和尺手绘草稿，再打开 PPT。"],
+[5,"不局限于“一张表格，一条信息”","原则是一页一张表格一条信息，但要按资料的目的灵活运用。"],
+[5,"将注意细节贯彻到底","注重统一感；最后阶段不看内容，机械地校对。"],
+[5,"如果在会议上不发言，那么这跟缺席一样","发言是义务；事先准备，想清楚自己能贡献什么。"],
+[5,"开会时，为什么要坐在白板前","站在听者的立场，用提问引出意见，抓住本质写下来。"],
+[6,"如何将爱国心转化为动力源泉","作者凭着日本人的自豪感当众向萨默斯提问，也因此更重视英语。"],
+[6,"英语说得再流畅，不如提高表达的逻辑性","精英的英语有口音，但基本功扎实、有逻辑、有自信。"],
+[6,"如何合理设立英语学习的目标并用最短的时间实现目标","目标定为“托福（TOEIC）900 分”，短期出成果，从基础学起。"],
+[6,"工作时要以更高的标准要求自己","先展示出上一级职务的能力，才会被提拔。"],
+[6,"不从公司“退学”，力争顺利“毕业”","辞职时至少得到部分人的支持；前同事是财产，不要逃避。"],
+[6,"“私人笔记”不离身，进行明确的目标管理","反复写下同一个中长期目标，细节随情况调整。"]
+];
+const grid=document.getElementById('pgrid'),empty=document.getElementById('pempty'),hc=document.getElementById('hcount');
+grid.innerHTML=H.map((h,i)=>`<div class="pcard ch${h[0]}" data-c="${h[0]}"><span class="no">${String(i+1).padStart(2,'0')}</span><span class="pt">第${"一二三四五六"[h[0]-1]}章 · ${CH[h[0]]}</span><h4>${h[1]}</h4><p>${h[2]}</p></div>`).join('');
+let cur=0;
+function filterH(){
+  const q=document.getElementById('hsearch').value.trim();
+  let n=0;
+  grid.querySelectorAll('.pcard').forEach(c=>{
+    const ok=(cur==0||c.dataset.c==cur)&&(!q||c.textContent.includes(q));
+    c.classList.toggle('hide',!ok); if(ok)n++;
+  });
+  empty.style.display=n?'none':'block';
+  hc.textContent='显示 '+n+' / 48 个习惯';
+}
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); cur=+b.dataset.c; filterH();
+});
+document.getElementById('hsearch').oninput=filterH;
+filterH();
+
+const T=[
+["初次见面，叫对方的名字三次","自我介绍时、提问时、告别时各说一次对方的名字。","第一章"],
+["每周和一位公司以外的人见面","优先见可信赖的朋友介绍的人；有好感就约定近期再见。","第一章"],
+["读完一本书，花三倍时间写出每章要旨","浓缩成十几段概述，按逻辑排列，再写下自己理解的含义。","第二章"],
+["每天读两份报纸","一份上班前读 20 分钟左右，另一份对照登载方式的差别，并想想人们会怎么反应。","第二章"],
+["遇到问题先在纸上想，再去搜","带上笔和纸，用 So what / Why so 反复追问，写下想法后整理成金字塔结构。","第二章"],
+["每天至少睡 6 小时","理想是 7 小时；吃早餐、洗手漱口、定期体检。","第二章"],
+["每次赴约提前 10 分钟到场","守时是一切工作的根本。","第三章"],
+["下班前整理桌面，写下第二天要做的事","第二天早上只需确认清单，马上投入。","第三章"],
+["上班前一小时不看邮件","把这一小时留给最需要集中注意力和思考的工作。","第三章"],
+["周日晚上做三件事","回顾愉快的周末；确认周一的工作；周一比往常早醒 15 分钟。","第三章"],
+["忙乱时把事情列在一张纸上排顺序","按优先程度和所需时间分 ABCD：应对A→处理B→处理A→处理C→处理D。","第三章"],
+["接到任务 5 分钟内订好计划","当场用 5W1H 确认；把截止日期提前一天；有疑问马上问。","第四章"],
+["完成 70% 就在第二天一早汇报","在上司开口问之前主动汇报，带上假设和结论。","第四章"],
+["做资料先手绘草稿","先定开场白和 3W，用黑白做框架，颜色不超过 3 种，最后机械地校对一遍。","第五章"],
+["每次开会至少发言一次","事先准备好看法和依据；有白板就坐在白板前。","第五章"],
+["在私人笔记里反复写下中长期目标","每周过半时打开看 5 分钟，确认为什么做眼前的工作。","第六章"]
+];
+const KEY='mck48-check-v1';
+let saved=[];try{saved=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+const ck=document.getElementById('check');
+const CN={"第一章":1,"第二章":2,"第三章":3,"第四章":4,"第五章":5,"第六章":6};
+ck.innerHTML=T.map((t,i)=>`<label class="ch${CN[t[2]]}"><input type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  try{localStorage.setItem(KEY,JSON.stringify(on))}catch(e){}
+  document.getElementById('pfill').style.width=(on.length/T.length*100)+'%';
+  document.getElementById('ptxt').textContent=on.length+' / '+T.length;
+}
+ck.addEventListener('change',prog); prog();
+document.getElementById('reset').onclick=()=>{ck.querySelectorAll('input').forEach(x=>x.checked=false);prog()};
+
+const PLAN=[
+ {t:"今天就做",d:"3 件 15 分钟内能完成的具体动作",c:"chr",items:[
+  ["今晚下班前，整理桌面并写下明天要做的事","把手头各项目的资料分门别类收好，在一张纸上写下第二天要做的事；明早只需确认一下就能投入。","第三章 · 夺取明日之晨的仪式",3],
+  ["把眼前的事列在一张纸上，分出 A、B、C、D","按优先程度和所需时间分类，照“应对A→处理B→处理A→处理C→处理D”排好顺序；期限内怎么都完不成的，今天就先向对方说明，请对方重设截止日期。","第三章 · 高盛集团的优先顺序设定法",3],
+  ["给需要花时间回复的邮件，先发一封简短的告知","例如：“因为正在外出，没有时间回复邮件，所以明天早上再回复您的邮件。”对方会觉得自己的邮件被重视了。","第四章 · 回复邮件的速度=别人对你的评价",4]
+ ]},
+ {t:"第一周",d:"要建立的做法",c:"ch3",items:[
+  ["每天上班前一小时不看邮件","这一小时只做需要集中注意力或需要思考的工作；邮件延后到外出的车上，或下午效率低的时段。","第三章",3],
+  ["每次赴约都提前 10 分钟到场","“提前10分钟到场是基本中的基本。”","第三章",3],
+  ["接到任务，当场确认，5 分钟内订计划","当场用 5W1H 确认任务信息；回到座位 5 分钟内再确认指示、订计划、有疑问马上问，截止日期提前一天。","第四章",4],
+  ["第二天一早汇报进度，哪怕只完成 70%","在上司开口问之前主动汇报，带上“我认为……因为……按这个方向展开工作可以吗？”的假设。","第四章",4],
+  ["这周见一位公司以外的人","优先见值得信赖的朋友或熟人介绍的人；初次见面叫对方名字三次；有好感就约定近期再见。","第一章",1],
+  ["周日晚上做三件事","回顾愉快的周末；确认下周尤其是周一的工作；周一比往常早醒 15 分钟。三件事用不了 30 分钟。","第三章",3]
+ ]},
+ {t:"一个月后",d:"要形成的习惯，以及怎么检验",c:"ch4",items:[
+  ["每周见一个公司以外的人","检验：一个月下来，至少多了 4~5 张新名片。新名片很久没有增加，就是危险信号。","第一章",1],
+  ["周末固定的自我投资时间","20 多岁以每周一天（最好是周末一整天）为标准，30 多岁至少用周末半天。检验：这个月的每个周末是否都留出了这段时间。","第三章",3],
+  ["读书 1∶3","读完后花三倍的时间思考。检验：这个月读完的每本书，都写下了每章要旨，并总结出自己理解的含义。","第二章",2],
+  ["私人笔记里的中长期目标","反复写下同一个目标，细节随情况调整。检验：每周过半时，是否都打开笔记看了 5 分钟。","第六章",6],
+  ["先发制人的汇报","检验：这个月是否还被上司先问过“那件事怎么样了？”。被问到才汇报，就只能被动防守。","第四章",4],
+  ["周一上午的状态","书中说，看一个人周一上午的工作状态，就能判断出他的能力。检验：周一早上能否从容地按轻重缓急投入工作。","第三章",3]
+ ]},
+ {t:"卡住了怎么办",d:"书里提到的常见障碍和对策",c:"ch5",items:[
+  ["太忙，抽不出时间见人","作者留学第一年忙得没空交流，第二年重新考虑交际方式。办法是规定自己一周见一次，并提前安排好时间。","第一章",1],
+  ["事情堆成山，焦头烂额","先停下来，把该做的事列在一张纸上，按优先程度和所需时间排序。作者当新人时，就是前辈帮他列了一张工作一览表才冷静下来。","第三章",3],
+  ["健身坚持不下来","向家人做出承诺；在运动后的酸痛消失前再去；不要太勉强，按当天的状态和心情来。","第二章",2],
+  ["上司太忙，找不到人汇报","随时在头脑中整理好进展，抓住机会自信地问一句“您能腾出三分钟，听我说说××事吗？”；要外出就先发一封简短的近况邮件。","第四章",4],
+  ["开会不敢发言","事先确认主题、出席者和目的，备好看法和依据；不熟悉的行业可以从外行或消费者的角度提意见。与其担心风险，不如说出自己的想法。","第五章",5],
+  ["英语不流利，不敢开口","从“流利”的咒语里解放出来，有逻辑、有自信地说。不必长篇大论，可以用“What if？”追问讨论的前提条件。","第六章 · 第五章小课堂",6],
+  ["一周过半就松懈","打开私人笔记看 5 分钟，确认自己为什么做眼前的工作、接下来该做什么。","第六章",6]
+ ]}
+];
+const PKEY='mck48-plan-v1';
+let psaved=[];try{psaved=JSON.parse(localStorage.getItem(PKEY)||'[]')}catch(e){}
+const pb=document.getElementById('planBody');
+let pid=0;
+pb.innerHTML=PLAN.map((ph,k)=>`<section class="phase ${ph.c}"><h3><i>${"①②③④"[k]}</i>${ph.t}</h3><p class="pd">${ph.d}</p><div class="items">`+ph.items.map(it=>{const id=pid++;return `<label class="ch${it[3]}"><input type="checkbox" data-p="${id}" ${psaved.includes(id)?'checked':''}><div><b>${it[0]}</b><span>${it[1]}</span><em>出处：${it[2]}</em></div></label>`}).join('')+`</div></section>`).join('');
+function pprog(){
+  const on=[...pb.querySelectorAll('input:checked')].map(x=>+x.dataset.p);
+  try{localStorage.setItem(PKEY,JSON.stringify(on))}catch(e){}
+  document.getElementById('dfill').style.width=(on.length/pid*100)+'%';
+  document.getElementById('dtxt').textContent=on.length+' / '+pid;
+  document.getElementById('fabpc').textContent=on.length+'/'+pid;
+}
+pb.addEventListener('change',pprog); pprog();
+const fab=document.getElementById('fab'),dr=document.getElementById('plan'),scrim=document.getElementById('scrim'),px=document.getElementById('planClose');
+function openPlan(){dr.classList.add('open');scrim.classList.add('show');dr.setAttribute('aria-hidden','false');fab.setAttribute('aria-expanded','true');document.body.classList.add('lock');setTimeout(()=>px.focus(),50)}
+function closePlan(){dr.classList.remove('open');scrim.classList.remove('show');dr.setAttribute('aria-hidden','true');fab.setAttribute('aria-expanded','false');document.body.classList.remove('lock');fab.focus()}
+fab.onclick=openPlan; px.onclick=closePlan; scrim.onclick=closePlan;
+addEventListener('keydown',e=>{if(e.key==='Escape'&&dr.classList.contains('open'))closePlan()});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const links=[...document.querySelectorAll('nav.tabs a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  let k=0; secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<160)k=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===k));
+},{passive:true});
+</script>
+</body>
+</html>

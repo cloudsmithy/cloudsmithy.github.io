@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>博恩·崔西的时间管理课 · 12 节课</title>
+<style>
+:root{
+  --bg:#f3f1ea; --paper:#ffffff; --ink:#13201a; --ink2:#4a564f; --ink3:#87908a;
+  --line:#e2dfd4; --soft:#ece9df;
+  --gold:#a16207; --goldS:#fbf0d3; --on-gold:#ffffff;
+  --pine:#14342b; --pine2:#1d473a; --pineS:#e2ebe6;
+  --slide:#14342b; --chalk:#f4c84a; --chalk2:rgba(240,246,242,.92); --chalk3:rgba(240,246,242,.64); --chalkL:rgba(255,255,255,.12);
+  --side:#10291f; --sideInk:#e6eee9; --sideInk2:rgba(230,238,233,.62);
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  --head:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+  --lat:"Helvetica Neue","Arial Black",Arial,sans-serif;
+  --r:16px; --shadow:0 1px 2px rgba(19,32,26,.05),0 10px 28px rgba(19,32,26,.07);
+  --sw:288px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0d1411; --paper:#151f1a; --ink:#e7ede8; --ink2:#a8b4ac; --ink3:#76847b;
+    --line:#26332c; --soft:#1b2721;
+    --gold:#fde047; --goldS:#35310f; --on-gold:#13201a;
+    --pine:#1f4a3d; --pine2:#2a5a4b; --pineS:#18302a;
+    --slide:#11261f; --chalk:#fde047; --chalkL:rgba(255,255,255,.08);
+    --side:#09110e;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3,h4,h5,h6{font-family:var(--head);font-weight:800;line-height:1.3;margin:0;letter-spacing:.01em}
+p{margin:.4em 0}
+b,strong{font-weight:700}
+.muted{color:var(--ink2)} .small{font-size:13px;color:var(--ink3)}
+
+/* ===== sidebar ===== */
+.side{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:var(--side);color:var(--sideInk);display:flex;flex-direction:column;z-index:60;overflow:hidden}
+.side .brand{padding:24px 22px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.side .brand .k{font-family:var(--lat);font-weight:900;letter-spacing:.2em;font-size:11px;color:var(--chalk)}
+.side .brand b{display:block;font-family:var(--head);font-size:20px;font-weight:800;margin-top:4px;line-height:1.3}
+.side .brand span{font-size:12.5px;color:var(--sideInk2)}
+.prog{padding:16px 22px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.prog .row{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;color:var(--sideInk2)}
+.prog .pct{font-family:var(--lat);font-weight:900;font-size:26px;color:var(--chalk);line-height:1}
+.track{height:8px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:10px}
+.track .fill{height:100%;width:0;background:var(--chalk);border-radius:999px;transition:width .4s}
+.outline{flex:1;overflow-y:auto;padding:10px 12px 14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent}
+.outline .u{font-size:11px;letter-spacing:.18em;color:var(--sideInk2);padding:14px 10px 4px;font-weight:700}
+.outline a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--sideInk);font-size:13.5px;padding:7px 10px;border-radius:10px;line-height:1.4;transition:background .15s}
+.outline a:hover{background:rgba(255,255,255,.06)}
+.outline a.on{background:rgba(255,255,255,.1)}
+.outline a.on .n{background:var(--chalk);color:#13201a;border-color:var(--chalk)}
+.outline a .n{flex:none;width:26px;height:26px;border-radius:8px;border:1.5px solid rgba(255,255,255,.25);display:grid;place-items:center;font-family:var(--lat);font-weight:900;font-size:11px}
+.outline a .t{flex:1}
+.outline a .c{font-size:11px;color:var(--sideInk2);font-variant-numeric:tabular-nums}
+.outline a .c.full{color:var(--chalk)}
+.side .foot{padding:12px 22px 16px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:var(--sideInk2);display:flex;justify-content:space-between;align-items:center}
+.side .foot button{background:none;border:1px solid rgba(255,255,255,.2);color:var(--sideInk2);border-radius:8px;padding:3px 10px;font:inherit;font-size:12px;cursor:pointer}
+.side .foot button:hover{color:var(--chalk);border-color:var(--chalk)}
+
+/* mobile top bar */
+.topbar{display:none;position:sticky;top:0;z-index:55;background:var(--side);color:var(--sideInk);padding:10px 16px;align-items:center;gap:12px}
+.topbar b{font-family:var(--head);font-weight:800;font-size:15px;white-space:nowrap}
+.topbar .track{flex:1;margin:0}
+.topbar .pct{font-family:var(--lat);font-weight:900;font-size:13px;color:var(--chalk);min-width:38px;text-align:right}
+.topbar button{background:var(--chalk);color:#13201a;border:none;border-radius:8px;font:inherit;font-size:13px;font-weight:700;padding:5px 12px;cursor:pointer}
+.scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:58}
+
+/* ===== main ===== */
+main{margin-left:var(--sw)}
+.wrap{max-width:980px;margin:0 auto;padding:0 40px}
+
+/* cover */
+.cover{background:var(--slide);color:var(--chalk2);position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 18px);pointer-events:none}
+.cover .wrap{position:relative;padding-top:72px;padding-bottom:64px}
+.cover .badge{display:inline-flex;gap:10px;align-items:center;font-family:var(--lat);font-weight:900;letter-spacing:.22em;font-size:12px;color:var(--chalk)}
+.cover .badge i{width:28px;height:3px;background:var(--chalk);display:inline-block}
+.cover h1{font-size:clamp(38px,5.6vw,66px);color:#fff;font-weight:900;margin-top:16px;line-height:1.15}
+.cover h1 em{font-style:normal;color:var(--chalk)}
+.cover .sub{font-size:clamp(17px,2vw,21px);margin-top:18px;max-width:740px;color:var(--chalk2);font-weight:600}
+.cover .lead{font-size:15.5px;color:var(--chalk3);max-width:740px;margin-top:10px}
+.cover .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cover .meta span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 14px;font-size:13.5px;color:var(--chalk2)}
+.cover .meta span b{color:var(--chalk);font-family:var(--lat);font-weight:900;margin-right:4px}
+.cover .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;align-items:center}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--chalk);color:#13201a;font-weight:800;text-decoration:none;padding:12px 22px;border-radius:12px;font-size:15.5px;box-shadow:0 8px 20px rgba(0,0,0,.25);border:none;font-family:inherit;cursor:pointer}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--chalk2);text-decoration:none;padding:11px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.25);font-size:15px;font-weight:600;background:none;font-family:inherit;cursor:pointer}
+.teacher{display:flex;gap:16px;align-items:center;margin-top:36px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
+.teacher .av{flex:none;width:56px;height:56px;border-radius:50%;background:var(--chalk);color:#13201a;display:grid;place-items:center;font-family:var(--lat);font-weight:900;font-size:19px}
+.teacher b{color:#fff;font-size:15.5px}
+.teacher span{display:block;font-size:13.5px;color:var(--chalk3);line-height:1.6}
+
+/* generic sections */
+.sec{padding:64px 0 24px}
+.eyebrow{font-family:var(--lat);font-weight:900;letter-spacing:.2em;font-size:12px;color:var(--gold)}
+.sec h2{font-size:clamp(28px,3.6vw,38px);font-weight:900;margin-top:6px}
+.sec .intro{color:var(--ink2);max-width:760px;margin-top:8px}
+
+.gain{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.gain>div{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;box-shadow:var(--shadow);border-top:4px solid var(--gold)}
+.gain .v{font-family:var(--lat);font-weight:900;font-size:34px;color:var(--gold);line-height:1}
+.gain .v small{font-size:15px;margin-left:3px;font-family:var(--sans);font-weight:700}
+.gain b{display:block;font-family:var(--head);font-size:16.5px;margin-top:10px}
+.gain p{font-size:13.5px;color:var(--ink2);margin:4px 0 0;line-height:1.65}
+
+.syl{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.unit{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;box-shadow:var(--shadow)}
+.unit .uh{font-family:var(--lat);font-weight:900;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.unit h4{font-size:18px;margin:4px 0 2px}
+.unit .ud{font-size:12.5px;color:var(--ink3);margin-bottom:10px}
+.unit a{display:flex;gap:10px;align-items:flex-start;text-decoration:none;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.45}
+.unit a:hover .tt{color:var(--gold)}
+.unit a .nn{flex:none;font-family:var(--lat);font-weight:900;color:var(--gold);font-size:13px;width:24px;padding-top:1px}
+.unit a .tt{flex:1;font-weight:600}
+.unit a .mini{display:block;height:4px;border-radius:9px;background:var(--soft);margin-top:6px;overflow:hidden}
+.unit a .mini i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+
+/* unit divider */
+.udiv{margin:72px 0 0;padding:26px 30px;border-radius:var(--r);background:var(--pine);color:#eef4f0;display:flex;align-items:center;gap:22px}
+.udiv .big{font-family:var(--lat);font-weight:900;font-size:56px;line-height:.9;color:var(--chalk)}
+.udiv .k{font-family:var(--lat);font-weight:900;letter-spacing:.2em;font-size:11.5px;color:var(--chalk)}
+.udiv h3{font-size:22px;color:#fff;font-weight:800}
+.udiv p{margin:2px 0 0;font-size:14px;color:rgba(238,244,240,.72)}
+
+/* lesson */
+.lesson{padding-top:56px;scroll-margin-top:10px}
+.lh{display:grid;grid-template-columns:auto 1fr;gap:6px 24px;align-items:end;padding-bottom:22px;border-bottom:3px solid var(--ink)}
+.lh .num{grid-row:span 2;font-family:var(--lat);font-weight:900;font-size:104px;line-height:.78;color:var(--gold);letter-spacing:-.02em}
+.lh .lab{font-family:var(--lat);font-weight:900;letter-spacing:.22em;font-size:12px;color:var(--ink3)}
+.lh .lab b{color:var(--gold)}
+.lh h2{font-size:clamp(26px,3.4vw,36px);font-weight:900;line-height:1.2}
+.lhook{font-size:17px;color:var(--ink2);margin:18px 0 0;max-width:820px;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{font-size:12.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 12px;color:var(--ink2)}
+.chips span.hw b{color:var(--gold);font-family:var(--lat);font-weight:900}
+
+.blk{margin-top:30px}
+.bh{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:800;border-radius:8px;padding:5px 12px;font-family:var(--head)}
+.tag small{font-family:var(--lat);font-weight:900;font-size:10.5px;letter-spacing:.16em;opacity:.75}
+.tag.kp{background:var(--pine);color:#fff}
+.tag.ic{background:var(--gold);color:var(--on-gold)}
+.tag.hw{border:2px solid var(--ink);color:var(--ink);padding:3px 10px}
+.bh .note{font-size:13px;color:var(--ink3)}
+
+/* slide (板书) */
+.slide{background:var(--slide);color:var(--chalk2);border-radius:20px;padding:28px 30px 26px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.slide::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;border:30px solid rgba(255,255,255,.03);pointer-events:none}
+.slide .sk{font-family:var(--lat);font-weight:900;letter-spacing:.2em;font-size:11px;color:var(--chalk)}
+.slide h4{font-size:clamp(20px,2.4vw,26px);color:#fff;font-weight:900;margin:6px 0 4px}
+.slide .cap{font-size:14px;color:var(--chalk3);margin:12px 0 0}
+.slide b,.slide strong{color:#fff}
+.slide .hi{color:var(--chalk);font-weight:800}
+.slide+.slide{margin-top:14px}
+
+/* key points grid */
+.kps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.kp{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px 14px;box-shadow:var(--shadow)}
+.kp>h5{font-size:16px;font-weight:800;margin-bottom:4px;padding-left:14px;position:relative}
+.kp>h5::before{content:"";position:absolute;left:0;top:.35em;width:5px;height:.95em;border-radius:3px;background:var(--gold)}
+.kp p,.kp li{font-size:14px;color:var(--ink2);line-height:1.7}
+.kp p{margin:0}
+.kp ol,.kp ul{margin:2px 0 0;padding-left:1.25em}
+.kp li{margin:1px 0}
+.kp li::marker{color:var(--gold);font-weight:700}
+.kp.full{grid-column:1/-1}
+.kp b{color:var(--ink)}
+.grid16{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.grid16 div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:13px;color:var(--ink2);line-height:1.5}
+.grid16 div b{display:block;font-size:14px;color:var(--ink)}
+.grid16 div i{font-style:normal;font-family:var(--lat);font-weight:900;color:var(--gold);margin-right:5px}
+.cols2{columns:2;column-gap:26px}
+.cols2 li{break-inside:avoid}
+
+/* in-class practice */
+.practice{background:var(--goldS);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent);border-radius:var(--r);padding:20px 22px}
+.practice h5{font-size:17px;font-weight:800}
+.practice p{color:var(--ink2);font-size:14.5px}
+.practice ol{margin:6px 0 0;padding-left:1.25em;color:var(--ink2);font-size:14.5px}
+.practice .q{font-size:17px;font-weight:700;color:var(--ink);margin:8px 0}
+.f{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 12px;border-radius:10px;font:inherit;font-size:14.5px;outline:none;width:100%}
+.f:focus{border-color:var(--gold)}
+textarea.f{min-height:96px;resize:vertical;line-height:1.6}
+.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:8px 14px;border-radius:10px;font:inherit;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap}
+.btn:hover{border-color:var(--gold);color:var(--ink)}
+.btn.pri{background:var(--gold);border-color:var(--gold);color:var(--on-gold);font-weight:700}
+.btn.sm{font-size:12.5px;padding:5px 10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.row2 label,.fields label{font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:4px;font-weight:600}
+.timer{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.timer .clock{font-family:var(--lat);font-weight:900;font-size:40px;color:var(--gold);min-width:120px;font-variant-numeric:tabular-nums;line-height:1}
+.timer .msg{font-size:14px;color:var(--ink2);font-weight:600}
+.fields{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.out{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.out .o{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.out .o .v{font-family:var(--lat);font-weight:900;font-size:22px;color:var(--gold);line-height:1.2;font-variant-numeric:tabular-nums}
+.out .o .k{font-size:12px;color:var(--ink3)}
+.out .o.wide{flex:2 1 310px;background:var(--pine);border-color:var(--pine)}
+.out .o.wide .v{color:var(--chalk);font-size:30px}
+.out .o.wide .k{color:rgba(238,244,240,.75)}
+.out .o.wide.lt{background:var(--paper);border-color:var(--line)}
+.out .o.wide.lt .v{color:var(--gold);font-size:20px}
+.out .o.wide.lt .k{color:var(--ink3)}
+.subt{font-size:13px;font-weight:800;color:var(--ink);margin:16px 0 0;letter-spacing:.02em}
+
+/* abcde tool */
+.addrow{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 8px}
+.addrow .f{flex:1;min-width:200px;width:auto}
+.lpick{display:flex;gap:4px}
+.lpick button{width:40px;border:1px solid var(--line);background:var(--paper);color:var(--ink2);border-radius:10px;font-family:var(--lat);font-weight:900;cursor:pointer;font-size:15px}
+.lpick button.on{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.toolbar .small{margin-left:auto}
+.alert{display:none;background:var(--pine);color:#fff;border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:700;margin:6px 0 10px}
+.lanes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.lane{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:110px}
+.lane h6{margin:0 0 8px;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.lane h6 small{font-weight:500;font-size:11px;color:var(--ink3);width:100%}
+.L{width:26px;height:26px;border-radius:7px;display:inline-grid;place-items:center;font-family:var(--lat);font-weight:900;font-size:14px;flex:none}
+.kA .L{background:var(--gold);color:var(--on-gold)}
+.kB .L{background:var(--goldS);color:var(--gold);border:2px solid var(--gold)}
+.kC .L{background:var(--soft);color:var(--ink2);border:2px solid var(--line)}
+.kD .L{background:var(--pineS);color:var(--pine2);border:2px solid var(--pine2)}
+.kE .L{background:var(--soft);color:var(--ink3);border:2px dashed var(--ink3);text-decoration:line-through}
+@media (prefers-color-scheme:dark){.kD .L{color:#7fd1b5;border-color:#7fd1b5}}
+.task{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:7px 9px;margin-bottom:6px;font-size:13px;line-height:1.5}
+.task .t{display:flex;gap:7px;align-items:flex-start}
+.task .t input{margin-top:3px;accent-color:var(--gold);flex:none}
+.task .t span{flex:1;word-break:break-word}
+.task .rk{font-family:var(--lat);font-weight:900;color:var(--gold);font-size:12px;flex:none !important;margin-top:1px}
+.task.frog{border-color:var(--gold);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 25%,transparent)}
+.task .ft{display:inline-block;white-space:nowrap;font-size:10.5px;background:var(--gold);color:var(--on-gold);border-radius:5px;padding:0 6px;margin-left:4px;font-weight:800}
+.task.done .t span,.kE .task .t span{text-decoration:line-through;color:var(--ink3)}
+.task .ops{display:flex;gap:3px;margin-top:5px;flex-wrap:wrap}
+.task .ops button{border:1px solid var(--line);background:transparent;color:var(--ink3);border-radius:6px;font-size:11px;padding:0 6px;cursor:pointer;font-family:inherit;line-height:1.7}
+.task .ops button:hover{color:var(--gold);border-color:var(--gold)}
+.lane .empty{font-size:12px;color:var(--ink3)}
+
+/* skills self-rating */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;margin-top:10px}
+.skr{display:grid;grid-template-columns:1fr 140px 26px;gap:10px;align-items:center;font-size:14px;padding:6px 0;border-bottom:1px dashed color-mix(in srgb,var(--gold) 25%,transparent)}
+.skr input{accent-color:var(--gold);width:100%}
+.skr output{font-family:var(--lat);font-weight:900;color:var(--gold);text-align:right}
+.skr.low>span{color:var(--gold);font-weight:800}
+.skr .wk{display:none;font-size:11.5px;font-weight:800;color:var(--on-gold);background:var(--gold);border-radius:5px;padding:0 6px;margin-left:6px;white-space:nowrap}
+.skr.weak .wk{display:inline-block}
+
+/* homework */
+.hwl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hwl label{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;font-size:14px;line-height:1.6;transition:.2s;height:100%}
+.hwl label:hover{border-color:var(--gold)}
+.hwl .no{flex:none;font-family:var(--lat);font-weight:900;color:var(--ink3);font-size:12px;width:16px;padding-top:2px}
+.ck{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;border:2px solid var(--ink3);border-radius:6px;margin:2px 0 0;display:grid;place-items:center;cursor:pointer;transition:.15s;background:transparent}
+.ck:checked{background:var(--gold);border-color:var(--gold)}
+.ck:checked::after{content:"";width:5px;height:10px;border:solid var(--on-gold);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.hwl label:has(.ck:checked){background:var(--goldS);border-color:transparent}
+.hwl label:has(.ck:checked) .tx{color:var(--ink3);text-decoration:line-through}
+
+/* visual widgets inside slides */
+.bigrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.bigrow>div{background:var(--chalkL);border-radius:12px;padding:14px}
+.bigrow .v{font-family:var(--lat);font-weight:900;font-size:30px;color:var(--chalk);line-height:1}
+.bigrow .v small{font-size:13px;font-family:var(--sans);margin-left:3px}
+.bigrow span{display:block;font-size:13px;color:var(--chalk3);margin-top:6px;line-height:1.5}
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:15px}
+.eq .p{background:var(--chalkL);border-radius:10px;padding:8px 14px;color:#fff;font-weight:700}
+.eq .p.g{background:var(--chalk);color:#13201a}
+.eq i{font-style:normal;color:var(--chalk3);font-weight:800}
+.hbars{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.hb{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;font-size:13.5px}
+.hb .lb{color:var(--chalk3);text-align:right}
+.hb .tr{background:var(--chalkL);border-radius:999px;height:26px;position:relative}
+.hb .tr div{height:100%;border-radius:999px;background:var(--chalk);color:#13201a;font-weight:800;font-size:12.5px;display:flex;align-items:center;padding:0 10px;white-space:nowrap;min-width:max-content}
+.hb .tr div.dim{background:rgba(255,255,255,.4)}
+.dots10{display:grid;grid-template-columns:repeat(10,1fr);gap:10px;margin:18px 0 6px;max-width:560px}
+.dots10 span{aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,255,255,.3)}
+.dots10 span.on{background:var(--chalk);border-color:var(--chalk)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.split .slide+.slide{margin-top:0}
+.mx{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.mx>div{border-radius:12px;padding:14px 16px;background:var(--chalkL);min-height:120px}
+.mx>div .m{font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--chalk)}
+.mx>div b{display:block;font-size:17px;margin:2px 0 4px}
+.mx>div p{margin:0;font-size:13px;color:var(--chalk3);line-height:1.6}
+.mx>div.best{background:var(--chalk)}
+.mx>div.best .m,.mx>div.best b,.mx>div.best p{color:#13201a}
+.mxax{display:flex;justify-content:space-between;font-size:11.5px;color:var(--chalk3);letter-spacing:.15em;margin-top:6px}
+.lad{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.lad div{display:grid;grid-template-columns:44px 100px 1fr;gap:14px;align-items:center;background:var(--chalkL);border-radius:12px;padding:9px 14px}
+.lad .Lx{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-family:var(--lat);font-weight:900;font-size:19px;border:2px solid rgba(255,255,255,.35);color:#fff}
+.lad .a .Lx{background:var(--chalk);border-color:var(--chalk);color:#13201a}
+.lad .b .Lx{border-color:var(--chalk);color:var(--chalk)}
+.lad .e .Lx{border-style:dashed;text-decoration:line-through;color:var(--chalk3)}
+.lad b{font-size:15.5px}
+.lad div>span:last-child{font-size:13.5px;color:var(--chalk3);line-height:1.55}
+.chain{display:flex;gap:6px;align-items:stretch;margin-top:14px}
+.chain .n{flex:1;background:var(--chalkL);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--chalk3);line-height:1.55}
+.chain .n b{display:block;color:var(--chalk);font-size:14.5px;margin-bottom:2px}
+.chain .ar{align-self:center;color:var(--chalk);font-weight:900}
+.roi{display:flex;align-items:flex-end;gap:12px;height:110px;margin-top:12px}
+.roi div{width:48px;border-radius:8px 8px 0 0;display:flex;justify-content:center;padding-top:5px;font-family:var(--lat);font-weight:900;font-size:14px}
+.roi .p{height:28px;background:var(--chalk);color:#13201a}
+.roi .x{height:100%;background:rgba(255,255,255,.22);color:#fff}
+.roilb{display:flex;gap:12px;font-size:12px;color:var(--chalk3)}
+.roilb span{width:48px;text-align:center}
+.files{display:grid;grid-template-columns:repeat(16,1fr);gap:4px;margin-top:12px}
+.files.mo{grid-template-columns:repeat(14,1fr);margin-top:5px}
+.files span{height:22px;border-radius:4px;background:rgba(244,200,74,.22);color:var(--chalk);font-size:9.5px;display:grid;place-items:center;font-weight:700}
+.files span.m{background:rgba(255,255,255,.18);color:#fff}
+.files span.y{background:var(--chalk);color:#13201a}
+.lg{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--chalk3);margin-top:8px}
+.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.day{display:grid;grid-template-columns:repeat(11,1fr);height:58px;border-radius:12px;overflow:hidden;margin-top:16px;font-size:12px}
+.day div{display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;padding:0 3px;background:var(--chalkL);color:var(--chalk3);border-right:1px solid rgba(0,0,0,.12)}
+.day .x{background:var(--chalk);color:#13201a;font-weight:800}
+.dax{display:grid;grid-template-columns:repeat(11,1fr);font-size:11px;color:var(--chalk3);margin-top:4px}
+.wk3{display:grid;grid-template-columns:repeat(15,1fr);gap:4px;margin-top:16px}
+.wk3 span{height:34px;border-radius:6px;background:var(--chalkL);font-size:11px;display:grid;place-items:center;color:var(--chalk3)}
+.wk3 span.t{background:var(--chalk);color:#13201a;font-weight:800}
+.wk3 span.d{background:transparent;border:2px dashed rgba(255,255,255,.5);color:#fff;font-weight:800}
+.wkl{display:grid;grid-template-columns:repeat(3,1fr);font-size:12px;color:var(--chalk3);margin-top:4px;text-align:center}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:14px}
+.flow span{background:var(--chalkL);border-radius:10px;padding:8px 12px;font-size:13.5px;color:#fff;font-weight:600}
+.flow span em{font-style:normal;font-family:var(--lat);font-weight:900;color:var(--chalk);margin-right:6px}
+.flow i{font-style:normal;color:var(--chalk);font-weight:900}
+.fun{display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:14px}
+.fun div{display:flex;justify-content:space-between;gap:14px;background:var(--chalkL);border-radius:10px;padding:8px 16px;font-size:13.5px;color:var(--chalk3)}
+.fun div b{color:var(--chalk);font-family:var(--lat);font-weight:900;font-size:15px;text-align:right}
+.ticks{display:grid;grid-template-columns:repeat(32,1fr);gap:3px;align-items:end;height:44px;margin-top:14px}
+.ticks span{background:rgba(255,255,255,.22);border-radius:2px;height:50%}
+.ticks span:nth-child(4n){height:100%;background:var(--chalk)}
+.bigq{font-family:var(--head);font-size:clamp(20px,2.5vw,27px);font-weight:800;color:#fff;line-height:1.55;margin-top:10px}
+.bigq em{font-style:normal;color:var(--chalk)}
+
+/* quotes */
+.qwall{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.qt{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px 24px 18px;box-shadow:var(--shadow)}
+.qt::before{content:"“";font-family:Georgia,serif;font-size:72px;line-height:.8;color:var(--gold);display:block;height:30px}
+.qt p{font-family:var(--head);font-size:19px;font-weight:800;line-height:1.55;margin:0}
+.qt cite{display:block;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:10px}
+.qt.dark{background:var(--pine);border-color:var(--pine)}
+.qt.dark p{color:#fff}
+.qt.dark::before{color:var(--chalk)}
+.qt.dark cite{color:rgba(238,244,240,.65)}
+
+/* final checklist */
+.final{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.final label{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px 16px;cursor:pointer;box-shadow:var(--shadow);transition:.2s}
+.final label:hover{border-color:var(--gold)}
+.final b{display:block;font-size:15.5px}
+.final span{display:block;font-size:13.5px;color:var(--ink2);margin-top:2px}
+.final .src{font-size:11.5px;color:var(--ink3);margin-top:5px}
+.final label:has(.ck:checked){background:var(--goldS);border-color:transparent;box-shadow:none}
+.final label:has(.ck:checked) b{text-decoration:line-through;color:var(--ink3)}
+.cert{margin-top:22px;background:var(--pine);color:#eef4f0;border-radius:var(--r);padding:22px 26px;display:flex;gap:18px;align-items:center}
+.cert .pct{font-family:var(--lat);font-weight:900;font-size:44px;color:var(--chalk);line-height:1}
+.cert b{color:#fff;font-size:17px}
+.cert p{margin:2px 0 0;font-size:14px;color:rgba(238,244,240,.72)}
+
+footer{margin-top:72px;padding:36px 0 110px;border-top:1px solid var(--line);font-size:13px;color:var(--ink3);line-height:1.9}
+
+/* ===== "我要怎么做？" floating button + drawer ===== */
+.howbtn{position:fixed;right:24px;bottom:24px;z-index:70;display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--on-gold);border:none;border-radius:999px;padding:12px 18px 12px 14px;font:inherit;font-weight:800;font-size:15.5px;cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,.28),0 0 0 4px color-mix(in srgb,var(--gold) 22%,transparent);transition:transform .2s}
+.howbtn:hover{transform:translateY(-2px)}
+.howbtn .ic{width:28px;height:28px;border-radius:50%;background:var(--on-gold);color:var(--gold);display:grid;place-items:center;font-family:var(--lat);font-weight:900;font-size:15px}
+.howbtn .cnt{font-family:var(--lat);font-weight:900;font-size:12px;opacity:.8}
+.howmask{position:fixed;inset:0;background:rgba(5,12,9,.5);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
+.howpanel{position:fixed;top:0;right:0;bottom:0;width:min(470px,100%);background:var(--bg);z-index:81;transform:translateX(104%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+body.how{overflow:hidden}
+body.how .howmask{opacity:1;pointer-events:auto}
+body.how .howpanel{transform:none;box-shadow:-24px 0 60px rgba(0,0,0,.3)}
+body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
+.howhead{background:var(--slide);color:#fff;padding:22px 24px 18px;position:relative}
+.howhead .k{font-family:var(--lat);font-weight:900;letter-spacing:.2em;font-size:11px;color:var(--chalk)}
+.howhead h3{font-size:25px;font-weight:900;margin-top:4px}
+.howhead p{font-size:13.5px;color:var(--chalk3);margin:4px 0 0;padding-right:20px}
+.howhead .pr{display:flex;align-items:center;gap:10px;margin-top:12px}
+.howhead .pr .track{flex:1;margin:0}
+.howhead .pr span{font-family:var(--lat);font-weight:900;font-size:13px;color:var(--chalk);min-width:44px;text-align:right}
+.howx{position:absolute;right:16px;top:16px;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:22px;line-height:1;cursor:pointer}
+.howx:hover{border-color:var(--chalk);color:var(--chalk)}
+.howbody{flex:1;overflow-y:auto;padding:6px 20px 30px;overscroll-behavior:contain}
+.stg{margin-top:18px}
+.stg .sh{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.stg .sn{flex:none;width:34px;height:34px;border-radius:10px;background:var(--pine);color:var(--chalk);display:grid;place-items:center;font-family:var(--lat);font-weight:900;font-size:16px}
+.stg h4{font-size:17px;font-weight:900}
+.stg .sd{font-size:12.5px;color:var(--ink3);line-height:1.4}
+.stg .sc{margin-left:auto;font-family:var(--lat);font-weight:900;font-size:12px;color:var(--gold)}
+.hitem{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:7px;cursor:pointer;transition:.15s}
+.hitem:hover{border-color:var(--gold)}
+.hitem b{display:block;font-size:14.5px;line-height:1.5}
+.hitem span{display:block;font-size:13px;color:var(--ink2);line-height:1.6;margin-top:2px}
+.hitem em{display:inline-block;font-style:normal;font-size:11px;font-weight:800;color:var(--gold);background:var(--goldS);border-radius:5px;padding:0 7px;margin-top:5px}
+.hitem:has(.ck:checked){background:var(--goldS);border-color:transparent}
+.hitem:has(.ck:checked) b{text-decoration:line-through;color:var(--ink3)}
+.stg.trouble .hitem b::before{content:"卡点 · ";color:var(--gold)}
+.howfoot{font-size:12px;color:var(--ink3);margin-top:16px;line-height:1.7}
+.howfoot button{background:none;border:1px solid var(--line);color:var(--ink3);border-radius:8px;padding:2px 10px;font:inherit;font-size:12px;cursor:pointer;margin-left:6px}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.howpanel{transition:none}}
+
+@media (max-width:1100px){
+  .side{transform:translateX(-100%);transition:transform .3s;box-shadow:0 0 40px rgba(0,0,0,.35)}
+  body.open .side{transform:none}
+  body.open .scrim{display:block}
+  .topbar{display:flex}
+  main{margin-left:0}
+  html{scroll-padding-top:60px}
+  .lesson{scroll-margin-top:56px}
+}
+@media (max-width:900px){
+  .wrap{padding:0 22px}
+  .gain,.syl{grid-template-columns:1fr 1fr}
+  .lanes{grid-template-columns:repeat(3,1fr)}
+  .fields{grid-template-columns:1fr 1fr}
+  .bigrow{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr}
+  .chain{flex-direction:column}
+  .chain .ar{transform:rotate(90deg);align-self:center}
+  .grid16,.grid16.g5{grid-template-columns:repeat(2,1fr)}
+  .skills{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .kps,.hwl,.final,.qwall,.row2,.gain,.syl,.lanes{grid-template-columns:1fr}
+  .lh{grid-template-columns:1fr}
+  .lh .num{grid-row:auto;font-size:72px}
+  .slide{padding:22px 18px}
+  .cols2{columns:1}
+  .lad div{grid-template-columns:40px 1fr}
+  .lad div>span:last-child{grid-column:2}
+  .hb{grid-template-columns:1fr;gap:3px}
+  .hb .lb{text-align:left}
+  .files{grid-template-columns:repeat(8,1fr)}
+  .files.mo{grid-template-columns:repeat(7,1fr)}
+  .day{font-size:10px}
+  .wk3 span{font-size:9px}
+  .skr{grid-template-columns:1fr 100px 24px;font-size:13.5px}
+  .udiv{flex-direction:column;align-items:flex-start;gap:8px}
+  .cert{flex-direction:column;align-items:flex-start}
+  .mx{grid-template-columns:1fr}
+  .eq{font-size:13.5px}
+  .howbtn{right:14px;bottom:14px;padding:10px 15px 10px 11px;font-size:14.5px}
+  .howbtn .cnt{display:none}
+  .howpanel{top:0;left:0;right:0;bottom:0;width:100%;height:100%;transform:translateY(104%);border-radius:0}
+  .howhead{padding-top:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <b>时间管理课</b><div class="track"><div class="fill" data-fill></div></div><span class="pct" data-pct>0%</span><button id="menuBtn" aria-controls="side">目录</button>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<aside class="side" id="side">
+  <div class="brand">
+    <div class="k">TIME POWER · 12 LESSONS</div>
+    <b>博恩·崔西的<br>时间管理课</b>
+    <span>主讲 博恩·崔西 · 刘迪 刘钊 译</span>
+  </div>
+  <div class="prog">
+    <div class="row"><span>学习进度</span><span class="pct" data-pct>0%</span></div>
+    <div class="track"><div class="fill" data-fill></div></div>
+    <div class="row" style="margin-top:8px"><span>课后作业 + 结业任务</span><span data-count>0 / 0</span></div>
+  </div>
+  <nav class="outline" id="outline">
+    <a href="#cover"><span class="n">▶</span><span class="t">课程首页</span></a>
+    <a href="#syllabus"><span class="n">≡</span><span class="t">课程大纲</span></a>
+    <div class="u">单元一 · 心法</div>
+    <a href="#ch1"><span class="n">01</span><span class="t">时间管理的心理学</span><span class="c" data-oc="1"></span></a>
+    <a href="#ch2"><span class="n">02</span><span class="t">通过目标掌控时间</span><span class="c" data-oc="2"></span></a>
+    <div class="u">单元二 · 方法</div>
+    <a href="#ch3"><span class="n">03</span><span class="t">有序</span><span class="c" data-oc="3"></span></a>
+    <a href="#ch4"><span class="n">04</span><span class="t">建立正确的优先顺序</span><span class="c" data-oc="4"></span></a>
+    <a href="#ch5"><span class="n">05</span><span class="t">形成高效的工作习惯</span><span class="c" data-oc="5"></span></a>
+    <div class="u">单元三 · 守门</div>
+    <a href="#ch6"><span class="n">06</span><span class="t">管理多任务工作</span><span class="c" data-oc="6"></span></a>
+    <a href="#ch7"><span class="n">07</span><span class="t">对付时间浪费</span><span class="c" data-oc="7"></span></a>
+    <a href="#ch8"><span class="n">08</span><span class="t">克服拖延症</span><span class="c" data-oc="8"></span></a>
+    <div class="u">单元四 · 延伸</div>
+    <a href="#ch9"><span class="n">09</span><span class="t">跟上步伐，保持领先</span><span class="c" data-oc="9"></span></a>
+    <a href="#ch10"><span class="n">10</span><span class="t">在沟通中节省时间</span><span class="c" data-oc="10"></span></a>
+    <a href="#ch11"><span class="n">11</span><span class="t">销售人员的时间管理</span><span class="c" data-oc="11"></span></a>
+    <a href="#ch12"><span class="n">12</span><span class="t">时间管理哲学</span><span class="c" data-oc="12"></span></a>
+    <div class="u">结业</div>
+    <a href="#quotes"><span class="n">“</span><span class="t">名言墙</span></a>
+    <a href="#final"><span class="n">✓</span><span class="t">结业行动清单</span><span class="c" data-oc="f"></span></a>
+  </nav>
+  <div class="foot"><span>进度保存在本机浏览器</span><button id="resetBtn">重置</button></div>
+</aside>
+
+<main>
+<!-- ============ COVER ============ -->
+<header class="cover" id="cover">
+  <div class="wrap">
+    <div class="badge"><i></i>TIME POWER · 一门 12 节的时间管理课</div>
+    <h1>博恩·崔西的<br><em>时间管理课</em></h1>
+    <p class="sub">“你无法掌控时间，你只能掌控自己。管理时间就是管理生活。”</p>
+    <p class="lead">一套做法贯穿全部 12 节课：先写下清晰的目标，每天按清单工作；用 80/20 和 ABCDE 挑出最有价值的那件事，一次只做一件，做完为止；再把电话、会议、闲谈、拖延这些“时间窃贼”挡在门外。</p>
+    <div class="meta">
+      <span><b>12</b>节课</span><span><b>4</b>个单元</span><span><b>84</b>条课后作业（每课 7 条）</span><span><b>6</b>个课堂练习工具</span>
+    </div>
+    <div class="cta"><a class="btn-gold" href="#ch1">开始第 1 课 →</a><a class="btn-ghost" href="#syllabus">查看课程大纲</a><button class="btn-ghost" type="button" data-open-how>我要怎么做？</button></div>
+    <div class="teacher">
+      <div class="av">BT</div>
+      <div><b>主讲：博恩·崔西（Brian Tracy）</b><span>序言自述：本书总结了他 25 年来为 500 多家企业做销售、市场、管理和咨询的经验，以及在“个人效率”领域 20 年的研究和教学成果。</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- outcomes -->
+  <section class="sec" id="gain">
+    <div class="eyebrow reveal">WHAT YOU GET</div>
+    <h2 class="reveal">上完这门课，你会得到什么</h2>
+    <p class="intro reveal">第 1 课列出的四个动力，原书说是“激励你坚持练习在此学到技能的动力”。</p>
+    <div class="gain reveal">
+      <div><div class="v">2<small>小时/天</small></div><b>每天多出两个小时</b><p>×5 天 ×50 周 = 每年 500 小时，约 12 个 40 小时工作周，相当于一年多出 3 个月。</p></div>
+      <div><div class="v">+25<small>%</small></div><b>提高产量和质量</b><p>多出的 2 小时占 8 小时工作日的 25%，你的工作、表现和收入未来一年至少提高 25%。</p></div>
+      <div><div class="v">内在</div><b>提升掌控感</b><p>培养“内在控制点”：生活掌握在自己手里，而不是做“环境的产物”。</p></div>
+      <div><div class="v">家</div><b>更多时间陪伴家人</b><p>也为朋友、休闲、个人和职业发展留出时间。</p></div>
+    </div>
+  </section>
+
+  <!-- syllabus -->
+  <section class="sec" id="syllabus">
+    <div class="eyebrow reveal">SYLLABUS</div>
+    <h2 class="reveal">课程大纲：4 个单元 · 12 节课</h2>
+    <p class="intro reveal">单元划分是本页按内容做的编排，课序与原书章节一致。第 7 章开头，作者自己把前 6 章串成一条线：改变思维方式 → 确立清晰目标 → 详细计划工作 → 确定优先项 → 工作时认真投入 → 管理多任务工作。</p>
+    <div class="syl reveal">
+      <div class="unit"><div class="uh">UNIT 1</div><h4>心法</h4><div class="ud">先改观念，再定目标</div>
+        <a href="#ch1"><span class="nn">01</span><span class="tt">时间管理的心理学<span class="mini"><i data-mini="1"></i></span></span></a>
+        <a href="#ch2"><span class="nn">02</span><span class="tt">通过目标掌控时间<span class="mini"><i data-mini="2"></i></span></span></a>
+      </div>
+      <div class="unit"><div class="uh">UNIT 2</div><h4>方法</h4><div class="ud">有序、排序、专注</div>
+        <a href="#ch3"><span class="nn">03</span><span class="tt">卓越时间管理的本质：有序<span class="mini"><i data-mini="3"></i></span></span></a>
+        <a href="#ch4"><span class="nn">04</span><span class="tt">建立正确的优先顺序<span class="mini"><i data-mini="4"></i></span></span></a>
+        <a href="#ch5"><span class="nn">05</span><span class="tt">形成高效的工作习惯<span class="mini"><i data-mini="5"></i></span></span></a>
+      </div>
+      <div class="unit"><div class="uh">UNIT 3</div><h4>守门</h4><div class="ud">对付时间窃贼</div>
+        <a href="#ch6"><span class="nn">06</span><span class="tt">管理多任务工作<span class="mini"><i data-mini="6"></i></span></span></a>
+        <a href="#ch7"><span class="nn">07</span><span class="tt">处理时间浪费的最大问题<span class="mini"><i data-mini="7"></i></span></span></a>
+        <a href="#ch8"><span class="nn">08</span><span class="tt">克服拖延症<span class="mini"><i data-mini="8"></i></span></span></a>
+      </div>
+      <div class="unit"><div class="uh">UNIT 4</div><h4>延伸</h4><div class="ud">学习、他人与人生</div>
+        <a href="#ch9"><span class="nn">09</span><span class="tt">利用时间，保持领先<span class="mini"><i data-mini="9"></i></span></span></a>
+        <a href="#ch10"><span class="nn">10</span><span class="tt">在沟通中节省时间<span class="mini"><i data-mini="10"></i></span></span></a>
+        <a href="#ch11"><span class="nn">11</span><span class="tt">销售人员的时间管理技巧<span class="mini"><i data-mini="11"></i></span></span></a>
+        <a href="#ch12"><span class="nn">12</span><span class="tt">时间管理哲学<span class="mini"><i data-mini="12"></i></span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== UNIT 1 ===================== -->
+  <div class="udiv reveal"><div class="big">U1</div><div><div class="k">UNIT 1 · 心法</div><h3>先改观念，再定目标</h3><p>第 1–2 课：你怎么看自己，决定你怎么用时间；没有目标，时间就会被别人拿走。</p></div></div>
+
+  <!-- LESSON 1 -->
+  <section class="lesson" id="ch1">
+    <div class="lh reveal"><div class="num">01</div><div class="lab">LESSON 01 · <b>第 1 课</b></div><h2>时间管理的心理学</h2></div>
+    <p class="lhook reveal">“一致性定律”：外在生活是内在自我形象的一面镜子。想改变时间管理，先改变你对自己的看法，而这也是你唯一能完全掌控的部分。</p>
+    <div class="chips reveal"><span>单元一 · 心法</span><span class="hw">课后作业 <b data-hc="1">0/7</b></span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 1.1</div><h4>每天多 2 小时，一年多 3 个月</h4>
+        <div class="eq"><span class="p">2 小时/天</span><i>×</i><span class="p">5 天</span><i>×</i><span class="p">50 周</span><i>=</i><span class="p g">500 小时/年</span><i>≈</i><span class="p">12 个 40 小时工作周</span><i>≈</i><span class="p g">一年多 3 个月</span></div>
+        <p class="cap">2 小时占 8 小时工作日的 25%，所以产出至少提高 25%。“你今天收获的正是你今天的产出所获得的回报。”</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>三个心理屏障</h5><ol><li>担心太有条理会变得冰冷、死板。其实越有序，越有余地放松和变通</li><li>消极的心理暗示：小时候被说“乱、总迟到”，长大后照着做</li><li>自我局限：不存在决定时间管理好坏的基因</li></ol></div>
+        <div class="kp"><h5>六种训练潜意识的方法</h5><ol><li>积极自我对话：“我能很好地利用时间”</li><li>想象自己高效；睡前做“自我演练”</li><li>角色扮演：假装高效，直到真的高效</li><li>模仿一个榜样</li><li>当老师：学完立刻讲给别人听</li><li>把自己想成他人的榜样</li></ol></div>
+        <div class="kp"><h5>自尊决定表现</h5><p>自尊是“人的自爱程度”，与“自我效能”相互巩固。三个影响因素：<b>决定自我价值、获得自我掌控、了解自我需要</b>。对应三步：确定价值观，竭尽全力做好事情，让目标与价值观一致。</p></div>
+        <div class="kp"><h5>十二条原则（节选）</h5><ul><li>把自己看作一座“工厂”：投入、生产、产出。<b>杰出者追求成绩，平庸者只顾努力</b></li><li>时间没有弹性、不可或缺、无可取代、易逝</li><li>原则十二：此刻的这一分钟，就是你拥有的全部时间</li></ul></div>
+        <div class="kp full"><h5>运用时间力量的七种方法</h5><ol class="cols2"><li>自我形象决定表现，把自己想象成希望成为的样子</li><li>用 <b>21 天</b>练习和重复，形成一个新习惯</li><li>向自己、也向别人公开承诺</li><li>从对生活影响最大的一个方面入手，不要一开始就面面俱到</li><li>坚决执行，不找借口，至少坚持三周</li><li>用“试对”而不是“试错”：问自己“我为什么会那么做？”</li><li>绝对相信自己能成为杰出的时间管理者</li></ol></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">书中的“100 万美元测试”</span></div>
+      <div class="practice reveal">
+        <p class="q">如果有人愿意给你 100 万美元，让你在未来 30 年里出色地规划时间，还有专业人士带着摄像机跟拍你一个月，你会变成一个多么高效的人？</p>
+        <p>作者的结论：只要动力足够，你完全可以成为最高效、最有条理的人。时间管理行为是一种选择。现在就选一句自我肯定，在今天开工前大声说出来，比如作者最常用的那句：<b>“我能很好地利用时间。”</b></p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="1"><li>选一个能靠时间管理变得更高效的领域，下决心立刻投入</li><li>开始新任务前，在脑海中重演自己曾经表现出色的画面</li><li>重复自我肯定，如“我可以高效地利用时间”</li><li>想象周围的人都视你为高效的榜样，以这种心态做事</li><li>设想你在给朋友讲时间管理课，最想传授的核心是什么</li><li>在已经做得很好的领域，制订计划做出更大成绩</li><li>此刻就下决心不断练习，成为本领域最高效的人，然后立刻行动</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 2 -->
+  <section class="lesson" id="ch2">
+    <div class="lh reveal"><div class="num">02</div><div class="lab">LESSON 02 · <b>第 2 课</b></div><h2>通过目标掌控时间</h2></div>
+    <p class="lhook reveal">个人效能最重要的关键词是“明确”。最常见的时间浪费，是忘记了自己努力的目标。“如果你没有自己的目标，你注定永远为他人工作。”</p>
+    <div class="chips reveal"><span>单元一 · 心法</span><span class="hw">课后作业 <b data-hc="2">0/7</b></span><span>课堂工具：30 秒快速列表</span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 2.1</div><h4>写下来的人，坚持的比例是 46%</h4>
+        <div class="hbars">
+          <div class="hb"><span class="lb">只在脑子里想</span><div class="tr"><div style="width:8%" class="dim">4%</div></div></div>
+          <div class="hb"><span class="lb">写下目标的人</span><div class="tr"><div style="width:92%">46% 坚持并执行了计划</div></div></div>
+        </div>
+        <p class="cap">《今日美国》对新年目标的一年追踪。另外，只有不足 <span class="hi">3%</span> 的人有清晰的书面目标，不足 <span class="hi">1%</span> 的人定期回顾和调整，而这 3% 往往就是各领域最成功的人。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>写目标的规则</h5><ul><li>志向要远大，先不想“为什么做不到”</li><li>用<b>现在时、第一人称加动词</b>：“我的年收入是 10 万美元”</li><li>每天开工前在笔记本上<b>重写一遍</b>，只需 5 分钟</li><li>目标卡片：一张卡写一个目标，每天逐张看，坚持 30 天</li></ul></div>
+        <div class="kp"><h5>三类目标保持平衡</h5><ul><li><b>是什么</b>：事业、职业、经济目标，看得见、可衡量</li><li><b>为什么</b>：个人、家庭、健康目标，是前者的真正原因</li><li><b>如何做</b>：个人成长和发展目标</li></ul><p style="margin-top:4px">物质目标只是手段，不是目的。</p></div>
+        <div class="kp"><h5>找出真正的理想：几个问题</h5><ul><li>明天中了 100 万美元彩票，你会怎么改变生活？</li><li>给自己写自传或悼文，你希望写什么？</li><li>确保不会失败的话，你会定什么伟大目标？</li><li>如果一整天只能做一件事，你希望是什么？</li></ul></div>
+        <div class="kp"><h5>从目标到行动计划</h5><ol><li>“设想零束缚”：写下未来五年的所有愿望</li><li>标 A、B、C，再把 A 排成 A-1、A-2……</li><li>为 A-1 想 10–20 件可以做的事，同样排序</li><li>每个 A 类目标都做一遍，约需一个周日下午的一两个小时</li></ol></div>
+        <div class="kp"><h5>加快实现目标的五种技巧</h5><ol><li>把目标当作一个事实</li><li>积极肯定，如同它已经实现</li><li>承担 100% 的责任，不找借口</li><li>充满信心地去做每件事</li><li>每天向目标迈进一步</li></ol></div>
+        <div class="kp"><h5>更快实现目标的四个思维工具</h5><ol><li>找出最大的那个障碍，集中攻克</li><li>找瓶颈：受阻原因约 80% 在自己身上</li><li>明确还缺哪些知识和技能</li><li>想清楚需要谁的帮助，对方能得到什么</li></ol></div>
+        <div class="kp full"><h5>收入和事业目标的五点</h5><ol class="cols2"><li>致力于服务对象满意，<b>老板是首要服务对象</b></li><li>发现需求：直接问老板“您为什么愿意雇用我？”</li><li>明确主要职能：可测量、在你掌控之下、会成为别人的投入</li><li>确定主要工作范畴：很少超过 5–7 个</li><li>目标管理四步：讲清目标 → 商定计划和标准 → 定时间表 → 全权委托</li></ol></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">30 秒快速列表</span></div>
+      <div class="practice reveal">
+        <h5>给自己 30 秒写下三个最重要的目标，再给 30 秒写下三个最大的困扰</h5>
+        <p>书中说：30 秒写出的答案，和你想 30 分钟一样准确。三个目标通常是一个经济、一个健康、一个关系目标，而且基本上就是三个困扰的解法。</p>
+        <div class="timer"><span class="clock" id="qlClock">0:30</span><button class="btn pri" id="qlStart">开始 30 秒</button><button class="btn" id="qlReset">重来</button><span class="msg" id="qlMsg"></span></div>
+        <div class="row2">
+          <label>生活中最重要的三个目标<textarea class="f" id="qlGoals" placeholder="1.&#10;2.&#10;3."></textarea></label>
+          <label>目前最压迫你的三个困扰<textarea class="f" id="qlWorries" placeholder="1.&#10;2.&#10;3."></textarea></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="2"><li>用现在时写下未来一年在各领域要实现的十个目标</li><li>选出对生活影响最积极的那一个，写在一张新纸顶端</li><li>给它定完成时间，必要时定各阶段时间表</li><li>列出所有能帮助实现它的事，想到新的就加上去</li><li>把清单整理成计划：哪个最重要，哪个最首要</li><li>写清要克服的障碍、要学的知识技能、能帮忙的人</li><li>从最重要的目标开始，每天迈进一步，永不放弃</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== UNIT 2 ===================== -->
+  <div class="udiv reveal"><div class="big">U2</div><div><div class="k">UNIT 2 · 方法</div><h3>有序、排序、专注</h3><p>第 3–5 课：准备好一切，挑出最重要的事，一次只做一件，做完为止。</p></div></div>
+
+  <!-- LESSON 3 -->
+  <section class="lesson" id="ch3">
+    <div class="lh reveal"><div class="num">03</div><div class="lab">LESSON 03 · <b>第 3 课</b></div><h2>卓越时间管理的本质——有序</h2></div>
+    <p class="lhook reveal">普通人和高效人士的区别在于后者更有条理，而条理性是可以学会的技能。墨菲定律的启示：做任何事之前，你都得先完成别的事，所以开工前先把一切准备好。</p>
+    <div class="chips reveal"><span>单元二 · 方法</span><span class="hw">课后作业 <b data-hc="3">0/7</b></span></div>
+
+    <div class="blk reveal">
+      <div class="split">
+        <div class="slide"><div class="sk">板书 3.1</div><h4>计划 1 分钟，执行省 10 分钟</h4>
+          <div class="roi"><div class="p">1</div><div class="x">10</div></div>
+          <div class="roilb"><span>计划</span><span>节省</span></div>
+          <p class="cap">即 <span class="hi">1000%</span> 的回报。“除此之外，你还能从什么地方获得 1000% 的投资回报率？”开工前列一张清单，第一天效率就提高 25%。</p>
+        </div>
+        <div class="slide"><div class="sk">板书 3.2</div><h4>45-文件体系：管住 24 个月</h4>
+          <div class="files" id="files45"></div><div class="files mo" id="files45m"></div>
+          <div class="lg"><span><i style="background:rgba(244,200,74,.55)"></i>31 份：每月 1–31 日</span><span><i style="background:rgba(255,255,255,.45)"></i>12 份：1–12 月</span><span><i style="background:var(--chalk)"></i>2 份：未来两年</span></div>
+          <p class="cap">一个能放 14 个文件夹、共 45 份文档的盒子。六个月后的任务放进那个月；每月初把当月任务分进 1–31 日；每天查看当天那份。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>关于个人条理的四个观念</h5><ol><li>整洁是提高生产率的关键习惯</li><li>以旁观者视角自问：“什么样的人会在这样的地方工作？”调查中 <b>52 位主管有 50 位</b>不会提拔办公桌凌乱的人</li><li>拒绝“我知道东西都在哪”这类借口</li><li>乔·舒格曼的规则：“每天的工作都要以一张整洁的办公桌告罄”</li></ol></div>
+        <div class="kp"><h5>一个经理的转变</h5><p>作者在公司推行“下班前清理桌面”，最杂乱的一位经理不情愿地照做。不到一周他来道歉：同样的时间里，他完成了之前<b>两到三倍</b>的工作量。</p><h5 style="margin-top:12px">整理工作场所三步</h5><ol><li>清理桌面，一次只放正在用的一件东西</li><li>像厨师备料一样，开工前备齐所需物品</li><li>一次只处理一件事；没准备好就别草率开工</li></ol></div>
+        <div class="kp"><h5>文字工作只有四种处理</h5><ol><li><b>扔掉</b>：垃圾桶是最好的工具。“只要不确定是有用的，就扔掉！”</li><li><b>委派</b>给更合适的人</li><li><b>行动</b>：放进显眼处的红色“执行”文件夹</li><li><b>归档</b>：记住 80% 的归档文件以后不会再用</li></ol><p style="margin-top:4px">最大的浪费之一：同一份文件拿起、读完、放下，一遍遍重复。</p></div>
+        <div class="kp"><h5>五种工具和技巧</h5><ol><li>时间规划系统：主目录 + 日历 + 每日清单（丘吉尔叫它“今日行动”）</li><li>按清单工作：新任务出现时，先写进清单再去做</li><li>按优先次序整理清单（方法见第 4 课）</li><li>用你喜欢的系统，纸质电子都行，关键是持之以恒</li><li>建立 45-文件体系</li></ol></div>
+        <div class="kp"><h5>个人条理性的七个工具</h5><ol><li>前一晚、下班前准备好第二天的清单，还能睡得更好</li><li>规划每天、每周、每月</li><li>早起：很多成功者 5:00 或 5:30 起床</li><li>按字母顺序的归档系统和主菜单</li><li>在内在“黄金时段”做最重要的工作，也留意客户方便的外在黄金时段</li><li>用听写机：录音时间只占手写的 20%</li><li>让航空旅行也创造财富</li></ol></div>
+        <div class="kp"><h5>在飞机上高效工作</h5><p>不受干扰的 1 小时 = 办公室 3 小时。订<b>非舱壁的靠窗座位</b>（有正前方的小桌板），远离厨房和洗手间；公文包就是旅行办公室；<b>提前两小时到机场</b>；拒绝报纸杂志，邻座想聊天时，作者的朋友说自己是“宗教团体的资金筹集人”；去程分秒必争，返程看书放松。</p></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">旁观者测试</span></div>
+      <div class="practice reveal">
+        <p class="q">站到你的办公桌旁，打开你的公文包、看看你的车，问自己：“什么样的人会在这样的地方工作？你会对这个人委以重任吗？”</p>
+        <p>然后拿起桌上的第一份文件，当场只做四选一：<b>扔掉、委派、放进“执行”文件夹、归档</b>，不许放回原处。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="3"><li>下决心成为公司里最有条理的人，重复“我在做每件事时都是有序高效的”</li><li>开工前写下所有任务；新任务先加进清单再做</li><li>准备一种用着顺手的时间规划工具，投入时间学会它</li><li>收拾办公室和办公桌，保持整洁，做别人的榜样</li><li>开工前备齐所需物品，桌上每次只放一项重要任务</li><li>一次只做一项工作；委派、延期、扔掉还是立即处理，果断决定</li><li>分秒必争，特别是在航空旅途中</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 4 -->
+  <section class="lesson" id="ch4">
+    <div class="lh reveal"><div class="num">04</div><div class="lab">LESSON 04 · <b>第 4 课</b> · 全书核心</div><h2>建立正确的优先顺序</h2></div>
+    <p class="lhook reveal">人的自然倾向是先处理“占多数的小事”。原书称本课的问题为时间管理的核心问题：<b>对你的时间最有价值的利用方式是什么？</b></p>
+    <div class="chips reveal"><span>单元二 · 方法</span><span class="hw">课后作业 <b data-hc="4">0/7</b></span><span>课堂工具：ABCDE 任务排序器</span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 4.1 · 帕累托法则</div><h4>10 件事里，2 件比其余 8 件加起来还重要</h4>
+        <div class="dots10"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="cap">所以这 2 件中的<b>每一件都至少值得你花 5 倍的时间</b>。生意上，80% 的报酬来自 20% 的客户，80% 的盈利来自 20% 的产品；生活里，与家人共处的 20% 时间带来 80% 的满足。开工前先问：“我要做的事情是能带来 80% 回报的那 20% 吗？”</p>
+      </div>
+      <div class="slide"><div class="sk">板书 4.2 · 紧急与重要</div><h4>判断标准只有一个词：“影响”</h4>
+        <div class="mx">
+          <div class="best"><div class="m">① 先做 · 紧急且重要</div><b>最优先项</b><p>需要立刻处理，不做有严重的潜在后果。第 8 课说这是“引信较短”的事。</p></div>
+          <div><div class="m">② 投入越多越高效 · 重要不紧急</div><b>决定你的未来</b><p>更宏大、更艰巨，有长期影响；短期内可以推迟，所以最容易被拖。</p></div>
+          <div><div class="m">紧急但不重要</div><b>摆在你面前的事</b><p>通常由外力决定：老板、客户、电话铃声、同事打扰。就长期价值而言通常不重要。</p></div>
+          <div><div class="m">不紧急也不重要</div><b>创造性拖延的对象</b><p>看电视、看报纸、上网、和朋友吃午饭，长期影响很小或没有。</p></div>
+        </div>
+        <div class="mxax"><span>← 紧急</span><span>上：重要 · 下：不重要</span><span>不紧急 →</span></div>
+        <p class="cap">“紧急的事往往不重要，而重要的事往往并不紧迫。”</p>
+      </div>
+      <div class="slide"><div class="sk">板书 4.3 · ABCDE 方法</div><h4>每天开工前，给清单上每一项标一个字母</h4>
+        <div class="lad">
+          <div class="a"><span class="Lx">A</span><b>必须做</b><span>不做有严重后果。有多项就排成 A-1、A-2……<span class="hi">永远从 A-1 开始</span></span></div>
+          <div class="b"><span class="Lx">B</span><b>应该做</b><span>影响较温和，如回答同事的问题、回复邮件。<span class="hi">A 没做完时不要开始 B</span></span></div>
+          <div><span class="Lx">C</span><b>做了也好</b><span>做不做没什么影响，如看报纸、外出午餐</span></div>
+          <div><span class="Lx">D</span><b>交付</b><span>Delegate：交给别人，腾出时间做只有你能完成的事</span></div>
+          <div class="e"><span class="Lx">E</span><b>取消</b><span>Eliminate：弃置不做。放弃得越多，留给 A 的时间越多</span></div>
+        </div>
+      </div>
+      <div class="slide"><div class="sk">板书 4.4 · 限制步骤</div><h4>找出决定速度的那个瓶颈，一层层问下去</h4>
+        <div class="chain">
+          <div class="n"><b>目标</b>公司销售额翻倍</div><span class="ar">→</span>
+          <div class="n"><b>限制因素？</b>最普遍的答案：销售数量</div><span class="ar">→</span>
+          <div class="n"><b>销量受什么限制？</b>销售计划不够 / 每位客户卖得不够 / 客户在对手那里买得更多</div><span class="ar">→</span>
+          <div class="n"><b>对症下药</b>增加销售活动 / 培训技能 / 升级产品、换渠道、改进宣传和价格</div>
+        </div>
+        <p class="cap">限制因素约 80% 来自你自身和组织内部，只有 20% 在外部。“对时间最糟糕的利用就是把不需要做的事做得完美无缺。”</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>从价值观着手</h5><p>真实的价值观只体现在行动中，看你把时间花在哪里。比尔的排序是家庭—健康—事业，汤姆是事业—家庭—健康，同样三样东西，排序不同就是两个人。零基础思维：“假设我现在没有从事这份工作，我还会选择它吗？”作者在一家国有企业做价值设定练习，250 个项目中 <b>80% 被停工</b>。</p></div>
+        <div class="kp"><h5>先置、后置与创造性拖延</h5><p>排定优先项的同时要定“后置项”：停下什么、放弃什么。排除替代法则：<b>做一件事意味着不做另一件事</b>。平均每个管理者积压着相当于三四百小时的工作，所以要有意识地在 80% 低价值的事上拖延。</p></div>
+        <div class="kp"><h5>效果 vs 效率</h5><p>效果是做对的事，效率是把事情做对。德鲁克：知识工作者的首要工作是决定“做什么”。“如果一件事根本不值得做，那就更不值得把它做对。”</p><h5 style="margin-top:12px">重构你的工作</h5><p>核心是简化：<b>委托、延迟、精简、外包、取消</b>。</p></div>
+        <div class="kp"><h5>找到你的三件事</h5><p>只有三件事构成你 90% 的贡献。问：“如果一天只能做一件事，什么最有价值？”再加一件，重复到三件。一位年售超过 1 亿美元寿险的销售员，42 名员工处理其他一切，他只做与客户面谈，每天另留 2 小时学习准备。</p></div>
+        <div class="kp"><h5>精通需要 5–7 年</h5><p>“好”是“杰出”的对立面。有人抱怨五年太长，作者的回答是：“不管怎样，时间总是会过去的。”唯一的问题是五年后你在行业里处于什么位置。</p></div>
+        <div class="kp"><h5>治疗类选法</h5><p>源自一战西线的伤员分组。用在产品和服务上：<b>胜出者</b>（摇钱树，精心打理）、<b>有潜力的</b>（幸运星，立刻投入最好的人力）、<b>失败者</b>（蹩脚者，鼓起勇气停掉）。生活里也一样。许多公司高层 80% 的时间在处理过去的问题，要关注未来和机会。</p></div>
+        <div class="kp"><h5>设定优先项的五个关键问题</h5><ol><li>我为什么能获得现在的工作？（列出原因，请老板排序）</li><li>我最有价值的工作是什么？</li><li>我的主要工作成果是什么？</li><li>哪些重要工作只有我能做好？</li><li>对我的时间最有价值的利用方式是什么？</li></ol></div>
+        <div class="kp"><h5>强迫效率法则 · 忽略琐事</h5><p>练习：早上 9 点老板说，下午 5 点前做完这周的工作，就把两张头等舱机票和五天全包假期给你，你会怎么干？别先做小事热身：“当你从小事做起时，事情就会像春天里的兔子一样越来越多。”</p></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">ABCDE 任务排序器 · 内容只存在你的浏览器</span></div>
+      <div class="practice reveal">
+        <h5>把今天要做的事都写进来，按“潜在影响”标字母</h5>
+        <p style="margin:2px 0 0">A 类按先后自动编成 A-1、A-2……排在最前、还没完成的 A-1 就是今天的“青蛙”（第 8 课）。</p>
+        <div class="addrow">
+          <input class="f" type="text" id="tIn" placeholder="写一件今天要做的事，回车添加" maxlength="80">
+          <div class="lpick" id="lpick"><button data-l="A" class="on" title="必须做">A</button><button data-l="B" title="应该做">B</button><button data-l="C" title="做了也好">C</button><button data-l="D" title="交付">D</button><button data-l="E" title="取消">E</button></div>
+          <button class="btn pri" id="tAdd">添加</button>
+        </div>
+        <div class="toolbar"><button class="btn sm" id="tDemo">载入示例</button><button class="btn sm" id="tClearDone">清除已完成</button><button class="btn sm" id="tClear">全部清空</button><span class="small" id="tStat"></span></div>
+        <div class="alert" id="tAlert">还有 A 类任务没完成。书里说：先别开始 B。</div>
+        <div class="lanes" id="lanes"></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="4"><li>下决心熟练设定和处理优先级，不允许例外，直到成为习惯</li><li>每天开工前列清单，用 ABCDE 法标注，一定从 A-1 开始</li><li>把 80/20 用到工作和生活的每个方面，先关注那 20%</li><li>找出工作和个人成功的核心限制因素，想办法移除</li><li>思考做或不做的潜在影响，区分紧急与重要</li><li>确定你比别人做得更快、更好、更轻松的优势领域</li><li>每小时问一次：“此刻对时间最有价值的利用是什么？”</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 5 -->
+  <section class="lesson" id="ch5">
+    <div class="lh reveal"><div class="num">05</div><div class="lab">LESSON 05 · <b>第 5 课</b></div><h2>形成高效的工作习惯</h2></div>
+    <p class="lhook reveal">大部分人只发挥了约 50% 的工作能力。好习惯可以归结为两个词：<b>专注</b>（只做对目标最重要的那件事）和<b>集中</b>（不转移、不分心，直到 100% 完成）。</p>
+    <div class="chips reveal"><span>单元二 · 方法</span><span class="hw">课后作业 <b data-hc="5">0/7</b></span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 5.1</div><h4>早到、午留、晚走：每天多出 3 个高效小时</h4>
+        <div class="day"><div class="x">早到<br>1 小时</div><div>9 点</div><div>10 点</div><div>11 点</div><div class="x">别人吃饭<br>你工作</div><div>13 点</div><div>14 点</div><div>15 点</div><div>16 点</div><div class="x">晚走<br>1 小时</div><div style="background:transparent">回家</div></div>
+        <div class="dax"><span>8:00</span><span>9:00</span><span></span><span></span><span>12:00</span><span>13:00</span><span></span><span></span><span></span><span>17:00</span><span>18:00</span></div>
+        <p class="cap">工作环境里约 75% 的时间消耗在与人谈话上，一半是闲聊。别人不在时，<b>不受打扰的 1 小时抵得上平时 3 小时</b>。每天多 3 个高效小时，作者说工作效率、表现和成果“都会提高 1 倍”。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>实现高效的四个步骤</h5><ol><li>设定清楚的目标并写下来</li><li>制订详细的行动计划</li><li>按重要性设置明确的优先权，每天、每时都用 80/20</li><li>不分心、不转移地做最重要的事</li></ol><p style="margin-top:4px">苏格拉底对问路者说：只要保证每一步都朝着奥林匹斯山的方向走就行。</p></div>
+        <div class="kp"><h5>用身心状态推动行动</h5><ul><li>公式 <b>T × E = R</b>：思想乘以情绪等于结果</li><li>“精神先行”：想象自己已是高效的人，并照着做</li><li>坐得端正、身体略微前倾；走路轻快、昂头</li><li>可逆性法则：行为也能反过来改变感情</li></ul></div>
+        <div class="kp"><h5>表现得像个天才</h5><p>《读者文摘》研究发现天才有三个共同点：用<b>系统有序</b>的方法解决问题；保持孩子般的<b>好奇心</b>，常问“是否还有另外的答案？”；注意力<b>更集中、更持久</b>。</p></div>
+        <div class="kp"><h5>让精力更集中</h5><ul><li>开工前清理工作场所，只留与最高优先级相关的东西</li><li>把时间切成至少 <b>60–90 分钟</b>的组块做重要工作</li><li>早睡，早上 5 点起，进办公室前已不受打扰地工作三四个小时</li><li>在没人打扰的地方工作，在家就拔掉电话线</li></ul></div>
+        <div class="kp"><h5>强迫自己完成</h5><ul><li>为自己设截止日期，当作“强制执行系统”</li><li>每完成一件事，大脑释放内啡肽</li><li>定期奖励自己：85% 的行为动机来自预见到的好处</li><li>和家人分享奖励：有公司把夏威夷旅行的小册子发给销售员的配偶</li><li>走神时对自己说：“回去工作！”</li></ul></div>
+        <div class="kp"><h5>一时一事，利用学习曲线</h5><p>开始一件事就坚持到完全结束，第一天就能把效率提高 <b>50%</b>。把 10 个、20 个类似的电话或报告放在一起处理，每件所需时间可降低 <b>80%</b>。</p></div>
+        <div class="kp full"><h5>提高个人工作效率的十个技巧</h5><div class="grid16 g5" style="grid-template-columns:repeat(5,1fr)">
+          <div><i>1</i>追求最高的“精力回报率”（return on energy）</div><div><i>2</i>不到 5% 的工作创造了大部分成果</div><div><i>3</i>做你擅长的事</div><div><i>4</i>关注未来的机会，不是昨天的问题</div><div><i>5</i>放长线钓鲸鱼：1000 条小鱼也只是一桶鱼</div>
+          <div><i>6</i>专注于 5–7 个关键绩效领域</div><div><i>7</i>设定截止日期，严格遵守日程</div><div><i>8</i>“30% 原则”：多留 30% 时间应对意外</div><div><i>9</i>保持稳定的节奏，想想龟兔赛跑</div><div><i>10</i>思考结果，培养完成工作的能力</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">给明天排一个时间组块</span></div>
+      <div class="practice reveal">
+        <p class="q">明天你最重要的那件事，放进哪个不受打扰的 60–90 分钟？</p>
+        <ol><li>从板书里选一个：早到 1 小时、午餐时间、晚走 1 小时，或者早上 5 点在家</li><li>把它写进日程，关门、静音、拔电话线</li><li>开始前备齐所需的一切，中途不起身；有人来打扰，就说“我想我必须回去工作了”</li></ol>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="5"><li>提前拟订计划，备齐所需，下定决心集中精神</li><li>把同类任务组合起来依次处理，利用学习曲线</li><li>从事回报最大的工作，无论投入的是智力、情感还是体力</li><li>在不被打扰的环境里长时间工作，造出大块时间</li><li>为每件任务设截止日期，完成后奖励自己</li><li>培养紧迫感，以平稳的节奏连续工作到完成</li><li>经常提醒自己“回去工作”</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== UNIT 3 ===================== -->
+  <div class="udiv reveal"><div class="big">U3</div><div><div class="k">UNIT 3 · 守门</div><h3>对付时间窃贼</h3><p>第 6–8 课：管好多人参与的项目，挡住电话、来客、会议和闲聊，克服拖延。</p></div></div>
+
+  <!-- LESSON 6 -->
+  <section class="lesson" id="ch6">
+    <div class="lh reveal"><div class="num">06</div><div class="lab">LESSON 06 · <b>第 6 课</b></div><h2>管理多任务工作</h2></div>
+    <p class="lhook reveal">生活就是一系列项目。斯坦福大学的研究发现，组织团队完成任务的能力是管理者事业成功最重要的品质。李·艾柯卡到克莱斯勒的 36 个月里，替换了 36 位资深副总裁中的 35 位。</p>
+    <div class="chips reveal"><span>单元三 · 守门</span><span class="hw">课后作业 <b data-hc="6">0/7</b></span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 6.1</div><h4>给期限加缓冲：三周的任务，目标定在第三周周三</h4>
+        <div class="wk3" id="wk3"></div>
+        <div class="wkl"><span>第 1 周</span><span>第 2 周</span><span>第 3 周</span></div>
+        <p class="cap">在时间表里加入“容差系数”，期限越严格，越需要缓冲；书中说可以定在那周的周三甚至周二。墨菲定律：可能出错的就会出错，所有事都比预计的久、比预算贵。项目失败的首要原因，就是没有留出充足的时间。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>项目管理的步骤</h5><ol><li>以设想的结果为起点：完工时是什么样？</li><li>按时间表和预算从头开始，定现实的期限</li><li>组织团队：领导者 95% 的成功取决于知人善任</li><li>分享主人翁意识，培养共同愿景，制订共同计划</li><li>和团队<b>达成共识</b>后设定完工期限</li><li>列出所有任务，直到最琐碎的</li><li>明确所需信息，交给专人并设期限</li><li>找出决定整体速度的瓶颈，让最能干的人去解决</li></ol></div>
+        <div class="kp"><h5>顺序任务和平行任务</h5><p>例：公司搬进新大楼，限制因素是定下面积、位置和租约。<b>按顺序</b>：确定家具和装置需求、收拾旧办公室、找搬家公司。<b>可平行</b>：装新电话、订办公用品、通知客户和供应商新地址。</p><h5 style="margin-top:12px">一张纸的项目计划表</h5><p>左栏按顺序写任务，顶部写日、周或月。例：在家办圣诞派对，第一步是定下酒席承办人，日期和承办人一定，菜单、价格、邀请函、桌椅都能跟着排。</p></div>
+        <div class="kp"><h5>危机预测与 B 计划</h5><ul><li>先想清楚最坏的情况，并确保它不会发生</li><li>准备“俾斯麦计划”，即 B 计划</li><li>只有准备好备用方案时，你才是自由的</li><li>希望不是一种策略。拿破仑说他相信坏运气，并照此制订计划</li></ul></div>
+        <div class="kp"><h5>要避免的四个问题</h5><ol><li>没有留出充足的时间</li><li>设想一切都会顺利。“每一个失败都植根于错误的假设。”</li><li>在最后阶段急于求成，导致返工</li><li>试图同时做多件事</li></ol></div>
+        <div class="kp"><h5>故事板</h5><p>迪士尼拍动画时首创。在软木板上方用 5×8 英寸卡片写 3–10 个“抬头”（主要组成部分或负责人），下面用 3×5 英寸卡片写任务、负责人、截止日期，可以随时移动调整。每次员工大会对照它检查进度。</p></div>
+        <div class="kp"><h5>实例：邮寄一期简报</h5><p>确定最理想的结果 → 确定目标市场并获取邮寄地址（这本身是个项目，单独交给一个团队）→ 设计版式 → 汇集稿件出初稿 → 专业排版 → 比较三家投标选印刷厂。全程约 <b>4 个月、5 个人、二三百小时</b>。</p></div>
+        <div class="kp full"><h5>成功任务管理的沟通四要素</h5><ol class="cols2"><li>明确：别假设别人懂，让对方用自己的话复述</li><li>一致：耐心、乐观、坚定，亲自检查进展</li><li>直截了当地处理冲突和低质量工作</li><li>勇气：对结果负责，坚持到竣工</li></ol></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">找出你手上项目的瓶颈</span></div>
+      <div class="practice reveal">
+        <p class="q">“该项目的哪个任务决定了整体的完成速度？”</p>
+        <p>作者的例子：办一场 1000 人的公开研讨会，瓶颈是在某个城市订下酒店和会场；场地一定，人员、宣传、售票、物流才能展开。拿你手上的一个项目，写下它的瓶颈，在它解决之前，别急着展开其他工作。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="6"><li>在做中学：挑一个对生活有积极影响的项目，用本课方法完成</li><li>开始每项工作前，先确定成功完成的理想结果</li><li>列出出色完成项目所需的每个要素和步骤</li><li>画出项目计划表，按顺序排好每项任务和行动</li><li>召集能帮忙的人，商讨每个细节</li><li>练习危机预测，在问题发生前找到解决办法</li><li>对关键任务承担全部责任，成为杰出的任务管理者</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 7 -->
+  <section class="lesson" id="ch7">
+    <div class="lh reveal"><div class="num">07</div><div class="lab">LESSON 07 · <b>第 7 课</b></div><h2>时间节省技能——如何处理时间浪费的六个最大问题</h2></div>
+    <p class="lhook reveal">书中列出工作中浪费时间的七件主要的事：电话干扰、不速之客、开会、“灭火”、拖延、社交闲谈、优柔寡断。本课处理其中六件，拖延留给第 8 课。对付一切时间浪费，最有力的词是“不！”</p>
+    <div class="chips reveal"><span>单元三 · 守门</span><span class="hw">课后作业 <b data-hc="7">0/7</b></span><span>课堂工具：会议成本计算</span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 7.1</div><h4>一生的时间去哪了</h4>
+        <div class="hbars" id="lifebars"></div>
+        <p class="cap">时间管理专家迈克尔·弗蒂诺的统计。最让人惊讶的是：每天只花 <span class="hi">4 分钟</span>和配偶交谈，<span class="hi">30 秒</span>和孩子说话。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>应对电话干扰的七种方法</h5><ol><li>把电话当工作工具，9:00–17:00 不闲聊</li><li>接之前先弄清是谁、为什么</li><li>需要专注时拔掉电话线</li><li>留言时告诉对方方便回电的时间</li><li>批量回电：如攒到 11:00 再集中回到中午</li><li>打电话前先写提纲</li><li>记笔记：优势永远在有记录的人一边</li></ol></div>
+        <div class="kp"><h5>应对不速之客的五种方法</h5><ol><li>设定安静时间，挂“请勿打扰”牌</li><li>对方一进门就站起来：“很高兴见到你，但我正要出去，我们一起走吧。”</li><li>结束谈话：“你走之前还有一件事……”然后送到门口</li><li>安排固定的会客时间</li><li>自己别当不速之客，先问“这个时间方便吗？”</li></ol></div>
+        <div class="kp"><h5>让会议更有效的七个方法</h5><ol><li>先问会议是否必要、自己是否必须参加</li><li>写一段话的目的和议程，至少提前 24 小时发出</li><li>按时开始、按时结束，不等迟到的人</li><li>最重要的 20% 议题放在最前</li><li>每项讨论结束时总结</li><li>分配具体职责和期限</li><li>做好记录，24 小时内传阅</li></ol><p style="margin-top:4px">作者和老板一起拟议程后，原来一小时没头没尾的讨论，15 分钟就谈完了。</p></div>
+        <div class="kp"><h5>“灭火”：危机应对五步</h5><ol><li>三思而后行，冷静客观</li><li>下放责任：不一定要你决定的事，你就别决定</li><li>先把问题写下来</li><li>弄清真相：什么、何时、何地、如何、为何、涉及谁</li><li>为反复出现的危机制定一套一般人也能照做的方法</li></ol><p style="margin-top:4px">同一危机反复出现，是低劣管理的标志。</p></div>
+        <div class="kp"><h5>社交闲谈</h5><p>工作中约 75% 的时间花在交际上，其中一半是与工作无关的闲聊。把社交放在咖啡时间、午饭或下班后；被卷进闲聊时说“我要继续工作了”；常问“这是我拿工资的原因吗？”例外：与知识工作者以结果为目的的讨论。</p></div>
+        <div class="kp"><h5>犹豫不决与决策</h5><p><b>80%</b> 的事应在出现时当场决定，15% 可以稍后，5% 根本不需要决定。四种决定：只有你能做的、可以委托的、难以负担的、无法回避的。做不了就限时：“最迟这周四中午前给你答复。”晋升者与未晋升者笔试能力相同，差别在于敢不敢做决定。</p></div>
+        <div class="kp full"><h5>节省时间的另外五个方法</h5><ol class="cols2"><li>一次性购物（书中建议周二中午到下午去食品店）</li><li>把任务打包一次做完</li><li>不浪费他人的时间：问问别人“我有没有耽误你的事情？”</li><li>守时：只有 2% 的人一直守时。“如果不早一点，你就晚了。”</li><li>快速行动，快节奏是成功的必需</li></ol></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">会议成本 = 参会者时薪 × 时长</span></div>
+      <div class="practice reveal">
+        <h5>把下一场会当作一笔有预期回报的投资</h5>
+        <p>书中例子：10 个人、平均时薪 20 美元，这场会每小时就花掉 200 美元。如果你不会随手花 200 美元，开会前也该想好理由。</p>
+        <div class="fields" style="grid-template-columns:repeat(3,1fr)">
+          <label>参会人数<input class="f" type="number" id="mPpl" value="10" min="1"></label>
+          <label>平均时薪<input class="f" type="number" id="mRate" value="20" min="0"></label>
+          <label>会议时长（小时）<input class="f" type="number" id="mLen" value="1" min="0" step="0.25"></label>
+        </div>
+        <div class="out"><div class="o wide"><div class="k">这场会议的成本</div><div class="v" id="mOut">200</div></div></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="7"><li>下决心把使你远离成功的时间浪费减到最低</li><li>每次开会前做计划，每项议题以任务安排和时限收尾</li><li>别做电话铃声的奴隶，为每通工作电话安排时间</li><li>工作时专心工作，不让闲谈打断</li><li>尽快做决定，准备接受反馈并修正</li><li>问题或危机发生时，弄清事实、分析，再采取措施</li><li>加快脚步，培养紧迫感，专注于结果</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 8 -->
+  <section class="lesson" id="ch8">
+    <div class="lh reveal"><div class="num">08</div><div class="lab">LESSON 08 · <b>第 8 课</b></div><h2>克服拖延症</h2></div>
+    <p class="lhook reveal">拖延症是时间的行窃者。紧迫感是它的对立面，也是解决它最有力的工具。104 位 CEO 中 84% 认为，年轻人快速升迁最重要的两项品质是：区分有关和无关的能力，以及尽快完成工作的能力。</p>
+    <div class="chips reveal"><span>单元三 · 守门</span><span class="hw">课后作业 <b data-hc="8">0/7</b></span><span>课堂工具：15 分钟启动计时器</span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 8.1 · 十六种方法之第 9 条</div><h4>吃掉那只青蛙</h4>
+        <p class="bigq">“你每天早上起来要做的第一件事就是<em>吃一只活青蛙</em>，然后你就会欣喜地发现，在接下来的这一天里，再没有什么比这个更糟糕的事情了。”</p>
+        <p class="cap">马克·吐温。“活青蛙”就是你所面临的最艰巨、最困难、最令人不悦的工作。书中的佐证：早上锻炼的一组人，六个月后仍在坚持的比例比下班后锻炼的一组高得多。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>培养紧迫感的七个步骤</h5><ol><li>设定有价值、你极度渴望的目标</li><li>设想任务已经完成后的满足感</li><li>不断重复“<b>现在就去做！</b>”</li><li>设清晰的完成期限，并告诉别人</li><li>拒绝找借口，“烧掉回头的桥”</li><li>奖励自己完成任务</li><li>承担完成工作的全部职责</li></ol></div>
+        <div class="kp"><h5>“现在就去做！”</h5><p>W.克莱门特·斯通从芝加哥街头卖报的孩子起家，创建了价值 8 亿美元的保险公司，员工每天早上大喊“现在就去做！”五十遍才开始工作。作者参加的一场销售年会上发小木圆盘，印着“to it”，叫“round to-it”：拿到了，就别再说“等我抽出时间”。</p></div>
+        <div class="kp"><h5>用奖励重塑习惯</h5><p>你所做和没做的事，95% 由习惯决定。“操作性条件反射”：销售员面前放一杯新鲜咖啡，每打一通电话喝一小口，要在咖啡凉之前喝完；或者把小甜饼掰碎，每打一通吃一块。不完成任务，坚决不给奖励。</p></div>
+        <div class="kp"><h5>提前做的五件事</h5><ol><li>写详细行动计划，标 A、B、C，圈出第一步</li><li>清理工作环境，只留最重要的一件</li><li>区分紧急与重要</li><li>从最重要的事开始</li><li>练习创造性拖延：只在无关紧要的事上拖。问“如果我不做会怎么样？”</li></ol></div>
+        <div class="kp full"><h5>十六种方法克服拖延症</h5><div class="grid16">
+          <div><b><i>1</i>付诸笔端</b>提前列出每件事，分解成部分</div><div><b><i>2</i>备齐材料</b>坐下后在完成前不必起身</div><div><b><i>3</i>从一件小事开始</b>千里之行，始于足下</div><div><b><i>4</i>意大利香肠</b>一次切一片，完成一部分</div>
+          <div><b><i>5</i>瑞士干酪</b>5 分钟只做一小块；一天一页，一年 365 页</div><div><b><i>6</i>从外部开始</b>先做琐碎的准备工作</div><div><b><i>7</i>从内部开始</b>先做清单上最重的一项</div><div><b><i>8</i>先做最畏惧的</b>如批评员工、面对讨厌的人</div>
+          <div><b><i>9</i>吃掉活青蛙</b>以最不开心的任务开始一天</div><div><b><i>10</i>想想不做的后果</b>畏惧和期望都是动力</div><div><b><i>11</i>写下做完的好处</b>找到 10–20 个理由，动机就异常高</div><div><b><i>12</i>先给 15 分钟</b>如 10:00–10:15，写下约定并遵守</div>
+          <div><b><i>13</i>拒绝完美主义</b>先做起来，有机会回头修改</div><div><b><i>14</i>选影响最大的领域</b>先攻克最难的部分</div><div><b><i>15</i>培养收尾的意愿</b>强迫自己完成最后 5%，很多学位论文就卡在这里</div><div><b><i>16</i>保持快节奏</b>快步走、快速写，进入“心流”</div>
+        </div></div>
+        <div class="kp full"><h5>拒绝完美主义：朋友的咨询公司</h5><p>作者的朋友开了咨询公司，一个月没开展业务，因为一直在印宣传册、名片和信笺。作者告诉他这些连公司价值的一个角都占不到：把新联系方式写在旧名片背面就去见客户。他当天就开始联系，一周后打电话来说已经谈成交易、赚到了钱。</p></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">十六种方法之第 12 条</span></div>
+      <div class="practice reveal">
+        <h5>给那件一直拖着的事 15 分钟</h5>
+        <p>写下你和自己的约定，到点就心无旁骛地做 15 分钟。时间到了想继续就继续；不想，就计划下一个 15 分钟。</p>
+        <div class="row2" style="grid-template-columns:2fr 1fr"><label>我要做的事<input class="f" type="text" id="ftTask" placeholder="例如：写报告的第一页" maxlength="60"></label><label>时长（分钟）<input class="f" type="number" id="ftMin" value="15" min="1" max="120"></label></div>
+        <div class="timer" style="margin-top:12px"><span class="clock" id="ftClock">15:00</span><button class="btn pri" id="ftStart">开始</button><button class="btn" id="ftReset">重置</button><span class="msg" id="ftMsg">现在就去做！</span></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="8"><li>选一项被拖延拖累的重要工作，下决心用所学方法完成</li><li>写下完成它需要的每一个步骤</li><li>找出清单上最重要的一项，备齐材料，开始并完成</li><li>设定一个具体时间段，全身心投入直到完成</li><li>把复杂任务分块，一次只专注解决一块</li><li>百分之百承担起开始并完成的使命，拒绝找借口</li><li>想象自己带着紧迫感工作，不断重复“现在就去做！”</li></ul>
+    </div>
+  </section>
+
+  <!-- ===================== UNIT 4 ===================== -->
+  <div class="udiv reveal"><div class="big">U4</div><div><div class="k">UNIT 4 · 延伸</div><h3>学习、他人与人生</h3><p>第 9–12 课：持续学习保持领先，通过他人完成工作，按时薪分配时间，最后放眼整个人生。</p></div></div>
+
+  <!-- LESSON 9 -->
+  <section class="lesson" id="ch9">
+    <div class="lh reveal"><div class="num">09</div><div class="lab">LESSON 09 · <b>第 9 课</b></div><h2>利用时间，跟上步伐，保持领先</h2></div>
+    <p class="lhook reveal">任何领域的知识量每 5–7 年翻一番，有的只需两三年。“想赚得更多，你必须学得更多。”一个新观点就可能改变生活：IBM 科学家在图书馆翻到一本讲陶瓷导电的法国杂志，一年内突破超导难题，获得 1987 年诺贝尔物理学奖。</p>
+    <div class="chips reveal"><span>单元四 · 延伸</span><span class="hw">课后作业 <b data-hc="9">0/7</b></span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 9.1</div><h4>阅读者成为领导者</h4>
+        <div class="eq"><span class="p">每天 1 小时</span><i>≈</i><span class="p">每周 1 本</span><i>≈</i><span class="p g">每年 50 本</span></div>
+        <div class="bigrow"><div><div class="v">3<small>年</small></div><span>成为这个领域的专家</span></div><div><div class="v">5<small>年</small></div><span>成为国内权威</span></div><div><div class="v">7<small>年</small></div><span>成为国际权威</span></div><div><div class="v">&lt;1<small>本</small></div><span>成人平均每年的阅读量；80% 的家庭最近一年没买过也没读过书</span></div></div>
+      </div>
+      <div class="slide"><div class="sk">板书 9.2 · OPIR 四步阅读法</div><h4>300 页的书，从 6–8 小时缩到 2–3 小时</h4>
+        <div class="flow"><span><em>O</em>概览：封面、目录、快速翻全书，≤10 分钟</span><i>→</i><span><em>P</em>预览：读章节首句首段和章末总结</span><i>→</i><span><em>I</em>阅览：手盖住下一句往下移，边读边标记</span><i>→</i><span><em>R</em>回顾：重读标记处</span></div>
+        <p class="cap">Overview–Preview–Inview–Review。“重复是学习之母”：一条新信息要重复 3–6 遍才能进入长时记忆。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>投资你的大脑</h5><ul><li>拿出收入的 <b>3%</b> 升级知识和技能</li><li>“万无一失的富有公式”：每年在大脑上投入和在车上一样多的钱（普通车主约 600 美元/年），第一年薪水就能涨 25%–50%</li><li>车是贬值资产，大脑是增值资产</li></ul></div>
+        <div class="kp"><h5>边读边撕</h5><p>平均每个管理者积压 300–400 小时的阅读材料。拿到杂志先看目录，把要读的文章撕下放进“撕读”文件夹，在出租车、候车室、飞机上读。读经典可以撕下 20 页随身带：每月 1 本，十年 120 本。</p></div>
+        <div class="kp"><h5>挑书的办法</h5><ul><li>选积极实践自己观点的作者，先读作者简介</li><li>读目录，确认与当前工作相关、实用</li><li>出了精装本，通常说明平装本卖得不错</li><li>直接买书，别花两三个小时跑图书馆；划线、折角、写批注</li></ul></div>
+        <div class="kp"><h5>给信息做减法</h5><ul><li>问“这本出版物能帮我达成目标吗？”不能就退订</li><li>“堆积恐惧症”的规则：放了六个月没读，就是垃圾</li><li>别担心错过：越重要的观点，越会从不同渠道出现</li><li>成年人只记得和当前工作相关、能用上的东西</li></ul></div>
+        <div class="kp"><h5>汽车大学</h5><p>美国车主每年开 12000–25000 英里，约 <b>500–1000 小时</b>，相当于 12.5–25 个工作周，一两个学期的全日制大学。南加大的研究认为，开车时听教学节目能获得与全日制大学相同的教育成果。“不要让你的车在没有教育播音节目的情况下行驶。”</p></div>
+        <div class="kp"><h5>人脉与 T × R = P</h5><p>能力（Talent）× 关系（Relationship）= 生产力（Productivity）。加入专业协会并进委员会服务；启动互助原则。伍迪·艾伦：“80% 的成功来自你的出席。”最常获得升职的管理者把 50% 的时间花在与人沟通上。</p></div>
+        <div class="kp full"><h5>更多学习渠道</h5><ul class="cols2"><li>参加实践者开的研讨会：3–6 小时学到讲师一二十年的积累</li><li>速读课：每分钟 1000 词并记住 80%</li><li>读书会、书摘服务、网上书店</li><li>学公开演讲：戴尔·卡内基课程或国际主持人协会</li><li>5:30–6:00 起床，第一个小时用来读书</li><li>“未来的三把钥匙”：预先计划每一天；开车时听录音；终身发展</li></ul></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">清理你的书堆</span></div>
+      <div class="practice reveal">
+        <p class="q">“这本书已经放了六个月了吗？”</p>
+        <p>去看一眼你的待读堆和订阅列表。放了六个月还没读的，按作者的规则就是垃圾；不能帮你达成目标的订阅，退掉。然后把留下的第一本，用 OPIR 的“概览”花 10 分钟翻一遍。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="9"><li>致力于终身学习，为此付出所需的金钱和时间</li><li>建立自己的图书馆，每天学点新知识</li><li>从现在开始在开车时收听录音节目</li><li>上一门公开演讲课，学会有效、有说服力地演讲</li><li>学习速读和更高效的阅读</li><li>加入行业团体或协会，融入进去并帮助他人</li><li>每天至少早起一小时，用黄金时间充实自己</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 10 -->
+  <section class="lesson" id="ch10">
+    <div class="lh reveal"><div class="num">10</div><div class="lab">LESSON 10 · <b>第 10 课</b></div><h2>在沟通中节省时间</h2></div>
+    <p class="lhook reveal">生活中最大的时间浪费因素是人。即使是技术人员也要花 75% 的时间与同事沟通，你 85% 的快乐或不快乐都与他人有关。对抗模糊的解药是清晰。</p>
+    <div class="chips reveal"><span>单元四 · 延伸</span><span class="hw">课后作业 <b data-hc="10">0/7</b></span><span>课堂工具：时薪倒推器</span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 10.1 · 比较优势法则</div><h4>付不起你时薪的事，就交出去</h4>
+        <div class="eq"><span class="p">年入 50000</span><i>÷</i><span class="p">2000 工时</span><i>=</i><span class="p g">时薪 25</span><span class="p" style="margin-left:10px">年入 100000</span><i>→</i><span class="p g">时薪 50</span></div>
+        <p class="cap">大卫·李嘉图的比较优势理论用在工作上：<b>即使你做得比别人好，也应把低于你时薪的工作交给别人</b>。“如果你不投入到高于你预期时薪的工作上去，你就永远无法得到这样的薪水。”</p>
+      </div>
+      <div class="slide"><div class="sk">板书 10.2</div><h4>有效委任的六个步骤</h4>
+        <div class="flow"><span><em>1</em>人和工作相匹配</span><i>→</i><span><em>2</em>对要完成的工作达成一致</span><i>→</i><span><em>3</em>解释应该如何完成</span><i>→</i><span><em>4</em>让对方复述</span><i>→</i><span><em>5</em>设定期限，定期汇报</span><i>→</i><span><em>6</em>异常管理</span></div>
+        <p class="cap">异常管理：一切按计划进行就不用汇报，只有出了问题才报告。“过去的表现是未来表现最好的预测。”</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>沟通中的时间浪费</h5><ul><li>误解与不清楚的要求：员工积极的首要原因是“知道该做什么”</li><li>错误的任命、不清楚的权力界限</li><li>不完整的信息：常问“你有什么证据？”</li><li>无意义或太频繁的会议，占 25%–50% 工作时间</li><li>员工不清楚公司现状</li></ul></div>
+        <div class="kp"><h5>“保住你的工作”游戏</h5><p>作者请管理者写下每个下属最重要的工作和先后顺序，再去问下属本人，答案一致才算“保住工作”。多年来，<b>没有一个管理者愿意玩</b>。84% 的成功管理者认为有效沟通是成功的关键。</p><h5 style="margin-top:12px">清楚沟通的规则</h5><p>不要假设对方理解了，直到他能用自己的话复述给你。先理解别人，再设法让别人理解你。</p></div>
+        <div class="kp"><h5>委派前问四个问题</h5><ol><li>其他人中谁可以做？</li><li>谁能比你做得更出色？</li><li>能以更低的代价完成吗（外包）？</li><li>这项任务可以取消吗？</li></ol><p style="margin-top:6px"><b>没人读的月报：</b>一家 500 强企业的新任财务副总裁发现，12 位高薪会计师每年花近 100 万美元汇编月报，各部门把它们原封不动堆在储藏室。他停掉了，九个月后才有人问起，还补了一句：“不过，我们也从来没有读过。”</p></div>
+        <div class="kp"><h5>每天完成更多工作的七种方法</h5><ol><li>更努力</li><li>更快</li><li>把任务打包</li><li>做更重要的事</li><li>做你擅长的事</li><li>少出错，一次做对</li><li>减少步骤，简化工作</li></ol></div>
+        <div class="kp"><h5>三种决策类型，事先说清</h5><ol><li><b>命令型</b>：负责人拍板，如招聘关键职位、开除员工、重大投资</li><li><b>协商型</b>：听取意见后独自决定。艾森豪威尔咨询上百位专家，最后独自定下 1944 年 6 月 6 日登陆</li><li><b>统一性</b>：讨论或投票达成共识，决定后人人执行</li></ol><p style="margin-top:4px">员工以为是统一性决策、老板其实是协商型，就会产生误解。</p></div>
+        <div class="kp"><h5>避免反向授权</h5><p>对任务的下一步负责的人，才是真正的负责人。下属把问题推回来，“猴子”就跳到你背上，你反而成了下属的打工者。对策是反问：“你觉得我们应该做什么？”指点后把工作交还给他。另外，每周至少开一次员工参与管理会议，并花时间培训下属。</p></div>
+        <div class="kp full"><h5>你的头衔是“问题解决者”：解决问题的步骤</h5><ol class="cols2"><li>清晰地界定问题并写下来，<b>50% 的问题在界定阶段就能解决</b></li><li>问“是否还有其他界定方法？”复杂问题常是“问题团”</li><li>找出所有可能的原因（作者公司反复缺钱，根源是缺少资金管理系统）</li><li>找出所有可能的方案，先定“边界条件”；只想到一个方案时要小心</li><li>做决定，并想清楚它为什么最好</li><li>准备备用方案：“只有当你的选择是自由的，你才是自由的。”</li><li>了解最坏的结果（有公司把钱全押在“超级碗”广告上，最终破产）</li><li>布置具体任务并设定期限，一直监督到完成</li></ol></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">时薪倒推器 · 第 10–12 课都会用到</span></div>
+      <div class="practice reveal">
+        <h5>算出你的时薪，然后对低于它的事说“不”</h5>
+        <p>金额单位随意，书里用的是美元。下面的销售栏是第 11 课的倒推方法，不做销售可以忽略。</p>
+        <div class="fields">
+          <label>年收入目标<input class="f" type="number" id="cInc" value="60000" min="0"></label>
+          <label>每年工作周数<input class="f" type="number" id="cWk" value="50" min="1"></label>
+          <label>每周工作天数<input class="f" type="number" id="cDay" value="5" min="1"></label>
+          <label>每天工作小时<input class="f" type="number" id="cHr" value="8" min="1"></label>
+        </div>
+        <div class="out" id="cOut1"></div>
+        <p class="subt">销售人员（第 11 课）</p>
+        <div class="fields">
+          <label>佣金比例 %<input class="f" type="number" id="cRate" value="6" min="0" step="0.1"></label>
+          <label>每笔交易收入<input class="f" type="number" id="cDeal" value="500" min="0"></label>
+          <label>几次面谈成交一单<input class="f" type="number" id="cMeet" value="5" min="1"></label>
+          <label>几通电话约到一次面谈<input class="f" type="number" id="cCall" value="4" min="1"></label>
+        </div>
+        <div class="out" id="cOut2"></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="10"><li>把别人能做的一切都交给时薪低于你期望的人去做</li><li>极其清楚地说明要做什么、什么标准、什么日期前完成</li><li>向员工说明他们被聘用的原因和最有价值的工作</li><li>让员工了解公司现状和与其工作有关的一切</li><li>布置任务后，一定让对方复述你说的话</li><li>推行员工参与管理，每周开员工大会，请每个人提出问题</li><li>员工是你最大的财富，不断寻找更清晰的沟通方式</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 11 -->
+  <section class="lesson" id="ch11">
+    <div class="lh reveal"><div class="num">11</div><div class="lab">LESSON 11 · <b>第 11 课</b></div><h2>销售人员的时间管理技巧</h2></div>
+    <p class="lhook reveal">1928 年和 1988 年《市场营销管理》两次调查，结论一样：销售员平均只用 20% 的时间工作，每天约 90 分钟。哥大研究发现，第一个销售电话约在上午 11:00，最后一个在下午 3:30 左右。销售员唯一能卖的就是时间。</p>
+    <div class="chips reveal"><span>单元四 · 延伸</span><span class="hw">课后作业 <b data-hc="11">0/7</b></span><span>课堂工具：七项销售技能自评</span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 11.1 · 书中的例子</div><h4>从年收入目标，倒推到每小时</h4>
+        <div class="fun">
+          <div style="width:100%"><span>以最好的一年为基础 +50%</span><b>年收入 60000</b></div>
+          <div style="width:92%"><span>÷ 佣金 6%</span><b>年销售额 1000000</b></div>
+          <div style="width:84%"><span>÷ 12 个月</span><b>月收入 5000 · 月销售 83333</b></div>
+          <div style="width:76%"><span>÷ 50 周</span><b>周收入 1200 · 周销售 20000</b></div>
+          <div style="width:68%"><span>÷ 5 天</span><b>日收入 240 · 日销售 4000</b></div>
+          <div style="width:60%"><span>÷ 8 小时</span><b>时薪 30</b></div>
+        </div>
+        <p class="cap">从此拒绝任何付不起 30 美元/小时的事。付得起的只有三件：<span class="hi">勘察、行动、跟进</span>。上一课的倒推器可以代入你自己的数字。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>分钟理论</h5><p>你 100% 的销售额都来自与客户面对面交谈的分钟数，把面谈时间翻倍，销量就能翻倍。销售成功的首要法则：<b>在更好的目标上花更多的时间</b>。销售员是唯一每天早上以“无业状态”醒来的人。</p></div>
+        <div class="kp"><h5>三步销售公式</h5><p><b>勘察、行动、跟进</b>。业绩不理想，原因总能归到其中一步。用 80/20：80% 的时间用来勘察（寻找、联系需要且买得起的人），直到业务多到不需要再开发新客户。</p></div>
+        <div class="kp"><h5>倒推每天的活动量</h5><p>每笔交易赚 500 美元、年收入目标 6 万，就要每年 120 次、每月 10 次交易。如果 5 次面谈成交 1 单、20 通电话约到 5 次面谈，每天早上就从数要打多少通电话开始。随着技能提高，成交比从 20:1 降到 15:1、10:1，职业销售员能做到 5:1 甚至 3:1。</p></div>
+        <div class="kp"><h5>提前计划，按地域排</h5><ul><li>顶尖销售员周五就排好下周的面谈，周末花一两个小时计划</li><li>会面以 30–60 分钟间隔紧凑安排</li><li>把区域分成四个扇形，每天或半天只跑一个</li><li>每次展示后都请客户下单：50% 的电话销售直到结束都没提出购买要求</li></ul></div>
+        <div class="kp full"><h5>销售中的十大时间浪费</h5><ol class="cols2"><li>拖延：“电话恐惧”。“拒绝不是针对你个人的。”</li><li>没完成的销售行为：报价单、库存数据没备好</li><li>准备不充分：对客户一无所知</li><li>无知：作者在圣地亚哥看房，很多经纪人连房门都没打开过</li><li>未经确认的预约：出发前打给前台，留言“博恩·崔西打来的，会准时到达”</li><li>不按地理位置安排预约，半天耗在路上</li><li>不必要的完美主义。爱默生：“去做令你害怕的事，你的恐惧自然会消失。”</li><li>分心：身体前倾，把眼睛当日光灯，“把他的脸晒成古铜色”</li><li>过度工作和疲劳：一周工作五天，就五天早睡，10 点上床</li><li>缺乏雄心和干劲：卖的东西自己都不喜欢，就该换工作</li></ol></div>
+        <div class="kp full"><h5>算算被浪费的时间</h5><ul class="cols2"><li>每天两个 20 分钟咖啡休息 = 每年 <b>10000 分钟 ≈ 166 小时</b>，约一个月的收入</li><li>用好午休 1 小时 = 每周 5 小时、每年 250 小时，销售额立刻提高 20%</li><li>工作 6 小时而不是 90 分钟，收入可提高到四倍</li><li>早起读 30–60 分钟销售书：每周 1 本，10 年 500 本</li><li>第一个约会定在 8:00 甚至 7:30</li><li>作者租写字楼时，从顶楼一层层往下扫楼，一个月打出几百个电话</li></ul></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">七个主要工作范畴，按 1–10 打分</span></div>
+      <div class="practice reveal">
+        <h5>给自己的七项销售技能打分</h5>
+        <p>书中要求每项都达到 7 分以上。<b>最弱的一项决定你的销售和收入高度</b>，从它练起。低于 7 分的会标成金色。</p>
+        <div class="skills" id="skills"></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="11"><li>掌控你的销售生涯，下决心把与客户面谈的时间翻倍</li><li>制定具体到年、月、周、日乃至小时的销售和收入目标</li><li>只做付得起期望时薪的工作，其他委派、推迟或取消</li><li>计划好勘察、行动和跟进，训练自己每天投入工作</li><li>为每个销售电话做足准备和功课</li><li>按地域规划销售，别开着车满城跑</li><li>利用所有时间工作，别在咖啡和午饭上浪费时间</li></ul>
+    </div>
+  </section>
+
+  <!-- LESSON 12 -->
+  <section class="lesson" id="ch12">
+    <div class="lh reveal"><div class="num">12</div><div class="lab">LESSON 12 · <b>第 12 课</b> · 结课</div><h2>时间管理哲学</h2></div>
+    <p class="lhook reveal">两条原则：<b>目光长远</b>，用 5 年、10 年、20 年的时间观做决定；<b>从近处着眼</b>，用分钟而不是天来计算时间。最终目的是平衡的生活和内心的安宁。</p>
+    <div class="chips reveal"><span>单元四 · 延伸</span><span class="hw">课后作业 <b data-hc="12">0/7</b></span><span>课堂工具：寿命估算</span></div>
+
+    <div class="blk reveal">
+      <div class="slide"><div class="sk">板书 12.1 · 班费尔德的研究</div><h4>你做决定时，会考虑多远的未来？</h4>
+        <div class="hbars">
+          <div class="hb"><span class="lb">社会最底层</span><div class="tr"><div style="width:6%">几分钟到一小时</div></div></div>
+          <div class="hb"><span class="lb">小时工</span><div class="tr"><div style="width:14%">两个支付周期</div></div></div>
+          <div class="hb"><span class="lb">工薪阶层</span><div class="tr"><div style="width:22%">约两个月</div></div></div>
+          <div class="hb"><span class="lb">家庭医生</span><div class="tr"><div style="width:56%">用 8–12 年学习和训练</div></div></div>
+          <div class="hb"><span class="lb">成功的人</span><div class="tr"><div style="width:80%">以 5 年、10 年甚至 20 年规划人生</div></div></div>
+        </div>
+        <p class="cap">哈佛社会学家爱德华·班费尔德在 1965 年的《凡间的城市》中发现：教育、智力、家庭背景、职业都不能准确预示一个人能否向上流动，唯一能预示的是<b>“时间观”</b>。</p>
+      </div>
+      <div class="slide"><div class="sk">板书 12.2 · 时间日志</div><h4>每 15 分钟问一次：这是对时间最好的利用吗？</h4>
+        <div class="ticks" id="ticks"></div>
+        <p class="cap">一个 8 小时工作日有 32 个 15 分钟。准备一块每 15 分钟“哔”一声的手表，每次响起就停下来，把正在做的事写进时间日记。“生活中的一切都是和注意力有关的。”《财富》采访的顶尖主管平均年薪 138 万美元，他们以分钟或小时的零头做计划。</p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag kp">本课要点 <small>KEY POINTS</small></span></div>
+      <div class="kps reveal">
+        <div class="kp"><h5>长远的时间观</h5><ul><li>英国上流社会在孩子出生时就为其登记牛津、剑桥</li><li>美国家长在孩子出生后开大学储备金账户</li><li>家庭医生付出 8–12 年，换来最受尊敬的职业（普通医生年薪 132000 美元）</li><li>一位资产超过 5 亿美元的富人：买东西前，想象你要拥有它 20 年</li></ul></div>
+        <div class="kp"><h5>延迟满足与经济独立</h5><p>经济失败的主要原因是缺乏延迟满足的能力，书中说 95% 的人到老要么破产、要么靠养老金。21–65 岁坚持存下收入的 <b>10%</b>，就能成为百万富翁；靠自己致富的人通常存 15%–20%。</p></div>
+        <div class="kp"><h5>像花钱一样花时间</h5><p>钱可再生，时间不行，能用钱换时间就换：年入 5 万、时薪 25 美元，就雇时薪五六美元的人除草做家务。每件花你时间的事，都在取走你余下生命的一部分。如果它的重要程度不足以让你掏出 20 美元，就说“不”。</p></div>
+        <div class="kp"><h5>错误的工作，最大的浪费</h5><p>选错工作浪费的时间，比电话、不速之客、会议加起来还多。检验：如果钱够了，你还想换工作吗？是否盼着周一早上开工、周五下班时恋恋不舍？今天的经济中有超过 10 万种职业，别觉得自己被困住。</p></div>
+        <div class="kp"><h5>过去是沉没成本</h5><p>不要花额外的钱和时间试图收回沉没成本。最大的浪费之一，是因为不愿承认错误而继续投入。勇敢地说“我错了”，然后做新的决定。一位护士 40 岁决定学医，48 岁毕业，50 岁成为儿科医生。</p></div>
+        <div class="kp"><h5>一生中最浪费时间的事</h5><p>也许是投入一段错误的感情。零基础问题：以我现在的认识，还会再做同样的选择吗？“本性难移”，别把幸福寄托在别人会突然改变上。幸福的关键是“在做任何事时至少能取悦自己”。</p></div>
+        <div class="kp"><h5>平衡生活的提问</h5><ul><li>如果生命只剩六个月，我要如何生活？六周？六天？六小时？六十分钟？</li><li>四种改变：多做有用的，少做无用的，开始没做的，停止不必要的</li><li>问配偶和孩子：“你们希望我多做什么、少做什么？”</li></ul></div>
+        <div class="kp"><h5>两种时间类型</h5><p>生活分两部分：工作和家庭。工作要的是<b>时间的质量</b>：定优先项，专注于最有价值的事。家庭要的是<b>时间的数量</b>：30、60、90 分钟甚至更长的不被打断的时间。工作时专心工作，和家人在一起时就 100% 陪伴。</p></div>
+        <div class="kp full"><h5>照顾好身体和孩子</h5><ul class="cols2"><li>每周三次有氧运动；觉得忙到没空运动，说明生活已失衡</li><li>充足睡眠：疲劳是重要的时间浪费源</li><li>高质量的早餐和午餐，少糖少盐少脂肪</li><li>对 8000 多名年轻成就者的调查：父母都关心并参与孩子的作业</li><li>每周抽一到两天完全不碰工作</li><li>“你无法掌控时间，你只能掌控自己。”</li></ul></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag ic">课堂练习 <small>IN-CLASS</small></span><span class="note">保险公司的估算公式</span></div>
+      <div class="practice reveal">
+        <h5>你打算活多久？这个问题会立刻改变你的时间观</h5>
+        <p>公式：<b>(100 − 现在年龄) × 2/3 + 现在年龄</b>。书中还建议：别再按 1935 年定下的 65 岁退休来规划（当时平均寿命 62 岁），设想自己会工作到 75 岁。</p>
+        <div class="fields" style="grid-template-columns:repeat(3,1fr)"><label>你现在的年龄<input class="f" type="number" id="ageIn" value="40" min="1" max="99"></label></div>
+        <div class="out" id="ageOut"></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
+      <ul class="hwl reveal" data-l="12"><li>眼光长远：向前计划 5–10 年，从各方面设计理想的生活</li><li>为经济独立制订详细计划：你需要多少钱？</li><li>做你热爱的工作，规划生活去实现梦想</li><li>审视你的感情，确保余生快乐；如果不是，打算怎么改变</li><li>健康饮食、锻炼、休息，让自己活到 90 岁甚至更久</li><li>多做重要的，少做不重要的，开始没做的，停止不需要的</li><li>把家庭放在生活的中心，其他一切围绕它展开</li></ul>
+    </div>
+  </section>
+
+  <!-- QUOTES -->
+  <section class="sec" id="quotes" style="padding-top:88px">
+    <div class="eyebrow reveal">QUOTE WALL</div>
+    <h2 class="reveal">名言墙（原文照录）</h2>
+    <div class="qwall reveal">
+      <div class="qt dark"><p>你无法掌控时间，你只能掌控自己。管理时间就是管理生活。</p><cite>第 12 课</cite></div>
+      <div class="qt"><p>杰出者追求成绩，平庸者只顾努力。</p><cite>第 1 课 · 实现卓越的十二条原则</cite></div>
+      <div class="qt"><p>如果你没有自己的目标，你注定永远为他人工作。</p><cite>第 2 课</cite></div>
+      <div class="qt"><p>记住，你花在计划上的每一分钟都是为了节省未来的十分钟。</p><cite>第 3 课</cite></div>
+      <div class="qt"><p>记住，对时间最糟糕的利用就是把不需要做的事做得完美无缺。</p><cite>第 4 课</cite></div>
+      <div class="qt"><p>我的心得是：当你从小事做起时，事情就会像春天里的兔子一样越来越多。</p><cite>第 4 课 · 忽略琐事</cite></div>
+      <div class="qt"><p>人不可能有足够的时间做一切事，但是总会有足够的时间做最重要的事。</p><cite>第 7 课 · 强迫效率法则</cite></div>
+      <div class="qt dark"><p>“活青蛙”就是你所面临的最艰巨，最困难，最令人不悦的工作。</p><cite>第 8 课</cite></div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="sec" id="final">
+    <div class="eyebrow reveal">FINAL ASSIGNMENT</div>
+    <h2 class="reveal">结业行动清单：从今天开始</h2>
+    <p class="intro reveal">作者在第 1 课的建议：先从对你影响最大的一项开始，坚持 21 天，不找借口。这 14 项和各课作业一起计入左侧学习进度。</p>
+    <div class="final" id="finalList"></div>
+    <div class="cert reveal"><div class="pct" data-pct>0%</div><div><b>你的学习进度</b><p id="certMsg">勾选课后作业和结业任务，进度会同步到左侧目录。</p></div></div>
+  </section>
+
+  <footer>
+    根据《博恩·崔西的时间管理课》（Time Power，博恩·崔西 著，刘迪、刘钊 译，机械工业出版社 2016 年版）全文整理。<br>
+    “课程”形式、单元划分、课堂练习与“我要怎么做？”路线是本页的编排；书中数字、案例与引文均按原书照录，课后作业对应各章“实践训练”。
+  </footer>
+</div>
+</main>
+
+<!-- ===== 我要怎么做？ ===== -->
+<button class="howbtn" id="howBtn" type="button" aria-controls="howPanel" aria-expanded="false"><span class="ic">?</span>我要怎么做？<span class="cnt" id="howBtnCnt"></span></button>
+<div class="howmask" id="howMask"></div>
+<aside class="howpanel" id="howPanel" role="dialog" aria-modal="true" aria-labelledby="howTitle" aria-hidden="true" inert>
+  <div class="howhead">
+    <div class="k">ACTION PLAN · 按书里的方法</div>
+    <h3 id="howTitle">我要怎么做？</h3>
+    <p>四步落地路线：今天、第一周、一个月后，以及卡住时怎么办。每条都注明出自第几课，勾选进度保存在本机。</p>
+    <div class="pr"><div class="track"><div class="fill" id="howFill"></div></div><span id="howCnt">0/0</span></div>
+    <button class="howx" id="howClose" type="button" aria-label="关闭">×</button>
+  </div>
+  <div class="howbody" id="howBody"></div>
+</aside>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- static visuals ---------- */
+let h='';for(let i=1;i<=31;i++)h+=`<span>${i}</span>`;$('files45').innerHTML=h;
+h='';for(let i=1;i<=12;i++)h+=`<span class="m">${i}月</span>`;h+='<span class="y">+1年</span><span class="y">+2年</span>';$('files45m').innerHTML=h;
+$('ticks').innerHTML='<span></span>'.repeat(32);
+const days=['一','二','三','四','五'];h='';
+for(let w=0;w<3;w++)days.forEach((d,i)=>{let c='',t='周'+d;if(w===2&&i===2){c='t';t='目标'}if(w===2&&i===4){c='d';t='期限'}h+=`<span class="${c}">${t}</span>`});
+$('wk3').innerHTML=h;
+const life=[['洗澡',7,'7 年'],['吃饭',6,'6 年'],['排队',5,'5 年'],['打扫房子',4,'4 年'],['开会',3,'3 年'],['找东西',1,'1 年'],['处理垃圾邮件',8/12,'8 个月'],['等红灯',.5,'6 个月'],['刷牙',120/365,'120 天']];
+$('lifebars').innerHTML=life.map(x=>`<div class="hb"><span class="lb">${x[0]}</span><div class="tr"><div style="width:${Math.max(x[1]/7*100,9)}%">${x[2]}</div></div></div>`).join('');
+
+/* ---------- homework + final checklist + progress ---------- */
+const KEY='tp-course-v1';let done=new Set(LS.get(KEY,[]));
+const counts={};
+document.querySelectorAll('ul.hwl').forEach(ul=>{
+  const l=ul.dataset.l;counts[l]=0;
+  [...ul.children].forEach((li,i)=>{
+    const id=l+'-'+i,txt=li.innerHTML;counts[l]++;
+    li.innerHTML=`<label><input type="checkbox" class="ck" data-id="${id}"${done.has(id)?' checked':''}><span class="no">${i+1}</span><span class="tx">${txt}</span></label>`;
+  });
+});
+const FINAL=[
+  ["今晚就列好明天的清单","下班前的最后一件事。新任务出现时，先写进清单再去做。","第 3 课"],
+  ["每天早上用现在时重写目标","“我……”开头加动词，像已经实现一样，只需 5 分钟。","第 2 课"],
+  ["做一次 30 秒快速列表","三个最重要的目标，三个最大的困扰，对照看看。","第 2 课"],
+  ["给清单上每一项标 ABCDE","A 没做完不碰 B；能交的交出去，能删的删掉。从 A-1 开始。","第 4 课"],
+  ["先吃掉那只青蛙","用最艰巨、最不想做的那件事开始一天。","第 8 课"],
+  ["每天留一个 60–90 分钟的不被打扰时间块","关门、静音，早到 1 小时或晚走 1 小时都行。","第 5 课"],
+  ["一时一事，做完为止","开始一件就坚持到 100% 完成，特别是最后的 5%。","第 5 · 8 课"],
+  ["把电话集中处理","比如攒到 11:00 再统一回到中午；打电话前写提纲，边打边记。","第 7 课"],
+  ["开会前写议程，24 小时内发纪要","按时开始结束，重要议题放最前，每项以负责人和期限收尾。","第 7 课"],
+  ["算出自己的时薪","低于这个价的事，委派、外包或取消。","第 10 · 12 课"],
+  ["请老板给你的工作排序","列出“我为什么被雇用”的所有答案，请老板按重要性排序，照此投入。","第 4 · 10 课"],
+  ["记一天时间日志","每 15 分钟提醒一次，记下正在做什么。","第 12 课"],
+  ["每天读 1 小时专业书，车上听音频","读书前先概览、预览，再阅览、回顾（OPIR）。","第 9 课"],
+  ["下班前清空办公桌","以整洁的桌面开始，也以整洁的桌面结束。","第 3 课"]
+];
+counts.f=FINAL.length;
+$('finalList').innerHTML=FINAL.map((t,i)=>{const id='f-'+i;return `<label><input type="checkbox" class="ck" data-id="${id}"${done.has(id)?' checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`}).join('');
+const TOTAL=Object.values(counts).reduce((a,b)=>a+b,0);
+function prog(){
+  const per={};Object.keys(counts).forEach(k=>per[k]=0);
+  done.forEach(id=>{const k=id.split('-')[0];if(k in per)per[k]++});
+  const n=Object.values(per).reduce((a,b)=>a+b,0),pct=Math.round(n/TOTAL*100);
+  document.querySelectorAll('[data-fill]').forEach(e=>e.style.width=pct+'%');
+  document.querySelectorAll('[data-pct]').forEach(e=>e.textContent=pct+'%');
+  document.querySelectorAll('[data-count]').forEach(e=>e.textContent=n+' / '+TOTAL);
+  Object.keys(counts).forEach(k=>{
+    const t=per[k]+'/'+counts[k];
+    document.querySelectorAll(`[data-oc="${k}"]`).forEach(e=>{e.textContent=t;e.classList.toggle('full',per[k]===counts[k])});
+    document.querySelectorAll(`[data-hc="${k}"]`).forEach(e=>e.textContent=t);
+    document.querySelectorAll(`[data-mini="${k}"]`).forEach(e=>e.style.width=(per[k]/counts[k]*100)+'%');
+  });
+  $('certMsg').textContent=pct>=100?'全部完成。时间管理是一种可以通过学习和重复获得的技能，坚持下去，直到它成为习惯。':`已完成 ${n} / ${TOTAL} 项。勾选课后作业和结业任务，进度会同步到左侧目录。`;
+}
+document.addEventListener('change',e=>{
+  const c=e.target;if(!c.classList||!c.classList.contains('ck')||!c.dataset.id)return;
+  c.checked?done.add(c.dataset.id):done.delete(c.dataset.id);LS.set(KEY,[...done]);prog();
+});
+$('resetBtn').onclick=()=>{if(confirm('清空所有课后作业和结业任务的勾选？')){done=new Set();LS.set(KEY,[]);document.querySelectorAll('.ck[data-id]').forEach(c=>c.checked=false);prog()}};
+prog();
+
+/* ---------- L2: 30-second quick list ---------- */
+['qlGoals','qlWorries'].forEach(id=>{const el=$(id);el.value=LS.get('tp-'+id,'');el.addEventListener('input',()=>LS.set('tp-'+id,el.value))});
+let qlT=null,qlLeft=30;
+const qlShow=()=>{$('qlClock').textContent='0:'+String(qlLeft).padStart(2,'0')};
+$('qlStart').onclick=()=>{
+  if(qlT)return;qlLeft=30;qlShow();$('qlMsg').textContent='写三个最重要的目标';$('qlGoals').focus();let phase=0;
+  qlT=setInterval(()=>{qlLeft--;qlShow();if(qlLeft<=0){
+    if(phase===0){phase=1;qlLeft=30;qlShow();$('qlMsg').textContent='换一栏：写三个最大的困扰';$('qlWorries').focus()}
+    else{clearInterval(qlT);qlT=null;$('qlMsg').textContent='时间到。对照看看：哪个目标能解决哪个困扰？'}
+  }},1000);
+};
+$('qlReset').onclick=()=>{clearInterval(qlT);qlT=null;qlLeft=30;qlShow();$('qlMsg').textContent=''};
+
+/* ---------- L4: ABCDE sorter ---------- */
+(function(){
+  const K='tp-abcde-v1',META={A:['必须做','不做有严重后果'],B:['应该做','A 没做完别碰'],C:['做了也好','没什么影响'],D:['交付','交给谁？'],E:['取消','弃置不做']};
+  let tasks=LS.get(K,[]),cur='A';const lanes=$('lanes'),inp=$('tIn');
+  const save=()=>LS.set(K,tasks),uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  function add(t,l){t=(t||'').trim();if(!t)return;tasks.push({id:uid(),t,l,d:false});save();render()}
+  function move(x,dir){const same=tasks.filter(y=>y.l===x.l),i=same.indexOf(x),j=i+dir;if(j<0||j>=same.length)return;const a=tasks.indexOf(same[i]),b=tasks.indexOf(same[j]);[tasks[a],tasks[b]]=[tasks[b],tasks[a]];save();render()}
+  function render(){
+    lanes.innerHTML='';let first=null;
+    'ABCDE'.split('').forEach(L=>{
+      const lane=document.createElement('div');lane.className='lane k'+L;
+      lane.innerHTML=`<h6><span class="L">${L}</span>${META[L][0]}<small>${META[L][1]}</small></h6>`;
+      const list=tasks.filter(x=>x.l===L);let rank=0;
+      if(!list.length){const e=document.createElement('div');e.className='empty';e.textContent='暂无';lane.appendChild(e)}
+      list.forEach(x=>{
+        const el=document.createElement('div');el.className='task'+(x.d?' done':'');
+        const row=document.createElement('div');row.className='t';
+        const cb=document.createElement('input');cb.type='checkbox';cb.checked=x.d;cb.title='完成';cb.onchange=()=>{x.d=cb.checked;save();render()};row.appendChild(cb);
+        if(L==='A'){rank++;const rk=document.createElement('span');rk.className='rk';rk.textContent='A-'+rank;row.appendChild(rk)}
+        const sp=document.createElement('span');sp.textContent=x.t;row.appendChild(sp);
+        if(L==='A'&&!x.d&&!first){first=x;el.classList.add('frog');const tg=document.createElement('span');tg.className='ft';tg.textContent='青蛙 · 先做';sp.appendChild(tg)}
+        el.appendChild(row);
+        const ops=document.createElement('div');ops.className='ops';
+        const mk=(lb,fn,tt)=>{const b=document.createElement('button');b.type='button';b.textContent=lb;b.title=tt;b.onclick=fn;ops.appendChild(b)};
+        mk('↑',()=>move(x,-1),'上移');mk('↓',()=>move(x,1),'下移');
+        'ABCDE'.split('').filter(k=>k!==L).forEach(k=>mk(k,()=>{x.l=k;save();render()},'改为 '+k));
+        mk('删',()=>{tasks=tasks.filter(y=>y!==x);save();render()},'删除');
+        el.appendChild(ops);lane.appendChild(el);
+      });
+      lanes.appendChild(lane);
+    });
+    const oa=tasks.filter(x=>x.l==='A'&&!x.d).length,ob=tasks.filter(x=>x.l==='B'&&!x.d).length;
+    $('tAlert').style.display=(oa&&ob)?'block':'none';
+    const n=tasks.length;$('tStat').textContent=n?`共 ${n} 项 · 交出去 ${tasks.filter(x=>x.l==='D').length} · 不做了 ${tasks.filter(x=>x.l==='E').length}`:'';
+  }
+  document.querySelectorAll('#lpick button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#lpick button').forEach(x=>x.classList.remove('on'));b.classList.add('on');cur=b.dataset.l;inp.focus()});
+  $('tAdd').onclick=()=>{add(inp.value,cur);inp.value='';inp.focus()};
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){add(inp.value,cur);inp.value=''}});
+  $('tDemo').onclick=()=>{[['写完给客户的提案（今天截止）','A'],['准备明天的重要谈判','A'],['回复同事的问题和邮件','B'],['看报纸','C'],['外出午餐','C'],['整理报销单据','D'],['订了却从不读的杂志','E']].forEach(p=>tasks.push({id:uid(),t:p[0],l:p[1],d:false}));save();render()};
+  $('tClearDone').onclick=()=>{tasks=tasks.filter(x=>!x.d);save();render()};
+  $('tClear').onclick=()=>{if(!tasks.length||confirm('清空全部任务？')){tasks=[];save();render()}};
+  render();
+})();
+
+/* ---------- number helpers ---------- */
+const num=id=>Math.max(0,parseFloat($(id).value)||0);
+const fmt=v=>!isFinite(v)?'—':(v>=100?Math.round(v).toLocaleString('zh-CN'):(Math.round(v*10)/10).toLocaleString('zh-CN'));
+const box=(k,v,cls)=>`<div class="o ${cls||''}"><div class="k">${k}</div><div class="v">${v}</div></div>`;
+
+/* ---------- L7: meeting cost ---------- */
+const meet=()=>{$('mOut').textContent=fmt(num('mPpl')*num('mRate')*num('mLen'))};
+['mPpl','mRate','mLen'].forEach(id=>$(id).addEventListener('input',meet));meet();
+
+/* ---------- L10/11: hourly ---------- */
+function calc(){
+  const inc=num('cInc'),wk=num('cWk')||1,day=num('cDay')||1,hr=num('cHr')||1,hours=wk*day*hr;
+  $('cOut1').innerHTML=box(`你的时薪（÷ 每年 ${fmt(hours)} 工时）`,fmt(inc/hours),'wide')+box('月收入',fmt(inc/12))+box('周收入',fmt(inc/wk))+box('日收入',fmt(inc/wk/day));
+  const rate=num('cRate')/100,deal=num('cDeal'),m=num('cMeet')||1,c=num('cCall')||1;let o='';
+  if(rate>0){const s=inc/rate;o+=box('年销售额',fmt(s))+box('月销售额',fmt(s/12))+box('周销售额',fmt(s/wk))+box('日销售额',fmt(s/wk/day))}
+  if(deal>0){const d=inc/deal;o+=box('每年要成交',fmt(d))+box('每月要成交',fmt(d/12))+box('每天面谈',fmt(d*m/(wk*day)))+box('每天要打的电话',fmt(d*m*c/(wk*day)))}
+  $('cOut2').innerHTML=o;
+}
+['cInc','cWk','cDay','cHr','cRate','cDeal','cMeet','cCall'].forEach(id=>$(id).addEventListener('input',calc));calc();
+
+/* ---------- L8: 15-min timer ---------- */
+(function(){
+  $('ftTask').value=LS.get('tp-ftTask','');$('ftTask').addEventListener('input',()=>LS.set('tp-ftTask',$('ftTask').value));
+  let left=15*60,t=null;const show=()=>{$('ftClock').textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0')};
+  const base=()=>Math.max(1,Math.min(120,parseInt($('ftMin').value)||15))*60;
+  $('ftMin').addEventListener('input',()=>{if(!t){left=base();show()}});
+  $('ftStart').onclick=()=>{
+    if(t){clearInterval(t);t=null;$('ftStart').textContent='继续';$('ftMsg').textContent='已暂停';return}
+    if(left<=0)left=base();
+    const name=$('ftTask').value.trim();$('ftMsg').textContent=name?'正在做：'+name:'心无旁骛，只做这一件';$('ftStart').textContent='暂停';
+    t=setInterval(()=>{left--;show();if(left<=0){clearInterval(t);t=null;$('ftStart').textContent='再来一轮';$('ftMsg').textContent='时间到。想继续就继续；不想，就计划下一个 15 分钟。'}},1000);
+  };
+  $('ftReset').onclick=()=>{clearInterval(t);t=null;left=base();show();$('ftStart').textContent='开始';$('ftMsg').textContent='现在就去做！'};
+  show();
+})();
+
+/* ---------- L11: skills ---------- */
+(function(){
+  const S=['勘察：获得与潜在客户面谈的机会','建立信任、融洽的关系','辨别需求','展示产品','解答客户的疑虑','完成交易','二次交易，建立客户网'];
+  let v=LS.get('tp-skills',S.map(()=>5));if(!Array.isArray(v)||v.length!==S.length)v=S.map(()=>5);
+  $('skills').innerHTML=S.map((s,i)=>`<div class="skr"><span>${i+1}. ${s}<em class="wk" style="font-style:normal">先练这项</em></span><input type="range" min="1" max="10" value="${v[i]}" aria-label="${s}"><output>${v[i]}</output></div>`).join('');
+  function upd(){
+    const rows=[...document.querySelectorAll('#skills .skr')],vals=rows.map(r=>+r.querySelector('input').value),min=Math.min(...vals),mi=vals.indexOf(min);
+    rows.forEach((r,i)=>{r.querySelector('output').textContent=vals[i];r.classList.toggle('low',vals[i]<7);r.classList.toggle('weak',i===mi&&min<10)});
+    LS.set('tp-skills',vals);
+  }
+  $('skills').addEventListener('input',upd);upd();
+})();
+
+/* ---------- L12: life expectancy ---------- */
+function age(){
+  const a=Math.min(99,num('ageIn')),e=(100-a)*2/3+a;
+  $('ageOut').innerHTML=box('估算寿命',fmt(e)+' 岁','wide')+box('还剩约',fmt(e-a)+' 年')+box('工作到 75 岁还有',a<75?fmt(75-a)+' 年':'已过 75');
+}
+$('ageIn').addEventListener('input',age);age();
+
+/* ---------- 我要怎么做？ drawer ---------- */
+(function(){
+  const HOW=[
+    {n:'1',t:'今天就做',d:'3 件 15 分钟内能完成的事',items:[
+      ['列出明天的清单，标上 ABCDE，圈出 A-1','作为今天下班前的最后一件事：写下明天要做的每件事，按潜在影响标字母，A 再排成 A-1、A-2。','第 3 · 4 课'],
+      ['做一次 30 秒快速列表','30 秒写下三个最重要的目标，再 30 秒写下三个最大的困扰，看看哪个目标能解决哪个困扰。第 2 课里有计时工具。','第 2 课'],
+      ['清空桌面，只留一件最重要的事','桌上的文件逐份四选一：扔掉、委派、放进“执行”文件夹、归档，不许放回原处。','第 3 课']
+    ]},
+    {n:'2',t:'第一周',d:'每天都做，把做法建立起来',items:[
+      ['每天开工前，用现在时重写一遍目标','第一人称加动词，像已经实现一样，只需 5 分钟。','第 2 课'],
+      ['每天按清单工作','新任务出现时先写进清单，和其他事放在一起比过，再决定做不做。','第 3 课'],
+      ['每天从 A-1 开始，先吃青蛙','A 没做完不碰 B；用最艰巨、最不想做的那件事开始一天。','第 4 · 8 课'],
+      ['每天留一个 60–90 分钟不受打扰的时间块','早到 1 小时、午餐时间或晚走 1 小时，关门、拔电话线。','第 5 课'],
+      ['电话集中回，开会先写议程','比如攒到 11:00 再统一回电；会议议程至少提前 24 小时发出，24 小时内发纪要。','第 7 课'],
+      ['算出时薪，挑出 3 件交出去或取消的事','低于你时薪的事，委派、外包或取消。先问一句：“这项任务可以取消吗？”','第 10 课'],
+      ['记一天时间日志','每 15 分钟停下来，记下正在做什么，问：“我现在所做的是不是对时间最好的利用？”','第 12 课']
+    ]},
+    {n:'3',t:'一个月后',d:'要形成的习惯，以及怎么检验',items:[
+      ['坚持过 21 天','新习惯需要 21 天的练习和重复，而且不找借口。检验：不用提醒，你也会在前一晚列好清单。','第 1 课'],
+      ['连续 30 天重写目标、看目标卡','书中说连续 30 天坚持这些方法，你会为生活中的变化大为震惊。检验：随口就能说出你的 A-1 目标和它的完成时间。','第 2 课'],
+      ['再记一天时间日志，和第一周对比','检验：花在 A 类任务、花在“我为什么被雇用”的那几件事上的时间，是否比第一周多了。','第 4 · 12 课'],
+      ['请老板给你的工作清单排序','列出“我为什么被雇用”的所有答案，请老板按重要性排序。检验：你每天的 A-1 是否就在他排的前几项里。','第 4 · 10 课'],
+      ['每天读 1 小时专业书，满一个月','作者让你给自己一个月来验证：每天读本专业的书，十有八九，一个月后生活就会开始发生变化。','第 9 课'],
+      ['每周末花一两个小时计划下一周','顶尖销售员的做法。检验：有人问你下周每天在哪、做什么，你能马上说清楚。','第 11 课']
+    ]},
+    {n:'4',t:'卡住了怎么办',d:'书里提到的常见障碍和对策',cls:'trouble',items:[
+      ['“我天生就没条理”','这是书里的三个心理屏障之一。没有决定时间管理好坏的基因，坏习惯可以忘掉，用好习惯替换。','第 1 课'],
+      ['“太忙了，没时间做计划”','花在计划上的每一分钟能省下执行时的十分钟，而详细计划每天只需要几分钟。','第 3 课'],
+      ['一天下来全在处理小事','别先做小事热身，小事会像春天里的兔子一样越来越多。回到 A-1。','第 4 课'],
+      ['就是不想开始','先给它 15 分钟；把任务切成“意大利香肠”，或在“瑞士干酪”上打一个 5 分钟的洞；对自己说“现在就去做！”','第 8 课'],
+      ['总想等准备完美再动手','完美主义是拖延的主要原因。作者的朋友印了一个月名片和宣传册，改用旧名片后当天就去见客户。','第 8 课'],
+      ['老被电话、来客、闲聊打断','拔电话线、挂“请勿打扰”；来客一进门就站起来；对闲聊的人说“我想我必须回去工作了”。','第 5 · 7 课'],
+      ['事情太多，怎么也做不完','练习创造性拖延，给低价值的事定“后置项”；用 D 交出去，用 E 删掉。','第 4 课'],
+      ['下属总把问题推回给你','别让“猴子”跳到你背上，反问：“你觉得我们应该做什么？”然后把工作交还给他。','第 10 课'],
+      ['快做完时泄了气','强迫自己完成最后 5%；给每一步设一个小奖励，不完成就不给。','第 8 课'],
+      ['总是很累，效率上不去','疲劳是重要的时间浪费源。一周工作五天，就五天早睡。','第 11 · 12 课']
+    ]}
+  ];
+  const HK='tp-howto-v1';let hd=new Set(LS.get(HK,[]));
+  const body=$('howBody');let total=0;
+  body.innerHTML=HOW.map((s,si)=>`<section class="stg ${s.cls||''}"><div class="sh"><span class="sn">${s.n}</span><div><h4>${s.t}</h4><div class="sd">${s.d}</div></div><span class="sc" data-sc="${si}"></span></div>`+
+    s.items.map((it,ii)=>{total++;const id=si+'-'+ii;return `<label class="hitem"><input type="checkbox" class="ck" data-hid="${id}"${hd.has(id)?' checked':''}><div><b>${it[0]}</b><span>${it[1]}</span><em>出处：${it[2]}</em></div></label>`}).join('')+`</section>`).join('')+
+    `<p class="howfoot">这条路线由本页按书中方法编排，内容全部来自原书。<button type="button" id="howReset">清空勾选</button></p>`;
+  function hprog(){
+    const n=[...hd].filter(id=>{const [a,b]=id.split('-').map(Number);return HOW[a]&&HOW[a].items[b]}).length;
+    $('howFill').style.width=(n/total*100)+'%';$('howCnt').textContent=n+'/'+total;$('howBtnCnt').textContent=n?n+'/'+total:'';
+    HOW.forEach((s,si)=>{const k=s.items.filter((_,ii)=>hd.has(si+'-'+ii)).length;document.querySelector(`[data-sc="${si}"]`).textContent=k+'/'+s.items.length});
+  }
+  body.addEventListener('change',e=>{const c=e.target;if(!c.dataset.hid)return;c.checked?hd.add(c.dataset.hid):hd.delete(c.dataset.hid);LS.set(HK,[...hd]);hprog()});
+  $('howReset').onclick=()=>{hd=new Set();LS.set(HK,[]);body.querySelectorAll('[data-hid]').forEach(c=>c.checked=false);hprog()};
+  hprog();
+  const panel=$('howPanel'),btn=$('howBtn');let lastFocus=null;
+  function open(){lastFocus=document.activeElement;document.body.classList.remove('open');document.body.classList.add('how');panel.setAttribute('aria-hidden','false');panel.inert=false;btn.setAttribute('aria-expanded','true');setTimeout(()=>$('howClose').focus(),60)}
+  function close(){if(!document.body.classList.contains('how'))return;document.body.classList.remove('how');panel.setAttribute('aria-hidden','true');panel.inert=true;btn.setAttribute('aria-expanded','false');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  btn.onclick=open;document.querySelectorAll('[data-open-how]').forEach(b=>b.onclick=open);
+  $('howClose').onclick=close;$('howMask').onclick=close;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){close();document.body.classList.remove('open')}});
+  window.__openHow=open;
+})();
+
+/* ---------- reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- scrollspy + sidebar drawer ---------- */
+const links=[...document.querySelectorAll('#outline a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+let tick=false;
+function spy(){tick=false;let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<140)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k))}
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(spy)}},{passive:true});spy();
+$('menuBtn').onclick=()=>document.body.classList.toggle('open');
+$('scrim').onclick=()=>document.body.classList.remove('open');
+links.forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('open')));
+})();
+</script>
+</body>
+</html>

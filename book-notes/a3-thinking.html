@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>高效人士的A3思考法 · 图纸版读书总结</title>
+<style>
+:root{
+  --bg:#f2f6fb; --paper:#fbfdff; --ink:#0f2547; --ink2:#34507c; --ink3:#7489ad;
+  --ln:#2456b8; --line:rgba(36,86,184,.34); --line2:rgba(36,86,184,.16);
+  --grid:rgba(36,86,184,.055); --grid2:rgba(36,86,184,.10);
+  --acc:#1d4fb8; --accs:rgba(29,79,184,.07);
+  --red:#d42a20; --reds:rgba(212,42,32,.07);
+  --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0a2748; --paper:#0c2d54; --ink:#eaf3ff; --ink2:#b8cfee; --ink3:#7f9dc7;
+    --ln:#d3e6ff; --line:rgba(211,230,255,.40); --line2:rgba(211,230,255,.17);
+    --grid:rgba(211,230,255,.045); --grid2:rgba(211,230,255,.085);
+    --acc:#93d1ff; --accs:rgba(147,209,255,.09);
+    --red:#ff8d78; --reds:rgba(255,141,120,.12);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;color:var(--ink);font:15.5px/1.8 var(--sans);-webkit-font-smoothing:antialiased;background-color:var(--bg);
+  background-image:linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:100px 100px,100px 100px,20px 20px,20px 20px;background-position:-1px -1px}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4,h5{font-family:var(--sans);font-weight:700;line-height:1.35;margin:0;letter-spacing:.02em}
+p{margin:.4em 0}
+.mono{font-family:var(--mono)}
+.muted{color:var(--ink2)}
+.small{font-size:12.5px;color:var(--ink3)}
+
+/* ---------- nav ---------- */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);box-shadow:0 3px 0 -2px var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:2px;height:52px;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{margin-right:auto;white-space:nowrap;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;padding-right:14px}
+nav.top .brand i{font-style:normal;font-family:var(--mono);font-size:11px;border:1px solid var(--ln);color:var(--ln);padding:1px 6px;letter-spacing:.08em}
+nav.top a{text-decoration:none;font-size:13px;color:var(--ink2);padding:5px 9px;white-space:nowrap;border:1px solid transparent;font-family:var(--mono)}
+nav.top a b{font-weight:400;color:var(--ink3);margin-right:4px}
+nav.top a:hover,nav.top a.on{border-color:var(--line);color:var(--ink);background:var(--accs)}
+
+/* ---------- sheet frame ---------- */
+.sheet{position:relative;border:1.5px solid var(--ln);background:color-mix(in srgb,var(--paper) 78%,transparent);padding:34px 34px 30px}
+.sheet::before{content:"";position:absolute;inset:7px;border:.75px solid var(--line);pointer-events:none}
+.ruler{position:absolute;left:7px;right:7px;top:-17px;display:flex;justify-content:space-around;font:10.5px var(--mono);color:var(--ink3)}
+.ruler.v{top:7px;bottom:7px;left:-15px;right:auto;flex-direction:column;align-items:center}
+.reg{position:absolute;width:14px;height:14px;pointer-events:none}
+.reg::before,.reg::after{content:"";position:absolute;background:var(--ln)}
+.reg::before{left:6.5px;top:0;width:1px;height:14px}.reg::after{top:6.5px;left:0;height:1px;width:14px}
+.reg.tl{left:-7px;top:-7px}.reg.tr{right:-7px;top:-7px}.reg.bl{left:-7px;bottom:-7px}.reg.br{right:-7px;bottom:-7px}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 40px}
+.hero .sheet{padding:48px 44px 36px}
+.dwgno{display:flex;justify-content:space-between;gap:12px;font:12px var(--mono);color:var(--ink3);letter-spacing:.08em;border-bottom:1px dashed var(--line);padding-bottom:10px;margin-bottom:34px;flex-wrap:wrap}
+.hero h1{font-size:clamp(38px,6.4vw,72px);font-weight:800;letter-spacing:.06em;line-height:1.15}
+.hero h1 .sep{font-family:var(--mono);font-weight:400;color:var(--red);margin:0 .12em}
+.hero h1 small{display:block;font-size:clamp(15px,1.7vw,18px);font-weight:400;letter-spacing:.04em;color:var(--ink2);margin-top:14px}
+.hero .lead{font-size:clamp(16px,1.8vw,18.5px);color:var(--ink2);max-width:820px;margin:24px 0 0}
+.hero .lead strong{color:var(--ink)}
+
+.proc{margin:44px 0 0;display:grid;grid-template-columns:repeat(8,1fr);row-gap:10px;position:relative}
+.proc a{text-decoration:none;text-align:center;position:relative;padding:0 4px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.proc a::before{content:"";position:absolute;top:17px;left:-50%;width:100%;border-top:1.5px solid var(--ln);z-index:0}
+.proc a:first-child::before{display:none}
+.proc .nd{position:relative;z-index:1;width:36px;height:36px;border:1.5px solid var(--ln);border-radius:50%;display:grid;place-items:center;font:600 14px var(--mono);background:var(--paper);color:var(--ln);transition:.2s}
+.proc a.after .nd{border-style:dashed}
+.proc a:hover .nd{background:var(--ln);color:var(--paper)}
+.proc .lb{font-size:13.5px;line-height:1.45;color:var(--ink)}
+.brk{grid-row:2;border:1px solid var(--line);border-top:none;height:12px;margin:4px 14px 0;position:relative}
+.brk span{position:absolute;left:50%;top:9px;transform:translateX(-50%);background:var(--paper);padding:0 10px;font:11.5px var(--mono);color:var(--ink2);white-space:nowrap;letter-spacing:.06em}
+.brk.l{grid-column:1/6}.brk.r{grid-column:6/9}
+
+.hero-bottom{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;margin-top:56px;align-items:end}
+.parts{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);background:var(--paper)}
+.parts .pt5{padding:14px 12px;border-left:1px solid var(--line2)}
+.parts .pt5:first-child{border-left:none}
+.parts .pid{font:11px var(--mono);color:var(--ink3);letter-spacing:.08em}
+.parts b{display:block;font-size:14.5px;margin-top:4px;line-height:1.4}
+.parts span{display:block;font-size:12.5px;color:var(--ink2);line-height:1.6;margin-top:6px}
+.parts-cap{font:11.5px var(--mono);color:var(--ink3);margin-bottom:6px;letter-spacing:.06em}
+
+/* title block */
+.tblock{border:1.5px solid var(--ln);display:grid;grid-template-columns:64px 1fr 56px 1fr;font-size:13px;background:var(--paper)}
+.tblock div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 9px;line-height:1.5}
+.tblock div:nth-child(4n+1){border-right:none}
+.tblock .ttl{grid-column:1/-1;font-weight:800;font-size:15.5px;letter-spacing:.04em;padding:10px;border-right:none}
+.tblock .k{font:11px var(--mono);color:var(--ink3);letter-spacing:.06em;display:flex;align-items:center}
+.tblock .wide{grid-column:span 3;border-right:none}
+.tblock .last{border-bottom:none}
+
+/* ---------- sections ---------- */
+section.block{padding:66px 0}
+.sh{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:end;margin-bottom:6px}
+.sh .sno{font:12px var(--mono);color:var(--paper);background:var(--ln);padding:4px 10px;letter-spacing:.1em;align-self:center;white-space:nowrap}
+.sh h2{font-size:clamp(25px,3.4vw,36px);font-weight:800}
+.sh .sref{font:12px var(--mono);color:var(--ink3);text-align:right;letter-spacing:.04em}
+.dim{position:relative;height:12px;margin:12px 0 30px;border-left:1px solid var(--ln);border-right:1px solid var(--ln)}
+.dim::before{content:"";position:absolute;left:0;right:0;top:5.5px;border-top:1px solid var(--line)}
+.dim::after{content:"";position:absolute;left:0;top:2px;border:3.5px solid transparent;border-left:7px solid var(--ln);border-right:none}
+.thesis{font-size:clamp(17px,2vw,19.5px);line-height:1.8;border-left:3px solid var(--ln);padding:4px 0 4px 20px;margin:0 0 34px;max-width:900px}
+.thesis strong{background:linear-gradient(transparent 62%,var(--accs) 62%)}
+h3.sub{font-size:19px;margin:46px 0 16px;display:flex;align-items:center;gap:12px}
+h3.sub .mono{font-size:12px;font-weight:400;color:var(--ink3);border:1px solid var(--line);padding:1px 7px;letter-spacing:.06em}
+
+.part{background:var(--paper);border:1px solid var(--line);padding:22px;position:relative}
+.part .ptag{position:absolute;top:-9px;left:14px;font:10.5px var(--mono);color:var(--ink3);background:var(--paper);padding:0 6px;letter-spacing:.08em;border:1px solid var(--line2);line-height:1.6}
+.part h4{font-size:16.5px;margin-bottom:8px}
+.part ul{margin:0;padding-left:1.2em;color:var(--ink2);font-size:14.5px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+
+.flowline{display:flex;align-items:stretch;flex-wrap:wrap;margin-top:6px}
+.flowline div{flex:1;min-width:160px;border:1px solid var(--line);padding:12px 14px;font-size:14px;text-align:center;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+.flowline i{font-style:normal;align-self:center;color:var(--ln);font-family:var(--mono);padding:0 8px}
+.flowline div.hl{border:1.5px solid var(--red);color:var(--red);font-weight:700}
+
+/* ---------- A3 drawing ---------- */
+.tbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.tbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:5px 12px;font:13px var(--mono);cursor:pointer;transition:.15s}
+.tbtn:hover{border-color:var(--ln);color:var(--ink)}
+.tbtn.on{background:var(--ln);border-color:var(--ln);color:var(--paper)}
+.tbar .hint{font:12px var(--mono);color:var(--ink3);margin-left:8px}
+
+.dwg{position:relative;border:1.5px solid var(--ln);background:var(--paper);padding:46px 30px 26px}
+.dwg::before{content:"";position:absolute;inset:7px;border:.75px solid var(--line);pointer-events:none}
+.dwg .corner{position:absolute;right:14px;bottom:10px;font:10.5px var(--mono);color:var(--ink3);letter-spacing:.1em}
+.dimrow{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:2px 0 4px}
+.dimrow div{position:relative;height:16px;border-left:1px solid var(--ln);border-right:1px solid var(--ln);text-align:center}
+.dimrow div::before{content:"";position:absolute;left:0;right:0;top:7.5px;border-top:1px solid var(--line)}
+.dimrow span{position:relative;background:var(--paper);padding:0 10px;font:11.5px var(--mono);color:var(--ink2);top:-2px;letter-spacing:.05em}
+.a3grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+.a3head{grid-column:1/-1;display:grid;grid-template-columns:1fr 2fr 1fr;gap:14px;align-items:stretch}
+.a3col{display:flex;flex-direction:column;gap:12px}
+.box{border:1.5px solid var(--ln);padding:10px 12px;background:var(--paper);text-decoration:none;display:block;transition:.15s;position:relative}
+a.box:hover{background:var(--accs)}
+a.box:hover::after{content:"→ 写法";position:absolute;right:8px;top:6px;font:11px var(--mono);color:var(--ln)}
+.box .bt{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+.no{display:inline-grid;place-items:center;min-width:22px;height:22px;border:1.2px solid var(--ln);border-radius:50%;font:600 11.5px var(--mono);color:var(--ln);flex:none;padding:0 3px}
+.after .no{border-style:dashed}
+.box .bd{font-size:13px;color:var(--ink2);line-height:1.65;margin-top:5px}
+.box.theme{grid-column:2;text-align:center}
+.box.theme .bt{justify-content:center}
+.box.meta{grid-column:3;font-size:12.5px;color:var(--ink2);line-height:1.7;border-width:1px;font-family:var(--mono)}
+.a3col .b2{min-height:120px}.a3col .b3{min-height:130px}.a3col .b4{min-height:160px}.a3col .b5{min-height:130px}
+.a3col .b6{min-height:150px}.a3col .b7{min-height:230px;margin-top:16px}.a3col .b8{min-height:150px;margin-top:16px}
+.dwg.blank .bd,.dwg.lined .bd{visibility:hidden}
+.dwg.lined .box{background-image:repeating-linear-gradient(0deg,var(--line2) 0 1px,transparent 1px 24px);background-position:0 40px}
+.a3cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:12px var(--mono);color:var(--ink3);margin-top:12px}
+.lr{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.lr .k{font:12px var(--mono);letter-spacing:.06em;color:var(--ln);margin-bottom:4px}
+
+/* ---------- detail (fields) ---------- */
+.field{display:grid;grid-template-columns:1.12fr 1fr;gap:28px;background:var(--paper);border:1px solid var(--line);padding:30px 28px 26px;margin-bottom:26px;position:relative;scroll-margin-top:76px}
+.field .tagline{position:absolute;top:-10px;left:18px;background:var(--paper);border:1px solid var(--ln);font:11px var(--mono);padding:1px 8px;color:var(--ln);letter-spacing:.08em}
+.field .fhead{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.field .big{width:58px;height:58px;border:2px solid var(--ln);border-radius:50%;display:grid;place-items:center;font:700 24px var(--mono);color:var(--ln);flex:none}
+.field.after .big{border-style:dashed}
+.field .fhead h3{font-size:23px}
+.field .fhead .pos{font:11.5px var(--mono);color:var(--ink3);letter-spacing:.06em}
+.field .def{font-size:16px;line-height:1.75;border:1px dashed var(--ln);padding:11px 15px;margin:0 0 14px;position:relative}
+.field .def::before{content:"定义";position:absolute;top:-10px;left:10px;background:var(--paper);padding:0 5px;font:10.5px var(--mono);color:var(--ln)}
+.field h5{font:12px var(--mono);letter-spacing:.1em;color:var(--ln);margin:18px 0 6px;display:flex;align-items:center;gap:8px}
+.field h5::after{content:"";flex:1;border-top:1px solid var(--line2)}
+.field ol,.field ul{margin:0;padding-left:1.4em;font-size:14.5px;color:var(--ink2)}
+.field ol li::marker{font-family:var(--mono);color:var(--ink3)}
+.field li{margin:2px 0}
+.field .eg{border-left:2px solid var(--line);padding:3px 0 3px 14px;font-size:14.5px;color:var(--ink2);margin-top:8px}
+.field .eg b{color:var(--ink)}
+.fig{border:1px solid var(--line);padding:20px 18px 14px;display:flex;flex-direction:column;gap:10px;align-self:start;position:relative;background-color:var(--paper);background-image:linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px);background-size:16px 16px}
+.fig .ft{font:11.5px var(--mono);color:var(--ink3);text-align:right;letter-spacing:.06em;border-top:1px solid var(--line2);padding-top:6px;margin-top:2px}
+.fig .fcap{border:1px solid var(--line);background:var(--paper);padding:7px 10px;text-align:center;font-size:13.5px;font-weight:700}
+.nd2{background:var(--paper);border:1.2px solid var(--ln);padding:6px 10px;text-align:center;font-size:14px;font-weight:600}
+.nd2.oval{border-radius:999px}
+.nd2.redl{border-color:var(--red);color:var(--red);border-width:1.6px}
+.nd2 small{display:block;font-weight:400;font-size:11.5px}
+.formula{display:flex;justify-content:center;gap:4px;font-size:19px;flex-wrap:wrap;align-items:center}
+.formula span{padding:4px 6px}
+.formula .x{border:1.5px solid var(--ln);background:var(--paper);font-family:var(--mono);color:var(--ln)}
+.formula-k{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:12.5px;text-align:center;color:var(--ink2)}
+.formula-k div{background:var(--paper);border:1px dashed var(--line);padding:6px 4px;line-height:1.45}
+.formula-k b{display:block;color:var(--ln);font-size:12.5px}
+.gap3{display:grid;grid-template-columns:1fr auto 1fr;gap:8px 12px;align-items:center}
+.gap3 .ask{font-size:11.5px;color:var(--ink3);text-align:right;font-family:var(--mono)}
+.vline{width:1.5px;background:var(--ln);height:28px;margin:0 auto;position:relative}
+.vline::before,.vline::after{content:"";position:absolute;left:-3.5px;border:4px solid transparent}
+.vline::before{top:-7px;border-bottom-color:var(--ln)}
+.vline::after{bottom:-7px;border-top-color:var(--ln)}
+.arr{font:12.5px var(--mono);color:var(--ink2);white-space:nowrap}
+.tree{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px}
+.tree .lvl{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.tree .lvl span{background:var(--paper);border:1px solid var(--ln);padding:2px 7px}
+.tree .lvl span.pick{border-color:var(--red);color:var(--red);font-weight:700;border-width:1.6px}
+.tree .op{font:11.5px var(--mono);color:var(--ln);letter-spacing:.06em}
+.tree .op small{color:var(--ink3);margin-left:4px}
+.chev{display:flex;width:100%;margin-top:4px;gap:2px}
+.chev span{flex:1;background:var(--line2);padding:5px 0;text-align:center;clip-path:polygon(0 0,86% 0,100% 50%,86% 100%,0 100%,14% 50%);font-size:12px;color:var(--ink3)}
+.chev span.p{background:var(--reds);color:var(--red);font-weight:700}
+.w2h{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.w2h div{background:var(--paper);border:1px solid var(--line);padding:6px 10px;font-size:13.5px}
+.w2h div b{color:var(--ln);margin-right:6px;font-family:var(--mono);font-weight:600}
+.w2h div.full{grid-column:1/-1}
+.why{display:flex;flex-direction:column;gap:7px;font-size:13px}
+.why .r{display:flex;gap:6px;align-items:center}
+.why .r span{border-radius:999px;padding:2px 10px;background:var(--paper);border:1.2px solid var(--ln)}
+.why .r span.x{color:var(--ink3);border-style:dashed;border-color:var(--line);position:relative}
+.why .r span.x::after{content:"";position:absolute;left:3px;right:3px;top:50%;border-top:1px solid var(--ink3);transform:rotate(-16deg)}
+.why .r span.tr{border-color:var(--red);color:var(--red);font-weight:700;border-width:1.8px}
+.why .r em{font-style:normal;font:11.5px var(--mono);color:var(--red)}
+.ptype{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ptype div{background:var(--paper);border:1px solid var(--line);padding:9px 11px;font-size:13px;color:var(--ink2);line-height:1.6}
+.ptype b{display:block;color:var(--ink);font-size:14px;margin-bottom:2px}
+.views{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.views div{background:var(--paper);border:1.2px solid var(--ln);padding:8px 6px;font-size:13.5px;font-weight:600}
+.views div small{display:block;font-weight:400;font-size:11px;color:var(--ink3);font-family:var(--mono)}
+.bubbles{display:flex;justify-content:space-between;gap:8px;font-size:12.5px}
+.bubbles span{background:var(--paper);border:1px dashed var(--ln);border-radius:12px;padding:3px 10px}
+.ideal2{border:1.5px solid var(--ln);background:var(--paper);padding:7px;text-align:center;font-weight:700;font-size:13.5px;margin-left:40%;margin-bottom:10px}
+.ideal2 small{display:block;font-weight:400;font-size:11.5px;color:var(--ink2)}
+.stairs2{display:flex;align-items:flex-end;gap:6px;height:150px;border-bottom:1px solid var(--ln)}
+.stairs2 .st{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;margin-bottom:calc(var(--h)*34px + 4px)}
+.stairs2 b{display:block;width:100%;text-align:center;background:var(--paper);border:1.5px solid var(--ln);padding:3px 0;font-size:13px}
+.stairs2 b.ok{border-style:dashed}
+.stairs2 em{font-style:normal;font:11px var(--mono);color:var(--ln)}
+.stairs2 small{font-size:10.5px;color:var(--ink3);font-family:var(--mono)}
+.pdca{font-size:12.5px;color:var(--ink2);text-align:center;font-family:var(--mono)}
+
+/* ---------- cases ---------- */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-bottom:28px;background:var(--paper)}
+.lv{padding:18px 20px;border-left:1px solid var(--line)}
+.lv:first-child{border-left:none}
+.lv .k{font:11.5px var(--mono);color:var(--ink3);letter-spacing:.08em}
+.lv h4{font-size:17.5px;margin:4px 0 6px}
+.lv p{font-size:13.5px;color:var(--ink2);margin:0}
+.lv .lvbar{margin-top:12px;height:8px;border:1px solid var(--ln);background:repeating-linear-gradient(90deg,var(--ln) 0 1px,transparent 1px 10px);width:calc(var(--w)*1%)}
+.case-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.case-tabs .tbtn small{opacity:.7;margin-right:6px}
+.case-head{display:grid;grid-template-columns:1fr 1.5fr;gap:18px;margin-bottom:26px}
+.case-head .k{font:11.5px var(--mono);color:var(--ln);letter-spacing:.08em}
+.case-head h4{font-size:19px;margin:4px 0}
+.case-dwg{padding:38px 26px 30px}
+.ctheme{max-width:680px;margin:0 auto 14px}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+.case-col{display:flex;flex-direction:column;gap:10px}
+.cbox{border:1.5px solid var(--ln);padding:10px 12px;background:var(--paper)}
+.cbox .t{font-weight:700;font-size:14.5px;line-height:1.5;display:flex;gap:8px}
+.cbox .t .no{margin-top:1px}
+.cbox .t .nm{font:11px var(--mono);color:var(--ink3);font-weight:400;display:block;letter-spacing:.04em}
+.cbox p{font-size:13px;color:var(--ink2);margin:5px 0 0;line-height:1.65}
+.cbox.merged{border-style:dashed;border-color:var(--line);opacity:.75}
+
+/* ---------- toolbox ---------- */
+table.bom{width:100%;border-collapse:collapse;background:var(--paper);border:1.5px solid var(--ln);font-size:14px}
+.bom th,.bom td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+.bom thead th{font:11.5px var(--mono);letter-spacing:.08em;color:var(--ink3);font-weight:400;background:var(--accs)}
+.bom td.id{font-family:var(--mono);color:var(--ln);white-space:nowrap;width:70px}
+.bom td.nm{font-weight:700;white-space:nowrap}
+.bom td.ds{color:var(--ink2)}
+.bom td.src{font:12px var(--mono);color:var(--ink3);white-space:nowrap}
+.vs{display:grid;grid-template-columns:1fr 70px 1fr;align-items:stretch}
+.vs .part{text-align:center}
+.vs .part b{font-size:21px;display:block;letter-spacing:.1em}
+.vs .good{border:1.5px solid var(--red)}
+.vs .good b{color:var(--red)}
+.vs .ar{align-self:center;height:1px;background:var(--ln);position:relative;margin:0 6px}
+.vs .ar::after{content:"";position:absolute;right:-1px;top:-4px;border:4.5px solid transparent;border-left:8px solid var(--ln);border-right:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--paper)}
+.stat{padding:18px 18px 16px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);position:relative}
+.stat:nth-child(4n){border-right:none}
+.stat:nth-last-child(-n+4){border-bottom:none}
+.stat .v{font:600 30px var(--mono);color:var(--ln);line-height:1.15;letter-spacing:-.02em}
+.stat .v small{font:500 14px var(--sans);margin:0 2px;letter-spacing:0}
+.stat .k{font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.55}
+.stat .sid{position:absolute;right:10px;top:8px;font:10px var(--mono);color:var(--ink3)}
+
+/* ---------- chapters ---------- */
+details.toc{background:var(--paper);border:1px solid var(--line);margin-top:-1px}
+details.toc summary{cursor:pointer;padding:14px 18px;list-style:none;display:grid;grid-template-columns:62px 1fr auto 22px;gap:14px;align-items:center}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary .id{font:12px var(--mono);color:var(--ln)}
+details.toc summary b{font-size:15.5px}
+details.toc summary small{color:var(--ink3);font-size:12.5px;font-family:var(--mono)}
+details.toc summary::after{content:"+";font:18px var(--mono);color:var(--ln);text-align:center}
+details.toc[open] summary::after{content:"−"}
+details.toc[open] summary{border-bottom:1px dashed var(--line)}
+.toc-body{padding:4px 18px 14px 94px}
+.ch{display:grid;grid-template-columns:210px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--line2);font-size:14px}
+.ch:first-child{border-top:none}
+.ch b{font-weight:600}
+.ch span{color:var(--ink2)}
+
+/* ---------- quotes ---------- */
+.quotes{columns:2;column-gap:18px}
+.quote{break-inside:avoid;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--ln);padding:16px 20px 14px;margin-bottom:18px;font-size:16px;line-height:1.8}
+.quote .qn{font:11px var(--mono);color:var(--ink3);letter-spacing:.08em;display:block;margin-bottom:4px}
+.quote cite{display:block;font-style:normal;font:12px var(--mono);color:var(--ink3);margin-top:8px;text-align:right}
+.quote cite::before{content:"— "}
+
+/* ---------- fill tool ---------- */
+.tool-bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:22px}
+.btn{border:1px solid var(--ln);background:var(--paper);color:var(--ink);padding:7px 14px;font:13px var(--mono);cursor:pointer;transition:.15s}
+.btn:hover{background:var(--accs)}
+.btn.pri{background:var(--ln);color:var(--paper)}
+.btn.pri:hover{filter:brightness(1.1);background:var(--ln)}
+.tool-bar .saved{margin-left:auto;font:12px var(--mono);color:var(--ink3)}
+.a3form{padding:40px 26px 24px}
+.fhead2{display:grid;grid-template-columns:1fr 2.2fr 1fr;gap:12px;margin-bottom:12px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.fcol{display:flex;flex-direction:column;gap:10px}
+.fbox{border:1.5px solid var(--ln);padding:8px 10px;display:flex;flex-direction:column;background:var(--paper)}
+.fbox .lab{font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.fbox .lab>span{display:flex;align-items:center;gap:8px}
+.fbox .ins{font:11px var(--mono);border:1px solid var(--line);background:transparent;color:var(--ink2);padding:1px 8px;cursor:pointer}
+.fbox .ins:hover{color:var(--ln);border-color:var(--ln)}
+.fbox textarea{flex:1}
+.fbox textarea,.fbox input{width:100%;border:none;background:transparent;color:var(--ink);font:14px/1.65 var(--sans);resize:vertical;outline:none;padding:4px 0 0;min-height:24px}
+.fbox textarea::placeholder,.fbox input::placeholder{color:var(--ink3);opacity:.85}
+.fbox:focus-within{background:var(--accs)}
+.fbox .pt{display:none;white-space:pre-wrap;font-size:10.5pt;line-height:1.55}
+.fbox.ft{text-align:center}
+.fbox.ft .lab{justify-content:center}
+.fbox.ft input{text-align:center;font-size:18px;font-weight:700}
+.fbox.ft input.subt{font-size:13.5px;font-weight:400}
+.fbox.fm{border-width:1px}
+.fbox.fm input{font:13px var(--mono)}
+.fbox.fm .row2{display:flex;gap:6px;align-items:center;font:12.5px var(--mono);color:var(--ink2)}
+.fbox.fm .row2 label{white-space:nowrap}
+.f2{min-height:130px}.f3{min-height:140px}.f4{min-height:170px}.f5{min-height:150px}
+.f6{min-height:160px}.f7{min-height:240px;margin-top:14px}.f8{min-height:160px;margin-top:14px}
+
+/* ---------- checklist ---------- */
+.check{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);background:var(--paper)}
+.check label{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:flex-start;padding:15px 18px;cursor:pointer;border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);transition:.15s}
+.check label:nth-child(2n){border-right:none}
+.check label:hover{background:var(--accs)}
+.cbx{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1.5px solid var(--ln);margin:3px 0 0;display:grid;place-items:center;cursor:pointer;background:var(--paper);flex:none}
+.cbx:checked{background:var(--ln)}
+.cbx:checked::after{content:"";width:5px;height:10px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check label:has(.cbx:checked){opacity:.55}
+.check label:has(.cbx:checked) b{text-decoration:line-through}
+.check .cid{font:11px var(--mono);color:var(--ink3);letter-spacing:.06em}
+.check b{font-size:15px;display:block}
+.check span{font-size:13.5px;color:var(--ink2);display:block;margin-top:2px}
+.check .src{font:11px var(--mono);color:var(--ink3);margin-top:6px}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:18px;font-family:var(--mono)}
+.progress .track{flex:1;height:10px;border:1px solid var(--ln);background:repeating-linear-gradient(90deg,var(--line2) 0 1px,transparent 1px 10px)}
+.progress .fill{height:100%;width:0;background:var(--ln);transition:width .35s}
+.progress .txt{font-size:13px;color:var(--ink2);min-width:64px;text-align:right}
+
+footer{padding:30px 0 90px}
+footer .tblock{max-width:640px;margin-left:auto}
+
+/* ---------- how-to drawer ---------- */
+.fab{position:fixed;right:22px;bottom:22px;z-index:70;display:flex;align-items:center;gap:10px;background:var(--ln);color:var(--paper);border:none;padding:11px 16px 11px 12px;font:600 14px var(--sans);cursor:pointer;box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--ln),0 10px 28px rgba(10,30,70,.25);letter-spacing:.04em}
+.fab .q{width:24px;height:24px;border:1.5px solid currentColor;border-radius:50%;display:grid;place-items:center;font:700 13px var(--mono)}
+.fab small{font:11px var(--mono);opacity:.8;font-weight:400}
+.fab:hover{filter:brightness(1.1)}
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(6,20,45,.42);opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(480px,100vw);background:var(--paper);border-left:1.5px solid var(--ln);transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;visibility:hidden;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px}
+.drawer.open{transform:none;visibility:visible}
+.dr-head{padding:16px 20px 12px;border-bottom:1px solid var(--ln);background:var(--paper)}
+.dr-top{display:flex;align-items:center;gap:10px}
+.dr-top .sno{font:11px var(--mono);color:var(--paper);background:var(--ln);padding:2px 8px;letter-spacing:.1em}
+.dr-top h3{font-size:18px;margin-right:auto}
+.dr-x{border:1px solid var(--ln);background:var(--paper);color:var(--ln);width:32px;height:32px;font:16px var(--mono);cursor:pointer}
+.dr-x:hover{background:var(--accs)}
+.dr-note{font-size:12.5px;color:var(--ink2);margin:8px 0 10px;line-height:1.6}
+.dr-tabs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ln)}
+.dr-tabs button{border:none;border-left:1px solid var(--ln);background:var(--paper);color:var(--ink2);padding:7px 4px;font:12.5px var(--sans);cursor:pointer;line-height:1.35}
+.dr-tabs button:first-child{border-left:none}
+.dr-tabs button small{display:block;font:10.5px var(--mono);color:var(--ink3)}
+.dr-tabs button.on{background:var(--ln);color:var(--paper)}
+.dr-tabs button.on small{color:var(--paper);opacity:.8}
+.dr-prog{display:flex;align-items:center;gap:10px;margin-top:10px;font:11.5px var(--mono);color:var(--ink3)}
+.dr-prog .track{flex:1;height:7px;border:1px solid var(--ln)}
+.dr-prog .fill{height:100%;background:var(--ln);width:0;transition:width .3s}
+.dr-body{flex:1;overflow-y:auto;padding:6px 20px 30px;overscroll-behavior:contain}
+.stage{margin-top:20px}
+.stage-h{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.stage-h .sn{width:26px;height:26px;border:1.5px solid var(--ln);border-radius:50%;display:grid;place-items:center;font:700 12px var(--mono);color:var(--ln);background:var(--paper);flex:none}
+.stage-h b{font-size:15.5px}
+.stage-h small{font:11px var(--mono);color:var(--ink3);margin-left:auto;white-space:nowrap}
+.stage-d{font-size:12.5px;color:var(--ink3);margin:-2px 0 8px 36px}
+.hw{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:11px 12px;border:1px solid var(--line);border-top:none;background:var(--paper);cursor:pointer}
+.hw:first-of-type{border-top:1px solid var(--line)}
+.hw:hover{background:color-mix(in srgb,var(--paper) 90%,var(--ln))}
+.hw:has(.cbx:checked){opacity:.55}
+.hw:has(.cbx:checked) .ht{text-decoration:line-through}
+.hw .ht{font-size:14px;font-weight:600;line-height:1.55}
+.hw .hd{font-size:13px;color:var(--ink2);line-height:1.6;margin-top:2px}
+.hw .hd a{color:var(--ln)}
+.hw .hs{font:10.5px var(--mono);color:var(--ink3);margin-top:4px}
+.hw .hk{font:10.5px var(--mono);color:var(--red);margin-right:6px}
+.stage.stuck .hw{grid-template-columns:1fr;cursor:default}
+.stuck .hw .ht{color:var(--red);font-weight:600}
+.stuck .hw .ht::before{content:"症状 ";font:10.5px var(--mono);color:var(--ink3);font-weight:400}
+.stuck .hw .hd::before{content:"对策 ";font:10.5px var(--mono);color:var(--ink3)}
+body.lock{overflow:hidden}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.drawer,.scrim{transition:none}}
+
+@media (max-width:960px){
+  .hero-bottom{grid-template-columns:1fr}
+  .parts{grid-template-columns:repeat(3,1fr)}
+  .parts .pt5{border-bottom:1px solid var(--line2)}
+  .parts .pt5:nth-child(4){border-left:none}
+  .field{grid-template-columns:1fr}
+  .levels{grid-template-columns:1fr}
+  .lv{border-left:none;border-top:1px solid var(--line)}.lv:first-child{border-top:none}
+  .case-head,.grid2,.lr{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(4n){border-right:1px solid var(--line2)}.stat:nth-child(2n){border-right:none}
+  .stat:nth-last-child(-n+4){border-bottom:1px solid var(--line2)}.stat:nth-last-child(-n+2){border-bottom:none}
+  .bom td.src,.bom th:last-child{display:none}
+  .toc-body{padding-left:18px}
+}
+@media (max-width:720px){
+  .proc{grid-template-columns:repeat(4,1fr);row-gap:22px}
+  .proc a:nth-child(5)::before{display:none}
+  .brk{display:none}
+  .a3grid,.case-grid,.fgrid,.dimrow{grid-template-columns:1fr}
+  .dimrow{display:none}
+  .a3head,.fhead2{grid-template-columns:1fr}
+  .box.theme,.box.meta{grid-column:auto}
+  .a3head>span:first-child,.fhead2>span:first-child{display:none}
+  .a3col .b7,.a3col .b8,.f7,.f8{margin-top:0}
+  .sh{grid-template-columns:1fr;gap:8px}.sh .sref{text-align:left}.sh .sno{justify-self:start}
+  .hero .sheet{padding:40px 22px 28px}
+  .dwg,.case-dwg,.a3form{padding:34px 16px 30px}
+  .ruler.v{display:none}
+}
+@media (max-width:620px){
+  .wrap{padding:0 16px}
+  .parts{grid-template-columns:1fr 1fr}
+  .parts .pt5{border-left:1px solid var(--line2)!important}
+  .parts .pt5:nth-child(odd){border-left:none!important}
+  .check,.stats{grid-template-columns:1fr}
+  .check label{border-right:none}
+  .stat{border-right:none!important;border-bottom:1px solid var(--line2)!important}
+  .quotes{columns:1}
+  .ch{grid-template-columns:1fr;gap:2px}
+  details.toc summary{grid-template-columns:44px 1fr 22px}
+  details.toc summary small{display:none}
+  .vs{grid-template-columns:1fr}.vs .ar{height:28px;width:1px;margin:6px auto}
+  .vs .ar::after{right:-4px;top:auto;bottom:-1px;border:4.5px solid transparent;border-top:8px solid var(--ln);border-bottom:none}
+  .tblock{grid-template-columns:56px 1fr}
+  .tblock .wide{grid-column:span 1}
+  .tblock div{border-right:none}
+  .bom td.id,.bom th:first-child{display:none}
+  .ptype{grid-template-columns:1fr}
+  .flowline{flex-direction:column;gap:0}.flowline i{transform:rotate(90deg);padding:2px 0;line-height:1.2}
+  .fab{right:14px;bottom:14px;padding:10px 14px 10px 10px}
+  .fab small{display:none}
+  .drawer{top:auto;left:0;right:0;bottom:0;width:100%;height:100%;border-left:none;border-top:1.5px solid var(--ln);transform:translateY(100%)}
+}
+
+/* ---------- print: only the fill-in A3 ---------- */
+@media print{
+  @page{size:A3 landscape;margin:10mm}
+  :root{--bg:#fff;--paper:#fff;--ink:#000;--ink2:#222;--ink3:#555;--ln:#1d3f8f;--line:#9fb2d6;--line2:#d5deee;--accs:transparent;--red:#c00}
+  body{background:#fff}
+  body>*:not(main){display:none!important}
+  main>*:not(#tool){display:none!important}
+  #tool{padding:0}
+  #tool .sh,#tool .dim,#tool .tool-bar,#tool .tool-note,#tool .ruler,#tool .reg{display:none!important}
+  #tool .wrap{max-width:none;padding:0}
+  .reveal{opacity:1!important;transform:none!important}
+  .a3form{border:1.5px solid var(--ln);padding:12px 14px;height:275mm;display:flex;flex-direction:column}
+  .a3form::before{display:none}
+  .fgrid{flex:1}
+  .fcol .fbox{flex:1}
+  .fbox{break-inside:avoid}
+  .fbox textarea,.fbox input,.fbox .ins{display:none!important}
+  .fbox .pt{display:block}
+  .fbox.ft .pt.t1{font-size:18pt;font-weight:700}
+  .fbox.ft .pt.t2{font-size:11pt}
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <span class="brand"><i>DWG A3</i>高效人士的A3思考法</span>
+    <a href="#overview"><b>00</b>总图</a>
+    <a href="#why"><b>01</b>导言</a>
+    <a href="#layout"><b>02</b>版式</a>
+    <a href="#fields"><b>03</b>栏位</a>
+    <a href="#cases"><b>04</b>案例</a>
+    <a href="#toolbox"><b>05</b>工具</a>
+    <a href="#chapters"><b>06</b>章节</a>
+    <a href="#quotes"><b>07</b>金句</a>
+    <a href="#tool"><b>08</b>模板</a>
+    <a href="#todo"><b>09</b>清单</a>
+  </div>
+</nav>
+
+<main>
+<!-- ============ 00 HERO ============ -->
+<header class="hero" id="overview">
+  <div class="wrap">
+    <div class="sheet">
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ruler"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+      <div class="ruler v"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+      <div class="dwgno"><span>SHEET 00 · 总图</span><span>TOYOTA A3 REPORT · 8 STEPS</span></div>
+      <h1>一张 A3<span class="sep">/</span>八个步骤<small>《高效人士的A3思考法：如何用一页A3纸锻炼解决问题的能力》读书总结</small></h1>
+      <p class="lead">“文章要归纳在一张A3纸上。”A3 报告书是丰田传承了 50 多年的业务改善手法。它不只是模板：<strong>按 8 个步骤反复写，头脑里会形成解决问题的“思考电路”</strong>，作者把它叫作“A3思考法”。左半张写行动前的计划，右半张写行动后的结果和下一步，改善就能像螺旋一样不断上升。</p>
+
+      <div class="proc">
+        <a href="#f1"><span class="nd">01</span><span class="lb">主题</span></a>
+        <a href="#f2"><span class="nd">02</span><span class="lb">主题设定的背景</span></a>
+        <a href="#f3"><span class="nd">03</span><span class="lb">把握现状</span></a>
+        <a href="#f4"><span class="nd">04</span><span class="lb">目标的设定</span></a>
+        <a href="#f5"><span class="nd">05</span><span class="lb">要因解析</span></a>
+        <a class="after" href="#f6"><span class="nd">06</span><span class="lb">对策和实施</span></a>
+        <a class="after" href="#f7"><span class="nd">07</span><span class="lb">实施结果和横向展开</span></a>
+        <a class="after" href="#f8"><span class="nd">08</span><span class="lb">反省和今后的课题</span></a>
+        <div class="brk l"><span>实施前 · 计划（左侧写 ②~⑤）</span></div>
+        <div class="brk r"><span>实施后 · 结果（右侧）</span></div>
+      </div>
+
+      <div class="hero-bottom">
+        <div>
+          <div class="parts-cap">零件表 · 前言列出的“A3思考法”5 个重点</div>
+          <div class="parts">
+            <div class="pt5"><div class="pid">P-01</div><b>信息收集能力</b><span>对项目所需要的本质信息，如何抓取和整理的能力。</span></div>
+            <div class="pt5"><div class="pid">P-02</div><b>准备能力</b><span>如何更有效率地推进工作的能力。</span></div>
+            <div class="pt5"><div class="pid">P-03</div><b>可视化能力</b><span>为了提高生产效率，把握现状，使问题显露出来的能力。</span></div>
+            <div class="pt5"><div class="pid">P-04</div><b>团队推进工作的能力</b><span>成员之间互相协作，共同推进工作的能力。</span></div>
+            <div class="pt5"><div class="pid">P-05</div><b>团结能力</b><span>与周围的人劲儿往一处使，做成大事的能力。</span></div>
+          </div>
+        </div>
+        <div class="tblock">
+          <div class="ttl">高效人士的A3思考法</div>
+          <div class="k">著者</div><div>〔日〕石井住枝</div><div class="k">译者</div><div>赵城立</div>
+          <div class="k">出版</div><div>机械工业出版社</div><div class="k">年份</div><div>2016</div>
+          <div class="k">ISBN</div><div class="wide mono">978-7-111-54810-2</div>
+          <div class="k last">作者</div><div class="wide last">在丰田汽车公司工作 17 年，入职半年成为董事秘书，后转为综合职技术员</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 WHY ============ -->
+<section class="block" id="why">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 01</span><h2>8 个步骤，就是解决问题的顺序</h2><span class="sref">导言 · 为何用A3报告书来磨炼思考</span></div>
+    <div class="dim"></div>
+    <p class="thesis reveal">A3 报告书既是能让人迅速做决定的参考资料，又让问题解决和项目管理更容易推进。丰田员工从进公司起不断写 A3，<strong>这套顺序会自然变成习惯</strong>，于是掌握了解决问题的能力。</p>
+
+    <div class="part reveal">
+      <span class="ptag">图 0-1</span>
+      <h4>A3 报告书与“解决问题”的关系</h4>
+      <div class="flowline">
+        <div>（1）制作A3报告书</div><i>──▶</i>
+        <div>（2）头脑中会呈现出解决思路</div><i>──▶</i>
+        <div class="hl">（3）找到解决问题的方法</div>
+      </div>
+      <p class="small" style="margin-top:10px">原图左边是“解决问题的8个步骤”，右边是A3报告书，每一步用虚线连到纸上对应的栏位。</p>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:26px">
+      <div class="part">
+        <span class="ptag">适用对象</span>
+        <h4>本书特别推荐给这些人</h4>
+        <ul>
+          <li>工作很多，不知道先后顺序，容易混乱。</li>
+          <li>头脑中经常很混乱，整理不清。</li>
+          <li>工作过程中积极性会下降。</li>
+          <li>不擅长管理下属。</li>
+        </ul>
+        <p class="small" style="margin-top:8px">作者说：只需要改变一下思考的顺序，就知道应该做什么了。</p>
+      </div>
+      <div class="part">
+        <span class="ptag">导言案例</span>
+        <h4>在公司办一场演讲会</h4>
+        <p class="muted" style="font-size:14.5px">演讲会是为了提高员工积极性。可随着日子临近，人会忙于宣传和准备，<b>经常把“召开”本身变成目的</b>，而忽略活动是否成功。</p>
+        <p class="muted" style="font-size:14.5px">用 A3 思考，就要从“演讲会后员工积极性提高了”这个终点反向逆推，共享各阶段目标，费用和效果的关系、计划和任务都会变清楚。没达成的部分，成为下一个目标。</p>
+      </div>
+    </div>
+    <div class="part reveal" style="margin-top:26px">
+      <span class="ptag">图 0-2</span>
+      <h4>用这个顺序思考，就能总保持正向思维</h4>
+      <div class="flowline">
+        <div>先后顺序的排列方法和准备方法变得明确</div><i>＋</i>
+        <div class="hl">改善变得可以持续下去</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 LAYOUT ============ -->
+<section class="block" id="layout">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 02</span><h2>A3 纸的版式</h2><span class="sref">书前“A3报告书的案例” · 图 0-2 · 图 1-1</span></div>
+    <div class="dim"></div>
+    <p class="thesis reveal">顶部居中是①主题，右上角写日期和责任人。<strong>左侧②~⑤记载项目开始前的事情</strong>（计划），<strong>右侧⑥~⑧记载实际行动以后的事情</strong>（实施之后）。</p>
+
+    <div class="tbar reveal">
+      <button class="tbtn on" data-mode="">书中说明版</button>
+      <button class="tbtn" data-mode="blank">空白模板</button>
+      <button class="tbtn" data-mode="lined">横线稿</button>
+      <span class="hint">// 点任一栏位，跳到它的写法</span>
+    </div>
+    <div class="dwg reveal" id="a3paper">
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ruler"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+      <div class="a3grid">
+        <div class="a3head">
+          <span></span>
+          <a class="box theme" href="#f1"><div class="bt"><span class="no">1</span>主题</div><div class="bd">用一句话设定任何人都能一目了然的目标</div></a>
+          <div class="box meta">20××年×月×日<br>总务部：石井住枝<br><span class="small">空白模板为“日期：/ 责任人：”</span></div>
+        </div>
+        <div class="dimrow" style="grid-column:1/-1"><div><span>实施前 · 记载项目开始前的事情</span></div><div><span>实施后 · 记载实际行动以后的事情</span></div></div>
+        <div class="a3col">
+          <a class="box b2" href="#f2"><div class="bt"><span class="no">2</span>主题设定的背景</div><div class="bd">明确写出主题设定的目的、必要性等背景或理由</div></a>
+          <a class="box b3" href="#f3"><div class="bt"><span class="no">3</span>把握现状</div><div class="bd">如实调查清楚经过和现状，并对当前的问题和缺陷等进行共享</div></a>
+          <a class="box b4" href="#f4"><div class="bt"><span class="no">4</span>目标的设定</div><div class="bd">用5W2H来设计为实现目标所需的计划，并适才适所地分配任务，从目标出发反向制订计划</div></a>
+          <a class="box b5" href="#f5"><div class="bt"><span class="no">5</span>要因解析</div><div class="bd">通过连问“5个为什么”把握现状的问题点要因来追究其本质，并进行解析</div></a>
+        </div>
+        <div class="a3col after">
+          <a class="box b6" href="#f6"><div class="bt"><span class="no">6</span>对策和实施</div><div class="bd">实施计划内容，边向上司等进行中间报告，边共享实施内容，以实现目标的达成和执行</div></a>
+          <a class="box b7" href="#f7"><div class="bt"><span class="no">7</span>实施结果和横向展开</div><div class="bd">将实施前和采取对策后进行比较，将有效果的做法实现标准化，并向相关部门横向展开，且落实到各自的日常手册中去</div></a>
+          <a class="box b8" href="#f8"><div class="bt"><span class="no">8</span>反省和今后的课题</div><div class="bd">对实施和展开的过程进行验证，并将新课题作为今后改善的主题</div></a>
+        </div>
+      </div>
+      <span class="corner">A3 · 1:1</span>
+    </div>
+    <div class="a3cap reveal"><span>按书前“A3报告书的案例”还原：左列 4 栏，右列 3 栏，⑦最大，右列顶端与②对齐。</span><span>原书注：可从 effec.jp 网站下载</span></div>
+
+    <div class="lr reveal">
+      <div class="part"><span class="ptag">LEFT</span><div class="k">左侧 · 计划（②~⑤）</div><p class="muted" style="font-size:14.5px;margin:0">项目推进之前想到的事项、目标的设定、现状分析，以及如何推进。</p></div>
+      <div class="part"><span class="ptag">RIGHT</span><div class="k">右侧 · 实施之后（⑥~⑧）</div><p class="muted" style="font-size:14.5px;margin:0">实际行动中知道的事、没做到的事、标准化，以及可以进行全公司展开的事，并把课题反映到下一个项目中。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 FIELDS ============ -->
+<section class="block" id="fields">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 03</span><h2>每个栏位怎么写</h2><span class="sref">第1章 · A3报告书的制作方法</span></div>
+    <div class="dim"></div>
+    <p class="thesis reveal">每一步都有书中的定义、操作顺序和配图。右侧详图按原书插图（图 1-2 ~ 图 1-10）重画，<strong>红线标出该图的落点</strong>；例子主要来自第 2 章“写开会通知”和“准备能力”两个案例。</p>
+
+    <article class="field reveal" id="f1">
+      <span class="tagline">DETAIL 01 · 顶部居中</span>
+      <div>
+        <div class="fhead"><div class="big">01</div><div><div class="pos">第1步</div><h3>主题</h3></div></div>
+        <p class="def">用一句话设定任何人都可以一目了然的目标。</p>
+        <p class="muted" style="font-size:14.5px">主题就是目标，是项目推进中的口号。成员按同一个价值基准朝目标努力，所以要沟通口号的定义，选能给大家带来相同印象的词。要做到<b>只看一眼就知道要表达什么</b>。</p>
+        <h5>写作要点 · 图 1-2 注</h5>
+        <ol>
+          <li>活动内容与主题名称一定要一致。</li>
+          <li>根据需要可记入“副主题”（该事例的卖点），用比主题稍小些的字体写。</li>
+        </ol>
+        <h5>书中例子</h5>
+        <div class="eg">写开会通知时，目的是<b>“召开富有成果的会议”</b>，而不是“如何写好开会通知书”。</div>
+        <div class="eg">团队主题要有具体数值：“这次的A项目，推进销售额提高40%”“到2016年6月之前，制作出面向28岁女性的新商品”“要把价格降为现在的50%”。</div>
+      </div>
+      <div class="fig">
+        <div class="fcap">“主题”要用一句话就能明白的形式表达出目标</div>
+        <div class="formula"><span>在</span><span class="x">○○○</span><span>用</span><span class="x">△△△</span><span>做</span><span class="x">×××</span></div>
+        <div class="formula-k">
+          <div><b>在哪里</b>产品名、工序名、作业名等</div>
+          <div><b>如何做</b>水准、方向</div>
+          <div><b>做什么</b>管理特性</div>
+        </div>
+        <div class="ft">FIG. 1-2</div>
+      </div>
+    </article>
+
+    <article class="field reveal" id="f2">
+      <span class="tagline">DETAIL 02 · 左列第一栏</span>
+      <div>
+        <div class="fhead"><div class="big">02</div><div><div class="pos">第2步</div><h3>主题设定的背景</h3></div></div>
+        <p class="def">明确写出主题设定的目的、必要性等背景或理由。</p>
+        <p class="muted" style="font-size:14.5px">从工作的“真正目的”出发，带着问题意识看现状，就能发现问题。不能满足于现状：先自己描绘出<b>“应有状态”</b>，再把它和现状的差距<b>“可视化”</b>，问题就明确了。</p>
+        <h5>顺序</h5>
+        <ol>
+          <li>思考工作的“真正目的”。</li>
+          <li>思考工作的“应有状态”。</li>
+          <li>把握现状。</li>
+          <li>将差距实现“可视化”。</li>
+        </ol>
+        <h5>书中例子</h5>
+        <div class="eg">准备能力案例：把目标数据化，比如“要取得相当于以前两倍的成果，都需要做些什么”，在何时之前应该做什么。让所有相关人员方向一致，虽然花时间，但很重要。</div>
+        <div class="eg">新商品开发到底为了谁？很容易认为是为了公司利益，其实“买的人＝顾客”，<b>目的是“为了顾客”</b>。</div>
+      </div>
+      <div class="fig">
+        <div class="fcap">把模糊的问题明确化</div>
+        <div class="gap3">
+          <span class="ask">对目的有贡献吗</span><span class="nd2 oval">真正目的</span><span></span>
+          <span class="ask">理想的状态是什么</span><span class="nd2">应有状态</span><span></span>
+          <span></span><div style="display:flex;align-items:center;gap:8px;justify-content:center"><div class="vline"></div><span class="arr">差距 ─▶</span></div><span class="nd2 redl">问题<small>可视化</small></span>
+          <span></span><span class="nd2">现状</span><span></span>
+        </div>
+        <div class="ft">FIG. 1-3</div>
+      </div>
+    </article>
+
+    <article class="field reveal" id="f3">
+      <span class="tagline">DETAIL 03 · 左列第二栏</span>
+      <div>
+        <div class="fhead"><div class="big">03</div><div><div class="pos">第3步</div><h3>把握现状</h3></div></div>
+        <p class="def">如实调查清楚经过和现状，并对当前的问题和缺陷进行共享。</p>
+        <p class="muted" style="font-size:14.5px">先定好处理问题的先后顺序，再到出问题的现场流程里，<b>“现地现物”地用定量、定性法收集事实</b>。这一步最像丰田的风格，却最容易在还没充分分解时就急着往下走。还要分清是暂时性问题，还是会持续几个月的长期性问题。</p>
+        <h5>顺序</h5>
+        <ol>
+          <li>把问题分出层次，并具体化。</li>
+          <li>决定自己参与的问题。</li>
+          <li>“现地现物”地观察流程，以发现问题点。</li>
+        </ol>
+        <h5>书中例子</h5>
+        <div class="eg">准备能力案例：写出现在手头有些什么资料？上次出现了什么问题？谁可以参与进来？各成员都有些什么能力？还剩下多少时间？<b>不写理想的方法，只写以前用过的方法。</b></div>
+      </div>
+      <div class="fig">
+        <div class="fcap">把问题进行区分，用事实将问题点明确化</div>
+        <div class="tree">
+          <div class="lvl"><span>大的笼统的问题</span></div>
+          <div class="op">▼ 分解<small>什么？何地？何时？谁？</small></div>
+          <div class="lvl"><span>问题</span><span>问题</span><span>问题</span></div>
+          <div class="op">▼ 分解</div>
+          <div class="lvl"><span>问题</span><span>问题</span><span>问题</span><span class="pick">问题</span><span>问题</span><span>问题</span><span>问题</span></div>
+          <div class="op">▼ 定出优先顺序 · 观察流程</div>
+          <div class="chev"><span></span><span></span><span class="p">问题点</span><span></span><span></span></div>
+        </div>
+        <div class="ft">FIG. 1-4</div>
+      </div>
+    </article>
+
+    <article class="field reveal" id="f4">
+      <span class="tagline">DETAIL 04 · 左列第三栏</span>
+      <div>
+        <div class="fhead"><div class="big">04</div><div><div class="pos">第4步</div><h3>目标的设定</h3></div></div>
+        <p class="def">用5W2H来设计为实现目标所需的计划，并适才适所地分配任务，从目标出发反向制订计划。</p>
+        <p class="muted" style="font-size:14.5px">先定下期限与该做的事，再<b>反向逆推</b>出计划，最后明确具体管理人员的责任分工。</p>
+        <h5>顺序</h5>
+        <ol>
+          <li>定下期限、应该做的事情，然后进行任务分工。</li>
+          <li>用5W2H（何时、何地、谁、什么、为何、如何、多少）来决定（1）。</li>
+        </ol>
+        <h5>书中例子</h5>
+        <div class="eg">一个半月后开的会，要提前 1 个月发通知，那么写通知的时间就是 2 周，把这 2 周要做的事列成表放进日程。<b>牵涉的人数越多，越要优先处理。</b></div>
+        <div class="eg">自己的工作量很容易少估：以为 5 分钟，实际可能要 30 分钟，要留富余。“调查时间”和“资料总结时间”要分开算。</div>
+      </div>
+      <div class="fig">
+        <div class="fcap">5W2H 示例：制作会议通知</div>
+        <div class="w2h">
+          <div><b>①何时</b>×月△日○点</div>
+          <div><b>⑤为何</b>为了召开经理会议</div>
+          <div><b>②何地</b>总务部</div>
+          <div><b>⑥如何</b>用邮件通知</div>
+          <div><b>③谁</b>○○和△△</div>
+          <div><b>⑦多少人</b>包括所有部门经理</div>
+          <div class="full"><b>④做什么</b>制作会议通知</div>
+        </div>
+        <div class="ft">FIG. 1-5 · 原书正文此处标题误作“把握现状”</div>
+      </div>
+    </article>
+
+    <article class="field reveal" id="f5">
+      <span class="tagline">DETAIL 05 · 左列第四栏</span>
+      <div>
+        <div class="fhead"><div class="big">05</div><div><div class="pos">第5步</div><h3>要因解析</h3></div></div>
+        <p class="def">通过连问“5个为什么”把握现状的问题点要因来追究其本质，并进行解析。</p>
+        <p class="muted" style="font-size:14.5px">只要连着问 5 次以上“为什么”，就能找到真正原因。<b>不要主观想象要因，也不要责备其他人</b>，要立足于事实反复追问。问 5 次不够，就继续问。</p>
+        <h5>顺序</h5>
+        <ol>
+          <li>想象现场的状况，排除先入为主的观念，思考更多要因。</li>
+          <li>“现地现物”地以事实为基础，不断重复问“为什么”。</li>
+          <li>找出真正原因。</li>
+        </ol>
+        <h5>书中例子 · 第3章 新商品开发会议</h5>
+        <div class="eg">“为什么要开这个会？”→“为什么要开发新商品？”→“为什么要开发那个商品？”→“为什么必须是那个商品？”→“为什么商品只有一个？”</div>
+      </div>
+      <div class="fig">
+        <div class="fcap">为了找到真正原因，对问题工序再进一步深入调查</div>
+        <div class="why">
+          <div class="r"><span>致力解决的问题点</span></div>
+          <div class="r"><span class="x">要因</span><span>要因</span><span class="x">要因</span><span>要因</span></div>
+          <div class="r" style="padding-left:26px"><span class="x">要因</span><span class="x">要因</span><span>要因</span></div>
+          <div class="r" style="padding-left:52px"><span class="x">要因</span><span>要因</span></div>
+          <div class="r" style="padding-left:78px"><span class="tr">真因</span><em>◀ 从这里入手</em></div>
+        </div>
+        <div class="ft">FIG. 1-6</div>
+      </div>
+    </article>
+
+    <article class="field reveal after" id="f6">
+      <span class="tagline">DETAIL 06 · 右列第一栏</span>
+      <div>
+        <div class="fhead"><div class="big">06</div><div><div class="pos">第6步</div><h3>对策和实施</h3></div></div>
+        <p class="def">实施计划内容，边向上司等进行中间报告，边共享实施内容，以实现目标的达成和执行。</p>
+        <p class="muted" style="font-size:14.5px">现状与目标的差距要在成员间共享，并不断修正做法以接近应有状态。不要局限于固有概念或自己的工作范围，不要觉得不可能就放弃，要向公司内外广泛征求意见。</p>
+        <h5>制定对策的三个视角</h5>
+        <ul>
+          <li><b>效果</b> · <b>成本、工时</b> · <b>风险</b>，据此做出执行计划并实施。</li>
+          <li>必须在得到相关人员和相关部门同意的情况下推进。</li>
+        </ul>
+        <h5>书中例子</h5>
+        <div class="eg">准备能力案例：按第4步的预估时间实施，也许不能完全按计划走，重要的是<b>边做中间报告边实施</b>，既能修正轨道，也能得到成员协助。不顺时找上司再沟通，充分利用周围的资源。</div>
+      </div>
+      <div class="fig">
+        <div class="fcap">“问题”是……</div>
+        <div style="display:flex;align-items:center;gap:12px;justify-content:center;font-size:14px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><span class="nd2">应有状态</span><div class="vline"></div><span class="nd2">现状</span></div>
+          <span class="arr">─▶</span>
+          <span class="nd2 redl">差距 = 问题</span>
+        </div>
+        <div class="ft">FIG. 1-7</div>
+        <div class="ptype">
+          <div><b>发生型问题</b>已经明示出来的应有状态（基准值和目标值）与现状之间的差距</div>
+          <div><b>设定型问题</b>重新设定更高水准的应有状态（基准值和目标值），有意识地制造出差距</div>
+        </div>
+        <div class="ft">FIG. 1-8 · 问题的种类</div>
+      </div>
+    </article>
+
+    <article class="field reveal after" id="f7">
+      <span class="tagline">DETAIL 07 · 右列第二栏（最大）</span>
+      <div>
+        <div class="fhead"><div class="big">07</div><div><div class="pos">第7步</div><h3>实施结果和横向展开</h3></div></div>
+        <p class="def">将实施前和采取对策后进行比较，将有效果的做法实现标准化，并向相关部门横向展开，且落实到各自的日常手册中去。</p>
+        <p class="muted" style="font-size:14.5px">在规定期限内验证。接受推广的部门要把新做法调整成本部门好用的形式。没完成的，确认与目标的差距，重新做计划。<b>结果和流程两方面都要量化成数据再评估。</b></p>
+        <h5>顺序</h5>
+        <ol>
+          <li>针对目标，对结果和流程进行评价，并与相关人员共享。</li>
+          <li>从客户、公司、自己的视角进行回顾。</li>
+          <li>从成功、失败的要因中学习。</li>
+        </ol>
+        <h5>书中例子</h5>
+        <div class="eg">缺席者很多，也许是通知发得太晚，或会前工作没安排好。下次提前一周发通知、事先公开议程，这才是加入了自己智慧的“工作”，而不是只改日期和地址的“作业”。</div>
+        <div class="eg">以为 5 分钟就够的会议室预约，选哪里、多大、设备确认，可能要花 1 个小时。养成验证预估时间的习惯。</div>
+      </div>
+      <div class="fig">
+        <div class="fcap">通过对结果和流程的评价，从成功、失败中学习</div>
+        <div class="bubbles"><span>结果是什么</span><span>流程是什么</span></div>
+        <div class="nd2 oval">朝着目标方向做得如何</div>
+        <div class="views">
+          <div><small>结果</small>客户的视角</div>
+          <div><small>结果</small>丰田的视角</div>
+          <div><small>结果</small>自己的视角</div>
+        </div>
+        <p class="small" style="margin:0">正文写作“客户、公司、自己”，图中为“丰田的视角”。</p>
+        <div class="ft">FIG. 1-9</div>
+      </div>
+    </article>
+
+    <article class="field reveal after" id="f8">
+      <span class="tagline">DETAIL 08 · 右列第三栏</span>
+      <div>
+        <div class="fhead"><div class="big">08</div><div><div class="pos">第8步</div><h3>反省和今后的课题</h3></div></div>
+        <p class="def">对实施和展开的过程进行验证，并将新课题作为今后改善的主题。</p>
+        <p class="muted" style="font-size:14.5px">成功的流程要程序化才能固定下来。<b>即使人发生变化，也能继续产生一定成果的程序，称为“标准化”。</b>把它积极横向展开，提高组织整体实力；把新出现的问题作为下次课题，PDCA 就能不断循环。</p>
+        <h5>顺序</h5>
+        <ol>
+          <li>将成果实现程序化加以固定（标准化）。</li>
+          <li>将成功的程序横向展开。</li>
+          <li>开始下一个改善。</li>
+        </ol>
+        <h5>书中例子</h5>
+        <div class="eg">把可预约的会议室一览表做出来，网络预约的地址收藏好，写上电话、地址、联络方式和负责人，<b>以前要 1 个小时的事，下次 10 分钟就够了</b>。也就是把“验证”变为“对策”。</div>
+      </div>
+      <div class="fig">
+        <div class="fcap">将成功的流程固定下来，不断提高标准本身的水平</div>
+        <div class="ideal2">新的理想状态<small>对本岗位而言 · 对公司而言</small></div>
+        <div class="stairs2">
+          <div class="st" style="--h:0"><b class="ok">成功</b><small>执行</small></div>
+          <div class="st" style="--h:1"><em>改善 ↗</em><b>标准化</b><small>横向展开 ▶</small></div>
+          <div class="st" style="--h:2"><em>改善 ↗</em><b>标准化</b><small>横向展开 ▶</small></div>
+          <div class="st" style="--h:3"><em>改善 ↗</em><b>标准化</b></div>
+        </div>
+        <div class="pdca">执行 → 成功 → 标准化 → 改善 → 标准化 → 改善 ……<br>失败则再次重复 PDCA 循环（P→D→C→A），直到成功</div>
+        <div class="ft">FIG. 1-10</div>
+      </div>
+    </article>
+
+    <div class="part reveal">
+      <span class="ptag">NOTE</span>
+      <p class="muted" style="margin:0;font-size:14.5px">作者总结：A3思考法用上了 5W2H、5个为什么、可视化、问题共享、横向展开、改善的螺旋等丰田经验，又做信息收集、分析、行动、标准化，并在下一次改善中活用，所以能不断进化，计划能在<b>没有不合理、不规则、浪费</b>的情况下推进下去。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 CASES ============ -->
+<section class="block" id="cases">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 04</span><h2>同样 8 步，按职位用 7 次</h2><span class="sref">第2章 初级 · 第3章 中级 · 第4章 高级</span></div>
+    <div class="dim"></div>
+    <p class="thesis reveal">第 2~4 章不换方法，只换角色：员工、管理者、经理各遇到不同的烦恼，每个烦恼都完整地走一遍 8 步。下面每张小图纸里，<strong>粗体是原书该步的小标题</strong>，正文是对该步内容的概括。</p>
+
+    <div class="levels reveal">
+      <div class="lv" style="--w:34"><div class="k">CH.2 · 初级篇</div><h4>员工：管好自己的工作</h4><p>理解“想要的是什么”，搞清自己所处的位置；掌握“准备能力”，把预估和验证变成检查表。</p><div class="lvbar"></div></div>
+      <div class="lv" style="--w:67"><div class="k">CH.3 · 中级篇</div><h4>管理者：团结周围人并发出命令</h4><p>判断和决断的机会增加，要从团队角度排优先顺序并培养下属：信息收集、把想法变为现实、团队执行力。</p><div class="lvbar"></div></div>
+      <div class="lv" style="--w:100"><div class="k">CH.4 · 高级篇</div><h4>经理：让团队自立</h4><p>从更广阔的视野思考经营，培养团队领导、建立能自立的机制，并通过“学习”磨炼自身领导力。</p><div class="lvbar"></div></div>
+    </div>
+
+    <div class="case-tabs reveal" id="caseTabs"></div>
+    <div class="reveal">
+      <div class="case-head">
+        <div class="part"><span class="ptag" id="caseId">C-01</span><div class="k" id="caseK"></div><h4 id="caseT"></h4><p class="small" id="caseS" style="margin:0"></p></div>
+        <div class="part"><span class="ptag">遇到的问题</span><p class="muted" id="caseP" style="font-size:14.5px;margin:0"></p></div>
+      </div>
+      <div class="dwg case-dwg">
+        <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+        <div class="cbox ctheme" id="caseTheme"></div>
+        <div class="case-grid">
+          <div class="case-col" id="caseL"></div>
+          <div class="case-col after" id="caseR"></div>
+        </div>
+        <span class="corner" id="caseCorner">CASE 01 / 07</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 TOOLBOX ============ -->
+<section class="block" id="toolbox">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 05</span><h2>工具箱与关键数字</h2><span class="sref">贯穿全书的丰田做法</span></div>
+    <div class="dim"></div>
+
+    <div class="reveal" style="overflow-x:auto">
+      <table class="bom">
+        <thead><tr><th>编号</th><th>名称</th><th>说明</th><th>出处</th></tr></thead>
+        <tbody>
+          <tr><td class="id">T-01</td><td class="nm">5W2H</td><td class="ds">何时、何地、谁、什么、为何、如何、多少。用在第4步设计计划。</td><td class="src">第1章 · 图1-5</td></tr>
+          <tr><td class="id">T-02</td><td class="nm">5个为什么</td><td class="ds">连问 5 次以上“为什么”，追到真因。立足事实，不主观想象，不责备他人。</td><td class="src">第1章 · 第3章</td></tr>
+          <tr><td class="id">T-03</td><td class="nm">现地现物</td><td class="ds">亲自到现场看流程。话务中心、商铺、展台也都是“现场”，不是只有工厂才叫现场。</td><td class="src">第1章 · 第4章</td></tr>
+          <tr><td class="id">T-04</td><td class="nm">反向逆推</td><td class="ds">从期限和终点倒推计划与任务，比如提前 1 个月发通知，就只剩 2 周写通知。</td><td class="src">导言 · 第2章</td></tr>
+          <tr><td class="id">T-05</td><td class="nm">中间报告</td><td class="ds">边报告边实施，既能修正轨道，也能得到协助。报告的是进展，不是结果。</td><td class="src">第2~4章</td></tr>
+          <tr><td class="id">T-06</td><td class="nm">标准化 · 横向展开</td><td class="ds">换了人也能出成果的程序叫标准化，再推广到其他团队和部门，落实到手册。</td><td class="src">第1章 · 第3章</td></tr>
+          <tr><td class="id">T-07</td><td class="nm">检查表</td><td class="ds">把解决过程落实到检查表里，下次直接用，并持续更新，还可当新人指导书。</td><td class="src">第2章 · 第3章</td></tr>
+          <tr><td class="id">T-08</td><td class="nm">PDCA 螺旋</td><td class="ds">把新问题作为下次课题，丰田的改善就像螺旋一样不断上升。</td><td class="src">导言 · 第1章</td></tr>
+          <tr><td class="id">T-09</td><td class="nm">“场”</td><td class="ds">不是单纯的场所，而是可以相互交流的氛围、环境、工作切换，让大家形成共同的问题认识。</td><td class="src">第4章</td></tr>
+          <tr><td class="id">T-10</td><td class="nm">卷入能力</td><td class="ds">管理者通过自己的领导力，使下属全身心投入某主题的能力。</td><td class="src">第3章 · 译注</td></tr>
+          <tr><td class="id">T-11</td><td class="nm">委任能力</td><td class="ds">任命能把握工作量的团队领导并委以责任，培养“你的分身”。</td><td class="src">第4章</td></tr>
+          <tr><td class="id">T-12</td><td class="nm">复述 + 追踪</td><td class="ds">“说的话让他重复，做的事让他重复，还要追踪。”只回答“好的，明白了”等于没明白。</td><td class="src">第4章</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub reveal"><span class="mono">SECTION A-A</span>“作业”与“工作”</h3>
+    <div class="vs reveal">
+      <div class="part"><b>作业</b><p class="muted" style="font-size:14px;margin-top:6px">让干什么就干什么。在既有模板上只改一下日期和地址。</p></div>
+      <div class="ar"></div>
+      <div class="part good"><b>工作</b><p class="muted" style="font-size:14px;margin-top:6px">以前辈的做法为参考，再加入自己的思考：思考为何缺席者那么多，用自己的智慧实现改善。</p></div>
+    </div>
+
+    <h3 class="sub reveal"><span class="mono">DIMENSIONS</span>书里的关键数字</h3>
+    <div class="stats reveal">
+      <div class="stat"><span class="sid">D-01</span><div class="v">50<small>多年</small></div><div class="k">A3 报告书在丰田传承的时间</div></div>
+      <div class="stat"><span class="sid">D-02</span><div class="v">8<small>步</small></div><div class="k">左侧②~⑤是计划，右侧⑥~⑧是实施之后</div></div>
+      <div class="stat"><span class="sid">D-03</span><div class="v">5<small>次以上</small></div><div class="k">连问“为什么”的次数，不够就继续问</div></div>
+      <div class="stat"><span class="sid">D-04</span><div class="v">5<small>分</small>→30<small>分</small></div><div class="k">自以为的耗时与实际耗时，自己的工作量容易少估</div></div>
+      <div class="stat"><span class="sid">D-05</span><div class="v">60<small>分</small>→10<small>分</small></div><div class="k">会议室预约做成检查表之后，下次所需的时间</div></div>
+      <div class="stat"><span class="sid">D-06</span><div class="v">+2<small>个职位</small></div><div class="k">“要站在比自己高2个职位的高度去面对工作”</div></div>
+      <div class="stat"><span class="sid">D-07</span><div class="v">1~3<small>个月</small></div><div class="k">促进团队自立时，项目一个周期的建议长度</div></div>
+      <div class="stat"><span class="sid">D-08</span><div class="v">30<small>分钟</small></div><div class="k">丰田的董事只要有这么多空闲，就会到现场去转一圈</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 CHAPTERS ============ -->
+<section class="block" id="chapters">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 06</span><h2>各章要点</h2><span class="sref">明细栏 · 点开查看</span></div>
+    <div class="dim"></div>
+    <div class="reveal">
+    <details class="toc" open>
+      <summary><span class="id">00</span><b>前言 · 导言</b><small>A3报告书是什么，为何用它磨炼思考</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b>前言</b><span>A3 报告书是丰田实际使用的文件模板，更是一种“模板式思考”。作者在丰田工作 17 年，归纳出 5 个重点能力；强调一个人能做的事有限，要与周围人协调、分配好职责。</span></div>
+        <div class="ch"><b>A3报告书的案例</b><span>书前给出一张带说明的范例和一张可填写的空白表。</span></div>
+        <div class="ch"><b>文章要归纳在一张A3纸上</b><span>列出 8 个步骤及每步一句话说明。</span></div>
+        <div class="ch"><b>“A3思考法”指的是什么</b><span>持续制作 A3，头脑里会出现“思考电路”；8 个步骤就是问题解决的顺序。</span></div>
+        <div class="ch"><b>有能力的人为何用“A3”思考</b><span>左侧写行动前，右侧写行动后。用演讲会的例子说明：别把“召开”当目的，从目标反向逆推；行动后的变化要测定，没取得的成果成为下一个目标。</span></div>
+      </div>
+    </details>
+    <details class="toc">
+      <summary><span class="id">CH.1</span><b>A3报告书的制作方法</b><small>8 个栏位的定义、顺序与图 1-1 ~ 1-10</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b>①主题 · ②背景</b><span>主题是口号，一句话、一眼明白；背景从真正目的、应有状态出发，把与现状的差距可视化。把笼统的大问题分解成自己能参与的具体问题。</span></div>
+        <div class="ch"><b>③把握现状</b><span>现地现物，用定量、定性法收集事实；分清暂时性与长期性问题，统一大家认同的定义。</span></div>
+        <div class="ch"><b>④目标的设定</b><span>5W2H，先定期限和该做的事，反向逆推，明确责任分工。</span></div>
+        <div class="ch"><b>⑤要因解析</b><span>5个为什么，排除先入为主，以事实为基础找真因。</span></div>
+        <div class="ch"><b>⑥对策和实施</b><span>从效果、成本工时、风险制定对策，广泛征求意见，得到相关部门同意后推进。问题分发生型与设定型。</span></div>
+        <div class="ch"><b>⑦实施结果和横向展开</b><span>期限内验证，结果和流程都量化，从客户、公司、自己三个视角回顾。</span></div>
+        <div class="ch"><b>⑧反省和今后的课题</b><span>标准化、横向展开、开始下一个改善，PDCA 螺旋式上升。</span></div>
+      </div>
+    </details>
+    <details class="toc">
+      <summary><span class="id">CH.2</span><b>A3思考法（初级篇）</b><small>员工如何管好自己的工作</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b>理解“想要的是什么”</b><span>只按命令顺序做、只顾拼命努力的人，常会忽略优先顺序、赶不上交货期。以写开会通知为例：通知的真正目的是让会议提高效率、产生成果；区分“作业”与“工作”；会后把过程落实到检查表。</span></div>
+        <div class="ch"><b>掌握“准备能力”</b><span>B 先生只能同时做一件事。原因可能是不知道自己的工作量、目测出错、目标水准和质量要求过高。办法：给语言下定义、目标数据化、涉及外部和人多的事项优先、预估留富余、调查与总结时间分开、验证实际耗时、做成检查表。</span></div>
+      </div>
+    </details>
+    <details class="toc">
+      <summary><span class="id">CH.3</span><b>A3思考法（中级篇）</b><small>管理者如何看清本质、带动团队</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b>开篇</b><span>成为管理者后，要从听从命令的角色变成团结周围人并发出命令的角色；明哲保身、不愿为判断负责，判断就容易失误。</span></div>
+        <div class="ch"><b>提高信息收集能力</b><span>为会议做项目资料：依据背景设定目标，先整理手头信息、接受不足的事实，用数值化目标和期限分工，用 5 个为什么追问新商品开发，验证信息可信性，留下数据来源的“足迹”。</span></div>
+        <div class="ch"><b>将想法变为现实</b><span>D 先生会做近期计划，不会做长远计划。挑战“用一半时间完成相同工作”，站在高 2 个职位的视角，怀疑现有做法，把 A 变成 B、C 甚至 Z；做出“新商品开发构思检查表”，靠“卷入能力”让大家参与。</span></div>
+        <div class="ch"><b>提高团队的执行力</b><span>E 先生揽下太多却分配不下去。提示数值目标，把负荷差距数据化，掌握强项弱项，分配稍超能力的任务，建立互补的环境；外包要内制化，参加外部研修的人回来当讲师；从延迟中知道团队的容量。</span></div>
+      </div>
+    </details>
+    <details class="toc">
+      <summary><span class="id">CH.4</span><b>A3思考法（高级篇）</b><small>经理如何让团队自立、激发潜力</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b>促进团队的自立</b><span>经理什么都自己做，成员不成长、信赖建立不起来，形成负的螺旋。站在顾客视角共享目标，创造“场”，委任并培育团队领导、让他体验成功，让成员自己定报告规矩并互相追踪，让成员拿出改善提案；先指派 1~3 个月一周期的项目。</span></div>
+        <div class="ch"><b>激发成员的潜力</b><span>下属不行动，先自我觉醒：找出原因，与成员讨论缺什么条件，到现场“用脚来赚钱”，准备好材料和道具、提示所需技能，建立中间报告体系，再开公开报告会让下属用自己的语言报告。做无名英雄，才是提高领导力的秘诀。</span></div>
+      </div>
+    </details>
+    <details class="toc">
+      <summary><span class="id">END</span><b>后记</b><small>丰田为何能一次次挺过来</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b>正确的思考方法</b><span>作者不认为丰田人都格外优秀；丰田的强大来自每天工作中通过“正确的思考方法”自然养成的习惯。本书按不同级别、职位，把问题分成 8 个步骤解说，方法简单，任何场合都能用。</span></div>
+      </div>
+    </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 QUOTES ============ -->
+<section class="block" id="quotes">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 07</span><h2>金句</h2><span class="sref">原文摘录 · 逐字引用</span></div>
+    <div class="dim"></div>
+    <div class="quotes reveal" id="quoteList">
+      <div class="quote">文章要归纳在一张A3纸上。<cite>导言</cite></div>
+      <div class="quote">丰田的改善之所以能像螺旋那样不断上升，就是因为不断重复应用“A3思考法”。<cite>导言</cite></div>
+      <div class="quote">重要的是要对行动后的变化进行测定，没有取得的成果会成为下一个目标。<cite>导言</cite></div>
+      <div class="quote">对待任何事情都不能满足于现状，首先要自己描绘出“应有状态”，然后通过将其与现状的差距实现“可视化”，以明确问题所在。<cite>第1章 · 主题与背景</cite></div>
+      <div class="quote">成功的流程需要通过程序化才能固定下来。即使人发生变化，也能继续产生一定成果的程序，称为“标准化”。<cite>第1章 · 反省和今后的课题</cite></div>
+      <div class="quote">让干什么就干什么，这只不过是“作业”而已。以过去前辈们的做法为参考，再加入你自己的思考，这才是“工作”。<cite>第2章 · 理解“想要的是什么”</cite></div>
+      <div class="quote">这里并不是说花1个小时就一定不好，只是如果认为花1个小时是理所当然的，那么谁都不愿意去改善了。<cite>第2章 · 掌握“准备能力”</cite></div>
+      <div class="quote">有一种说法，“要站在比自己高2个职位的高度去面对工作”，这就是拥有高处视角的思维。<cite>第3章 · 将想法变为现实</cite></div>
+      <div class="quote">在追究问题的真因时，必须要注意的是，决不能把问题推在某人身上。<cite>第4章 · 促进团队的自立</cite></div>
+      <div class="quote">说的话让他重复，做的事让他重复，还要追踪。<cite>第4章 · 丰田的人才育成法</cite></div>
+      <div class="quote">如果团队不能自立，不能自己发起行动，则经理将永远不能放手。<cite>第4章 · 促进团队的自立</cite></div>
+      <div class="quote">毕竟“只是听说，只看书面资料”所无法知道的事情有很多。<cite>第4章 · 激发成员的潜力</cite></div>
+      <div class="quote">做出指示的一方，要准备好道具并建立体系，这样才算“做出了指示”。<cite>第4章 · 激发成员的潜力</cite></div>
+      <div class="quote">一般情况下，成果都是由上司来报告，而事实上，应该尽可能让下属去报告，让他们去体验成功的喜悦。做无名英雄，这才是提高领导力的秘诀所在。<cite>第4章 · 激发成员的潜力</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 FILL TOOL ============ -->
+<section class="block" id="tool">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 08</span><h2>画一张自己的 A3</h2><span class="sref">可填写 · 自动保存 · 可打印</span></div>
+    <div class="dim"></div>
+    <p class="small tool-note" style="margin-bottom:12px">栏位与顺序同书中空白模板。内容自动保存在本机浏览器；点“打印”只输出这张 A3（横向 A3 纸，也可在打印对话框里另存为 PDF）。灰色提示文字来自书中每一步的“顺序”。</p>
+    <div class="tool-bar">
+      <button class="btn pri" id="btnPrint">打印 / 存为 PDF</button>
+      <button class="btn" id="btnTxt">下载为文本</button>
+      <button class="btn" id="btnClear">清空</button>
+      <span class="saved" id="savedTip">尚未填写</span>
+    </div>
+    <div class="dwg a3form" id="a3form">
+      <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+      <div class="ruler"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+      <div class="fhead2">
+        <span></span>
+        <div class="fbox ft">
+          <div class="lab"><span><span class="no">1</span>主题</span></div>
+          <input data-k="theme" placeholder="一句话：在○○○用△△△做×××">
+          <div class="pt t1" data-p="theme"></div>
+          <input class="subt" data-k="subtheme" placeholder="副主题（可选，该事例的卖点）">
+          <div class="pt t2" data-p="subtheme"></div>
+        </div>
+        <div class="fbox fm">
+          <div class="row2"><label>日期：</label><input data-k="date" placeholder="20××年×月×日"><div class="pt" data-p="date"></div></div>
+          <div class="row2"><label>责任人：</label><input data-k="owner" placeholder="部门：姓名"><div class="pt" data-p="owner"></div></div>
+        </div>
+      </div>
+      <div class="fgrid">
+        <div class="fcol">
+          <div class="fbox f2"><div class="lab"><span><span class="no">2</span>主题设定的背景</span></div><textarea rows="4" data-k="s2" placeholder="（1）工作的“真正目的”是什么？&#10;（2）“应有状态”是什么？&#10;（3）现状如何？&#10;（4）差距（问题）在哪里？"></textarea><div class="pt" data-p="s2"></div></div>
+          <div class="fbox f3"><div class="lab"><span><span class="no">3</span>把握现状</span></div><textarea rows="4" data-k="s3" placeholder="（1）把问题分出层次并具体化（什么？何地？何时？谁？）&#10;（2）决定自己参与的问题&#10;（3）“现地现物”观察流程，发现问题点"></textarea><div class="pt" data-p="s3"></div></div>
+          <div class="fbox f4"><div class="lab"><span><span class="no">4</span>目标的设定</span><button class="ins" data-ins="s4">+ 5W2H</button></div><textarea rows="5" data-k="s4" placeholder="（1）定下期限、应该做的事情，然后任务分工&#10;（2）用 5W2H 决定：何时、何地、谁、什么、为何、如何、多少&#10;从目标出发反向逆推"></textarea><div class="pt" data-p="s4"></div></div>
+          <div class="fbox f5"><div class="lab"><span><span class="no">5</span>要因解析</span><button class="ins" data-ins="s5">+ 5 个为什么</button></div><textarea rows="5" data-k="s5" placeholder="（1）想象现场状况，排除先入为主，思考更多要因&#10;（2）以事实为基础，不断重复问“为什么”&#10;（3）找出真正原因"></textarea><div class="pt" data-p="s5"></div></div>
+        </div>
+        <div class="fcol after">
+          <div class="fbox f6"><div class="lab"><span><span class="no">6</span>对策和实施</span><button class="ins" data-ins="s6">+ 三视角</button></div><textarea rows="5" data-k="s6" placeholder="对策从“效果”“成本、工时”“风险”三方面考虑&#10;执行计划 / 中间报告的时机 / 相关部门的同意"></textarea><div class="pt" data-p="s6"></div></div>
+          <div class="fbox f7"><div class="lab"><span><span class="no">7</span>实施结果和横向展开</span></div><textarea rows="7" data-k="s7" placeholder="（1）针对目标，对结果和流程进行评价（量化成数据），并与相关人员共享&#10;（2）从客户、公司、自己的视角回顾&#10;（3）从成功、失败的要因中学习&#10;有效果的做法 → 标准化 → 向哪些部门横向展开"></textarea><div class="pt" data-p="s7"></div></div>
+          <div class="fbox f8"><div class="lab"><span><span class="no">8</span>反省和今后的课题</span></div><textarea rows="5" data-k="s8" placeholder="（1）把成果程序化加以固定（标准化，写进检查表/手册）&#10;（2）将成功的程序横向展开&#10;（3）下一个改善的主题"></textarea><div class="pt" data-p="s8"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 TODO ============ -->
+<section class="block" id="todo">
+  <div class="wrap">
+    <div class="sh reveal"><span class="sno">SHEET 09</span><h2>检验清单：下一项工作就这样做</h2><span class="sref">勾选进度保存在本机</span></div>
+    <div class="dim"></div>
+    <div class="progress"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 14</div></div>
+    <div class="check" id="check"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="tblock">
+      <div class="ttl">读书总结 · 高效人士的A3思考法：如何用一页A3纸锻炼解决问题的能力</div>
+      <div class="k">依据</div><div class="wide">原书全文及书中插图整理，未引入书外内容</div>
+      <div class="k">原著</div><div>〔日〕石井住枝</div><div class="k">译者</div><div>赵城立</div>
+      <div class="k last">存储</div><div class="wide last">勾选进度与 A3 填写内容只保存在本机浏览器</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ HOW-TO DRAWER ============ -->
+<button class="fab" id="fab" aria-haspopup="dialog" aria-controls="drawer"><span class="q">?</span>我要怎么做？<small>ROUTE</small></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" aria-hidden="true">
+  <div class="dr-head">
+    <div class="dr-top"><span class="sno">ROUTE</span><h3 id="drTitle">我要怎么做？</h3><button class="dr-x" id="drClose" aria-label="关闭">×</button></div>
+    <p class="dr-note">书中只有一种 A3：8 步的问题解决型（左侧计划、右侧实施后），没有提案型、报告型之分。书按职位分初级、中级、高级三篇讲用法，下面按此切换。每条都注明出处。</p>
+    <div class="dr-tabs" id="drTabs">
+      <button class="on" data-l="0">员工<small>第1~2章</small></button>
+      <button data-l="1">管理者<small>第3章</small></button>
+      <button data-l="2">经理<small>第4章</small></button>
+    </div>
+    <div class="dr-prog"><div class="track"><div class="fill" id="drFill"></div></div><span id="drTxt">0 / 0</span></div>
+  </div>
+  <div class="dr-body" id="drBody"></div>
+</aside>
+
+<script>
+const pad=n=>String(n).padStart(2,'0');
+
+/* ---------- A3 layout modes ---------- */
+const paper=document.getElementById('a3paper');
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('[data-mode]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  paper.classList.remove('blank','lined');
+  if(b.dataset.mode)paper.classList.add(b.dataset.mode);
+});
+
+/* ---------- quote numbering ---------- */
+document.querySelectorAll('#quoteList .quote').forEach((q,i)=>q.insertAdjacentHTML('afterbegin',`<span class="qn">NOTE ${pad(i+1)}</span>`));
+
+/* ---------- cases ---------- */
+const STEP=["主题","主题设定的背景","把握现状","目标的设定","要因解析","对策和实施","实施结果和横向展开","反省和今后的课题"];
+const CASES=[
+{lv:"初级",k:"第2章 · 初级篇",t:"理解“想要的是什么”",s:"情境：上司让你写一份开会通知",p:"只按命令的顺序做，或只顾拼命努力，就会忽略优先顺序、赶不上交货期，甚至优先做自己喜欢、容易出成绩的事。不清楚自己的位置和会议目的，就只能写出“只有表面形式的通知”。",
+st:[
+["握住自己所处的位置：明确任务分配和职责","写开会通知的真正目的，是让会议提高效率并产生成果。先搞清通知针对谁、谁要参加、想达到什么、主持人是谁。"],
+null,
+["正确把握现状：不是目标，而是要调查出现在的真实情况","是“销售部门主持、部长级参加的促销会议”，还是“开发部门主持、董事也参加的新商品会议”？目的是开出有成果的会，而不是写好通知书。"],
+["想象达成目标的状态：从目标出发反向制订计划","一个半月后的会要提前 1 个月发通知，写通知只有 2 周，就把这 2 周要做的事列表放进日程。只顾追求通知的质量而发晚了，反而会适得其反。"],
+["明确达到工作目的的问题点：到底有什么问题？追溯到真因是很重要的","彻底深挖“以何种程度的质量、针对谁、为什么要开会”，思考用什么方法让必须出席的人来参加。"],
+["为了达成目标，要从重要的事情开始实行：将目标与现实的差距落实到计划中去","期限前先做重要的事，分清“召开会议”与常规工作的优先顺序，边确认周围情况边做中间报告。"],
+["对实施前后进行比较并横向展开：在定型的业务上，加上改善的智慧，然后展开到其他部门","缺席者多，也许是通知发晚了。下次提前一周发通知、事先公开议程，把“作业”变成“工作”。"],
+["结束后要进行标准化：将解决的过程落实到检查表里","会后反省还缺什么，写进电脑里的检查表并持续更新，下次的开会通知就用新检查表。"]
+]},
+{lv:"初级",k:"第2章 · 初级篇",t:"掌握“准备能力”",s:"情境：B 先生同时做两件事就会大大变慢",p:"他不知道自己能做多少工作量，对工作的目测出错；目标水准和质量要求过高；事一多就恐慌，哪个都做不好，还容易只按自己的情况安排、忽视别人的安排。",
+st:[
+["明确目的：将目标进行简单明示","“请写会议通知”背后，是“希望会议尽量产生好的成果”。为消除误解，成员之间要给语言下定义并写出来共享。"],
+["将目标数据化，确认其背景：具体写出来","明确目标的数值，比如要取得相当于以前两倍的成果，在何时之前该做什么，让所有相关人员方向一致。"],
+["明确现状：将现在正在发生的事情如实地调查清楚","写出手头资料、上次的问题、谁能参与、成员能力、剩余时间。涉及公司外部人员或人数多的事项最优先，花时间长的次优先。"],
+["决定进度分配：基础数据调查的期限和总结时间的确保","做任务表、预估时间、适才适所分工；以为 5 分钟的事可能要 30 分钟，要留富余；调查时间与资料总结时间分开计算。"],
+["探究真因，追求本质问题：通过“5个为什么”来追寻本质","为什么要开这次会？以前的会议效果不好的原因是什么？不是不动脑子地照做，而是想怎样产生两倍成果。"],
+["按照预估时间实施并报告：边进行中间报告边实施","按第 4 步的预估实施；有中间报告，就能修正轨道、得到协助。不顺时找上司再沟通，充分利用周围资源。"],
+["检查实际花费的时间：对预估进行验证并得到其他方法等建议","会议室预约以为 5 分钟，选地方、定大小、确认设备可能要 1 个小时。养成验证预估时间的习惯。"],
+["结束后要制作检查表：将解决的过程标准化并找出下一个课题","把会议室一览表、预约地址、电话、负责人写进检查表，1 小时的事下次 10 分钟就够。把“验证”变为“对策”。"]
+]},
+{lv:"中级",k:"第3章 · 中级篇",t:"提高信息收集能力",s:"情境：为会议制作项目资料，做出讨论的主题",p:"领导首先要提示明确的目标设定，这需要正确的信息收集。要做出正确判断，就要把握现状，并做到能支撑高精度判断的多角度信息收集。",
+st:[
+["根据背景，决定必要的项目：目标的明确化","依据问题背景设定目标。只因成员“擅长”就定主题，成员得不到成长。要考虑读资料的人要做什么，以及公司经营方针。"],
+["将目标数据化：将背景具体明示出来","背景要在成员中共享：收集谁的信息？用在哪里？行业动向和目标需求在哪里？"],
+["面对应该达到的目标做什么：把握现状","先整理成员手头的信息，明确还缺什么。过分在意上司评价就会往好处解释，要接受不足的事实并数据化。"],
+["对任务分工做计划：将解决方法落实到日程表中","针对成员特点分工，从最终期限反向逆推；给出数值化的目标和期限，中途确认，偏离需求的数据要重做。"],
+["追求“本质问题点”：通过“5个为什么”来找到真因","主题是“开发新商品”，就追问为何必须开发：业绩、商品卖不动、不合时代需求、利润构造，还是日元升值推高原材料成本？"],
+["将新想法予以实施：报告、验证","验证信息的可信性，比如汽车资料上的油耗与实测值在不同环境下差多少；每一步都中间报告，边确认边推进。"],
+["结果的标准化和横向展开：对展开的优缺点进行总结","比较改善前后的优缺点，用一目了然的图表让裁决者容易判断，并标准化共享。"],
+["将有效果的做法标准化：课题留到下一次改善中","留下“足迹”：数据从哪里引用、根据什么收集，并提示下次的课题。"]
+]},
+{lv:"中级",k:"第3章 · 中级篇",t:"将想法变为现实",s:"情境：管理者 D 先生擅长近期计划，不会做长远计划",p:"他不知道如何进行轨道修正，原因是不能俯瞰社会发展大势、无法接受现实。面对新挑战会恐惧，优先眼前利益，重质不重速，也不放心把工作交给下属。",
+st:[
+["挑战比现在更高的目标：思考用一半时间来完成相同工作的方法","在交期、质量、价格等方面确认今年是否比去年高。“要站在比自己高2个职位的高度去面对工作。”"],
+["明确目标的背景：确认必要性","为何要用一半时间？还可考虑一半成本、一半人数、一半预算。新商品开发到底为了谁？目的是“为了顾客”。"],
+["正确把握现状：将现有实际情况如实写出来","明确现在花费的时间，如实调查目前做法，把商品开发的时间和作用分类别写出来；试着“怀疑”当前做法。"],
+["反向做计划：将想法落实到企划书中并制订计划","建立结果假说，制订执行计划和日程表；把企划书拿到会议上听取意见，并做模拟演示。"],
+["通过“5个为什么”找出真因：思考成本与效率的平衡","不只把 A 变成 A′ 或 A+，而是变成 B、C 甚至 Z。质疑“为何商品开发要花3个月”“为何工作都集中在一个部门里”。"],
+["将新想法予以实施：报告、验证","会议上其他部门的意见能帮助修正轨道，把它们反映出来并实际展开，这就是“执行力”；流程轨迹留在检查表里。"],
+["好的想法要横向展开并进行活用：展开类似想法","结果不好时重读企划书、准备好数据；也许把一个主题分成两个更易懂。为此要对会议说明做模拟演示。"],
+["将成果固化在体系中：课题留到下一次改善中","把相关部门的帮助标准化，完成“新商品开发构思检查表”，也可当新人指导书。管理者需要“卷入能力”。"]
+]},
+{lv:"中级",k:"第3章 · 中级篇",t:"提高团队的执行力",s:"情境：领导 E 先生一下子接很多工作，却分配不下去",p:"即使超过承受极限，他也自信能完成。领导亲自做也许能完成，但培育下属也是领导的工作；一个人的时间有限，还要考虑薪水与工作是否匹配。",
+st:[
+["要完成的是什么项目，要明确目标：数值目标的提示","提示具体数值目标，如“这次的A项目，推进销售额提高40%”，像指南针一样让全员朝同一方向前进。"],
+null,
+["把握团队成员的能力：调查出以前的做法","如果工作集中在领导处，就把这一点明确出来；把各成员的负担和负荷差距数据化，让所有人共享认识。"],
+["要对如何才能把事做好建立起执行计划：把握成员的强项和能力","掌握强项弱项，分配稍微超过能力又能达到的负荷，像身体“伸展”一样；建立能互补的团队，转成可执行的日程计划。"],
+["明确项目的优缺点：问题点的要因解析","比如修正问题需要设备投资、要花几个月，就连问为什么；其他部门的智慧或以前被否决的提案也许有用。到这里是 A3 左侧的“计划”。"],
+["通过中间报告边确认边实施：项目的推进状况也要确认","从这里开始是 A3 右侧。边中间报告边共享问题，中途必须回顾，及时纠正延迟和“被拖住后腿”。"],
+["反省并将其应用到下一次：知道团队的容量","这次用了外包，下次就自己做，把做法落实到手册；参加外部研修的人，回来要作为讲师给内部员工传授。"],
+["结束后找出课题：课题留到下一次改善中","为什么 B 项目会延迟？把课题找出来，知道团队的容量，再决定是否需要外援、今后该学什么。"]
+]},
+{lv:"高级",k:"第4章 · 高级篇",t:"促进团队的自立",s:"情境：经理忙起来，觉得“还是自己做起来快”",p:"无法把握成员的能力和容量，就不去托付工作、不培养下属，责任又要自己负，只好亲自出马。结果成员得不到成长，也建立不起信赖关系，形成负的螺旋。",
+st:[
+["推进目标共享：站在客户的视角","让成员自己思考并设定能接受的目标；不能只求完成项目，要“从公司角度转为顾客角度”。"],
+["共同认识问题点并提示背景：创造“场”","经理不是带领大家交流，而是创造可以共享问题、能相互竞争的“场”，让大家形成共同的问题认识。"],
+["将成员现有的工作量实现数据化：委任给团队领导","把成员的现状、能力、项目以外的负担全部数据化，决定团队领导并委以责任，列出每个团队该做的事。"],
+["设计出可以使团队执行力加速的机制：团队领导的培育","只说“任务交给你了”，领导不会动。要培育领导，相当于培养你的分身；经理做后台，先让领导体验到成功。"],
+["决定报告的时机：让成员来定规矩","成员不能自立的真正原因，也许是指示过多。决不能把问题推在某人身上。“说的话让他重复，做的事让他重复，还要追踪。”"],
+["调整报告时的问题点：要让所有成员都能互相追踪","如每天傍晚或每周五报告进展而非结果；最好由全体成员来定，做得快的帮做得慢的，经理在此基础上微调。"],
+["让大家理解实施前后的变化：要让其反省失败的问题点，并对改善点进行提案","用数值评价行动前后的变化，没做好的写出来，好的写进手册。"],
+["思考自己的问题点并反省：反映到公司整体的标准化上","经理要让团队成员拿出改善提案。为促进自立，先指派 1~3 个月一周期的项目，自立后再指派更长的。"]
+]},
+{lv:"高级",k:"第4章 · 高级篇",t:"激发成员的潜力",s:"情境：为什么自己发出了指示，下属却不行动？",p:"上一节是让人和组织动起来的“执行”，这一节是经理为提高自身领导力而进行的“学习”，包括交流能力，以及如何激发下属的潜力。",
+st:[
+["将成员不能发挥自己能力的原因找出来：实现自我觉醒","是不会表扬？焦急焦躁？还是他们没理解指示的意思？经理先调查团队不行动的原因。"],
+["以前不具备的背景是什么：思考只要有了什么条件就能做到","与成员一起讨论：什么情况下顺利、什么情况下不顺？是时间、人，还是自己的表达方式问题？"],
+["通过现地现物验证：在实际的现场进行确认","“用脚来赚钱”。话务中心、商铺、展台都是现场。丰田的董事只要有 30 分钟空闲，就会到现场去转一圈。"],
+["要明确目标达成所需的道具和技术：将下属执行的内容用具体数据提示出来","准备好达成目标所需的“材料和道具”，提示所需技能，明确“我要求这个团队做到这个水平”。"],
+["PDCA：建立起中间报告的体系并促使成员相互依赖","成员不能发挥能力的本质原因之一，是没有让 PDCA 运转的体系。成员不行动，也有经理方面的原因。"],
+["边确认边实施：建立起可以共享的体系","用聊天软件、网络微博或报告模板建立中间报告体系；经理主动约定时间地点，请下属来报告。"],
+["创造公开报告的机会：提高动机","项目结束后开“××项目的推进情况报告会”，让下属用自己的语言报告，接受表扬和质问，获得成功体验。"],
+["向全公司展开并使其继续改善：建立起能持续改善的体系","把报告会上评价好的内容向全公司展开并标准化。做无名英雄，这才是提高领导力的秘诀。"]
+]}
+];
+const tabs=document.getElementById('caseTabs');
+tabs.innerHTML=CASES.map((c,i)=>`<button class="tbtn${i?'':' on'}" data-c="${i}"><small>C-${pad(i+1)}</small>${c.lv} · ${c.t}</button>`).join('');
+function boxHTML(c,i){
+  const s=c.st[i];
+  if(!s)return `<div class="cbox merged"><div class="t"><span class="no">${i+1}</span><span><span class="nm">${STEP[i]}</span>书中与第${i}步合写</span></div></div>`;
+  return `<div class="cbox"><div class="t"><span class="no">${i+1}</span><span><span class="nm">${STEP[i]}</span>${s[0]}</span></div><p>${s[1]}</p></div>`;
+}
+function showCase(n){
+  const c=CASES[n];
+  document.getElementById('caseId').textContent='C-'+pad(n+1);
+  document.getElementById('caseK').textContent=c.k;
+  document.getElementById('caseT').textContent=c.t;
+  document.getElementById('caseS').textContent=c.s;
+  document.getElementById('caseP').textContent=c.p;
+  document.getElementById('caseCorner').textContent=`CASE ${pad(n+1)} / ${pad(CASES.length)}`;
+  const merged=!c.st[1];
+  document.getElementById('caseTheme').innerHTML=`<div class="t"><span class="no">1</span><span><span class="nm">${merged?'主题 + 主题设定的背景（书中合写）':'主题'}</span>${c.st[0][0]}</span></div><p>${c.st[0][1]}</p>`;
+  document.getElementById('caseL').innerHTML=[1,2,3,4].map(i=>boxHTML(c,i)).join('');
+  document.getElementById('caseR').innerHTML=[5,6,7].map(i=>boxHTML(c,i)).join('');
+}
+tabs.addEventListener('click',e=>{
+  const b=e.target.closest('[data-c]'); if(!b)return;
+  tabs.querySelectorAll('.tbtn').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  showCase(+b.dataset.c);
+});
+showCase(0);
+
+/* ---------- fill-in A3 ---------- */
+const FKEY='a3-form-v1';
+const form=document.getElementById('a3form');
+const data=JSON.parse(localStorage.getItem(FKEY)||'{}');
+const fields=[...form.querySelectorAll('[data-k]')];
+const tip=document.getElementById('savedTip');
+function syncPrint(el){const p=form.querySelector(`[data-p="${el.dataset.k}"]`);if(p)p.textContent=el.value}
+fields.forEach(el=>{if(data[el.dataset.k])el.value=data[el.dataset.k];syncPrint(el)});
+if(Object.values(data).some(v=>v))tip.textContent='已从本机恢复上次的内容';
+let tm;
+form.addEventListener('input',e=>{
+  const el=e.target; if(!el.dataset.k)return;
+  data[el.dataset.k]=el.value; syncPrint(el);
+  clearTimeout(tm); tm=setTimeout(()=>{localStorage.setItem(FKEY,JSON.stringify(data));tip.textContent='已自动保存 '+new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'})},300);
+});
+const INS={
+  s4:"何时：\n何地：\n谁：\n什么：\n为何：\n如何：\n多少：\n",
+  s5:"为什么①：\n为什么②：\n为什么③：\n为什么④：\n为什么⑤：\n→ 真因：\n",
+  s6:"对策：\n效果：\n成本、工时：\n风险：\n中间报告：\n"
+};
+form.querySelectorAll('.ins').forEach(b=>b.onclick=()=>{
+  const ta=form.querySelector(`[data-k="${b.dataset.ins}"]`);
+  ta.value=(ta.value&&!ta.value.endsWith('\n')?ta.value+'\n':ta.value)+INS[b.dataset.ins];
+  ta.dispatchEvent(new Event('input',{bubbles:true})); ta.focus();
+});
+document.getElementById('btnPrint').onclick=()=>{fields.forEach(syncPrint);window.print()};
+document.getElementById('btnClear').onclick=()=>{
+  if(!confirm('确定清空这张 A3 的全部内容？'))return;
+  fields.forEach(el=>{el.value='';syncPrint(el)});
+  for(const k in data)delete data[k];
+  localStorage.removeItem(FKEY); tip.textContent='已清空';
+};
+document.getElementById('btnTxt').onclick=()=>{
+  const g=k=>(data[k]||'').trim();
+  const lines=[`①主题：${g('theme')}`];
+  if(g('subtheme'))lines.push(`　副主题：${g('subtheme')}`);
+  lines.push(`日期：${g('date')}　责任人：${g('owner')}`,'');
+  ['s2','s3','s4','s5','s6','s7','s8'].forEach((k,i)=>lines.push(`${'②③④⑤⑥⑦⑧'[i]}${STEP[i+1]}`,g(k)||'（未填写）',''));
+  const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=(g('theme')||'我的A3报告书').slice(0,30)+'.txt'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+};
+
+/* ---------- checklist ---------- */
+const T=[
+["动手前，先用一句话写出主题","套用“在○○○用△△△做×××”，并确认活动内容与主题名称一致。","第1章 · 图1-2"],
+["写下真正目的与应有状态","再和现状对比，把差距“可视化”。目的是“开出有成果的会”，不是“写好通知”。","第1章 · 第2章"],
+["把笼统的大问题分解","按什么、何地、何时、谁一层层拆开，定出优先顺序，选出自己能参与的问题。","第1章 · 图1-4"],
+["亲自去现场看一次","“现地现物”观察流程，用定量、定性的事实说话，不只听汇报、看书面资料。","第1章 · 第4章"],
+["用 5W2H 排计划，从期限反向逆推","先定期限和要做的事，再分工，写进日程表。","第1章 · 第2章"],
+["预估时间时多留富余","自以为 5 分钟的事可能要 30 分钟；调查时间和资料总结时间分开算。","第2章 · 准备能力"],
+["优先安排涉及外部和人多的事","涉及公司外部人员或人数很多的事项最优先，花时间长的次优先。","第2章 · 准备能力"],
+["连问 5 次“为什么”找真因","以事实为基础，排除先入为主，不把问题推在某人身上。","第1章 · 第4章"],
+["对策过一遍三个视角","效果、成本和工时、风险；得到相关人员和相关部门同意后再推进。","第1章 · 对策和实施"],
+["边做边中间报告，接到指示先复述","报告进展而不是结果；“说的话让他重复，做的事让他重复，还要追踪。”","第2章 · 第4章"],
+["做完后对比前后，结果和流程都量化","从客户、公司、自己三个视角回顾，并检查实际花费的时间。","第1章 · 第2章"],
+["把有效做法写进检查表或手册","下次直接用并继续更新，再向其他团队、部门横向展开。","第1章 · 第2章"],
+["把没做成的写成下一个主题","知道团队的容量，决定下次是否需要外援、该学什么。","第1章 · 第3章"],
+["（带团队时）让下属当众报告成果","开“××项目的推进情况报告会”，让成员用自己的语言报告，经理做无名英雄。","第4章 · 激发成员的潜力"]
+];
+const KEY='a3-check-v1',saved=JSON.parse(localStorage.getItem(KEY)||'[]');
+const ck=document.getElementById('check');
+ck.innerHTML=T.map((t,i)=>`<label><input class="cbx" type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><span class="cid">CHK-${pad(i+1)}</span><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  localStorage.setItem(KEY,JSON.stringify(on));
+  document.getElementById('pfill').style.width=(on.length/T.length*100)+'%';
+  document.getElementById('ptxt').textContent=on.length+' / '+T.length;
+}
+ck.addEventListener('change',prog); prog();
+
+/* ---------- how-to drawer ---------- */
+const STAGES=[["今天就做","3 件 15 分钟内能完成的动作"],["第一周","要建立的做法"],["一个月后","要形成的习惯，以及怎么检验"],["卡住了怎么办","书中提到的常见障碍和对策"]];
+const ROUTE=[
+ [ /* 员工 */
+  [
+   ["拿手头一项工作，写一句话主题","套用“在○○○用△△△做×××”，确认活动内容与主题名称一致。直接写进下方的 <a href=\"#tool\" data-close>A3 模板</a>。","第1章 · 图1-2"],
+   ["写下这项工作的“真正目的”","想一想上司指示背后的意思：“请写会议通知”背后，是“希望会议尽量产生好的成果”。","第2章 · 准备能力 第1步"],
+   ["把现状一条条写出来","手头有什么资料？上次出了什么问题？谁可以参与？还剩多少时间？只写以前用过的方法，不写理想的方法。","第2章 · 准备能力 第3步"]
+  ],[
+   ["用 5W2H 排计划，从期限反向逆推","何时、何地、谁、什么、为何、如何、多少；涉及公司外部人员或人数多的事项最先安排。","第1章 · 第2章"],
+   ["每项任务写下预估时间并留富余","自己的工作量容易少估，以为 5 分钟的事可能要 30 分钟；调查时间和资料总结时间分开算。","第2章 · 准备能力 第4步"],
+   ["边做边中间报告","不能完全按计划走时，中间报告能修正轨道、得到协助；不顺就找上司再沟通。","第2章 · 准备能力 第6步"],
+   ["做完后记下实际花费的时间","和预估对比，养成验证预估时间的习惯。","第2章 · 准备能力 第7步"]
+  ],[
+   ["习惯：每次同类工作结束都更新检查表","检验：同类工作所需的时间是否在缩短。书中例子是会议室预约，从 1 小时缩到 10 分钟。","第2章 · 第8步"],
+   ["习惯：把“作业”变成“工作”","检验：能说出这次比上次改了什么，比如通知提前一周发、事先公开议程。","第2章 · 理解“想要的是什么”"],
+   ["检验：A3 右侧是否写完整","⑦里结果和流程都有量化数据，⑧里写出了下一个课题。","第1章 · 第7~8步"]
+  ],[
+   ["事情一多就恐慌，哪个都做不好","原因之一是不知道自己的工作量、目测出错。做任务表、预估时间，按涉及人数和外部人员排优先顺序。","第2章 · 准备能力"],
+   ["对质量要求过高，迟迟交不出","定出“何时之前、做到什么程度”。只顾追求通知的质量而发晚了，缺席的人会更多，反而适得其反。","第2章 · 理解“想要的是什么”"],
+   ["只按命令的顺序做，或先做自己喜欢的事","先搞清自己所处的位置和工作的目的，再从目标反向逆推先后顺序。","第2章 · 理解“想要的是什么”"],
+   ["失败了就自责消沉","用 A3 推进，就能冷静判断，思考怎样变得更好，形成“改善式思考”。","第2章 · 末尾"]
+  ]
+ ],
+ [ /* 管理者 */
+  [
+   ["给团队当前项目写一个带数值的主题","如“这次的A项目，推进销售额提高40%”，让全员朝同一个指南针前进。","第3章 · 提高团队的执行力"],
+   ["列出每个成员手上的工作量","看工作是否集中在自己身上，负荷差距有多大。","第3章 · 团队执行力 第3步"],
+   ["对项目的一个问题连问 5 次“为什么”","写下来。比如“为什么要开这个会？”“为什么要开发新商品？”……","第3章 · 信息收集能力 第5步"]
+  ],[
+   ["掌握每个人的强项和弱项再分工","分配稍微超过能力、又能达到的负荷；为不擅长的成员安排同伴或助手，组成互补的团队。","第3章 · 团队执行力 第4步"],
+   ["给出数值化的目标和期限","从最终期限反向逆推制订日程，中途确认，偏离需求的数据要重做。","第3章 · 信息收集能力 第4步"],
+   ["收集信息前先盘点","整理成员手头有什么、还缺什么；接受不足的事实并数据化，别往好的方向解释。","第3章 · 信息收集能力 第3步"],
+   ["挑战更高目标","想一想能不能用一半时间完成相同工作，并站在比自己高 2 个职位的视角审视资料。","第3章 · 将想法变为现实"]
+  ],[
+   ["习惯：项目结束就标准化、横向展开","检验：其他成员能否照着检查表做到同一水准，如“新商品开发构思检查表”。","第3章 · 将想法变为现实 第8步"],
+   ["习惯：资料留下“足迹”","写明数据从哪里引用、根据什么收集。检验：下次能直接复用。","第3章 · 信息收集能力 第8步"],
+   ["检验：外部的力量是否变成了内部的能力","外包过的事下次能否自己做；参加外部研修的人能否回来当讲师。","第3章 · 团队执行力 第7步"],
+   ["检验：能否说清团队的容量","项目为什么延迟、是否需要外援、今后该学什么。","第3章 · 团队执行力 第8步"]
+  ],[
+   ["自己揽下太多，分配不下去","培育下属也是领导的工作；从费用与效果看，信任下属、培养下属，才是团队领导应具备的能力。","第3章 · 提高团队的执行力"],
+   ["在意上司评价，把现状往好处说","接受现在不足的事实，并将其数据化；忽视现状，改善带来的变化和成果就会消失。","第3章 · 信息收集能力"],
+   ["只会做近期计划，不会轨道修正","怀疑“现在的做法真的好吗”，从完全不同的角度把 A 变成 B、C 甚至 Z。","第3章 · 将想法变为现实"],
+   ["团队里出现延迟、互相拖后腿","中途必须回顾，边中间报告边检查推进，就能及时纠正。","第3章 · 团队执行力 第6步"]
+  ]
+ ],
+ [ /* 经理 */
+  [
+   ["写下“下属为什么不行动”的可能原因","是不会表扬？焦急焦躁？还是对方没理解指示？先自我觉醒。","第4章 · 激发成员的潜力 第1步"],
+   ["抽 30 分钟到现场转一圈","与现场人员对话。丰田的董事只要有 30 分钟空闲，就会到现场去转一圈。","第4章 · 激发成员的潜力 第3步"],
+   ["今天布置任务时，请对方复述一遍","“说的话让他重复，做的事让他重复，还要追踪。”","第4章 · 促进团队的自立 第5步"]
+  ],[
+   ["创造可以共享问题的“场”","与成员一起讨论什么情况下顺利、什么情况下不顺，让大家形成共同的问题认识。","第4章 · 两节第2步"],
+   ["把成员的工作量数据化，任命团队领导","连同能力和项目以外的负担一起把握，再委以责任，列出每个团队该做的事。","第4章 · 促进团队的自立 第3步"],
+   ["让成员自己定报告的时机","如每天傍晚或每周五，报告进展而不是结果，便于互相追踪。","第4章 · 促进团队的自立 第6步"],
+   ["准备好材料和道具，讲清要求的水平","提示所需技能，明确“我要求这个团队做到这个水平”。","第4章 · 激发成员的潜力 第4步"]
+  ],[
+   ["先指派 1~3 个月一周期的项目","检验：团队能否不靠你推动就按时完成；自立后再指派更长的项目。","第4章 · 促进团队的自立 第8步"],
+   ["项目结束后开推进情况报告会","让下属用自己的语言报告。检验：成员是否更自信、工作更积极。","第4章 · 激发成员的潜力 第7步"],
+   ["让团队成员拿出改善提案","把报告会上评价好的内容向全公司展开并标准化。","第4章 · 两节第8步"]
+  ],[
+   ["觉得“还是自己做起来快”","经理什么都自己做，成员不成长、信赖建立不起来，会形成负的螺旋。要培养团队领导，建立能自立的机制。","第4章 · 促进团队的自立"],
+   ["说了“交给你了”，领导却不动","要培育领导，经理做后台，先让他体验到成功；不给顾客添麻烦的前提下，也可以让他体验失败。","第4章 · 促进团队的自立 第4步"],
+   ["成员迟迟不能自立","真正原因也许是指示过多。追究真因时，决不能把问题推在某人身上。","第4章 · 促进团队的自立 第5步"],
+   ["下属不来报告","没有建立体系，不能看成下属的原因。准备好道具和体系，主动说“下周一能否到这里来做个报告”。","第4章 · 激发成员的潜力 第6步"]
+  ]
+ ]
+];
+const HKEY='a3-howto-v1';
+const hsaved=new Set(JSON.parse(localStorage.getItem(HKEY)||'[]'));
+const drawer=document.getElementById('drawer'),scrim=document.getElementById('scrim'),fab=document.getElementById('fab'),drBody=document.getElementById('drBody');
+let lvl=0;
+function renderRoute(){
+  const r=ROUTE[lvl];
+  drBody.innerHTML=r.map((items,si)=>{
+    const stuck=si===3;
+    return `<div class="stage${stuck?' stuck':''}"><div class="stage-h"><span class="sn">${si+1}</span><b>${STAGES[si][0]}</b><small>${pad(items.length)} 项</small></div><div class="stage-d">${STAGES[si][1]}</div>`+
+      items.map((it,ii)=>{
+        const id=`${lvl}-${si}-${ii}`;
+        if(stuck)return `<div class="hw"><div><div class="ht">${it[0]}</div><div class="hd">${it[1]}</div><div class="hs">出处：${it[2]}</div></div></div>`;
+        return `<label class="hw"><input class="cbx" type="checkbox" data-h="${id}" ${hsaved.has(id)?'checked':''}><div><div class="ht">${it[0]}</div><div class="hd">${it[1]}</div><div class="hs">出处：${it[2]}</div></div></label>`;
+      }).join('')+`</div>`;
+  }).join('');
+  hprog();
+}
+function hprog(){
+  const all=drBody.querySelectorAll('[data-h]'),on=drBody.querySelectorAll('[data-h]:checked');
+  document.getElementById('drFill').style.width=(all.length?on.length/all.length*100:0)+'%';
+  document.getElementById('drTxt').textContent=`${on.length} / ${all.length}`;
+}
+drBody.addEventListener('change',e=>{
+  const id=e.target.dataset.h; if(!id)return;
+  e.target.checked?hsaved.add(id):hsaved.delete(id);
+  localStorage.setItem(HKEY,JSON.stringify([...hsaved])); hprog();
+});
+drBody.addEventListener('click',e=>{if(e.target.closest('[data-close]'))closeDr()});
+document.getElementById('drTabs').addEventListener('click',e=>{
+  const b=e.target.closest('[data-l]'); if(!b)return;
+  document.querySelectorAll('#drTabs button').forEach(x=>x.classList.toggle('on',x===b));
+  lvl=+b.dataset.l; renderRoute(); drBody.scrollTop=0;
+});
+function openDr(){drawer.classList.add('open');scrim.classList.add('open');drawer.setAttribute('aria-hidden','false');document.body.classList.add('lock');setTimeout(()=>document.getElementById('drClose').focus(),50)}
+function closeDr(){drawer.classList.remove('open');scrim.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('lock');fab.focus({preventScroll:true})}
+fab.onclick=openDr; scrim.onclick=closeDr; document.getElementById('drClose').onclick=closeDr;
+addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('open'))closeDr()});
+renderRoute();
+
+/* ---------- reveal & nav ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('nav.top a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  let k=0; secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<120)k=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===k));
+},{passive:true});
+</script>
+</body>
+</html>
