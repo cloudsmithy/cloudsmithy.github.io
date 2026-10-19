@@ -309,7 +309,7 @@ details.toc[open] summary::after{transform:rotate(45deg)}
 .check{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .check label{--cut:12px;display:flex;gap:14px;align-items:flex-start;padding:15px 18px;cursor:pointer;transition:.2s}
 .check label:hover{border-color:var(--cy)}
-.check input,.dw-step input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border:2px solid var(--ink3);margin-top:2px;display:grid;place-items:center;transition:.15s;cursor:pointer;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));background:transparent}
+.check input,.dw-step input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border:2px solid var(--ink3);margin-top:2px;display:grid;place-items:center;transition:background-color .15s,border-color .15s;cursor:pointer;border-radius:3px;background:transparent}
 .check input:checked,.dw-step input:checked{background:var(--grad2);border-color:transparent}
 .check input:checked::after,.dw-step input:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
 .check label:has(input:checked),.dw-step:has(input:checked){opacity:.55}
@@ -400,7 +400,7 @@ body.dw-open{overflow:hidden}
   .sec-head .big{font-size:60px}
   .dot{width:30px;height:30px}
   .hero{padding-top:48px}
-  .hero h1{font-size:40px}
+  .hero h1{font-size:34px}
   .thread a{font-size:13px;padding:6px 14px 6px 10px}
   .fab{right:14px;bottom:14px;padding:12px 18px 12px 14px;font-size:14px}
   .matrix-wrap{grid-template-columns:24px 1fr}

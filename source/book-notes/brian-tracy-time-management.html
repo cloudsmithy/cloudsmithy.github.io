@@ -103,7 +103,7 @@ main{margin-left:var(--sw)}
 .sec .intro{color:var(--ink2);max-width:760px;margin-top:8px}
 
 .gain{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
-.gain div{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;box-shadow:var(--shadow);border-top:4px solid var(--gold)}
+.gain>div{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;box-shadow:var(--shadow);border-top:4px solid var(--gold)}
 .gain .v{font-family:var(--lat);font-weight:900;font-size:34px;color:var(--gold);line-height:1}
 .gain .v small{font-size:15px;margin-left:3px;font-family:var(--sans);font-weight:700}
 .gain b{display:block;font-family:var(--head);font-size:16.5px;margin-top:10px}
@@ -197,11 +197,11 @@ textarea.f{min-height:96px;resize:vertical;line-height:1.6}
 .timer .clock{font-family:var(--lat);font-weight:900;font-size:40px;color:var(--gold);min-width:120px;font-variant-numeric:tabular-nums;line-height:1}
 .timer .msg{font-size:14px;color:var(--ink2);font-weight:600}
 .fields{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
-.out{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
-.out .o{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.out{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.out .o{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
 .out .o .v{font-family:var(--lat);font-weight:900;font-size:22px;color:var(--gold);line-height:1.2;font-variant-numeric:tabular-nums}
 .out .o .k{font-size:12px;color:var(--ink3)}
-.out .o.wide{grid-column:span 2;background:var(--pine);border-color:var(--pine)}
+.out .o.wide{flex:2 1 310px;background:var(--pine);border-color:var(--pine)}
 .out .o.wide .v{color:var(--chalk);font-size:30px}
 .out .o.wide .k{color:rgba(238,244,240,.75)}
 .out .o.wide.lt{background:var(--paper);border-color:var(--line)}
@@ -235,7 +235,7 @@ textarea.f{min-height:96px;resize:vertical;line-height:1.6}
 .task .t span{flex:1;word-break:break-word}
 .task .rk{font-family:var(--lat);font-weight:900;color:var(--gold);font-size:12px;flex:none !important;margin-top:1px}
 .task.frog{border-color:var(--gold);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 25%,transparent)}
-.task .ft{display:inline-block;font-size:10.5px;background:var(--gold);color:var(--on-gold);border-radius:5px;padding:0 6px;margin-left:4px;font-weight:800}
+.task .ft{display:inline-block;white-space:nowrap;font-size:10.5px;background:var(--gold);color:var(--on-gold);border-radius:5px;padding:0 6px;margin-left:4px;font-weight:800}
 .task.done .t span,.kE .task .t span{text-decoration:line-through;color:var(--ink3)}
 .task .ops{display:flex;gap:3px;margin-top:5px;flex-wrap:wrap}
 .task .ops button{border:1px solid var(--line);background:transparent;color:var(--ink3);border-radius:6px;font-size:11px;padding:0 6px;cursor:pointer;font-family:inherit;line-height:1.7}
@@ -244,27 +244,27 @@ textarea.f{min-height:96px;resize:vertical;line-height:1.6}
 
 /* skills self-rating */
 .skills{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;margin-top:10px}
-.sk{display:grid;grid-template-columns:1fr 140px 26px;gap:10px;align-items:center;font-size:14px;padding:6px 0;border-bottom:1px dashed color-mix(in srgb,var(--gold) 25%,transparent)}
-.sk input{accent-color:var(--gold);width:100%}
-.sk output{font-family:var(--lat);font-weight:900;color:var(--gold);text-align:right}
-.sk.low span{color:var(--gold);font-weight:800}
-.sk .wk{display:none;font-size:11.5px;font-weight:800;color:var(--on-gold);background:var(--gold);border-radius:5px;padding:0 6px;margin-left:6px;white-space:nowrap}
-.sk.weak .wk{display:inline-block}
+.skr{display:grid;grid-template-columns:1fr 140px 26px;gap:10px;align-items:center;font-size:14px;padding:6px 0;border-bottom:1px dashed color-mix(in srgb,var(--gold) 25%,transparent)}
+.skr input{accent-color:var(--gold);width:100%}
+.skr output{font-family:var(--lat);font-weight:900;color:var(--gold);text-align:right}
+.skr.low>span{color:var(--gold);font-weight:800}
+.skr .wk{display:none;font-size:11.5px;font-weight:800;color:var(--on-gold);background:var(--gold);border-radius:5px;padding:0 6px;margin-left:6px;white-space:nowrap}
+.skr.weak .wk{display:inline-block}
 
 /* homework */
-.hw{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.hw label{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;font-size:14px;line-height:1.6;transition:.2s;height:100%}
-.hw label:hover{border-color:var(--gold)}
-.hw .no{flex:none;font-family:var(--lat);font-weight:900;color:var(--ink3);font-size:12px;width:16px;padding-top:2px}
+.hwl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hwl label{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;font-size:14px;line-height:1.6;transition:.2s;height:100%}
+.hwl label:hover{border-color:var(--gold)}
+.hwl .no{flex:none;font-family:var(--lat);font-weight:900;color:var(--ink3);font-size:12px;width:16px;padding-top:2px}
 .ck{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;border:2px solid var(--ink3);border-radius:6px;margin:2px 0 0;display:grid;place-items:center;cursor:pointer;transition:.15s;background:transparent}
 .ck:checked{background:var(--gold);border-color:var(--gold)}
 .ck:checked::after{content:"";width:5px;height:10px;border:solid var(--on-gold);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.hw label:has(.ck:checked){background:var(--goldS);border-color:transparent}
-.hw label:has(.ck:checked) .tx{color:var(--ink3);text-decoration:line-through}
+.hwl label:has(.ck:checked){background:var(--goldS);border-color:transparent}
+.hwl label:has(.ck:checked) .tx{color:var(--ink3);text-decoration:line-through}
 
 /* visual widgets inside slides */
 .bigrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
-.bigrow div{background:var(--chalkL);border-radius:12px;padding:14px}
+.bigrow>div{background:var(--chalkL);border-radius:12px;padding:14px}
 .bigrow .v{font-family:var(--lat);font-weight:900;font-size:30px;color:var(--chalk);line-height:1}
 .bigrow .v small{font-size:13px;font-family:var(--sans);margin-left:3px}
 .bigrow span{display:block;font-size:13px;color:var(--chalk3);margin-top:6px;line-height:1.5}
@@ -284,12 +284,12 @@ textarea.f{min-height:96px;resize:vertical;line-height:1.6}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .split .slide+.slide{margin-top:0}
 .mx{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.mx div{border-radius:12px;padding:14px 16px;background:var(--chalkL);min-height:120px}
-.mx div .m{font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--chalk)}
-.mx div b{display:block;font-size:17px;margin:2px 0 4px}
-.mx div p{margin:0;font-size:13px;color:var(--chalk3);line-height:1.6}
-.mx div.best{background:var(--chalk)}
-.mx div.best .m,.mx div.best b,.mx div.best p{color:#13201a}
+.mx>div{border-radius:12px;padding:14px 16px;background:var(--chalkL);min-height:120px}
+.mx>div .m{font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--chalk)}
+.mx>div b{display:block;font-size:17px;margin:2px 0 4px}
+.mx>div p{margin:0;font-size:13px;color:var(--chalk3);line-height:1.6}
+.mx>div.best{background:var(--chalk)}
+.mx>div.best .m,.mx>div.best b,.mx>div.best p{color:#13201a}
 .mxax{display:flex;justify-content:space-between;font-size:11.5px;color:var(--chalk3);letter-spacing:.15em;margin-top:6px}
 .lad{display:flex;flex-direction:column;gap:6px;margin-top:14px}
 .lad div{display:grid;grid-template-columns:44px 100px 1fr;gap:14px;align-items:center;background:var(--chalkL);border-radius:12px;padding:9px 14px}
@@ -371,10 +371,10 @@ footer{margin-top:72px;padding:36px 0 110px;border-top:1px solid var(--line);fon
 .howbtn .ic{width:28px;height:28px;border-radius:50%;background:var(--on-gold);color:var(--gold);display:grid;place-items:center;font-family:var(--lat);font-weight:900;font-size:15px}
 .howbtn .cnt{font-family:var(--lat);font-weight:900;font-size:12px;opacity:.8}
 .howmask{position:fixed;inset:0;background:rgba(5,12,9,.5);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
-.howpanel{position:fixed;top:0;right:0;bottom:0;width:min(470px,100%);background:var(--bg);z-index:81;transform:translateX(104%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-24px 0 60px rgba(0,0,0,.3);visibility:hidden}
+.howpanel{position:fixed;top:0;right:0;bottom:0;width:min(470px,100%);background:var(--bg);z-index:81;transform:translateX(104%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
 body.how{overflow:hidden}
 body.how .howmask{opacity:1;pointer-events:auto}
-body.how .howpanel{transform:none;visibility:visible}
+body.how .howpanel{transform:none;box-shadow:-24px 0 60px rgba(0,0,0,.3)}
 body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 .howhead{background:var(--slide);color:#fff;padding:22px 24px 18px;position:relative}
 .howhead .k{font-family:var(--lat);font-weight:900;letter-spacing:.2em;font-size:11px;color:var(--chalk)}
@@ -420,7 +420,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
   .wrap{padding:0 22px}
   .gain,.syl{grid-template-columns:1fr 1fr}
   .lanes{grid-template-columns:repeat(3,1fr)}
-  .fields,.out{grid-template-columns:1fr 1fr}
+  .fields{grid-template-columns:1fr 1fr}
   .bigrow{grid-template-columns:1fr 1fr}
   .split{grid-template-columns:1fr}
   .chain{flex-direction:column}
@@ -429,7 +429,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
   .skills{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  .kps,.hw,.final,.qwall,.row2,.gain,.syl,.lanes{grid-template-columns:1fr}
+  .kps,.hwl,.final,.qwall,.row2,.gain,.syl,.lanes{grid-template-columns:1fr}
   .lh{grid-template-columns:1fr}
   .lh .num{grid-row:auto;font-size:72px}
   .slide{padding:22px 18px}
@@ -442,10 +442,9 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
   .files.mo{grid-template-columns:repeat(7,1fr)}
   .day{font-size:10px}
   .wk3 span{font-size:9px}
-  .sk{grid-template-columns:1fr 100px 24px;font-size:13.5px}
+  .skr{grid-template-columns:1fr 100px 24px;font-size:13.5px}
   .udiv{flex-direction:column;align-items:flex-start;gap:8px}
   .cert{flex-direction:column;align-items:flex-start}
-  .out .o.wide{grid-column:1/-1}
   .mx{grid-template-columns:1fr}
   .eq{font-size:13.5px}
   .howbtn{right:14px;bottom:14px;padding:10px 15px 10px 11px;font-size:14.5px}
@@ -598,7 +597,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="1"><li>选一个能靠时间管理变得更高效的领域，下决心立刻投入</li><li>开始新任务前，在脑海中重演自己曾经表现出色的画面</li><li>重复自我肯定，如“我可以高效地利用时间”</li><li>想象周围的人都视你为高效的榜样，以这种心态做事</li><li>设想你在给朋友讲时间管理课，最想传授的核心是什么</li><li>在已经做得很好的领域，制订计划做出更大成绩</li><li>此刻就下决心不断练习，成为本领域最高效的人，然后立刻行动</li></ul>
+      <ul class="hwl reveal" data-l="1"><li>选一个能靠时间管理变得更高效的领域，下决心立刻投入</li><li>开始新任务前，在脑海中重演自己曾经表现出色的画面</li><li>重复自我肯定，如“我可以高效地利用时间”</li><li>想象周围的人都视你为高效的榜样，以这种心态做事</li><li>设想你在给朋友讲时间管理课，最想传授的核心是什么</li><li>在已经做得很好的领域，制订计划做出更大成绩</li><li>此刻就下决心不断练习，成为本领域最高效的人，然后立刻行动</li></ul>
     </div>
   </section>
 
@@ -646,7 +645,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="2"><li>用现在时写下未来一年在各领域要实现的十个目标</li><li>选出对生活影响最积极的那一个，写在一张新纸顶端</li><li>给它定完成时间，必要时定各阶段时间表</li><li>列出所有能帮助实现它的事，想到新的就加上去</li><li>把清单整理成计划：哪个最重要，哪个最首要</li><li>写清要克服的障碍、要学的知识技能、能帮忙的人</li><li>从最重要的目标开始，每天迈进一步，永不放弃</li></ul>
+      <ul class="hwl reveal" data-l="2"><li>用现在时写下未来一年在各领域要实现的十个目标</li><li>选出对生活影响最积极的那一个，写在一张新纸顶端</li><li>给它定完成时间，必要时定各阶段时间表</li><li>列出所有能帮助实现它的事，想到新的就加上去</li><li>把清单整理成计划：哪个最重要，哪个最首要</li><li>写清要克服的障碍、要学的知识技能、能帮忙的人</li><li>从最重要的目标开始，每天迈进一步，永不放弃</li></ul>
     </div>
   </section>
 
@@ -666,7 +665,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
           <div class="roilb"><span>计划</span><span>节省</span></div>
           <p class="cap">即 <span class="hi">1000%</span> 的回报。“除此之外，你还能从什么地方获得 1000% 的投资回报率？”开工前列一张清单，第一天效率就提高 25%。</p>
         </div>
-        <div class="slide"><div class="sk">板书 3.2</div><h4>45-文件体系：管住未来 24 个月</h4>
+        <div class="slide"><div class="sk">板书 3.2</div><h4>45-文件体系：管住 24 个月</h4>
           <div class="files" id="files45"></div><div class="files mo" id="files45m"></div>
           <div class="lg"><span><i style="background:rgba(244,200,74,.55)"></i>31 份：每月 1–31 日</span><span><i style="background:rgba(255,255,255,.45)"></i>12 份：1–12 月</span><span><i style="background:var(--chalk)"></i>2 份：未来两年</span></div>
           <p class="cap">一个能放 14 个文件夹、共 45 份文档的盒子。六个月后的任务放进那个月；每月初把当月任务分进 1–31 日；每天查看当天那份。</p>
@@ -696,7 +695,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="3"><li>下决心成为公司里最有条理的人，重复“我在做每件事时都是有序高效的”</li><li>开工前写下所有任务；新任务先加进清单再做</li><li>准备一种用着顺手的时间规划工具，投入时间学会它</li><li>收拾办公室和办公桌，保持整洁，做别人的榜样</li><li>开工前备齐所需物品，桌上每次只放一项重要任务</li><li>一次只做一项工作；委派、延期、扔掉还是立即处理，果断决定</li><li>分秒必争，特别是在航空旅途中</li></ul>
+      <ul class="hwl reveal" data-l="3"><li>下决心成为公司里最有条理的人，重复“我在做每件事时都是有序高效的”</li><li>开工前写下所有任务；新任务先加进清单再做</li><li>准备一种用着顺手的时间规划工具，投入时间学会它</li><li>收拾办公室和办公桌，保持整洁，做别人的榜样</li><li>开工前备齐所需物品，桌上每次只放一项重要任务</li><li>一次只做一项工作；委派、延期、扔掉还是立即处理，果断决定</li><li>分秒必争，特别是在航空旅途中</li></ul>
     </div>
   </section>
 
@@ -773,7 +772,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="4"><li>下决心熟练设定和处理优先级，不允许例外，直到成为习惯</li><li>每天开工前列清单，用 ABCDE 法标注，一定从 A-1 开始</li><li>把 80/20 用到工作和生活的每个方面，先关注那 20%</li><li>找出工作和个人成功的核心限制因素，想办法移除</li><li>思考做或不做的潜在影响，区分紧急与重要</li><li>确定你比别人做得更快、更好、更轻松的优势领域</li><li>每小时问一次：“此刻对时间最有价值的利用是什么？”</li></ul>
+      <ul class="hwl reveal" data-l="4"><li>下决心熟练设定和处理优先级，不允许例外，直到成为习惯</li><li>每天开工前列清单，用 ABCDE 法标注，一定从 A-1 开始</li><li>把 80/20 用到工作和生活的每个方面，先关注那 20%</li><li>找出工作和个人成功的核心限制因素，想办法移除</li><li>思考做或不做的潜在影响，区分紧急与重要</li><li>确定你比别人做得更快、更好、更轻松的优势领域</li><li>每小时问一次：“此刻对时间最有价值的利用是什么？”</li></ul>
     </div>
   </section>
 
@@ -817,7 +816,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="5"><li>提前拟订计划，备齐所需，下定决心集中精神</li><li>把同类任务组合起来依次处理，利用学习曲线</li><li>从事回报最大的工作，无论投入的是智力、情感还是体力</li><li>在不被打扰的环境里长时间工作，造出大块时间</li><li>为每件任务设截止日期，完成后奖励自己</li><li>培养紧迫感，以平稳的节奏连续工作到完成</li><li>经常提醒自己“回去工作”</li></ul>
+      <ul class="hwl reveal" data-l="5"><li>提前拟订计划，备齐所需，下定决心集中精神</li><li>把同类任务组合起来依次处理，利用学习曲线</li><li>从事回报最大的工作，无论投入的是智力、情感还是体力</li><li>在不被打扰的环境里长时间工作，造出大块时间</li><li>为每件任务设截止日期，完成后奖励自己</li><li>培养紧迫感，以平稳的节奏连续工作到完成</li><li>经常提醒自己“回去工作”</li></ul>
     </div>
   </section>
 
@@ -861,7 +860,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="6"><li>在做中学：挑一个对生活有积极影响的项目，用本课方法完成</li><li>开始每项工作前，先确定成功完成的理想结果</li><li>列出出色完成项目所需的每个要素和步骤</li><li>画出项目计划表，按顺序排好每项任务和行动</li><li>召集能帮忙的人，商讨每个细节</li><li>练习危机预测，在问题发生前找到解决办法</li><li>对关键任务承担全部责任，成为杰出的任务管理者</li></ul>
+      <ul class="hwl reveal" data-l="6"><li>在做中学：挑一个对生活有积极影响的项目，用本课方法完成</li><li>开始每项工作前，先确定成功完成的理想结果</li><li>列出出色完成项目所需的每个要素和步骤</li><li>画出项目计划表，按顺序排好每项任务和行动</li><li>召集能帮忙的人，商讨每个细节</li><li>练习危机预测，在问题发生前找到解决办法</li><li>对关键任务承担全部责任，成为杰出的任务管理者</li></ul>
     </div>
   </section>
 
@@ -907,7 +906,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="7"><li>下决心把使你远离成功的时间浪费减到最低</li><li>每次开会前做计划，每项议题以任务安排和时限收尾</li><li>别做电话铃声的奴隶，为每通工作电话安排时间</li><li>工作时专心工作，不让闲谈打断</li><li>尽快做决定，准备接受反馈并修正</li><li>问题或危机发生时，弄清事实、分析，再采取措施</li><li>加快脚步，培养紧迫感，专注于结果</li></ul>
+      <ul class="hwl reveal" data-l="7"><li>下决心把使你远离成功的时间浪费减到最低</li><li>每次开会前做计划，每项议题以任务安排和时限收尾</li><li>别做电话铃声的奴隶，为每通工作电话安排时间</li><li>工作时专心工作，不让闲谈打断</li><li>尽快做决定，准备接受反馈并修正</li><li>问题或危机发生时，弄清事实、分析，再采取措施</li><li>加快脚步，培养紧迫感，专注于结果</li></ul>
     </div>
   </section>
 
@@ -953,7 +952,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="8"><li>选一项被拖延拖累的重要工作，下决心用所学方法完成</li><li>写下完成它需要的每一个步骤</li><li>找出清单上最重要的一项，备齐材料，开始并完成</li><li>设定一个具体时间段，全身心投入直到完成</li><li>把复杂任务分块，一次只专注解决一块</li><li>百分之百承担起开始并完成的使命，拒绝找借口</li><li>想象自己带着紧迫感工作，不断重复“现在就去做！”</li></ul>
+      <ul class="hwl reveal" data-l="8"><li>选一项被拖延拖累的重要工作，下决心用所学方法完成</li><li>写下完成它需要的每一个步骤</li><li>找出清单上最重要的一项，备齐材料，开始并完成</li><li>设定一个具体时间段，全身心投入直到完成</li><li>把复杂任务分块，一次只专注解决一块</li><li>百分之百承担起开始并完成的使命，拒绝找借口</li><li>想象自己带着紧迫感工作，不断重复“现在就去做！”</li></ul>
     </div>
   </section>
 
@@ -1000,7 +999,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="9"><li>致力于终身学习，为此付出所需的金钱和时间</li><li>建立自己的图书馆，每天学点新知识</li><li>从现在开始在开车时收听录音节目</li><li>上一门公开演讲课，学会有效、有说服力地演讲</li><li>学习速读和更高效的阅读</li><li>加入行业团体或协会，融入进去并帮助他人</li><li>每天至少早起一小时，用黄金时间充实自己</li></ul>
+      <ul class="hwl reveal" data-l="9"><li>致力于终身学习，为此付出所需的金钱和时间</li><li>建立自己的图书馆，每天学点新知识</li><li>从现在开始在开车时收听录音节目</li><li>上一门公开演讲课，学会有效、有说服力地演讲</li><li>学习速读和更高效的阅读</li><li>加入行业团体或协会，融入进去并帮助他人</li><li>每天至少早起一小时，用黄金时间充实自己</li></ul>
     </div>
   </section>
 
@@ -1059,7 +1058,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="10"><li>把别人能做的一切都交给时薪低于你期望的人去做</li><li>极其清楚地说明要做什么、什么标准、什么日期前完成</li><li>向员工说明他们被聘用的原因和最有价值的工作</li><li>让员工了解公司现状和与其工作有关的一切</li><li>布置任务后，一定让对方复述你说的话</li><li>推行员工参与管理，每周开员工大会，请每个人提出问题</li><li>员工是你最大的财富，不断寻找更清晰的沟通方式</li></ul>
+      <ul class="hwl reveal" data-l="10"><li>把别人能做的一切都交给时薪低于你期望的人去做</li><li>极其清楚地说明要做什么、什么标准、什么日期前完成</li><li>向员工说明他们被聘用的原因和最有价值的工作</li><li>让员工了解公司现状和与其工作有关的一切</li><li>布置任务后，一定让对方复述你说的话</li><li>推行员工参与管理，每周开员工大会，请每个人提出问题</li><li>员工是你最大的财富，不断寻找更清晰的沟通方式</li></ul>
     </div>
   </section>
 
@@ -1106,7 +1105,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="11"><li>掌控你的销售生涯，下决心把与客户面谈的时间翻倍</li><li>制定具体到年、月、周、日乃至小时的销售和收入目标</li><li>只做付得起期望时薪的工作，其他委派、推迟或取消</li><li>计划好勘察、行动和跟进，训练自己每天投入工作</li><li>为每个销售电话做足准备和功课</li><li>按地域规划销售，别开着车满城跑</li><li>利用所有时间工作，别在咖啡和午饭上浪费时间</li></ul>
+      <ul class="hwl reveal" data-l="11"><li>掌控你的销售生涯，下决心把与客户面谈的时间翻倍</li><li>制定具体到年、月、周、日乃至小时的销售和收入目标</li><li>只做付得起期望时薪的工作，其他委派、推迟或取消</li><li>计划好勘察、行动和跟进，训练自己每天投入工作</li><li>为每个销售电话做足准备和功课</li><li>按地域规划销售，别开着车满城跑</li><li>利用所有时间工作，别在咖啡和午饭上浪费时间</li></ul>
     </div>
   </section>
 
@@ -1160,7 +1159,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 
     <div class="blk">
       <div class="bh reveal"><span class="tag hw">课后作业 <small>HOMEWORK</small></span><span class="note">原书本章“实践训练”7 条</span></div>
-      <ul class="hw reveal" data-l="12"><li>眼光长远：向前计划 5–10 年，从各方面设计理想的生活</li><li>为经济独立制订详细计划：你需要多少钱？</li><li>做你热爱的工作，规划生活去实现梦想</li><li>审视你的感情，确保余生快乐；如果不是，打算怎么改变</li><li>健康饮食、锻炼、休息，让自己活到 90 岁甚至更久</li><li>多做重要的，少做不重要的，开始没做的，停止不需要的</li><li>把家庭放在生活的中心，其他一切围绕它展开</li></ul>
+      <ul class="hwl reveal" data-l="12"><li>眼光长远：向前计划 5–10 年，从各方面设计理想的生活</li><li>为经济独立制订详细计划：你需要多少钱？</li><li>做你热爱的工作，规划生活去实现梦想</li><li>审视你的感情，确保余生快乐；如果不是，打算怎么改变</li><li>健康饮食、锻炼、休息，让自己活到 90 岁甚至更久</li><li>多做重要的，少做不重要的，开始没做的，停止不需要的</li><li>把家庭放在生活的中心，其他一切围绕它展开</li></ul>
     </div>
   </section>
 
@@ -1199,7 +1198,7 @@ body.how .howbtn,body.open .howbtn{opacity:0;pointer-events:none}
 <!-- ===== 我要怎么做？ ===== -->
 <button class="howbtn" id="howBtn" type="button" aria-controls="howPanel" aria-expanded="false"><span class="ic">?</span>我要怎么做？<span class="cnt" id="howBtnCnt"></span></button>
 <div class="howmask" id="howMask"></div>
-<aside class="howpanel" id="howPanel" role="dialog" aria-modal="true" aria-labelledby="howTitle" aria-hidden="true">
+<aside class="howpanel" id="howPanel" role="dialog" aria-modal="true" aria-labelledby="howTitle" aria-hidden="true" inert>
   <div class="howhead">
     <div class="k">ACTION PLAN · 按书里的方法</div>
     <h3 id="howTitle">我要怎么做？</h3>
@@ -1228,7 +1227,7 @@ $('lifebars').innerHTML=life.map(x=>`<div class="hb"><span class="lb">${x[0]}</s
 /* ---------- homework + final checklist + progress ---------- */
 const KEY='tp-course-v1';let done=new Set(LS.get(KEY,[]));
 const counts={};
-document.querySelectorAll('ul.hw').forEach(ul=>{
+document.querySelectorAll('ul.hwl').forEach(ul=>{
   const l=ul.dataset.l;counts[l]=0;
   [...ul.children].forEach((li,i)=>{
     const id=l+'-'+i,txt=li.innerHTML;counts[l]++;
@@ -1345,7 +1344,7 @@ const meet=()=>{$('mOut').textContent=fmt(num('mPpl')*num('mRate')*num('mLen'))}
 /* ---------- L10/11: hourly ---------- */
 function calc(){
   const inc=num('cInc'),wk=num('cWk')||1,day=num('cDay')||1,hr=num('cHr')||1,hours=wk*day*hr;
-  $('cOut1').innerHTML=box(`你的时薪（÷ 每年 ${fmt(hours)} 工时）`,fmt(inc/hours),'wide')+box('月收入',fmt(inc/12))+box('周收入',fmt(inc/wk))+box('日收入',fmt(inc/wk/day),'wide lt');
+  $('cOut1').innerHTML=box(`你的时薪（÷ 每年 ${fmt(hours)} 工时）`,fmt(inc/hours),'wide')+box('月收入',fmt(inc/12))+box('周收入',fmt(inc/wk))+box('日收入',fmt(inc/wk/day));
   const rate=num('cRate')/100,deal=num('cDeal'),m=num('cMeet')||1,c=num('cCall')||1;let o='';
   if(rate>0){const s=inc/rate;o+=box('年销售额',fmt(s))+box('月销售额',fmt(s/12))+box('周销售额',fmt(s/wk))+box('日销售额',fmt(s/wk/day))}
   if(deal>0){const d=inc/deal;o+=box('每年要成交',fmt(d))+box('每月要成交',fmt(d/12))+box('每天面谈',fmt(d*m/(wk*day)))+box('每天要打的电话',fmt(d*m*c/(wk*day)))}
@@ -1373,9 +1372,9 @@ function calc(){
 (function(){
   const S=['勘察：获得与潜在客户面谈的机会','建立信任、融洽的关系','辨别需求','展示产品','解答客户的疑虑','完成交易','二次交易，建立客户网'];
   let v=LS.get('tp-skills',S.map(()=>5));if(!Array.isArray(v)||v.length!==S.length)v=S.map(()=>5);
-  $('skills').innerHTML=S.map((s,i)=>`<div class="sk"><span>${i+1}. ${s}<em class="wk" style="font-style:normal">先练这项</em></span><input type="range" min="1" max="10" value="${v[i]}" aria-label="${s}"><output>${v[i]}</output></div>`).join('');
+  $('skills').innerHTML=S.map((s,i)=>`<div class="skr"><span>${i+1}. ${s}<em class="wk" style="font-style:normal">先练这项</em></span><input type="range" min="1" max="10" value="${v[i]}" aria-label="${s}"><output>${v[i]}</output></div>`).join('');
   function upd(){
-    const rows=[...document.querySelectorAll('#skills .sk')],vals=rows.map(r=>+r.querySelector('input').value),min=Math.min(...vals),mi=vals.indexOf(min);
+    const rows=[...document.querySelectorAll('#skills .skr')],vals=rows.map(r=>+r.querySelector('input').value),min=Math.min(...vals),mi=vals.indexOf(min);
     rows.forEach((r,i)=>{r.querySelector('output').textContent=vals[i];r.classList.toggle('low',vals[i]<7);r.classList.toggle('weak',i===mi&&min<10)});
     LS.set('tp-skills',vals);
   }
@@ -1441,8 +1440,8 @@ $('ageIn').addEventListener('input',age);age();
   $('howReset').onclick=()=>{hd=new Set();LS.set(HK,[]);body.querySelectorAll('[data-hid]').forEach(c=>c.checked=false);hprog()};
   hprog();
   const panel=$('howPanel'),btn=$('howBtn');let lastFocus=null;
-  function open(){lastFocus=document.activeElement;document.body.classList.remove('open');document.body.classList.add('how');panel.setAttribute('aria-hidden','false');btn.setAttribute('aria-expanded','true');setTimeout(()=>$('howClose').focus(),60)}
-  function close(){if(!document.body.classList.contains('how'))return;document.body.classList.remove('how');panel.setAttribute('aria-hidden','true');btn.setAttribute('aria-expanded','false');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  function open(){lastFocus=document.activeElement;document.body.classList.remove('open');document.body.classList.add('how');panel.setAttribute('aria-hidden','false');panel.inert=false;btn.setAttribute('aria-expanded','true');setTimeout(()=>$('howClose').focus(),60)}
+  function close(){if(!document.body.classList.contains('how'))return;document.body.classList.remove('how');panel.setAttribute('aria-hidden','true');panel.inert=true;btn.setAttribute('aria-expanded','false');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
   btn.onclick=open;document.querySelectorAll('[data-open-how]').forEach(b=>b.onclick=open);
   $('howClose').onclick=close;$('howMask').onclick=close;
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){close();document.body.classList.remove('open')}});

@@ -499,8 +499,14 @@ footer{padding:80px 0 90px;border-top:1px solid var(--line);font-family:var(--mo
   .chk{columns:1}
   .ch{grid-template-columns:1fr;gap:2px}
   .t td:first-child{width:auto}
+  .t thead{display:none}
+  .t tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+  .t td{display:block;padding:3px 0;border:none}
+  .t td:first-child{font-size:18px;margin-bottom:4px}
+  .tlw .tl,.tlw .tlx{min-width:620px}
   .pg{grid-template-columns:36px 1fr 1fr}
-  .pg .side{display:none}
+  .pg .side{display:none!important}
+  .day24{font-size:10px}
   .bar .brand{display:none}
   .srow{grid-template-columns:62px 1fr 64px}
   .srow .hrs{display:none}
@@ -850,8 +856,7 @@ html[data-theme=light] .ov{background:rgba(10,15,28,.28)}
     <p class="lede f">伟大的思想家很少打乱自己的工作习惯。曼森·卡里编录了大量作家的日常后总结：等待灵感来袭是非常非常糟糕的计划。大卫·布鲁克斯的话更直接：“伟大的创造性头脑如艺术家般思考，却如会计般工作。”</p>
     <div class="f gap2">
       <div class="sub-h">达尔文写《物种起源》时的一个上午</div>
-      <div class="tl" id="darwin"></div>
-      <div class="tlx" id="darwinAx"></div>
+      <div class="tlw" style="overflow-x:auto"><div class="tl" id="darwin"></div><div class="tlx" id="darwinAx"></div></div>
       <p class="note">据他儿子弗朗西斯回忆；午间散步要到想出满意的答案才停。罗伯特·卡罗的纽约办公室则“每一英寸空间都是按规则来布置的”，连穿什么去上班都固定。</p>
     </div>
     <div class="cols c3 gap3 f">
