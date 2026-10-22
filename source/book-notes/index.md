@@ -15,6 +15,10 @@ toc: false
 - [GTD 一张图](/book-notes/gtd-trilogy-map.html)：把《搞定》Ⅰ、Ⅱ、Ⅲ 合并去重，横轴是掌控的五个步骤，纵轴是视角的六个层面。
 - [搞定 · GTD](/book-notes/getting-things-done.html)：配套的 GTD 小工具，收集、理清、下一步行动、项目和每周回顾都能直接用。
 
+{% hideToggle GTD 一张图 · 长图版 %}
+![GTD 一张图：搞定三部曲合并去重](/book-notes/gtd-trilogy-map.png)
+{% endhideToggle %}
+
 ## 时间与专注
 
 - [博恩·崔西的时间管理课](/book-notes/brian-tracy-time-management.html)：12 节课。先写下目标、每天按清单工作，用 80/20 和 ABCDE 挑出最有价值的那件事。
