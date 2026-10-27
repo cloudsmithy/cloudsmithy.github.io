@@ -15,11 +15,11 @@ toc: false
 abbrlink: d6c7214b
 ---
 
-懒猫微服推荐了**瓦力方程**和**山特**的 UPS。我手里还有一台山特 TG-BOX 850 在服役，所以这次入手了瓦力方程 W180。
+懒猫微服官方推荐了**瓦力方程**和**山特**的 UPS。我手里还有一台山特 TG-BOX 850 在服役，所以这次入手了瓦力方程 W180。
 
 ![](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/image-20260926225221685.png)
 
-首先，这个盒子的做工真的很好。全铝 CNC，不光颜值高，手感也很好，第一感觉就喜欢。巴掌大小，也很轻。
+首先，这个盒子的做工真的很好。全铝 CNC，不光颜值高，手感也很好，第一感觉就喜欢。巴掌大小，也很轻。而且是直流供电，所以线就会整洁一些。
 
 ![2931a5ac91d7c6e73874c8f0f1d85898](https://raw.githubusercontent.com/cloudsmithy/picgo-imh/master/2931a5ac91d7c6e73874c8f0f1d85898.jpg)
 
