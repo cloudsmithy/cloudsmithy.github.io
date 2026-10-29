@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>起床后的黄金1小时 · 日出版读书总结</title>
+<style>
+:root{
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Helvetica Neue","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --num:"SF Pro Display","Helvetica Neue",-apple-system,"PingFang SC",sans-serif;
+  --r:18px;
+  --sun1:#ffd27a; --sun2:#ff9a4d; --sun3:#ff5e3a;
+  --q-red1:#c8322b; --q-red2:#e8634a;
+  --q-grn1:#1d7442; --q-grn2:#3a9a5c;
+  --q-blu1:#1b6aa8; --q-blu2:#3d8bcb;
+  --q-blk1:#23212e; --q-blk2:#3d3a4d;
+}
+/* 两种“天色”：深色天空上的玻璃卡 / 亮色天空上的纸卡 */
+.dk{--t1:#f5f3ff;--t2:#d3cfee;--t3:#a7a3cf;--acc:#ffb36b;--acc2:#ffd27a;--card:rgba(255,255,255,.075);--cb:rgba(255,255,255,.14);--soft:rgba(255,255,255,.07);--onacc:#2a1406;--shadow:0 10px 30px rgba(0,0,10,.25);--field:rgba(255,255,255,.08)}
+.lt{--t1:#25150a;--t2:#56402f;--t3:#6e5444;--acc:#c2410c;--acc2:#b45309;--card:rgba(255,255,255,.74);--cb:rgba(150,90,40,.17);--soft:rgba(194,65,12,.07);--onacc:#fff;--shadow:0 10px 30px rgba(120,60,20,.10);--field:rgba(255,255,255,.85)}
+@media (prefers-color-scheme:dark){
+  .lt{--t1:#f7efe6;--t2:#d9c9ba;--t3:#a8968a;--acc:#ffb36b;--acc2:#ffd27a;--card:rgba(255,255,255,.065);--cb:rgba(255,255,255,.12);--soft:rgba(255,255,255,.06);--onacc:#2a1406;--shadow:0 10px 30px rgba(0,0,0,.3);--field:rgba(255,255,255,.07)}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased;background:#fffdf6;color:#25150a}
+@media (prefers-color-scheme:dark){body{background:#17100b}}
+a{color:inherit}
+h1,h2,h3,h4{font-weight:600;line-height:1.35;margin:0;letter-spacing:.01em}
+p{margin:.4em 0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.sec{color:var(--t1);background:linear-gradient(180deg,var(--g1),var(--g2));padding:84px 0 88px;position:relative}
+.small{font-size:13px;color:var(--t3)}
+.muted{color:var(--t2)}
+b.hl{color:var(--acc)}
+.num{font-family:var(--num);font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+/* ---------- 天色渐变（随滚动由夜到昼） ---------- */
+#overview{--g1:#050920;--g2:#111944}
+#hour{--g1:#111944;--g2:#272a6a}
+#color{--g1:#272a6a;--g2:#4f3478}
+#zx{--g1:#4f3478;--g2:#8d4578}
+#chapters{--g1:#f6a77e;--g2:#fde0ad}
+#quotes{--g1:#fde0ad;--g2:#fff0d0}
+#planner{--g1:#fff0d0;--g2:#fff7e8}
+#todo{--g1:#fff7e8;--g2:#fffdf6}
+@media (prefers-color-scheme:dark){
+  #overview{--g1:#02040f;--g2:#0a0f2e}
+  #hour{--g1:#0a0f2e;--g2:#171944}
+  #color{--g1:#171944;--g2:#2b1e4b}
+  #zx{--g1:#2b1e4b;--g2:#462449}
+  #chapters{--g1:#4a2621;--g2:#2c1b12}
+  #quotes{--g1:#2c1b12;--g2:#22160f}
+  #planner{--g1:#22160f;--g2:#1c130d}
+  #todo{--g1:#1c130d;--g2:#17100b}
+}
+
+/* ---------- nav ---------- */
+nav.top{position:sticky;top:0;z-index:60;transition:background .4s,color .4s,border-color .4s;backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px)}
+nav.top.dk{background:rgba(6,10,32,.72);border-bottom:1px solid rgba(255,255,255,.08);color:#f5f3ff}
+nav.top.lt{background:rgba(255,248,236,.78);border-bottom:1px solid rgba(150,90,40,.14);color:#25150a}
+@media (prefers-color-scheme:dark){nav.top.lt{background:rgba(28,19,13,.78);border-bottom-color:rgba(255,255,255,.08);color:#f7efe6}}
+nav.top .wrap{display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{font-weight:600;margin-right:auto;white-space:nowrap;display:flex;align-items:center;gap:10px;padding-right:14px}
+.sundot{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#fff3c4,var(--sun2) 60%,var(--sun3));box-shadow:0 0 12px rgba(255,160,80,.8);flex:none}
+.skyclock{font-family:var(--num);font-weight:300;font-variant-numeric:tabular-nums;font-size:14px;opacity:.75;margin-left:2px}
+nav.top a{text-decoration:none;font-size:14px;padding:6px 12px;border-radius:999px;white-space:nowrap;opacity:.78;transition:.2s}
+nav.top a:hover,nav.top a.on{opacity:1;background:var(--soft)}
+nav.top.dk a.on{background:rgba(255,255,255,.12)}
+nav.top.lt a.on{background:rgba(194,65,12,.1)}
+
+/* ---------- hero ---------- */
+#overview{margin-top:-56px;padding:126px 0 70px;overflow:hidden;text-align:center}
+.stars{position:absolute;inset:0;pointer-events:none;opacity:.9;
+  background-image:radial-gradient(1.4px 1.4px at 8% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 18% 30%,#fff 50%,transparent 51%),radial-gradient(1.2px 1.2px at 27% 8%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 36% 22%,#dfe3ff 50%,transparent 51%),radial-gradient(1.6px 1.6px at 47% 6%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 58% 18%,#fff 50%,transparent 51%),radial-gradient(1.3px 1.3px at 66% 9%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 75% 26%,#dfe3ff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 85% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 93% 32%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 4% 42%,#fff 50%,transparent 51%),radial-gradient(1.2px 1.2px at 96% 50%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 13% 58%,#c9cdf5 50%,transparent 51%),radial-gradient(1px 1px at 88% 64%,#c9cdf5 50%,transparent 51%)}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.18em;color:var(--t2);border:1px solid var(--cb);padding:4px 14px;border-radius:999px;background:var(--card);position:relative}
+.hero-t{font-size:clamp(40px,7vw,80px);font-weight:700;letter-spacing:.03em;margin-top:22px;position:relative}
+.hero-t .g{background:linear-gradient(90deg,#ffe3a3,#ffab62 55%,#ff7a52);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{color:var(--t2);font-size:15px;margin-top:6px;position:relative}
+
+/* dial */
+.dial{position:relative;max-width:860px;margin:30px auto 0}
+.dial svg{width:100%;height:auto;display:block;overflow:visible}
+.dial .tk{stroke:rgba(255,255,255,.35);stroke-width:2}
+.dial .tk.l{stroke:rgba(255,255,255,.7);stroke-width:2.5}
+.dial .tl{fill:#c9c6ea;font:500 17px var(--num);text-anchor:middle}
+.dial .hl1{fill:#ffe0a8;font:600 26px var(--sans);text-anchor:middle}
+.dial .hl2{fill:#d9d5f3;font:400 16px var(--sans);text-anchor:middle}
+.dial .hl1.b{fill:#ffb08a}
+.clockline{display:flex;justify-content:center;align-items:baseline;gap:18px;flex-wrap:wrap;margin-top:-6px;position:relative}
+.clockline .big{font-size:clamp(56px,10vw,112px);line-height:1;color:#fff4dc;text-shadow:0 0 30px rgba(255,170,90,.35)}
+.clockline .rng{font-size:15px;color:var(--t2);font-family:var(--num);font-variant-numeric:tabular-nums}
+.phase{margin:10px auto 0;font-size:15px;color:var(--t1);background:var(--card);border:1px solid var(--cb);display:inline-block;padding:6px 16px;border-radius:999px;position:relative}
+.phase i{font-style:normal;color:var(--acc)}
+.legend2{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:860px;margin:24px auto 0;text-align:left;position:relative}
+.legend2 div{background:var(--card);border:1px solid var(--cb);border-radius:14px;padding:14px 18px;font-size:14.5px;color:var(--t2)}
+.legend2 b{display:block;color:var(--t1);font-size:16px;margin-bottom:2px}
+.legend2 .sw{display:inline-block;width:28px;height:8px;border-radius:4px;margin-right:8px;vertical-align:middle}
+.lead{font-size:clamp(16px,1.9vw,19px);color:var(--t2);max-width:780px;margin:30px auto 0;position:relative}
+.lead strong{color:var(--t1)}
+.intro{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:16px;margin-top:48px;text-align:left;position:relative}
+
+/* ---------- common ---------- */
+.card{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.dk .card{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.card h4{font-size:17px;margin-bottom:6px;color:var(--t1)}
+.card p,.card li{font-size:14.5px;color:var(--t2)}
+.card ul,.card ol{margin:6px 0 0;padding-left:1.2em}
+.card .k{font-size:12px;color:var(--acc);font-weight:700;letter-spacing:.12em;display:block;margin-bottom:4px}
+.card b{color:var(--t1)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sec-head{display:flex;align-items:flex-end;gap:22px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head .idx{font-size:88px;line-height:.82;color:var(--acc);opacity:.55}
+.sec-head .tag{font-size:13px;color:var(--acc);font-weight:600;letter-spacing:.12em}
+.sec-head h2{font-size:clamp(28px,4vw,40px);color:var(--t1)}
+.thesis{font-size:clamp(17px,2vw,20px);line-height:1.8;color:var(--t1);border-left:3px solid var(--acc);padding:4px 0 4px 20px;margin:0 0 34px;max-width:920px;opacity:.95}
+h3.sub{font-size:21px;margin:50px 0 18px;display:flex;align-items:flex-start;gap:12px;color:var(--t1);flex-wrap:wrap}
+h3.sub::before{content:"";width:22px;height:2px;background:var(--acc);border-radius:2px;flex:none;margin-top:.68em}
+h3.sub .n{align-self:center}
+h3.sub .n{font-size:13px;color:var(--t3);font-weight:400}
+
+/* hour */
+.halves{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.half .when{font-family:var(--num);font-size:42px;font-weight:200;color:var(--acc2);line-height:1}
+.half.b .when{color:#ff9e7a}
+.half h4{font-size:18px;margin:8px 0 2px}
+.mini{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.mini div{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--t2)}
+.mini div::before{content:attr(data-n);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--acc2);color:var(--onacc);font-weight:700;font-size:13px;font-family:var(--num)}
+.half.b .mini div::before{background:#ff9e7a}
+.mini b{display:block;color:var(--t1);font-size:15px}
+.pomo{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px}
+.pomo span{height:24px;border-radius:6px;font-size:12px;display:grid;place-items:center;font-weight:600;font-family:var(--num)}
+.pomo .w{background:rgba(255,255,255,.22);color:var(--t1);width:90px}.pomo .r{background:rgba(255,255,255,.08);color:var(--t2);width:26px}
+.pomo .L{color:var(--t2);width:110px;border:1px dashed var(--t3)}
+.pomo .x{background:var(--acc2);color:var(--onacc);width:120px}.pomo .y{background:#ff8a5c;color:#2a1406;width:120px}
+.where .t{font-family:var(--num);font-weight:200;font-size:34px;color:var(--acc2);line-height:1.1;margin-bottom:6px}
+.where .card{padding:18px}
+.where b{display:block;font-size:15.5px;margin-bottom:4px}
+.where span{font-size:13.5px;color:var(--t2);line-height:1.65;display:block}
+.np{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;counter-reset:n}
+.np.c4{grid-template-columns:repeat(4,1fr)}
+.np.c5{grid-template-columns:repeat(5,1fr)}
+.np>div{background:var(--card);border:1px solid var(--cb);border-radius:14px;padding:16px;counter-increment:n;font-size:14px;color:var(--t2)}
+.np>div::before{content:counter(n,decimal-leading-zero);display:block;font-family:var(--num);font-weight:200;font-size:30px;line-height:1;color:var(--acc);margin-bottom:8px}
+.np>div.nonum::before{content:"→";font-weight:300}
+.np b{display:block;color:var(--t1);font-size:15.5px;margin-bottom:4px}
+.ladder{display:flex;flex-direction:column;gap:8px}
+.rung{display:grid;grid-template-columns:150px 1fr 1.1fr;align-items:center;gap:16px;background:var(--card);border:1px solid var(--cb);border-radius:14px;padding:14px 18px;position:relative;overflow:hidden}
+.rung::before{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--w)*1%);background:linear-gradient(90deg,rgba(255,180,100,.0),rgba(255,180,100,.16));z-index:0}
+.rung>*{position:relative;z-index:1}
+.rung .alt{font-weight:600;font-size:17px;color:var(--acc2)}
+.rung .alt small{display:block;font-weight:400;font-size:12px;color:var(--t3)}
+.rung .what b{font-size:15px}
+.rung .what span{display:block;font-size:13.5px;color:var(--t2)}
+.rung .eg{font-size:13.5px;color:var(--t2)}
+
+/* ---------- 四扇晨光窗 ---------- */
+.mx-wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start}
+.winbox{position:relative}
+.axes-top{display:grid;grid-template-columns:44px 1fr 1fr;gap:0;font-size:13px;color:var(--t2);text-align:center;margin-bottom:8px;letter-spacing:.2em}
+.winrow{display:grid;grid-template-columns:44px 1fr;align-items:stretch}
+.vlab{writing-mode:vertical-rl;letter-spacing:.35em;font-size:13px;color:var(--t2);display:grid;place-items:center}
+.window{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;padding:12px;border-radius:22px;background:linear-gradient(160deg,#4a3428,#2c1e17);box-shadow:0 0 0 1px rgba(255,220,180,.15),0 20px 60px rgba(255,140,80,.18),inset 0 0 0 2px rgba(255,255,255,.04)}
+.pane{position:relative;border-radius:12px;padding:18px 18px 16px;min-height:182px;color:#fff;overflow:hidden;background:linear-gradient(150deg,var(--p1),var(--p2))}
+.pane::before{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.06) 32%,transparent 33%,transparent 60%,rgba(255,255,255,.06) 61%,transparent 70%);pointer-events:none}
+.pane::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(255,230,180,.35),transparent 70%);pointer-events:none}
+.pane .no{position:absolute;right:14px;top:10px;font-family:var(--num);font-weight:200;font-size:44px;line-height:1;opacity:.45}
+.pane .cl{font-size:12px;letter-spacing:.12em;opacity:.9;position:relative}
+.pane h4{font-size:28px;letter-spacing:.1em;color:#fff;position:relative;margin:2px 0}
+.pane p{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.92);position:relative;margin-top:6px;max-width:92%}
+.pane.r{--p1:var(--q-red1);--p2:var(--q-red2)}
+.pane.g{--p1:var(--q-grn1);--p2:var(--q-grn2)}
+.pane.bl{--p1:var(--q-blu1);--p2:var(--q-blu2)}
+.pane.bk{--p1:var(--q-blk1);--p2:var(--q-blk2)}
+.ratio{display:flex;height:40px;border-radius:10px;overflow:hidden;font-size:13px;font-weight:600;margin:10px 0 6px;color:#fff}
+.ratio div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+.ratio .g{flex:70;background:var(--q-grn2)}.ratio .r{flex:10;background:var(--q-red2)}.ratio .bl{flex:10;background:var(--q-blu2)}.ratio .bk{flex:10;background:var(--q-blk2)}
+.seed{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.seed div{background:linear-gradient(160deg,rgba(232,99,74,.22),rgba(232,99,74,.08));border:1px solid rgba(255,140,110,.28);border-radius:14px;padding:14px;font-size:13.5px;color:var(--t2);line-height:1.65}
+.seed b{display:block;color:#ffb39c;font-size:15px;margin-bottom:4px}
+.steps12{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;counter-reset:s;margin-top:10px}
+.steps12 div{counter-increment:s;background:var(--soft);border-radius:10px;padding:10px 12px 10px 40px;font-size:13.5px;color:var(--t2);position:relative}
+.steps12 div::before{content:counter(s);position:absolute;left:12px;top:9px;font-family:var(--num);font-weight:300;color:var(--acc)}
+.nest{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.nest div{display:grid;grid-template-columns:58px 1fr;gap:12px;align-items:center;background:var(--soft);border-radius:10px;padding:9px 14px;font-size:14px;color:var(--t2)}
+.nest i{font-style:normal;font-size:12px;font-weight:700;text-align:center;border-radius:6px;padding:2px 0;color:#fff}
+.i-r{background:var(--q-red2)}.i-g{background:var(--q-grn2)}.i-b{background:var(--q-blu2)}.i-k{background:var(--q-blk2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+details.faq{background:var(--card);border:1px solid var(--cb);border-radius:14px;margin-top:8px;overflow:hidden}
+details.faq summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--t1)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";font-size:22px;font-weight:300;color:var(--acc);transition:.2s;flex:none}
+details.faq[open] summary::after{transform:rotate(45deg)}
+details.faq .fb{padding:0 18px 16px;font-size:14.5px;color:var(--t2)}
+
+/* zx map */
+.zx-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:start}
+.zmapc{padding:16px}
+.zmap{position:relative;aspect-ratio:1.25/1;border-radius:12px;overflow:hidden;background:rgba(10,8,30,.25)}
+.zmap .grid-l{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)) 50% 0/1px 100% no-repeat,linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)) 0 50%/100% 1px no-repeat}
+.zmap .ql{position:absolute;font-size:12px;color:var(--t2);line-height:1.45}
+.zmap .bub{position:absolute;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;text-align:center;font-weight:600;font-size:15px;line-height:1.35;transition:transform .3s,box-shadow .3s;color:#24140a}
+.zmap .bub.on{transform:translate(-50%,-50%) scale(1.12);box-shadow:0 0 0 4px rgba(20,10,40,.6),0 0 0 7px var(--acc2),0 0 30px rgba(255,200,120,.6)}
+.bub.inv{background:#f5c400;width:26%;aspect-ratio:1.4/1}
+.bub.wk{background:#d63a30;color:#fff!important;width:26%;aspect-ratio:1.4/1}
+.bub.pe{background:#9ccc65;width:26%;aspect-ratio:1.4/1}
+.bub.sc{background:#1b74c0;color:#fff!important;width:22%;aspect-ratio:.72/1}
+.zmap .now{position:absolute;right:6%;bottom:14%;font-size:13px;font-weight:700;background:#fff4dc;color:#2a1406;padding:3px 10px;border-radius:999px}
+.zax{display:flex;justify-content:space-between;font-size:12px;color:var(--t3);margin-top:8px;padding:0 2px;gap:8px;flex-wrap:wrap}
+.zax b{color:var(--t1);font-weight:600}
+.ztest{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ztest .card{padding:14px 16px}
+.ztest h4{font-size:15px;margin-bottom:6px}
+.ztest h4 em{display:block;font-style:normal;font-size:12px;color:var(--t3);font-weight:400}
+.ztest label{display:flex;gap:8px;font-size:13px;color:var(--t2);line-height:1.5;padding:3px 0;cursor:pointer}
+.ztest input{accent-color:#ffb36b;margin-top:3px;flex:none}
+.zres{margin-top:12px;background:linear-gradient(90deg,rgba(255,179,107,.22),rgba(255,179,107,.08));border:1px solid rgba(255,179,107,.35);border-radius:14px;padding:14px 16px;font-size:14.5px;color:var(--t1)}
+.zres .small{color:var(--t2)}
+
+/* sunrise band between night & day */
+.horizon{height:300px;position:relative;overflow:hidden;background:linear-gradient(180deg,#8d4578 0%,#c8607a 38%,#ee8a74 70%,#f6a77e 100%)}
+.horizon .sun{position:absolute;left:50%;bottom:-150px;width:300px;height:300px;margin-left:-150px;border-radius:50%;background:radial-gradient(circle at 50% 45%,#fff6d8 0%,#ffd98a 38%,#ffab5e 70%,rgba(255,150,90,0) 72%);filter:drop-shadow(0 0 60px rgba(255,200,120,.75));transform:translateY(var(--rise,60px));transition:transform .2s linear}
+.horizon .glow{position:absolute;left:0;right:0;bottom:0;height:120px;background:radial-gradient(ellipse at 50% 100%,rgba(255,230,170,.6),transparent 70%)}
+.horizon .line{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,240,210,.9),transparent)}
+.horizon .cap{position:absolute;left:0;right:0;top:34px;text-align:center;color:#fff7ea;font-size:15px;letter-spacing:.4em;text-shadow:0 1px 8px rgba(60,20,50,.5)}
+@media (prefers-color-scheme:dark){.horizon{background:linear-gradient(180deg,#462449 0%,#6a2f45 45%,#7a3a2c 80%,#4a2621 100%)}.horizon .sun{opacity:.85}}
+
+/* chapters */
+.chap-h{display:flex;align-items:baseline;gap:16px;margin:58px 0 16px;flex-wrap:wrap}
+.chap-h.first{margin-top:6px}
+.chap-h .no{font-size:52px;line-height:1;color:var(--acc)}
+.chap-h h3{font-size:24px;color:var(--t1)}
+.chap-h .one{font-size:14.5px;color:var(--t2);flex-basis:100%;margin-top:2px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:18px 18px 16px;box-shadow:var(--shadow)}
+.stat .v{font-family:var(--num);font-size:46px;font-weight:200;color:var(--acc);line-height:1}
+.stat .v small{font-size:16px;font-weight:400;margin-left:3px}
+.stat .k{font-size:13.5px;color:var(--t2);margin-top:8px;line-height:1.55}
+.mult{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px}
+.mult .bx{background:var(--soft);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--t2)}
+.mult .bx b{display:block;font-size:15px}
+.mult .op{font-family:var(--num);font-size:30px;font-weight:200;color:var(--acc)}
+.mult .res{font-family:var(--num);font-size:46px;font-weight:200;color:var(--acc);line-height:1}
+.sleep{padding:20px 22px}
+.sl-row{display:grid;grid-template-columns:150px 1fr 96px;gap:14px;align-items:center;padding:8px 0;border-top:1px solid var(--cb);font-size:13.5px}
+.sl-row:first-child{border-top:none}
+.sl-row .lb{color:var(--t1)}
+.sl-row .lb small{display:block;color:var(--t3);font-size:12px}
+.sl-track{position:relative;height:22px;background:var(--soft);border-radius:6px;overflow:hidden}
+.sl-bar{position:absolute;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#2b2f7a,#7a4a9a 45%,#ff9a4d)}
+.sl-bar.fz{background:repeating-linear-gradient(45deg,#ff9a4d 0 6px,rgba(255,154,77,.5) 6px 12px)}
+.sl-row .hr{text-align:right;color:var(--t2);font-family:var(--num);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sl-axis{display:grid;grid-template-columns:150px 1fr 96px;gap:14px;font-size:11.5px;color:var(--t3);font-family:var(--num);margin-top:4px}
+.sl-axis .ax{display:flex;justify-content:space-between;white-space:nowrap}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);overflow:hidden;font-size:14.5px}
+.cmp th,.cmp td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--cb)}
+.cmp tr:last-child td{border-bottom:none}
+.cmp thead th{font-size:14.5px;background:var(--soft);color:var(--t1)}
+.cmp td:first-child{color:var(--acc);font-weight:600;white-space:nowrap;width:150px}
+.cmp td{color:var(--t2)}
+.cmp td small{display:block;font-weight:400;color:var(--t3)}
+.skm{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.skm .card{position:relative;overflow:hidden}
+.skm .card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--tc)}
+.skm .lv{font-size:40px;font-weight:600;color:var(--tc);line-height:1}
+.skm .tm{font-size:13px;color:var(--t3);margin:8px 0 4px}
+details.toc{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);margin-top:24px;overflow:hidden}
+details.toc summary{cursor:pointer;padding:16px 22px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--t1)}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";font-size:24px;font-weight:300;color:var(--acc);transition:.2s}
+details.toc[open] summary::after{transform:rotate(45deg)}
+.toc-body{padding:0 22px 18px}
+.part{margin-top:14px}
+.part h5{font-size:14.5px;color:var(--acc);margin:0 0 6px}
+.ch{display:grid;grid-template-columns:260px 1fr;gap:14px;padding:8px 0;border-top:1px solid var(--cb);font-size:14px}
+.ch b{font-weight:600;color:var(--t1)}
+.ch span{color:var(--t2)}
+
+/* quotes */
+.quotes{columns:2;column-gap:16px}
+.quote{break-inside:avoid;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:22px 24px 18px;margin-bottom:16px;position:relative;font-size:17.5px;line-height:1.75;color:var(--t1);box-shadow:var(--shadow);overflow:hidden}
+.quote::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--sun1),var(--sun3))}
+.quote cite{display:block;font-style:normal;font-size:12.5px;color:var(--t3);margin-top:8px}
+
+/* planner */
+.planner{display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start}
+.form{position:sticky;top:76px}
+.form label.f{display:block;font-size:13.5px;color:var(--t2);margin:12px 0 6px;font-weight:600}
+.form label.f:first-child{margin-top:0}
+.form input[type=time],.form select{width:100%;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--cb);border-radius:10px;background:var(--field);color:var(--t1);outline:none;font-family:var(--num)}
+.form select{font-family:var(--sans);font-size:15px}
+.form input:focus,.form select:focus{border-color:var(--acc)}
+.form .hint{font-size:12px;color:var(--t3);margin-top:4px;line-height:1.5}
+.form .opt{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:var(--t2);margin-top:8px;cursor:pointer}
+.form .opt input{accent-color:var(--acc);margin-top:5px}
+.btns{display:flex;gap:8px;margin-top:16px}
+.btn{flex:1;border:1px solid var(--acc);background:var(--acc);color:var(--onacc);padding:9px 12px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;color:var(--acc)}
+.out h4{font-size:19px}
+.out .sumline{font-size:13.5px;color:var(--t3);margin:2px 0 14px}
+.tl .it{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:12px 0;border-top:1px dashed var(--cb)}
+.tl .it:first-child{border-top:none}
+.tl .tm{font-family:var(--num);font-weight:300;font-size:19px;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.4}
+.tl .tm small{display:block;font-family:var(--sans);font-weight:400;font-size:11.5px;color:var(--t3)}
+.tl .ct b{font-size:15.5px;display:block}
+.tl .ct ul{margin:4px 0 0;padding-left:1.15em;font-size:14px;color:var(--t2)}
+.tl .ct .src{font-size:11.5px;color:var(--t3);margin-top:4px}
+.tl .it.a .tm{color:var(--acc2)}
+.tl .it.extra{background:var(--soft);border-radius:12px;padding:12px;border-top:none;margin-top:6px}
+.side3{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.side3 .card{padding:16px;box-shadow:none;background:var(--soft);border-color:transparent}
+.side3 h5{font-size:15px;margin:0 0 6px;color:var(--t1)}
+.side3 ul{margin:0;padding-left:1.1em;font-size:13.5px;color:var(--t2)}
+
+/* checklist */
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.ckl{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--cb);border-radius:14px;padding:16px 18px;cursor:pointer;transition:.2s}
+.ckl input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border:2px solid var(--t3);border-radius:50%;margin-top:2px;display:grid;place-items:center;transition:.15s;cursor:pointer;background:transparent}
+.ckl input:checked{background:radial-gradient(circle at 40% 40%,#fff1c4,var(--sun2) 65%,var(--sun3));border-color:var(--sun2);box-shadow:0 0 10px rgba(255,150,80,.5)}
+.ckl input:checked::after{content:"";width:5px;height:10px;border:solid #3a1a06;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.ckl:has(input:checked){opacity:.6}
+.ckl:has(input:checked) b{text-decoration:line-through}
+.ckl b{font-size:15.5px;display:block;color:var(--t1)}
+.ckl span{font-size:13.5px;color:var(--t2);display:block;margin-top:2px}
+.ckl .src{font-size:11.5px;color:var(--t3);margin-top:6px}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.progress .track{flex:1;height:8px;background:var(--soft);border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:linear-gradient(90deg,#4f3478,#ff9a4d,#ffd27a);transition:width .35s}
+.progress .txt{font-size:15px;color:var(--t2);min-width:64px;text-align:right;font-family:var(--num);font-variant-numeric:tabular-nums}
+.reset{border:none;background:none;color:var(--t3);font:inherit;font-size:13px;cursor:pointer;text-decoration:underline}
+footer{padding:40px 0 90px;text-align:center;font-size:13px;color:var(--t3);line-height:1.9;background:var(--g2)}
+
+/* ---------- 「我要怎么做？」 ---------- */
+.fab{position:fixed;right:24px;bottom:24px;z-index:80;display:flex;align-items:center;gap:10px;border:none;cursor:pointer;font:600 15px var(--sans);color:#2a1406;padding:12px 20px 12px 14px;border-radius:999px;background:linear-gradient(135deg,#ffe2a0,#ffab62 55%,#ff7a52);box-shadow:0 8px 28px rgba(255,120,60,.45),0 0 0 1px rgba(255,255,255,.35) inset;transition:transform .2s,box-shadow .2s}
+.fab:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(255,120,60,.55)}
+.fab:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.fab .sunico{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#fffbe8,#ffd27a 55%,#ff9a4d);box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.fab .cnt{font:500 12px var(--num);background:rgba(42,20,6,.12);padding:1px 8px;border-radius:999px}
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(8,6,24,.5);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:95;top:0;right:0;bottom:0;width:min(460px,100%);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .38s cubic-bezier(.2,.8,.2,1),visibility 0s .38s;visibility:hidden;background:#fff9ef;color:var(--t1)}
+.drawer.on{transform:none;visibility:visible;transition:transform .38s cubic-bezier(.2,.8,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.3)}
+@media (prefers-color-scheme:dark){.drawer{background:#1f1610}}
+.dw-head{padding:22px 22px 18px;background:linear-gradient(160deg,#0f1640 0%,#4f3478 45%,#c8607a 80%,#f6a77e 100%);color:#fff7ea;position:relative;flex:none}
+.dw-head h3{font-size:22px;color:#fff}
+.dw-head p{font-size:13.5px;color:rgba(255,247,234,.85);margin:4px 0 0}
+.dw-close{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font-size:20px;line-height:1;cursor:pointer}
+.dw-close:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.dw-prog{display:flex;align-items:center;gap:12px;margin-top:14px}
+.dw-prog .track{flex:1;height:6px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden}
+.dw-prog .fill{height:100%;width:0;background:linear-gradient(90deg,#ffe2a0,#ffab62);transition:width .3s}
+.dw-prog .txt{font:400 14px var(--num);font-variant-numeric:tabular-nums}
+.dw-body{flex:1;overflow-y:auto;padding:8px 22px 30px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.dw-step{margin-top:20px}
+.dw-step .sh{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.dw-step .sh .no{font-family:var(--num);font-weight:200;font-size:36px;line-height:1;color:var(--acc)}
+.dw-step .sh h4{font-size:17px}
+.dw-step .sh .pc{margin-left:auto;font:400 12.5px var(--num);color:var(--t3)}
+.dw-step .ckl{padding:12px 14px;border-radius:12px;margin-top:8px;box-shadow:none}
+.dw-step .ckl b{font-size:14.5px}
+.dw-step .ckl span{font-size:13px}
+.dw-foot{font-size:12px;color:var(--t3);margin-top:22px;display:flex;justify-content:space-between;gap:10px}
+body.lock{overflow:hidden}
+
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#25150a;color:#fff7ea;padding:8px 18px;border-radius:999px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:99}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.drawer,.scrim{transition:none}.horizon .sun{transition:none}}
+
+@media (max-width:920px){
+  .intro,.grid3{grid-template-columns:1fr 1fr}
+  .intro .card:first-child{grid-column:1/-1}
+  .grid4,.stats,.np.c4,.np,.np.c5{grid-template-columns:1fr 1fr}
+  .seed,.steps12{grid-template-columns:1fr 1fr}
+  .mx-wrap,.zx-wrap,.planner,.grid2,.halves{grid-template-columns:1fr}
+  .form{position:static}
+  .rung{grid-template-columns:110px 1fr}
+  .rung .eg{grid-column:2}
+  .skm{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .sec{padding:64px 0 68px}
+  .intro,.grid3,.grid4,.check,.stats,.np,.np.c4,.np.c5,.seed,.steps12,.ztest,.side3,.legend2{grid-template-columns:1fr}
+  .quotes{columns:1}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .sec-head .idx{font-size:60px}
+  h3.sub .n{display:none}
+  .dial .hl2{display:none}
+  .dial .hl1{font-size:34px}
+  .dial .tl{font-size:24px}
+  .pane{min-height:150px;padding:14px}
+  .pane h4{font-size:22px}
+  .pane .no{display:none}
+  .axes-top,.winrow{grid-template-columns:28px 1fr}
+  .axes-top{grid-template-columns:28px 1fr 1fr}
+  table.cmp{min-width:680px}
+  .sl-row,.sl-axis{grid-template-columns:84px 1fr 72px;gap:8px}
+  .sl-row .hr{font-size:12px}
+  .sl-axis .ax{font-size:10px}
+  .tl .it{grid-template-columns:1fr;gap:4px}
+  .tl .tm small{display:inline;margin-left:8px}
+  .horizon{height:220px}
+  .horizon .sun{width:220px;height:220px;margin-left:-110px;bottom:-110px}
+  .fab{right:14px;bottom:14px;padding:10px 16px 10px 12px;font-size:14px}
+  .drawer{top:auto;left:0;right:0;width:100%;height:100%;border-radius:0;transform:translateY(105%)}
+  .drawer.on{transform:none}
+  .dw-head{padding-top:26px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top dk" id="nav">
+  <div class="wrap">
+    <span class="brand"><span class="sundot" aria-hidden="true"></span>起床后的黄金1小时<span class="skyclock" id="skyclock" title="随页面滚动，天色渐渐亮起来">05:00</span></span>
+    <a href="#overview">总览</a>
+    <a href="#hour">早晨1小时</a>
+    <a href="#color">四色法则</a>
+    <a href="#zx">志向坐标</a>
+    <a href="#chapters">各章要点</a>
+    <a href="#quotes">金句</a>
+    <a href="#planner">生成我的1小时</a>
+    <a href="#todo">行动清单</a>
+  </div>
+</nav>
+
+<!-- ============ HERO · 黎明 ============ -->
+<header class="sec dk" id="overview">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">〔日〕池田千惠 著 · 范宏涛 译 · 北京日报出版社 2021</span>
+    <h1 class="hero-t"><span style="white-space:nowrap">起床后的</span><span class="g" style="white-space:nowrap">黄金1小时</span></h1>
+    <p class="hero-sub">“早起计划”发起人写给“时间不够用”和“看不到职业前景”的人</p>
+
+    <div class="dial" aria-label="起床后 60 分钟的分配：前 30 分钟做计划，后 30 分钟去播种">
+      <svg viewBox="0 0 800 450" role="img">
+        <defs>
+          <linearGradient id="ga" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#ffb05c"/></linearGradient>
+          <linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a5a"/><stop offset="1" stop-color="#ff5e3a"/></linearGradient>
+          <linearGradient id="hz" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ffe7c2" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <radialGradient id="sg"><stop offset="0" stop-color="#fffbe6"/><stop offset=".45" stop-color="#ffd98a"/><stop offset="1" stop-color="#ff9a4d"/></radialGradient>
+          <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M80 420 A320 320 0 0 1 720 420" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="30"/>
+        <path d="M80 420 A320 320 0 0 1 398 100" fill="none" stroke="url(#ga)" stroke-width="30" opacity=".95"/>
+        <path d="M402 100 A320 320 0 0 1 720 420" fill="none" stroke="url(#gb)" stroke-width="30" opacity=".95"/>
+        <g id="ticks"></g>
+        <text class="hl1" x="232" y="282">前 30 分钟</text>
+        <text class="hl2" x="232" y="310">写出 · 分颜色 · 细化“播种”</text>
+        <text class="hl1 b" x="568" y="282">后 30 分钟</text>
+        <text class="hl2" x="568" y="310">只做“重要但不紧急”的事</text>
+        <line x1="0" y1="420" x2="800" y2="420" stroke="url(#hz)" stroke-width="2"/>
+        <g id="sun" filter="url(#glow)"><circle r="24" fill="url(#sg)"/></g>
+      </svg>
+      <div class="clockline"><span class="big num" id="dialTime">06:00</span><span class="rng" id="dialRange">06:00 — 07:00</span></div>
+      <div class="phase" id="dialPhase">往下滚动，太阳会沿着这 60 分钟走一遍</div>
+    </div>
+
+    <div class="legend2">
+      <div><span class="sw" style="background:linear-gradient(90deg,#ffd27a,#ffb05c)"></span><b>0–30 分钟 · 做好一天的工作分类</b>把脑子里的事全写出来 → 按“紧迫性 × 重要性”涂四种颜色 → 把红色“播种”拆成能马上做的小步。</div>
+      <div><span class="sw" style="background:linear-gradient(90deg,#ff9a5a,#ff5e3a)"></span><b>30–60 分钟 · 朝着理想努力践行</b>只做“不紧急 × 重要”的“播种”：学习、健康、副业、投资、陪家人……</div>
+    </div>
+
+    <p class="lead">几点起床不重要，重要的是在一天工作开始前，留出一段<strong>不被打扰的 1 小时</strong>。作者把它叫作“早上固定习惯”：前 30 分钟做计划，后 30 分钟为理想“播种”，并按每周、每月、每 3–6 个月的周期盘点。</p>
+
+    <div class="intro">
+      <div class="card reveal">
+        <h4>作者是谁</h4>
+        <p>池田千惠，日本“早起计划”发起人，经营“早上职业”机构，做咨询、研修和演讲。写作时<b>已坚持早起 26 年、研究“早起活动”11 年</b>。</p>
+        <p>原本是夜猫子。两次高考落榜后，19 岁开始早起，考上庆应大学综合政策学部；大学成绩差，求职投了 30 家公司全部落选，进了一家外卖公司成了“边缘员工”。再次坚持早起后，转到外资战略咨询公司当实习生（时薪 3000 日元），一年后转正；又靠早上的时间考了兴趣方面的证书，周末在面包教室当讲师。2010 年出版《早起手账》。</p>
+      </div>
+      <div class="card reveal">
+        <h4>本书写给谁</h4>
+        <ul>
+          <li><b>感到时间不够用</b>：起不来、坚持不了、起了也没精神；想做的事很多却抽不出时间；想少加班。</li>
+          <li><b>对职业和未来感到迷茫</b>：眼前的工作学不到东西、也不快乐；一会儿想做这个一会儿想做那个；觉得一辈子都在为工作而活。</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h4>全书结构</h4>
+        <ul>
+          <li>前言：逆转人生的黄金 1 小时</li>
+          <li>1–3 章：为什么要早起，以及<b>前 30 分钟</b>的计划法（四色、分解、盘点）</li>
+          <li>4–6 章：卡住时怎么办，以及<b>后 30 分钟</b>该播什么种</li>
+          <li>7 章：怎样真的早起（“立起”法则、睡眠、松竹梅预案）</li>
+          <li>结语：只要起床，就是一场胜利</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HOUR ============ -->
+<section class="sec dk" id="hour">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx num">01</div>
+      <div><div class="tag">核心方法 · 早上固定习惯</div><h2>起床后的 1 小时，分成两个 30 分钟</h2></div>
+    </div>
+    <p class="thesis reveal">“起床后的黄金1小时中，前30分钟做好1天的工作分类，后30分钟朝着理想努力践行。”作者建议从自己的实际出发，随人生阶段对这个习惯做战略性调整。</p>
+
+    <div class="halves reveal">
+      <div class="card half a">
+        <div class="when">0′ – 30′</div>
+        <h4>断网，拿出专用纸笔，三步做完一天的计划</h4>
+        <div class="mini">
+          <div data-n="1"><span><b>全部写出来</b>今天要做的、应该做的，毫无保留地写，先不分颜色，用黑笔或铅笔即可。想到明天、下周的事也照写。想不出来就按五项写：需要联系的人、今天要做的具体项目、未来想做的事、提出的课题、想看的书和资料。</span></div>
+          <div data-n="2"><span><b>按四种颜色分类</b>红“播种”、绿“收割”、蓝“疏苗”、黑“风干”。还不熟时，先用黑笔写，再用彩色下划线、画圈或马克笔做记号。</span></div>
+          <div data-n="3"><span><b>细化红色“播种”</b>把它拆成马上能动手的小步骤，“一类播种用一张纸”。一天做不完，排进未来一周也可以。</span></div>
+        </div>
+      </div>
+      <div class="card half b">
+        <div class="when">30′ – 60′</div>
+        <h4>把时间留给“不紧急 × 重要”的事</h4>
+        <div class="mini">
+          <div data-n="·"><span><b>什么是“播种”</b>职业升级、自我学习、健康管理（蔬菜、有氧运动）、陪家人（和孩子早起看连环画、一起学习散步）、副业、学股票和不动产……没到最后关头，没有危机感，却决定未来。</span></div>
+          <div data-n="·"><span><b>为什么放在早上</b>“播种”难坚持的三个原因：没到最后关头、千头万绪不知从何着手、进步不明显。早上把它分解好，就能立刻行动。</span></div>
+          <div data-n="·"><span><b>可以怎么播</b>晨读、修改带“暂时缺陷”的资料、用 5W2H 拆梦想、把“多管闲事”写成文章、梳理经验做成商品……详见第 4–6 章。</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="small reveal" style="margin-top:12px">书中没有规定前 30 分钟里每一步各用几分钟，只要求“集中精力，一鼓作气做好工作表”。</p>
+
+    <h3 class="sub reveal">为什么是“30 分钟 × 2”</h3>
+    <div class="card reveal">
+      <p style="margin-top:0">作者借用意大利企业顾问弗朗西斯科·西里洛的“集中时间管理”：集中 25 分钟、休息 5 分钟为一个节点，连续 4 个节点后休息 20–30 分钟。关键是<b>“限定时间”且“不被打扰”</b>，早上正好两点都满足。只是忙碌的早晨花两小时不现实，于是改成两个 30 分钟。</p>
+      <div class="pomo" aria-label="集中时间管理示意"><span class="w">25′</span><span class="r">5′</span><span class="w">25′</span><span class="r">5′</span><span class="w">25′</span><span class="r">5′</span><span class="w">25′</span><span class="r">5′</span><span class="L">休息 20–30′</span></div>
+      <div class="pomo"><span class="x">30′ 做计划</span><span class="y">30′ 去播种</span><span style="color:var(--t3);font-weight:400;font-size:13px;padding-left:6px">作者的早晨版本</span></div>
+    </div>
+
+    <h3 class="sub reveal">这 1 小时放在哪：不必非得 4 点起</h3>
+    <div class="grid4 where reveal">
+      <div class="card"><div class="t">工作前</div><b>只要在工作前腾出 1 小时</b><span>嗜睡、要送孩子、上晚班都不是问题。夜班 16 点开始，就把 15–16 点这 1 小时用好。</span></div>
+      <div class="card"><div class="t">8–9 点</div><b>作者自己的现状</b><span>一边带 4 岁的孩子，早则 4–5 点、晚则 6 点起，早上要花时间陪孩子；送去幼儿园后，8–9 点才是她的“早上固定习惯”时间。</span></div>
+      <div class="card"><div class="t">通勤中</div><b>拥挤的地铁里也能做</b><span>通勤 1 小时的人，可以借邮件、便笺，或开车时用声音输入完成一天的计划。推荐用收费记录软件把内容发邮件给自己，到公司打开就是现成的计划。</span></div>
+      <div class="card"><div class="t">不减睡</div><b>前提是睡够</b><span>“也不是要大家减少睡眠时间，必须如我一样4点钟就起来。”早起的秘诀在于晚上怎么过，详见第 7 章。</span></div>
+    </div>
+
+    <h3 class="sub reveal">起床后 1 小时的 6 个好处<span class="n">第一章第二节</span></h3>
+    <div class="np reveal">
+      <div><b>改变习惯比较容易</b>即使很难早起，用好起床后的 1 小时也能逐渐改变平时的习惯。</div>
+      <div><b>行动前的障碍少</b>晚上读书有所悟，往往不了了之就睡了；早上做好计划，可以“趁热打铁”马上去做。</div>
+      <div><b>大脑没有拥塞</b>据睡眠研究者西多昌规，睡眠会整理记忆、情感和经历，起床后大脑最宽松，越到夜晚越迟钝。</div>
+      <div><b>结束时间固定</b>不会像夜里那样误以为时间还多，结果拖拖拉拉。</div>
+      <div><b>积累小成就</b>比如想和领导谈调岗，每天早上推进一步：琢磨可能性、提前沟通、总结过往工作、先考证书、准备可行方案。</div>
+      <div><b>不受打扰</b>早上最容易做到“限定时间”和“不被打扰”，便于集中精力。</div>
+    </div>
+
+    <h3 class="sub reveal">同一套方法，按四种周期重复</h3>
+    <div class="ladder reveal">
+      <div class="rung" style="--w:25"><div class="alt">每天<small>早上 1 小时</small></div><div class="what"><b>写出 → 分颜色 → 细化播种</b><span>处理当前工作</span></div><div class="eg">工作表留在笔记本或手账上，别用完就扔，那等于“丢掉了曾经奋斗的轨迹”。</div></div>
+      <div class="rung" style="--w:50"><div class="alt">每周一<small>早上 1 小时里的 30 分钟</small></div><div class="what"><b>盘点五项明细</b><span>想联系的人 · 今后要推进的项目 · 将来想做的事 · 提出的课题 · 想看的书和资料</span></div><div class="eg">一周没进展的，决定移到下周还是干脆放弃；继续做的，调整“战略先机”转入新一周。</div></div>
+      <div class="rung" style="--w:75"><div class="alt">每月末<small>本月总结表</small></div><div class="what"><b>在五项之外加“其他关心的事情”</b><span>一个月不处理也不出问题的事，果断放下</span></div><div class="eg">像扔掉两年没穿的衣服；时间久了，“收割”的绿色会降格为“风干”的黑色。</div></div>
+      <div class="rung" style="--w:100"><div class="alt">每 3–6 个月<small>宏观把握</small></div><div class="what"><b>思维导图 + 工作进展图</b><span>中心放一个“大设计”（Grand Design）</span></div><div class="eg">防止埋头苦干、混淆手段与目的。完整链条是：思维导图 → 工作细化图 → 早报 → “早上1小时”。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLOR ============ -->
+<section class="sec dk" id="color">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx num">02</div>
+      <div><div class="tag">核心工具 · 神奇的四象限法则</div><h2>四扇晨光窗：按“紧迫性 × 重要性”涂色</h2></div>
+    </div>
+    <p class="thesis reveal">不必推翻原有的待办清单，只需三点：早上 1 小时一鼓作气做好工作表；按“紧迫性 × 重要性”分成四种颜色；把需要“播种”的事细化到能立即推行。一天里应优先完成的是<b style="color:#ff9c86">红色</b>和<b style="color:#7fd39a">绿色</b>。</p>
+
+    <div class="mx-wrap reveal">
+      <div class="winbox">
+        <div class="axes-top"><span></span><span>不紧急</span><span>紧急</span></div>
+        <div class="winrow">
+          <div style="display:grid;grid-template-rows:1fr 1fr;gap:12px;padding:12px 0"><div class="vlab">重要</div><div class="vlab">不重要</div></div>
+          <div class="window">
+            <div class="pane r"><span class="no">1</span><div class="cl">红色 · 不紧急 × 重要</div><h4>播种</h4><p>容易被忽视，却对将来至关重要。“只有平日不断积累，将来才能开出美丽的花朵，结出丰硕的果实。”</p></div>
+            <div class="pane g"><span class="no">2</span><div class="cl">绿色 · 紧急 × 重要</div><h4>收割</h4><p>和目前的生活、工作息息相关：重要客户的联系、已定日期的提案、重要的会议资料。</p></div>
+            <div class="pane bk"><span class="no">4</span><div class="cl">黑色 · 不紧急 × 不重要</div><h4>风干</h4><p>做不做意义不大，可以暂时晾一晾：杂事、打发时间的事。</p></div>
+            <div class="pane bl"><span class="no">3</span><div class="cl">蓝色 · 紧急 × 不重要</div><h4>疏苗</h4><p>不做也没太大影响，但眼下比较着急：不太急的电话、邮件，有空就集中处理掉。</p></div>
+          </div>
+        </div>
+        <p class="small" style="margin:10px 0 0 44px">窗格位置与书中原图一致：左列不紧急、右列紧急，上行重要、下行不重要。</p>
+      </div>
+      <div>
+        <div class="card">
+          <h4>一般一天里，颜色大概这样分布</h4>
+          <div class="ratio"><div class="g">收割 约 7 成</div><div class="r">播种</div><div class="bl">疏苗</div><div class="bk">风干</div></div>
+          <p class="small" style="margin:0">书中说法：绿色约占 7 成，其他颜色各约 1 成。所以“找不到红色”很正常，但别因为粗心漏掉它。</p>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h4>开会时也能用</h4>
+          <p>一个会议最开始 10 分钟回顾此前工作，看过邮件就清楚，属于蓝色“疏苗”，不必过于认真听；40 分钟后才轮到红色“播种”的部分，要认真听，从中发现该削减的、耗时又不合理的成分。</p>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h4>颜色分错了也没关系</h4>
+          <p>“颜色区分之所以重要，并不是注重区分与否的正确性”，而是能在瞬间做出判断；分错了，回头看时颜色还能帮助反思。实在分不清紧迫性，可以自定规则：<b class="hl">三天以内完成算“收割”，超过三天算“播种”</b>。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">不同志向，“播种”的红色各不相同<span class="n">第三章第一节</span></h3>
+    <div class="seed reveal">
+      <div><b>所有人共同</b>维持身心健康的投资、健康管理、运动；家人、恋人、亲友、导师等对自己十分重要的人或事。</div>
+      <div><b>工作 & 工作志向</b>为将来发展或提升公司价值的方案：新商品开发、调研其他公司动向、学习，提升评价的自我投资。</div>
+      <div><b>工作 & 个人志向</b>高效完成公司工作，集中时间做和兴趣相关的事，提升该方面的技能。</div>
+      <div><b>工作 & 第二职业志向</b>考虑今后的职业发展，提高效率为副业腾出时间，以现有工作为依托探索副业。</div>
+      <div><b>工作 & 投资志向</b>研究如何让钱生钱：股票、不动产和有市场价值的领域，向成功者学习。</div>
+    </div>
+
+    <h3 class="sub reveal">“分解术”：把一件红色的事拆开<span class="n">第三章第二至四节</span></h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">例子 · 投资公司员工给新客户做提案</span>
+        <h4>不急，但影响销售额：拆成 12 步</h4>
+        <div class="steps12">
+          <div>了解新客户的诉求</div><div>确定目标</div><div>制作基本企划案</div><div>列出可能的反驳和质问</div>
+          <div>准备应答</div><div>确认会议日程</div><div>确认必要参会员工</div><div>向领导汇报基本企划案</div>
+          <div>开始准备资料</div><div>核查、修正资料</div><div>提案预演</div><div>分颜色印刷 3 份资料</div>
+        </div>
+        <p class="small" style="margin-top:10px">拆开后，“收割”时机一到按步推进即可；哪些能交给别人也一目了然。步骤很小，一天下来不可能一个都消化不掉。</p>
+      </div>
+      <div class="card">
+        <span class="k">规则</span>
+        <h4>一事一纸，只拆该拆的</h4>
+        <p><b>一类播种用一张纸</b>（或专用笔记本里一类占一页）。一张纸写好几件，既看不清进度，又让人有压迫感；数一数纸的张数，就知道手上有几件“播种”。纸上可列目标和所需时间，最后一栏也可改成“责任人”。</p>
+        <p style="margin-top:10px"><b>不必拆“像呼吸一样流畅”的工作</b>，只拆这五类：</p>
+        <ol>
+          <li>怀疑有更好的方法、却还没改进的事</li>
+          <li>想安排进今后生活的事</li>
+          <li>想做但还没行动的挑战</li>
+          <li>还没定下顺序、心思不定的事</li>
+          <li>总在占用业余时间的事</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">“套匣”：红色里面还会有别的颜色</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">具体问题 6 · 调研竞争对手的主页</span>
+        <p style="margin-top:0">笼统地“浏览对方主页”，没做出任何决定，只是花了时间，可能就是黑色。按顺序拆开：</p>
+        <div class="nest">
+          <div><i class="i-r">播种</i>决定要获取竞争对手哪些信息</div>
+          <div><i class="i-r">播种</i>做好比较表格</div>
+          <div><i class="i-b">疏苗</i>用特定关键词检索信息（杂务，但不查就没法做）</div>
+          <div><i class="i-k">风干</i>填充比较表格（只是填内容，谁都能做）</div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="k">具体问题 2 · 早上要先看海外邮件</span>
+        <p style="margin-top:0">查阅邮件能在早上获取信息，作为“播种”并无不妥。按步骤分：</p>
+        <div class="nest">
+          <div><i class="i-r">播种</i>迅速看一眼内容，判断紧迫性和重要性</div>
+          <div><i class="i-r">播种</i>分类处理</div>
+          <div><i class="i-g">收割</i>个别处理</div>
+        </div>
+        <p class="small" style="margin-top:10px">书中给出的规则：早上 1 小时里定下来的内容划分都算红色，拆出来的具体步骤可以是绿色或蓝色。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">颜色划分 7 问<span class="n">点开看作者的建议</span></h3>
+    <div class="reveal">
+      <details class="faq"><summary>1 · 怎么都找不到红色“播种”？</summary><div class="fb"><p>红色本来就比其他颜色少，正常。但要防止粗心漏掉。另外，“为了尽快结束收割而明确具体工作程序”本身也是一种播种，可以从这里开始找。</p></div></details>
+      <details class="faq"><summary>2 · 查邮件算什么颜色？</summary><div class="fb"><p>可以算“播种”。快速看一眼判断轻重、分类处理都是红色，个别处理是绿色。按自己的风格在限定时间内处理即可。</p></div></details>
+      <details class="faq"><summary>3 · 每天都被“收割”追着跑？</summary><div class="fb"><p>对一段时期内的收割内容做整体把握，分类后做成进度表，这个区分本身就是播种。作者用《早起手账》里的“本月总结表”（想联系的人、今后要推进的项目、将来想做的事、提出的课题、想看的书和资料、其他关心的事情），月末整理一次，一个月不处理也没事的果断放下。</p></div></details>
+      <details class="faq"><summary>4 · 分不清绿色和红色？</summary><div class="fb"><p>紧迫性本来就主观，同一件事今天是播种，明天可能变成收割。先按自己的志向判断；实在不清楚，就定个规则：三天以内完成算收割，超过三天算播种。</p></div></details>
+      <details class="faq"><summary>5 · 红色里渗进了别的颜色？</summary><div class="fb"><p>细化后出现“套匣”式的五颜六色很正常：早上 1 小时确定的内容整体是红色，拆出来的具体步骤可以是绿色或蓝色。</p></div></details>
+      <details class="faq"><summary>6 · 调研竞争对手算什么？</summary><div class="fb"><p>为开拓新业务做的投资属于红色，但只是随便浏览主页就可能是黑色。所以要按顺序细化（见上方“套匣”例子）。</p></div></details>
+      <details class="faq"><summary>7 · 着急的业务谈判算什么？</summary><div class="fb"><p>对对方来说是绿色，对你来说可能是蓝色或黑色。颜色划分的目的是让自己感受到完成度和充实感，按“自己如何感觉”划分就行。比如本可通过认真沟通避免的投诉突然发生，从带来二次耗费的角度看，可能就是蓝色。</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZX ============ -->
+<section class="sec dk" id="zx">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx num">03</div>
+      <div><div class="tag">定位工具 · 时间 × 风险容许度 + 人际关系</div><h2>先给自己定个位：你是哪种志向</h2></div>
+    </div>
+    <p class="thesis reveal">该播什么种，取决于你想过什么样的人生。作者用一张图来定位：横轴是时间，纵轴是风险容许度，三种人际关系类型分布在图中。志向会随结婚、生子、养育孩子、赡养父母而变化，“一只脚涉足这个志向，另一只脚涉足另一个志向”也很正常。</p>
+
+    <div class="zx-wrap reveal">
+      <div>
+        <div class="card zmapc">
+          <div class="zmap" id="zmap">
+            <div class="grid-l"></div>
+            <div class="ql" style="left:3%;top:3%">个人主义型<br>（以个人喜好为主）</div>
+            <div class="ql" style="right:3%;top:3%;text-align:right">团体协作型<br>（大家一起努力）</div>
+            <div class="ql" style="left:3%;bottom:3%">临机应变型<br>（在业务时间内随机应变）</div>
+            <div class="bub inv" data-z="3" style="left:24%;top:30%">工作 &amp;<br>投资志向</div>
+            <div class="bub wk" data-z="0" style="left:77%;top:30%">工作 &amp;<br>工作志向</div>
+            <div class="bub pe" data-z="1" style="left:24%;top:68%">工作 &amp;<br>个人志向</div>
+            <div class="bub sc" data-z="2" style="left:50%;top:50%">工作 &amp;<br>第二职业<br>志向</div>
+            <div class="now">现状 ?</div>
+          </div>
+          <div class="zax"><span>← <b>明确时间界限</b></span><span><b>横轴：时间</b></span><span><b>没有时间界限</b> →</span></div>
+          <div class="zax"><span>纵轴：风险容许度，下方<b>倾向安全</b>，上方<b>接受各种风险</b></span></div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h4>怎么用这张图</h4>
+          <p>“不弄清行进航线而随波逐流的航海者，不了解富士山路的登山者，都不可能到达预定的目的地。”定位之后，就明白“现在必须努力做什么”和“可以放弃什么”，不容易被外界左右。</p>
+          <p>书中例子：一边带小孩一边工作，属于“个人志向”，以后可能转向“第二职业志向”；于是早上前 30 分钟按“个人志向”为提高效率做准备，后 30 分钟按“投资志向”学不动产或股票。</p>
+        </div>
+      </div>
+      <div>
+        <p style="margin-top:0;font-size:14.5px;color:var(--t2)">书中给了四组特征，勾一勾看看你更靠近哪种（结果只存在本机）：</p>
+        <div class="ztest" id="ztest"></div>
+        <div class="zres" id="zres">勾选符合自己的描述，这里会显示你目前最靠近的志向。</div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">找标杆：看志向相同的人，而不是处境相同的人</h3>
+    <div class="grid3 reveal">
+      <div class="card"><h4>别只看对方当前的处境</h4><p>不要仅仅关注 20 岁员工、企划专家、孩子上小学的家长当前在干什么，而要看他们<b>如何依靠志向</b>开展工作、制订计划。</p></div>
+      <div class="card"><h4>人生阶段变了，顺序也变</h4><p>20 多岁往往优先考虑工作；30 岁前后结婚、送孩子去幼儿园，会优先考虑上班时间短的工作；伴侣帮不帮忙做家务带孩子，也会改变顺序。</p></div>
+      <div class="card"><h4>工作性质也会决定理想</h4><p>书中图示：上班族、自由职业者、创业者的理想各不相同，例如“朝九晚五上班，但也发展其他兴趣”“每周上两天班”“自己一个人在世界各地飞”。“情况繁多，如何抉择？”</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 日出 ============ -->
+<div class="horizon" aria-hidden="true" id="horizon">
+  <div class="glow"></div>
+  <div class="sun"></div>
+  <div class="line"></div>
+  <div class="cap">天 亮 了</div>
+</div>
+
+<!-- ============ CHAPTERS ============ -->
+<section class="sec lt" id="chapters">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx num">04</div>
+      <div><div class="tag">各章要点 · 保留书中的方法、数字和例子</div><h2>七章逐章读</h2></div>
+    </div>
+
+    <div class="chap-h first reveal"><span class="no num">01</span><h3>起床大作战</h3><span class="one">为什么时间总不够：优先顺序出了问题。提出“播种”、志向坐标、四色法则。</span></div>
+    <div class="grid3 reveal">
+      <div class="card">
+        <span class="k">10 多年指导中发现</span>
+        <h4>起不来、坚持不了的人，三个共同点</h4>
+        <ol>
+          <li><b>不懂得确定优先顺序</b>：大包大揽最后都没完成；不知道自己需要睡眠和休息。</li>
+          <li><b>优先顺序确定有误</b>：想慢工出细活却被评价“工作拖沓”；为成为世界性人才只学英语，疏忽其他能力。</li>
+          <li><b>容易中途迷失方向</b>：每半年换一次目标；副业和主业不协同，工作时间被切碎。</li>
+        </ol>
+        <p class="small">这种状态作者称为“工作混沌”。</p>
+      </div>
+      <div class="card">
+        <span class="k">走出“工作混沌”</span>
+        <h4>早起时注意三点</h4>
+        <ol>
+          <li>重新审视此前的生活习惯</li>
+          <li>确保充分的睡眠时间</li>
+          <li>把重要的事放在早上做</li>
+        </ol>
+        <p style="margin-top:10px">原因之一是<b>信息过剩</b>：据 IDC 调查，2000–2020 年人们接触的信息量增长了 <b class="hl">6450 倍</b>。减肥该不该吃碳水，各说各有理，人就陷入选择迷茫。</p>
+      </div>
+      <div class="card">
+        <span class="k">别把剩下的时间才留给自己</span>
+        <h4>“好，我来做”的代价</h4>
+        <p>不急的来电要不要接？不马上回也不要紧的邮件要立即回吗？谁拜托都说“好，我来做”，就会时间不够用。“时间就是生命”，把剩余时间留给自己，等于缩减自己的生命。</p>
+        <p>时间像存钱，积累好“早上1小时”，内心就有余裕。</p>
+      </div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:16px">
+      <div class="card">
+        <span class="k">第三节 · 学会播种</span>
+        <h4>“眼前要做的事情其实永远也做不完”</h4>
+        <p>想着做完这件再说，就看不到尽头，所以不紧迫但重要的“播种”要尽快做。审视一件事时，按“首先”“为了慎重起见”的过程走，再问“是否真的必要”，拖沓的习惯就会改变。</p>
+      </div>
+      <div class="card">
+        <span class="k">前言 · 永远不要有“明天再去做”的想法</span>
+        <h4>“老了之后的梦想是开精品店”哪里不对</h4>
+        <p>一位 30 岁出头的咨询者这样说。作者觉得违和：不老梦想就不会实现；本该现在追的梦往后拖；老了大脑基本停止思考；有自我否定的倾向。</p>
+      </div>
+    </div>
+
+    <div class="chap-h reveal"><span class="no num">02</span><h3>早点起床能够活出更美好的生活</h3><span class="one">把做计划变成早上的固定习惯：7 个好处、断网、选纸笔、三步法、早报。</span></div>
+    <div class="np c4 reveal">
+      <div><b>形成决策习惯</b>“这是当前必须做的吗？这是我应该完成的吗？”从小事练起瞬间决断。</div>
+      <div><b>排除瞻前顾后</b>早上定好重点，就不会把对方给的资料一遍遍再捋；邮件“抄送”也不必一味求慎重。</div>
+      <div><b>预见工作效果</b>把手头工作具体化、可视化，和高手对比，向前辈请教，提高正确性和预见性。</div>
+      <div><b>不被工作纠缠</b>“工作要找忙人”，越能干活越多。把工作全部分解，敢于说出哪些能做、哪些要求助。</div>
+      <div><b>完善常见问题集</b>总有人来问你的“老问题”里藏着你的价值：弄清该掌握的技能、写成别人看得懂的话、标准化体系化。</div>
+      <div><b>分清有效与无效加班</b>例：接企划书时没问清，等对方开会回来，光确认就花了 3 小时，这就是能减少的加班。</div>
+      <div><b>每天集中精力</b>早上是“峰值管理”时间，像松井秀喜上场前的固定动作一样建立仪式感，进入契克森米哈赖说的“心流状态”。</div>
+      <div class="nonum" style="background:var(--soft)"><b>“看起来详细”</b>别人看了作者的手账都说厉害，其实就是“写出来—分颜色—做‘播种’”三步。</div>
+    </div>
+    <p class="small reveal" style="margin-top:8px">以上为“制订工作计划的 7 个好处”（第二章第一节）。</p>
+    <div class="grid3 reveal" style="margin-top:16px">
+      <div class="card">
+        <span class="k">第二节 · 先断网</span>
+        <h4>习惯之前，用纸笔不用 App</h4>
+        <p>理由有二：维持注意力和判断力；避免因惰性把计划往后推。引用一位诺贝尔经济学奖得主的话：“信息的丰富，导致我们注意力的贫困。”拿起手机，往往用的是记录以外的功能。</p>
+        <p>工作表别用完就扔，完成的地方留下印记，随时参照和反思。</p>
+      </div>
+      <div class="card">
+        <span class="k">第三节 · 从“形式”入手</span>
+        <h4>作者自己的工具</h4>
+        <ul>
+          <li>日/周/月计划用的手账，已连续用了 10 年</li>
+          <li>3–6 个月计划：life noble note plain 笔记本（B6，素色），配 12 色 Tombow（蜻蜓）铅笔</li>
+          <li>早报：绿色笔记本或 MD 型笔记本</li>
+          <li>分颜色：LAMY 4 色圆珠笔（油性 2000L401），黏度强，别用力压</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">第五节 · 没有思绪时</span>
+        <h4>先写 3 页“早报”</h4>
+        <p>出自朱里安·卡梅隆（Julia Cameron）《做一直都想做的事情》：什么都可以写，把思考原封不动地释放出来，只想着写满 3 页。写着写着，“今天想做的事”“应该做的事”就会自然浮现。</p>
+        <p>写出工作内容时，要以“漠然的态度”自然写出，别用“必须要做”给自己施压。</p>
+      </div>
+    </div>
+
+    <div class="chap-h reveal"><span class="no num">03</span><h3>利用早起，提升工作效率</h3><span class="one">四色法则的细节、分解术、一事一纸、7 个问答（见上方“四色法则”），以及盘点和宏观把握。</span></div>
+    <div class="grid3 reveal">
+      <div class="card">
+        <span class="k">第五节 · 时常盘点</span>
+        <h4>“剩余工作表”与“战略先机”</h4>
+        <p>越认真的人越容易积压残留工作，一天没做完就睡不着。工作划分的关键，是让没做完的事成为关注焦点：先问它是否必要、该不该放弃；放不下的，就调整“战略先机”重新挑战。作者说这一方法来自美国芝加哥大学的“AI: Appreciative Inquiry”（欣赏式探询）研究。</p>
+      </div>
+      <div class="card">
+        <span class="k">别求完美</span>
+        <h4>实现 80% 的目标就可以</h4>
+        <p>一开始就按完美计划推行，一天没完成就可能失去自信。把目标定为努力目标的 <b class="hl">80%</b>：哪天没完成，周末弥补；本周有遗憾，下周完善。先以一周为周期试试。</p>
+      </div>
+      <div class="card">
+        <span class="k">第六节 · 逆向思维的陷阱</span>
+        <h4>积累型，而非倒推型</h4>
+        <p>3–6 个月乃至一年的目标只需站在高处宏观把握，不必做缜密计划，否则会被过去设定的计划摆弄。斯坦福大学约翰·克兰鲍尔教授认为，职业形成的契机 <b class="hl">80%</b> 属于偶然，关键是把握偶然，所以要做柔性计划。</p>
+      </div>
+    </div>
+
+    <div class="chap-h reveal"><span class="no num">04</span><h3>早起不会背叛你，扫除精进路上的障碍</h3><span class="one">卡住时的四种情况，各有一个具体的拆解方法。</span></div>
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">没有干劲</span>
+        <h4>让“不写自明”成为习惯</h4>
+        <p>干劲下降多半因为工作太庞大。就算是不用写也记得住的细节，也要毫不犹豫地写出来对照着做。以整理家为例：</p>
+        <div class="mult">
+          <div class="bx"><b>6 个场所</b>客厅、厨房、书房、浴池、孩子房间、壁橱</div>
+          <div class="op">×</div>
+          <div class="bx"><b>4 个动作</b>扔掉不需要的、物归原位、用清扫机、用擦拭器</div>
+          <div class="op">=</div>
+          <div class="res">24<small style="font-size:16px"> 项</small></div>
+        </div>
+        <p class="small" style="margin-top:8px">做成表一个也漏不掉，完成率算得清，成就感就上来了。</p>
+      </div>
+      <div class="card">
+        <span class="k">总是拖延</span>
+        <h4>把烦恼摆上坐标轴</h4>
+        <ol>
+          <li>不考虑顺序和大小，随机写出烦恼不安的原因（如“公司可能要倒闭”“上个月工作太失败”“这样下去连个男朋友都找不到了”）。</li>
+          <li>画坐标轴：<b>横轴是时间，纵轴是能否解决</b>，把每条烦恼贴上去。</li>
+          <li>先不管无法控制的，对能控制的倾注心力；先解决短期容易的，再定中长期计划。</li>
+        </ol>
+        <p class="small">例：同事比自己先提拔是无法推翻的事实，与其嫉妒，不如主动分析他被提拔的原因。</p>
+      </div>
+      <div class="card">
+        <span class="k">感到迷茫</span>
+        <h4>两种“播种”找到自己的长处</h4>
+        <p><b>写出让自己心有郁结的事</b>：困难里藏着能量。专家往往是因为有困难意识才钻研下去；作者自己最初就起不来。“你的平凡之处，可能就是别人感受到的伟大光辉。”</p>
+        <p><b>写出 10 件你觉得理所当然的事</b>，看周围人说几次“真厉害”，也可参考社交软件的点赞和转发数。作者每天 4 点起，别人都目瞪口呆。</p>
+      </div>
+      <div class="card">
+        <span class="k">不知道如何实现梦想</span>
+        <h4>用 5W2H 把“妄想”落地</h4>
+        <p>先尽情想象：海外海滩别墅的阳台上看夕阳、喝啤酒、读书。再逐项拆：从地图上选候选地（where）、为什么好（why）、几年后入手（when）、和谁在一起（who）、要多少钱（how much）、现在该怎么做和还有什么挣钱渠道（how）。</p>
+        <p class="small">拆的过程中遇到障碍是“很大的幸运”；再把 how 细化，就迈出了第一步，并且要告诉周围的人。</p>
+      </div>
+    </div>
+
+    <div class="chap-h reveal"><span class="no num">05</span><h3>早起，遇见全新的自己</h3><span class="one">后 30 分钟可以播的五种种子。</span></div>
+    <div class="grid3 reveal">
+      <div class="card"><span class="k">第一节</span><h4>晨读</h4><p>两个好处：不受干扰能集中；书中知识不必积累，可以直接实践，比如早上读到公司附近的美食店，中午就去。恋爱、推理小说适合晚上，晨读重在应用：技术类书、杂志、资格考试教材；为防犯困多动手记笔记。</p></div>
+      <div class="card"><span class="k">第二节</span><h4>客观看待“暂时缺陷”</h4><p>写文章或提案时，发现前后不一致、夸大、表达不明、数据存疑，不停笔，只用红笔标注，保证一气呵成；写完再重点检查标红处，细心纠错几次。早上思维敏锐，适合做这件事。</p></div>
+      <div class="card"><span class="k">第三节</span><h4>当前工作与理想工作的优先顺序</h4><p>一是思考当前工作和未来工作的关系，比如先用一年全力做好当前工作来证明自己；二是把“绝对好”的计划做成提案给决策者看，抓住公司的“文脉”，即“是否挣钱”。</p></div>
+      <div class="card"><span class="k">第四节</span><h4>辅助性工作里也有“播种”</h4><p>作者在咨询公司每天做几百张 PPT，一度觉得自己是“材料制作机”，想辞职。领导说：“我们做的并不是简单的辅助性工作，而是维护公司品质的最后一道关卡。”换个角度，让公司增值的工作就是红色。</p></div>
+      <div class="card"><span class="k">第五节</span><h4>把“收割”做成工作表</h4><p>绿色的事要机械化处理：工作表里用具体数字，别写“根据情况”“必要应对”。例：每月例会的会前、会中、会后各做什么提前整理好。作者在孩子不满 1 岁时，把“喝 100 毫升早餐奶 / 补充通信录 / 丢垃圾”等排到固定时间，和丈夫分工。</p></div>
+      <div class="card" style="background:var(--soft);box-shadow:none"><span class="k">共同点</span><h4>不论哪种志向</h4><p>晨读对四种志向都是很好的“播种”。这一章的五节，分别对应工作志向、迷茫期、辅助岗位、日常提效等不同处境。</p></div>
+    </div>
+
+    <div class="chap-h reveal"><span class="no num">06</span><h3>做“神奇”的事，成为出众的人</h3><span class="one">把兴趣、经验、眼光变成价值：五个更“向外”的播种。</span></div>
+    <div class="grid3 reveal">
+      <div class="card"><span class="k">第一节</span><h4>将兴趣融入工作</h4><p>在社交软件上发作品、组个小群，不收费，只看反馈；定期举办“早上计划”，自己要早起主持，就不容拖拉。关键是不那么正式。作者的“早晨美食会”已持续 10 多年。</p></div>
+      <div class="card"><span class="k">第二节</span><h4>“试销自己”</h4><p>按幼儿园、小学、初中、高中各阶段写出“三大高兴事”“三大悲伤事”及原因，找出自己喜欢什么样的人和事。不建议随便转岗离职，先挖掘现有平台的潜力，假设方向、小小尝试、再调整。</p></div>
+      <div class="card"><span class="k">第三节</span><h4>尝试“多管闲事”</h4><p>“看了令人着急”“是我的话就能做好”的事往往藏着专业性。用早上 30 分钟写成文章：为什么做得不好、从 before 到 after 怎么改，上传社交软件（注意保密）。例：化妆师看行人的眉形，编辑看美术馆难懂的解说文。</p></div>
+      <div class="card"><span class="k">第四节</span><h4>把经验加工成商品</h4><p>三步：把所有经验（含失败和个人经历）一股脑想出来；想想能否帮到有困惑的人；传播出去听反应。《早起手账》2010 年出版，首印在门店售罄，次年 2 月推出新版，畅销 10 年。</p></div>
+      <div class="card"><span class="k">第五节</span><h4>打破规则和框架</h4><p>作者辅导十几名女性管理岗候选人，1 个月后向事业部长提案，内容完美却缺少趣味，原因是只敢讲有数据支撑的观点。“这是规则”会让目的和手段颠倒；有违规则的新观点，也请提出来。</p></div>
+      <div class="card" style="background:var(--soft);box-shadow:none"><span class="k">时代背景</span><h4>副业解禁</h4><p>书中多次提到日本的“100 岁时代”、副业开放、远程办公和弹性工作制：公司不再提供强制力时，更需要用早上 1 小时自律。</p></div>
+    </div>
+
+    <div class="chap-h reveal"><span class="no num">07</span><h3>制订你的早起方案</h3><span class="one">真正能早起的办法：不靠意志，不减睡眠，靠“立起”法则（前言里称为“早上 start up”法则）。</span></div>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">2<small>%</small></div><div class="k">据行动科学专家，只靠意志和干劲撑起运动、学习等行为的人大约只有这么多</div></div>
+      <div class="stat"><div class="v">10<small>天–2周</small></div><div class="k">新习惯的养成期；之后早起就像刷牙洗脸，不再有“判断疲劳”</div></div>
+      <div class="stat"><div class="v">4<small>/10万</small></div><div class="k">短睡也不困的基因变异概率（《神经》2019 年 9 月），所以练短睡是浪费时间</div></div>
+      <div class="stat"><div class="v">1<small>小时时差</small></div><div class="k">作者劝大家把早起看成去了时差 1 小时的国外“留学”</div></div>
+    </div>
+
+    <h3 class="sub reveal">“立起”法则四步</h3>
+    <div class="grid4 reveal">
+      <div class="card"><span class="k">1 · 睡觉</span><h4>确保合适的睡眠</h4><p>用“90 分钟 ×（4 或 5）+ α（入睡时间，一般 30 分钟左右）”在一周内测出自己的合理睡眠时间，配合记录表观察白天状态。</p></div>
+      <div class="card"><span class="k">2 · 确定</span><h4>按志向定“播种”</h4><p>用“立刻法则”（日语“すぐ”：す＝数字，ぐ＝具体化）定义成功，分别定大目标和小目标，写在手账上容易看到的地方。</p></div>
+      <div class="card"><span class="k">3 · 时间</span><h4>把早上的流程固定</h4><p>削减与播种无关的时间：每周不同日子换不同衣服、热好饭菜、固定时间赶上始发列车的固定座位、早上完成换洗。</p></div>
+      <div class="card"><span class="k">4 · 坚持</span><h4>失败也不气馁</h4><p>准备预备方案：用“松竹梅”三档决定每天早上做什么，并按忙闲期、冬季/夏季分别制定。</p></div>
+    </div>
+
+    <h3 class="sub reveal">作者在不同人生阶段的睡眠<span class="n">合理睡眠会随阶段和志向变化，并非一次定终身</span></h3>
+    <div class="card sleep reveal" id="sleepchart"></div>
+
+    <h3 class="sub reveal">“立刻法则”：大目标 + 小目标<span class="n">书中四个示例</span></h3>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="cmp">
+        <thead><tr><th>志向</th><th>大目标</th><th>小目标</th><th>把早上固定下来（书中示例）</th></tr></thead>
+        <tbody>
+          <tr><td>工作 & 工作志向<small>想在公司出人头地</small></td><td>在下一年 3 月的人事考评中获得最高评价</td><td>一周内想出 5 个促进销售的企划案，业务开始前拿出方案</td><td>书中未单列</td></tr>
+          <tr><td>工作 & 个人志向<small>兴趣持续发展</small></td><td>明年 2 月跑完首次参加的全程马拉松</td><td>每周 3 次，每天早上在附近跑 5 千米</td><td>每周日看天气预报定好 3 次跑步日；睡前定好跑道；洗澡间早备好衣服，回来立即冲澡换衣</td></tr>
+          <tr><td>工作 & 第二职业志向<small>想做副业</small></td><td>明年 4 月前找到有价值、能增加收入的副业并经营</td><td>一边在公司做出成绩，一边每周找一个正在做副业的人，充分调研</td><td>每月参加一次跨行业的投资会；每周一次早起跑步或冥想；其余时间整理所学</td></tr>
+          <tr><td>工作 & 投资志向<small>想有“不劳所得”</small></td><td>3 年以内，获得工资之外 1 万元的收益</td><td>每周找一个投资成功的人，读他们关于不动产、股票、知识产权的书</td><td>前 30 分钟读提高效率的书、回顾工作；后 30 分钟学不动产或股票</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub reveal">“松竹梅”：作者自己的三档预案</h3>
+    <div class="skm reveal">
+      <div class="card" style="--tc:#2f8a55"><div class="lv">松</div><div class="tm">4 点起，孩子 6 点起 · 留给自己 2 小时</div><p>一边看网上视频一边练腹肌、下蹲、化妆，或者用手账写一天的计划。</p></div>
+      <div class="card" style="--tc:#d97706"><div class="lv">竹</div><div class="tm">5 点起，孩子 6 点起 · 留给自己 1 小时</div><p>一边看网上视频一边练腹肌、下蹲、化妆。</p></div>
+      <div class="card" style="--tc:#d0412f"><div class="lv">梅</div><div class="tm">和孩子一样 6 点起，或和孩子 4 点起 · 没有自己的时间</div><p>为孩子做早饭，或准备带孩子去幼儿园。</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">事先定好每一档做什么，就不会经常感慨自己意志不坚。</p>
+
+    <h3 class="sub reveal">先画理想的时间，再调整现在的时间</h3>
+    <div class="grid2 reveal">
+      <div class="card">
+        <span class="k">第一步 · 设计理想的时间</span>
+        <h4>从“want”出发，而不是“have to”</h4>
+        <p>别只在“9–17 点怎么不浪费时间”上打转。要问：为什么需要 9–17 点工作？真正能集中的有几小时？7–10 点的 3 小时能否创造 7 小时的成果？家务是否必须自己做，能否拜托他人或换更好的电器？</p>
+        <p>作者的工作日理想时间里有：睡眠、兴趣、工作准备、思考性的工作、操作性的工作、和家人的时间；休息日有：睡眠、早晨在外锻炼、读书看电影、和朋友聚会、做家务。</p>
+        <p class="small">顺序必须是“描绘理想—把握现状”，颠倒了就会陷入“have to”。</p>
+      </div>
+      <div class="card">
+        <span class="k">第二步 · 调整现在的时间</span>
+        <h4>把“预设”和“实际”并排记一周</h4>
+        <p>日程软件里通常只有别人预设的“10:00–11:00 例会”“12:00–13:00 午饭”。要补上自己的安排，并细到例会内部：10:00–10:05 确认议题、10:05–10:40 今后的应对、10:40–11:00 确定下次议题。</p>
+        <p>“是的，上面的计划确实过于麻烦”，但只坚持一周，就会产生成本意识。可用应用“Toggi”（书中写法）计时；没有软件，就在周计划手账中间画虚线，左边写预设，右边写实际。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">一个反例也成立：喜欢晚上工作的人</h3>
+    <div class="card reveal">
+      <p style="margin-top:0">“将早起看成目的，就会和自己的志向背道而驰。”书中介绍了一位 35 岁、属于“工作&工作志向”的职场妈妈（女儿 3 岁半、儿子 8 个月），她喜欢晚上一个人安心规划，于是：</p>
+      <ol>
+        <li>晚上把家务安排妥当，视为“播种”时间；</li>
+        <li>早上只叠衣服、简单扫除、做简单饭菜；</li>
+        <li>搬到租金虽高但离单位近的地方，省下通勤时间；</li>
+        <li>家务拖到 21 点之后就算加班，直接停下；</li>
+        <li>现阶段带孩子最优先的是吃饭和睡眠，忙时先放下清扫。</li>
+      </ol>
+    </div>
+
+    <h3 class="sub reveal">5 个早起小技巧：秘诀在晚上怎么过</h3>
+    <div class="np c5 reveal">
+      <div><b>划好里程碑</b>从睡眠时间倒推：23 点必须睡，最晚 22 点洗澡，21 点半就得到家。</div>
+      <div><b>入眠“催化剂”</b>作者睡前戴会慢慢变热的眼罩；夏天可试清凉型。</div>
+      <div><b>当酒会干事</b>干事时间最自由：开始时间、要不要二次会、地点都由你定，可以选在家附近。</div>
+      <div><b>聚餐选全席宴</b>点菜会不停上菜，全席宴大约 2 小时就上全。</div>
+      <div><b>休息日预约</b>把美容室、牙科这类不能迟到的预约放在一大早，免得睡到中午。</div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>全书目录与每节一句话</summary>
+      <div class="toc-body">
+        <div class="part"><h5>前言 · 逆转人生的黄金1小时</h5>
+          <div class="ch"><b>前言</b><span>作者经历；几点起不重要；前 30 分钟分类、后 30 分钟践行；永远不要有“明天再去做”的想法。</span></div>
+        </div>
+        <div class="part"><h5>第一章 · 起床大作战</h5>
+          <div class="ch"><b>1 从失败者到“人生赢家”的秘诀</b><span>三种共同特征与“工作混沌”；信息过剩；工作前的 1 小时至关重要。</span></div>
+          <div class="ch"><b>2 高效能人士都在用计划管理</b><span>坚持早起的 6 个好处；“30 分钟 × 2”。</span></div>
+          <div class="ch"><b>3 学会播种，让梦想不再只是梦</b><span>什么是播种；找志向相同的标杆；人生阶段不同，优先顺序也变。</span></div>
+          <div class="ch"><b>4 现在，给自己定个位</b><span>“时间 × 风险容许度 + 人际关系”与四种志向。</span></div>
+          <div class="ch"><b>5 神奇的四象限法则</b><span>播种红、收割绿、疏苗蓝、风干黑。</span></div>
+          <div class="ch"><b>6 计划得当，工作就轻松舒朗</b><span>一早计划得当，被打断也能立刻回归。</span></div>
+        </div>
+        <div class="part"><h5>第二章 · 早点起床能够活出更美好的生活</h5>
+          <div class="ch"><b>1 早起时间，先做好人生计划</b><span>制订工作计划的 7 个好处。</span></div>
+          <div class="ch"><b>2 早起时先断网，养成好习惯</b><span>纸笔优先；通勤时用记录软件发邮件给自己。</span></div>
+          <div class="ch"><b>3 准备好专用纸笔</b><span>手账、B6 笔记本、LAMY 4 色笔、12 色铅笔。</span></div>
+          <div class="ch"><b>4 增强行动力，只需这三步</b><span>写出 → 四色 → 细化播种；按日/周/月/3–6 个月周期。</span></div>
+          <div class="ch"><b>5 写出工作内容，提高完成率</b><span>五项清单；没思绪时写 3 页早报。</span></div>
+        </div>
+        <div class="part"><h5>第三章 · 利用早起，提升工作效率</h5>
+          <div class="ch"><b>1 定好优先级，有效增加可支配时间</b><span>各志向的播种；确定优先顺序既不失礼也不麻烦。</span></div>
+          <div class="ch"><b>2 用“分解术”，切割工作内容</b><span>企划案拆成 12 步。</span></div>
+          <div class="ch"><b>3 “一事一纸”，让工作更清晰明了</b><span>一类播种用一张纸。</span></div>
+          <div class="ch"><b>4 细化工作，付诸行动</b><span>只细化五类事；颜色划分 7 问。</span></div>
+          <div class="ch"><b>5 时常盘点，避免工作残留</b><span>每周一盘点；战略先机；只求 80%。</span></div>
+          <div class="ch"><b>6 用思维导图，对工作进行宏观把握</b><span>每 3–6 个月画一次；逆向思维的陷阱。</span></div>
+        </div>
+        <div class="part"><h5>第四章 · 早起不会背叛你，扫除精进路上的障碍</h5>
+          <div class="ch"><b>1 没有干劲</b><span>不写自明：6 × 4 = 24。</span></div>
+          <div class="ch"><b>2 总是拖延</b><span>烦恼坐标：时间 × 能否解决。</span></div>
+          <div class="ch"><b>3 感到迷茫</b><span>写心有郁结的事；10 件理所当然的事。</span></div>
+          <div class="ch"><b>4 不知道如何实现梦想</b><span>5W2H。</span></div>
+        </div>
+        <div class="part"><h5>第五章 · 早起，遇见全新的自己</h5>
+          <div class="ch"><b>1 进行晨读</b><span>晨读重应用，夜读重情感。</span></div>
+          <div class="ch"><b>2 客观认识工作中的“暂时缺陷”</b><span>红笔标注，不停笔。</span></div>
+          <div class="ch"><b>3 确定工作与人生的优先顺序</b><span>当前与未来的关系；公司的“文脉”。</span></div>
+          <div class="ch"><b>4 找到需要“播种”的内容</b><span>“维护公司品质的最后一道关卡”。</span></div>
+          <div class="ch"><b>5 让“收割”表成为“播种”的一环</b><span>用具体数字写工作表。</span></div>
+        </div>
+        <div class="part"><h5>第六章 · 做“神奇”的事，成为出众的人</h5>
+          <div class="ch"><b>1 将兴趣融入工作</b><span>社交软件组群，办“早上计划”。</span></div>
+          <div class="ch"><b>2 开始“试销自己”</b><span>三大高兴事、三大悲伤事。</span></div>
+          <div class="ch"><b>3 尝试“多管闲事”</b><span>before / after 写成文章。</span></div>
+          <div class="ch"><b>4 将自己的经验加工成商品</b><span>三步；《早起手账》。</span></div>
+          <div class="ch"><b>5 打破规则和框架</b><span>别让“这是规则”扼杀好想法。</span></div>
+        </div>
+        <div class="part"><h5>第七章 · 制订你的早起方案</h5>
+          <div class="ch"><b>1 早起的心理准备</b><span>早起是手段不是目的；不减睡眠。</span></div>
+          <div class="ch"><b>2 早起的4个步骤</b><span>“立起”法则：睡觉、确定、时间、坚持；理想时间与现在时间。</span></div>
+          <div class="ch"><b>3 5个早起小技巧</b><span>正文有这一节，书前目录未列出。</span></div>
+        </div>
+        <div class="part"><h5>结语 · 只要起床，就是一场胜利</h5>
+          <div class="ch"><b>结语</b><span>工作管理是为了实现“想要做的事”。池田千惠，2020 年 4 月。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section class="sec lt" id="quotes">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx num">05</div><div><div class="tag">逐字引用</div><h2>金句</h2></div></div>
+    <div class="quotes reveal">
+      <div class="quote">什么时候起床才是早起，这个并不是最重要的东西。<cite>前言</cite></div>
+      <div class="quote">当你想着稍微认真一点重新再来的时候，“认真”一生也不会到来。<cite>前言</cite></div>
+      <div class="quote">即使在某一天出现问题，那也只是一年365天中小小的一天而已。<cite>前言</cite></div>
+      <div class="quote">时间就是生命。在别的事上花费时间，然后把剩余的时间留给自己，这样的方式其实就相当于缩减自己的生命。<cite>第一章第一节</cite></div>
+      <div class="quote">习惯改变，人生就会改变。<cite>前言</cite></div>
+      <div class="quote">你的平凡之处，可能就是别人感受到的伟大光辉。<cite>第四章第三节</cite></div>
+      <div class="quote">“这是规则”这句话，不知让人放弃了多少美好的思考。<cite>第六章第五节</cite></div>
+      <div class="quote">工作管理并不是处理“必须要做的事”，而在于实现“想要做的事”。<cite>结语</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANNER ============ -->
+<section class="sec lt" id="planner">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx num">06</div><div><div class="tag">小工具 · 按书中方法生成</div><h2>生成我的黄金 1 小时</h2></div></div>
+    <p class="reveal" style="margin:-10px 0 24px;max-width:860px;color:var(--t2)">填起床时间和志向，按书中的“30 分钟 × 2”、周期盘点、睡眠公式和“松竹梅”生成一份当天安排。所有内容都来自书里的方法和示例；输入只保存在本机浏览器，顶部表盘也会同步显示你的时间。</p>
+    <div class="planner">
+      <div class="card form">
+        <label class="f" for="wake">起床时间</label>
+        <input type="time" id="wake" value="06:00">
+        <label class="f" for="start">黄金 1 小时从几点开始</label>
+        <input type="time" id="start" value="06:00">
+        <div class="hint">起床后要先送孩子、做家务或通勤，就把它设在工作开始前 1 小时（书中：夜班 16 点开始，就用 15–16 点）。</div>
+        <label class="f" for="zxsel">我的志向</label>
+        <select id="zxsel">
+          <option value="0">工作 & 工作志向</option>
+          <option value="1">工作 & 个人志向</option>
+          <option value="2">工作 & 第二职业志向</option>
+          <option value="3">工作 & 投资志向</option>
+          <option value="4">还不确定</option>
+        </select>
+        <label class="opt"><input type="checkbox" id="mon">今天是周一（要做每周盘点）</label>
+        <label class="opt"><input type="checkbox" id="eom">今天是月末（要整理本月总结表）</label>
+        <label class="opt"><input type="checkbox" id="q36">距上次宏观回顾已有 3–6 个月</label>
+        <label class="opt"><input type="checkbox" id="commute">只能在通勤途中做计划</label>
+        <div class="btns"><button class="btn" id="copy">复制安排</button><button class="btn ghost" id="sync">志向跟随自测</button></div>
+      </div>
+      <div class="card out" id="out"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TODO ============ -->
+<section class="sec lt" id="todo">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx num">07</div><div><div class="tag">从明天早上开始</div><h2>行动清单</h2></div></div>
+    <div class="progress"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 14</div><button class="reset" id="preset">清空</button></div>
+    <div class="check" id="check"></div>
+  </div>
+  <footer>
+    <div class="wrap">根据《起床后的黄金1小时》（〔日〕池田千惠 著，范宏涛 译，北京日报出版社，2021 年 1 月，ISBN 978-7-5477-3922-8）全文整理<br>页面内容均出自原书；勾选进度和工具输入只保存在本机浏览器</div>
+  </footer>
+</section>
+
+<!-- ============ 我要怎么做？ ============ -->
+<button class="fab" id="fab" aria-haspopup="dialog" aria-controls="drawer" aria-expanded="false"><span class="sunico" aria-hidden="true"></span>我要怎么做？<span class="cnt" id="fabcnt">0/0</span></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer lt" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true" tabindex="-1">
+  <div class="dw-head">
+    <h3 id="dwTitle">我要怎么做？</h3>
+    <p>按书中方法排出的落地路线，每一步都注明出处。</p>
+    <div class="dw-prog"><div class="track"><div class="fill" id="dwfill"></div></div><span class="txt" id="dwtxt">0 / 0</span></div>
+    <button class="dw-close" id="dwclose" aria-label="关闭">×</button>
+  </div>
+  <div class="dw-body" id="dwbody"></div>
+</aside>
+<div class="toast" id="toast">已复制</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const toMin=v=>{const [h,m]=(v||'06:00').split(':').map(Number);return h*60+m};
+const fmt=m=>{m=((Math.round(m)%1440)+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')};
+
+/* ---------- 表盘 ---------- */
+const CX=400,CY=420,R=320;
+const pt=(m,r)=>{const a=Math.PI-(m/60)*Math.PI;return [CX+r*Math.cos(a),CY-r*Math.sin(a)]};
+(function(){
+  let g='';
+  for(let m=0;m<=60;m+=5){
+    const L=m%10===0;const [x1,y1]=pt(m,R+20);const [x2,y2]=pt(m,R+(L?36:30));
+    g+=`<line class="tk${L?' l':''}" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+    if(L){const [tx,ty]=pt(m,R+58);g+=`<text class="tl" x="${tx.toFixed(1)}" y="${(ty+6).toFixed(1)}">${m}′</text>`}
+  }
+  $('ticks').innerHTML=g;
+})();
+let dialStart=360;
+function setSun(m){
+  const [x,y]=pt(m,R);$('sun').setAttribute('transform',`translate(${x.toFixed(1)},${y.toFixed(1)})`);
+  $('dialTime').textContent=fmt(dialStart+m);
+  $('dialRange').textContent=fmt(dialStart)+' — '+fmt(dialStart+60);
+  const ph=$('dialPhase');
+  if(m<=0.5)ph.innerHTML='往下滚动，太阳会沿着这 60 分钟走一遍';
+  else if(m<30)ph.innerHTML=`第 <i>${Math.ceil(m)}</i> 分钟 · 前 30 分钟：写出 → 分颜色 → 细化“播种”`;
+  else if(m<59.5)ph.innerHTML=`第 <i>${Math.ceil(m)}</i> 分钟 · 后 30 分钟：只做“重要但不紧急”的事`;
+  else ph.innerHTML='1 小时结束 · 带着计划开始一天的工作';
+}
+
+/* ---------- 志向自测 ---------- */
+const ZX=[
+ {n:"工作 & 工作志向",t:"团体协作型",items:["时间全部花在工作上也没关系，时常考虑工作的事情","喜欢工作，一旦投入就忘乎所以","想在公司干出成绩，赚钱自立","想和同事一起完成工作","能够把自己的目标和企业的目标融为一体","为了做出成绩，不惜花时间去学习"]},
+ {n:"工作 & 个人志向",t:"临机应变型",items:["工作期间努力工作，非工作时间干自己的活","在工作时间内，按时工作的要求推进工作计划","想在自己喜欢或感兴趣的事情上面花费时间","不想因工作而让自己的家庭生活受影响","不愿减少自己的储蓄","不管怎么说，比起金钱，自己的自由时间更重要"]},
+ {n:"工作 & 第二职业志向",t:"居于图中央",items:["工作时间之外，不排斥干其他的事情","为了在工作上有发展，需要积累其他领域的经验","想将现在的工作经验，尝试应用到其他领域","有种危机感，觉得在现在的公司就是坐井观天","想全方位了解事情","喜欢和不同领域、不同行业的人交流"]},
+ {n:"工作 & 投资志向",t:"个人主义型",items:["不想把全部时间都放在工作上面","不想被时间、场所和金钱所束缚","为了远大目标，近期损失点钱也没关系","尽量做自己喜欢做的事","只想和自己关系好的人共事","想用最小的努力获得最大的收获"]}
+];
+const ZKEY='gold1h-zx-v1';
+const zsaved=JSON.parse(localStorage.getItem(ZKEY)||'[]');
+const zt=$('ztest');
+zt.innerHTML=ZX.map((z,i)=>`<div class="card"><h4>${z.n}<em>${z.t}</em></h4>${z.items.map((it,j)=>{const id=i+'-'+j;return `<label><input type="checkbox" data-id="${id}" ${zsaved.includes(id)?'checked':''}>${it}</label>`}).join('')}</div>`).join('');
+let zTop=-1;
+function zcalc(){
+  const on=[...zt.querySelectorAll('input:checked')].map(x=>x.dataset.id);
+  localStorage.setItem(ZKEY,JSON.stringify(on));
+  const cnt=[0,0,0,0]; on.forEach(id=>cnt[+id.split('-')[0]]++);
+  zt.querySelectorAll('h4 em').forEach((e,i)=>e.textContent=ZX[i].t+' · '+cnt[i]+'/6');
+  const max=Math.max(...cnt);
+  document.querySelectorAll('#zmap .bub').forEach(b=>b.classList.remove('on'));
+  const res=$('zres');
+  if(max===0){zTop=-1;res.innerHTML='勾选符合自己的描述，这里会显示你目前最靠近的志向。';return}
+  const tops=cnt.map((c,i)=>c===max?i:-1).filter(i=>i>=0);
+  zTop=tops[0];
+  tops.forEach(i=>document.querySelector(`#zmap .bub[data-z="${i}"]`).classList.add('on'));
+  res.innerHTML=`你目前最靠近：<b>${tops.map(i=>ZX[i].n).join('、')}</b>（${max}/6）。`+(tops.length>1?'<br>同时靠近几种很正常，书中说可以“一只脚涉足这个志向，另一只脚涉足另一个志向”。':'')+'<br><span class="small">志向会随人生阶段变化，过一段时间再测一次。</span>';
+}
+zt.addEventListener('change',zcalc); zcalc();
+
+/* ---------- 睡眠图 ---------- */
+const SL=[
+ ["19 岁前后","学习考试阶段",22,29.5,"约 7.5 小时",0],
+ ["24 岁前后","为生活奔波",23,29.5,"约 6.5 小时",0],
+ ["30–40 岁","",23,28,"约 5 小时",0],
+ ["怀孕期间","孕期易困",21,28.5,"约 7–8 小时",1],
+ ["刚生完孩子","实际约睡 6 小时",20.5,28,"约 7.5 小时",0],
+ ["孩子 4 岁","受孩子夜间影响",21.5,28.5,"约 7 小时",1]
+];
+const S0=20,S1=30,pct=h=>(h-S0)/(S1-S0)*100;
+$('sleepchart').innerHTML=SL.map(s=>`<div class="sl-row"><div class="lb">${s[0]}${s[1]?`<small>${s[1]}</small>`:''}</div><div class="sl-track"><div class="sl-bar${s[5]?' fz':''}" style="left:${pct(s[2]).toFixed(2)}%;width:${(pct(s[3])-pct(s[2])).toFixed(2)}%"></div></div><div class="hr">${s[4]}</div></div>`).join('')+
+ `<div class="sl-axis"><span></span><div class="ax"><span>20:00</span><span>22:00</span><span>0:00</span><span>2:00</span><span>4:00</span><span>6:00</span></div><span></span></div>
+ <p class="small" style="margin:12px 0 0">书中原文：19 岁 22 点睡 5 点半起；24 岁 23 点睡 5 点半起；30–40 岁 23 点睡 4 点起；怀孕期 21 点睡 4–5 点起；刚生完孩子 20 点半睡 4 点起；孩子 4 岁时 21–22 点睡 4–5 点起。斜纹条表示书中给的是一个范围，图中取中间值。</p>`;
+
+/* ---------- 生成器 ---------- */
+const SEED=[
+ {t:"工作 & 工作志向",do:["为将来发展或提升公司价值做方案：新商品开发、调研其他公司动向、相关学习","把带“暂时缺陷”的会议资料或提案拿出来，重点检查红笔标注处（第五章第二节）","书中小目标示例：一周内想出 5 个促进销售的企划案，业务开始前拿出方案"]},
+ {t:"工作 & 个人志向",do:["集中时间做和兴趣相关的事，提升该方面的技能","书中示例：每周 3 次早上在附近跑 5 千米（大目标：明年 2 月跑完首次全马）","跑步日：衣服提前放在洗澡间，回来立即冲澡换衣"]},
+ {t:"工作 & 第二职业志向",do:["考虑今后的职业发展，想想怎样提高效率为副业腾时间","用这 30 分钟把“多管闲事”写成文章：为什么做得不好、before 到 after 怎么改（第六章第三节）","书中小目标示例：每周找一个正在做副业的人，充分调研"]},
+ {t:"工作 & 投资志向",do:["研究股票、不动产市场和有市场价值的领域，向成功者学习","书中示例：前 30 分钟读提高效率的书、回顾工作，后 30 分钟学本职以外的不动产或股票","书中小目标示例：每周找一个投资成功的人，读他的书"]},
+ {t:"还不确定",do:["先在本页做志向自测，或回到“志向坐标”看看自己的现状","写出让自己心有郁结的事；写 10 件你觉得理所当然的事，看周围人说几次“真厉害”（第四章第三节）","按幼儿园、小学、初中、高中写“三大高兴事”“三大悲伤事”（第六章第二节）"]}
+];
+const PKEY='gold1h-plan-v1';
+const pv=JSON.parse(localStorage.getItem(PKEY)||'null');
+if(pv){$('wake').value=pv.w||'06:00';$('start').value=pv.s||pv.w||'06:00';$('zxsel').value=String(pv.z??0);['mon','eom','q36','commute'].forEach(k=>$(k).checked=!!pv[k])}
+let startTouched=pv?pv.s!==pv.w:false;
+let planText='';
+function plan(){
+  if(!startTouched)$('start').value=$('wake').value;
+  const w=toMin($('wake').value),s=toMin($('start').value),z=+$('zxsel').value;
+  const mon=$('mon').checked,eom=$('eom').checked,q36=$('q36').checked,cm=$('commute').checked;
+  localStorage.setItem(PKEY,JSON.stringify({w:$('wake').value,s:$('start').value,z,mon,eom,q36,commute:cm}));
+  dialStart=s; onScroll();
+  const items=[],first=[];
+  first.push(cm?"在通勤途中用收费记录软件（最好能声音输入）记下计划，发邮件给自己，到公司或附近咖啡店打开就是现成的工作表":"断网，拿出专用的手账和 4 色笔（习惯之前不用 App）");
+  first.push("① 全部写出来：今天要做的、应该做的，先用黑笔写，不分颜色。想不出来就按五项写：需要联系的人、今天要做的具体项目、未来想做的事、提出的课题、想看的书和资料");
+  first.push("脑子一团乱时，先写满 3 页“早报”，再从中挑出今天的事");
+  first.push("② 涂四种颜色：红“播种”、绿“收割”、蓝“疏苗”、黑“风干”。分不清就用“三天以内算收割，超过三天算播种”");
+  first.push("③ 把红色拆成能马上做的小步，一类播种用一张纸");
+  items.push({c:'a',t:fmt(s)+' – '+fmt(s+30),sub:'前 30 分钟',b:'做好一天的工作分类',ul:first,src:'第二章第四、五节 · 第三章'});
+  if(mon)items.push({c:'extra',t:'本周一',sub:'取其中 30 分钟',b:'每周盘点',ul:["用手账明细表看五项：想联系的人、今后要推进的项目、将来想做的事、提出的课题、想看的书和资料","一周没进展的，决定移到下周，或者干脆放弃","继续做的，调整“战略先机”转入本周计划；目标只求完成 80%"],src:'第三章第五节（作者用每周一早上 1 小时中的 30 分钟做这件事）'});
+  const sd=SEED[z];
+  items.push({c:'b',t:fmt(s+30)+' – '+fmt(s+60),sub:'后 30 分钟',b:'播种 · '+sd.t,ul:[...sd.do,"所有志向通用：晨读（技术类书、杂志、资格考试教材，多动手记笔记），或健康、运动、家人相关的事"],src:'第三章第一节 · 第五至七章'});
+  if(eom)items.push({c:'extra',t:'本月末',sub:'',b:'整理“本月总结表”',ul:["在五项之外加上“其他关心的事情”","一个月不处理也不会出问题的，果断先放下；出了问题再捡起来","时间久了，绿色“收割”会降格为黑色“风干”"],src:'第三章第四节 · 具体问题 3'});
+  if(q36)items.push({c:'extra',t:'这段时间',sub:'每 3–6 个月',b:'宏观把握一次',ul:["画一张思维导图，中心放“大设计”（Grand Design）","明确“谁、干什么、干到什么时候、怎么干”，再做工作进展图","目标只需宏观把握，不必缜密倒推（职业契机 80% 属于偶然）"],src:'第三章第六节'});
+  const b5=w-(90*5+30),b4=w-(90*4+30);
+  const sleepBox=`<div class="card"><h5>倒推睡觉时间</h5><ul>
+    <li>按“90 分钟 × 5 + 入睡约 30 分钟” = 8 小时：<b>${fmt(b5)}</b> 上床</li>
+    <li>按“90 分钟 × 4 + 入睡约 30 分钟” = 6.5 小时：<b>${fmt(b4)}</b> 上床</li>
+    <li>里程碑（按书中“23 点睡 → 22 点洗澡 → 21 点半到家”的间隔）：以 ${fmt(b5)} 睡为例，${fmt(b5-60)} 前洗澡，${fmt(b5-90)} 前到家</li>
+    <li>先用一周增减睡眠，配合记录表找到合理睡眠时间。不要靠减少睡眠来早起</li></ul></div>`;
+  const skmBox=`<div class="card"><h5>仿照作者定“松竹梅”</h5><ul>
+    <li><b>松</b>：提前到 ${fmt(w-60)} 起，留出 2 小时</li>
+    <li><b>竹</b>：${fmt(w)} 起，按上面的 1 小时走</li>
+    <li><b>梅</b>：今天没有自己的时间，就照顾好家人和出门，计划改到通勤途中用记录软件做</li>
+    <li>再按忙闲期、冬季/夏季各定一套</li></ul></div>`;
+  const gap=s-w;
+  $('out').innerHTML=`<h4>${fmt(s)} 开始的黄金 1 小时</h4><div class="sumline">起床 ${fmt(w)}${gap>0?` · 起床后先有 ${gap} 分钟留给家务、家人或通勤`:''}${gap<0?' · 开始时间早于起床时间，请检查':''} · 志向：${sd.t}</div><div class="tl">`+items.map(it=>`<div class="it ${it.c}"><div class="tm">${it.t}${it.sub?`<small>${it.sub}</small>`:''}</div><div class="ct"><b>${it.b}</b><ul>${it.ul.map(x=>`<li>${x}</li>`).join('')}</ul><div class="src">出处：${it.src}</div></div></div>`).join('')+`</div><div class="side3">${sleepBox}${skmBox}</div>`;
+  planText=`【我的黄金1小时】起床 ${fmt(w)}，志向：${sd.t}\n`+items.map(it=>`\n${it.t} ${it.sub} ${it.b}\n`+it.ul.map(x=>'· '+x).join('\n')).join('\n')+`\n\n睡觉：${fmt(b5)}（8小时）或 ${fmt(b4)}（6.5小时）上床\n松：${fmt(w-60)} 起 / 竹：${fmt(w)} 起 / 梅：改到通勤途中`;
+}
+['wake','zxsel','mon','eom','q36','commute'].forEach(k=>{$(k).addEventListener('input',plan);$(k).addEventListener('change',plan)});
+$('start').addEventListener('input',()=>{startTouched=true;plan()});
+$('sync').onclick=()=>{if(zTop<0){location.hash='#zx';return}$('zxsel').value=String(zTop);plan();toast('已按自测结果设为：'+ZX[zTop].n)};
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1600)}
+$('copy').onclick=()=>{
+  const done=()=>toast('已复制到剪贴板');
+  const fallback=()=>{const ta=document.createElement('textarea');ta.value=planText;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){toast('复制失败，请手动选择文字')}ta.remove()};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(planText).then(done,fallback)}else fallback();
+};
+
+/* ---------- 勾选清单（通用） ---------- */
+function ckItem(key,i,t,on){return `<label class="ckl"><input type="checkbox" data-k="${key}" data-i="${i}" ${on?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`}
+
+const T=[
+ ["用一周测出自己的合理睡眠时间","按“90 分钟 ×（4 或 5）+ 入睡时间”增减睡眠，配合记录表观察白天状态。","第七章第二节"],
+ ["从睡觉时间倒推晚上的里程碑","例：23 点睡 → 最晚 22 点洗澡 → 21 点半到家。睡前用眼罩之类的“催化剂”。","第七章第三节"],
+ ["选一套顺手的专用纸笔","手账 + 4 色笔。习惯之前早上断网，不用 App 做工作表。","第二章第二、三节"],
+ ["每天前 30 分钟走完三步","全部写出来 → 涂四种颜色 → 细化红色“播种”。","第二章第四节"],
+ ["想不出来时用五项或早报","需要联系的人、今天的具体项目、未来想做的事、提出的课题、想看的书和资料；或先写满 3 页早报。","第二章第五节"],
+ ["一类播种用一张纸","数纸的张数就知道手上有几件“播种”；工作表别扔，留下奋斗轨迹。","第三章第三节 · 第二章第二节"],
+ ["后 30 分钟只做“不紧急 × 重要”的事","晨读、修改提案、5W2H 拆梦想、写文章……按自己的志向选。","第一章第二、三节"],
+ ["做一次志向自测，写下大目标和小目标","用“立刻法则”：有数字、够具体，写在手账上容易看到的地方。","第一章第四节 · 第七章第二节"],
+ ["每周一花 30 分钟盘点","五项明细里没进展的，移到下周或放弃；只求完成 80%。","第三章第五节"],
+ ["每月末整理本月总结表","一个月不处理也没问题的事，果断放下。","第三章第四节"],
+ ["每 3–6 个月画一次思维导图","中心放“大设计”，再配工作进展图，防止混淆手段和目的。","第三章第六节"],
+ ["定好“松竹梅”三档预案","再按忙闲期、冬季/夏季各定一套。","第七章第二节"],
+ ["记一周“预设 vs 实际”","日程里补上自己的细项，用计时应用或手账左右两栏对照。","第七章第二节"],
+ ["把休息日的预约放在一大早","美容室、牙科这类不能迟到的预约，防止睡到中午。","第七章第三节"]
+];
+const KEY='gold1h-check-v1';
+const saved=JSON.parse(localStorage.getItem(KEY)||'[]');
+const ck=$('check');
+ck.innerHTML=T.map((t,i)=>ckItem('main',i,t,saved.includes(i))).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  localStorage.setItem(KEY,JSON.stringify(on));
+  $('pfill').style.width=(on.length/T.length*100)+'%';
+  $('ptxt').textContent=on.length+' / '+T.length;
+}
+ck.addEventListener('change',prog); prog();
+$('preset').onclick=()=>{ck.querySelectorAll('input').forEach(x=>x.checked=false);prog()};
+
+/* ---------- 「我要怎么做？」抽屉 ---------- */
+const ROUTE=[
+ {h:"今天就做",sub:"3 件 15 分钟内能完成的事",items:[
+  ["选定专用纸笔","找一本顺手的本子（手账或笔记本）和一支 4 色笔，以后早上的计划都写在这里，写完不扔。","第二章第三节 · 第二章第二节"],
+  ["把今天的事按五项全部写出来","需要联系的人、今天要做的具体项目、未来想做的事、提出的课题、想看的书和资料。先用黑笔写，不分颜色。","第二章第五节"],
+  ["涂四种颜色，圈出一件红色并拆出第一步","红“播种”、绿“收割”、蓝“疏苗”、黑“风干”。挑一件红色，给它单独一张纸，写下马上能做的第一步。","第三章第一至三节"]
+ ]},
+ {h:"第一周",sub:"要建立的做法",items:[
+  ["每天工作前留出 1 小时","前 30 分钟写出 → 分颜色 → 细化播种；后 30 分钟只做红色的事。几点起不重要，在工作开始前就行。","第一章第一、二节"],
+  ["测自己的合理睡眠时间","按“90 分钟 ×（4 或 5）+ 入睡约 30 分钟”增减睡眠，用记录表看白天状态。不要靠减少睡眠来早起。","第七章第二节"],
+  ["定好晚上的里程碑","从睡觉时间倒推：如 23 点睡 → 22 点洗澡 → 21 点半到家。","第七章第三节"],
+  ["做志向自测，写下大目标和小目标","用“立刻法则”：有数字、够具体，写在手账上容易看到的地方。","第一章第四节 · 第七章第二节"],
+  ["定好“松竹梅”三档预案","想好时间充裕、一般、完全没时间这三种早上各做什么。","第七章第二节"],
+  ["记一周“预设 vs 实际”","手账中间画条虚线，左边写预设，右边写实际，一周后就有成本意识。","第七章第二节"],
+  ["周一用 30 分钟做第一次盘点","看五项明细里哪些没进展，移到下周或放弃。","第三章第五节"]
+ ]},
+ {h:"一个月后",sub:"要形成的习惯和怎么检验",items:[
+  ["月末整理“本月总结表”","在五项之外加“其他关心的事情”；一个月不处理也没出问题的事，果断放下。","第三章第四节"],
+  ["检验：完成率有没有到 80%","以周为单位回看，目标只求完成 80%；没完成的周末弥补，本周遗憾下周完善。","第三章第五节"],
+  ["检验：早起是否已经不用下决心","新习惯一般 10 天到两周养成，之后像刷牙洗脸一样自然，不再有“判断疲劳”。","第七章第二节"],
+  ["回看手账里的颜色轨迹","颜色分错没关系，回头看时颜色能帮你反思哪些判断要调整。","第三章第四节 · 第二章第二节"],
+  ["排上第一次 3–6 个月的宏观回顾","画思维导图（中心放“大设计”），再做工作进展图，防止混淆手段和目的。","第三章第六节"]
+ ]},
+ {h:"卡住了怎么办",sub:"书里提到的常见障碍和对策",items:[
+  ["起不来、觉得早起很痛苦","早起是手段不是目的；只要工作前腾出 1 小时即可。不要减少睡眠，把早起看成去了时差 1 小时的国外“留学”，秘诀在晚上怎么过。","第七章第一、三节 · 第一章第一节"],
+  ["坚持不下去、某天失败了","启用“松竹梅”里的下一档；目标只求 80%；“即使在某一天出现问题，那也只是一年365天中小小的一天而已。”","第七章第二节 · 第三章第五节 · 前言"],
+  ["没有干劲","工作太庞大就拆细，连不用写也记得住的细节也写出来，例如 6 个场所 × 4 个动作 = 24 项。","第四章第一节"],
+  ["总是拖延、心里不安","随机写出烦恼，画“时间 × 能否解决”坐标；先管能控制的、短期能解决的。","第四章第二节"],
+  ["找不到要“播种”的事，感到迷茫","写出让自己心有郁结的事；写 10 件你觉得理所当然的事，看周围人说几次“真厉害”。辅助性工作里也有播种。","第四章第三节 · 第五章第四节"],
+  ["早上脑子一片空白","先写满 3 页“早报”，把想法原封不动倒出来，再从中挑出今天的事。","第二章第五节"],
+  ["每天都被“收割”追着跑","把一段时间的收割内容做成进度表，用本月总结表整理，久不处理的果断放下。","第三章第四节"],
+  ["其实更喜欢晚上安静地做事","按自己的志向决定取舍：书中 35 岁的职场妈妈把晚上当“播种”时间，早上只做简单家务。","第七章第一节"]
+ ]}
+];
+const DKEY='gold1h-drawer-v1';
+const dsaved=JSON.parse(localStorage.getItem(DKEY)||'[]');
+const DTOTAL=ROUTE.reduce((a,s)=>a+s.items.length,0);
+$('dwbody').innerHTML=ROUTE.map((st,si)=>`<div class="dw-step"><div class="sh"><span class="no">${'①②③④'[si]}</span><h4>${st.h}<span class="small" style="font-weight:400;margin-left:8px">${st.sub}</span></h4><span class="pc" data-pc="${si}"></span></div>${st.items.map((t,ii)=>ckItem('dw',si+'-'+ii,t,dsaved.includes(si+'-'+ii))).join('')}</div>`).join('')+
+ `<div class="dw-foot"><span>进度保存在本机浏览器</span><button class="reset" id="dwreset">清空</button></div>`;
+function dprog(){
+  const on=[...$('dwbody').querySelectorAll('input:checked')].map(x=>x.dataset.i);
+  localStorage.setItem(DKEY,JSON.stringify(on));
+  $('dwfill').style.width=(on.length/DTOTAL*100)+'%';
+  $('dwtxt').textContent=on.length+' / '+DTOTAL;
+  $('fabcnt').textContent=on.length+'/'+DTOTAL;
+  ROUTE.forEach((st,si)=>{const n=on.filter(x=>x.startsWith(si+'-')).length;document.querySelector(`[data-pc="${si}"]`).textContent=n+'/'+st.items.length});
+}
+$('dwbody').addEventListener('change',dprog); dprog();
+$('dwreset').onclick=()=>{$('dwbody').querySelectorAll('input').forEach(x=>x.checked=false);dprog()};
+const drawer=$('drawer'),scrim=$('scrim'),fab=$('fab');
+let lastFocus=null;
+function openD(){lastFocus=document.activeElement;drawer.classList.add('on');scrim.classList.add('on');drawer.setAttribute('aria-hidden','false');fab.setAttribute('aria-expanded','true');document.body.classList.add('lock');setTimeout(()=>$('dwclose').focus(),50)}
+function closeD(){drawer.classList.remove('on');scrim.classList.remove('on');drawer.setAttribute('aria-hidden','true');fab.setAttribute('aria-expanded','false');document.body.classList.remove('lock');(lastFocus||fab).focus()}
+fab.onclick=openD; scrim.onclick=closeD; $('dwclose').onclick=closeD;
+document.addEventListener('keydown',e=>{
+  if(!drawer.classList.contains('on'))return;
+  if(e.key==='Escape'){e.preventDefault();closeD()}
+  if(e.key==='Tab'){const f=[...drawer.querySelectorAll('button,input')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+if(location.hash==='#how')openD();
+
+/* ---------- 滚动：太阳、天色时钟、导航配色 ---------- */
+const nav=$('nav'),links=[...nav.querySelectorAll('a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const hourSec=$('hour'),hz=$('horizon'),hzSun=hz.querySelector('.sun');
+function onScroll(){
+  const y=scrollY,vh=innerHeight;
+  const end=hourSec.offsetTop+hourSec.offsetHeight-vh;
+  const p=Math.max(0,Math.min(1,y/Math.max(1,end)));
+  setSun(p*60);
+  const docP=Math.max(0,Math.min(1,y/Math.max(1,document.documentElement.scrollHeight-vh)));
+  $('skyclock').textContent=fmt(300+docP*210);
+  const r=hz.getBoundingClientRect();
+  const hp=Math.max(0,Math.min(1,(vh-r.top)/(vh+r.height)));
+  hzSun.style.setProperty('--rise',((1-hp)*120-40).toFixed(0)+'px');
+  let k=0; secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<120)k=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===k));
+  const cur=secs[k];
+  const isLt=cur&&cur.classList.contains('lt')&&hz.getBoundingClientRect().bottom<60;
+  nav.classList.toggle('lt',!!isLt);nav.classList.toggle('dk',!isLt);
+}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',onScroll);
+plan();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

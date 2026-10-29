@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>聪明人的一张纸工作整理术 · 一页读懂</title>
+<meta name="color-scheme" content="light dark">
+<style>
+:root{
+  --desk:#e7e1d3; --bg:#fbf9f2; --paper:#fffef9; --ink:#2b2a26; --ink2:#55524a; --ink3:#8b867b;
+  --line:#d9d3c4; --soft:#f1ede1;
+  --gridc:rgba(56,132,170,.13); --gridc2:rgba(56,132,170,.22);
+  --c:#15803d; --cs:rgba(34,197,94,.14);
+  --red:#c42b2b; --reds:rgba(239,68,68,.12);
+  --blue:#1f4fc7; --blues:rgba(56,140,230,.12);
+  --gold:#a16207;
+  --hy:rgba(255,226,40,.55); --hg:rgba(74,222,128,.38); --hb:rgba(96,180,250,.34); --hr:rgba(248,113,113,.32); --ho:rgba(222,170,40,.42);
+  --sticky:#fff4b8; --sticky2:#dff3e4; --sticky3:#e1eefc; --sticky4:#fde4e1; --stickyink:#3a3528;
+  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --hand:"Kaiti SC","STKaiti","KaiTi","BiauKai","Kai",var(--serif);
+  --r:14px; --shadow:0 1px 2px rgba(60,50,30,.06),0 6px 16px rgba(60,50,30,.07);
+  --hr1:18px 5px 16px 6px/6px 16px 5px 18px;
+  --hr2:5px 17px 6px 15px/16px 6px 17px 5px;
+  --pg-shadow:0 2px 4px rgba(60,50,30,.08),0 18px 50px rgba(60,50,30,.16);
+  --frame:none;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --desk:#121614; --bg:#22302a; --paper:#26352e; --ink:#eeede4; --ink2:#c9c8bc; --ink3:#93a196;
+    --line:rgba(238,237,228,.2); --soft:rgba(238,237,228,.06);
+    --gridc:rgba(238,237,228,.045); --gridc2:rgba(238,237,228,.08);
+    --c:#93e9ae; --cs:rgba(147,233,174,.13);
+    --red:#ff9f9a; --reds:rgba(255,159,154,.13);
+    --blue:#a5cbff; --blues:rgba(165,203,255,.12);
+    --gold:#f3d681;
+    --hy:rgba(253,230,138,.28); --hg:rgba(147,233,174,.25); --hb:rgba(165,203,255,.25); --hr:rgba(255,159,154,.25); --ho:rgba(243,214,129,.28);
+    --sticky:rgba(253,230,138,.12); --sticky2:rgba(147,233,174,.10); --sticky3:rgba(165,203,255,.10); --sticky4:rgba(255,159,154,.10); --stickyink:#eeede4;
+    --shadow:none;
+    --pg-shadow:0 20px 60px rgba(0,0,0,.55);
+    --frame:12px solid #5b4330;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.85 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.a4{max-width:1200px;margin:22px auto 40px;background-color:var(--bg);
+  background-image:linear-gradient(var(--gridc2) 1px,transparent 1px),linear-gradient(90deg,var(--gridc2) 1px,transparent 1px),linear-gradient(var(--gridc) 1px,transparent 1px),linear-gradient(90deg,var(--gridc) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px;
+  box-shadow:var(--pg-shadow);border:var(--frame);border-radius:2px;position:relative;overflow:hidden}
+@media (prefers-color-scheme:dark){.a4{border-radius:6px;box-shadow:var(--pg-shadow),inset 0 0 80px rgba(0,0,0,.35)}}
+.wrap{max-width:1080px;margin:0 auto;padding:0 40px}
+h1,h2,h3,h4{font-family:var(--hand);font-weight:700;line-height:1.35;margin:0}
+p{margin:.4em 0}
+.muted{color:var(--ink2)}
+.small{font-size:13px;color:var(--ink3)}
+.hand{font-family:var(--hand)}
+.red{color:var(--red)}
+b.hl,.hl{color:var(--c)}
+.mk{background:linear-gradient(100deg,transparent 2%,var(--hy) 4%,var(--hy) 96%,transparent 98%) 0 72%/100% 58% no-repeat;padding:0 .12em}
+.mk-g2{background:linear-gradient(100deg,transparent 2%,var(--hg) 4%,var(--hg) 96%,transparent 98%) 0 72%/100% 58% no-repeat;padding:0 .12em}
+svg.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.ic{width:1em;height:1em;display:inline-block;vertical-align:-.15em;fill:currentColor}
+/* hand-drawn circle via mask */
+.circ{position:relative;display:inline-block}
+.circ::after{content:"";position:absolute;inset:-.28em -.45em -.22em -.4em;background:var(--red);pointer-events:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 64' preserveAspectRatio='none'%3E%3Cpath d='M30 9C70 1 160 2 188 18 202 28 192 50 150 57 100 64 30 62 12 46 0 35 8 17 40 8 70 1 120 3 140 6' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 64' preserveAspectRatio='none'%3E%3Cpath d='M30 9C70 1 160 2 188 18 202 28 192 50 150 57 100 64 30 62 12 46 0 35 8 17 40 8 70 1 120 3 140 6' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.uline{background:none;position:relative;display:inline-block}
+.uline::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-.18em;height:.42em;background:var(--c);pointer-events:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8C40 3 70 10 105 6S170 3 198 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8C40 3 70 10 105 6S170 3 198 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--desk) 86%,transparent);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px);border-bottom:1.5px dashed color-mix(in srgb,var(--ink3) 55%,transparent)}
+nav.top .wrap{max-width:1200px;display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto;scrollbar-width:none;padding:0 24px}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{font-family:var(--hand);font-weight:700;font-size:19px;margin-right:auto;white-space:nowrap;display:flex;align-items:center;gap:8px;color:var(--c)}
+nav.top .brand i{display:inline-block;width:16px;height:20px;border:1.6px solid var(--c);border-radius:2px;transform:rotate(-6deg);background:linear-gradient(var(--c),var(--c)) 50% 30%/60% 1.5px no-repeat,linear-gradient(var(--c),var(--c)) 50% 55%/60% 1.5px no-repeat,linear-gradient(var(--c),var(--c)) 50% 80%/40% 1.5px no-repeat}
+nav.top a{text-decoration:none;font-family:var(--hand);font-size:16.5px;color:var(--ink2);padding:4px 10px;white-space:nowrap;transition:.2s}
+nav.top a:hover{color:var(--ink)}
+nav.top a.on{color:var(--ink);background:linear-gradient(100deg,transparent 3%,var(--hy) 6%,var(--hy) 94%,transparent 97%) 0 75%/100% 55% no-repeat}
+
+/* hero */
+.hero{padding:34px 0 50px;text-align:center;position:relative}
+.nbhead{display:flex;justify-content:space-between;gap:20px;font-family:var(--hand);font-size:16px;color:var(--ink2);border-bottom:1.6px solid var(--ink);padding-bottom:6px;margin-bottom:46px;text-align:left}
+.nbhead u{text-decoration:none;color:var(--blue);border-bottom:1px solid var(--ink3);padding:0 8px}
+.eyebrow{display:inline-block;font-family:var(--hand);font-size:16px;letter-spacing:.12em;color:var(--blue);margin-bottom:18px}
+.hero h1{font-size:clamp(46px,8vw,92px);letter-spacing:.06em;color:var(--ink);font-weight:700}
+.hero h1 .circled{position:relative;display:inline-block;color:var(--c);padding:0 .12em}
+.hero h1 .circled svg{position:absolute;left:-7%;top:-12%;width:112%;height:124%;overflow:visible;pointer-events:none}
+.hero h1 .circled path{fill:none;stroke:var(--red);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.3s .35s ease forwards;vector-effect:non-scaling-stroke}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.hero h1 .circled path{animation:none;stroke-dashoffset:0}}
+.hero h1 .dot{color:var(--ink3);font-size:.6em;vertical-align:.2em}
+.hero .lead{font-size:clamp(17px,2vw,19.5px);color:var(--ink2);max-width:780px;margin:24px auto 0;line-height:1.95}
+.hero .lead strong{color:var(--ink);font-weight:700;background:linear-gradient(100deg,transparent 2%,var(--hy) 4%,var(--hy) 96%,transparent 98%) 0 75%/100% 55% no-repeat}
+.thread{margin:34px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;max-width:1000px;font-family:var(--hand);font-size:18px}
+.thread span{padding:2px 8px;white-space:nowrap;color:var(--ink)}
+.thread span b{color:var(--red);font-family:var(--hand);margin-right:4px}
+.thread i{font-style:normal;color:var(--blue);align-self:center;font-family:var(--hand)}
+.nums{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:40px}
+.nums div{border:1.6px solid var(--ink);border-radius:var(--hr1);padding:12px 8px;background:color-mix(in srgb,var(--paper) 70%,transparent)}
+.nums div:nth-child(2n){border-radius:var(--hr2)}
+.nums b{display:block;font-family:var(--hand);font-size:36px;line-height:1.1;color:var(--c)}
+.nums b small{font-size:16px;margin-left:2px;color:var(--ink2)}
+.nums span{font-size:13px;color:var(--ink2);line-height:1.5;display:block;margin-top:4px}
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:40px;text-align:left}
+.book{background:var(--sticky);color:var(--stickyink);padding:26px 22px 18px;box-shadow:0 1px 1px rgba(0,0,0,.05),0 10px 18px -8px rgba(60,50,30,.35);position:relative;text-decoration:none;transition:transform .25s;transform:rotate(-1.2deg)}
+.book:nth-child(2){background:var(--sticky2);transform:rotate(.8deg)}
+.book:nth-child(3){background:var(--sticky3);transform:rotate(-.5deg)}
+.book:hover{transform:rotate(0) translateY(-3px)}
+.book::before{content:"";position:absolute;left:50%;top:-11px;width:86px;height:22px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.05);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+@media (prefers-color-scheme:dark){.book{box-shadow:none;border:1.5px dashed rgba(238,237,228,.35)}.book::before{background:rgba(238,237,228,.18)}}
+.book .num{font-family:var(--hand);font-size:16px;color:var(--red);font-weight:700;letter-spacing:.1em}
+.book h3{font-size:21px;margin-top:4px}
+.book p{font-size:14.5px;color:inherit;opacity:.85;margin-top:8px}
+
+/* sections */
+section.block{padding:64px 0;position:relative}
+section.block::before{content:"";position:absolute;left:40px;right:40px;top:0;border-top:1.6px dashed color-mix(in srgb,var(--ink3) 60%,transparent)}
+.sec-head{display:flex;align-items:center;gap:26px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head .big{font-family:var(--hand);font-size:54px;line-height:1;color:var(--c);font-weight:700;position:relative;width:92px;height:80px;display:grid;place-items:center;flex:none}
+.sec-head .big::after{content:"";position:absolute;inset:0;background:var(--red);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90' preserveAspectRatio='none'%3E%3Cpath d='M55 6C80 6 96 22 94 46 92 72 70 86 46 84 20 82 4 64 6 42 8 20 26 6 52 5 66 5 74 9 80 13' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90' preserveAspectRatio='none'%3E%3Cpath d='M55 6C80 6 96 22 94 46 92 72 70 86 46 84 20 82 4 64 6 42 8 20 26 6 52 5 66 5 74 9 80 13' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.sec-head h2{font-size:clamp(30px,4.2vw,44px);position:relative;display:inline-block}
+.sec-head h2::after{content:"";position:absolute;left:-1%;right:-3%;bottom:-.12em;height:.32em;background:var(--c);opacity:.8;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8C40 3 70 10 105 6S170 3 198 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8C40 3 70 10 105 6S170 3 198 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.sec-head .tag{font-family:var(--hand);font-size:16px;color:var(--blue);letter-spacing:.06em;margin-bottom:2px}
+.thesis{font-family:var(--hand);font-size:clamp(19px,2.3vw,23px);line-height:1.75;color:var(--blue);border-left:2px solid var(--red);padding:2px 0 2px 22px;margin:0 0 34px;max-width:940px}
+.thesis b{color:var(--ink);background:linear-gradient(100deg,transparent 2%,var(--hy) 4%,var(--hy) 96%,transparent 98%) 0 78%/100% 50% no-repeat}
+h3.sub{font-size:24px;margin:56px 0 18px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+h3.sub::before{content:"";width:20px;height:3px;border-radius:2px;background:var(--red);transform:rotate(-12deg) translateY(-6px)}
+h3.sub .en{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--ink3);letter-spacing:.05em}
+h3.sub .badge{font-family:var(--hand);font-size:15px;font-weight:700;color:var(--red);border:1.5px solid var(--red);padding:0 10px;border-radius:var(--hr1);transform:rotate(-2deg)}
+.card{background:color-mix(in srgb,var(--paper) 78%,transparent);border:1.6px solid color-mix(in srgb,var(--ink) 72%,transparent);border-radius:var(--hr1);padding:22px 24px}
+.grid2>.card:nth-child(2n),.rd>.card:nth-child(2n){border-radius:var(--hr2)}
+.card h4{font-size:19px;margin-bottom:8px;color:var(--c)}
+.card ul,.card ol{margin:0;padding-left:1.25em;color:var(--ink2);font-size:15px}
+.card li{margin:3px 0}
+.card li::marker{color:var(--red);font-family:var(--hand)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tpl{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:start}
+.tpl.rev{grid-template-columns:1fr 1.15fr}
+.tpl.sl{grid-template-columns:.85fr 1.15fr}
+.lbl{font-family:var(--hand);font-size:15px;letter-spacing:.06em;color:var(--blue);font-weight:700;margin-bottom:6px;display:block}
+.pill{display:inline-block;font-size:12.5px;padding:0 8px;margin:2px;color:var(--ink);background:linear-gradient(100deg,transparent 2%,var(--hy) 5%,var(--hy) 95%,transparent 98%) 0 70%/100% 60% no-repeat}
+.pill.g{background:none;border:1.4px solid var(--c);color:var(--c);border-radius:var(--hr1);font-family:var(--hand);font-size:14px;padding:0 10px}
+.pill.r{background:var(--reds);color:var(--red)}
+.note{font-size:13.8px;color:var(--stickyink);background:var(--sticky);padding:12px 16px;margin-top:14px;box-shadow:0 8px 14px -10px rgba(60,50,30,.5);position:relative}
+.note b{color:inherit}
+@media (prefers-color-scheme:dark){.note{box-shadow:none;border-left:3px solid var(--gold)}}
+.eg{font-family:var(--hand);color:var(--ink)}
+.cap{font-size:13px;color:var(--ink3);text-align:center;margin-top:8px;font-family:var(--hand)}
+
+/* ---------- paper sheets (shared) ---------- */
+.paper{background:var(--paper);border:2px solid var(--ink);border-radius:3px;box-shadow:var(--shadow);position:relative;color:var(--ink)}
+.hd{display:flex;gap:24px;font-size:13px;font-weight:600;padding:6px 12px;border-bottom:1px solid var(--ink)}
+.hd span{flex:1}
+.hd span:last-child{flex:.6}
+
+/* S note */
+.snote .cols{display:grid;grid-template-columns:repeat(5,1fr)}
+.snote .col{border-left:1px solid var(--ink);display:flex;flex-direction:column}
+.snote .col:first-child{border-left:none}
+.snote .top{padding:8px 8px 6px;border-bottom:1px solid var(--ink);text-align:center}
+.snote .top b{display:block;font-size:13.5px;text-align:left}
+.snote .top .ico{font-size:40px;height:52px;display:flex;align-items:center;justify-content:center;font-family:Georgia,var(--serif);font-weight:700;line-height:1}
+.snote .top .ico svg{width:44px;height:44px;fill:currentColor}
+.snote .body{padding:10px 9px;font-size:13px;min-height:120px;color:var(--ink2);line-height:1.6;flex:1}
+.snote .body.eg{font-size:14px;color:var(--ink)}
+.snote .body .oval{display:inline-block;border:1.4px solid var(--red);border-radius:50%;padding:1px 9px;margin-bottom:6px;color:var(--red)}
+.hints{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.hints span{background:var(--blues);color:var(--blue);font-size:12.5px;line-height:1.5;border-radius:10px;padding:8px 10px;text-align:center;position:relative}
+.hints span::before{content:"";position:absolute;left:50%;top:-6px;border:6px solid transparent;border-top:0;border-bottom-color:var(--blues);transform:translateX(-50%)}
+.threeS{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.threeS div{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--paper);text-align:center}
+.threeS b{font-family:Georgia,var(--serif);font-size:28px;color:var(--c);display:block;line-height:1.1}
+.threeS span{font-size:13px;color:var(--ink2)}
+.threeS div.last{background:var(--cs);border-color:transparent}
+
+/* 16 grid */
+.g16{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,64px);border:2px solid var(--ink);background:var(--paper);position:relative}
+.g16>div{border-right:1px solid color-mix(in srgb,var(--blue) 45%,transparent);border-bottom:1px solid color-mix(in srgb,var(--blue) 45%,transparent);padding:6px 8px;font-size:12.5px;font-family:var(--hand);line-height:1.45;position:relative}
+.g16>div:nth-child(4n){border-right:none}
+.g16>div:nth-child(n+13){border-bottom:none}
+.g16>div:nth-child(2n){border-right-color:color-mix(in srgb,var(--blue) 45%,transparent)}
+.g16>div:nth-child(4n+2){border-right:2px solid var(--ink3)}
+.g16 .ttl{font-family:var(--sans);font-weight:600;font-size:12.5px;color:var(--ink)}
+.g16 mark{background:none;color:inherit;padding:0 2px;border-radius:3px}
+.mk-r{box-shadow:inset 0 -.55em 0 color-mix(in srgb,#ef4444 35%,transparent)}
+.mk-y{box-shadow:inset 0 -.55em 0 color-mix(in srgb,#facc15 55%,transparent)}
+.mk-b{box-shadow:inset 0 -.55em 0 color-mix(in srgb,#38bdf8 40%,transparent)}
+.mk-g{box-shadow:inset 0 -.55em 0 color-mix(in srgb,#22c55e 40%,transparent)}
+.mk-o{box-shadow:inset 0 -.55em 0 color-mix(in srgb,#d4a017 50%,transparent)}
+.ccode{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ccode span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+.ccode i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:0}
+.sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.sizes div{border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;background:var(--paper)}
+.sizes .mini{height:38px;margin:0 auto 6px;width:56px;border:1.5px solid var(--ink3);background-image:linear-gradient(90deg,color-mix(in srgb,var(--blue) 50%,transparent) 1px,transparent 1px),linear-gradient(color-mix(in srgb,var(--blue) 50%,transparent) 1px,transparent 1px)}
+.sizes b{font-size:14px;display:block}
+.sizes span{font-size:12px;color:var(--ink3)}
+.drawsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.drawsteps div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13.5px;color:var(--ink2)}
+.drawsteps .nb{width:100%;aspect-ratio:1.5;border:1.5px solid var(--ink3);margin-bottom:8px;position:relative;background:linear-gradient(90deg,transparent calc(50% - .75px),var(--ink3) calc(50% - .75px),var(--ink3) calc(50% + .75px),transparent calc(50% + .75px))}
+.drawsteps .nb::after{content:"";position:absolute;inset:0;background:var(--pat,none)}
+.drawsteps b{color:var(--ink);display:block;font-size:14px}
+
+/* reading spread */
+.spread{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink);background:var(--paper);box-shadow:var(--shadow);border-radius:3px;position:relative}
+.spread::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:10px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(0,0,0,.08),transparent);pointer-events:none}
+.kw{display:grid;grid-template-rows:repeat(8,1fr);grid-auto-flow:column;grid-template-columns:1fr 1fr;border-right:1.5px solid var(--ink)}
+.kw span{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:6px 10px;font-size:13px;color:var(--ink2);display:flex;align-items:center;min-height:38px;transition:.35s;position:relative}
+.kw span:nth-child(8n){border-bottom:none}
+.kw span:nth-child(n+9){border-right:none}
+.kw span.pick::after{content:"";position:absolute;inset:3px 2px;border:1.6px solid var(--red);border-radius:50%;opacity:0;transition:.35s}
+.rp{padding:12px 16px 14px;display:flex;flex-direction:column}
+.rp .bt{display:flex;justify-content:space-between;font-family:var(--hand);font-size:14.5px;border-bottom:1px solid var(--ink3);padding-bottom:4px}
+.tri{position:relative;aspect-ratio:100/86;width:100%;max-width:340px;margin:10px auto 0}
+.tri svg{position:absolute;inset:0;width:100%;height:100%;stroke:var(--ink3);stroke-width:.6;fill:none}
+.tri .cc{position:absolute;width:30%;aspect-ratio:1;border:1.5px solid var(--ink);border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12.5px;line-height:1.35;padding:6px;font-family:var(--hand);transition:.35s}
+.tri .t1{left:35%;top:3.6%}.tri .t2{left:3%;top:59.6%}.tri .t3{left:67%;top:59.6%}
+.tri .tq{position:absolute;left:29%;width:42%;top:40%;text-align:center;font-size:12.5px;line-height:1.45;color:var(--ink);font-family:var(--hand)}
+.tri .tq b{font-family:var(--sans);font-size:13px;color:var(--c);display:block}
+.msgbox{margin-top:10px;border:1.5px solid var(--ink);border-radius:999px;padding:8px 16px;text-align:center;font-family:var(--hand);font-size:14px;transition:.35s}
+.msgbox b{font-family:var(--sans);font-size:12px;color:var(--c);display:block;letter-spacing:.1em}
+.actbox{margin-top:8px;border:1.5px solid var(--ink);padding:6px 12px;text-align:center;font-family:var(--hand);font-size:14px;transition:.35s}
+.actbox b{font-family:var(--sans);font-size:12px;color:var(--red);display:block;letter-spacing:.1em}
+.stepper{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.stepper button{border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:7px 14px;border-radius:999px;font-size:14px;cursor:pointer;font-family:inherit;transition:.15s}
+.stepper button b{font-family:var(--serif);color:var(--c);margin-right:4px}
+.stepper button.on{background:var(--c);border-color:var(--c);color:var(--paper)}
+.stepper button.on b{color:var(--paper)}
+.stepcap{min-height:52px;margin-top:12px;font-size:14.5px;color:var(--ink2);background:var(--cs);border-radius:10px;padding:10px 14px}
+.stepcap b{color:var(--c)}
+/* step states */
+.spread .kw span .w{opacity:0;transition:.35s}
+.spread[data-s="1"] .tri .cc,.spread[data-s="2"] .tri .cc{color:transparent}
+.spread[data-s="1"] .msgbox,.spread[data-s="2"] .msgbox,.spread[data-s="3"] .msgbox,
+.spread[data-s="1"] .actbox,.spread[data-s="2"] .actbox,.spread[data-s="3"] .actbox{opacity:.15}
+.spread[data-s="1"] .kw span .w{opacity:0}
+.spread[data-s="2"] .kw span .w,.spread[data-s="3"] .kw span .w,.spread[data-s="4"] .kw span .w{opacity:1}
+.spread[data-s="3"] .kw span.pick::after,.spread[data-s="4"] .kw span.pick::after{opacity:1}
+.spread[data-s="3"] .kw span:not(.pick),.spread[data-s="4"] .kw span:not(.pick){color:var(--ink3)}
+.kw span .n{font-size:11px;color:var(--ink3);margin-right:6px;font-family:var(--sans)}
+.ladder3{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:22px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.ladder3 div{background:var(--paper);padding:16px;text-align:center;position:relative}
+.ladder3 div+div{border-left:1px solid var(--line)}
+.ladder3 b{font-family:var(--serif);font-size:38px;color:var(--c);line-height:1;display:block}
+.ladder3 span{font-size:13.5px;color:var(--ink2);display:block;margin-top:6px}
+.ladder3 em{font-style:normal;font-size:12px;color:var(--ink3);display:block;margin-top:2px}
+
+/* simple list */
+.quad2{display:grid;grid-template-columns:28px 1fr 1fr;grid-template-rows:1fr 1fr 26px;gap:0;max-width:520px}
+.quad2 .y{writing-mode:vertical-rl;font-size:12.5px;color:var(--ink2);display:flex;align-items:center;justify-content:center;letter-spacing:.2em}
+.quad2 .q{border:1.5px solid var(--ink);margin:-.75px;min-height:86px;display:flex;align-items:center;justify-content:center;background:var(--paper);font-size:13px;color:var(--ink3)}
+.quad2 .q.on span{background:var(--blues);color:var(--blue);padding:10px 22px;border-radius:50%;font-weight:600;font-size:14px}
+.quad2 .x{font-size:12.5px;color:var(--ink2);text-align:center;padding-top:4px}
+table.t{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--paper);border:1.5px solid var(--ink)}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 9px;text-align:left}
+table.t th{background:var(--soft);font-weight:600;font-size:13px}
+table.t td.c{text-align:center}
+table.t tr.keep td{background:var(--cs);color:var(--ink);font-weight:600}
+
+/* handover */
+.tree{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}
+.tree div{background:var(--paper);border:1px solid var(--line);padding:14px;position:relative}
+.tree div:first-child{border-radius:12px 0 0 12px}
+.tree div:last-child{border-radius:0 12px 12px 0}
+.tree div+div{border-left:none}
+.tree small{font-size:11.5px;color:var(--c);font-weight:700;letter-spacing:.12em;display:block}
+.tree b{font-family:var(--serif);font-size:16px;display:block;margin-top:2px}
+.tree span{font-size:13px;color:var(--ink2);display:block}
+.tree div+div::before{content:"";position:absolute;left:-7px;top:50%;width:12px;height:12px;background:var(--paper);border-top:1px solid var(--line);border-right:1px solid var(--line);transform:translateY(-50%) rotate(45deg)}
+.label-tag{display:inline-block;font-family:var(--hand);background:#fffbe6;color:#3b3320;border:1px solid #e5d9a8;padding:6px 14px;border-radius:4px;box-shadow:var(--shadow);margin-top:6px}
+@media (prefers-color-scheme:dark){.label-tag{background:#2c2818;color:#efe6c6;border-color:#4a4228}}
+
+/* topic map */
+.tmap{display:grid;grid-template-columns:1fr 1.25fr 1fr;grid-template-rows:auto 1fr auto;min-height:420px;position:relative}
+.tmap>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;stroke:var(--ink);stroke-width:1.3;fill:none;z-index:0}
+.tmap .bx{position:relative;z-index:1;border:1.5px solid var(--ink);background:var(--paper);padding:10px 12px;font-size:13px;line-height:1.55;min-height:150px}
+.tmap .p1{grid-area:1/3;border-radius:0 0 0 26px;border-top:none;border-right:none}
+.tmap .p2{grid-area:3/3;border-radius:26px 0 0 0;border-bottom:none;border-right:none}
+.tmap .p3{grid-area:3/1;border-radius:0 26px 0 0;border-bottom:none;border-left:none}
+.tmap .ns{grid-area:1/1;border-radius:0 0 26px 0;border-top:none;border-left:none}
+.tmap .bx small{display:block;font-size:11.5px;font-weight:700;color:var(--c);letter-spacing:.1em}
+.tmap .bx .q{font-family:var(--hand);font-size:13.5px}
+.tmap .bx .tm{font-size:11.5px;color:var(--ink3)}
+.tmap .bx .a{margin-top:6px;color:var(--red);font-family:var(--hand);font-size:13.5px}
+.tmap .bx.ns .a{color:var(--ink)}
+.tmap .topc{grid-area:1/2;padding:8px 14px;position:relative;z-index:1}
+.tmap .topc .hdl{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.tmap .ansbox{margin:12px auto 0;max-width:230px;border:1.5px solid var(--red);text-align:center;padding:6px 10px;font-family:var(--hand);font-size:15px;background:var(--paper);position:relative;z-index:1}
+.tmap .ansbox small{display:block;font-family:var(--sans);font-size:11px;color:var(--red);letter-spacing:.12em;font-weight:700}
+.tmap .ctr{grid-area:2/2;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;padding:10px 0}
+.tmap .ctr div{width:min(100%,250px);aspect-ratio:1.45;border-radius:50%;border:1.5px solid var(--ink);background:color-mix(in srgb,var(--blue) 9%,var(--paper));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 26px;font-family:var(--hand);font-size:14px;line-height:1.5}
+.tmap .ctr small{font-family:var(--sans);font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.12em}
+.tmap .botc{grid-area:3/2;display:flex;align-items:flex-end;justify-content:center;padding:10px;font-size:12px;color:var(--ink3);text-align:center;position:relative;z-index:1}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;counter-reset:n}
+.five div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;counter-increment:n;font-size:13.5px;color:var(--ink2)}
+.five div::before{content:counter(n);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--c);color:var(--paper);font-size:12px;font-weight:700;margin-bottom:6px}
+.five b{display:block;color:var(--ink);font-family:var(--serif);font-size:15.5px;margin-bottom:2px}
+
+/* toyota A3 */
+.a3{padding:18px 22px}
+.a3 .r{display:grid;grid-template-columns:64px 1fr;gap:12px;border-top:1px solid var(--ink3);padding:9px 0}
+.a3 .r:first-child{border-top:none}
+.a3 .r b{font-size:14.5px}
+.a3 .r span{font-size:13px;color:var(--ink2)}
+.a3 .r i{display:block;height:20px;margin-top:2px;background:repeating-linear-gradient(transparent 0 8px,var(--line) 8px 9.5px)}
+.bubble{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px 20px;font-size:14.5px;color:var(--ink2);position:relative;box-shadow:var(--shadow)}
+.bubble p{margin:0 0 8px}
+
+/* brothers */
+.bros{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bro{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
+.bro .nm{display:flex;align-items:center;gap:10px}
+.bro .nm i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--c);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:16px}
+.bro .nm b{font-family:var(--serif);font-size:17px}
+.bro .nm span{font-size:12.5px;color:var(--ink3)}
+.bro p{font-size:14px;color:var(--ink2);margin-top:10px;font-family:var(--hand);background:var(--soft);border-radius:12px;padding:10px 12px}
+
+/* mapping 123 */
+.m123{display:grid;grid-template-columns:1fr 1.15fr 1fr;grid-template-rows:auto auto;position:relative;min-height:380px}
+.m123>svg{position:absolute;inset:0;width:100%;height:100%;stroke:var(--ink);stroke-width:1.3;fill:none;pointer-events:none}
+.m123 .bx{border:1.5px solid var(--ink);background:var(--paper);position:relative;z-index:1;font-size:12.5px;line-height:1.5;display:flex;flex-direction:column}
+.m123 .bx>small{font-size:11.5px;font-weight:700;letter-spacing:.1em;color:var(--c);padding:6px 10px 0}
+.m123 .bx ol{list-style:none;margin:0;padding:0;flex:1;display:flex;flex-direction:column}
+.m123 .bx li{border-top:1px solid var(--line);padding:6px 10px;font-family:var(--hand);font-size:13px;flex:1}
+.m123 .bx li:first-child{border-top:none}
+.m123 .bx li::before{content:attr(data-n);font-family:var(--sans);color:var(--c);margin-right:4px;font-size:12px}
+.m123 .w{grid-area:1/1;border-radius:0 0 26px 0;border-left:none;border-top:none}
+.m123 .y{grid-area:2/1;border-radius:0 26px 0 0;border-left:none;border-bottom:none;margin-top:18px}
+.m123 .act{grid-area:1/3;border-radius:0 0 0 26px;border-right:none;border-top:none}
+.m123 .act p{font-family:var(--hand);font-size:13.5px;padding:6px 10px;margin:0}
+.m123 .h{grid-area:2/3;border-radius:26px 0 0 0;border-right:none;border-bottom:none;margin-top:18px}
+.m123 .mid{grid-area:1/2/3/3;display:flex;flex-direction:column;align-items:center;padding:8px 14px;position:relative;z-index:1}
+.m123 .mid .hdl{width:100%;display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.m123 .mid .ell{margin:auto 0;width:100%;max-width:240px;aspect-ratio:1.5;border-radius:50%;border:1.5px solid var(--ink);background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 22px;text-align:center;font-family:var(--hand);font-size:13.5px;line-height:1.5}
+.m123 .mid .ell small{font-family:var(--sans);font-size:11px;color:var(--c);font-weight:700;letter-spacing:.12em}
+
+/* story template */
+.story-t{display:grid;grid-template-columns:1fr 1.6fr 1fr;grid-template-rows:auto 1fr;min-height:360px;position:relative}
+.story-t .tl{grid-area:1/1;padding:10px 14px}
+.story-t .tl .hdl{font-size:12.5px;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:3px;display:flex;justify-content:space-between}
+.story-t .tl .ov{margin-top:14px;border:1.5px solid var(--ink);border-radius:50%;padding:12px 10px;text-align:center;font-family:var(--hand);font-size:13.5px;line-height:1.45}
+.story-t .tl .ov small{display:block;font-family:var(--sans);font-size:11px;color:var(--c);font-weight:700;letter-spacing:.1em}
+.story-t .end{grid-area:1/3;border:1.5px solid var(--ink);border-top:none;border-right:none;border-radius:0 0 0 26px;padding:10px 12px;font-size:13px;min-height:110px}
+.story-t .open{grid-area:2/1;align-self:end;border:1.5px solid var(--ink);border-left:none;border-bottom:none;border-radius:0 26px 0 0;padding:10px 12px;font-size:13px;min-height:150px}
+.story-t .end b,.story-t .open b{font-size:13px;display:block}
+.story-t .end p,.story-t .open p{font-family:var(--hand);font-size:13.5px;margin:4px 0 0;line-height:1.5}
+.story-t .open p em{font-style:normal;font-family:var(--sans);font-size:11.5px;color:var(--c);font-weight:700;margin-right:4px}
+.stairs{grid-area:1/2/3/3;display:grid;grid-template-columns:repeat(3,1fr) 34px;grid-template-rows:repeat(3,1fr);margin:60px 10px 22px;border-top:1.5px dashed var(--ink3);border-bottom:1.5px dashed var(--ink3);position:relative}
+.stairs .wl{background:color-mix(in srgb,var(--ink3) 22%,var(--paper));border:1.5px solid var(--ink);padding:6px 8px;font-size:12px;line-height:1.4;display:flex;flex-direction:column;justify-content:center}
+.stairs .wl b{font-size:12.5px}
+.stairs .wl span{font-family:var(--hand);font-size:12.5px}
+.stairs .wl .key{color:var(--blue)}
+.stairs .w1{grid-area:3/1}.stairs .w2{grid-area:2/2}.stairs .w3{grid-area:1/3}
+.stairs .up{grid-area:1/4/4/5;position:relative}
+.stairs .up::before{content:"";position:absolute;left:50%;top:6px;bottom:0;width:2px;background:var(--ink);transform:translateX(-50%)}
+.stairs .up::after{content:"";position:absolute;left:50%;top:0;border:7px solid transparent;border-bottom:11px solid var(--ink);border-top:0;transform:translateX(-50%)}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.story-t{min-height:400px}
+.acts div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--ink2)}
+.acts small{display:block;font-size:12px;color:var(--c);font-weight:700;letter-spacing:.12em}
+.acts b{display:block;color:var(--ink);font-family:var(--serif);font-size:16px}
+.map5{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:12px}
+.map5 div{padding:10px 12px;text-align:center;background:var(--paper);font-size:13.5px}
+.map5 div+div{border-left:1px solid var(--line)}
+.map5 b{display:block;font-size:14px}
+.map5 span{color:var(--c);font-family:var(--serif);font-weight:700}
+
+/* reading */
+.steps6{display:grid;grid-template-columns:repeat(6,1fr);gap:0;counter-reset:s}
+.steps6 .st{background:var(--paper);border:1px solid var(--line);padding:18px 14px;counter-increment:s;position:relative}
+.steps6 .st:first-child{border-radius:var(--r) 0 0 var(--r)}
+.steps6 .st:last-child{border-radius:0 var(--r) var(--r) 0}
+.steps6 .st+.st{border-left:none}
+.steps6 .st::before{content:counter(s,decimal-leading-zero);font-family:var(--serif);font-size:26px;color:var(--c);font-weight:700;display:block;line-height:1}
+.steps6 .st.pre::after{content:"读书之前";position:absolute;top:10px;right:10px;font-size:10.5px;color:var(--ink3);border:1px solid var(--line);border-radius:6px;padding:0 5px}
+.steps6 h4{font-size:16px;margin:8px 0 4px}
+.steps6 p{font-size:13px;color:var(--ink2);margin:0;line-height:1.6}
+.timebar{display:flex;height:40px;border-radius:10px;overflow:hidden;margin-top:14px;font-size:13px;font-weight:600}
+.timebar div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;padding:0 8px}
+.timebar .a{flex:3.2;background:var(--soft);color:var(--ink2)}
+.timebar .b{flex:10;background:var(--c);color:var(--paper)}
+.timebar .c{flex:3.4;background:var(--cs);color:var(--c)}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:14px}
+.cmp th,.cmp td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.cmp tr:last-child td{border-bottom:none}
+.cmp thead th{font-family:var(--serif);font-size:15px;background:var(--soft)}
+.cmp td:first-child{white-space:nowrap}
+.cmp td:first-child b{font-family:var(--serif);font-size:15.5px;display:block}
+.cmp td:first-child small{color:var(--ink3);font-size:12px}
+.cmp td{color:var(--ink2)}
+.cmp td a{color:var(--c);text-decoration:none;font-weight:600;white-space:nowrap}
+.rd{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;align-items:start}
+.rd .card{padding:20px}
+.qbox{font-family:var(--hand);font-size:15px;background:var(--blues);color:var(--ink);border-radius:12px;padding:10px 14px;margin:8px 0}
+.qbox small{display:block;font-family:var(--sans);font-size:11.5px;color:var(--blue);font-weight:700;letter-spacing:.12em}
+.kw3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.kw3 span{border:1.5px solid var(--red);border-radius:999px;padding:6px 8px;text-align:center;font-family:var(--hand);font-size:13.5px;line-height:1.4;display:flex;align-items:center;justify-content:center}
+.one{font-family:var(--serif);font-size:17px;border-left:4px solid var(--c);padding:4px 0 4px 14px;margin-top:10px}
+.one small{display:block;font-family:var(--sans);font-size:11.5px;color:var(--c);font-weight:700;letter-spacing:.12em}
+/* keys stairs */
+.kst{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,auto);gap:0;border-top:1.5px dashed var(--ink3);border-bottom:1.5px dashed var(--ink3);padding:0;margin:10px 0}
+.kst .s{display:flex;gap:8px;align-items:center;padding:6px 0}
+.kst .s b{background:color-mix(in srgb,var(--ink3) 22%,var(--paper));border:1.5px solid var(--ink);padding:8px 8px;font-size:13px;white-space:nowrap;font-family:var(--serif)}
+.kst .s span{font-family:var(--hand);font-size:12.5px;line-height:1.4;color:var(--blue)}
+.kst .s1{grid-area:3/1/4/3}.kst .s2{grid-area:2/2/3/4}.kst .s3{grid-area:1/3/2/4}
+/* breaking */
+.brk{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto auto;border:1.5px solid var(--ink);background:var(--paper);position:relative}
+.brk span{border:1px solid var(--line);padding:6px 6px;font-family:var(--hand);font-size:12.5px;text-align:center;line-height:1.35;display:flex;align-items:center;justify-content:center;min-height:44px}
+.brk .cen{grid-area:2/2/3/4;border:1.5px solid var(--ink);border-radius:50%;margin:8px 10px;background:var(--blues);font-size:13.5px;min-height:70px}
+.brk .ag{font-family:var(--sans);font-size:11px;color:var(--ink3);background:var(--soft)}
+.brk .x{grid-area:2/1}.brk .x2{grid-area:2/4}
+.cats{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.cats span{font-size:12.5px;padding:3px 10px;border-radius:999px;color:#fff;font-weight:600}
+/* principle A3 */
+.pa3{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px;position:relative}
+.pa3 .qd{border:1.5px solid var(--ink);background:var(--paper);padding:10px 12px;font-size:13px;min-height:120px}
+.pa3 .qd small{display:block;font-size:11.5px;color:var(--ink3);font-weight:700;letter-spacing:.08em}
+.pa3 .qd .mini12{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,14px);gap:0;border:1px solid var(--line);margin:6px 0;max-width:150px}
+.pa3 .qd .mini12 i{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pa3 .qd p{font-family:var(--hand);font-size:13.5px;margin:4px 0 0;line-height:1.5}
+.pa3 .qd.pr{background:var(--cs);border-color:var(--c)}
+.pa3 .qd.pr small{color:var(--c)}
+.pa3 .hub{position:absolute;left:50%;top:50%;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:var(--bg);transform:translate(-50%,-50%);box-shadow:0 0 0 6px var(--bg)}
+/* master */
+.mtab{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--paper);border:1.5px solid var(--ink)}
+.mtab th{background:var(--blues);font-size:15px;padding:5px;border:1px solid var(--line);font-family:Georgia,var(--serif)}
+.mtab th:last-child{font-family:var(--sans);font-size:13px}
+.mtab td{border:1px solid var(--line);padding:6px 7px;font-family:var(--hand);text-align:center;line-height:1.4;vertical-align:middle}
+.door{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin-top:14px}
+.door .pp{text-align:center;font-size:12px;color:var(--ink3)}
+.door .pp b{display:block;font-size:22px;font-family:Georgia,serif;color:var(--ink2)}
+.door .dr{border:1.5px solid var(--ink);background:color-mix(in srgb,var(--ink3) 18%,var(--paper));text-align:center;padding:14px 8px 10px;position:relative}
+.door .dr small{display:block;font-size:11px;color:var(--ink3);letter-spacing:.1em}
+.door .dr b{font-family:var(--serif);font-size:17px}
+.mkey{margin:10px auto 0;background:var(--blues);border-radius:12px;padding:10px 14px;text-align:center}
+.mkey small{display:block;font-size:11.5px;color:var(--blue);font-weight:700;letter-spacing:.12em}
+.mkey b{font-family:var(--serif);font-size:17px}
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.stories span{background:var(--blues);border-radius:10px;padding:8px;font-family:var(--hand);font-size:13px;text-align:center;line-height:1.4}
+/* bible */
+.gps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.gps div{border:1.5px solid var(--ink);border-radius:50%;aspect-ratio:1.5;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--paper);text-align:center}
+.gps b{font-family:Georgia,var(--serif);font-size:24px;color:var(--c);line-height:1}
+.gps span{font-family:var(--hand);font-size:13px}
+.g32{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--ink);background:var(--paper);font-size:12px}
+.g32 b{text-align:center;border-bottom:1.5px solid var(--ink);padding:3px;font-family:Georgia,var(--serif);font-weight:400}
+.g32 b+b{border-left:1px solid var(--line)}
+.g32 i{height:9px;border-bottom:1px solid var(--line);border-left:1px solid var(--line)}
+.g32 i:nth-of-type(4n+1){border-left:none}
+/* visionary */
+.vcard{max-width:360px;margin:0 auto;border:1.5px solid var(--ink);background:var(--paper)}
+.vcard .h{background:var(--soft);text-align:center;font-size:13.5px;border-bottom:1.5px solid var(--ink);padding:4px;font-weight:600}
+.vcard .th{text-align:center;font-size:12.5px;padding-top:6px;color:var(--ink2)}
+.vcard .tb{margin:4px 14px 0;border:1.5px solid var(--ink);text-align:center;padding:10px;font-family:var(--hand);font-size:17px;font-style:italic}
+.vcard svg{display:block;width:100%;height:auto}
+.vcard svg text{font-family:var(--hand);fill:var(--ink)}
+.vcard svg .ln{stroke:var(--ink);fill:none;stroke-width:.5}
+.vcard svg circle{fill:var(--paper);stroke:var(--ink);stroke-width:.55}
+.vcard .bp{border-top:1.5px solid var(--ink);padding:8px 14px;font-family:var(--hand);font-size:13.5px;line-height:1.6}
+.vcard .bp b{font-family:var(--sans);font-size:12px;color:var(--c)}
+.order5{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.order5 span{background:var(--blues);color:var(--blue);font-size:13px;border-radius:999px;padding:3px 12px;font-weight:600}
+.pts5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:6px 0 10px}
+.pts5 div{background:var(--soft);border-radius:10px;padding:10px;font-size:12.5px;color:var(--ink2);line-height:1.5}
+.pts5 b{display:block;font-size:13.5px;color:var(--ink)}
+
+/* quotes */
+.quotes{columns:2;column-gap:16px}
+.quote{break-inside:avoid;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 18px 52px;margin-bottom:16px;position:relative;font-family:var(--serif);font-size:17px;line-height:1.75}
+.quote::before{content:"“";position:absolute;left:16px;top:6px;font-size:52px;color:var(--c);opacity:.5;font-family:Georgia,serif}
+.quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12.5px;color:var(--ink3);margin-top:8px}
+
+/* details */
+details.toc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);margin-top:12px;overflow:hidden}
+details.toc summary{cursor:pointer;padding:16px 22px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";font-size:22px;color:var(--c);transition:.2s}
+details.toc[open] summary::after{transform:rotate(45deg)}
+details.toc summary small{font-weight:400;color:var(--ink3);margin-left:8px;font-size:13px}
+.toc-body{padding:0 22px 18px}
+.ch{display:grid;grid-template-columns:270px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
+.ch b{font-weight:600}
+.ch b i{font-style:normal;font-family:var(--serif);color:var(--c);margin-right:6px}
+.ch span{color:var(--ink2)}
+.ch.col b i{color:var(--gold)}
+
+/* tool */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.tabs button,.tbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:7px 14px;border-radius:999px;font-size:14px;cursor:pointer;font-family:inherit;transition:.15s}
+.tabs button.on{background:var(--c);border-color:var(--c);color:var(--paper)}
+.tools{margin-left:auto;display:flex;gap:8px}
+.tbtn.pri{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tbtn:hover{border-color:var(--c)}
+.sheet{display:none}
+.sheet.on{display:block}
+.sheet .paper{padding:0}
+.f{width:100%;border:none;background:transparent;color:var(--ink);font:14px/1.55 var(--hand);resize:none;outline:none;padding:6px 8px;display:block}
+.f::placeholder{color:var(--ink3);font-family:var(--sans);font-size:12.5px}
+.f:focus{background:color-mix(in srgb,var(--c) 6%,transparent)}
+input.f{height:30px}
+.shd{display:grid;grid-template-columns:auto 1fr auto 160px;align-items:center;gap:6px;padding:4px 12px;border-bottom:1.5px solid var(--ink);font-size:13px;font-weight:600}
+.shd .f{font-family:var(--hand);font-size:15px}
+.sheet .snote .body{padding:0;min-height:0}
+.sheet .snote .body .f{height:260px}
+.sk{display:grid;grid-template-columns:1fr 1fr}
+.sk .kwf{display:grid;grid-template-rows:repeat(8,1fr);grid-auto-flow:column;grid-template-columns:1fr 1fr;border-right:1.5px solid var(--ink)}
+.sk .kwf .f{border-bottom:1px solid var(--line);border-right:1px solid var(--line);height:auto;min-height:44px;font-size:13.5px}
+.sk .kwf .f:nth-child(8n){border-bottom:none}
+.sk .kwf .f:nth-child(n+9){border-right:none}
+.sk .rp .tri{max-width:380px}
+.sk .tri .cc{padding:0;overflow:hidden}
+.sk .tri .cc .f{height:100%;text-align:center;display:flex;padding:22% 10% 0;font-size:13px}
+.sk .tri .tq .f{text-align:center;height:72px;font-size:13px}
+.sk .bx2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.sk .bx2>div{border:1.5px solid var(--ink)}
+.sk .bx2>div:first-child{border-radius:999px;overflow:hidden}
+.sk .bx2 small,.tsm{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--c);padding:4px 10px 0}
+.sk .bx2>div:last-child small{color:var(--red)}
+.sk .bx2 .f{height:58px}
+.sk .bx2>div:first-child .f{text-align:center}
+.sk .bx2>div:first-child small{padding-left:22px}
+.tm-t .bx{padding:0}
+.tm-t .bx .f{height:118px}
+.tm-t .bx input.f{height:30px;border-bottom:1px dashed var(--line);font-size:13px}
+.tm-t .bx .f.ans{height:60px;color:var(--red);border-top:1px dashed var(--line)}
+.tm-t .ctr div{padding:0;overflow:hidden}
+.tm-t .ctr .f{height:100%;text-align:center;padding:30px 24px 10px}
+.tm-t .ansbox{padding:0}
+.tm-t .ansbox .f{text-align:center;height:52px;color:var(--red)}
+.m-t .bx .f{flex:1;min-height:58px;border-top:1px solid var(--line)}
+.m-t .bx>small+.f{border-top:none}
+.m-t .act .f{min-height:120px}
+.m-t .mid .ell{padding:0;overflow:hidden}
+.m-t .mid .ell .f{height:100%;text-align:center;padding:34px 22px 8px}
+.st-t .tl .ov{padding:0;overflow:hidden}
+.st-t .tl .ov .f{text-align:center;height:76px;padding:10px 16px}
+.st-t .end .f{height:90px;padding:4px 0}
+.st-t .open .f{height:34px;padding:2px 0}
+.st-t .stairs .wl{padding:0}
+.st-t .stairs .wl .f{font-size:12.5px;padding:3px 6px}
+.st-t .stairs .wl .f.wall{height:40px;font-weight:600}
+.st-t .stairs .wl .f.key{height:44px;color:var(--blue)}
+.saved{font-size:12.5px;color:var(--ink3);margin-left:4px}
+.toolnote{font-size:13px;color:var(--ink3);margin-top:12px}
+
+/* checklist */
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.check label{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;cursor:pointer;transition:.2s}
+.check b{font-size:15.5px;display:block}
+.check span{font-size:13.5px;color:var(--ink2);display:block;margin-top:2px}
+.check .src{font-size:11.5px;color:var(--ink3);margin-top:6px}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.progress .track{flex:1;height:8px;background:var(--soft);border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:var(--c);transition:width .35s}
+.progress .txt{font-size:14px;color:var(--ink2);min-width:64px;text-align:right}
+.progress button{border:1px solid var(--line);background:var(--paper);color:var(--ink3);font-size:12.5px;border-radius:999px;padding:3px 10px;cursor:pointer;font-family:inherit}
+
+footer{padding:48px 0 70px;text-align:center;font-size:13px;color:var(--ink3);border-top:1px solid var(--line)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ---------- notebook overrides ---------- */
+.threeS div,.sizes div,.drawsteps div,.five div,.bro,.acts div,.steps6 .st,.tree div,.pts5 div,.ladder3 div,.map5 div{background:color-mix(in srgb,var(--paper) 72%,transparent);border:1.4px solid color-mix(in srgb,var(--ink) 62%,transparent)!important;border-radius:var(--hr1)!important}
+.threeS div:nth-child(2n),.sizes div:nth-child(2n),.drawsteps div:nth-child(2n),.five div:nth-child(2n),.bro:nth-child(2n),.acts div:nth-child(2n),.steps6 .st:nth-child(2n),.tree div:nth-child(2n),.pts5 div:nth-child(2n),.ladder3 div:nth-child(2n),.map5 div:nth-child(2n){border-radius:var(--hr2)!important}
+.threeS div.last{background:var(--sticky2)}
+.threeS b{font-family:var(--hand)}
+.steps6,.tree,.ladder3,.map5{gap:10px;border:none;overflow:visible}
+.ladder3 b{font-family:var(--hand);color:var(--red)}
+.steps6 .st::before{font-family:var(--hand);color:var(--red)}
+.steps6 .st.pre::after{font-family:var(--hand);font-size:13px;border:none;color:var(--blue);top:8px}
+.steps6 h4{font-size:18px}
+.tree div::before{display:none}
+.tree small{font-family:var(--hand);font-size:14px;color:var(--red);letter-spacing:.06em}
+.tree b{font-family:var(--hand);font-size:18px}
+.five div::before{background:none;border:1.5px solid var(--red);color:var(--red);font-family:var(--hand);font-size:14px}
+.five b,.acts b,.bro .nm b,.map5 b{font-family:var(--hand);font-size:17px}
+.acts small{font-family:var(--hand);font-size:14px;color:var(--red)}
+.map5 span{font-family:var(--hand);font-size:16px}
+.bro .nm i{background:none;border:1.6px solid var(--red);color:var(--red);font-family:var(--hand);border-radius:50% 46% 52% 48%}
+.bro p{background:var(--sticky3);color:var(--stickyink);border-radius:2px}
+.drawsteps b,.sizes b{font-family:var(--hand);font-size:16px}
+.pts5 b{font-family:var(--hand);font-size:16px}
+.ccode span{background:transparent;border:none;padding:0 6px;font-family:var(--hand);font-size:15px}
+.hints span{font-family:var(--hand);font-size:14px;background:transparent;border:1.3px dashed var(--blue);border-radius:var(--hr1)}
+.hints span::before{display:none}
+.stepper button,.tabs button,.tbtn,.progress button{background:transparent;border:1.4px solid color-mix(in srgb,var(--ink) 55%,transparent);color:var(--ink2);border-radius:var(--hr1);font-family:var(--hand);font-size:16px;padding:4px 14px}
+.stepper button b{font-family:var(--hand);color:var(--red)}
+.stepper button.on,.tabs button.on{background:linear-gradient(100deg,transparent 3%,var(--hy) 6%,var(--hy) 94%,transparent 97%) 0 70%/100% 62% no-repeat;border-color:var(--ink);color:var(--ink)}
+.stepper button.on b{color:var(--red)}
+.tbtn.pri{border-color:var(--red);color:var(--red);background:transparent}
+.stepcap{background:var(--sticky2);color:var(--stickyink);border-radius:2px;box-shadow:0 8px 14px -10px rgba(60,50,30,.45)}
+.stepcap b{color:inherit;font-family:var(--hand);font-size:16px}
+.qbox{background:var(--sticky3);color:var(--stickyink);border-radius:2px;font-size:16px}
+.qbox small{font-family:var(--hand);font-size:13.5px;color:var(--blue)}
+.one{font-family:var(--hand);font-size:19px;border-left:none;padding:6px 0 4px 34px;position:relative;color:var(--ink)}
+.one::before{content:"";position:absolute;left:2px;top:12px;width:22px;height:14px;background:var(--red);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M1 8C6 7 12 7 20 7M15 2l6 5-6 5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M1 8C6 7 12 7 20 7M15 2l6 5-6 5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.one small{font-family:var(--hand);font-size:14px;color:var(--red)}
+.kw3 span{border:none;position:relative;font-size:15px}
+.kw3 span::after{content:"";position:absolute;inset:-2px -4px;background:var(--red);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 64' preserveAspectRatio='none'%3E%3Cpath d='M30 9C70 1 160 2 188 18 202 28 192 50 150 57 100 64 30 62 12 46 0 35 8 17 40 8 70 1 120 3 140 6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 64' preserveAspectRatio='none'%3E%3Cpath d='M30 9C70 1 160 2 188 18 202 28 192 50 150 57 100 64 30 62 12 46 0 35 8 17 40 8 70 1 120 3 140 6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+table.cmp{background:color-mix(in srgb,var(--paper) 78%,transparent);border:1.6px solid color-mix(in srgb,var(--ink) 70%,transparent);border-radius:4px}
+.cmp thead th{font-family:var(--hand);font-size:17px;background:transparent;border-bottom:1.6px solid var(--ink)}
+.cmp td:first-child b{font-family:var(--hand);font-size:18px;color:var(--c)}
+.cmp td a{font-family:var(--hand);font-size:15px;color:var(--red)}
+table.t{background:color-mix(in srgb,var(--paper) 85%,transparent)}
+table.t th{background:transparent;font-family:var(--hand);font-size:15px}
+.bubble{border:1.6px solid color-mix(in srgb,var(--ink) 70%,transparent);border-radius:28px 34px 30px 8px;background:color-mix(in srgb,var(--paper) 78%,transparent);font-family:var(--hand);font-size:16px;color:var(--ink);box-shadow:none;padding:24px 30px}
+.quotes{columns:2;column-gap:26px}
+.quote{border:none;border-radius:1px;background:var(--sticky);color:var(--stickyink);font-family:var(--hand);font-size:19px;line-height:1.7;padding:22px 24px 16px 24px;margin-bottom:22px;box-shadow:0 1px 1px rgba(0,0,0,.05),0 12px 18px -10px rgba(60,50,30,.45);transform:rotate(-.8deg)}
+.quote:nth-child(4n+2){background:var(--sticky2);transform:rotate(.7deg)}
+.quote:nth-child(4n+3){background:var(--sticky3);transform:rotate(-.4deg)}
+.quote:nth-child(4n){background:var(--sticky4);transform:rotate(.9deg)}
+.quote::before{display:none}
+.quote cite{font-family:var(--sans);font-size:12.5px;color:inherit;opacity:.6}
+@media (prefers-color-scheme:dark){.quote{box-shadow:none;border:1.4px dashed rgba(238,237,228,.3)}}
+details.toc{background:color-mix(in srgb,var(--paper) 72%,transparent);border:1.6px solid color-mix(in srgb,var(--ink) 65%,transparent);border-radius:var(--hr1);margin-top:14px}
+details.toc:nth-of-type(2n){border-radius:var(--hr2)}
+details.toc summary{font-family:var(--hand);font-size:19px;font-weight:700}
+details.toc summary small{font-family:var(--sans)}
+details.toc summary::after{color:var(--red);font-family:var(--hand);font-size:26px}
+.ch{border-top:1px dashed var(--line)}
+.ch b{font-family:var(--hand);font-size:16px}
+.ch b i{font-family:var(--hand);color:var(--red)}
+.ch.col b i{color:var(--gold)}
+.check label{background:color-mix(in srgb,var(--paper) 65%,transparent);border:1.4px dashed color-mix(in srgb,var(--ink) 45%,transparent);border-radius:var(--hr1)}
+.check label:nth-child(2n){border-radius:var(--hr2)}
+.check b{font-family:var(--hand);font-size:17.5px}
+input.hk{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;margin-top:2px;cursor:pointer;position:relative;border:none;background:none}
+input.hk::before{content:"";position:absolute;inset:1px;border:1.8px solid var(--ink2);border-radius:3px 6px 4px 5px;transform:rotate(-3deg)}
+input.hk::after{content:"";position:absolute;left:3px;top:-6px;width:26px;height:26px;background:var(--red);opacity:0;transform:scale(.6);transition:.18s;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cpath d='M3 14C6 16 8 19 10 22 13 14 18 7 24 2' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cpath d='M3 14C6 16 8 19 10 22 13 14 18 7 24 2' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+input.hk:checked::after{opacity:1;transform:none}
+label:has(input.hk:checked){opacity:.6}
+label:has(input.hk:checked) b{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+.progress .track{height:10px;background:transparent;border:1.4px solid color-mix(in srgb,var(--ink) 55%,transparent);border-radius:var(--hr1)}
+.progress .fill{background:repeating-linear-gradient(-55deg,var(--c) 0 3px,transparent 3px 6px)}
+.progress .txt{font-family:var(--hand);font-size:17px;color:var(--red)}
+.paper{box-shadow:var(--shadow)}
+@media (prefers-color-scheme:dark){.paper{box-shadow:none}.label-tag{background:transparent;border:1.4px dashed var(--gold);color:var(--gold)}}
+.timebar{border:1.4px solid color-mix(in srgb,var(--ink) 60%,transparent);border-radius:var(--hr1);font-family:var(--hand);font-size:15px;font-weight:400}
+.timebar .b{background:repeating-linear-gradient(-55deg,var(--hg) 0 4px,transparent 4px 8px);color:var(--ink)}
+.timebar .a{background:transparent}
+.timebar .c{background:var(--hy);color:var(--ink)}
+.door .dr b,.mkey b{font-family:var(--hand);font-size:19px}
+.mkey{background:var(--sticky3);color:var(--stickyink);border-radius:2px}
+.stories span{background:transparent;border:1.3px dashed var(--blue);border-radius:var(--hr1)}
+.order5 span{background:transparent;border:1.4px solid var(--blue);border-radius:var(--hr1);font-family:var(--hand);font-size:15px}
+footer{font-family:var(--hand);font-size:15px;color:var(--ink2);border-top:1.6px dashed color-mix(in srgb,var(--ink3) 60%,transparent);margin:0 40px}
+
+/* ---------- FAB + drawer ---------- */
+.fab{position:fixed;right:22px;bottom:22px;z-index:80;border:none;cursor:pointer;font-family:var(--hand);font-size:19px;font-weight:700;color:var(--red);background:var(--sticky);padding:12px 18px 12px 46px;transform:rotate(-3deg);box-shadow:0 1px 1px rgba(0,0,0,.06),0 14px 22px -10px rgba(60,50,30,.55);transition:transform .2s}
+.fab:hover{transform:rotate(0) translateY(-2px)}
+.fab::before{content:"";position:absolute;left:14px;top:50%;width:22px;height:22px;transform:translateY(-50%);background:var(--red);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 20l1.2-4.6L16.5 4.1a2 2 0 0 1 2.8 0l.6.6a2 2 0 0 1 0 2.8L8.6 18.8z M14.6 6l3.4 3.4 M4 20h16' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 20l1.2-4.6L16.5 4.1a2 2 0 0 1 2.8 0l.6.6a2 2 0 0 1 0 2.8L8.6 18.8z M14.6 6l3.4 3.4 M4 20h16' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.fab small{display:block;font-family:var(--sans);font-size:11px;font-weight:500;color:var(--stickyink);opacity:.7;margin-top:-2px}
+@media (prefers-color-scheme:dark){.fab{background:#2c3d34;border:1.6px dashed var(--red);box-shadow:0 10px 26px rgba(0,0,0,.5)}}
+.plan-mask{position:fixed;inset:0;z-index:90;background:rgba(30,25,15,.38);opacity:0;pointer-events:none;transition:opacity .28s}
+.plan-mask.open{opacity:1;pointer-events:auto}
+.plan{position:fixed;z-index:100;top:0;right:0;bottom:0;width:min(500px,94vw);background-color:var(--bg);
+  background-image:linear-gradient(var(--gridc) 1px,transparent 1px),linear-gradient(90deg,var(--gridc) 1px,transparent 1px);background-size:24px 24px;
+  box-shadow:-18px 0 50px rgba(30,25,15,.25);transform:translateX(104%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;visibility:hidden}
+.plan.open{transform:none;visibility:visible}
+@media (prefers-color-scheme:dark){.plan{border-left:10px solid #5b4330;box-shadow:-18px 0 50px rgba(0,0,0,.6)}.plan-mask{background:rgba(0,0,0,.55)}}
+.plan-hd{padding:18px 22px 10px;border-bottom:1.6px solid var(--ink)}
+.plan-hd .row1{display:flex;align-items:center;gap:10px}
+.plan-hd h2{font-size:28px;margin-right:auto}
+.plan-hd h2 span{color:var(--red)}
+.plan-x{border:1.5px solid color-mix(in srgb,var(--ink) 55%,transparent);background:transparent;color:var(--ink);width:36px;height:36px;border-radius:50% 46% 52% 48%;font-size:20px;line-height:1;cursor:pointer;font-family:var(--hand)}
+.plan-hd p{margin:4px 0 10px;font-size:13.5px;color:var(--ink2)}
+.scn{display:flex;flex-wrap:wrap;gap:6px}
+.scn button{border:1.3px solid color-mix(in srgb,var(--ink) 50%,transparent);background:transparent;color:var(--ink2);border-radius:var(--hr1);font-family:var(--hand);font-size:15.5px;padding:2px 11px;cursor:pointer}
+.scn button.on{color:var(--ink);border-color:var(--ink);background:linear-gradient(100deg,transparent 3%,var(--hy) 6%,var(--hy) 94%,transparent 97%) 0 70%/100% 62% no-repeat}
+.scn button i{font-style:normal;font-family:var(--sans);font-size:11px;color:var(--c);margin-left:4px}
+.plan-prog{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:var(--hand);font-size:15px;color:var(--ink2)}
+.plan-prog .track{flex:1;height:9px;border:1.3px solid color-mix(in srgb,var(--ink) 55%,transparent);border-radius:var(--hr1);overflow:hidden}
+.plan-prog .fill{height:100%;width:0;background:repeating-linear-gradient(-55deg,var(--c) 0 3px,transparent 3px 6px);transition:width .3s}
+.plan-prog b{color:var(--red);font-weight:700}
+.plan-bd{flex:1;overflow-y:auto;padding:6px 22px 30px;overscroll-behavior:contain}
+.plan-intro{font-family:var(--hand);font-size:16.5px;color:var(--blue);margin:12px 0 2px}
+.pg{margin-top:18px}
+.pg h3{font-size:20px;display:flex;align-items:baseline;gap:8px}
+.pg h3 em{font-style:normal;color:var(--red);font-size:22px}
+.pg h3 small{font-family:var(--sans);font-size:12px;font-weight:400;color:var(--ink3)}
+.pg label{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;margin-top:8px;border:1.3px dashed color-mix(in srgb,var(--ink) 40%,transparent);border-radius:var(--hr1);background:color-mix(in srgb,var(--paper) 70%,transparent);cursor:pointer}
+.pg label:nth-of-type(2n){border-radius:var(--hr2)}
+.pg label b{font-family:var(--hand);font-size:16.5px;display:block;line-height:1.5}
+.pg label span{display:block;font-size:13px;color:var(--ink2);line-height:1.6;margin-top:2px}
+.pg label .src{font-size:11.5px;color:var(--ink3);margin-top:3px}
+.pg.stuck label b .q{color:var(--red)}
+.pg.stuck label b .a{color:var(--c)}
+.pg.month label{background:var(--sticky2)}
+@media (max-width:680px){
+  .a4{margin:0;border-width:0}
+  .grid2,.rd,.tpl,.tpl.rev,.tpl.sl{grid-template-columns:minmax(0,1fr)!important}
+  .grid2>*,.rd>*,.tpl>*{min-width:0}
+  .timebar{flex-wrap:wrap;height:auto}
+  .timebar div{flex:1 1 100%!important;padding:6px 10px;white-space:normal}
+  .cmp{min-width:700px}
+  .kst{display:flex;flex-direction:column}
+  .kst .s3{margin-left:36px}.kst .s2{margin-left:18px}
+  .kst .s span{font-size:13px}
+  .mtab{font-size:11.5px}
+  .sheet .snote .body .f{height:140px}
+  .gps{gap:5px}.gps div{min-width:0;aspect-ratio:1.25}.gps b{font-size:19px}.gps span{font-size:11.5px;word-break:break-all}
+  .wrap{padding:0 18px}
+  section.block::before{left:18px;right:18px}
+  footer{margin:0 18px}
+  .nbhead{flex-direction:column;gap:2px;margin-bottom:30px}
+  .books{gap:22px}
+  .fab{right:14px;bottom:14px;font-size:17px;padding:10px 14px 10px 40px}
+  .fab::before{left:12px;width:20px;height:20px}
+  .plan{top:0;left:0;right:0;bottom:0;width:auto;transform:translateY(104%);border-left:none!important;box-shadow:0 -18px 50px rgba(30,25,15,.3)}
+  .plan.open{transform:none}
+  .plan-hd{padding:14px 16px 8px}
+  .plan-bd{padding:4px 16px 40px}
+  .plan-hd h2{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){.plan,.plan-mask{transition:none}}
+
+@media (max-width:920px){
+  .books,.grid3{grid-template-columns:1fr 1fr}
+  .nums{grid-template-columns:repeat(3,1fr)}
+  .tpl,.tpl.rev,.tpl.sl,.rd,.grid2{grid-template-columns:1fr}
+  .steps6{grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .steps6 .st,.steps6 .st:first-child,.steps6 .st:last-child{border-radius:12px;border-left:1px solid var(--line)!important}
+  .five,.pts5{grid-template-columns:1fr 1fr}
+  .drawsteps,.sizes{grid-template-columns:1fr 1fr}
+  .tree{grid-template-columns:1fr 1fr;gap:10px}
+  .tree div,.tree div:first-child,.tree div:last-child{border-radius:12px;border-left:1px solid var(--line)}
+  .tree div::before{display:none}
+  .ch{grid-template-columns:220px 1fr}
+}
+@media (max-width:680px){
+  .books,.grid3,.check,.bros,.acts{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr 1fr}
+  .quotes{columns:1}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .sec-head .big{font-size:64px}
+  .steps6{grid-template-columns:1fr 1fr}
+  .snote .cols,.hints{grid-template-columns:1fr 1fr}
+  .snote .col{border-left:none;border-top:1px solid var(--ink)}
+  .hints span::before{display:none}
+  .spread,.sk{grid-template-columns:1fr}
+  .kw,.sk .kwf{border-right:none;border-bottom:1.5px solid var(--ink)}
+  .threeS,.ladder3,.map5{grid-template-columns:1fr 1fr}
+  .ladder3 div+div,.map5 div+div{border-left:none}
+  .tmap,.m123,.story-t{display:flex;flex-direction:column;min-height:0}
+  .tmap>svg,.m123>svg{display:none}
+  .tmap .bx,.m123 .bx,.story-t .end,.story-t .open{border:1.5px solid var(--ink)!important;border-radius:12px!important;margin:6px 8px!important}
+  .stairs{margin:16px 10px}
+  .cmp{font-size:13px}.cmp th,.cmp td{padding:9px}
+  .tools{margin-left:0}
+}
+
+/* print: only the active fillable sheet */
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  :root{--bg:#fff;--paper:#fff;--ink:#111;--ink2:#333;--ink3:#777;--line:#bbb;--soft:#eee;--c:#15803d;--cs:#e3f1e7;--red:#b91c1c;--blue:#0369a1;--blues:#eef6fb}
+  body{background:#fff}
+  nav.top,header.hero,footer,section.block:not(#tool),.fab,.plan,.plan-mask{display:none!important}
+  .a4{margin:0;background:#fff!important;box-shadow:none;border:none}
+  section.block::before{display:none}
+  #tool{padding:0;border:none}
+  #tool .sec-head,#tool .thesis,#tool .tabs,#tool .toolnote{display:none!important}
+  #tool .wrap{max-width:none;padding:0}
+  .reveal{opacity:1!important;transform:none!important}
+  .paper{box-shadow:none}
+  .f::placeholder{color:transparent}
+  .sheet:not(.on){display:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-man" viewBox="0 0 24 24"><circle cx="12" cy="4.2" r="3"/><path d="M8.2 8.4h7.6c.9 0 1.6.6 1.8 1.4l1.4 5.6c.2.7-.3 1.3-1 1.3-.4 0-.8-.3-.9-.7l-1.1-4v10.6c0 .7-.6 1.2-1.2 1.2s-1.2-.5-1.2-1.2V16h-1.2v6.6c0 .7-.6 1.2-1.2 1.2s-1.2-.5-1.2-1.2V12l-1.1 4c-.1.4-.5.7-.9.7-.7 0-1.2-.6-1-1.3l1.4-5.6c.2-.8.9-1.4 1.8-1.4z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M2 9.5h12V4.5l8 7.5-8 7.5v-5H2z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 1.6a7 7 0 0 0-4.2 12.6c.6.5 1 1.2 1 2V17h6.4v-.8c0-.8.4-1.5 1-2A7 7 0 0 0 12 1.6zm0 1.8a5.2 5.2 0 0 1 3.1 9.4c-.9.7-1.5 1.7-1.6 2.8h-3c-.1-1.1-.7-2.1-1.6-2.8A5.2 5.2 0 0 1 12 3.4z"/><path d="M10.6 8.2h2.8v6.4h-1v-5.4h-.8v5.4h-1z"/><rect x="8.8" y="17.8" width="6.4" height="1.5" rx=".7"/><rect x="9.2" y="20" width="5.6" height="1.5" rx=".7"/><rect x="10.4" y="22.1" width="3.2" height="1.3" rx=".6"/></symbol>
+</svg>
+
+<nav class="top">
+  <div class="wrap">
+    <span class="brand"><i></i>一张纸 · 整理术</span>
+    <a href="#overview">总览</a>
+    <a href="#frame">基础框架</a>
+    <a href="#work">工作模板</a>
+    <a href="#reading">整读法</a>
+    <a href="#chapters">章节</a>
+    <a href="#quotes">金句</a>
+    <a href="#tool">填一张</a>
+    <a href="#todo">上手清单</a>
+  </div>
+</nav>
+
+<div class="a4">
+<header class="hero" id="overview">
+  <div class="wrap">
+    <div class="nbhead"><span>主题：<u>聪明人的一张纸工作整理术</u></span><span>日期：<u>　　/　　/　　</u></span></div>
+    <span class="eyebrow">［日］高桥政史 著 · 易哲 译 · 完美图解</span>
+    <h1><span class="circled">一张纸<svg viewBox="0 0 200 64" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M30 9C70 1 160 2 188 18 202 28 192 50 150 57 100 64 30 62 12 46 0 35 8 17 40 8 70 1 120 3 140 6"/></svg></span>整理术</h1>
+    <p class="lead">作者说，整理“说得最直白就是<strong>将复杂的事情简单化</strong>”。动手之前先做“预告片”，也就是提出假设；再用固定的格子收集信息，筛到 3 个关键词，凝成 1 个信息，最后落到 1 个行动。全书给了 14 个一张纸模板，一张便笺、一张 A4 或 A3、一页笔记本就够用。</p>
+
+    <div class="thread">
+      <span><b>①</b>先提出假设</span><i>→</i>
+      <span><b>②</b>用 16 格收集</span><i>→</i>
+      <span><b>③</b>筛出 3 个关键词</span><i>→</i>
+      <span><b>④</b>凝成 1 个信息</span><i>→</i>
+      <span><b>⑤</b>导出 1 个行动</span><i>→</i>
+      <span><b>⑥</b>30 秒讲清楚</span>
+    </div>
+
+    <div class="nums">
+      <div><b>7<small>+</small>7</b><span>个模板：工作整理 7 个，整读法 7 个</span></div>
+      <div><b>5<small>栏</small></b><span>S 便笺：谁的、什么、怎样做、怎么样、总之</span></div>
+      <div><b>16<small>格</small></b><span>对开页分 16 格，一格放一个点子或关键词</span></div>
+      <div><b>3<small>个</small></b><span>关键词、论点、三面墙，几乎都取 3</span></div>
+      <div><b>15<small>分钟</small></b><span>读完一本书，归纳到一张纸上</span></div>
+      <div><b>30<small>秒</small></b><span>用 3 个关键词和 1 个行动讲给别人听</span></div>
+    </div>
+
+    <div class="books">
+      <a class="book" href="#frame">
+        <div class="num">第一章</div>
+        <h3>所有的工作都能归纳到一张纸上</h3>
+        <p>S 便笺建立假设，16 分割笔记收集信息，阅读克星法读书读报；另有简单清单和一页交接地图。</p>
+        <span class="pill g">建立假设 · 收集 · 取舍</span>
+      </a>
+      <a class="book" href="#work">
+        <div class="num">第二章</div>
+        <h3>把“想传达的内容”归纳到一张纸上</h3>
+        <p>话题地图开会，丰田 A3 写报告，“逻辑三兄弟”和 Mapping 1·2·3 写策划，故事型演讲做汇报。</p>
+        <span class="pill g">会议 · 报告 · 演讲</span>
+      </a>
+      <a class="book" href="#reading">
+        <div class="num">第三、四章</div>
+        <h3>15 分钟整读一本书，并且用起来</h3>
+        <p>按输出目的分成 7 种整读法：行动、办法、突破、原理、万能、《圣经》、预见，每种配一张纸。</p>
+        <span class="pill g">读得快 · 讲得出 · 用得上</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FRAME ============ -->
+<section class="block" id="frame">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">壹</div>
+      <div>
+        <div class="tag">第一章 · 三块基础框架</div>
+        <h2>一张便笺、一个 16 格、一个三角形</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">后面的模板大都是这三样东西的变形：<b class="hl">S 便笺</b>先把假设写出来，<b class="hl">16 分割笔记</b>负责收集和限量，<b class="hl">三角形</b>把 16 个关键词逼到 3 个，再凝成一句话。</p>
+
+    <h3 class="sub reveal">S 便笺：先做“预告片”<span class="en">01–03 节</span></h3>
+    <div class="grid2 reveal" style="margin-bottom:18px">
+      <div class="card">
+        <h4>为什么要先写假设</h4>
+        <p class="muted" style="font-size:15px">作者在咨询公司为一份策划案苦战两天，加班到深夜 2 点还是投降。上司拿出一张白纸说：“所以我告诉过你，不要一开始就坐到电脑面前。”他先定中心信息，把内容分成 A、B、C 三块，删掉用不上的素材，15 分钟就整理到一张纸上；作者照着这张纸做资料，不到 1 小时就完成了。</p>
+        <p class="muted" style="font-size:15px">书里把这叫“假设思考”：先提出假定的结论，再判断素材轻重、做取舍。上司做的正是电影的“预告片”。</p>
+      </div>
+      <div class="card">
+        <h4>做法</h4>
+        <ul>
+          <li>一张约<b>宽 5cm、长 10cm</b> 的便笺，分 5 栏，每栏上方画一个图标，下面留空填写。</li>
+          <li>①谁的：工作对象，比如“A 某某”“B 公司”“C 部门”，并明确对象的目标。</li>
+          <li>②什么：对象的现状和需求，有什么烦恼、困难、理想状态。</li>
+          <li>③怎样做：怎样满足需求，也就是解决方案。</li>
+          <li>④怎么样：方案实施后的理想效果。</li>
+          <li>⑤总之：在①到④的基础上写出结论。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="paper snote">
+        <div class="hd"><span>主题：</span><span>日期：</span></div>
+        <div class="cols">
+          <div class="col"><div class="top"><b>① 谁的？</b><div class="ico"><svg><use href="#i-man"/></svg></div></div><div class="body">工作对象</div></div>
+          <div class="col"><div class="top"><b>② 什么？</b><div class="ico">?</div></div><div class="body">对象的现状</div></div>
+          <div class="col"><div class="top"><b>③ 怎样做？</b><div class="ico"><svg><use href="#i-arrow"/></svg></div></div><div class="body">解决方案</div></div>
+          <div class="col"><div class="top"><b>④ 怎么样？</b><div class="ico"><svg><use href="#i-bulb"/></svg></div></div><div class="body">理想的未来</div></div>
+          <div class="col"><div class="top"><b>⑤ 总之？</b><div class="ico">!</div></div><div class="body">结论</div></div>
+        </div>
+      </div>
+      <div class="hints">
+        <span>填入 A 先生、B 公司等工作对象</span>
+        <span>填入对象（谁）的现状</span>
+        <span>填入解决的方案</span>
+        <span>填入未来理想的状态</span>
+        <span>明确“结论是什么”</span>
+      </div>
+      <div class="threeS">
+        <div><b>S</b><span>Solution · 问题解决</span></div>
+        <div><b>S</b><span>Story · 故事</span></div>
+        <div><b>S</b><span>Simple · 简洁</span></div>
+        <div class="last"><b>S</b><span>照着做，最终获得 Success（成功）</span></div>
+      </div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:18px">
+      <div>
+        <span class="lbl">书中例一 · 新人培训项目（插图原样）</span>
+        <div class="paper snote">
+          <div class="hd"><span>主题：<span class="eg">新人培训项目</span></span><span>日期：<span class="eg">2016/1/20</span></span></div>
+          <div class="cols">
+            <div class="col"><div class="top"><b>谁的？</b></div><div class="body eg"><span class="oval">今年的新人</span><br>等待指示<br>信息过多<br>分析能力不足</div></div>
+            <div class="col"><div class="top"><b>什么？</b></div><div class="body eg"><span class="oval">两个难点</span><br>隔阂<br>沟通不畅</div></div>
+            <div class="col"><div class="top"><b>怎么做？</b></div><div class="body eg"><span class="oval">意识到两个难点</span><br>通过一张纸（沟通途径）来突破难点</div></div>
+            <div class="col"><div class="top"><b>怎么样？</b></div><div class="body eg">不被信息所困，把握重要的内容，将其总结在一张纸上</div></div>
+            <div class="col"><div class="top"><b>总之？</b></div><div class="body eg"><span class="oval">主题</span><br>4 倍速度的 IO 员工<br>Input Output（投入产出）</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">书中例二 · 给想减肥的人开发沐浴新品</span>
+        <table class="t">
+          <tr><th style="width:74px">谁的？</th><td class="eg">想减肥的人，20 岁到 30 岁年龄段的女性。</td></tr>
+          <tr><th>什么？</th><td class="eg">尝试了各种减肥方法，却没有达到预期效果，为此烦恼不已。</td></tr>
+          <tr><th>怎么做？</th><td class="eg">只需要沐浴就能得到明显的减肥效果，秘密在于融合 64 种草本植物并获国际专利的沐浴产品。</td></tr>
+          <tr><th>怎么样？</th><td class="eg">100 个试用者在两周内平均瘦了 4 斤。</td></tr>
+          <tr><th>总之？</th><td class="eg">沐浴时用了这种产品，你就能减肥成功。</td></tr>
+        </table>
+        <p class="note">3 分钟内整理到这个程度，策划书的“假设”就算成功了。假设之后再回来修正也没关系，而且 5 栏里哪一栏错了一目了然。S 便笺也能反过来<b>分析畅销商品</b>为什么畅销。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">16 分割笔记：给点子一个“框”<span class="en">04–05 节</span></h3>
+    <div class="tpl reveal">
+      <div>
+        <div class="g16">
+          <div><span class="ttl">标题：</span><br><span class="ttl">日期：</span></div>
+          <div><mark class="mk-r">最重要的内容</mark></div><div></div><div><mark class="mk-b">正在做的题目</mark></div>
+          <div></div><div><mark class="mk-y">感兴趣的信息</mark></div><div></div><div></div>
+          <div><mark class="mk-g">想记下来的发现</mark></div><div></div><div></div><div><mark class="mk-o">特别的主题</mark></div>
+          <div></div><div></div><div></div><div></div>
+        </div>
+        <p class="cap">记事本左右两页当一张纸，中缝两侧各 2 列。左上角写主题和日期，其余 15 格每格填一个想法。</p>
+        <div class="ccode">
+          <span><i style="background:#ef4444"></i>红：最重要的内容</span>
+          <span><i style="background:#facc15"></i>黄：感兴趣的信息</span>
+          <span><i style="background:#38bdf8"></i>蓝：自己正在着手做的题目</span>
+          <span><i style="background:#22c55e"></i>绿：发现后想记录下来的信息</span>
+          <span><i style="background:#d4a017"></i>金：特别的主题</span>
+        </div>
+        <p class="small" style="margin-top:6px">作者自己的荧光笔颜色编码，书中说“仅供参考”，鼓励读者设定自己的一套。</p>
+      </div>
+      <div>
+        <div class="card">
+          <h4>三个优点</h4>
+          <ul>
+            <li>记事本的<b>机动性</b>：随身带，随时随地能用。</li>
+            <li>便利贴的<b>方格单元</b>：一格存一个信息。</li>
+            <li>笔记本的<b>作业性</b>：翻开两页，15 个点子一览无余，方便用颜色归类、建立联系、激发新创意。</li>
+          </ul>
+          <p class="note"><b>为什么是格子？</b>作者在讲座上做过实验，大部分人觉得有框的笔记本更容易填入点子。“人就是这样一种动物，有了框架就想去填充。”16 分割笔记的原型其实就是便利贴。</p>
+        </div>
+        <div class="drawsteps" style="margin-top:12px">
+          <div><div class="nb"></div><b>① 准备</b>口袋大小、没有网格线的记事本，哪家的都行。</div>
+          <div><div class="nb" style="--pat:linear-gradient(transparent calc(50% - .5px),var(--blue) calc(50% - .5px),var(--blue) calc(50% + .5px),transparent calc(50% + .5px))"></div><b>② 一条横线</b>跨左右两页，得 4 分割。</div>
+          <div><div class="nb" style="--pat:linear-gradient(transparent calc(50% - .5px),var(--blue) calc(50% - .5px),var(--blue) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(90deg,transparent calc(25% - .5px),var(--blue) calc(25% - .5px),var(--blue) calc(25% + .5px),transparent calc(25% + .5px),transparent calc(75% - .5px),var(--blue) calc(75% - .5px),var(--blue) calc(75% + .5px),transparent calc(75% + .5px))"></div><b>③ 两条竖线</b>得 8 分割。</div>
+          <div><div class="nb" style="--pat:linear-gradient(transparent calc(25% - .5px),var(--blue) calc(25% - .5px),var(--blue) calc(25% + .5px),transparent calc(25% + .5px),transparent calc(50% - .5px),var(--blue) calc(50% - .5px),var(--blue) calc(50% + .5px),transparent calc(50% + .5px),transparent calc(75% - .5px),var(--blue) calc(75% - .5px),var(--blue) calc(75% + .5px),transparent calc(75% + .5px)),linear-gradient(90deg,transparent calc(25% - .5px),var(--blue) calc(25% - .5px),var(--blue) calc(25% + .5px),transparent calc(25% + .5px),transparent calc(75% - .5px),var(--blue) calc(75% - .5px),var(--blue) calc(75% + .5px),transparent calc(75% + .5px))"></div><b>④ 再两条横线</b>得 16 分割。</div>
+        </div>
+        <p class="note">画线别用黑笔，作者用<b>淡蓝色或淡绿色</b>，想点子时线条不干扰视线。格子数量可增减：</p>
+        <div class="sizes">
+          <div><div class="mini" style="background-size:50% 50%"></div><b>4 分割</b><span>大号便利贴</span></div>
+          <div><div class="mini" style="background-size:25% 25%"></div><b>16 分割</b><span>中号便利贴</span></div>
+          <div><div class="mini" style="background-size:12.5% 25%"></div><b>32 分割</b><span>小号便利贴</span></div>
+          <div><div class="mini" style="background-size:12.5% 12.5%"></div><b>64 分割</b><span>迷你便利贴</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">阅读克星法：16 → 3 → 1<span class="en">06–09 节 · Killer Reading</span></h3>
+    <p class="muted reveal" style="max-width:900px">作者做顾问时接了一家住宅厂家的项目，要在面谈前读完房地产行业和这家公司的资料，两三天读了六十多本书，还得把几十页的总结压成一张让人一看就懂的纸。这个方法就是从那时总结出来的：一本书用一个对开页，15 分钟读完，1 分钟讲清。点下面的步骤看这一页怎么一步步填满。</p>
+    <div class="reveal">
+      <div class="stepper" id="stepper">
+        <button data-s="1"><b>1</b>提出问题</button>
+        <button data-s="2"><b>2</b>抽选 16 个关键词</button>
+        <button data-s="3"><b>3</b>浓缩到 3 个</button>
+        <button data-s="4" class="on"><b>4</b>整合为一条信息</button>
+      </div>
+      <div class="spread" id="spread" data-s="4">
+        <div class="kw">
+          <span><i class="n">1</i><b class="w eg">被丘吉尔称为“核心人物”的哈里·霍普金斯</b></span>
+          <span><i class="n">2</i><b class="w eg">日程化→天才般的工作</b></span>
+          <span class="pick"><i class="n">3</i><b class="w eg">优先顺序</b></span>
+          <span><i class="n">4</i><b class="w eg">……</b></span>
+          <span><i class="n">5</i><b class="w eg">……</b></span>
+          <span><i class="n">6</i><b class="w eg">……</b></span>
+          <span><i class="n">7</i><b class="w eg">……</b></span>
+          <span><i class="n">8</i><b class="w eg">……</b></span>
+          <span><i class="n">9</i><b class="w eg">关注你自己的时间</b></span>
+          <span class="pick"><i class="n">10</i><b class="w eg">无聊的组织</b></span>
+          <span class="pick"><i class="n">11</i><b class="w eg">时间和记录</b></span>
+          <span><i class="n">12</i><b class="w eg">……</b></span>
+          <span><i class="n">13</i><b class="w eg">……</b></span>
+          <span><i class="n">14</i><b class="w eg">……</b></span>
+          <span><i class="n">15</i><b class="w eg">……</b></span>
+          <span><i class="n">16</i><b class="w eg">……</b></span>
+        </div>
+        <div class="rp">
+          <div class="bt"><span>书名：《卓有成效的管理者》</span><span>日期：</span></div>
+          <div class="tri">
+            <svg viewBox="0 0 100 86" preserveAspectRatio="none"><polygon points="50,18 18,66 82,66"/></svg>
+            <div class="cc t1">“记录”<br>胜过记忆</div>
+            <div class="cc t2">“无聊”<br>胜过创造</div>
+            <div class="cc t3">“勇气”<br>胜于分析</div>
+            <div class="tq"><b>问题</b>哪三个关键点和一个行动能够让我实现零加班，并且从明天开始就能实践？</div>
+          </div>
+          <div class="msgbox"><b>一条信息 / 一个行动</b>把今天做成的事情记录到手账里，每一个月对自己的强项进行盘点。</div>
+        </div>
+      </div>
+      <div class="stepcap" id="stepcap"></div>
+      <p class="small" style="margin-top:8px">例子来自书中第 08 节。书里只列出了 6 个关键词，其余用“……”代替；红圈标的是与最终 3 个关键词相关的格子，属本页示意。</p>
+    </div>
+
+    <div class="ladder3 reveal">
+      <div><b>?</b><span>1 个具体的问题</span><em>放在三角形正中央，是接收信息的“天线”</em></div>
+      <div><b>16</b><span>16 个关键词</span><em>专有名词、数字、格言、让你心动的内容</em></div>
+      <div><b>3</b><span>3 个关键词</span><em>最能代表答案的词，换成自己的语言</em></div>
+      <div><b>1</b><span>1 条信息</span><em>“从这个问题的视角，这本书的精髓就是这么一句话”</em></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:18px">
+      <div class="card">
+        <h4>问题要具体：酒店经营者的例子</h4>
+        <p class="muted" style="font-size:14.5px">只问“提高营业额的秘诀是什么？”太抽象。换成“在盂兰盆节过后的闲散期内，什么样的促销方案才能提高销售量？”才更容易得到确切的答案。书里把这比作在谷歌里输关键词：关键词暧昧，就搜不到想要的网站。</p>
+      </div>
+      <div class="card">
+        <h4>读报纸：15 分钟读《日经》</h4>
+        <p class="muted" style="font-size:14.5px">问题设为：“在当前经济形势下，过往经验完全无法解决问题，什么样的重要视角才能创造出为客户带来价值的新产品与服务？”挑出 16 个关键词后，相互关联的用同色圆圈圈起，重要的用红圈。最后归为 3 个视角：团队、少数派、体验者。</p>
+        <p class="note">取三个词日语读音的首音节，合成“<b>CHI MA TA 视角</b>”。巧用缩写便于传达和记忆，作者称这一步为<b>“打磨信息”</b>，每天读报时练习，表达能力会有质的提升。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">贰</div>
+      <div>
+        <div class="tag">第一章后半 · 第二章</div>
+        <h2>整理东西、开会、写报告、做演讲</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">“所有沟通的目的，都是就带着‘问题’寻找与之相对的‘答案’。”会议、报告、策划、演讲各有一张纸：中间放问题，四周放论点，最后落到下一步。</p>
+
+    <h3 class="sub reveal">简单清单：只盯“重要但不用”的东西<span class="en">10 节 · 断舍离</span></h3>
+    <div class="tpl sl reveal">
+      <div>
+        <div class="quad2">
+          <div class="y">重要</div>
+          <div class="q">　</div>
+          <div class="q on"><span>简单清单</span></div>
+          <div class="y">不重要</div>
+          <div class="q">　</div>
+          <div class="q">　</div>
+          <div></div>
+          <div class="x">使用</div>
+          <div class="x">不使用（闲置）</div>
+        </div>
+        <p class="muted" style="font-size:14.5px;margin-top:14px">东西扔不掉，是因为扔的时候会不安：“说不定什么时候就会需要。”作者画了一个四格图，两条轴是<b>使用 / 不使用</b>、<b>重要 / 不重要</b>。“使用与否”的标准很单纯，仍然舍不得的原因是迷恋，所以只需关注“重要但不使用”这一格，想清楚自己为什么扔不掉。</p>
+      </div>
+      <div>
+        <table class="t">
+          <tr><th>#</th><th>分类</th><th>保留原因</th><th>一年内用吗？</th><th>真的重要吗？</th></tr>
+          <tr><td>1</td><td>MBA 案例研究</td><td>经营案例积累</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr><td>2</td><td>马克思资本论</td><td>经济学的基本修养</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr class="keep"><td>3</td><td>编写故事</td><td>通过故事打动人</td><td class="c">Yes</td><td class="c">〇</td></tr>
+          <tr><td>4</td><td>金融学</td><td>财务知识</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr><td>5</td><td>管理会计</td><td>可运用在商业分析中</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr><td>6</td><td>英语学习</td><td>用英语来工作</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr><td>7</td><td>营销</td><td>获取工作</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr><td>8</td><td>会计证备考书</td><td>拓宽工作范围</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr><td>9</td><td>设计</td><td>设计造诣</td><td class="c">No</td><td class="c">×</td></tr>
+          <tr><td>10</td><td>思维扩散法</td><td>想出绝好的创意</td><td class="c">No</td><td class="c">×</td></tr>
+        </table>
+        <p class="note">规则是把“扔不掉的东西”列成清单，选出最重要的 3 项，其余全部扔掉。作者有好几本书买了 10 年一直没读；想清楚对“现在”和“将来”的自己是否有用之后，原本打算留 3 类，最后只留下了<b>“编写故事”</b>。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">一页交接地图：10 分钟交接工作<span class="en">11 节 · 专栏 1</span></h3>
+    <div class="reveal">
+      <p class="muted" style="max-width:920px">作者在公司时，部门资料乱作一团，桌下的活页夹堆了 10 厘米高，只能斜着身子把脚伸到桌外办公。他的解法是用思维导图软件做一张“一页交接地图”，前提是<b>电脑里的资料和纸质资料联动</b>。以营销工作为例，资料按“谁的＝客户、什么＝项目、怎么样”的顺序产生，所以围绕客户和项目把资料串起来：</p>
+      <div class="tree" style="margin-top:14px">
+        <div><small>第一阶段</small><b>客户编号＋客户名称</b><span>以客户为中心</span></div>
+        <div><small>第二阶段</small><b>项目名称</b><span>每个客户下的项目</span></div>
+        <div><small>第三阶段</small><b>分类名称</b><span>能分到同一类的资料归在一起</span></div>
+        <div><small>第四阶段</small><b>资料名称</b><span>对照纸质资料逐个添加</span></div>
+      </div>
+      <div class="grid2" style="margin-top:14px">
+        <div class="card">
+          <h4>整理顺序</h4>
+          <ol>
+            <li>先定电脑中的资料结构（上面四个阶段）。</li>
+            <li>把纸质资料平摊在桌上，一份份拿起来，看电脑里有没有对应类别，有就把资料名称加进去；没用的扔进垃圾箱。</li>
+            <li>有用的资料装进透明文件夹，贴上标签，按客户放进对应的文件箱。</li>
+            <li>交接时，把地图数据和打印出来的这一张纸交给对方，告诉他文件箱在哪里。</li>
+          </ol>
+          <span class="lbl" style="margin-top:12px">文件夹标签格式</span>
+          <span class="label-tag">客户名称（简称）- 项目名称（简称）- 文件夹名称 - 日期</span>
+          <p class="small" style="margin-top:8px">有了名字，资料被误放到别处也能很快发现并放回去。</p>
+        </div>
+        <div class="card">
+          <h4>专栏 1：作者推荐的思维导图软件</h4>
+          <table class="t" style="border-width:1px">
+            <tr><th>I Mind Map</th><td>托尼·布赞唯一公开认可的思维导图软件，表现力出色，像在纸上手画。</td></tr>
+            <tr><th>Mind Manager</th><td>面向重量级用户，重性能和制作速度，与 Office 协作，企业常用。</td></tr>
+            <tr><th>X Mind</th><td>免费。书中的交接地图就是用它做的，还能做鱼骨图、电子表格、思维树。</td></tr>
+            <tr><th>Free Mind</th><td>免费。快捷键丰富，适合不喜欢用鼠标的人。</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">话题地图：会议时间缩短一半<span class="en">12–15 节 · Mapping Communication</span></h3>
+    <div class="reveal">
+      <p class="muted" style="max-width:920px">作者调查过 50 家大企业的管理层，会议占去了工作时间的 <b>26.5%</b>，约四分之一。按年薪 1000 万元、2000 名管理者粗算，一家公司一年在会议上至少耗费 50 亿。话题地图让讨论从中央向四周放射展开，下面是书中“新商品销售活动策划会议”的实例（上午 9 点开始，60 分钟）。</p>
+      <div class="paper tmap" style="margin-top:14px">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="50" x2="22" y2="22" vector-effect="non-scaling-stroke"/><line x1="50" y1="50" x2="78" y2="22" vector-effect="non-scaling-stroke"/><line x1="50" y1="50" x2="78" y2="78" vector-effect="non-scaling-stroke"/><line x1="50" y1="50" x2="22" y2="78" vector-effect="non-scaling-stroke"/></svg>
+        <div class="bx ns"><small>NEXT STEP · 下一步</small><div class="a">①准备好用简单易懂的方式解释“看不见的利益”。<br>②调查到底是哪三个烦恼。<br>③跟本部员工商量支援小分队的时间安排。</div></div>
+        <div class="topc">
+          <div class="hdl"><span>题目：<span class="eg">新商品销售活动策划</span></span><span>日期：</span></div>
+          <div class="ansbox"><small>ANSWER BOX · 答案箱</small>Focus 1 to 3</div>
+        </div>
+        <div class="bx p1"><small>论点 1</small><div class="q">如何向消费者传递新商品与旧商品及其他商品的差异？</div><div class="tm">（9:00–9:15）</div><div class="a">→ 用一张纸或者一个动画把差异传达给消费者。</div></div>
+        <div class="ctr"><div><small>话题</small>什么样的销售活动能让新商品卖出原商品两倍的销量？</div></div>
+        <div class="bx p3"><small>论点 3</small><div class="q">在营销力量比较薄弱的区域，如何提升营销力？</div><div class="tm">（9:30–9:45）</div><div class="a">→ 从总部调动支援小分队。</div></div>
+        <div class="botc">论点按重要程度，从右上角起顺时针排列</div>
+        <div class="bx p2"><small>论点 2</small><div class="q">什么样的活动亮点才能让顾客不由得产生购买的欲望？</div><div class="tm">（9:15–9:30）</div><div class="a">→ 把消费者没意识到的“不可见利益”和“三个烦恼”展现出来，并聚焦于此。</div></div>
+      </div>
+      <p class="cap">讨论结果用红笔写；风险担忧、待商议事项也放进左上角的 Next Step 框，免得被一个论点缠住。</p>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:18px">
+      <div class="card">
+        <h4>Mapping 会议怎么开</h4>
+        <ol>
+          <li><b>准备地图</b>：会前在白板上画好，中央写话题，箭头上下写论点，箭头顶端做讨论区，话题上方设“答案箱”。</li>
+          <li><b>各自给意见</b>：每个论点下写上时间（本例各 15 分钟）；给每人发稿纸，留约 2 分钟写下对各论点的意见，再收上来讨论。这样人人参与，也不会被别人的意见带跑。</li>
+          <li><b>每个论点得出结论</b>：本例的口号定为“Focus 1 to 3”，用一张纸或一个动画这种简单渠道，传递三个促销内容：创造“看不见的利益”、消除“三个烦恼”、救援小分队的支持。</li>
+          <li><b>设定下一步</b>：明确会后要做的行动，会议就可以结束。没参会的人看这张地图，也知道讨论了什么、结论是什么。</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>话题地图的 5 大效用</h4>
+        <div class="five" style="grid-template-columns:1fr">
+          <div><b>会议论题不跑题</b>手指地图上的论点：“现在的论点是×××”。</div>
+          <div><b>能回顾之前的会议</b>翻开地图，会议像视频一样重现。</div>
+          <div><b>大幅缩短会议时间</b>每个论点分配了时间，集中讨论。</div>
+          <div><b>人人都能发表意见</b>会前每人先写，再写到白板的框里。</div>
+          <div><b>培养结构化思考</b>主题居中、论点放射、引出结论，久而久之成习惯。</div>
+        </div>
+        <p class="small" style="margin-top:8px">同一模板也可用于商务会谈和采访。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">丰田 A3：一张纸的报告书<span class="en">16 节</span></h3>
+    <div class="tpl reveal">
+      <div class="paper a3">
+        <div class="r"><b>背景</b><div><i></i></div></div>
+        <div class="r"><b>现状</b><div><i></i></div></div>
+        <div class="r"><b>目标</b><div><i></i></div></div>
+        <div class="r"><b>课题</b><div><i></i></div></div>
+        <div class="r"><b>解决方案</b><div><i></i></div></div>
+        <div class="r"><b>计划</b><div><i></i></div></div>
+      </div>
+      <div>
+        <div class="bubble">
+          <p>“现状是这样……</p>
+          <p>为什么会有这样的现状，是因为背后有这样的情况……</p>
+          <p>在了解了现状和背景之后，我想出了这样的课题……</p>
+          <p>然后针对这个课题进行讨论之后，得到了 A 方案这样的解决方案……</p>
+          <p style="margin:0">实施该方案的具体计划如下……”</p>
+        </div>
+        <p class="note">若松义人在《丰田员工不在办公桌前工作》里讲过一个故事：从美国考察汽车产业归来的学者朋友说“整理成报告书之后提交给你”，丰田喜一郎回答：“马上把所有情况就在这里给我讲清楚。”作者的解读是：“整理成报告书之后”，意味着此刻还没整理清楚。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">逻辑三兄弟 → Mapping 1·2·3<span class="en">17–18 节</span></h3>
+    <div class="bros reveal">
+      <div class="bro"><div class="nm"><i>1</i><div><b>大哥一郎</b><br><span>1 个信息</span></div></div><p>“这本书要传递的信息，说白了就是——吃香蕉能减肥。”</p></div>
+      <div class="bro"><div class="nm"><i>2</i><div><b>二哥二郎</b><br><span>2W1H：What · Why · How</span></div></div><p>“这本书写了什么（What？）……为什么（Why？）吃了香蕉能减肥呢？……该怎么做（How？）才好呢……”</p></div>
+      <div class="bro"><div class="nm"><i>3</i><div><b>三弟三郎</b><br><span>3 个法则</span></div></div><p>“这本书有 3 个要点。”“这本书跟其他的减肥术有 3 点不同之处。”</p></div>
+    </div>
+    <p class="muted reveal" style="margin-top:12px">逻辑思考的书多不胜数，作者只推荐这 3 种。把三种合在一起，取首数字，就是 <b>Mapping 1·2·3</b>：中央放“一个要点”，四周 What / Why / How 各写 3 点，右上角预留一个 <b>1 Action</b> 框，对方问“那目前该做些什么呢？”时，指着它说“请您先从这里入手吧”。</p>
+    <div class="reveal" style="margin-top:14px">
+      <span class="lbl">书中实例 · 关于“培养自律型人才”的策划案（节选）</span>
+      <div class="paper m123">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="52" x2="30" y2="28" vector-effect="non-scaling-stroke"/><line x1="50" y1="52" x2="70" y2="28" vector-effect="non-scaling-stroke"/><line x1="50" y1="52" x2="30" y2="74" vector-effect="non-scaling-stroke"/><line x1="50" y1="52" x2="70" y2="74" vector-effect="non-scaling-stroke"/></svg>
+        <div class="bx w"><small>WHAT?</small><ol><li data-n="①">“当天所留意到的事情”记入“留意笔记”</li><li data-n="②">“当天完成的事情”记入“完成事项清单”</li><li data-n="③">养成记录习惯，形成以“留意到的事情”为起点开展行动的良性循环</li></ol></div>
+        <div class="mid">
+          <div class="hdl"><span>题目：</span><span>日期：</span></div>
+          <div class="ell"><small>一个要点</small>每天记录“留意笔记”和“完成事项清单”，实现人才从“等待上司指示的人”到“自律型人才”的转变。</div>
+        </div>
+        <div class="bx act"><small>1 ACTION</small><p>把“留意笔记”和笔放在胸前的口袋里，养成把留意到的瞬间记录下来的习惯。</p></div>
+        <div class="bx y"><small>WHY?</small><ol><li data-n="①">任何人都能轻易办到</li><li data-n="②">留意越多改善越多；完成清单让人感受到成长，增加干劲</li><li data-n="③">久而久之成为在领导下令之前就自主行动的人</li></ol></div>
+        <div class="bx h"><small>HOW?</small><ol><li data-n="①">每天做日课：留意笔记放进部门“留意箱”，完成清单放在桌上再回家</li><li data-n="②">先不管质量，只以数量来评价</li><li data-n="③">每月合计数量，在部门内表彰个人</li></ol></div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">故事型演讲：三幕、三面墙、一句话<span class="en">19–22 节 · 专栏 2</span></h3>
+    <div class="reveal">
+      <p class="muted" style="max-width:920px">打动人的关键不只是说话方式，而在于话里有没有“故事”。乔布斯发布 iPhone 时说：“这次苹果公司将重新发明电话。”作者看电影电视时用 16 分割笔记拆解情节，发现《相棒》《海螺小姐》《情热大陆》这类节目都有固定模式。这张模板说按它准备，原本要一天的工作，不到一小时就能完成。</p>
+      <div class="five" style="margin:14px 0 16px">
+        <div><b>三幕构建</b>开篇“什么东西？”→情节“发生了什么？”→结尾“最后怎么样了？”</div>
+        <div><b>先定头尾</b>第一幕和第三幕要清晰明确，结论别含糊、别跑题。</div>
+        <div><b>开篇 3 要素</b>现状、变化、问题（谜团），设定有魅力的主人公。</div>
+        <div><b>第二幕 3 阶段</b>设三面墙，并准备跨越它们的“钥匙”。</div>
+        <div><b>一个信息</b>把整个故事凝结成一句话，传递第三幕。</div>
+      </div>
+      <div class="paper story-t">
+          <div class="tl"><div class="hdl"><span>主题：</span><span>日期：</span></div><div class="ov"><small>一个信息</small>利润回升 20%</div></div>
+          <div class="stairs">
+            <div class="wl w1"><b>第 1 面墙 · 聚集客人</b><span class="key">生啤一杯 150 日元，大幅增加进店客人</span></div>
+            <div class="wl w2"><b>第 2 面墙 · 降低成本</b><span class="key">重新选购食材，变更购买渠道</span></div>
+            <div class="wl w3"><b>第 3 面墙 · 客人数量</b><span class="key">变更店内装修布置，增加可容纳客人数</span></div>
+            <div class="up"></div>
+          </div>
+          <div class="end"><b>Ending 结尾</b><p>利润回升了 20%。</p></div>
+          <div class="open"><b>Opening 开篇</b><p><em>现状</em>受新型连锁居酒屋冲击，私营居酒屋营业额大幅下降。</p><p><em>问题</em>他们能否扳回利润呢？</p></div>
+        </div>
+      <div class="grid2" style="margin-top:18px;align-items:start">
+        <div>
+          <div class="acts">
+            <div><small>第一幕</small><b>桃太郎从桃子中出生</b></div>
+            <div><small>第二幕 · 三面墙</small><b>食物 · 同伴 · 战斗</b>糯米团子；收服猴子、狗和野鸡；在鬼岛打败鬼怪。</div>
+            <div><small>第三幕</small><b>带着宝藏归来</b></div>
+          </div>
+          <p class="small" style="margin-top:8px">上图按书中模板（开篇在左下、三级台阶居中、结尾在右上、一个信息在左上）重绘，填入的是书中居酒屋的例子；“一个信息”一栏为本页按第三幕所填。</p>
+        </div>
+        <div>
+          <div class="card" style="padding:16px 18px">
+            <h4 style="font-size:15.5px">开篇 3 要素：《爱丽丝梦游仙境》</h4>
+            <p class="muted" style="font-size:14px;margin:0"><b>现状</b>：爱丽丝因长大成人的烦恼而不安。<b>变化</b>：出现一只奇怪的兔子，爱丽丝追着它掉进洞里。<b>问题</b>：掉进洞穴的爱丽丝怎么样了？</p>
+            <p class="small" style="margin-top:6px">书中另举游戏公司 A：最近没有卖座的游戏 → 著名小说家联手写剧本 → 能否成为卖座作品？</p>
+          </div>
+          <span class="lbl" style="margin-top:16px">专栏 2 · 用 S 便笺一口气填完演讲故事</span>
+          <div class="map5">
+            <div><b>谁的？</b><span>主人公</span></div>
+            <div><b>什么？</b><span>第一幕</span></div>
+            <div><b>怎么做？</b><span>第二幕的墙</span></div>
+            <div><b>怎么样？</b><span>第三幕</span></div>
+            <div><b>总之？</b><span>一个信息</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READING ============ -->
+<section class="block" id="reading">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">叁</div>
+      <div>
+        <div class="tag">第三章 · 第四章 · 整读法</div>
+        <h2>15 分钟读一本书，再把它用起来</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">阅读克星法重“输入”，整读法重“输出”：一本书 15 分钟读完，归纳到一张纸上，能讲给别人听或用到工作中。先按目的选模板，再动手读。</p>
+
+    <div class="grid2 reveal" style="margin-bottom:18px">
+      <div class="card">
+        <h4>为什么读了也白读</h4>
+        <p class="muted" style="font-size:14.5px">被书名吸引、读得忘了时间、感叹“真是本好书”，两三天后感动淡去，连读过这件事都记不起来。外山滋比古在《思考的整理学》里说，书读得越多，可用材料越多，整合也越麻烦；解决办法是“总之，试着写一写”。作者因此主张带着“讲述给别人听”的意识去读，走完“阅读、写作、汇报”的全过程。</p>
+      </div>
+      <div class="card">
+        <h4>15 分钟怎么分配（第 25 节）</h4>
+        <p class="muted" style="font-size:14.5px">先看封面、腰封、作者简介，揣测主题和背景；再看前言和目录；然后用约 10 分钟以翻杂志的速度浏览正文，约 30 秒抓一个关键词。16 个方框兼具“外表梳理（整理）”和“数量限制（选择）”两个作用，能管住什么都想往里塞的冲动。</p>
+        <div class="timebar"><div class="a">封面 · 目录</div><div class="b">正文：选出 16 个关键词（约 10 分钟）</div><div class="c">3 个 → 1 个行动</div></div>
+      </div>
+    </div>
+
+    <div class="steps6 reveal">
+      <div class="st pre"><h4>明确目的</h4><p>“想知道成功跳槽的秘诀”太抽象，改成“跳槽成功，一年后年收入 1000 万日元”。</p></div>
+      <div class="st pre"><h4>提出问题</h4><p>想咨询作者的事。“我在这之前必须放弃什么？必须磨炼什么？明天开始要采取怎样的行动？”</p></div>
+      <div class="st"><h4>选 16 个关键词</h4><p>填入左页 16 格，像在接受作者 15 分钟咨询。</p></div>
+      <div class="st"><h4>筛出 3 个</h4><p>同类同色圈，相关的连箭头，重要的画红圈；换成自己的语言，填入三角形。</p></div>
+      <div class="st"><h4>导出一个行动</h4><p>从 3 个关键词引出明天就能开始的一个行动，这就是问题的答案。</p></div>
+      <div class="st"><h4>30 秒说明</h4><p>用 3 个关键词和 1 个行动，有条理地讲清读到了什么、打算做什么。</p></div>
+    </div>
+    <p class="small reveal" style="margin-top:8px">基本模板与阅读克星法相同（左页 16 格，右页书名、日期和三角形），右页多一个“一个行动”框。</p>
+
+    <h3 class="sub reveal">按目的选：7 种整读法</h3>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="cmp">
+        <thead><tr><th>整读法</th><th>用来</th><th>一张纸长什么样</th><th>书中例子</th><th></th></tr></thead>
+        <tbody>
+          <tr><td><b>行动阅读</b><small>Action Reading</small></td><td>指导行动</td><td>基本整读模板：16 格 ＋ 三角形 ＋ 一个行动</td><td>池上彰《传达力》</td><td><a href="#r1">看例子</a></td></tr>
+          <tr><td><b>办法阅读</b><small>Solution Reading</small></td><td>解决问题</td><td>右页三级台阶（三面墙）＋钥匙；左页 16 格分四类</td><td>泷本哲史《作为武器的决断思考》</td><td><a href="#r2">看例子</a></td></tr>
+          <tr><td><b>突破阅读</b><small>Breaking Reading</small></td><td>改变视角</td><td>问题居中，四周是从杂志里选出的关键词</td><td>四本不同年龄段的女性杂志</td><td><a href="#r3">看例子</a></td></tr>
+          <tr><td><b>原理阅读</b><small>Principle Reading</small></td><td>发现原理原则</td><td>A3 纸分四份：三份各读一节（12 格），右上写原理原则</td><td>卡耐基《人性的弱点》</td><td><a href="#r4">看例子</a></td></tr>
+          <tr><td><b>万能阅读</b><small>Master Reading</small></td><td>洞察本质</td><td>左栏 ×、〇、？、故事；右侧画门和万能钥匙</td><td>理查德·科克《改变你人生的 80/20》</td><td><a href="#r5">看例子</a></td></tr>
+          <tr><td><b>《圣经》阅读</b><small>Bible Reading</small></td><td>寻求大师指点</td><td>启发型用三角形；理论型用 32 格 ＋ What / Why / How / Next Step</td><td>稻盛和夫《成功方程式》；德鲁克《卓有成效的管理者》</td><td><a href="#r6">看例子</a></td></tr>
+          <tr><td><b>预见阅读</b><small>Visionary Reading</small></td><td>引导未来</td><td>视觉导向图卡：我的主题 ＋ 星形原则 ＋ 蓝图</td><td>读自己的整读笔记“黄金词典”</td><td><a href="#r7">看例子</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small reveal" style="margin-top:8px">书中前言与正文对个别名称的译法不统一（如“办法阅读”与“解决问题阅读”、“万能阅读”与“万能钥匙阅读”），本页取正文标题的叫法。</p>
+
+    <!-- r1 -->
+    <h3 class="sub reveal" id="r1">① 行动阅读法<span class="en">Action Reading · 26–27 节</span><span class="badge">指导行动</span></h3>
+    <div class="rd reveal">
+      <div class="card">
+        <span class="lbl">场景</span>
+        <p class="muted" style="font-size:14.5px;margin-top:0">刚毕业一年，不擅长逻辑思考，报告写得满满当当，常被上司批评“你到底想要说什么？”选书的两条标准：①能否产生共鸣？②是否与解决现在的课题直接相关？于是拿起池上彰的《传达力》。</p>
+        <div class="qbox"><small>问题</small>为了像池上彰那样写出简洁易懂的文章，我从明天开始就能实践并养成习惯的“1 Action”是什么？</div>
+        <p class="small">要找的行动有两个特征：“无论如何你都想尝试”“从明天起自己就能着手”。</p>
+        <span class="lbl" style="margin-top:10px">16 个关键词（节选）</span>
+        <p style="margin:0">
+          <span class="pill">传达、想传达</span><span class="pill">30 秒规则</span><span class="pill">骄傲自大，便看不见事物的本质</span><span class="pill">想要输出，必有输入</span><span class="pill">一有决心去做某事，马上记下来</span><span class="pill">光是死记硬背的话，掌握不了</span>
+        </p>
+      </div>
+      <div class="card">
+        <span class="lbl">3 个关键词（换成自己的语言）</span>
+        <div class="kw3"><span>一张 NHK A4 纸</span><span>使用音读<br>（精练语言）</span><span>记录有感触的地方</span></div>
+        <ul style="font-size:14px">
+          <li>无论节目长短，都写在一张 A4 纸上。</li>
+          <li>文章写出来就读出声，以此打磨语言。</li>
+          <li>“人一有感触就迫不及待想告诉其他人”，把让自己“哇”的事记下来再讲给别人。</li>
+        </ul>
+        <p class="small">关键词可以图标化：A4 纸画一张纸，音读画一张嘴，“哇”画一个桃心。</p>
+        <span class="lbl" style="margin-top:12px">导出一个行动的两种方式</span>
+        <div class="grid2" style="gap:8px">
+          <div class="note" style="margin:0"><b>从 3 个中选一个</b><br>一天记录三次让自己有感触的事情。</div>
+          <div class="note" style="margin:0"><b>把 3 个综合起来</b><br>“哇”→记在分割成 16 份的一张纸上→挑一份写进博客→用音读把文字变简练。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- r2 -->
+    <h3 class="sub reveal" id="r2">② 办法阅读法<span class="en">Solution Reading · 28–30 节</span><span class="badge">解决问题</span></h3>
+    <div class="rd reveal">
+      <div class="card">
+        <p class="muted" style="font-size:14.5px;margin-top:0">所谓“问题”，就是<b>“理想的未来”与“现状”之间的鸿沟</b>。把问题想成“墙壁”，把解决想成“钥匙”：读书之前先理清自己面对哪几面墙，再去书里找钥匙。模板和故事型演讲很像，画在笔记本右页；左页仍是 16 格，选词方法同行动阅读法。</p>
+        <span class="lbl">场景</span>
+        <p class="muted" style="font-size:14.5px;margin-top:0">大学后辈 A 君在大型保险公司做营业员，想两年内辞职创业，问该去听什么讲座、读什么书。你担心他太“以知识为中心”，于是拿起泷本哲史的《作为武器的决断思考》。</p>
+        <ol style="font-size:14px">
+          <li><b>设想理想的未来</b>：把容易被信息和知识左右的“知识依赖型”，变成独立思考、展开行动的行动派，命名为“创业者头脑”。</li>
+          <li><b>设立问题</b>：为了避免 A 君被知识和信息冲昏头脑，让他能发掘赚钱的商机、具备行动力强的“创业者头脑”，需要做些什么？</li>
+          <li><b>设定三面墙</b>：输入墙、过程墙、输出墙。</li>
+          <li><b>选 16 个关键词</b>：16 格分为输入墙、过程墙、输出墙、其他四类，各选 4 个。</li>
+          <li><b>筛出三把钥匙</b>：四色笔分类，红圈强调，箭头标关系。</li>
+          <li><b>凝结成一个信息</b>。</li>
+          <li><b>30 秒表达</b>：“有三面墙需要跨越。克服第一面墙的关键是……”</li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="lbl">右页 · 三面墙和三把钥匙</span>
+        <div class="kst">
+          <div class="s s3"><b>输出墙</b><span>钥匙 3：两者选其一的“决断能力”</span></div>
+          <div class="s s2"><b>过程墙</b><span>钥匙 2：由“问题”引发的“思考能力”</span></div>
+          <div class="s s1"><b>输入墙</b><span>钥匙 1：背面的信息“输入能力”</span></div>
+        </div>
+        <ul style="font-size:14px">
+          <li><b>背面的信息</b>：有价值的信息总在“硬币背面”，只看对大众开放的正面信息，找不到赚钱的商机。</li>
+          <li><b>思考能力</b>：有“正确答案”的时代结束了，要用自己的头脑设定“问题”、拿出“最佳解决方案”。</li>
+          <li><b>决断能力</b>：有了假设，先在“做 / 不做”里选一个，再从各个角度验证。</li>
+        </ul>
+        <div class="one"><small>一个信息</small>想成为具备“创业者头脑”的人，需要牢牢掌握这“三种能力”。</div>
+      </div>
+    </div>
+
+    <!-- r3 -->
+    <h3 class="sub reveal" id="r3">③ 突破阅读法<span class="en">Breaking Reading · 31–32 节</span><span class="badge">改变视角</span></h3>
+    <div class="rd reveal">
+      <div class="card">
+        <span class="lbl">场景</span>
+        <p class="muted" style="font-size:14.5px;margin-top:0">在地铁公司新事业部的朋友 A 君来电：明天要向政府提交 B 站全面翻新的方案，目标客群是“乘坐地铁的女性乘客”，傍晚 6 点前要个大致框架。你还得去拜访客户，没时间坐下来想。</p>
+        <ol style="font-size:14px">
+          <li><b>去现场提出问题</b>：带着“她们是什么类型的人、有什么喜好、想在站内得到什么服务”去坐地铁。观察到 5 种状态：盯手机、打瞌睡、读书报杂志、翻工作书、聊天，还有人戴口罩。共同点是<b>“她们都很疲惫”</b>。</li>
+          <li><b>选关键词</b>：读四本女性杂志（十几岁 Seventeen、二十几岁 JJ、三十几岁 Oggi、四十几岁 Story），各用十分钟，以目录为重点。</li>
+          <li><b>整理信息</b>：四色笔分为“内（体内调节）”“外（面部）”“心（精神层面）”“其他”，核心信息画红圈，串成“信息地图”，从中找出策划主题。</li>
+        </ol>
+        <div class="qbox"><small>问题</small>什么样的站内服务能消除乘坐地铁的女性乘客们在“内、外、心”三方面的疲惫？</div>
+      </div>
+      <div class="card">
+        <span class="lbl">信息地图（按书中插图节选）</span>
+        <div class="brk">
+          <span>眼睛的充血部位</span><span>交男朋友的方法</span><span>面部美容</span><span>嘴角美容</span>
+          <span class="x ag">十几岁<br>二十几岁</span>
+          <span class="cen">乘坐地铁的女性乘客有什么共同需求？</span>
+          <span class="x2 ag">三十几岁<br>四十几岁</span>
+          <span>被珍爱的女性</span><span>温暖的美女</span><span>迅速变身美女</span><span>眼睛周围</span>
+        </div>
+        <div class="cats"><span style="background:#dc2626">内</span><span style="background:#2563eb">外</span><span style="background:#16a34a">心</span><span style="background:#a16207">其他</span></div>
+        <div class="one" style="margin-top:14px"><small>浮现的关键词</small>charge（充电）：“我在地下充电”</div>
+        <p class="muted" style="font-size:14px">“像在便利店里能够充电一样，如果地铁站里能有鼓励人们打起精神的地方的话……”零散信息由此串成一个故事：地下有能量，就像地下的岩浆给地球带来财富，地铁的能量站也给我补充了能量。</p>
+        <p class="note"><b>三个关键</b>：在现场设立假设和问题；通过杂志制作“信息地图”；从信息地图中找出策划创意。“不光使用头脑，使用身体也可以创造出优秀的方案。”</p>
+      </div>
+    </div>
+
+    <!-- r4 -->
+    <h3 class="sub reveal" id="r4">④ 原理阅读法<span class="en">Principle Reading · 33–34 节</span><span class="badge">发现原理原则</span></h3>
+    <div class="rd reveal">
+      <div class="card">
+        <p class="muted" style="font-size:14.5px;margin-top:0">读书的人分两种：能把阅读经验变成血肉、用到工作和人生中的，和办不到的。差别在于能否抓住原理原则。掌握了普遍通行的原理，就能应对任何问题。</p>
+        <span class="lbl">场景</span>
+        <p class="muted" style="font-size:14.5px;margin-top:0">你是一家美容沙龙的顾问，24 岁的店长 A 先生为培养和指导店员而烦恼。只读《人性的弱点》开头的“动人的 3 个原则”（共 3 节）。</p>
+        <ol style="font-size:14px">
+          <li><b>准备模板</b>：一张 A3 纸分 4 份，左上、左下、右下各对应一节（16 格变成 12 格 ＋ 三角形），右上写原理原则。</li>
+          <li><b>设立问题</b>：什么样的“打动人心的原理”能让 24 岁的店长 A 先生信心满满地培训和指导店员？</li>
+          <li><b>3 次整读，每次 15 分钟</b>：每节“12 格 → 3 个关键词 → 1 条信息”。选词以专有名词、对比、因果关系、格言为中心；不必填满 12 格。</li>
+          <li><b>比较和关联</b>：用记号笔整理全图，从三节里再抽 3 个关键词。</li>
+          <li><b>凝成“原理原则”</b>：考虑到对象是 24 岁的店长，写成一句话。</li>
+        </ol>
+        <p class="note">技巧：关键词整理成<b>“固有名词＋台词”</b>更好记；用图标做笔记，比如“心”画桃心，“好”画〇，“不好”画×。</p>
+      </div>
+      <div class="card">
+        <span class="lbl">A3 纸一分为四 · 15 分钟 × 3 ＋ 15 分钟 ＝ 60 分钟</span>
+        <div class="pa3">
+          <div class="qd"><small>① 第 1 节的一个信息</small><div class="mini12"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>罗斯福：“如果是林肯的话，他会怎么做？”<br>阿尔·卡彭：“我的心地很善良。”<br>富兰克林：“不说坏话，看长处。”<br><b class="red">→ 不批评。要表扬。</b></p></div>
+          <div class="qd pr"><small>④ 原理原则</small><p><b>常常表扬别人会给自己带来好运。</b></p><p style="font-size:13px">①“不批评。要表扬。”<br>②“ALWAYS 答案在对方的心中。”<br>③“给对方带去能够滋润内心的东西。”</p></div>
+          <div class="qd"><small>② 第 2 节的一个信息</small><div class="mini12"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="small">同样按 12 格 → 3 个 → 1 条</p></div>
+          <div class="qd"><small>③ 第 3 节的一个信息</small><div class="mini12"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="small">同样按 12 格 → 3 个 → 1 条</p></div>
+          
+        </div>
+        <p class="small" style="margin-top:8px">书中只写出了第 1 节的三个关键词和信息，第 2、3 节未展开。</p>
+      </div>
+    </div>
+
+    <!-- r5 -->
+    <h3 class="sub reveal" id="r5">⑤ 万能阅读法<span class="en">Master Reading · 35–36 节</span><span class="badge">洞察本质</span></h3>
+    <div class="rd reveal">
+      <div class="card">
+        <p class="muted" style="font-size:14.5px;margin-top:0">酒店有一把能开所有房间的万能钥匙。工作和人生的万能钥匙，就是“洞察事物本质的能力”：看透本质，会发现“十个问题”实质上是“一个问题”。模板放在一张 A4 纸上：左侧笔记栏，右侧画门，门里填本质性问题，下面是万能钥匙和与之相关的“故事”。</p>
+        <ol style="font-size:14px">
+          <li><b>明确本质性问题</b>：大多藏在书名里。《改变你人生的 80/20》→ 问题是“如何改变人生”，答案是“80/20 法则”。浏览目录后，把本质性问题定为<b>“生产性革命”</b>，填进门里。</li>
+          <li><b>填写笔记栏</b>：× 错误的行动和状态，〇 正确的，？ 代表本质的关键词，故事。</li>
+          <li><b>把故事缩减为 3 个</b>。</li>
+          <li><b>制作万能钥匙</b>：按顺序填完，钥匙会自己浮现。</li>
+        </ol>
+        <table class="mtab" style="margin-top:10px">
+          <tr><th>×</th><th>〇</th><th>？</th><th>故事</th></tr>
+          <tr><td>到处插手</td><td>集中力量做重要的 20% 的事情</td><td>用最少的努力得到最大的收益</td><td>牛津大学的连读</td></tr>
+          <tr><td>增加顾客</td><td>花更多的时间在重要的 20% 的活动上</td><td>核心 20% 的顾客</td><td>曼斯坦因的矩阵</td></tr>
+          <tr><td>出力＞用力</td><td>思考什么样的 20% 的努力可以带来 80% 的成果</td><td>果断斩断 80% 的活动</td><td>打破常规的 3 名企业顾问</td></tr>
+          <tr><td>一开始不明白关键道理</td><td></td><td></td><td>丘吉尔、肯尼迪、撒切尔的交叉点</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <span class="lbl">右侧 · 门与万能钥匙</span>
+        <div class="door">
+          <div class="pp"><b>×</b>错误状态</div>
+          <div class="dr"><small>本质性问题（主题）</small><b>生产性革命</b></div>
+          <div class="pp"><b>〇</b>正确状态</div>
+        </div>
+        <div class="mkey"><small>万能钥匙</small><b>“生产性革命”的本质就是“简单化（simplicity）”</b></div>
+        <div class="stories"><span>故事 1<br>牛津大学的连读</span><span>故事 2<br>打破常规的 3 名企业顾问</span><span>故事 3<br>丘吉尔、肯尼迪、撒切尔的交叉点</span></div>
+        <ol style="font-size:14px;margin-top:12px">
+          <li>选择“具有绝对重要性的 20%”，把力量集中在这 20% 上。</li>
+          <li>丢弃“常识”“先入为主的观念”“没用的 80%”。</li>
+          <li>“喜欢才能做得好”，选择喜欢的来谋生。</li>
+          <li>掌握“获得幸福的习惯”。</li>
+        </ol>
+        <p class="small">书中提醒：这比之前的整读难一些，但按顺序填进模板，钥匙最后就会浮现。</p>
+      </div>
+    </div>
+
+    <!-- r6 -->
+    <h3 class="sub reveal" id="r6">⑥ 《圣经》阅读法<span class="en">Bible Reading · 37–39 节</span><span class="badge">向师父请教</span></h3>
+    <div class="reveal">
+      <p class="muted" style="max-width:920px">“改变人生的一本书”就像人生的“圣经”，书里的话像师父的教诲，成为人生的坐标或轴心。这类书高度浓缩，所以有 5 个要点：</p>
+      <div class="pts5">
+        <div><b>分成小段阅读</b>15 分钟读一章，有时两页就花 15 分钟。</div>
+        <div><b>反复阅读一本书</b>值得一生反复读。</div>
+        <div><b>想象有真正的师父</b>读松下幸之助，就想象他在眼前和你聊天。</div>
+        <div><b>转变为自己的语言</b>师父的语言是原石，要打磨成自己的宝石。</div>
+        <div><b>整读和熟读同时进行</b>整读是竖向读，熟读是横向读，交织起来才能化为血肉。</div>
+      </div>
+    </div>
+    <div class="rd reveal">
+      <div class="card">
+        <span class="lbl">启发型书籍 · 每几页一个人生哲理</span>
+        <p class="small" style="margin-top:0">如松下幸之助、稻盛和夫、安冈正笃、中村天风的书。</p>
+        <p class="muted" style="font-size:14.5px">28 岁，犹豫该跳槽还是留在现公司努力，去找“人生圣经”商量：稻盛和夫的《成功方程式》。</p>
+        <ol style="font-size:14px">
+          <li><b>设立问题</b>：28 岁时跳槽的衡量标杆是什么？</li>
+          <li><b>筛出 3 条建议</b>：看目录，对感兴趣的词翻到该页，有答案就填进三角形的圆里。</li>
+          <li><b>选出关键词</b>：16 格从左到右按三条建议依次填，比如“人的本质＝不变”“作为人的道理”“很多人将简单的问题复杂化”。</li>
+          <li><b>整理关键词</b>：画圈、连箭头，把 3 条建议图解得更易懂。</li>
+          <li><b>整合成一个信息</b>：拼成有趣的词，便于记忆和活用。</li>
+        </ol>
+        <div class="gps">
+          <div><b>G</b><span>Goal<br>人生的目标</span></div>
+          <div><b>P</b><span>Principle<br>原理阅读</span></div>
+          <div><b>S</b><span>Simplicity<br>单纯化</span></div>
+        </div>
+        <div class="one"><small>一个信息</small>28 岁开始的 GPS：像汽车和手机上的导航，成为跳槽乃至以后人生的指针。</div>
+      </div>
+      <div class="card">
+        <span class="lbl">理论型书籍 · 一本书就是一个理论</span>
+        <p class="small" style="margin-top:0">如《高效能人士的七个习惯》《人性的弱点》、德鲁克《管理的实践》。</p>
+        <p class="muted" style="font-size:14.5px">模板分两部分：上面是 <b>32 格</b>笔记（内容丰富的书关键词多），下面类似 Mapping 1·2·3：中间圆的下半写问题、上半写答案，箭头从左上起逆时针指向 What？、Why？、How？、Next Step。</p>
+        <div class="g32">
+          <b>What?</b><b>Why?</b><b>How?</b><b>其他</b>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="qbox" style="margin-top:12px"><small>问题 · 培训担当策划“培养根本领导力”项目，读《卓有成效的管理者》最后一章</small>如果是德鲁克负责，他会怎样策划培养领导力的进修项目呢？</div>
+        <ol style="font-size:14px">
+          <li><b>设立问题，先给“假定答案”</b>：这次的不同在于先找出假定答案，问题会更切实。书中写着“卓有成效”，于是以<b>“卓有成效的习惯”</b>作假定答案。</li>
+          <li><b>选出 32 个关键词</b>，填进 What / Why / How 栏。</li>
+          <li><b>标注重点和联系</b>，把零散信息与假定答案关联成整体。</li>
+          <li><b>导出真正的答案</b>。</li>
+          <li><b>填写下半部分</b>：从 32 个关键词中各选 3 个；How 栏作者具体讲了 5 点，照原样填入；Next Step 写具体行动。</li>
+        </ol>
+        <div class="one"><small>一个信息</small>提高“工作核心能力”，提高“自律和勇气”，将“卓有成效的习惯”坚持 6 个月。</div>
+        <p class="small" style="margin-top:8px">插图中的 How 五点：时间管理、集中注意力在贡献上、发挥强项、从最重要的开始、为了取得成果的决策；Next Step：将项目的方案通过邮件发送。</p>
+      </div>
+    </div>
+
+    <!-- r7 -->
+    <h3 class="sub reveal" id="r7">⑦ 预见阅读法<span class="en">Visionary Reading · 40–41 节</span><span class="badge">引导未来</span></h3>
+    <div class="rd reveal">
+      <div class="card">
+        <p class="muted" style="font-size:14.5px;margin-top:0">这次读的不只是市面上的书，还有自己用整读法记下的笔记，作者叫它<b>“黄金词典”</b>。从中挖出需要的知识、打磨后，把你的未来凝结在一张“视觉导向图”上，随时提示目的地在哪儿。按这个顺序填：</p>
+        <div class="order5"><span>①我的主题</span><span>②蓝图</span><span>③简单原则</span><span>④一个信息</span><span>⑤一个行动</span></div>
+        <ul style="font-size:14px">
+          <li><b>我的主题</b>：如果人生是一部电影，这就是片名。用“××革命”的格式找让自己心动的词，比如星巴克的霍华德·舒尔茨是“咖啡革命”，孙正义是“电子革命”；也可以用“维新”“创新”“进化论”。</li>
+          <li><b>蓝图</b>：相当于电影的预告片，也写成三幕：现状中的问题是？怎样解决？得到怎样的结局？</li>
+          <li><b>简单原则</b>：从原理阅读、万能阅读、《圣经》阅读里得到的原理原则选 3–5 个；三个画三角形，四个画四方形，五个画星形。</li>
+        </ul>
+        <span class="lbl" style="margin-top:10px">书中例子 · 创建自己的咖啡馆</span>
+        <p class="muted" style="font-size:14px;margin:0">候选主题有“早上的革命”“咖啡革命”“一杯革命”“元气革命”“清晨咖啡革命”等，最后定为“清晨海洋咖啡（Morning Ocean Cafe）”。蓝图的提示是：一个忙碌的商务人士光顾、像清晨的大海一样给人爽快感和生命力、像充电站一样的咖啡馆。</p>
+      </div>
+      <div class="card">
+        <div class="vcard">
+          <div class="h">视觉导图卡</div>
+          <div class="th">我的主题</div>
+          <div class="tb">Morning Ocean Cafe</div>
+          <div class="th">（简单）原理原则</div>
+          <svg viewBox="0 0 100 92" role="img" aria-label="五个原理原则排成星形：成果、改变、表扬、传达、挣钱">
+            <polygon class="ln" points="50.0,16.0 58.8,39.9 84.2,40.9 64.3,56.6 71.2,81.1 50.0,67.0 28.8,81.1 35.7,56.6 15.8,40.9 41.2,39.9"/>
+            <text x="50" y="52" text-anchor="middle" font-size="4.6" style="font-family:var(--sans);font-weight:700">5 把万能钥匙</text>
+            <g font-size="5" text-anchor="middle">
+              <circle cx="50" cy="13" r="9"/><text x="50" y="11.5" font-size="3.6">1</text><text x="50" y="17">成果</text>
+              <circle cx="85" cy="39" r="9"/><text x="85" y="37.5" font-size="3.6">2</text><text x="85" y="43">改变</text>
+              <circle cx="72" cy="80" r="9"/><text x="72" y="78.5" font-size="3.6">3</text><text x="72" y="84">表扬</text>
+              <circle cx="28" cy="80" r="9"/><text x="28" y="78.5" font-size="3.6">4</text><text x="28" y="84">传达</text>
+              <circle cx="15" cy="39" r="9"/><text x="15" y="37.5" font-size="3.6">5</text><text x="15" y="43">挣钱</text>
+            </g>
+          </svg>
+          <div class="bp"><b>蓝图</b><br>刚写好的清晨物语<br>享受海边朝阳的香味与元气<br>最美的清晨总是带着大海的芬芳到来</div>
+        </div>
+        <p class="cap">按书中插图重绘。这 5 个准则是“打开你人生之门的 5 把钥匙”。</p>
+        <p class="note">“3—5 个就足以。太多的话，反而无法实践，无法实践就没有意义了。”</p>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:28px;border-left:4px solid var(--gold)">
+      <h4>专栏 3 · 技巧书怎么挑：只看能否与作者共鸣</h4>
+      <p class="muted" style="font-size:14.5px">作者二三十岁时为了“厉害的技巧”读了大量技巧书、上了各种讲座，前后投入上千万日元，结果因为不认同作者，书里说的一个也没去做。他认识的一位年轻企业管理者，二十几岁前半段处处碰壁，后来决定每天早上从一个行动开始：<b>“从左脚开始穿袜子”</b>。就是这样一件小事，让他一个接一个养成了习惯，像《稻草富翁》的主人公一样一步步走上来。作者的结论：“学习”就是“模仿”；比起厉害的技巧，“一个行动”更为重要。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTERS ============ -->
+<section class="block" id="chapters">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">肆</div>
+      <div>
+        <div class="tag">4 章 · 41 节 · 3 个专栏</div>
+        <h2>各章要点</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">前言说，丰田、宝洁这样的公司彻底执行“一张纸整理术”，因为他们认为只要抓住了要领，策划书和汇报资料肯定能整理得短小精悍。做不到，就说明思考能力、操作能力和提高效率的意识不足。</p>
+
+    <details class="toc reveal" open>
+      <summary>第一章 所有的工作都可以归纳到一张纸上<small>01–11 节 · 专栏 1</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b><i>01</i>1 个小时搞定两天工作量的方法</b><span>上司 15 分钟就把作者苦战两天的策划案整理到一张纸上：先提出假设（做“预告片”），再判断素材的轻重和取舍。</span></div>
+        <div class="ch"><b><i>02</i>用“S 便笺”模板制作“预告片”</b><span>约 5cm×10cm 的便笺分 5 栏：谁的、什么、怎样做、怎么样、总之；填完能看到 Solution、Story、Simple 三个 S。</span></div>
+        <div class="ch"><b><i>03</i>用“S 便笺”制作出畅销策划案</b><span>新人培训和 64 种草本沐浴产品两个例子。3 分钟建立假设，之后再修正；也能用来分析畅销商品。</span></div>
+        <div class="ch"><b><i>04</i>“16 分割笔记”让信息整洁清爽</b><span>记事本对开页分 16 格，左上角写主题和日期，其余 15 格各填一个点子；用荧光笔做颜色编码。</span></div>
+        <div class="ch"><b><i>05</i>立即可以实践的“16 分割笔记”</b><span>无格口袋本，一条横线、两条竖线、再两条横线；线用淡蓝或淡绿；也可改成 4、32、64 格。</span></div>
+        <div class="ch"><b><i>06</i>3 天读完 30 本书的“阅读克星法”</b><span>顾问两三天读六十多本书的办法。左页 16 分割，右页写书名日期，下面三个圆组成三角形。</span></div>
+        <div class="ch"><b><i>07</i>实践“阅读克星法”的 4 个步骤</b><span>提出问题 → 抽选 16 个关键词（约 20 秒一个）→ 筛到 3 个 → 整合为一条信息。</span></div>
+        <div class="ch"><b><i>08</i>如果用 15 分钟就能阅读完德鲁克</b><span>《卓有成效的管理者》实例：“记录”胜过记忆、“勇气”胜于分析、“无聊”胜过创造；明天就记录做成的事，每月盘点强项。</span></div>
+        <div class="ch"><b><i>09</i>把《日本经济新闻》变为“实践型知识”</b><span>读报先提具体问题，16 个关键词归成团队、少数派、体验者 3 个视角，缩写为“CHI MA TA 视角”，即“打磨信息”。</span></div>
+        <div class="ch"><b><i>10</i>用简易清单完成“断舍离”</b><span>使用/不使用 × 重要/不重要四格图，只盯“重要但不使用”；列成清单，选出最重要的 3 项，其余扔掉。</span></div>
+        <div class="ch"><b><i>11</i>10 分钟交接工作！“一页交接地图”</b><span>电脑资料与纸质资料联动，按客户、项目、分类、资料四阶段做成一张思维导图，配合贴标签的文件夹和文件箱。</span></div>
+        <div class="ch col"><b><i>专栏 1</i>可用于高效交接的思维导图软件</b><span>I Mind Map、Mind Manager、X Mind、Free Mind 各自的长处。</span></div>
+      </div>
+    </details>
+    <details class="toc reveal">
+      <summary>第二章 把“想传达的内容”整理归纳到一张纸上的方法<small>12–22 节 · 专栏 2</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b><i>12</i>让会议时间缩短一半的“话题地图”</b><span>管理层 26.5% 的时间花在会议上。话题地图五步：议题居中、写论点、讨论内容入框、答案写在箭头前、Next Step 付诸实践。</span></div>
+        <div class="ch"><b><i>13</i>“Mapping 会议”①步骤 1—2</b><span>会前在白板画好地图，论点按重要度从右上顺时针排；每个论点标上时间，先让每人写下意见。</span></div>
+        <div class="ch"><b><i>14</i>“Mapping 会议”②步骤 3—4</b><span>新商品促销会实例：逐个论点得出结论，口号“Focus 1 to 3”，最后明确三项下一步行动。</span></div>
+        <div class="ch"><b><i>15</i>“话题地图”的 5 大效用</b><span>不跑题、能回顾、缩短时间、人人发言、培养结构化思考；也可用于商务会谈和采访。</span></div>
+        <div class="ch"><b><i>16</i>丰田式“交流技巧”</b><span>丰田 A3 六要素：背景、现状、目标、课题、解决方案、计划；喜一郎要求“马上在这里讲清楚”。</span></div>
+        <div class="ch"><b><i>17</i>3 种逻辑型信息传递方式</b><span>“逻辑三兄弟”：一郎的 1 个信息、二郎的 2W1H、三郎的 3 个法则。</span></div>
+        <div class="ch"><b><i>18</i>最迅速制作策划书的方法</b><span>Mapping 1·2·3：中央一个要点，四周 What / Why / How 各 3 点，右上角 1 Action；例为“培养自律型人才”。</span></div>
+        <div class="ch"><b><i>19</i>打动人心的汇报演讲</b><span>让人入迷的关键是故事；乔布斯“重新发明电话”；故事型演讲的 5 个要点。</span></div>
+        <div class="ch"><b><i>20</i>演讲用的故事由“三幕组成”</b><span>《桃太郎》三幕；先定开篇“什么东西”和结尾“最后怎么样了”，结论别含糊、别偏题。</span></div>
+        <div class="ch"><b><i>21</i>通过第一幕的“3 个要素”吸引读者</b><span>现状、变化、问题（谜团）；《爱丽丝梦游仙境》和游戏公司的例子。主人公不明确，演讲稿就没有影响力。</span></div>
+        <div class="ch"><b><i>22</i>在第二幕中展示“3 个阶段”</b><span>桃太郎的三面墙：食物、同伴、战斗；居酒屋扳回利润的例子；最后凝结成一个信息。</span></div>
+        <div class="ch col"><b><i>专栏 2</i>用“S 便笺”模板制作演讲用的故事</b><span>谁的＝主人公，什么＝第一幕，怎么做＝第二幕的墙，怎么样＝第三幕，总之＝一个信息。</span></div>
+      </div>
+    </details>
+    <details class="toc reveal">
+      <summary>第三章 15 分钟阅读一本书，把要点归纳到一张纸上<small>23–30 节 · 专栏 3</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b><i>23</i>15 分钟阅读一本书</b><span>整读法：15 分钟读完、归纳到一张纸、讲给别人听或学以致用；引外山滋比古“总之，试着写一写”。</span></div>
+        <div class="ch"><b><i>24</i>“整读法”的基本步骤 1—2</b><span>按输出目的分 7 种整读；6 个步骤；例：二十几岁想跳槽，目标一年后年收入 1000 万日元。</span></div>
+        <div class="ch"><b><i>25</i>“整读法”的基本步骤 3—4</b><span>16 格兼具整理和限量；先看封面腰封作者简介，再看前言目录，再读正文；3 个关键词 → 1 个行动 → 30 秒说明。</span></div>
+        <div class="ch"><b><i>26</i>指导行动的阅读①</b><span>行动阅读法选书两标准：能否共鸣、是否与当前课题直接相关；例为池上彰《传达力》。</span></div>
+        <div class="ch"><b><i>27</i>指导行动的阅读②</b><span>三个关键词：一张 NHK A4 纸、音读、记录有感触的地方；关键词图标化；导出行动的两种方式。</span></div>
+        <div class="ch"><b><i>28</i>解决问题的阅读①</b><span>问题＝理想的未来与现状的鸿沟；墙壁与钥匙；右页台阶模板，左页 16 格。</span></div>
+        <div class="ch"><b><i>29</i>解决问题的阅读②</b><span>给想创业的后辈 A 君出主意，读《作为武器的决断思考》；理想是“创业者头脑”，设输入、过程、输出三面墙。</span></div>
+        <div class="ch"><b><i>30</i>解决问题的阅读③</b><span>16 格分四类各选 4 个；三把钥匙：背面信息的输入能力、由问题引发的思考能力、两者选其一的决断能力。</span></div>
+        <div class="ch col"><b><i>专栏 3</i>技巧书的挑选方法</b><span>只看能否与作者共鸣；“学习”就是“模仿”；“从左脚开始穿袜子”的一个行动。</span></div>
+      </div>
+    </details>
+    <details class="toc reveal">
+      <summary>第四章 将书本知识在工作中学以致用的阅读方法<small>31–41 节</small></summary>
+      <div class="toc-body">
+        <div class="ch"><b><i>31</i>改变视角的阅读①</b><span>突破阅读法：替做地铁站翻新方案的朋友去现场观察女性乘客，得出“内、外、心”三方面的疲惫。</span></div>
+        <div class="ch"><b><i>32</i>改变视角的阅读②</b><span>四个年龄段女性杂志各读 10 分钟，按内、外、心、其他四色整理成信息地图，提炼出“charge”。</span></div>
+        <div class="ch"><b><i>33</i>寻找原理原则的阅读①</b><span>原理阅读法：A3 纸分四份，三份各读一节（12 格），右上写原理原则；例为《人性的弱点》。</span></div>
+        <div class="ch"><b><i>34</i>寻找原理原则的阅读②</b><span>关键词整理成“固有名词＋台词”；60 分钟得出“常常表扬别人会给自己带来好运”。</span></div>
+        <div class="ch"><b><i>35</i>洞察本质的阅读①</b><span>万能阅读法：工作和人生的万能钥匙是洞察本质的能力；本质性问题常藏在书名里。</span></div>
+        <div class="ch"><b><i>36</i>洞察本质的阅读②</b><span>笔记栏 ×、〇、？、故事；故事缩到 3 个；80/20 的本质是“简单化”。</span></div>
+        <div class="ch"><b><i>37</i>向师父请教式阅读①</b><span>《圣经》阅读法 5 要点；人生圣经分启发型和理论型。</span></div>
+        <div class="ch"><b><i>38</i>向师父请教式阅读②</b><span>启发型：稻盛和夫《成功方程式》，得出“28 岁开始的 GPS”。</span></div>
+        <div class="ch"><b><i>39</i>向师父请教式阅读③</b><span>理论型：32 格笔记 ＋ What / Why / How / Next Step；先给“假定答案”；用德鲁克末章做培训策划。</span></div>
+        <div class="ch"><b><i>40</i>引导未来的阅读①</b><span>预见阅读法读自己的“黄金词典”，做视觉导向图：我的主题、蓝图、简单原则、一个信息、一个行动。</span></div>
+        <div class="ch"><b><i>41</i>引导未来的阅读②</b><span>以“创建自己的咖啡馆”为例：Morning Ocean Cafe，5 个原则画成星形。</span></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section class="block" id="quotes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">伍</div>
+      <div>
+        <div class="tag">原文摘录</div>
+        <h2>金句</h2>
+      </div>
+    </div>
+    <div class="quotes reveal">
+      <div class="quote">所谓“整理”，说得最直白就是“将复杂的事情简单化”。这就是整理的本质。<cite>前言</cite></div>
+      <div class="quote">所以我告诉过你，不要一开始就坐到电脑面前。<cite>01 节 · 作者的上司</cite></div>
+      <div class="quote">“提出假设”其实也就是要你建立预期。只有看见了“出口”，才有可能朝着那个方向整理课题。<cite>01 节</cite></div>
+      <div class="quote">“假设”终归是“假设”的结论，我们之后再回来修正也没有关系。<cite>03 节</cite></div>
+      <div class="quote">人就是这样一种动物，有了框架就想去填充。<cite>05 节</cite></div>
+      <div class="quote">所有沟通的目的，都是就带着“问题”寻找与之相对的“答案”。<cite>15 节</cite></div>
+      <div class="quote">马上把所有情况就在这里给我讲清楚。<cite>16 节 · 丰田喜一郎</cite></div>
+      <div class="quote">如果“问题”暧昧不清，那么你只会得到暧昧不清的答案。<cite>24 节</cite></div>
+      <div class="quote">你筛选出来的关键词，只是从作者那里“借来的语言”。要把它转换成自己的语言才是自己的东西。<cite>25 节</cite></div>
+      <div class="quote">所谓“问题”，其实就是“理想的未来”与“现状”之间的鸿沟。<cite>28 节</cite></div>
+      <div class="quote">“学习”就是“模仿”。<cite>专栏 3</cite></div>
+      <div class="quote">比起那些“厉害的技巧”，“一个行动”更为重要。<cite>专栏 3</cite></div>
+      <div class="quote">不光使用头脑，使用身体也可以创造出优秀的方案。<cite>32 节</cite></div>
+      <div class="quote">师父的语言就像是宝石的原石。要将这个原石进行打磨，打造成叫作“自己的语言”的这个闪闪发光的宝石。<cite>37 节</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOL ============ -->
+<section class="block" id="tool">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">陆</div>
+      <div>
+        <div class="tag">可填写 · 自动保存 · 可打印</div>
+        <h2>现在就填一张</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">挑一个模板，直接在格子里写。内容存在本机浏览器里；点“打印”只输出当前这一张（A4 横向）。</p>
+
+    <div class="tabs">
+      <button data-t="snote" class="on">S 便笺</button>
+      <button data-t="read">整读一张纸</button>
+      <button data-t="topic">话题地图</button>
+      <button data-t="m123">Mapping 1·2·3</button>
+      <button data-t="story">故事型演讲</button>
+      <div class="tools">
+        <button class="tbtn" id="clearSheet">清空这一张</button>
+        <button class="tbtn pri" id="printSheet">打印这一张</button>
+      </div>
+    </div>
+
+    <!-- S note -->
+    <div class="sheet on" data-t="snote">
+      <div class="paper snote">
+        <div class="shd"><span>主题：</span><input class="f" data-k="sn-title"><span>日期：</span><input class="f" data-k="sn-date"></div>
+        <div class="cols">
+          <div class="col"><div class="top"><b>① 谁的？</b><div class="ico"><svg><use href="#i-man"/></svg></div></div><div class="body"><textarea class="f" data-k="sn-1" placeholder="工作对象：A 先生、B 公司、C 部门……对象的目标是什么？"></textarea></div></div>
+          <div class="col"><div class="top"><b>② 什么？</b><div class="ico">?</div></div><div class="body"><textarea class="f" data-k="sn-2" placeholder="对象的现状：有什么烦恼、困难？理想状态是什么？"></textarea></div></div>
+          <div class="col"><div class="top"><b>③ 怎样做？</b><div class="ico"><svg><use href="#i-arrow"/></svg></div></div><div class="body"><textarea class="f" data-k="sn-3" placeholder="怎样满足对象的需求：你的解决方案"></textarea></div></div>
+          <div class="col"><div class="top"><b>④ 怎么样？</b><div class="ico"><svg><use href="#i-bulb"/></svg></div></div><div class="body"><textarea class="f" data-k="sn-4" placeholder="方案实施后的理想效果"></textarea></div></div>
+          <div class="col"><div class="top"><b>⑤ 总之？</b><div class="ico">!</div></div><div class="body"><textarea class="f" data-k="sn-5" placeholder="在①到④的基础上，结论是什么？"></textarea></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- read -->
+    <div class="sheet" data-t="read">
+      <div class="paper sk">
+        <div class="kwf" id="kwf"></div>
+        <div class="rp">
+          <div class="shd" style="grid-template-columns:auto 1fr auto 120px;border-bottom:1px solid var(--ink3);padding:0 0 2px"><span>书名：</span><input class="f" data-k="rd-book"><span>日期：</span><input class="f" data-k="rd-date"></div>
+          <div class="tri">
+            <svg viewBox="0 0 100 86" preserveAspectRatio="none"><polygon points="50,18 18,66 82,66"/></svg>
+            <div class="cc t1"><textarea class="f" data-k="rd-k1" placeholder="关键词"></textarea></div>
+            <div class="cc t2"><textarea class="f" data-k="rd-k2" placeholder="关键词"></textarea></div>
+            <div class="cc t3"><textarea class="f" data-k="rd-k3" placeholder="关键词"></textarea></div>
+            <div class="tq"><b>问题</b><textarea class="f" data-k="rd-q" placeholder="想向作者询问的、具体的问题"></textarea></div>
+          </div>
+          <div class="bx2">
+            <div><small>一条信息</small><textarea class="f" data-k="rd-msg" placeholder="用自己的语言，一句话回答问题"></textarea></div>
+            <div><small>一个行动</small><textarea class="f" data-k="rd-act" placeholder="明天就能开始的一个行动"></textarea></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- topic -->
+    <div class="sheet" data-t="topic">
+      <div class="paper tmap tm-t">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="50" x2="22" y2="22" vector-effect="non-scaling-stroke"/><line x1="50" y1="50" x2="78" y2="22" vector-effect="non-scaling-stroke"/><line x1="50" y1="50" x2="78" y2="78" vector-effect="non-scaling-stroke"/><line x1="50" y1="50" x2="22" y2="78" vector-effect="non-scaling-stroke"/></svg>
+        <div class="bx ns"><small style="padding:6px 10px 0">NEXT STEP · 对策＆行动 · 风险担忧 · 待商议</small><textarea class="f" data-k="tp-ns" style="height:150px" placeholder="会后要做的行动；讨论中冒出的风险担忧和待商议事项"></textarea></div>
+        <div class="topc">
+          <div class="shd" style="grid-template-columns:auto 1fr auto 100px;padding:0;border-bottom:1px solid var(--ink)"><span>题目：</span><input class="f" data-k="tp-title"><span>日期：</span><input class="f" data-k="tp-date"></div>
+          <div class="ansbox"><small>ANSWER BOX · 答案箱</small><textarea class="f" data-k="tp-ans" placeholder="最终结论"></textarea></div>
+        </div>
+        <div class="bx p1"><small style="padding:6px 10px 0">论点 1 · 最重要</small><input class="f" data-k="tp-p1" placeholder="论点 1（时间：  ）"><textarea class="f" data-k="tp-p1d" placeholder="讨论内容、各人意见"></textarea><textarea class="f ans" data-k="tp-p1a" placeholder="→ 答案（红笔）"></textarea></div>
+        <div class="ctr"><div><textarea class="f" data-k="tp-topic" placeholder="话题：写在中央的议题（问题形式）"></textarea></div></div>
+        <div class="bx p3"><small style="padding:6px 10px 0">论点 3</small><input class="f" data-k="tp-p3" placeholder="论点 3（时间：  ）"><textarea class="f" data-k="tp-p3d" placeholder="讨论内容、各人意见"></textarea><textarea class="f ans" data-k="tp-p3a" placeholder="→ 答案（红笔）"></textarea></div>
+        <div class="botc">论点按重要程度，从右上角起顺时针排列</div>
+        <div class="bx p2"><small style="padding:6px 10px 0">论点 2</small><input class="f" data-k="tp-p2" placeholder="论点 2（时间：  ）"><textarea class="f" data-k="tp-p2d" placeholder="讨论内容、各人意见"></textarea><textarea class="f ans" data-k="tp-p2a" placeholder="→ 答案（红笔）"></textarea></div>
+      </div>
+    </div>
+
+    <!-- m123 -->
+    <div class="sheet" data-t="m123">
+      <div class="paper m123 m-t">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="52" x2="30" y2="28" vector-effect="non-scaling-stroke"/><line x1="50" y1="52" x2="70" y2="28" vector-effect="non-scaling-stroke"/><line x1="50" y1="52" x2="30" y2="74" vector-effect="non-scaling-stroke"/><line x1="50" y1="52" x2="70" y2="74" vector-effect="non-scaling-stroke"/></svg>
+        <div class="bx w"><small>WHAT? · 提案内容</small><textarea class="f" data-k="m-w1" placeholder="①"></textarea><textarea class="f" data-k="m-w2" placeholder="②"></textarea><textarea class="f" data-k="m-w3" placeholder="③"></textarea></div>
+        <div class="mid">
+          <div class="shd" style="grid-template-columns:auto 1fr auto 100px;padding:0;border-bottom:1px solid var(--ink);width:100%"><span>题目：</span><input class="f" data-k="m-title"><span>日期：</span><input class="f" data-k="m-date"></div>
+          <div class="ell"><textarea class="f" data-k="m-core" placeholder="一个要点：一句话说完你的提案"></textarea></div>
+        </div>
+        <div class="bx act"><small>1 ACTION</small><textarea class="f" data-k="m-act" placeholder="对方问“目前该做些什么？”时，请他先从这里入手"></textarea></div>
+        <div class="bx y"><small>WHY? · 提案理由</small><textarea class="f" data-k="m-y1" placeholder="①"></textarea><textarea class="f" data-k="m-y2" placeholder="②"></textarea><textarea class="f" data-k="m-y3" placeholder="③"></textarea></div>
+        <div class="bx h"><small>HOW? · 具体做法</small><textarea class="f" data-k="m-h1" placeholder="①"></textarea><textarea class="f" data-k="m-h2" placeholder="②"></textarea><textarea class="f" data-k="m-h3" placeholder="③"></textarea></div>
+      </div>
+    </div>
+
+    <!-- story -->
+    <div class="sheet" data-t="story">
+      <div class="paper story-t st-t">
+        <div class="tl">
+          <div class="shd" style="grid-template-columns:auto 1fr auto 70px;padding:0;border-bottom:1px solid var(--ink)"><span>主题：</span><input class="f" data-k="s-title"><span>日期：</span><input class="f" data-k="s-date"></div>
+          <div class="ov"><textarea class="f" data-k="s-msg" placeholder="一个信息：把整个故事凝成一句话"></textarea></div>
+        </div>
+        <div class="stairs">
+          <div class="wl w1"><textarea class="f wall" data-k="s-w1" placeholder="第 1 面墙"></textarea><textarea class="f key" data-k="s-k1" placeholder="钥匙（解决方案）"></textarea></div>
+          <div class="wl w2"><textarea class="f wall" data-k="s-w2" placeholder="第 2 面墙"></textarea><textarea class="f key" data-k="s-k2" placeholder="钥匙（解决方案）"></textarea></div>
+          <div class="wl w3"><textarea class="f wall" data-k="s-w3" placeholder="第 3 面墙"></textarea><textarea class="f key" data-k="s-k3" placeholder="钥匙（解决方案）"></textarea></div>
+          <div class="up"></div>
+        </div>
+        <div class="end"><b>Ending 结尾 · 最后怎么样了？</b><textarea class="f" data-k="s-end" placeholder="第三幕：明确的结果"></textarea></div>
+        <div class="open"><b>Opening 开篇 · 什么东西？</b>
+          <textarea class="f" data-k="s-o1" placeholder="①现状：主人公现在所处的状况"></textarea>
+          <textarea class="f" data-k="s-o2" placeholder="②变化：给现状带来变化的事情"></textarea>
+          <textarea class="f" data-k="s-o3" placeholder="③问题（谜团）：一句话点明故事走向"></textarea>
+        </div>
+      </div>
+    </div>
+    <p class="toolnote">提示与格子划分都按书中模板。<span class="saved" id="saved"></span></p>
+  </div>
+</section>
+
+<!-- ============ TODO ============ -->
+<section class="block" id="todo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">柒</div>
+      <div>
+        <div class="tag">勾选会保存在本机</div>
+        <h2>上手清单</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">书里反复强调：别贪多，先挑一个行动做下去。</p>
+    <div class="progress reveal"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 0</div><button id="preset">重置</button></div>
+    <div class="check reveal" id="check"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">内容整理自［日］高桥政史《聪明人的一张纸工作整理术：完美图解》（易哲 译）。模板图示依书中插图用 HTML/CSS 重绘，示例文字均出自原书。</div>
+</footer>
+</div>
+
+<button class="fab" id="fab" aria-haspopup="dialog" aria-controls="plan">我要怎么做？<small>按书里的方法落地</small></button>
+<div class="plan-mask" id="planMask"></div>
+<aside class="plan" id="plan" role="dialog" aria-modal="true" aria-labelledby="planTitle" aria-hidden="true">
+  <div class="plan-hd">
+    <div class="row1"><h2 id="planTitle">我要<span>怎么做</span>？</h2><button class="plan-x" id="planX" aria-label="关闭">×</button></div>
+    <p>先选你现在要用一张纸的场景。每一步都只取自书中，并注明出处。</p>
+    <div class="scn" id="scn" role="tablist"></div>
+    <div class="plan-prog"><span>本场景</span><div class="track"><div class="fill" id="planFill"></div></div><b id="planTxt">0 / 0</b></div>
+  </div>
+  <div class="plan-bd" id="planBd"></div>
+</aside>
+
+
+<script>
+/* reading spread stepper */
+const CAP={
+ 1:'<b>步骤 1 · 提出问题</b>：先写书名和日期，在三角形正中央写下“问题”，也就是想向作者询问、想从这本书得到的东西。问题越具体越好。',
+ 2:'<b>步骤 2 · 抽选 16 个关键词</b>：迅速翻动目录和正文，按约 20 秒一个的速度，把与问题相关的关键词填进左页 16 格。专有名词、数字、格言、让你心动的内容优先。',
+ 3:'<b>步骤 3 · 浓缩到 3 个</b>：用约 10 分钟大致扫视全书，把重要的词用红圈圈起，浓缩成 3 个最能代表答案的关键词，换成自己的语言填进三个圆圈。',
+ 4:'<b>步骤 4 · 整合为一条信息</b>：把回答问题的答案用自己的话整合成一句，填进模板。书中的例子最后定下了明天就开始做的一件事。'
+};
+const sp=document.getElementById('spread'),cap=document.getElementById('stepcap');
+function setStep(s){sp.dataset.s=s;cap.innerHTML=CAP[s];document.querySelectorAll('#stepper button').forEach(b=>b.classList.toggle('on',b.dataset.s==s));}
+document.querySelectorAll('#stepper button').forEach(b=>b.onclick=()=>setStep(b.dataset.s));
+setStep(4);
+
+/* fillable sheets */
+const kwf=document.getElementById('kwf');
+kwf.innerHTML=Array.from({length:16},(_,i)=>`<input class="f" data-k="rd-w${i+1}" placeholder="关键词 ${i+1}">`).join('');
+const SK='onepaper-sheets-v1';
+let data={};try{data=JSON.parse(localStorage.getItem(SK)||'{}')}catch(e){data={}}
+const fields=[...document.querySelectorAll('#tool .f[data-k]')];
+fields.forEach(f=>{if(data[f.dataset.k]!=null)f.value=data[f.dataset.k]});
+let tmr;const sv=document.getElementById('saved');
+document.getElementById('tool').addEventListener('input',e=>{
+  const k=e.target.dataset&&e.target.dataset.k;if(!k)return;
+  data[k]=e.target.value;
+  clearTimeout(tmr);tmr=setTimeout(()=>{try{localStorage.setItem(SK,JSON.stringify(data));sv.textContent='已自动保存。'}catch(err){sv.textContent='浏览器不允许本地保存，刷新后内容会丢失。'}},300);
+});
+const TK='onepaper-tab-v1';
+function setTab(t){
+  document.querySelectorAll('.tabs button[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  document.querySelectorAll('.sheet').forEach(s=>s.classList.toggle('on',s.dataset.t===t));
+  try{localStorage.setItem(TK,t)}catch(e){}
+}
+document.querySelectorAll('.tabs button[data-t]').forEach(b=>b.onclick=()=>setTab(b.dataset.t));
+try{const t=localStorage.getItem(TK);if(t&&document.querySelector('.sheet[data-t="'+t+'"]'))setTab(t)}catch(e){}
+document.getElementById('printSheet').onclick=()=>window.print();
+document.getElementById('clearSheet').onclick=()=>{
+  const s=document.querySelector('.sheet.on');if(!confirm('清空当前这一张的全部内容？'))return;
+  s.querySelectorAll('.f[data-k]').forEach(f=>{f.value='';delete data[f.dataset.k]});
+  try{localStorage.setItem(SK,JSON.stringify(data))}catch(e){}
+};
+
+/* checklist */
+const T=[
+["动手前先填一张 S 便笺","谁的、什么、怎样做、怎么样、总之，3 分钟内写出假设；不要一开始就坐到电脑面前。","01–03 节"],
+["做一本自己的 16 分割笔记","口袋大小的无格记事本，用淡蓝或淡绿的笔把对开页画成 16 格，左上角写主题和日期。","04–05 节"],
+["定一套自己的颜色编码","作者的参考：红＝最重要、黄＝感兴趣、蓝＝正在做的题目、绿＝想记下的发现、金＝特别的主题。","04 节"],
+["读书前先写下一个具体的问题","像搜索关键词一样具体，能引出行动；先明确这次读书的目的。","07、24 节"],
+["用 15 分钟整读一本书","16 个关键词 → 3 个关键词 → 1 个行动，最后用 30 秒讲给一个人听。","25 节"],
+["把作者的话换成自己的话","关键词只是借来的语言；试着拼成好记的缩写，像“CHI MA TA”“GPS”。","09、25、38 节"],
+["下次开会先在白板画话题地图","话题居中，论点按重要度从右上顺时针排，每个论点写上时间，留答案箱和 Next Step 框。","12–13 节"],
+["讨论前让每人先写 2 分钟","收上来再讨论，人人发言，也不会被别人的意见带跑。","13 节"],
+["报告写成一页丰田 A3","背景、现状、目标、课题、解决方案、计划，六要素连成一段能当场讲清的说明。","16 节"],
+["策划书用 Mapping 1·2·3","一个要点居中，What / Why / How 各 3 点，右上角写上 1 Action。","18 节"],
+["演讲按三幕准备","先定开篇和结尾；开篇写现状、变化、问题；第二幕设三面墙并配钥匙；最后一句话收住。","19–22 节"],
+["给“扔不掉的东西”列简单清单","问保留原因、一年内用不用、真的重要吗，留下最重要的 3 项，其余扔掉。","10 节"],
+["交接前做一张一页交接地图","客户 → 项目 → 分类 → 资料四层，纸质资料装进贴标签的文件夹，按客户放进文件箱。","11 节"],
+["挑技巧书只问一句：能共鸣吗","从让你想模仿的书里挑出一个行动，每天坚持。","专栏 3"],
+["做一张自己的视觉导图卡","我的主题（××革命）、三幕蓝图、3–5 个简单原则，再加一个信息和一个行动。","40–41 节"]
+];
+const KEY='onepaper-check-v1';let saved=[];try{saved=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+const ck=document.getElementById('check');
+ck.innerHTML=T.map((t,i)=>`<label><input type="checkbox" class="hk" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  try{localStorage.setItem(KEY,JSON.stringify(on))}catch(e){}
+  document.getElementById('pfill').style.width=(on.length/T.length*100)+'%';
+  document.getElementById('ptxt').textContent=on.length+' / '+T.length;
+}
+ck.addEventListener('change',prog);prog();
+document.getElementById('preset').onclick=()=>{ck.querySelectorAll('input').forEach(x=>x.checked=false);prog()};
+
+/* plan drawer */
+const PLAN=[
+{id:'plan',name:'策划·资料',tool:'S 便笺 ＋ 16 分割笔记',
+ today:[
+  ['拿一张便笺，画出 5 栏','约宽 5cm、长 10cm，五栏依次写：谁的？什么？怎样做？怎么样？总之？','02 节'],
+  ['挑手头一份策划或资料，3 分钟填完这 5 栏','先别坐到电脑面前。填到这个程度，“假设”就算成功了。','01、03 节'],
+  ['找一个你感兴趣的畅销商品，用 S 便笺分析它为什么畅销','书中说从客观角度分析，会发现之前没留意的新视角。','03 节']],
+ week:[
+  ['准备一本口袋大小的无格记事本，用淡蓝或淡绿的笔画好几页 16 格','一条横线、两条竖线、再两条横线；别用黑笔，线条才不干扰视线。','05 节'],
+  ['收集支持假设的信息：左上角写主题和日期，一格只填一个点子','翻开两页，15 个点子一览无余，再用颜色把它们联系起来。','04 节'],
+  ['定一套自己的荧光笔颜色编码','作者的参考：红＝最重要，黄＝感兴趣，蓝＝正在做的题目，绿＝想记下的发现，金＝特别的主题。','04 节']],
+ month:[
+  ['习惯：任何策划、汇报都先做“预告片”，再动手做“正片”','先提出假设，再按假设判断素材的重要程度、做取舍。','01 节'],
+  ['检验：接到任务，能否 3 分钟内写出一张 S 便笺；照着它做资料，是否明显更快','书中的对照：两天没做完的策划案，有了这一张纸，不到 1 小时就完成。','01、03 节']],
+ stuck:[
+  ['对着课题抱头烦恼','迅速建立假设。“假设”终归是“假设”的结论，之后回来修正也没关系。','03 节'],
+  ['发现假设不对','看 5 栏里哪一栏错了，逐栏修正，有条不紊。','03 节'],
+  ['白纸上想不出点子','换成有框架的笔记，一格只填一个点子。“人就是这样一种动物，有了框架就想去填充。”','05 节']]},
+{id:'read',name:'读书',tool:'整读法 7 种模板',
+ today:[
+  ['挑一本能产生共鸣、和眼下课题直接相关的书','行动阅读法的两个选书标准；挑技巧书只看能否与作者共鸣。','26 节、专栏 3'],
+  ['在笔记本对开页画好模板','左页 16 格；右页上方写书名和日期，下面画三个圆组成三角形，旁边留“一个行动”框。','06、25 节'],
+  ['写下一个具体的问题，放在三角形中央','不要问“秘诀是什么”，要问能引出行动的问题，比如“为了达到……，我从明天开始需要采取怎样的行动？”','07、24 节']],
+ week:[
+  ['用 15 分钟整读一本书','封面、腰封、作者简介 → 前言、目录 → 正文约 10 分钟选 16 个关键词 → 筛出 3 个 → 导出一个行动。','25 节'],
+  ['用 30 秒把收获讲给一个人听','用 3 个关键词和 1 个行动，讲清读到了什么、打算做什么。','25、27 节'],
+  ['按目的换一种整读法再读一本','要行动用行动阅读，要解决问题用办法阅读，要找原理用原理阅读……','24 节']],
+ month:[
+  ['习惯：整读笔记攒成自己的“黄金词典”，从中做一张视觉导图卡','我的主题、蓝图、3–5 个简单原则、一个信息、一个行动。','40–41 节'],
+  ['检验：每本书能否 15 分钟归纳到一张纸、30 秒讲清，并且真的做了那个行动','整读法的三个要求：15 分钟读完、归纳到一张纸、讲给别人听或学以致用。','23 节'],
+  ['也可以每天读报，用阅读克星法收集一个“视角”','长期坚持，视野会越来越广；反复“打磨信息”，表达能力会有质的提升。','09 节']],
+ stuck:[
+  ['读完就忘','带着“讲述给别人听”的意识去读，走完“阅读、写作、汇报”。','23 节'],
+  ['得到的答案很空','问题太抽象。“如果‘问题’暧昧不清，那么你只会得到暧昧不清的答案。”','24 节'],
+  ['什么都想往格子里塞','16 格本身就是数量限制；原理阅读法里 12 格也不必填满，够了就停。','25、34 节'],
+  ['只会复述作者的话','关键词只是“借来的语言”，换成自己的话；拼成缩写更好记，如 CHI MA TA、GPS。','09、25、38 节'],
+  ['书太厚、太浓','分章节读，每章 15 分钟；人生“圣经”一样的书，两页也可以花 15 分钟。','33、37 节']]},
+{id:'meet',name:'开会',tool:'话题地图',
+ today:[
+  ['为下次会议画一张话题地图','中央写话题，箭头写论点，箭头顶端做讨论区；话题上方留“答案箱”，左上角留 Next Step 框。','12–13 节'],
+  ['把论点按重要度从右上角起顺时针排，每个论点标上时间','讨论白热化时间不够，剩下的论点可以留到下次。书中例子每个论点 15 分钟。','13 节'],
+  ['准备稿纸，开场留约 2 分钟让每人写下对各论点的意见','人人都参与，也不会被他人的意见左右。','13 节']],
+ week:[
+  ['开一次 Mapping 会议：逐个论点得出结论','讨论结果用红笔写，结论写在箭头前面。','12、14 节'],
+  ['讨论中冒出的“风险担忧”“待商议事项”写进 Next Step 框','避免被一个论点缠住，没时间讨论其他论点。','13 节'],
+  ['会议结束前明确下一步行动','明确了要执行的行动，会议就可以到此结束。','14 节']],
+ month:[
+  ['习惯：会议都用话题地图，商务会谈和采访也用','“所有沟通的目的，都是就带着‘问题’寻找与之相对的‘答案’。”','15 节'],
+  ['检验：是否在原来一半左右的时间达成共识；没参会的人看地图，能否知道讨论了什么、结论是什么','书中说用话题地图开会，只要一半时间就能达成共识。','12 节']],
+ stuck:[
+  ['讨论跑题','用手指着地图上的论点：“现在的论点是×××。”','15 节'],
+  ['一个论点吵个没完','把风险担忧和待商议事项放进框里，继续下一个论点。','13 节'],
+  ['时间不够','论点事先按重要度排好，剩下的留到下一次会议。','13 节'],
+  ['大家跟着某个人的意见走','讨论前先各自写在纸上，再收上来。','13 节']]},
+{id:'report',name:'报告·策划书',tool:'丰田 A3 ＋ Mapping 1·2·3',
+ today:[
+  ['用一张纸按丰田 A3 的六要素写一份报告','背景、现状、目标、课题、解决方案、计划。','16 节'],
+  ['用“逻辑三兄弟”检查一遍','能否一句话说完（1 个信息）？能否讲清 What、Why、How？能否说出 3 个要点？','17 节'],
+  ['把下一份策划画成 Mapping 1·2·3','中央一个要点，四周 What / Why / How 各 3 点，右上角写 1 Action。','18 节']],
+ week:[
+  ['汇报时拿着这一张纸当场口头讲','别说“整理成报告书之后再交”，那意味着此刻还没整理清楚。','16 节'],
+  ['每份提案都备好 1 Action','对方问“那么，目前该做些什么呢？”时，指着它说“请您先从这里入手吧”。','18 节']],
+ month:[
+  ['习惯：报告和策划都“当场”“有逻辑”地做成一张纸','书中说做到这一点，工作效率一定能大幅提升。','16 节'],
+  ['检验：能否连贯地说出“现状是这样……背景……课题……解决方案……具体计划如下……”','这就是丰田 A3 纸让人能做到的一系列连贯说明。','16 节']],
+ stuck:[
+  ['被问“你到底想说什么？”','先像在对方脑袋里描绘话题地图一样，把想传达的内容在自己脑子里整理清楚。','16 节'],
+  ['报告越写越满','只用三种模式：1 个信息、2W1H、3 个法则。','17 节']]},
+{id:'talk',name:'演讲·汇报',tool:'故事型演讲',
+ today:[
+  ['先用 S 便笺一口气填出演讲故事','谁的＝主人公，什么＝第一幕，怎么做＝第二幕的墙，怎么样＝第三幕，总之＝一个信息。','专栏 2'],
+  ['先写开篇“什么东西”和结尾“最后怎么样了”','例：“销量不好的商品 A……”→“比前年销量大幅度提升了 200%”。','20 节'],
+  ['给开篇补上现状、变化、问题（谜团）','问题（谜团）是开启故事的按钮，听众会想看到结局。','21 节']],
+ week:[
+  ['在第二幕设三面墙，每面墙配一把钥匙','主人公朝着理想方向，跨越三面墙；钥匙就是解决方案。','22 节'],
+  ['把整个故事凝成一句话','别四处堆砌要点，让听众瞬间产生“啊，原来是这样子”的认同。','22 节'],
+  ['看电影或电视时，用 16 分割笔记拆解情节','作者靠这个练习发现，人气节目都有固定的模式。','19 节']],
+ month:[
+  ['习惯：每次汇报都按三幕、三面墙、一句话来准备','“故事型演讲”的 5 个要点。','19–22 节'],
+  ['检验：准备时间是否从一天缩到一小时以内；听众能否一听就认同','书中说按这个模板操作，原本一天的准备不到一小时就能完成。','19、22 节']],
+ stuck:[
+  ['听众说“没太听懂”','检查两点：“最后怎么样了”的结论是否太含糊，结论是否偏离了主题。','20 节'],
+  ['演讲稿没有影响力','主人公不明确。先想清楚这个故事是给谁的：消费者、客户还是公司内部员工。','21 节']]},
+{id:'tidy',name:'整理·交接',tool:'简单清单 ＋ 一页交接地图',
+ today:[
+  ['画一个四格图：使用 / 不使用 × 重要 / 不重要','需要关注的只有“重要但不使用”这一格。','10 节'],
+  ['把“重要但不使用”的东西分类列成清单，写上保留原因','书中以藏书为例，分成了 10 类。','10 节'],
+  ['逐项问“一年内用吗？”“真的重要吗？”，留下最重要的 3 项','其余的全部扔掉。','10 节']],
+ week:[
+  ['定好电脑里的资料结构','客户编号＋客户名称 → 项目名称 → 分类名称 → 资料名称。','11 节'],
+  ['纸质资料摊在桌上，一份份对照电脑里的类别加进地图','没用的资料扔进垃圾箱。','11 节'],
+  ['有用的装进透明文件夹，贴标签，按客户放进文件箱','标签写“客户名称（简称）- 项目名称（简称）- 文件夹名称 - 日期”。','11 节']],
+ month:[
+  ['检验：交接能否 10 分钟完成','只需交出地图数据和打印出的这一张纸，再告诉对方文件箱在哪里。','11 节'],
+  ['检验：资料被误放时，能否凭标签很快发现并放回','这是给文件夹取名的用处。','11 节']],
+ stuck:[
+  ['怎么都扔不掉','“使用与否”的标准很单纯，扔不掉是因为迷恋。想清楚扔不掉的缘由。','10 节'],
+  ['总觉得“说不定哪天用得上”','问它对“现在”和“将来”的自己是否有用。作者有书买了 10 年没读，最后只留下“编写故事”一类。','10 节']]}
+];
+const PK='onepaper-plan-v1',PSK='onepaper-plan-scene-v1';
+let pdone={};try{pdone=JSON.parse(localStorage.getItem(PK)||'{}')}catch(e){pdone={}}
+let pcur=PLAN[0].id;try{const v=localStorage.getItem(PSK);if(v&&PLAN.some(p=>p.id===v))pcur=v}catch(e){}
+const GROUPS=[['today','①','今天就做','15 分钟内能完成'],['week','②','第一周','要建立的做法'],['month','③','一个月后','要形成的习惯和怎么检验'],['stuck','④','卡住了怎么办','书里提到的障碍和对策']];
+const scnEl=document.getElementById('scn'),bdEl=document.getElementById('planBd');
+function pTotal(p){return GROUPS.reduce((n,g)=>n+p[g[0]].length,0)}
+function pDone(p){return (pdone[p.id]||[]).length}
+function esc(t){return t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function renderScn(){
+  scnEl.innerHTML=PLAN.map(p=>`<button role="tab" aria-selected="${p.id===pcur}" data-id="${p.id}" class="${p.id===pcur?'on':''}">${p.name}<i>${pDone(p)}/${pTotal(p)}</i></button>`).join('');
+  scnEl.querySelectorAll('button').forEach(b=>b.onclick=()=>{pcur=b.dataset.id;try{localStorage.setItem(PSK,pcur)}catch(e){};renderPlan()});
+}
+function renderPlan(){
+  const p=PLAN.find(x=>x.id===pcur),done=pdone[p.id]||[];
+  let h=`<p class="plan-intro">这张纸用：${p.tool}</p>`;
+  GROUPS.forEach(([k,n,t,sub])=>{
+    h+=`<div class="pg ${k}"><h3><em>${n}</em>${t}<small>${sub}</small></h3>`;
+    p[k].forEach((it,i)=>{const id=k+i;const c=done.includes(id);
+      const title=k==='stuck'?`<span class="q">卡在：</span>${esc(it[0])}`:esc(it[0]);
+      h+=`<label><input type="checkbox" class="hk" data-id="${id}" ${c?'checked':''}><div><b>${title}</b><span>${k==='stuck'?'<b class="a" style="display:inline;font-size:13px">对策：</b>':''}${esc(it[1])}</span><div class="src">出处：${it[2]}</div></div></label>`});
+    h+='</div>';
+  });
+  bdEl.innerHTML=h;
+  bdEl.querySelectorAll('input').forEach(x=>x.onchange=()=>{
+    const arr=new Set(pdone[p.id]||[]);x.checked?arr.add(x.dataset.id):arr.delete(x.dataset.id);
+    pdone[p.id]=[...arr];try{localStorage.setItem(PK,JSON.stringify(pdone))}catch(e){};updProg();renderScn();
+  });
+  renderScn();updProg();
+}
+function updProg(){const p=PLAN.find(x=>x.id===pcur);const d=pDone(p),t=pTotal(p);
+  document.getElementById('planFill').style.width=(d/t*100)+'%';document.getElementById('planTxt').textContent=d+' / '+t;}
+const plan=document.getElementById('plan'),mask=document.getElementById('planMask'),fab=document.getElementById('fab');
+function openPlan(){plan.classList.add('open');mask.classList.add('open');plan.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('planX').focus(),60)}
+function closePlan(){plan.classList.remove('open');mask.classList.remove('open');plan.setAttribute('aria-hidden','true');document.body.style.overflow='';fab.focus()}
+fab.onclick=openPlan;mask.onclick=closePlan;document.getElementById('planX').onclick=closePlan;
+addEventListener('keydown',e=>{if(e.key==='Escape'&&plan.classList.contains('open'))closePlan()});
+renderPlan();
+
+/* reveal + nav */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('nav.top a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<120)k=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===k));
+},{passive:true});
+</script>
+</body>
+</html>
