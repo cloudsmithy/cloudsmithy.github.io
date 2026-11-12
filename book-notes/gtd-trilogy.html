@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>搞定三部曲 · 一页读懂 GTD</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffdf9; --ink:#1f1d1a; --ink2:#5b5650; --ink3:#8d877e;
+  --line:#e7e1d6; --soft:#f0ebe2;
+  --b1:#0f766e; --b1s:#e2f2ef;
+  --b2:#b45309; --b2s:#fbeedd;
+  --b3:#4338ca; --b3s:#e8e7fb;
+  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --r:14px; --shadow:0 1px 2px rgba(30,25,15,.04),0 8px 24px rgba(30,25,15,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#151412; --paper:#1d1c19; --ink:#efebe4; --ink2:#b5aea3; --ink3:#857f76;
+    --line:#2f2c27; --soft:#25231f;
+    --b1:#4fd1c0; --b1s:#173230;
+    --b2:#f2a65a; --b2s:#3a2a19;
+    --b3:#a5a1ff; --b3s:#25244a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.35;margin:0}
+p{margin:.4em 0}
+.muted{color:var(--ink2)}
+.small{font-size:13px;color:var(--ink3)}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:6px;height:56px;overflow-x:auto;scrollbar-width:none}
+nav.top .brand{font-family:var(--serif);font-weight:700;margin-right:auto;white-space:nowrap}
+nav.top a{text-decoration:none;font-size:14px;color:var(--ink2);padding:6px 12px;border-radius:999px;white-space:nowrap;transition:.2s}
+nav.top a:hover,nav.top a.on{background:var(--soft);color:var(--ink)}
+
+/* hero */
+.hero{padding:88px 0 56px;text-align:center}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.2em;color:var(--ink3);border:1px solid var(--line);padding:4px 14px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-size:clamp(40px,7vw,76px);letter-spacing:.04em}
+.hero h1 .dot{color:var(--b2)}
+.hero .lead{font-size:clamp(17px,2vw,20px);color:var(--ink2);max-width:720px;margin:20px auto 0}
+.thread{margin:44px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:1080px}
+.thread span{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14.5px;white-space:nowrap;box-shadow:var(--shadow)}
+.thread i{font-style:normal;color:var(--ink3);align-self:center}
+
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;text-align:left}
+.book{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.book:hover{transform:translateY(-3px)}
+.book::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--c)}
+.book .num{font-family:var(--serif);font-size:56px;line-height:1;color:var(--c);opacity:.9}
+.book h3{font-size:20px;margin-top:10px}
+.book .sub{font-size:14px;color:var(--ink3);margin-top:2px}
+.book .role{display:inline-block;margin-top:14px;font-size:13px;background:var(--cs);color:var(--c);padding:3px 10px;border-radius:6px;font-weight:600}
+.book p{font-size:14.5px;color:var(--ink2);margin-top:10px}
+.c1{--c:var(--b1);--cs:var(--b1s)} .c2{--c:var(--b2);--cs:var(--b2s)} .c3{--c:var(--b3);--cs:var(--b3s)}
+
+/* sections */
+section.block{padding:72px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:flex-end;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head .big{font-family:var(--serif);font-size:96px;line-height:.8;color:var(--c);opacity:.18;font-weight:700}
+.sec-head h2{font-size:clamp(28px,4vw,40px)}
+.sec-head .tag{font-size:14px;color:var(--c);font-weight:600;letter-spacing:.06em}
+.thesis{font-family:var(--serif);font-size:clamp(19px,2.3vw,23px);line-height:1.7;border-left:4px solid var(--c);padding:6px 0 6px 22px;margin:0 0 40px;max-width:900px}
+h3.sub{font-size:22px;margin:52px 0 18px;display:flex;align-items:center;gap:10px}
+h3.sub::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--c);transform:rotate(45deg)}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* problem */
+.problem{display:grid;grid-template-columns:1.1fr 1fr;gap:16px}
+.problem .card h4{font-size:16px;margin-bottom:8px;color:var(--c)}
+.problem ul{margin:0;padding-left:1.2em;color:var(--ink2);font-size:15px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:s;position:relative}
+.step{background:var(--paper);border:1px solid var(--line);padding:22px 18px;position:relative;counter-increment:s}
+.step:first-child{border-radius:var(--r) 0 0 var(--r)}
+.step:last-child{border-radius:0 var(--r) var(--r) 0}
+.step+.step{border-left:none}
+.step::before{content:counter(s,decimal-leading-zero);font-family:var(--serif);font-size:30px;color:var(--c);font-weight:700;display:block;line-height:1}
+.step h4{font-size:19px;margin:10px 0 6px}
+.step .old{font-size:12px;color:var(--ink3);margin-top:-4px;margin-bottom:6px}
+.step p{font-size:14px;color:var(--ink2);margin:0}
+
+/* flow */
+.flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.node{background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 18px;text-align:center;font-size:15px;box-shadow:var(--shadow)}
+.node.q{border-color:var(--c);background:var(--cs);font-weight:600}
+.node b{display:block;font-family:var(--serif);font-size:16px}
+.node small{display:block;color:var(--ink2);font-size:12.5px;line-height:1.5;margin-top:2px}
+.arrow{width:2px;height:22px;background:var(--line);position:relative}
+.arrow::after{content:"";position:absolute;bottom:-2px;left:-4px;border:5px solid transparent;border-top-color:var(--ink3)}
+.split{display:grid;grid-template-columns:1fr 2fr;gap:18px;width:100%;margin-top:4px}
+.branch{border:1px dashed var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.branch .lbl{font-size:12px;letter-spacing:.15em;color:var(--ink3)}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
+.row .node{flex:1;min-width:120px}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--soft);color:var(--ink2);margin:2px}
+
+/* horizons */
+.ladder{display:flex;flex-direction:column;gap:8px}
+.rung{display:grid;grid-template-columns:120px 1fr 1.2fr 110px;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 18px;position:relative;overflow:hidden}
+.rung::before{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--w)*1%);background:var(--cs);opacity:.7;z-index:0}
+.rung>*{position:relative;z-index:1}
+.rung .alt{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--c)}
+.rung .alt small{display:block;font-family:var(--sans);font-weight:400;font-size:12px;color:var(--ink3)}
+.rung .what b{font-size:16px}
+.rung .what span{display:block;font-size:13.5px;color:var(--ink2)}
+.rung .eg{font-size:13.5px;color:var(--ink2);font-style:italic}
+.rung .freq{font-size:12.5px;text-align:right;color:var(--ink3)}
+.legend-row{display:grid;grid-template-columns:120px 1fr 1.2fr 110px;gap:16px;padding:0 18px 4px;font-size:12px;color:var(--ink3);letter-spacing:.1em}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px}
+.stat .v{font-family:var(--serif);font-size:34px;font-weight:700;color:var(--c);line-height:1.1}
+.stat .v small{font-size:16px;margin-left:2px}
+.stat .k{font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.55}
+
+/* lists */
+.lists{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.li{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
+.li b{font-family:var(--serif);font-size:16px;display:block;margin-bottom:4px}
+.li span{font-size:13.5px;color:var(--ink2);line-height:1.6;display:block}
+
+/* bar */
+.bar{display:flex;height:46px;border-radius:10px;overflow:hidden;margin:14px 0 8px;font-size:13.5px;font-weight:600}
+.bar div{display:flex;align-items:center;padding:0 14px;white-space:nowrap;overflow:hidden}
+.bar .a{flex:80;background:var(--c);color:var(--paper)}
+.bar .b{flex:15;background:var(--cs);color:var(--c)}
+.bar .c{flex:5;background:var(--soft);color:var(--ink2);padding:0 6px}
+
+.np{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;counter-reset:n}
+.np div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 14px;counter-increment:n;font-size:14px;color:var(--ink2)}
+.np div::before{content:counter(n);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--c);color:var(--paper);font-size:13px;font-weight:700;margin-bottom:8px}
+.np b{display:block;color:var(--ink);font-family:var(--serif);font-size:16px;margin-bottom:4px}
+
+/* quotes */
+.quotes{columns:2;column-gap:16px}
+.quote{break-inside:avoid;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 18px 52px;margin-bottom:16px;position:relative;font-family:var(--serif);font-size:17px;line-height:1.75}
+.quote::before{content:"“";position:absolute;left:16px;top:6px;font-size:52px;color:var(--c);opacity:.5;font-family:Georgia,serif}
+.quote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12.5px;color:var(--ink3);margin-top:8px}
+
+/* details */
+details.toc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);margin-top:12px;overflow:hidden}
+details.toc summary{cursor:pointer;padding:16px 22px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";font-size:22px;color:var(--c);transition:.2s}
+details.toc[open] summary::after{transform:rotate(45deg)}
+.toc-body{padding:0 22px 18px}
+.part{margin-top:14px}
+.part h5{font-family:var(--serif);font-size:15px;color:var(--c);margin:0 0 6px}
+.ch{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
+.ch b{font-weight:600}
+.ch span{color:var(--ink2)}
+
+/* principles */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:6px 14px;border-radius:999px;font-size:14px;cursor:pointer;font-family:inherit;transition:.15s}
+.chip.on{background:var(--c);border-color:var(--c);color:var(--paper)}
+.search{margin-left:auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:14px;min-width:220px;font-family:inherit;outline:none}
+.search:focus{border-color:var(--c)}
+.parts-desc{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.parts-desc .card{padding:16px}
+.parts-desc b{font-family:var(--serif);font-size:16px;display:block}
+.parts-desc .kw{font-size:12px;color:var(--c);font-weight:700;letter-spacing:.15em}
+.parts-desc span{font-size:13.5px;color:var(--ink2);display:block;margin-top:4px;line-height:1.6}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;transition:.2s}
+.pcard:hover{border-color:var(--c)}
+.pcard .no{font-family:var(--serif);color:var(--c);font-weight:700;font-size:13px}
+.pcard .pt{font-size:11.5px;color:var(--ink3);margin-left:6px}
+.pcard h4{font-family:var(--serif);font-size:16.5px;margin:4px 0 6px;line-height:1.5}
+.pcard p{font-size:13.5px;color:var(--ink2);margin:0;line-height:1.65}
+.pcard.hide{display:none}
+.empty{display:none;text-align:center;color:var(--ink3);padding:30px}
+
+/* matrix */
+.matrix-wrap{display:grid;grid-template-columns:40px 1fr;grid-template-rows:1fr 40px;gap:8px;max-width:860px;margin:0 auto}
+.axis-y{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:13px;color:var(--ink3);letter-spacing:.2em;display:flex;align-items:center;justify-content:center}
+.axis-x{grid-column:2;text-align:center;font-size:13px;color:var(--ink3);letter-spacing:.2em}
+.matrix{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
+.quad{border-radius:var(--r);padding:22px;border:1px solid var(--line);background:var(--paper);min-height:190px}
+.quad .neg{font-size:13px;color:var(--ink3);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--ink3) 50%,transparent)}
+.quad h4{font-size:22px;margin:4px 0 2px}
+.quad .en{font-size:12px;color:var(--ink3)}
+.quad p{font-size:14px;color:var(--ink2);margin-top:10px}
+.quad .meta{font-size:12px;color:var(--c);font-weight:700;letter-spacing:.1em}
+.quad.best{background:var(--c);border-color:var(--c);color:var(--paper)}
+.quad.best .en,.quad.best p,.quad.best .meta,.quad.best .neg{color:color-mix(in srgb,var(--paper) 82%,transparent)}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.story .card h4{font-size:17px;margin-bottom:8px}
+.story .chap{font-size:12px;color:var(--c);font-weight:700;letter-spacing:.12em}
+.story ol{margin:6px 0 0;padding-left:1.2em;color:var(--ink2);font-size:14.5px}
+
+/* compare */
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:14.5px}
+.cmp th,.cmp td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.cmp tr:last-child td{border-bottom:none}
+.cmp thead th{font-family:var(--serif);font-size:16px;background:var(--soft)}
+.cmp thead th.c1{color:var(--b1)} .cmp thead th.c2{color:var(--b2)} .cmp thead th.c3{color:var(--b3)}
+.cmp td:first-child{color:var(--ink3);font-size:13px;white-space:nowrap;width:110px}
+.cmp td{color:var(--ink2)}
+
+.rename{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+.rename div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.rename s{color:var(--ink3);font-size:13px;display:block}
+.rename b{font-family:var(--serif);font-size:18px;color:var(--b3)}
+
+/* checklist */
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.check label{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;cursor:pointer;transition:.2s}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border:2px solid var(--ink3);border-radius:6px;margin-top:2px;display:grid;place-items:center;transition:.15s;cursor:pointer}
+.check input:checked{background:var(--b1);border-color:var(--b1)}
+.check input:checked::after{content:"";width:6px;height:11px;border:solid var(--paper);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check label:has(input:checked){opacity:.55}
+.check label:has(input:checked) b{text-decoration:line-through}
+.check b{font-size:15.5px;display:block}
+.check span{font-size:13.5px;color:var(--ink2);display:block;margin-top:2px}
+.check .src{font-size:11.5px;color:var(--ink3);margin-top:6px}
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.progress .track{flex:1;height:8px;background:var(--soft);border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:var(--b1);transition:width .35s}
+.progress .txt{font-size:14px;color:var(--ink2);min-width:64px;text-align:right}
+
+.questions{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+.questions div{background:var(--b3s);color:var(--b3);border-radius:12px;padding:16px 14px;font-family:var(--serif);font-size:16px;font-weight:600;text-align:center}
+
+footer{padding:48px 0 70px;text-align:center;font-size:13px;color:var(--ink3);border-top:1px solid var(--line)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:920px){
+  .books,.grid3,.pgrid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step,.step:first-child,.step:last-child{border-radius:12px;border-left:1px solid var(--line)!important}
+  .steps{gap:10px}
+  .stats,.lists,.parts-desc{grid-template-columns:1fr 1fr}
+  .np,.rename,.questions{grid-template-columns:1fr 1fr}
+  .rung,.legend-row{grid-template-columns:96px 1fr}
+  .rung .eg,.rung .freq,.legend-row span:nth-child(n+3){display:none}
+  .problem,.story,.grid2{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .books,.grid3,.pgrid,.check,.stats,.lists,.parts-desc{grid-template-columns:1fr}
+  .quotes{columns:1}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .search{margin-left:0;width:100%}
+  .sec-head .big{font-size:64px}
+  .cmp{font-size:13px}.cmp th,.cmp td{padding:10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <span class="brand">搞定 · 三部曲</span>
+    <a href="#overview">总览</a>
+    <a href="#b1">Ⅰ 无压工作</a>
+    <a href="#b2">Ⅱ 52 项原则</a>
+    <a href="#b3">Ⅲ 掌控与视角</a>
+    <a href="#compare">三本对比</a>
+    <a href="#todo">上手清单</a>
+  </div>
+</nav>
+
+<header class="hero" id="overview">
+  <div class="wrap">
+    <span class="eyebrow">DAVID ALLEN · GETTING THINGS DONE</span>
+    <h1>搞定<span class="dot">·</span>一页读懂</h1>
+    <p class="lead">戴维·艾伦的 GTD 三部曲讲的是同一件事：压力不是因为事情太多，而是脑子里挂着太多<strong>没想清楚的承诺</strong>。把它们清出来、想清楚、放进可信的系统并定期回顾，人就能“心如止水”。</p>
+
+    <div class="thread">
+      <span>📥 全部清出大脑</span><i>→</i>
+      <span>🎯 想清“结果 + 下一步行动”</span><i>→</i>
+      <span>🗂 放进可信的外部系统</span><i>→</i>
+      <span>🔁 每周回顾</span><i>→</i>
+      <span>🌊 心如止水</span>
+    </div>
+
+    <div class="books">
+      <a class="book c1" href="#b1">
+        <div class="num">Ⅰ</div>
+        <h3>无压工作的艺术</h3>
+        <div class="sub">Getting Things Done · 15 章</div>
+        <span class="role">操作手册 · 怎么做</span>
+        <p>把方法从零搭起来：五步工作流、流程图、各类清单、每周回顾、自然计划法。作者比作“学开车”。</p>
+      </a>
+      <a class="book c2" href="#b2">
+        <div class="num">Ⅱ</div>
+        <h3>提升工作与生活效率的 52 项原则</h3>
+        <div class="sub">Ready for Anything · 52 篇短文</div>
+        <span class="role">随笔集 · 为什么有效</span>
+        <p>不讲新技巧，讲方法背后的原则。按完成、关注、结构、行动四个主题编排，每篇配一组反思问题。</p>
+      </a>
+      <a class="book c3" href="#b3">
+        <div class="num">Ⅲ</div>
+        <h3>平衡工作与生活的艺术</h3>
+        <div class="sub">Making It All Work · 19 章</div>
+        <span class="role">路线图 · 掌控 × 视角</span>
+        <p>把整套方法收拢成两条坐标轴：掌控（五步）和视角（六个层面）。作者比作“懂汽车的机械原理”。</p>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BOOK I ============ -->
+<section class="block c1" id="b1">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅰ</div>
+      <div>
+        <div class="tag">搞定Ⅰ · 操作手册</div>
+        <h2>无压工作的艺术</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">把所有“未竟之事”清出脑子，放进可靠的外部系统；每件事先想清楚<strong>预期结果</strong>和<strong>下一步行动</strong>，再定期回顾。事情再多，也能放松、专注。</p>
+
+    <div class="problem reveal">
+      <div class="card">
+        <h4>它要解决的问题</h4>
+        <ul>
+          <li>知识工作没有边界，变化快，信息永远读不完。</li>
+          <li>每日任务清单、按 1-2-3 排优先级、“着眼大局”式的价值观方法，都应付不了海量琐事。</li>
+          <li>压力的根源是<b>开放循环</b>：结果没定义、下一步没确定、提醒没放进可信的地方，大脑只好像有限的内存一样反复提醒你。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>三个基础概念</h4>
+        <ul>
+          <li><b>心如止水</b>：像池水对石子做出恰当的反应，然后归于平静，不过度，也不不足。</li>
+          <li><b>开放循环</b>：任何“将会、可能、应该”的内心承诺，都被潜意识持续追踪着。</li>
+          <li><b>材料</b>：意义、结果、下一步都还没确定的东西。只要还是材料，就管不了。</li>
+          <li>时间、信息、优先级都管不了，<b>你只能管理行动</b>。</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">横向管理：工作流程五步</h3>
+    <div class="steps reveal">
+      <div class="step"><h4>收集</h4><p>100% 收集。入口越少越好，并定期清空。只收集一半，大脑和系统就都不可信。</p></div>
+      <div class="step"><h4>理清</h4><p>逐件判断：这是什么？要不要行动？下一步是什么？</p></div>
+      <div class="step"><h4>组织</h4><p>让每件事放的位置，和它的意义一致。</p></div>
+      <div class="step"><h4>回顾</h4><p>定期查看并更新整个系统，核心是每周回顾。</p></div>
+      <div class="step"><h4>执行</h4><p>凭直觉选择当下最合适的行动，可借助三种模型。</p></div>
+    </div>
+
+    <h3 class="sub reveal">理清阶段的决策流程图</h3>
+    <div class="card reveal">
+      <div class="flow">
+        <div class="node">📥 工作篮 <small>从最上面一项开始 · 一次一件 · 处理过的不放回去</small></div>
+        <div class="arrow"></div>
+        <div class="node q">这是什么？需要行动吗？</div>
+        <div class="arrow"></div>
+        <div class="split">
+          <div class="branch">
+            <span class="lbl">不 需 要</span>
+            <div class="node"><b>🗑 垃圾</b><small>直接删掉</small></div>
+            <div class="node"><b>🌱 酝酿</b><small>将来/也许清单，或写进日程表、备忘录系统</small></div>
+            <div class="node"><b>📚 参考资料</b><small>按字母顺序归档，每件不超过 1 分钟</small></div>
+          </div>
+          <div class="branch">
+            <span class="lbl">需 要</span>
+            <div class="node q">想要什么结果？要多步完成的 → 记进<b style="display:inline">项目清单</b></div>
+            <div class="arrow"></div>
+            <div class="node q">下一步行动是什么？</div>
+            <div class="arrow"></div>
+            <div class="row">
+              <div class="node"><b>⚡ 立即做</b><small>2 分钟内能做完<br>（可放宽到 5–10 分钟）</small></div>
+              <div class="node"><b>🤝 委派</b><small>自己不是最佳人选<br>→ 等待清单，注明日期</small></div>
+              <div class="node"><b>📅 推迟</b><small>→ 日程表<br>或下一步行动清单</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">组织：七类清单，界线要分明</h3>
+    <div class="lists reveal">
+      <div class="li"><b>项目清单</b><span>一年内要多步完成的结果，通常有 30–100 个，每周至少看一次。</span></div>
+      <div class="li"><b>下一步行动</b><span>按情境分：电话 / 电脑 / 外出 / 办公室 / 在家 / 议事日程 / 阅读。</span></div>
+      <div class="li"><b>日程表</b><span>“神圣领地”，只放：定了时间的行动、定了日期的行动、当天要知道的信息。</span></div>
+      <div class="li"><b>等待清单</b><span>委派出去的事，记下交给了谁、哪天交的。</span></div>
+      <div class="li"><b>将来/也许</b><span>现在不做、但不想忘的事，每周回顾时看一遍。</span></div>
+      <div class="li"><b>项目辅助资料</b><span>每个项目相关的资料和笔记。</span></div>
+      <div class="li"><b>参考资料</b><span>按字母顺序归档，抽屉别装超过 3/4，至少一年清一次。</span></div>
+      <div class="li"><b>43 个备忘夹</b><span>31 个日期夹加 12 个月份夹，每天滚动处理，相当于“寄给未来自己的信”。</span></div>
+    </div>
+    <p class="small" style="margin-top:12px">邮件：建“@行动”“@等待”两个文件夹，把收件箱清零。作者明确反对“每日工作清单”。</p>
+
+    <h3 class="sub reveal">执行时怎么选：三种模型</h3>
+    <div class="grid3 reveal">
+      <div class="card">
+        <h4 style="font-size:17px;margin-bottom:8px">① 四标准法</h4>
+        <p class="muted" style="font-size:14.5px">依次筛选：<b>情境</b> → <b>可用时间</b> → <b>可用精力</b> → <b>重要性</b>。前三项是约束条件，最后一项才衡量价值。精力低的时候，就做“小事清单”上的事。</p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:17px;margin-bottom:8px">② 工作三重性</h4>
+        <p class="muted" style="font-size:14.5px">任何时刻都在做三种工作之一：执行事先安排好的工作、处理突发事件、定义工作（整理清单本身）。<br><i>“并不存在所谓的中断，只是对新事务管理不善而已。”</i></p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:17px;margin-bottom:8px">③ 六个高度视角</h4>
+        <p class="muted" style="font-size:14.5px">地面（行动）→ 1楼（项目）→ 2楼（责任）→ 3楼（1–2 年目标）→ 4楼（3–5 年愿景）→ 5楼（目的与原则）。下层服务于上层，但实际做的时候<b>自下而上</b>。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">纵向管理：自然计划法五步</h3>
+    <div class="np reveal">
+      <div><b>目的与原则</b>问“为什么”。用来界定成功、作为决策标准、激发动机。</div>
+      <div><b>愿景 / 结果</b>想象成功的画面，大脑会自动筛选相关的信息。</div>
+      <div><b>头脑风暴</b>不评判、不质疑，追求数量，先不急着组织。</div>
+      <div><b>组织整理</b>理出组成部分、先后顺序、轻重缓急。</div>
+      <div><b>下一步行动</b>每个能独立推进的部分，都要有下一步。</div>
+    </div>
+    <div class="card reveal" style="margin-top:14px">
+      <b>计划要做多细？</b><span class="muted">只要大脑能放下这件事就够了。</span>
+      <div class="bar"><div class="a">≈80% 项目：列个清单就行</div><div class="b">≈15% 用思维导图等工具</div><div class="c">5%</div></div>
+      <p class="small">剩下约 5% 需要完整走一遍五步。思路不清时，沿五步往上回溯；行动不足时，往下推进。</p>
+    </div>
+
+    <h3 class="sub reveal">每周回顾：系统成败的关键</h3>
+    <div class="grid3 reveal">
+      <div class="card"><div class="tag" style="color:var(--c);font-weight:700;font-size:13px">一、确认</div><p class="muted" style="font-size:14.5px">收齐散落的纸片和材料 · 清空所有收集工具 · 清空大脑</p></div>
+      <div class="card"><div class="tag" style="color:var(--c);font-weight:700;font-size:13px">二、更新</div><p class="muted" style="font-size:14.5px">下一步行动清单 · 过去两三周和接下来的日程 · 等待清单 · 项目清单 · 相关核查清单</p></div>
+      <div class="card"><div class="tag" style="color:var(--c);font-weight:700;font-size:13px">三、创造</div><p class="muted" style="font-size:14.5px">回顾将来/也许清单 · 捕捉新奇、大胆的想法</p></div>
+    </div>
+    <p class="small" style="margin-top:10px">建议放在每周最后一个工作日的下午，留出约 2 小时。</p>
+
+    <h3 class="sub reveal">三个关键原则</h3>
+    <div class="grid3 reveal">
+      <div class="card"><h4 style="font-size:17px">养成收集的习惯</h4><p class="muted" style="font-size:14.5px">焦虑来自违背了对自己的约定。消除它有三种办法：不答应、做完、重新商定。记不起来的约定，没法重新商定。</p></div>
+      <div class="card"><h4 style="font-size:17px">确定“下一步行动”</h4><p class="muted" style="font-size:14.5px">越聪明的人越容易拖延，因为想象会放大困难。把“轮胎”改写成“给弗雷德发邮件，问修理厂的电话”。</p></div>
+      <div class="card"><h4 style="font-size:17px">学会关注结果</h4><p class="muted" style="font-size:14.5px">生活中的问题只有两种：不知道要什么，不知道怎么做。解法是同时定义结果、确定行动。</p></div>
+    </div>
+
+    <h3 class="sub reveal">书里的关键数字</h3>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">2<small>分钟</small></div><div class="k">两分钟内能做完的事，当场做掉</div></div>
+      <div class="stat"><div class="v">43<small>个</small></div><div class="k">备忘录文件夹：31 个日期夹加 12 个月份夹</div></div>
+      <div class="stat"><div class="v">2<small>天</small></div><div class="k">首次启动建议留出的整块时间（学员通常需要 10–15 小时）</div></div>
+      <div class="stat"><div class="v">60<small>秒</small></div><div class="k">归档一份资料的时间上限</div></div>
+      <div class="stat"><div class="v">50–150</div><div class="k">一个人通常有的下一步行动数量</div></div>
+      <div class="stat"><div class="v">30–100</div><div class="k">一个人通常有的项目数量</div></div>
+      <div class="stat"><div class="v">30<small>%+</small></div><div class="k">需要行动的邮件里，2 分钟内能处理掉的比例</div></div>
+      <div class="stat"><div class="v">2<small>年</small></div><div class="k">把这套方法变成稳定习惯所需的时间</div></div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">任何没有找到应有的位置和恰当存在方式的事务，都会盘踞在我们的脑海中，成为悬而未决的问题。</div>
+      <div class="quote">事务极少会由于时间匮乏而受阻，它们陷入困境往往是由于未能预先明确下一步的行动而造成的。</div>
+      <div class="quote">要么将所有事情留在头脑中，要么将其清空。如果走中间路线，两头都不可靠。</div>
+      <div class="quote">工作篮是一个处理问题的地点，而不是一个存储容器。</div>
+      <div class="quote">焦虑和内疚并不是因为承担了太多工作而造成的，而是由于你撕毁了同自己的约定而导致的。</div>
+      <div class="quote">你的大脑是用来获得想法的，而不是用来保存想法。</div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>📖 全书章节一览（15 章）</summary>
+      <div class="toc-body">
+        <div class="part"><h5>PART1 搞定：通向从容之道</h5>
+          <div class="ch"><b>1 新情况，新做法</b><span>工作没有边界，旧方法失效。提出“心如止水”，以及外部系统、下一步行动、定期查看三项要求。</span></div>
+          <div class="ch"><b>2 掌控生活：横向管理工作流程的5个步骤</b><span>收集、理清、组织、回顾、执行，再加三种选择行动的模型。</span></div>
+          <div class="ch"><b>3 控制项目：纵向管理项目的5个阶段</b><span>自然计划法，对比“非自然计划”和“反应式计划”，提倡“信封背面”式的简单计划。</span></div>
+        </div>
+        <div class="part"><h5>PART2 远离压力，提高效率</h5>
+          <div class="ch"><b>4 准备工作</b><span>留出整块时间，建独立的工作区，备齐基本工具，建字母顺序归档系统。</span></div>
+          <div class="ch"><b>5 收集阶段：归拢材料</b><span>先收实物，桌面、抽屉、柜子、墙面依次清，再清空大脑。全部收完才开始处理。</span></div>
+          <div class="ch"><b>6 理清阶段：清空工作篮</b><span>按流程图逐件判断：立即做、委派或推迟，并识别出项目。</span></div>
+          <div class="ch"><b>7 组织整理：建立好清单</b><span>七类清单、情境清单、日程表规则、邮件文件夹、备忘录系统、核查清单。</span></div>
+          <div class="ch"><b>8 回顾阶段</b><span>日常快速查看，每周回顾决定系统成败，另有定期的“大局”回顾。</span></div>
+          <div class="ch"><b>9 执行阶段：选择最合适的行动</b><span>凭直觉做选择，借助四标准法、三重性、六个高度视角。</span></div>
+          <div class="ch"><b>10 学会控制项目</b><span>哪些项目值得做计划，以及头脑风暴、开会、白板、思维导图等辅助手段。</span></div>
+        </div>
+        <div class="part"><h5>PART3 三个关键原则</h5>
+          <div class="ch"><b>11 养成收集的习惯</b><span>不答应、做完、重新商定，团队里也要形成收集的文化。</span></div>
+          <div class="ch"><b>12 确定“下一步行动”</b><span>澄清问题、明确责任、提高效率、增强能力。</span></div>
+          <div class="ch"><b>13 学会关注结果</b><span>定义结果加确定行动，组织也能整体变得积极。</span></div>
+          <div class="ch"><b>14 GTD和认知科学（新增）</b><span>分布式认知、未完成目标研究、心流、执行意图等研究如何佐证 GTD。</span></div>
+          <div class="ch"><b>15 GTD精进之路（新增）</b><span>精通分三层：掌握要领、整合生活管理、用释放出来的注意力创造价值。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ BOOK II ============ -->
+<section class="block c2" id="b2">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅱ</div>
+      <div>
+        <div class="tag">搞定Ⅱ · 随笔集</div>
+        <h2>提升工作与生活效率的 52 项原则</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">“一个人提升效率的能力，与他休息的能力成正比。”本书不教新技巧，而是解释 GTD <strong>为什么有效</strong>。由作者 1997 年起写的随笔和简讯汇编而成，每章一条原则、一篇短文，再加一组“顺便想想……”的问题。</p>
+
+    <div class="parts-desc reveal">
+      <div class="card"><span class="kw">完成</span><b>理清头绪，发挥创造力</b><span>第 1–13 章：处理未竟之事，腾出心理空间，创造力才有地方施展。</span></div>
+      <div class="card"><span class="kw">关注</span><b>高效关注</b><span>第 14–26 章：提高效率靠的往往是换个视角、调整关注点，而不是多使劲。</span></div>
+      <div class="card"><span class="kw">结构</span><b>建立有效的制约机制</b><span>第 27–39 章：好的约束不占空间，反而创造空间。系统、形式、每周回顾都是这种支撑。</span></div>
+      <div class="card"><span class="kw">行动</span><b>放松自我，开始工作</b><span>第 40–52 章：放下完美主义，对结果负责，凭直觉迈出下一步，边做边修正。</span></div>
+    </div>
+
+    <div class="filters">
+      <button class="chip on" data-p="0">全部 52</button>
+      <button class="chip" data-p="1">完成</button>
+      <button class="chip" data-p="2">关注</button>
+      <button class="chip" data-p="3">结构</button>
+      <button class="chip" data-p="4">行动</button>
+      <input class="search" id="psearch" type="search" placeholder="搜原则，如：回顾、系统、放松">
+    </div>
+    <div class="pgrid" id="pgrid"></div>
+    <div class="empty" id="pempty">没有匹配的原则</div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">自我管理十分简单，但不能简单管理。<cite>第 2 章</cite></div>
+      <div class="quote">“我需要牛奶”和“我需要决定是否收购这家公司”一样，都会占据大脑内存的空间。<cite>第 9 章</cite></div>
+      <div class="quote">平凡琐碎之事并没有什么惊人之处，但却是我们做出惊人之举的必经之路。<cite>第 8 章</cite></div>
+      <div class="quote">最有效的办法，就是在条件允许的情况下尽量少思考，在必要的时候尽量多思考。<cite>第 12 章</cite></div>
+      <div class="quote">想获得自由？请努力做到组织有序。想做到组织有序？请努力发挥你的创造力。<cite>第 27 章</cite></div>
+      <div class="quote">系统越完善，你越不易察觉它的存在。<cite>第 32 章</cite></div>
+      <div class="quote">“长期”的意思不过是：要做到“尽快”，需要采取更多的后续行动。<cite>第 48 章</cite></div>
+      <div class="quote">如果你已经把项目从头脑中抛开，那说明计划很充分。<cite>PART5 · 自然式计划模式</cite></div>
+    </div>
+    <p class="small reveal">PART5“注意基本要素”是四份核查清单：工作流程五阶段、处理流程图、自然式计划模式、每周回顾指南，都是对《搞定Ⅰ》的浓缩。</p>
+  </div>
+</section>
+
+<!-- ============ BOOK III ============ -->
+<section class="block c3" id="b3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="big">Ⅲ</div>
+      <div>
+        <div class="tag">搞定Ⅲ · 路线图</div>
+        <h2>平衡工作与生活的艺术</h2>
+      </div>
+    </div>
+    <p class="thesis reveal">自我管理只靠两件事：<strong>掌控</strong>（用五步把事情卸出大脑，放到该放的地方）和<strong>视角</strong>（在六个层面上看清什么值得做）。两者在“下一步行动”这里会合。目标是“把工作当游戏，把生活当事业”。</p>
+
+    <div class="card reveal" style="margin-bottom:22px">
+      <p class="muted" style="margin:0">作者说本书“不是《搞定Ⅰ》的补充或修正”，而是在它的基础上深化：Ⅰ 是学开车，Ⅲ 是懂汽车原理。读者批评前两本太偏战术、没讲怎么分主次，第 8 章和第 10–17 章就是回应。作者认为真正的问题不是时间或信息，而是<b>“意义不明的超负荷”</b>。</p>
+    </div>
+
+    <h3 class="sub reveal">自我管理矩阵：掌控 × 视角</h3>
+    <div class="matrix-wrap reveal">
+      <div class="axis-y">视 角 ↑</div>
+      <div class="matrix">
+        <div class="quad">
+          <div class="meta">低掌控 · 高视角</div>
+          <div class="neg">空想家 Crazy Maker</div>
+          <h4>梦想家</h4><div class="en">Visionary</div>
+          <p>想法和承诺多过资源，作者称之为“闪亮的垃圾”综合征。好的一面是能开拓愿景。</p>
+        </div>
+        <div class="quad best">
+          <div class="meta">高掌控 · 高视角</div>
+          <div class="neg">&nbsp;</div>
+          <h4>舰长和指挥官</h4><div class="en">Captain and Commander</div>
+          <p>手轻握舵轮，眼盯地平线，一有偏离就调整。要提防的是自满、疏于未雨绸缪。</p>
+        </div>
+        <div class="quad">
+          <div class="meta">低掌控 · 低视角</div>
+          <div class="neg">受害者 Victim</div>
+          <h4>回应者</h4><div class="en">Responder</div>
+          <p>危机模式，被最新、最急的事拖着走。好的一面是能及时回应局面。</p>
+        </div>
+        <div class="quad">
+          <div class="meta">高掌控 · 低视角</div>
+          <div class="neg">微观管理者 Micromanager</div>
+          <h4>执行者</h4><div class="en">Implementer</div>
+          <p>“掌控的形式大于掌控的内容”，过度准备，只顾数豆子。好的一面是能按既定结构把事做完。</p>
+        </div>
+      </div>
+      <div></div>
+      <div class="axis-x">掌 控 →</div>
+    </div>
+    <p class="small reveal" style="text-align:center;margin-top:10px">人会随事情和层面不同，在几个象限之间来回切换。“改善现状的第一步是接受现状。”缺掌控就去清工作篮，缺视角就往上升一层。</p>
+
+    <h3 class="sub reveal">掌控五步（Ⅲ 的新叫法）</h3>
+    <div class="rename reveal">
+      <div><s>收集</s><b>捕捉</b></div>
+      <div><s>处理</s><b>明确意义</b></div>
+      <div><s>组织</s><b>组织整理</b></div>
+      <div><s>回顾</s><b>深思</b></div>
+      <div><s>执行</s><b>参与</b></div>
+    </div>
+    <div class="grid2 reveal" style="margin-top:14px">
+      <div class="card"><b>捕捉</b><p class="muted" style="font-size:14.5px">用大脑清扫、提示清单，再按六个层面往深处挖隐藏的心事。没有不好的点子，有想法不等于要承诺。光捕捉不处理，清单只会越积越多。</p></div>
+      <div class="card"><b>明确意义</b><p class="muted" style="font-size:14.5px">“母亲”→“为母亲办 60 岁生日宴”→“起草宾客名单”。产生想法和取舍想法是两种模式，要分开做。</p></div>
+      <div class="card"><b>深思</b><p class="muted" style="font-size:14.5px">闲置不用的系统算不上系统。“如果你没有自觉地回顾各项承诺，就会一直心不在焉地回顾它们。”</p></div>
+      <div class="card"><b>参与</b><p class="muted" style="font-size:14.5px">检验标准是：你能否由衷地认为，此刻做的就是该做的事。用“先做什么、怎么做、在哪做”检查下一步是否想清楚。</p></div>
+    </div>
+
+    <h3 class="sub reveal">六个关注层面：从跑道到 5 万英尺</h3>
+    <div class="legend-row"><span>层面</span><span>内容 · 核心问题</span><span>格雷西的花园示例</span><span style="text-align:right">回顾频率</span></div>
+    <div class="ladder reveal">
+      <div class="rung" style="--w:100"><div class="alt">5 万英尺<small>宗旨和原则</small></div><div class="what"><b>为什么？</b><span>判断重要性和成败的终极标准</span></div><div class="eg">提供高质量的园艺设计和用具；重视客户关系、环保产品、支持员工</div><div class="freq">需要重定方向时</div></div>
+      <div class="rung" style="--w:84"><div class="alt">4 万英尺<small>愿景 · 3–5 年</small></div><div class="what"><b>长远的成功是什么样？</b><span>目标至少要有 51% 的可信度才能扎根</span></div><div class="eg">在邻近三镇赢得“一流的园林景观商店”的声誉</div><div class="freq">每年</div></div>
+      <div class="rung" style="--w:68"><div class="alt">3 万英尺<small>目标 · 1–2 年</small></div><div class="what"><b>我想完成什么？</b><span>琐事失控时，设目标反而成负担</span></div><div class="eg">12 个月内销售额增长 15%，利润达到 20%</div><div class="freq">每年订，每季调整</div></div>
+      <div class="rung" style="--w:52"><div class="alt">2 万英尺<small>责任范围</small></div><div class="what"><b>我需要维持什么？</b><span>工作上 4–7 项，生活上 7–10 类</span></div><div class="eg">行政、销售、财务、零售经营</div><div class="freq">每月</div></div>
+      <div class="rung" style="--w:36"><div class="alt">1 万英尺<small>项目</small></div><div class="what"><b>我要完成什么？</b><span>一年内多步完成，通常 30–100 个，最容易被忽视</span></div><div class="eg">成立批发部、招聘销售负责人</div><div class="freq">每周</div></div>
+      <div class="rung" style="--w:20"><div class="alt">跑道<small>下一步行动</small></div><div class="what"><b>下一步做什么？</b><span>具体可见的动作，通常上百项</span></div><div class="eg">给布兰多打电话，约午餐会议</div><div class="freq">每天多次</div></div>
+    </div>
+    <p class="small reveal" style="margin-top:12px">优先级自上而下传导，但通常建议<b>自下而上</b>，先站稳再往上走。“高度”只表示视野多宽，不代表多重要。个人示例：帮别人实现梦想 → 成为世界级运动员 → 进国家队候补 → 坚持高强度训练 → 请私人教练 → 给大学教练打电话。</p>
+
+    <h3 class="sub reveal">贯穿全书的案例：格雷西的花园</h3>
+    <div class="story reveal">
+      <div class="card">
+        <div class="chap">第 9 章 · 演示“掌控”</div>
+        <h4>罗恩继承了一家荒废的园艺店</h4>
+        <p class="muted" style="font-size:14.5px">失散多年的婶婶格雷西留下一家店：邮件散落一地，盆栽都已枯败。罗恩用五步把它理顺：</p>
+        <ol>
+          <li>绕场一周，捕捉所有引起注意的东西</li>
+          <li>设一个垃圾堆，决定保留哪些资产</li>
+          <li>建项目清单，找顾问商量</li>
+          <li>动手干活</li>
+          <li>再用同样的五步，清理自己家里和办公室的积压</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="chap">第 17 章 · 演示“视角”</div>
+        <h4>为小店和人生各写一份六层面文件</h4>
+        <p class="muted" style="font-size:14.5px">罗恩分别为店铺和个人生活写了一份从宗旨到下一步行动的文件，就是上面那张阶梯表。</p>
+        <p class="muted" style="font-size:14.5px">结论是：<b>先掌控，再摆正视角，最后进入“舰长和指挥官”的状态。</b>五步本来就是人的自然做法，难的是在新情况冲击下有意识地用起来。</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">尾声：五个“口头禅”问题</h3>
+    <div class="questions reveal">
+      <div>最操心什么？</div>
+      <div>想要什么结果？</div>
+      <div>下一步做什么？</div>
+      <div>真正看重什么？</div>
+      <div>提示放在哪？</div>
+    </div>
+
+    <h3 class="sub reveal">金句</h3>
+    <div class="quotes reveal">
+      <div class="quote">大脑是个好仆人，却是个坏主人。</div>
+      <div class="quote">时间是无法管理的，它自顾自地流走。你能管理的只有你自己——你关注的事和你采取的行动。</div>
+      <div class="quote">没有明确方向的掌控会导致管理不善，而缺乏掌控的全局视角又容易漫无边际，不知所终。</div>
+      <div class="quote">如果你没有自觉地、有条不紊地回顾各项承诺，那么，作为补偿，你就会一直心不在焉地回顾它们。</div>
+      <div class="quote">没有约束就无所谓自由，没有形式就无所谓愿景，没有功能就无所谓结构。</div>
+      <div class="quote">问题不在于你身边有多少件事等待处理，而在于你心里对这些事是什么、分别该怎么处理有没有谱。</div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>📖 全书章节一览（19 章）</summary>
+      <div class="toc-body">
+        <div class="part"><h5>GTD 是什么，为什么有效</h5>
+          <div class="ch"><b>1 GTD现象</b><span>流行的四个原因：简单、易学、问题普遍、契合人性。问题在于“意义不明的超负荷”。</span></div>
+          <div class="ch"><b>2 步骤</b><span>把“有条理”升级为“掌握主动权”，把“定优先级”升级为“在适当的层面明确目标”。</span></div>
+          <div class="ch"><b>3 自我管理的基本内容</b><span>提出掌控×视角矩阵，从“现在是什么情况？”问起。</span></div>
+        </div>
+        <div class="part"><h5>获得掌控</h5>
+          <div class="ch"><b>4 捕捉</b><span>大脑清扫、提示清单、日志、集体捕捉，工具要随手可得。</span></div>
+          <div class="ch"><b>5 明确意义</b><span>能否行动？想要什么结果？下一步是什么？</span></div>
+          <div class="ch"><b>6 组织整理</b><span>东西放的位置和它的意义一致，日程表只放“硬质景观”。</span></div>
+          <div class="ch"><b>7 深思</b><span>更新内容，校准视角。系统负责追踪，大脑负责联想。</span></div>
+          <div class="ch"><b>8 参与</b><span>情境、时间、精力，再加上六个层面带来的轻重。</span></div>
+          <div class="ch"><b>9 把GTD运用到工作和生活中</b><span>格雷西的花园（上篇）。</span></div>
+        </div>
+        <div class="part"><h5>摆正视角</h5>
+          <div class="ch"><b>10 摆正视角</b><span>一般自下而上，必要时自上而下。高度不等于重要性。</span></div>
+          <div class="ch"><b>11 跑道：下一步行动</b><span>团队是否同心，看能否就“做什么、谁做、何时做”达成共识。</span></div>
+          <div class="ch"><b>12 1万英尺：项目</b><span>一份项目总清单，每周回顾 1–2 小时。</span></div>
+          <div class="ch"><b>13 2万英尺：责任范围</b><span>“我需要维持什么？”常常让潜伏的大项目浮出水面。</span></div>
+          <div class="ch"><b>14 3万英尺：目标</b><span>每年订、每季调整，先站稳再设目标。</span></div>
+          <div class="ch"><b>15 4万英尺：愿景</b><span>5 年后的自己、未来的报道、藏宝图。</span></div>
+          <div class="ch"><b>16 5万英尺：宗旨和原则</b><span>“为什么”是终极标准。没准备好时，别硬追问人生意义。</span></div>
+          <div class="ch"><b>17 重访“格雷西的花园”</b><span>六层面文件示范。</span></div>
+        </div>
+        <div class="part"><h5>落地</h5>
+          <div class="ch"><b>18 实际运用</b><span>工作篮 24–48 小时清空一次，每周回顾约 2 小时。不知道干什么时，先清工作篮。</span></div>
+          <div class="ch"><b>19 尾声</b><span>GTD 给的是方法，不是答案。</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ COMPARE ============ -->
+<section class="block" id="compare" style="--c:var(--ink);--cs:var(--soft)">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag" style="color:var(--ink3)">COMPARE</div><h2>三本怎么读</h2></div></div>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="cmp">
+        <thead><tr><th></th><th class="c1">Ⅰ 无压工作的艺术</th><th class="c2">Ⅱ 52 项原则</th><th class="c3">Ⅲ 平衡工作与生活</th></tr></thead>
+        <tbody>
+          <tr><td>定位</td><td>操作手册：怎么做</td><td>原则随笔：为什么有效</td><td>路线图：整体模型</td></tr>
+          <tr><td>比喻</td><td>学开车</td><td>车友的心得</td><td>懂汽车原理</td></tr>
+          <tr><td>核心框架</td><td>横向五步 + 纵向自然计划五步</td><td>完成 / 关注 / 结构 / 行动</td><td>掌控 × 视角矩阵 + 六层面</td></tr>
+          <tr><td>形式</td><td>系统讲解，步骤和数字很细</td><td>52 篇短文，每篇配反思问题</td><td>模型讲解，用一个贯穿全书的案例</td></tr>
+          <tr><td>最适合</td><td>想从零搭一套系统</td><td>已在用，想找回状态或找灵感</td><td>系统会用了，想解决“分不清主次”</td></tr>
+          <tr><td>读法建议</td><td>先读，照着做一遍完整启动</td><td>随手翻，一周一篇也行</td><td>用了一段时间后再读，效果最好</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TODO ============ -->
+<section class="block" id="todo" style="--c:var(--b1);--cs:var(--b1s)">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="tag">START HERE</div><h2>上手清单：从今天开始</h2></div></div>
+    <div class="progress"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 12</div></div>
+    <div class="check" id="check"></div>
+  </div>
+</section>
+
+<footer>
+  根据《搞定Ⅰ：无压工作的艺术》《搞定Ⅱ：提升工作与生活效率的52项原则》《搞定Ⅲ：平衡工作与生活的艺术》（戴维·艾伦 著，中信出版）全文整理<br>
+  勾选进度保存在本机浏览器
+</footer>
+
+<script>
+const PARTS=["","完成","关注","结构","行动"];
+const P=[
+[1,"理清思路，确立新方向","拿不准下一步时，先清理手边最明显的事，并随身带一个捕捉想法的工具。"],
+[1,"知道哪些事情自己尚未做，你才会为之心安","压力来自没有履行的约定；收集、处理、组织、回顾、执行要分开做。"],
+[1,"理清承担的任务，可以更好地选择新任务","看清手上的全部承诺，才知道该拒绝什么。"],
+[1,"要实现未来的目标，首先明确当前的位置","先盘清六个层面，从行动到人生目的，再谈优先级。"],
+[1,"以有限的可能，去利用无限的机遇","五个环节里最弱的一环决定整体效率，期望要控制在可行范围内。"],
+[1,"一心二用带来压力与失败","心理内存没有时间感，悬而未决的事会挤占精力。先处理细节，才谈得上宏观。"],
+[1,"有意识地权衡轻重缓急","拿着完整清单比较之后，才知道孰轻孰重；被忽视的“次重要”之事会演变成危机。"],
+[1,"完成未竟之事，释放自身能量","清理车库这类平凡小事，往往能点燃愿景和灵感。"],
+[1,"如果你一直想着某件事，很可能是还没有搞定","明确结果和下一步行动，放进可信的系统里，大脑才会放手。"],
+[1,"只要有空间，创造力就会展现","人们怕写全之后看到自己的局限，真正写全的人反而会感到解脱。"],
+[1,"渠深流畅","系统阻塞时，人会下意识地推开新机会；先清理系统，新机会才进得来。"],
+[1,"担忧无益","该少想时少想，该多想时多想；定期回顾，平时才能放心去做。"],
+[1,"你不是你的工作","清单的意义在于腾出心来，自由地做真正喜欢的事。"],
+[2,"想看得更清楚，请从更高处着眼","一个层面卡住时，就往上提一层：行动→计划→愿景→目的。"],
+[2,"只有身体力行，你才会知道如何去做","先在脑中有图景和结果，才会看到实现的方法。"],
+[2,"工作足够努力是不可能的","忙碌会成为陷阱；把工作集中到一处权衡，比顺手处理眼前的事更好。"],
+[2,"精力随心思而动","把想关注的东西“摆在门前”，让它们常出现在意识里。"],
+[2,"目标越明确，实现目标的途径越多","重新审视会议、空间、资产的目的，过时的程序要改。"],
+[2,"精益求精","不求成为“最好的”，只求此刻尽力做到当下最好。"],
+[2,"关注重心的变化等于结果的变化","大脑会去找你预设的模式；要练习迅速回到“准备好”的状态。"],
+[2,"视角是地球上最贵重的商品","状态好时把灵感记下来，状态差时拿出来用。"],
+[2,"多加思考","每件进来的事都要想到“下一步行动”为止，通常只需约 15 秒。"],
+[2,"思考有度","想清楚目的和下一步、放好提示就够了，不用想得过于复杂。"],
+[2,"效率是改善工作的唯一机会","标准一旦明确，就尽量轻松地达成；关键是按目标行事，而不只是拥有目标。"],
+[2,"关注一件事才能“全神贯注”","其他事都安顿好之后，才能百分之百投入眼前这件事。"],
+[2,"未来目标的价值，在于它当前培育的变化","愿景的价值在于改变此刻的决定。"],
+[3,"稳定带来创造力","组织有序和创造力是同一枚硬币的两面。"],
+[3,"形式与功能必须符合效率最高的原则","区分“幻想者”和“实干者”两种角色，用工作篮、清单和每周回顾把两者连起来。"],
+[3,"优化系统，放飞思想","系统不更新，大脑就不信任它；每周回顾是最重要的习惯。"],
+[3,"反应能力提升生存能力","积压的事务像麻醉剂，让人对外界迟钝；快速反应能提升团队。"],
+[3,"系统的强弱取决于最薄弱的环节","一个人不回邮件，整个团队都会变迟钝；系统要在最糟的状态下也能运转。"],
+[3,"系统的效率与你的感知度成反比","好系统让人感觉不到它的存在，比如一个文件夹只放一份文件、多用快捷键。"],
+[3,"功能取决于形式","在每周回顾里加一份“创造力清单”，提醒自己关注朋友、爱好和梦想。"],
+[3,"目标明确才能赢得胜利","一份完整、每周回顾的项目清单是“万能钥匙”。"],
+[3,"多人负责等于无人负责","内心的“委员会”需要一位尽职的“首席执行官”来拍板。"],
+[3,"确定原则，而不是监管制度","写下“我们的最佳表现出现在……”，和团队共享准则。"],
+[3,"利用大脑来思考工作，而不是单纯关注工作","大脑擅长分析和决策，不擅长记忆和提醒。"],
+[3,"思考的价值超乎想象","先不加区分地收集想法（分散认知），之后再加工。"],
+[3,"资源越是有限，规划越有必要","最需要做计划和整理的时候，往往是最不想做的时候。"],
+[4,"对自己做的事情承担起责任","你是自己生活的编剧和导演；应对突发事件的能力就是竞争力。"],
+[4,"过度控制等于失去控制","别迷恋组织形式本身，系统代替不了思考。"],
+[4,"进展越好，状态越好","何时做什么，最终靠直觉；做最坏的打算，设想最好的情况。"],
+[4,"相信自己的行动选择，需要多层面的自我管理","决策受三方面影响：情境、工作类型、工作层面。"],
+[4,"你的力量取决于你的放松能力","放松时控制力最强；头脑越自由，效率越高。"],
+[4,"预料之内的意外算不上意外","直面最坏的情况并纳入计划，就不至于手忙脚乱。"],
+[4,"目光越长远，进展越顺畅","习惯和节奏会过时，激情消失时要敢于放弃旧做法。"],
+[4,"放慢速度以提升速度","遇到平台期就停一停；想换挡，得先踩离合器。"],
+[4,"你没有时间做任何项目","项目只能靠一步步行动推进；没有下一步的“长期项目”，就会变成“永远不会”。"],
+[4,"坚持做好小事，就能产生重大影响","每次多出 10% 左右，长期坚持就能带来突破。"],
+[4,"亲力亲为才能了解事物","真正的理解来自行动；方法只对有内在动力的人起作用。"],
+[4,"动中求变更容易","动起来时转向更容易，就像晕船的人去掌舵就不晕了。"],
+[4,"最伟大的成功源自最惨重的失败","衡量标准改为“更佳选择的比例”，允许自己犯错，不断校正路线。"]
+];
+const grid=document.getElementById('pgrid'),empty=document.getElementById('pempty');
+grid.innerHTML=P.map((p,i)=>`<div class="pcard" data-p="${p[0]}"><span class="no">第 ${i+1} 章</span><span class="pt">${PARTS[p[0]]}</span><h4>${p[1]}</h4><p>${p[2]}</p></div>`).join('');
+let curP=0;
+function filterP(){
+  const q=document.getElementById('psearch').value.trim();
+  let n=0;
+  grid.querySelectorAll('.pcard').forEach(c=>{
+    const ok=(curP==0||c.dataset.p==curP)&&(!q||c.textContent.includes(q));
+    c.classList.toggle('hide',!ok); if(ok)n++;
+  });
+  empty.style.display=n?'none':'block';
+}
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); curP=+b.dataset.p; filterP();
+});
+document.getElementById('psearch').oninput=filterP;
+
+const T=[
+["做一次彻底的大脑清扫","一张纸只写一件事，把脑子里挂着的事全写下来，放进工作篮。可对照提示清单，按六个层面往深处挖。","Ⅰ · Ⅲ"],
+["收集入口越少越好","一个实体工作篮，加上随身的笔记工具或手机。想到什么，马上记下来。","Ⅰ · Ⅱ · Ⅲ"],
+["按流程图清空工作篮","从最上面一项开始，一次一件，处理过的不放回去。工作篮每 24–48 小时清空一次。","Ⅰ · Ⅲ"],
+["严格执行两分钟规则","两分钟内能做完的事当场做掉，其他的委派或推迟。","Ⅰ"],
+["把模糊条目改写成动作","“轮胎”→“给弗雷德发邮件，问修理厂的电话”。以动词开头，看得见、做得到。","Ⅰ · Ⅲ"],
+["列一份完整的项目清单","凡是一步做不完的都算项目，通常有 30–100 个，每个都配一条下一步行动。","Ⅰ · Ⅱ · Ⅲ"],
+["按情境分行动清单","电话、电脑、外出、在家、议事日程，再单独列出“等待”和“将来/也许”。","Ⅰ · Ⅲ"],
+["日程表只放硬性安排","只放预约、定了日期的行动和当天要知道的信息，不写“每日待办”。","Ⅰ · Ⅲ"],
+["清零邮箱","建“@行动”“@等待”文件夹，收件箱清零；委派出去的邮件抄送自己，归入“@等待”。","Ⅰ"],
+["在日历上固定每周回顾","比如每周五下午 2 小时，按“确认、更新、创造”三部分走一遍。","Ⅰ · Ⅱ · Ⅲ"],
+["按频率回访高层面","每月看责任范围，每季调整目标，每年审视愿景和宗旨。","Ⅲ"],
+["会议结束前问一句","“下一步行动是什么？谁负责？什么时候做？”","Ⅰ · Ⅲ"]
+];
+const KEY='gtd-check-v1',saved=JSON.parse(localStorage.getItem(KEY)||'[]');
+const ck=document.getElementById('check');
+ck.innerHTML=T.map((t,i)=>`<label><input type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  localStorage.setItem(KEY,JSON.stringify(on));
+  document.getElementById('pfill').style.width=(on.length/T.length*100)+'%';
+  document.getElementById('ptxt').textContent=on.length+' / '+T.length;
+}
+ck.addEventListener('change',prog); prog();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const links=[...document.querySelectorAll('nav.top a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  let k=0; secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<120)k=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===k));
+},{passive:true});
+</script>
+<!-- 我要怎么做？ -->
+<style>
+.how-fab{position:fixed;right:24px;bottom:24px;z-index:80;border:none;cursor:pointer;background:var(--ink);color:var(--paper);font:600 15px/1 var(--sans);padding:15px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;transition:transform .15s}
+.how-fab:hover{transform:translateY(-2px)}
+.how-fab i{font-style:normal;background:var(--b1);color:#fff;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px}
+.how-mask{position:fixed;inset:0;background:rgba(15,13,10,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.25s;z-index:90}
+.how-drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--paper);z-index:91;transform:translateX(105%);transition:transform .3s ease;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.2)}
+.how-open .how-mask{opacity:1;pointer-events:auto}.how-open .how-drawer{transform:none}
+.how-hd{padding:22px 22px 14px;border-bottom:1px solid var(--line)}
+.how-hd h3{font-family:var(--serif);font-size:22px;margin:0}
+.how-hd p{margin:4px 0 0;font-size:13px;color:var(--ink3)}
+.how-x{position:absolute;top:16px;right:16px;border:none;background:var(--soft);color:var(--ink2);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px}
+.how-bar{height:6px;background:var(--soft);border-radius:999px;overflow:hidden;margin-top:12px}.how-bar b{display:block;height:100%;width:0;background:var(--b1);transition:width .3s}
+.how-bd{overflow-y:auto;padding:6px 22px 30px;flex:1}
+.how-ph{margin-top:18px}
+.how-ph h4{font-family:var(--serif);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.how-ph h4 span{font-family:var(--sans);font-size:11px;font-weight:700;color:#fff;background:var(--c);padding:2px 8px;border-radius:999px;letter-spacing:.05em}
+.how-ph label{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:10px;cursor:pointer;font-size:14px;line-height:1.6;color:var(--ink)}
+.how-ph label:hover{background:var(--soft)}
+.how-ph input{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;border:2px solid var(--ink3);border-radius:5px;margin-top:3px;display:grid;place-items:center;cursor:pointer}
+.how-ph input:checked{background:var(--c);border-color:var(--c)}
+.how-ph input:checked::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.how-ph label:has(input:checked) .t{color:var(--ink3);text-decoration:line-through}
+.how-ph .src{display:block;font-size:11.5px;color:var(--ink3);margin-top:1px}
+.how-stuck{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:14px}
+.how-stuck b{display:block;color:var(--ink)}.how-stuck span{color:var(--ink2);font-size:13.5px}
+.how-app{display:block;text-align:center;margin-top:20px;padding:12px;border-radius:12px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600}
+@media (max-width:620px){.how-drawer{top:auto;height:92vh;width:100%;border-radius:18px 18px 0 0;transform:translateY(105%)}.how-fab{right:16px;bottom:16px}}
+</style>
+<button class="how-fab" id="howFab" aria-haspopup="dialog"><i>?</i>我要怎么做？</button>
+<div class="how-mask" id="howMask"></div>
+<aside class="how-drawer" role="dialog" aria-modal="true" aria-labelledby="howTitle">
+  <button class="how-x" id="howX" aria-label="关闭">✕</button>
+  <div class="how-hd"><h3 id="howTitle">我要怎么做？</h3><p>按三本书的方法落地，勾选会保存在本机 · <span id="howN">0</span> 步已完成</p><div class="how-bar"><b id="howBar"></b></div></div>
+  <div class="how-bd" id="howBd"></div>
+</aside>
+<script>
+(function(){
+const P=[
+ {k:"今天就做",c:"#c2410c",s:[
+  ["清空大脑 20 分钟到 1 小时：一张纸只写一件事，把脑子里挂着的事全写下来","Ⅰ 第 5 章"],
+  ["准备一个实体工作篮，再加一个随身的记录工具，收集入口越少越好","Ⅰ 第 4 章 · Ⅱ 第 1 条"],
+  ["从工作篮最上面一项开始处理 10 件：两分钟内能做完的当场做掉","Ⅰ 第 6 章"]]},
+ {k:"第一周",c:"#0f766e",s:[
+  ["留出整块时间完成第一次收集和理清，书里建议两整天，学员一般要 10–15 小时","Ⅰ 第 4–6 章"],
+  ["建好项目清单、按情境分的行动清单、等待清单、将来/也许清单；日程表只放硬性安排","Ⅰ 第 7 章"],
+  ["邮箱清零：建“@行动”“@等待”两个文件夹","Ⅰ 第 7 章"],
+  ["周五下午留约 2 小时，做第一次每周回顾：确认 → 更新 → 创造","Ⅰ 第 8 章 · Ⅲ 第 7 章"]]},
+ {k:"一个月后",c:"#4338ca",s:[
+  ["每周回顾连续做满 4 次；检验标准是每个项目都至少有一条下一步","Ⅰ 第 8 章 · Ⅱ 第 29 条"],
+  ["工作篮每 24–48 小时清空一次","Ⅲ 第 18 章"],
+  ["写下责任范围（工作 4–7 项、生活 7–10 类），之后每月看一次","Ⅲ 第 13 章"],
+  ["自检：哪件事还在脑子里反复冒出来，就说明它没想清楚、没放进系统","Ⅱ 第 9 条"]]}
+];
+const ST=[
+ ["系统断了几周，清单全过期了","别放弃，从清空工作篮、做一次每周回顾重新开始。脱轨容易，回到正轨也容易。","Ⅰ 第 15 章 · Ⅱ 第 52 条"],
+ ["不知道现在该做什么","先清工作篮；再按情境、可用时间、精力、重要性依次筛选。","Ⅲ 第 18 章 · Ⅰ 第 9 章"],
+ ["某件事一直拖着不动","下一步写得不够具体，改成以动词开头、马上能动手的动作。","Ⅰ 第 12 章"],
+ ["清单很整齐，却觉得没方向","往上升一层，问一句“这是为了什么？”","Ⅲ 第 3 章 · Ⅱ 第 14 条"],
+ ["累了，什么都不想做","做“小事清单”上的事，或者整理清单本身。","Ⅰ 第 9 章"]
+];
+const KEY="gtd-how-v1";let on=JSON.parse(localStorage.getItem(KEY)||"[]");
+const total=P.reduce((n,p)=>n+p.s.length,0);
+const bd=document.getElementById("howBd");
+bd.innerHTML=P.map((p,i)=>`<div class="how-ph" style="--c:${p.c}"><h4><span>${i+1}</span>${p.k}</h4>${p.s.map((s,j)=>`<label><input type="checkbox" data-k="${i}-${j}"${on.includes(i+"-"+j)?" checked":""}><span><span class="t">${s[0]}</span><span class="src">${s[1]}</span></span></label>`).join("")}</div>`).join("")
+ +`<div class="how-ph" style="--c:#8d877e"><h4><span>4</span>卡住了怎么办</h4>${ST.map(s=>`<div class="how-stuck"><b>${s[0]}</b><span>${s[1]}</span><span class="src" style="font-size:11.5px;color:var(--ink3);display:block">${s[2]}</span></div>`).join("")}</div>`
+ +`<a class="how-app" href="getting-things-done.html">打开配套的 GTD app，直接开始 →</a>`;
+const upd=()=>{document.getElementById("howN").textContent=on.length;document.getElementById("howBar").style.width=(on.length/total*100)+"%"};upd();
+bd.addEventListener("change",e=>{const k=e.target.dataset.k;if(!k)return;on=e.target.checked?[...new Set([...on,k])]:on.filter(x=>x!==k);localStorage.setItem(KEY,JSON.stringify(on));upd()});
+const open=()=>{document.body.classList.add("how-open");document.getElementById("howX").focus()},close=()=>{document.body.classList.remove("how-open");document.getElementById("howFab").focus()};
+document.getElementById("howFab").onclick=open;document.getElementById("howX").onclick=close;document.getElementById("howMask").onclick=close;
+addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("how-open"))close()});
+})();
+</script>
+
+</body>
+</html>

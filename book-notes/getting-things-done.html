@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ee">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>搞定 · GTD</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffdf9; --ink:#1f1d1a; --ink2:#5b5650; --ink3:#8d877e;
+  --line:#e7e1d6; --soft:#f0ebe2;
+  --x:#0f766e; --xs:#e2f2ef; --y:#4338ca; --ys:#e8e7fb; --a:#b45309; --as:#fbeedd;
+  --hot:#c2410c; --hots:#fdebe1; --ok:#15803d; --oks:#e3f4e8;
+  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --r:14px; --shadow:0 1px 2px rgba(30,25,15,.04),0 8px 24px rgba(30,25,15,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#151412; --paper:#1d1c19; --ink:#efebe4; --ink2:#b5aea3; --ink3:#857f76;
+    --line:#2f2c27; --soft:#25231f;
+    --x:#4fd1c0; --xs:#173230; --y:#a5a1ff; --ys:#25244a; --a:#f2a65a; --as:#3a2a19;
+    --hot:#fb923c; --hots:#3b2216; --ok:#4ade80; --oks:#16301f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--serif);margin:0;line-height:1.35}
+button,input,select,textarea{font:inherit;color:inherit}
+.muted{color:var(--ink2)} .small{font-size:12.5px;color:var(--ink3)}
+
+/* layout */
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+aside{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--line);padding:22px 14px 30px;background:var(--bg)}
+.logo{font-family:var(--serif);font-size:22px;font-weight:700;padding:0 10px 4px}
+.logo small{display:block;font-family:var(--sans);font-size:11.5px;font-weight:400;color:var(--ink3);letter-spacing:.08em}
+.grp{font-size:11px;letter-spacing:.18em;color:var(--ink3);padding:16px 10px 6px;font-weight:700}
+.nav{display:flex;align-items:center;gap:10px;width:100%;border:none;background:none;padding:7px 10px;border-radius:9px;cursor:pointer;text-align:left;color:var(--ink2);font-size:14.5px}
+.nav:hover{background:var(--soft)}
+.nav.on{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);font-weight:600}
+.nav .ic{width:20px;text-align:center}
+.badge{margin-left:auto;font-size:11.5px;min-width:20px;padding:0 6px;border-radius:999px;background:var(--soft);color:var(--ink2);text-align:center;font-weight:600}
+.badge.hot{background:var(--hot);color:#fff}
+.badge:empty{display:none}
+main{padding:34px 40px 120px;max-width:960px;width:100%;min-width:0}
+.vh{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.vh h1{font-size:30px}
+.vh .sub{font-size:13.5px;color:var(--ink3);margin-top:2px}
+
+/* components */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.btn{border:1px solid var(--line);background:var(--paper);padding:8px 14px;border-radius:10px;cursor:pointer;font-size:14px;transition:.15s;white-space:nowrap}
+.btn:hover{border-color:var(--ink3)}
+.btn.pri{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.x{background:var(--x);border-color:var(--x);color:#fff}
+.btn.hot{background:var(--hot);border-color:var(--hot);color:#fff}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink3);padding:4px 8px}
+.btn.ghost:hover{color:var(--ink);background:var(--soft)}
+.btn.big{padding:14px 18px;font-size:15.5px;border-radius:12px;text-align:left;display:flex;flex-direction:column;gap:2px;white-space:normal}
+.btn.big small{font-size:12.5px;color:var(--ink3);font-weight:400}
+.btn.big.x small,.btn.big.hot small,.btn.big.pri small{color:rgba(255,255,255,.8)}
+input[type=text],input[type=date],input:not([type]),select,textarea{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:9px 12px;outline:none;min-width:0}
+input:focus,select:focus,textarea:focus{border-color:var(--x)}
+textarea{width:100%;resize:vertical;min-height:80px;line-height:1.6}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.row>input[type=text],.row>input:not([type]){flex:1;min-width:160px}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:4px 12px;border-radius:999px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--x);border-color:var(--x);color:#fff}
+.tag{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:6px;background:var(--soft);color:var(--ink2);white-space:nowrap}
+.tag.x{background:var(--xs);color:var(--x)} .tag.y{background:var(--ys);color:var(--y)} .tag.a{background:var(--as);color:var(--a)} .tag.hot{background:var(--hots);color:var(--hot)} .tag.ok{background:var(--oks);color:var(--ok)}
+.empty{text-align:center;color:var(--ink3);padding:28px 10px;font-size:14px}
+.empty b{display:block;font-family:var(--serif);font-size:18px;color:var(--ink2);margin-bottom:4px}
+hr{border:none;border-top:1px solid var(--line);margin:18px 0}
+details>summary{cursor:pointer;color:var(--ink3);font-size:13.5px;padding:6px 0}
+
+/* list rows */
+.list{display:flex;flex-direction:column}
+.it{display:flex;align-items:flex-start;gap:12px;padding:11px 4px;border-bottom:1px solid var(--line)}
+.it:last-child{border-bottom:none}
+.it .tx{flex:1;min-width:0}
+.it .tx .t{word-break:break-word;cursor:text}
+.it .meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:3px}
+.it .acts{display:flex;gap:2px;opacity:.55;transition:.15s;flex-wrap:wrap;justify-content:flex-end}
+.it:hover .acts{opacity:1}
+.ck{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;border:2px solid var(--ink3);border-radius:50%;margin-top:2px;cursor:pointer;display:grid;place-items:center}
+.ck:hover{border-color:var(--ok)}
+.ck:checked{background:var(--ok);border-color:var(--ok)}
+.ck:checked::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.done .t{text-decoration:line-through;color:var(--ink3)}
+
+/* today */
+.stat{display:flex;flex-direction:column;gap:4px}
+.stat .k{font-size:12px;letter-spacing:.12em;color:var(--ink3);font-weight:700}
+.stat .v{font-family:var(--serif);font-size:34px;font-weight:700;line-height:1.1}
+.stat .v small{font-size:15px;color:var(--ink3);font-weight:400;margin-left:4px}
+.principle{background:var(--as);border-color:transparent}
+.principle .no{font-size:12px;color:var(--a);font-weight:700;letter-spacing:.1em}
+.principle h3{font-size:19px;margin:4px 0 6px;color:var(--a)}
+.hero-tip{background:var(--ink);color:var(--bg);border:none}
+.hero-tip h3{font-size:20px}
+.hero-tip p{color:color-mix(in srgb,var(--bg) 80%,transparent);margin:6px 0 12px}
+
+/* clarify */
+.cl-item{font-family:var(--serif);font-size:24px;line-height:1.5;padding:22px 24px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:18px;word-break:break-word}
+.cl-q{font-family:var(--serif);font-size:19px;margin:6px 0 12px}
+.cl-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.cl-hint{font-size:13px;color:var(--ink3);margin-top:8px}
+.crumbs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.crumbs span{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--xs);color:var(--x)}
+.timer{font-family:var(--serif);font-size:64px;font-weight:700;text-align:center;color:var(--hot);letter-spacing:.04em;line-height:1.1;margin:8px 0}
+.timer.over{color:var(--ink3)}
+
+/* filters */
+.fl{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.fl .row b{font-size:12px;color:var(--ink3);width:40px;font-weight:700;letter-spacing:.1em}
+
+/* projects */
+.pj{margin-bottom:12px}
+.pj .hd{display:flex;align-items:flex-start;gap:10px}
+.pj .hd h4{font-size:17px;flex:1;word-break:break-word}
+.pj.stuck{border-color:var(--hot)}
+.pj .sublist{margin:8px 0 0 2px;padding-left:12px;border-left:2px solid var(--line)}
+.pj .sublist .it{padding:6px 0}
+
+/* horizons */
+.hz{position:relative;padding-left:20px;margin-bottom:12px}
+.hz::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:4px;background:var(--y);opacity:calc(var(--o,1))}
+.hz .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.hz .lv{font-size:12px;color:var(--y);font-weight:700;letter-spacing:.12em}
+.hz h3{font-size:18px}
+.hz .q{font-size:13.5px;color:var(--ink2);margin-bottom:8px}
+
+/* review */
+.rv-step{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.rv-step:last-child{border-bottom:none}
+.rv-step .ph{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--x);width:34px;flex:none;padding-top:3px}
+.rv-step .tx{flex:1}
+.rv-step .tx b{display:block}
+.rv-step.on .tx b{text-decoration:line-through;color:var(--ink3)}
+.prog{height:8px;background:var(--soft);border-radius:999px;overflow:hidden;margin:6px 0 14px}
+.prog i{display:block;height:100%;background:var(--x);transition:width .3s}
+
+/* matrix */
+.mx{position:relative;aspect-ratio:1.25;max-width:620px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px}
+.mx .qd{border-radius:12px;border:1.5px dashed var(--line);padding:14px;display:flex;flex-direction:column;background:var(--paper)}
+.mx .qd.cur{border:2px solid var(--hot);background:var(--hots)}
+.mx .qd h4{font-size:18px}
+.mx .qd .neg{font-size:11.5px;color:var(--ink3);text-decoration:line-through}
+.mx .qd p{font-size:12.5px;color:var(--ink2);margin:4px 0 0}
+.mx .dot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--hot);border:3px solid var(--paper);box-shadow:0 0 0 2px var(--hot),0 6px 16px rgba(0,0,0,.25);transform:translate(-50%,50%);z-index:3;transition:left .6s,bottom .6s}
+.mx-ax{display:flex;justify-content:space-between;max-width:620px;margin:6px auto 0;font-size:12px;color:var(--ink3)}
+.mx.mini{aspect-ratio:1.4;max-width:none;gap:4px}
+.mx.mini .qd{padding:8px 10px}.mx.mini .qd h4{font-size:14px}.mx.mini .qd p,.mx.mini .qd .neg{display:none}
+.mx.mini .dot{width:16px;height:16px;border-width:2px}
+.sc{display:grid;grid-template-columns:1fr 60px;gap:4px 10px;align-items:center;font-size:13.5px}
+.sc .bar{grid-column:1/-1;height:6px;background:var(--soft);border-radius:999px;overflow:hidden;margin-bottom:8px}
+.sc .bar i{display:block;height:100%}
+.sc .v{text-align:right;font-weight:700;font-family:var(--serif)}
+
+/* fab & modal */
+.fab{position:fixed;right:26px;bottom:26px;width:58px;height:58px;border-radius:50%;border:none;background:var(--hot);color:#fff;font-size:30px;line-height:1;cursor:pointer;box-shadow:0 10px 28px color-mix(in srgb,var(--hot) 45%,transparent);z-index:40;transition:transform .15s}
+.fab:hover{transform:scale(1.06)}
+.modal{position:fixed;inset:0;background:rgba(20,18,15,.45);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;z-index:60;padding:12vh 16px 16px}
+.modal.on{display:flex}
+.modal .box{width:100%;max-width:560px;background:var(--paper);border-radius:18px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal input{width:100%;font-size:18px;padding:14px 16px}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(30px);background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;z-index:70;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+kbd{font-family:var(--sans);font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;color:var(--ink3)}
+
+.dump{background:var(--ys);border-color:transparent}
+.dump .cat{font-size:12px;color:var(--y);font-weight:700;letter-spacing:.12em}
+.dump h3{font-size:22px;margin:4px 0 12px;color:var(--y)}
+
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  aside{position:sticky;top:0;z-index:30;height:auto;display:flex;align-items:center;gap:4px;overflow-x:auto;padding:10px 10px;border-right:none;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);scrollbar-width:none}
+  aside::-webkit-scrollbar{display:none}
+  .logo,.grp{display:none}
+  .nav{width:auto;white-space:nowrap;padding:6px 10px;font-size:13.5px}
+  .nav .ic{width:auto}
+  main{padding:22px 16px 120px}
+  .grid,.grid3{grid-template-columns:1fr}
+  .cl-item{font-size:20px}
+  .it .acts{opacity:1}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside id="side">
+    <div class="logo">搞定<small>GETTING THINGS DONE</small></div>
+    <button class="nav" data-act="go" data-v="today"><span class="ic">☀️</span>今天</button>
+    <div class="grp">掌控</div>
+    <button class="nav" data-act="go" data-v="inbox"><span class="ic">📥</span>收集<span class="badge" data-b="inbox"></span></button>
+    <button class="nav" data-act="go" data-v="clarify"><span class="ic">🧭</span>理清</button>
+    <button class="nav" data-act="go" data-v="next"><span class="ic">✅</span>下一步行动<span class="badge" data-b="next"></span></button>
+    <button class="nav" data-act="go" data-v="projects"><span class="ic">📁</span>项目<span class="badge" data-b="projects"></span></button>
+    <button class="nav" data-act="go" data-v="waiting"><span class="ic">🤝</span>等待<span class="badge" data-b="waiting"></span></button>
+    <button class="nav" data-act="go" data-v="cal"><span class="ic">📅</span>日程<span class="badge" data-b="cal"></span></button>
+    <button class="nav" data-act="go" data-v="someday"><span class="ic">🌱</span>将来/也许</button>
+    <button class="nav" data-act="go" data-v="ref"><span class="ic">📚</span>参考资料</button>
+    <div class="grp">视角</div>
+    <button class="nav" data-act="go" data-v="horizons"><span class="ic">🏔</span>六个层面</button>
+    <button class="nav" data-act="go" data-v="matrix"><span class="ic">🧩</span>自我诊断</button>
+    <div class="grp">回顾</div>
+    <button class="nav" data-act="go" data-v="review"><span class="ic">🔁</span>每周回顾<span class="badge" data-b="review"></span></button>
+    <button class="nav" data-act="go" data-v="settings"><span class="ic">⚙️</span>设置</button>
+  </aside>
+  <main id="main"></main>
+</div>
+
+<button class="fab" data-act="capture" title="随手收集（快捷键 C）">＋</button>
+<div class="modal" id="cap">
+  <div class="box">
+    <div class="row" style="justify-content:space-between;margin-bottom:10px"><h3 style="font-size:18px">📥 随手收集</h3><span class="small">回车放进工作篮 · <kbd>Esc</kbd> 关闭</span></div>
+    <form data-form="cap"><input name="t" id="capInput" placeholder="脑子里想到什么就写什么，先不用管怎么处理" autocomplete="off"></form>
+    <p class="small" style="margin:10px 0 0">“你的大脑是用来产生想法的，而不是保存想法的。”</p>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========== 数据 ========== */
+const PRIN=[
+["理清思路，确立新方向","拿不准下一步时，先清理手边最明显的事，并随身带一个捕捉工具。"],
+["知道哪些事情自己尚未做，你才会为之心安","压力来自没有履行的约定；收集、处理、组织、回顾、执行要分开做。"],
+["理清承担的任务，可以更好地选择新任务","看清手上的全部承诺，才知道该拒绝什么。"],
+["要实现未来的目标，首先明确当前的位置","先盘清六个层面，再谈优先级。"],
+["以有限的可能，去利用无限的机遇","最弱的一环决定整体效率，期望要控制在可行范围内。"],
+["一心二用带来压力与失败","悬而未决的事会挤占精力。先处理细节，才谈得上宏观。"],
+["有意识地权衡轻重缓急","拿着完整清单比较，才知道孰轻孰重。"],
+["完成未竟之事，释放自身能量","清理车库这类平凡小事，往往能点燃愿景和灵感。"],
+["如果你一直想着某件事，很可能是还没有搞定","明确结果和下一步，放进可信系统，大脑才会放手。"],
+["只要有空间，创造力就会展现","把所有事写全的人，反而会感到解脱。"],
+["渠深流畅","系统阻塞时，人会推开新机会；先清理系统。"],
+["担忧无益","该少想时少想，该多想时多想；定期回顾，平时才能放心去做。"],
+["你不是你的工作","清单的意义在于腾出心来，做真正喜欢的事。"],
+["想看得更清楚，请从更高处着眼","一个层面卡住时，就往上提一层。"],
+["只有身体力行，你才会知道如何去做","先在脑中有图景和结果，才会看到方法。"],
+["工作足够努力是不可能的","忙碌是陷阱；把工作集中到一处权衡。"],
+["精力随心思而动","把想关注的东西“摆在门前”。"],
+["目标越明确，实现目标的途径越多","重新审视会议、空间、资产的目的。"],
+["精益求精","不求“最好”，只求此刻尽力做到当下最好。"],
+["关注重心的变化等于结果的变化","练习迅速回到“准备好”的状态。"],
+["视角是地球上最贵重的商品","状态好时记下灵感，状态差时拿出来用。"],
+["多加思考","每件进来的事都想到“下一步行动”为止，约 15 秒。"],
+["思考有度","想清楚目的和下一步、放好提示就够了。"],
+["效率是改善工作的唯一机会","关键是按目标行事，而不只是拥有目标。"],
+["关注一件事才能“全神贯注”","其他事都安顿好，才能百分之百投入眼前。"],
+["未来目标的价值，在于它当前培育的变化","愿景的价值在于改变此刻的决定。"],
+["稳定带来创造力","组织有序和创造力是同一枚硬币的两面。"],
+["形式与功能必须符合效率最高的原则","用工作篮、清单和每周回顾连起“幻想者”和“实干者”。"],
+["优化系统，放飞思想","系统不更新，大脑就不信任它；每周回顾最重要。"],
+["反应能力提升生存能力","积压的事务像麻醉剂，让人对外界迟钝。"],
+["系统的强弱取决于最薄弱的环节","系统要在最糟的状态下也能运转。"],
+["系统的效率与你的感知度成反比","好系统让人感觉不到它的存在。"],
+["功能取决于形式","在每周回顾里加一份“创造力清单”。"],
+["目标明确才能赢得胜利","一份完整、每周回顾的项目清单是“万能钥匙”。"],
+["多人负责等于无人负责","内心的“委员会”需要一位拍板的“首席执行官”。"],
+["确定原则，而不是监管制度","写下“我们的最佳表现出现在……”。"],
+["利用大脑来思考工作，而不是单纯关注工作","大脑擅长分析决策，不擅长记忆提醒。"],
+["思考的价值超乎想象","先不加区分地收集想法，之后再加工。"],
+["资源越是有限，规划越有必要","最需要整理的时候，往往是最不想做的时候。"],
+["对自己做的事情承担起责任","你是自己生活的编剧和导演。"],
+["过度控制等于失去控制","别迷恋组织形式本身，系统代替不了思考。"],
+["进展越好，状态越好","做最坏的打算，设想最好的情况。"],
+["相信自己的行动选择，需要多层面的自我管理","决策受情境、工作类型、工作层面影响。"],
+["你的力量取决于你的放松能力","放松时控制力最强；头脑越自由，效率越高。"],
+["预料之内的意外算不上意外","直面最坏情况并纳入计划。"],
+["目光越长远，进展越顺畅","激情消失时，要敢于放弃旧做法。"],
+["放慢速度以提升速度","想换挡，得先踩离合器。"],
+["你没有时间做任何项目","项目只能靠一步步行动推进。"],
+["坚持做好小事，就能产生重大影响","每次多出 10%，长期坚持就能突破。"],
+["亲力亲为才能了解事物","真正的理解来自行动。"],
+["动中求变更容易","晕船的人去掌舵就不晕了。"],
+["最伟大的成功源自最惨重的失败","衡量标准改为“更佳选择的比例”。"]
+];
+const PROMPTS=[
+["工作","正在进行、还没收尾的项目"],["工作","答应了老板或同事、还没做的事"],["工作","需要回复的邮件和消息"],["工作","要打的电话、要约的人"],["工作","即将到来的会议：需要准备什么"],["工作","要写的文档、报告、方案"],["工作","在等别人给你的东西"],["工作","报销、预算、财务"],["工作","团队、招聘、人员"],["工作","想学的技能、想改进的流程"],["工作","电脑、工具、系统要处理的"],["工作","办公桌、文件、抽屉要整理的"],
+["生活","对家人的承诺"],["生活","朋友、聚会、该联系的人"],["生活","生日、纪念日、礼物"],["生活","家里要修、要买、要换的东西"],["生活","健康：体检、牙医、运动"],["生活","账单、税、保险、理财"],["生活","车、出行、证件"],["生活","旅行、假期"],["生活","爱好、想读的书、想看的东西"],["生活","社区、宠物、其他杂事"],
+["更高层面","有没有哪个责任范围最近被忽视了？"],["更高层面","未来一两年，想实现什么？"],["更高层面","三五年后，希望生活是什么样？"],["更高层面","有什么一直盘踞在心里、说不清的担心？"]
+];
+const RSTEPS=[
+["确认","收齐散落的纸片和材料","名片、收据、便条、包里的东西，统统放进工作篮",""],
+["确认","把工作篮处理到零","逐件理清，不放回去","clarify"],
+["确认","清空大脑","还有什么新的项目、想法、担心？写下来","dump"],
+["更新","回顾下一步行动清单","勾掉已完成的，补上遗漏的","next"],
+["更新","回顾过去两三周的日程","有没有遗留的后续行动？","cal"],
+["更新","回顾接下来的日程","有什么需要提前准备？","cal"],
+["更新","回顾等待清单","需要催一下谁？","waiting"],
+["更新","回顾项目清单","确保每个项目至少有一条下一步","projects"],
+["更新","回顾相关核查清单与责任范围","有没有被忽视的领域？","horizons"],
+["创造","回顾将来/也许清单","有没有该激活的？可以删掉的？","someday"],
+["创造","捕捉新奇、大胆的想法","有什么想尝试的？写进工作篮","dump"]
+];
+const ENERGY={low:"低精力",mid:"中精力",high:"高精力"};
+const QUAD={
+  captain:{n:"舰长和指挥官",neg:"",tip:"状态很好。手轻握舵轮，眼盯地平线，一有偏离就调整。要提防自满，别荒废每周回顾。"},
+  vision:{n:"梦想家",neg:"空想家",tip:"想法和承诺多过资源。往右走：把想法落成项目，给每个项目写出下一步，然后清空工作篮。"},
+  impl:{n:"执行者",neg:"微观管理者",tip:"清单整齐，却可能只顾数豆子。往上走：写下责任范围和 1–2 年目标，问一句“这是为了什么？”"},
+  resp:{n:"回应者",neg:"受害者",tip:"被最新、最急的事拖着走。“不知道该干什么时，先清工作篮。”先往右建立掌控，再往上。"}
+};
+
+/* ========== 存储 ========== */
+const KEY="gtd-app-v1";
+const DEF=()=>({items:[],projects:[],hz:{purpose:"",principles:"",vision:"",goals:[],areas:[]},rev:{weekly:[],areas:"",goals:"",vision:"",purpose:""},rdraft:[],ctx:["电话","电脑","外出","办公室","在家","议事日程","阅读"]});
+let S=load();
+function load(){try{const d=DEF(),o=JSON.parse(localStorage.getItem(KEY)||"{}");return {...d,...o,hz:{...d.hz,...(o.hz||{})},rev:{...d.rev,...(o.rev||{})}}}catch(e){return DEF()}}
+function save(){localStorage.setItem(KEY,JSON.stringify(S))}
+
+/* ========== 工具 ========== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const td=(off=0)=>{const d=new Date();d.setDate(d.getDate()+off);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const days=(a,b=td())=>Math.round((new Date(b+"T00:00")-new Date(a+"T00:00"))/864e5);
+const fmtD=d=>{if(!d)return"";const n=days(td(),d);if(n===0)return"今天";if(n===1)return"明天";if(n===-1)return"昨天";const [y,m,dd]=d.split("-");return (y==td().slice(0,4)?"":y+"年")+(+m)+"月"+(+dd)+"日"};
+const L=l=>S.items.filter(i=>i.list===l);
+const item=id=>S.items.find(i=>i.id===id);
+const proj=id=>S.projects.find(p=>p.id===id);
+const areaOf=id=>S.hz.areas.find(a=>a.id===id);
+const add=o=>{const it={id:uid(),created:td(),...o};S.items.push(it);return it};
+const del=id=>{S.items=S.items.filter(i=>i.id!==id)};
+const activeP=()=>S.projects.filter(p=>p.status==="active");
+const pActs=pid=>S.items.filter(i=>i.pid===pid&&["next","waiting","cal"].includes(i.list));
+const stuck=()=>activeP().filter(p=>!pActs(p.id).length);
+const staleW=()=>L("waiting").filter(i=>days(i.created)>7);
+const lastRev=()=>S.rev.weekly[S.rev.weekly.length-1];
+const revAge=()=>lastRev()?days(lastRev()):null;
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),1800)}
+const opt=(v,l,cur)=>`<option value="${esc(v)}"${v==cur?" selected":""}>${esc(l)}</option>`;
+const projSel=(name,cur="")=>`<select name="${name}">${opt("","不属于项目",cur)}${activeP().map(p=>opt(p.id,"📁 "+p.name,cur)).join("")}</select>`;
+const areaSel=(name,cur="")=>`<select name="${name}">${opt("","责任范围（可选）",cur)}${S.hz.areas.map(a=>opt(a.id,a.text,cur)).join("")}</select>`;
+const ctxSel=(name,cur="")=>`<select name="${name}">${S.ctx.map(c=>opt(c,"@"+c,cur)).join("")}</select>`;
+const minSel=(name,cur=15)=>`<select name="${name}">${[[2,"2 分钟"],[5,"5 分钟"],[15,"15 分钟"],[30,"30 分钟"],[60,"1 小时"],[120,"2 小时+"]].map(([v,l])=>opt(v,l,cur)).join("")}</select>`;
+const enSel=(name,cur="mid")=>`<select name="${name}">${Object.entries(ENERGY).map(([v,l])=>opt(v,l,cur)).join("")}</select>`;
+function weekday(){return ["日","一","二","三","四","五","六"][new Date().getDay()]}
+
+/* ========== 评分（自我诊断） ========== */
+function scores(){
+  const inbox=L("inbox").length, ap=activeP(), withNext=ap.filter(p=>pActs(p.id).length).length, ra=revAge(), sw=staleW().length;
+  const c=[
+    ["工作篮清空",25,inbox===0?25:Math.max(0,25-inbox*2.5),inbox===0?"工作篮是空的":`工作篮还有 ${inbox} 件没理清`,"clarify"],
+    ["项目都有下一步",30,ap.length?Math.round(30*withNext/ap.length):0,ap.length?`${withNext}/${ap.length} 个项目有下一步`:"还没有项目清单","projects"],
+    ["每周回顾",30,ra===null?0:ra<=7?30:ra<=14?15:0,ra===null?"还没做过每周回顾":`上次回顾在 ${ra} 天前`,"review"],
+    ["等待清单不过期",15,Math.max(0,15-sw*5),sw?`${sw} 件等了超过 7 天`:"等待的事都在跟进","waiting"]
+  ];
+  const linked=ap.filter(p=>p.area).length, R=S.rev;
+  const hi=(k,n)=>R[k]&&days(R[k])<=n?5:0;
+  const p=[
+    ["宗旨与原则",15,(S.hz.purpose.trim()||S.hz.principles.trim())?15:0,S.hz.purpose.trim()?"写下了宗旨":"还没写宗旨与原则","horizons"],
+    ["愿景",15,S.hz.vision.trim()?15:0,S.hz.vision.trim()?"写下了愿景":"还没写 3–5 年愿景","horizons"],
+    ["1–2 年目标",20,S.hz.goals.length?20:0,`${S.hz.goals.length} 个目标`,"horizons"],
+    ["责任范围",20,S.hz.areas.length?20:0,`${S.hz.areas.length} 个责任范围`,"horizons"],
+    ["项目挂到责任范围",15,ap.length?Math.round(15*linked/ap.length):0,ap.length?`${linked}/${ap.length} 个项目有归属`:"还没有项目","projects"],
+    ["高层面按时回顾",15,hi("areas",31)+hi("goals",92)+hi("vision",366),"月看责任、季看目标、年看愿景","horizons"]
+  ];
+  const sum=a=>Math.round(a.reduce((s,x)=>s+x[2],0));
+  const cx=sum(c), py=sum(p);
+  const q=cx>=50?(py>=50?"captain":"impl"):(py>=50?"vision":"resp");
+  return {c,p,cx,py,q};
+}
+function matrixHTML(sc,mini){
+  const cell=(k,label)=>`<div class="qd${sc.q===k?" cur":""}"><span class="small">${label}</span>${QUAD[k].neg?`<span class="neg">${QUAD[k].neg}</span>`:""}<h4>${QUAD[k].n}</h4>${mini?"":`<p>${QUAD[k].tip}</p>`}</div>`;
+  return `<div class="mx${mini?" mini":""}">${cell("vision","低掌控 · 高视角")}${cell("captain","高掌控 · 高视角")}${cell("resp","低掌控 · 低视角")}${cell("impl","高掌控 · 低视角")}<div class="dot" style="left:${Math.min(97,Math.max(3,sc.cx))}%;bottom:${Math.min(97,Math.max(3,sc.py))}%"></div></div>`;
+}
+
+/* ========== 行渲染 ========== */
+function metaTags(i){
+  const t=[];
+  if(i.ctx)t.push(`<span class="tag x">@${esc(i.ctx)}</span>`);
+  if(i.mins)t.push(`<span class="tag${i.mins<=2?" hot":""}">${i.mins>=120?"2 小时+":i.mins>=60?"1 小时":i.mins+" 分钟"}</span>`);
+  if(i.energy)t.push(`<span class="tag">${ENERGY[i.energy]}</span>`);
+  if(i.pid&&proj(i.pid))t.push(`<span class="tag y" data-act="go" data-v="projects" style="cursor:pointer">📁 ${esc(proj(i.pid).name)}</span>`);
+  if(i.who)t.push(`<span class="tag a">等 ${esc(i.who)}</span>`);
+  if(i.list==="waiting"){const d=days(i.created);t.push(`<span class="tag${d>14?" hot":d>7?" a":""}">${d} 天</span>`)}
+  if(i.date)t.push(`<span class="tag${i.date<td()?" hot":i.date===td()?" a":""}">📅 ${fmtD(i.date)}</span>`);
+  if(i.note)t.push(`<span class="tag">${esc(i.note)}</span>`);
+  return t.join("");
+}
+function row(i,acts="",check=true){
+  return `<div class="it${i.list==="done"?" done":""}">${check?`<input type="checkbox" class="ck" data-act="toggle" data-id="${i.id}"${i.list==="done"?" checked":""}>`:""}<div class="tx"><div class="t" data-act="edit" data-id="${i.id}" title="点击修改">${esc(i.text)}</div><div class="meta">${metaTags(i)}</div></div><div class="acts">${acts}<button class="btn ghost" data-act="del" data-id="${i.id}" title="删除">✕</button></div></div>`;
+}
+
+/* ========== 视图 ========== */
+let V="today", F={ctx:"",mins:0,energy:""}, CL=null, DUMP=null, TIMER=null;
+const VIEWS={};
+
+VIEWS.today=()=>{
+  const sc=scores(), inbox=L("inbox").length, ra=revAge();
+  const todayCal=L("cal").filter(i=>i.date<=td()).sort((a,b)=>a.date.localeCompare(b.date));
+  const st=stuck(), sw=staleW();
+  const di=Math.floor(new Date(td()).getTime()/864e5)%52, pr=PRIN[di];
+  const fresh=!S.items.length&&!S.projects.length;
+  return `
+  <div class="vh"><div><h1>今天 · 星期${weekday()}</h1><div class="sub">${td()}　按 <kbd>C</kbd> 随时收集</div></div></div>
+  ${fresh?`<div class="card hero-tip" style="margin-bottom:14px"><h3>第一次用？先做一次大脑清扫</h3><p>把盘踞在脑子里的所有事都写出来，一件一条。全部收集完再开始理清。《搞定Ⅰ》建议首次留出整块时间。</p><div class="row"><button class="btn hot" data-act="dumpStart">🧠 开始大脑清扫</button><button class="btn" data-act="demo" style="background:transparent;color:inherit;border-color:rgba(255,255,255,.3)">先载入示例数据看看</button></div></div>`:""}
+  <div class="grid3" style="margin-bottom:14px">
+    <div class="card stat"><span class="k">工作篮</span><span class="v">${inbox}<small>件待理清</small></span>${inbox?`<button class="btn x" data-act="go" data-v="clarify" style="align-self:flex-start;margin-top:6px">🧭 开始理清</button>`:`<span class="small">清空了，心如止水 ✓</span>`}</div>
+    <div class="card stat"><span class="k">下一步行动</span><span class="v">${L("next").length}<small>条</small></span><button class="btn" data-act="go" data-v="next" style="align-self:flex-start;margin-top:6px">现在做什么？</button></div>
+    <div class="card stat"><span class="k">每周回顾</span><span class="v">${ra===null?"—":ra}<small>${ra===null?"还没做过":"天前"}</small></span>${ra===null||ra>7?`<button class="btn hot" data-act="go" data-v="review" style="align-self:flex-start;margin-top:6px">🔁 开始回顾</button>`:`<span class="small">节奏不错</span>`}</div>
+  </div>
+  <div class="grid">
+    <div class="card"><h3 style="font-size:17px;margin-bottom:6px">📅 今天的日程</h3>
+      ${todayCal.length?`<div class="list">${todayCal.map(i=>row(i)).join("")}</div>`:`<div class="empty">今天没有固定安排。日程表只放有硬性时间的事。</div>`}
+    </div>
+    <div class="card"><h3 style="font-size:17px;margin-bottom:6px">⚠️ 需要注意</h3>
+      ${!st.length&&!sw.length?`<div class="empty">没有卡住的项目，也没有过期的等待。</div>`:""}
+      ${st.map(p=>`<div class="it"><div class="tx"><div>📁 ${esc(p.name)}</div><div class="meta"><span class="tag hot">没有下一步</span></div></div><button class="btn ghost" data-act="go" data-v="projects">去补 →</button></div>`).join("")}
+      ${sw.map(i=>`<div class="it"><div class="tx"><div>${esc(i.text)}</div><div class="meta">${metaTags(i)}</div></div><button class="btn ghost" data-act="go" data-v="waiting">去催 →</button></div>`).join("")}
+    </div>
+    <div class="card principle"><span class="no">今日原则 · 《搞定Ⅱ》第 ${di+1} 条</span><h3>${pr[0]}</h3><p class="muted" style="margin:0">${pr[1]}</p></div>
+    <div class="card" style="cursor:pointer" data-act="go" data-v="matrix"><div class="row" style="justify-content:space-between;margin-bottom:8px"><h3 style="font-size:17px">🧩 你现在在哪个象限</h3><span class="tag hot">${QUAD[sc.q].n}</span></div>${matrixHTML(sc,true)}<p class="small" style="margin:8px 0 0">掌控 ${sc.cx} · 视角 ${sc.py}，点开看怎么改善</p></div>
+  </div>`;
+};
+
+VIEWS.inbox=()=>{
+  const it=L("inbox");
+  if(DUMP!==null){
+    const p=PROMPTS[DUMP];
+    return `<div class="vh"><div><h1>🧠 大脑清扫</h1><div class="sub">第 ${DUMP+1} / ${PROMPTS.length} 个提示 · 已收集 ${it.length} 件</div></div><button class="btn" data-act="dumpEnd">结束清扫</button></div>
+    <div class="card dump"><span class="cat">${p[0]}</span><h3>${p[1]}</h3>
+      <form data-form="dumpAdd" class="row"><input name="t" id="dumpInput" placeholder="想到一件写一件，回车继续" autocomplete="off"><button class="btn x">放进工作篮</button></form>
+      <div class="row" style="margin-top:12px;justify-content:space-between"><button class="btn ghost" data-act="dumpNav" data-d="-1"${DUMP===0?" disabled":""}>← 上一个</button><span class="small">一张纸只写一件事，先别判断要不要做</span><button class="btn" data-act="dumpNav" data-d="1">${DUMP===PROMPTS.length-1?"完成 ✓":"下一个 →"}</button></div>
+    </div>
+    <div class="card" style="margin-top:14px"><h3 style="font-size:16px;margin-bottom:4px">刚收集的</h3>${it.length?`<div class="list">${it.slice().reverse().slice(0,12).map(i=>row(i,"",false)).join("")}</div>`:`<div class="empty">还没有</div>`}</div>
+    <p class="small">提示清单按书中“清空大脑”“提示清单”的思路编写，按工作、生活、更高层面排列。</p>`;
+  }
+  return `<div class="vh"><div><h1>📥 收集</h1><div class="sub">100% 收集。只收集一半，大脑和系统就都不可信。</div></div><div class="row"><button class="btn" data-act="dumpStart">🧠 大脑清扫</button>${it.length?`<button class="btn x" data-act="go" data-v="clarify">🧭 理清 ${it.length} 件</button>`:""}</div></div>
+  <div class="card" style="margin-bottom:14px"><form data-form="inboxAdd" class="row"><input name="t" id="inboxInput" placeholder="写下一件事，回车放进工作篮（可一次粘贴多行）" autocomplete="off"><button class="btn pri">放进去</button></form></div>
+  <div class="card">${it.length?`<div class="list">${it.map(i=>row(i,"",false)).join("")}</div>`:`<div class="empty"><b>工作篮是空的</b>工作篮是处理问题的地方，不是存储容器。</div>`}</div>`;
+};
+
+VIEWS.clarify=()=>{
+  const it=L("inbox");
+  if(!CL||!item(CL.src)&&!CL.committed){ if(!it.length){CL=null;return `<div class="vh"><div><h1>🧭 理清</h1></div></div><div class="card"><div class="empty" style="padding:50px 10px"><b>🌊 工作篮清空了</b>心如止水。去看看<a href="#" data-act="go" data-v="next">下一步行动</a>，或者<a href="#" data-act="dumpStart">再清扫一遍大脑</a>。</div></div>`}
+    CL={src:it[0].id,step:"q1",pid:"",text:""}; }
+  const src=item(CL.src), txt=src?src.text:CL.orig, left=it.length;
+  const crumbs=[];
+  if(CL.pid&&proj(CL.pid))crumbs.push("📁 "+proj(CL.pid).name);
+  if(CL.text)crumbs.push("➡️ "+CL.text);
+  let body="";
+  const back=`<button class="btn ghost" data-act="clBack">← 重来</button>`;
+  switch(CL.step){
+    case"q1":body=`<div class="cl-q">这是什么？需要采取行动吗？</div><div class="cl-opts">
+      <button class="btn big x" data-act="cl" data-s="multi">需要行动<small>有事要做，或者有个想要的结果</small></button>
+      <button class="btn big" data-act="cl" data-s="no">不需要行动<small>垃圾、以后再说，或者留作参考</small></button></div>`;break;
+    case"no":body=`<div class="cl-q">不需要行动，那它是……</div><div class="cl-opts">
+      <button class="btn big" data-act="clTrash">🗑 垃圾<small>直接删掉</small></button>
+      <button class="btn big" data-act="clMove" data-l="someday">🌱 将来/也许<small>现在不做，每周回顾时再看</small></button>
+      <button class="btn big" data-act="clMove" data-l="ref">📚 参考资料<small>以后可能要查</small></button></div>${back}`;break;
+    case"multi":body=`<div class="cl-q">想要什么结果？一步能完成吗？</div><div class="cl-opts">
+      <button class="btn big x" data-act="cl" data-s="next" data-pre="1">一步就能完成<small>直接确定这一步要做什么</small></button>
+      <button class="btn big" data-act="cl" data-s="proj">需要多步：这是个项目<small>先写下完成后的样子</small></button></div>
+      ${activeP().length?`<form data-form="clExisting" class="row" style="margin-top:12px"><span class="small">或者，它属于已有项目：</span>${projSel("pid")}<button class="btn">归到这个项目 →</button></form>`:""}${back}`;break;
+    case"proj":body=`<div class="cl-q">项目完成后是什么样？</div><form data-form="clProj"><div class="row"><input name="name" id="clInput" value="${esc(txt)}" autocomplete="off">${S.hz.areas.length?areaSel("area"):""}<button class="btn x">建立项目 →</button></div></form>
+      <div class="cl-hint">写成结果，比如把“母亲”写成“为母亲办好 60 岁生日宴”。</div>${back}`;break;
+    case"next":body=`<div class="cl-q">${CL.pid?`项目「${esc(proj(CL.pid)?.name)}」的`:""}下一步行动是什么？</div><form data-form="clNext"><div class="row"><input name="t" id="clInput" value="${esc(CL.pre?txt:"")}" placeholder="以动词开头的具体动作" autocomplete="off"><button class="btn x">下一步 →</button></div></form>
+      <div class="cl-hint">要具体到马上能动手：“轮胎”→“给老王打电话，问修车行的号码”。自问：先做什么？怎么做？在哪做？</div>${back}`;break;
+    case"route":body=`<div class="cl-q">两分钟内能做完吗？</div><div class="cl-opts">
+      <button class="btn big hot" data-act="cl" data-s="now">⚡ 能，现在就做<small>两分钟规则：做掉比记下来还快</small></button>
+      <button class="btn big" data-act="cl" data-s="delegate">🤝 委派给别人<small>你不是最合适的人，交出去并记进等待</small></button>
+      <button class="btn big" data-act="cl" data-s="cal">📅 有固定日期<small>必须在某天或某个时间做</small></button>
+      <button class="btn big x" data-act="cl" data-s="list">📋 放进行动清单<small>按情境，有空就做</small></button></div>${back}`;break;
+    case"now":body=`<div class="cl-q">去做吧，做完点“完成”。</div><div class="timer" id="timer">2:00</div><div class="row" style="justify-content:center"><button class="btn hot" data-act="clDoneNow">✓ 做完了</button><button class="btn" data-act="cl" data-s="list">两分钟做不完，放进清单</button></div>`;break;
+    case"more":body=`<div class="cl-q">项目「${esc(proj(CL.pid)?.name)}」还有下一步吗？</div><div class="cl-opts">
+      <button class="btn big x" data-act="cl" data-s="next">还有，写下下一步<small>每个进行中的项目都要有一条下一步</small></button>
+      <button class="btn big" data-act="clProjDone">整个项目都完成了<small>标记项目完成</small></button></div>`;break;
+    case"delegate":body=`<div class="cl-q">交给谁？</div><form data-form="clDelegate"><div class="row"><input name="who" id="clInput" placeholder="名字" autocomplete="off"><button class="btn x">记进等待清单 →</button></div></form><div class="cl-hint">委派之后记下交给了谁、哪天交的，每周回顾时跟进。</div>`;break;
+    case"cal":body=`<div class="cl-q">哪一天？</div><form data-form="clCal"><div class="row"><input type="date" name="d" value="${td(1)}" required><input name="note" placeholder="具体时间（可选），如 15:00" autocomplete="off"><button class="btn x">放进日程 →</button></div></form><div class="cl-hint">日程表是“神圣领地”：只放必须在那天或那个时间做的事。</div>`;break;
+    case"list":body=`<div class="cl-q">在什么情境下做？要多久？要多少精力？</div><form data-form="clList"><div class="row">${ctxSel("ctx")}${minSel("mins")}${enSel("energy")}<button class="btn x">放进行动清单 →</button></div></form><div class="cl-hint">执行时依次看：情境 → 可用时间 → 精力 → 重要性（四标准法）。</div>`;break;
+  }
+  return `<div class="vh"><div><h1>🧭 理清</h1><div class="sub">从最上面一项开始，一次一件，处理过的不放回去 · 还剩 ${left} 件</div></div></div>
+  <div class="cl-item">${esc(txt)}</div>${crumbs.length?`<div class="crumbs">${crumbs.map(c=>`<span>${esc(c)}</span>`).join("")}</div>`:""}${body}`;
+};
+
+VIEWS.next=()=>{
+  let it=L("next");
+  const f=it.filter(i=>(!F.ctx||i.ctx===F.ctx)&&(!F.mins||(i.mins||15)<=F.mins)&&(!F.energy||i.energy===F.energy||(F.energy==="mid"&&i.energy==="low")||(F.energy==="high")));
+  const groups={};f.forEach(i=>{(groups[i.ctx||"其他"]??=[]).push(i)});
+  const chip=(k,v,l)=>`<button class="chip${F[k]==v?" on":""}" data-act="filt" data-k="${k}" data-val="${v}">${l}</button>`;
+  const done=L("done").slice(-30).reverse();
+  return `<div class="vh"><div><h1>✅ 下一步行动</h1><div class="sub">现在做什么？依次看情境、可用时间、精力，再凭直觉选</div></div></div>
+  <div class="card fl">
+    <div class="row"><b>情境</b>${chip("ctx","","全部")}${S.ctx.map(c=>chip("ctx",c,"@"+c)).join("")}</div>
+    <div class="row"><b>时间</b>${chip("mins",0,"不限")}${[[5,"5 分钟"],[15,"15 分钟"],[30,"30 分钟"],[60,"1 小时"]].map(([v,l])=>chip("mins",v,l)).join("")}</div>
+    <div class="row"><b>精力</b>${chip("energy","","不限")}${chip("energy","low","我很累")}${chip("energy","mid","一般")}${chip("energy","high","状态很好")}</div>
+  </div>
+  <div class="card" style="margin-bottom:14px"><form data-form="nextAdd" class="row"><input name="t" placeholder="新的下一步行动（以动词开头）" autocomplete="off">${ctxSel("ctx",F.ctx||S.ctx[0])}${minSel("mins")}${enSel("energy")}${projSel("pid")}<button class="btn pri">添加</button></form></div>
+  ${f.length?Object.entries(groups).map(([g,a])=>`<div class="card" style="margin-bottom:12px"><h3 style="font-size:16px;color:var(--x)">@${esc(g)} <span class="small">${a.length}</span></h3><div class="list">${a.map(i=>row(i)).join("")}</div></div>`).join(""):`<div class="card"><div class="empty"><b>${it.length?"没有符合条件的行动":"还没有下一步行动"}</b>${it.length?"放宽筛选条件试试；精力很低时，就做些简单的小事。":"先去收集、理清，行动会出现在这里。"}</div></div>`}
+  ${done.length?`<details style="margin-top:10px"><summary>已完成 ${L("done").length} 条（显示最近 30 条）</summary><div class="card"><div class="list">${done.map(i=>row(i)).join("")}</div><button class="btn ghost" data-act="clearDone" style="margin-top:8px">清空已完成</button></div></details>`:""}`;
+};
+
+VIEWS.projects=()=>{
+  const ap=activeP(), st=stuck(), other=S.projects.filter(p=>p.status!=="active");
+  const card=p=>{const a=pActs(p.id), isStuck=!a.length&&p.status==="active";
+    return `<div class="card pj${isStuck?" stuck":""}"><div class="hd"><h4 data-act="editP" data-id="${p.id}" style="cursor:text">📁 ${esc(p.name)}</h4><div class="row" style="gap:4px">${p.area&&areaOf(p.area)?`<span class="tag y">${esc(areaOf(p.area).text)}</span>`:""}${isStuck?`<span class="tag hot">没有下一步</span>`:""}
+      ${p.status==="active"?`<button class="btn ghost" data-act="pStatus" data-id="${p.id}" data-s="done" title="完成项目">✓ 完成</button><button class="btn ghost" data-act="pStatus" data-id="${p.id}" data-s="someday" title="暂缓">🌱 暂缓</button>`:`<button class="btn ghost" data-act="pStatus" data-id="${p.id}" data-s="active">↺ 重新激活</button>`}
+      <button class="btn ghost" data-act="delP" data-id="${p.id}" title="删除项目">✕</button></div></div>
+      ${p.status==="active"?`${a.length?`<div class="sublist">${a.map(i=>row(i)).join("")}</div>`:""}<form data-form="pNext" data-pid="${p.id}" class="row" style="margin-top:8px"><input name="t" placeholder="${isStuck?"⚠️ 写下这个项目的下一步":"再加一条下一步"}" autocomplete="off">${ctxSel("ctx")}<button class="btn">添加</button></form>`:""}
+      ${S.hz.areas.length&&p.status==="active"?`<form data-form="pArea" data-pid="${p.id}" class="row" style="margin-top:6px"><span class="small">责任范围：</span><select name="area" data-act-change="pArea" data-pid="${p.id}">${opt("","未归类",p.area)}${S.hz.areas.map(x=>opt(x.id,x.text,p.area)).join("")}</select></form>`:""}
+    </div>`};
+  return `<div class="vh"><div><h1>📁 项目</h1><div class="sub">一年内要多步完成的结果，每周回顾时逐个过一遍 · 进行中 ${ap.length} 个${st.length?` · <span style="color:var(--hot)">${st.length} 个没有下一步</span>`:""}</div></div></div>
+  <div class="card" style="margin-bottom:14px"><form data-form="projAdd" class="row"><input name="name" placeholder="新项目，写成完成后的样子" autocomplete="off">${areaSel("area")}<button class="btn pri">建立项目</button></form></div>
+  ${ap.length?ap.sort((a,b)=>pActs(a.id).length-pActs(b.id).length).map(card).join(""):`<div class="card"><div class="empty"><b>还没有项目</b>凡是一步做不完的事都算项目，多数人有 30–100 个。</div></div>`}
+  ${other.length?`<details><summary>已完成 / 暂缓 ${other.length} 个</summary>${other.map(card).join("")}</details>`:""}`;
+};
+
+const simpleList=(l,icon,title,sub,ph,extraForm="",acts=()=>"",empty="")=>()=>{
+  const it=L(l);
+  return `<div class="vh"><div><h1>${icon} ${title}</h1><div class="sub">${sub}</div></div></div>
+  <div class="card" style="margin-bottom:14px"><form data-form="listAdd" data-l="${l}" class="row"><input name="t" placeholder="${ph}" autocomplete="off">${extraForm}<button class="btn pri">添加</button></form></div>
+  <div class="card">${it.length?`<div class="list">${it.map(i=>row(i,acts(i),l!=="ref"&&l!=="someday")).join("")}</div>`:`<div class="empty">${empty}</div>`}</div>`;
+};
+VIEWS.waiting=simpleList("waiting","🤝","等待","交出去的事，记下交给了谁、哪天交的。超过 7 天变色提醒。","在等什么？",`<input name="who" placeholder="等谁" style="max-width:140px" autocomplete="off">`,i=>`<button class="btn ghost" data-act="toNext" data-id="${i.id}" title="转为自己的行动">→ 行动</button>`,"<b>没有在等的事</b>");
+VIEWS.cal=()=>{
+  const it=L("cal").sort((a,b)=>(a.date||"").localeCompare(b.date||""));
+  const g={past:[],today:[],future:[]};it.forEach(i=>g[i.date<td()?"past":i.date===td()?"today":"future"].push(i));
+  const sec=(t,a,c="")=>a.length?`<div class="card" style="margin-bottom:12px"><h3 style="font-size:16px;${c}">${t} <span class="small">${a.length}</span></h3><div class="list">${a.map(i=>row(i)).join("")}</div></div>`:"";
+  return `<div class="vh"><div><h1>📅 日程</h1><div class="sub">“神圣领地”：只放定了时间的行动、定了日期的行动、当天要知道的信息</div></div></div>
+  <div class="card" style="margin-bottom:14px"><form data-form="calAdd" class="row"><input name="t" placeholder="必须在某天做的事" autocomplete="off"><input type="date" name="d" value="${td()}" required><input name="note" placeholder="时间（可选）" style="max-width:120px" autocomplete="off"><button class="btn pri">添加</button></form></div>
+  ${sec("⚠️ 已过期",g.past,"color:var(--hot)")}${sec("今天",g.today,"color:var(--x)")}${sec("接下来",g.future)}
+  ${!it.length?`<div class="card"><div class="empty"><b>日程是空的</b>作者不主张写“每日待办”，那样的清单很快会失效。</div></div>`:""}`;
+};
+VIEWS.someday=simpleList("someday","🌱","将来/也许","现在不做，但不想忘的事。每周回顾时看一遍：该激活的激活，该删的删。","以后也许想做的事","",i=>`<button class="btn ghost" data-act="activate" data-id="${i.id}" title="放回工作篮重新理清">↑ 激活</button>`,"<b>空的</b>想学的、想去的、想买的、想尝试的，都可以先放这里。");
+VIEWS.ref=()=>{
+  const q=(VIEWS.ref.q||"").trim(), it=L("ref").filter(i=>!q||(i.text+(i.note||"")).includes(q)).sort((a,b)=>a.text.localeCompare(b.text,"zh"));
+  return `<div class="vh"><div><h1>📚 参考资料</h1><div class="sub">不需要行动、但以后可能要查的信息。按名称排序，归档要在 60 秒内完成。</div></div><input id="refQ" placeholder="🔍 搜索" value="${esc(q)}" style="max-width:220px"></div>
+  <div class="card" style="margin-bottom:14px"><form data-form="listAdd" data-l="ref" class="row"><input name="t" placeholder="标题" autocomplete="off"><input name="note" placeholder="内容、链接或存放位置" autocomplete="off"><button class="btn pri">归档</button></form></div>
+  <div class="card">${it.length?`<div class="list">${it.map(i=>row(i,"",false)).join("")}</div>`:`<div class="empty">${q?"没有找到":"<b>还没有参考资料</b>"}</div>`}</div>`;
+};
+
+VIEWS.horizons=()=>{
+  const R=S.rev, ap=activeP();
+  const due=(k,n,label)=>{const d=R[k]?days(R[k]):null;const over=d===null||d>n;return `<div class="row" style="gap:6px"><span class="tag${over?" hot":" ok"}">${d===null?"还没回顾过":d===0?"今天回顾过":d+" 天前回顾"} · ${label}</span><button class="btn ghost" data-act="hzRev" data-k="${k}">标记已回顾</button></div>`};
+  const lst=(k,ph)=>`<div class="list">${S.hz[k].map(x=>`<div class="it"><div class="tx"><div class="t">${esc(x.text)}</div>${k==="areas"?`<div class="meta"><span class="tag">${ap.filter(p=>p.area===x.id).length} 个项目</span></div>`:""}</div><div class="acts"><button class="btn ghost" data-act="hzDel" data-k="${k}" data-id="${x.id}">✕</button></div></div>`).join("")}</div><form data-form="hzAdd" data-k="${k}" class="row" style="margin-top:8px"><input name="t" placeholder="${ph}" autocomplete="off"><button class="btn">添加</button></form>`;
+  const card=(o,lv,h,q,inner,rev="")=>`<div class="card hz" style="--o:${o}"><div class="hd"><div><div class="lv">${lv}</div><h3>${h}</h3></div>${rev}</div><div class="q">${q}</div>${inner}</div>`;
+  return `<div class="vh"><div><h1>🏔 六个层面</h1><div class="sub">从跑道到 5 万英尺。优先级从上往下传导，但通常从下往上做：先站稳，再往上走。</div></div></div>
+  ${card(1,"5 万英尺 · 宗旨与原则","为什么做？","判断重要性和成败的终极标准。原则可以用这句话来找：“只要……我就可以完全放手。”",`<textarea data-bind="purpose" placeholder="我的宗旨……">${esc(S.hz.purpose)}</textarea><textarea data-bind="principles" placeholder="我的原则、核心价值观……" style="margin-top:8px">${esc(S.hz.principles)}</textarea>`,due("purpose",366,"需要重定方向时"))}
+  ${card(.85,"4 万英尺 · 愿景（3–5 年）","长远的成功是什么样？","写一篇“未来的报道”：5 年后你在做什么？看到、听到、感觉到什么？至少要有 51% 的可信度。",`<textarea data-bind="vision" placeholder="三五年后……">${esc(S.hz.vision)}</textarea>`,due("vision",366,"每年"))}
+  ${card(.7,"3 万英尺 · 目标（1–2 年）","我想完成什么？","一张清单就够，每年订一次，每季度调整。琐事已经失控时，先别急着定目标。",lst("goals","比如：12 个月内……"),due("goals",92,"每季"))}
+  ${card(.55,"2 万英尺 · 责任范围","我需要维持什么？","工作上一般 4–7 项，生活上 7–10 类：健康、家庭、财务、职业发展……这个层面常常让潜伏的项目浮出水面。",lst("areas","比如：健康、财务、团队管理"),due("areas",31,"每月"))}
+  ${card(.4,"1 万英尺 · 项目","我要完成什么？",`进行中 ${ap.length} 个，${stuck().length} 个没有下一步。`,`<button class="btn" data-act="go" data-v="projects">打开项目清单 →</button>`,`<span class="tag">每周</span>`)}
+  ${card(.25,"跑道 · 下一步行动","下一步做什么？",`${L("next").length} 条行动 · ${L("waiting").length} 件等待 · ${L("cal").length} 项日程`,`<button class="btn" data-act="go" data-v="next">打开行动清单 →</button>`,`<span class="tag">每天</span>`)}`;
+};
+
+VIEWS.matrix=()=>{
+  const sc=scores();
+  const part=(t,a,c)=>`<div class="card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h3 style="font-size:17px;color:${c}">${t}</h3><span style="font-family:var(--serif);font-size:26px;font-weight:700;color:${c}">${a===sc.c?sc.cx:sc.py}</span></div><div class="sc">${a.map(x=>`<span>${x[0]} <span class="small">· ${esc(x[3])}</span></span><span class="v">${Math.round(x[2])}/${x[1]}</span><div class="bar"><i style="width:${x[2]/x[1]*100}%;background:${c}"></i></div>`).join("")}</div></div>`;
+  return `<div class="vh"><div><h1>🧩 自我诊断</h1><div class="sub">《搞定Ⅲ》的自我管理矩阵：掌控 × 视角。根据你在本应用里的数据自动估算，仅供参考。</div></div></div>
+  <div class="card" style="margin-bottom:14px">${matrixHTML(sc,false)}<div class="mx-ax"><span>← 掌控低</span><span>掌控高 →</span></div>
+  <div style="margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--hots)"><b style="color:var(--hot)">你现在更像「${QUAD[sc.q].n}」</b><p style="margin:4px 0 0" class="muted">${QUAD[sc.q].tip}</p></div></div>
+  <div class="grid">${part("掌控",sc.c,"var(--x)")}${part("视角",sc.p,"var(--y)")}</div>
+  <p class="small" style="margin-top:12px">人会随事情和层面不同，在几个象限之间来回切换，“改善现状的第一步是接受现状”。缺掌控就去清工作篮，缺视角就往上升一层。</p>`;
+};
+
+VIEWS.review=()=>{
+  const n=RSTEPS.length, dn=S.rdraft.length, ra=revAge();
+  const live=k=>({clarify:L("inbox").length?`<span class="tag hot">还有 ${L("inbox").length} 件</span>`:`<span class="tag ok">已清空</span>`,projects:stuck().length?`<span class="tag hot">${stuck().length} 个没有下一步</span>`:`<span class="tag ok">都有下一步</span>`,waiting:staleW().length?`<span class="tag a">${staleW().length} 件超过 7 天</span>`:"",someday:`<span class="tag">${L("someday").length} 件</span>`,cal:L("cal").filter(i=>i.date<td()).length?`<span class="tag hot">${L("cal").filter(i=>i.date<td()).length} 项已过期</span>`:"",next:`<span class="tag">${L("next").length} 条</span>`})[k]||"";
+  const hist=S.rev.weekly.slice(-8).reverse();
+  return `<div class="vh"><div><h1>🔁 每周回顾</h1><div class="sub">系统成败就看这一步。每周固定约 2 小时，按“确认 → 更新 → 创造”走一遍。${ra===null?"":`上次在 ${ra} 天前。`}</div></div></div>
+  <div class="card"><div class="row" style="justify-content:space-between"><b>进度 ${dn}/${n}</b><span class="small">“如果你没有自觉地回顾，就会一直心不在焉地回顾。”</span></div><div class="prog"><i style="width:${dn/n*100}%"></i></div>
+  ${RSTEPS.map((s,i)=>`<div class="rv-step${S.rdraft.includes(i)?" on":""}"><span class="ph">${s[0]}</span><input type="checkbox" class="ck" data-act="rvTog" data-i="${i}"${S.rdraft.includes(i)?" checked":""}><div class="tx"><b>${s[1]}</b><span class="small">${s[2]}</span><div class="meta" style="margin-top:4px">${live(s[3])}</div></div>${s[3]?`<button class="btn ghost" data-act="${s[3]==="dump"?"dumpStart":"go"}" data-v="${s[3]}">去做 →</button>`:""}</div>`).join("")}
+  <div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn ghost" data-act="rvReset">清空勾选</button><button class="btn ${dn===n?"x":""}" data-act="rvDone">✓ 完成本次回顾</button></div></div>
+  ${hist.length?`<div class="card" style="margin-top:14px"><h3 style="font-size:16px;margin-bottom:6px">回顾记录</h3><div class="row">${hist.map(d=>`<span class="tag ok">${d}</span>`).join("")}</div></div>`:""}`;
+};
+
+VIEWS.settings=()=>`<div class="vh"><div><h1>⚙️ 设置</h1><div class="sub">数据只存在这台设备的浏览器里，换设备或清缓存之前记得导出备份。</div></div></div>
+  <div class="card" style="margin-bottom:14px"><h3 style="font-size:16px;margin-bottom:8px">情境</h3><form data-form="ctx" class="row"><input name="c" value="${esc(S.ctx.join("，"))}"><button class="btn">保存</button></form><p class="small" style="margin:6px 0 0">用逗号分隔。情境是指做这件事所需的地点、工具或人，比如电话、电脑、外出、议事日程。</p></div>
+  <div class="card" style="margin-bottom:14px"><h3 style="font-size:16px;margin-bottom:8px">备份</h3><div class="row"><button class="btn" data-act="export">⬇️ 导出 JSON</button><label class="btn" style="cursor:pointer">⬆️ 导入 JSON<input type="file" id="imp" accept=".json,application/json" hidden></label><button class="btn" data-act="demo">载入示例数据</button></div></div>
+  <div class="card"><h3 style="font-size:16px;margin-bottom:8px;color:var(--hot)">清空</h3><button class="btn" data-act="wipe" style="color:var(--hot)">删除全部数据</button></div>
+  <p class="small" style="margin-top:16px">快捷键：<kbd>C</kbd> 随手收集 · <kbd>Esc</kbd> 关闭。方法来自戴维·艾伦《搞定Ⅰ》《搞定Ⅱ》《搞定Ⅲ》。</p>`;
+
+/* ========== 渲染 ========== */
+function render(){
+  if(!VIEWS[V])V="today";
+  document.querySelectorAll(".nav").forEach(a=>a.classList.toggle("on",a.dataset.v===V||(V==="inbox"&&DUMP!==null&&a.dataset.v==="inbox")));
+  const b=(k,v,hot)=>{const e=document.querySelector(`[data-b="${k}"]`);if(e){e.textContent=v||"";e.classList.toggle("hot",!!hot)}};
+  b("inbox",L("inbox").length,L("inbox").length>0);b("next",L("next").length);b("projects",stuck().length?"⚠"+stuck().length:activeP().length,stuck().length);
+  b("waiting",staleW().length||L("waiting").length,staleW().length);b("cal",L("cal").filter(i=>i.date<=td()).length,L("cal").some(i=>i.date<td()));
+  const ra=revAge();b("review",ra===null||ra>7?"!":"",ra===null||ra>7);
+  clearInterval(TIMER);
+  $("#main").innerHTML=VIEWS[V]();
+  const f=$("#clInput")||$("#dumpInput")||(V==="inbox"?$("#inboxInput"):null);
+  if(f&&matchMedia("(hover:hover)").matches){f.focus();if(f.value)f.setSelectionRange(f.value.length,f.value.length)}
+  if(V==="clarify"&&CL&&CL.step==="now")startTimer();
+}
+function startTimer(){const end=Date.now()+120000;const tick=()=>{const el=$("#timer");if(!el){clearInterval(TIMER);return}const s=Math.max(0,Math.round((end-Date.now())/1000));el.textContent=Math.floor(s/60)+":"+String(s%60).padStart(2,"0");el.classList.toggle("over",s===0);if(!s)clearInterval(TIMER)};tick();TIMER=setInterval(tick,500)}
+function go(v){V=v;if(v!=="inbox")DUMP=null;if(location.hash!=="#"+v)history.pushState(null,"","#"+v);render();scrollTo(0,0)}
+function commit(){save();render()}
+
+/* ========== 理清流程 ========== */
+function clSrcText(){const s=item(CL.src);return s?s.text:CL.orig}
+function clConsume(){const s=item(CL.src);if(s){CL.orig=s.text;del(s.id)}CL.committed=true}
+function clFinish(msg){clConsume();CL=null;save();if(msg)toast(msg);render()}
+
+/* ========== 事件 ========== */
+const ACT={
+  go:t=>{go(t.dataset.v)},
+  capture:()=>openCap(),
+  toggle:t=>{const i=item(t.dataset.id);if(!i)return;if(i.list==="done"){i.list=i.prev||"next";delete i.done}else{i.prev=i.list;i.list="done";i.done=td();if(i.pid&&!pActs(i.pid).length&&proj(i.pid)?.status==="active")toast(`项目「${proj(i.pid).name}」需要新的下一步`);else toast("完成 ✓")}commit()},
+  del:t=>{del(t.dataset.id);commit()},
+  edit:t=>{const i=item(t.dataset.id);if(!i)return;const v=prompt("修改",i.text);if(v&&v.trim()){i.text=v.trim();commit()}},
+  editP:t=>{const p=proj(t.dataset.id);const v=prompt("修改项目名称",p.name);if(v&&v.trim()){p.name=v.trim();commit()}},
+  filt:t=>{const k=t.dataset.k;F[k]=k==="mins"?+t.dataset.val:t.dataset.val;render()},
+  clearDone:()=>{if(confirm("清空所有已完成的行动？")){S.items=S.items.filter(i=>i.list!=="done");commit()}},
+  pStatus:t=>{const p=proj(t.dataset.id);p.status=t.dataset.s;if(t.dataset.s==="done")toast("项目完成 🎉");commit()},
+  delP:t=>{const p=proj(t.dataset.id);if(!confirm(`删除项目「${p.name}」？它的行动会保留，但不再属于这个项目。`))return;S.items.forEach(i=>{if(i.pid===p.id)i.pid=""});S.projects=S.projects.filter(x=>x!==p);commit()},
+  toNext:t=>{const i=item(t.dataset.id);i.list="next";i.ctx=i.ctx||S.ctx[0];i.text=(i.who?`跟进${i.who}：`:"")+i.text;delete i.who;commit()},
+  activate:t=>{const i=item(t.dataset.id);i.list="inbox";toast("已放回工作篮，去理清吧");commit()},
+  dumpStart:()=>{DUMP=0;V="inbox";history.pushState(null,"","#inbox");render()},
+  dumpEnd:()=>{DUMP=null;render()},
+  dumpNav:t=>{const d=+t.dataset.d;if(DUMP+d>=PROMPTS.length){DUMP=null;toast("清扫完成，接下来去理清");render();return}DUMP=Math.max(0,DUMP+d);render()},
+  cl:t=>{CL.step=t.dataset.s;CL.pre=!!t.dataset.pre;render()},
+  clBack:()=>{CL={src:CL.src,step:"q1",pid:"",text:"",orig:CL.orig};render()},
+  clTrash:()=>clFinish("已删除"),
+  clMove:t=>{const s=item(CL.src);if(s){s.list=t.dataset.l;if(t.dataset.l==="someday"&&CL.pid)s.pid=CL.pid}CL=null;save();toast(t.dataset.l==="ref"?"已归档":"放进将来/也许");render()},
+  clDoneNow:()=>{add({text:CL.text,list:"done",pid:CL.pid,done:td()});clConsume();if(CL.pid&&!pActs(CL.pid).length){CL.step="more";CL.text="";save();render()}else clFinish("做完了 ⚡")},
+  clProjDone:()=>{const p=proj(CL.pid);if(p)p.status="done";clFinish("项目完成 🎉")},
+  rvTog:t=>{const i=+t.dataset.i;S.rdraft=S.rdraft.includes(i)?S.rdraft.filter(x=>x!==i):[...S.rdraft,i];commit()},
+  rvReset:()=>{S.rdraft=[];commit()},
+  rvDone:()=>{if(S.rdraft.length<RSTEPS.length&&!confirm(`还有 ${RSTEPS.length-S.rdraft.length} 步没勾，仍然记为完成？`))return;if(lastRev()!==td())S.rev.weekly.push(td());S.rdraft=[];toast("本周回顾完成 🔁");commit()},
+  hzRev:t=>{S.rev[t.dataset.k]=td();commit()},
+  hzDel:t=>{const k=t.dataset.k;S.hz[k]=S.hz[k].filter(x=>x.id!==t.dataset.id);if(k==="areas")S.projects.forEach(p=>{if(p.area===t.dataset.id)p.area=""});commit()},
+  export:()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:"application/json"}));a.download=`gtd-备份-${td()}.json`;a.click()},
+  wipe:()=>{if(confirm("确定删除全部数据？这一步无法撤销，建议先导出备份。")){S=DEF();CL=null;commit();toast("已清空")}},
+  demo:()=>{if((S.items.length||S.projects.length)&&!confirm("示例数据会加到现有数据里，继续？"))return;seed();commit();toast("已载入示例数据")}
+};
+const FORMS={
+  cap:(d,f)=>{const t=d.get("t").trim();if(!t)return;add({text:t,list:"inbox"});f.reset();save();render();toast("已放进工作篮")},
+  inboxAdd:(d,f)=>{d.get("t").split(/\n+/).map(s=>s.trim()).filter(Boolean).forEach(t=>add({text:t,list:"inbox"}));commit()},
+  dumpAdd:(d,f)=>{const t=d.get("t").trim();if(!t)return;add({text:t,list:"inbox"});commit()},
+  clExisting:d=>{CL.pid=d.get("pid");if(!CL.pid)return;CL.step="next";CL.pre=true;render()},
+  clProj:d=>{const n=d.get("name").trim();if(!n)return;const p={id:uid(),name:n,area:d.get("area")||"",status:"active",created:td()};S.projects.push(p);CL.pid=p.id;CL.step="next";CL.pre=false;save();render()},
+  clNext:d=>{const t=d.get("t").trim();if(!t)return;CL.text=t;CL.step="route";render()},
+  clDelegate:d=>{const w=d.get("who").trim();if(!w)return;add({text:CL.text,list:"waiting",who:w,pid:CL.pid});clFinish("记进等待清单")},
+  clCal:d=>{add({text:CL.text,list:"cal",date:d.get("d"),note:d.get("note").trim(),pid:CL.pid});clFinish("放进日程")},
+  clList:d=>{add({text:CL.text,list:"next",ctx:d.get("ctx"),mins:+d.get("mins"),energy:d.get("energy"),pid:CL.pid});clFinish("放进行动清单")},
+  nextAdd:(d,f)=>{const t=d.get("t").trim();if(!t)return;add({text:t,list:"next",ctx:d.get("ctx"),mins:+d.get("mins"),energy:d.get("energy"),pid:d.get("pid")});commit()},
+  projAdd:d=>{const n=d.get("name").trim();if(!n)return;S.projects.push({id:uid(),name:n,area:d.get("area")||"",status:"active",created:td()});toast("项目建好了，别忘了写下一步");commit()},
+  pNext:(d,f)=>{const t=d.get("t").trim();if(!t)return;add({text:t,list:"next",ctx:d.get("ctx"),mins:15,energy:"mid",pid:f.dataset.pid});commit()},
+  listAdd:(d,f)=>{const t=d.get("t").trim();if(!t)return;const o={text:t,list:f.dataset.l};if(d.get("who"))o.who=d.get("who").trim();if(d.get("note"))o.note=d.get("note").trim();add(o);commit()},
+  calAdd:d=>{const t=d.get("t").trim();if(!t)return;add({text:t,list:"cal",date:d.get("d"),note:d.get("note").trim()});commit()},
+  hzAdd:(d,f)=>{const t=d.get("t").trim();if(!t)return;S.hz[f.dataset.k].push({id:uid(),text:t});commit()},
+  ctx:d=>{const c=d.get("c").split(/[,，、\s]+/).map(s=>s.replace(/^@/,"").trim()).filter(Boolean);if(c.length){S.ctx=[...new Set(c)];commit();toast("已保存")}}
+};
+document.addEventListener("click",e=>{const t=e.target.closest("[data-act]");if(!t||t.tagName==="FORM")return;if(t.tagName==="A")e.preventDefault();const f=ACT[t.dataset.act];if(f){f(t,e)}});
+document.addEventListener("submit",e=>{const f=e.target.closest("form[data-form]");if(!f)return;e.preventDefault();FORMS[f.dataset.form]?.(new FormData(f),f)});
+document.addEventListener("change",e=>{
+  const s=e.target;
+  if(s.dataset.actChange==="pArea"){const p=proj(s.dataset.pid);p.area=s.value;commit()}
+  if(s.id==="imp"&&s.files[0]){s.files[0].text().then(t=>{try{const o=JSON.parse(t);if(!Array.isArray(o.items))throw 0;localStorage.setItem(KEY,t);S=load();CL=null;commit();toast("导入成功")}catch(_){alert("这不是有效的备份文件")}})}
+});
+let bindT;document.addEventListener("input",e=>{const k=e.target.dataset.bind;if(k){S.hz[k]=e.target.value;clearTimeout(bindT);bindT=setTimeout(save,300)}if(e.target.id==="refQ"){VIEWS.ref.q=e.target.value;const pos=e.target.selectionStart;render();const r=$("#refQ");r.focus();r.setSelectionRange(pos,pos)}});
+document.addEventListener("keydown",e=>{
+  const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+  if(e.key==="Escape"){closeCap();return}
+  if(!typing&&(e.key==="c"||e.key==="C")&&!e.metaKey&&!e.ctrlKey){e.preventDefault();openCap()}
+});
+document.addEventListener("paste",e=>{const t=e.target;if(!["inboxInput","dumpInput","capInput"].includes(t.id))return;const txt=(e.clipboardData||window.clipboardData).getData("text");const lines=txt.split(/\r?\n/).map(x=>x.replace(/^\s*([-*•·]|\d+[.、)])\s*/,"").trim()).filter(Boolean);if(lines.length<2)return;e.preventDefault();lines.forEach(x=>add({text:x,list:"inbox"}));save();render();toast(`一次放进 ${lines.length} 件`)});
+$("#cap").addEventListener("click",e=>{if(e.target.id==="cap")closeCap()});
+function openCap(){$("#cap").classList.add("on");setTimeout(()=>$("#capInput").focus(),20)}
+function closeCap(){$("#cap").classList.remove("on")}
+addEventListener("popstate",()=>{V=location.hash.slice(1)||"today";DUMP=null;render()});
+addEventListener("storage",e=>{if(e.key===KEY){S=load();render()}});
+
+/* ========== 示例数据 ========== */
+function seed(){
+  const a1={id:uid(),text:"健康"},a2={id:uid(),text:"家庭"},a3={id:uid(),text:"团队管理"},a4={id:uid(),text:"财务"};
+  S.hz.areas.push(a1,a2,a3,a4);
+  if(!S.hz.goals.length)S.hz.goals.push({id:uid(),text:"一年内跑完一次半程马拉松"},{id:uid(),text:"团队交付季度目标，不靠加班"});
+  const p1={id:uid(),name:"为母亲办好 60 岁生日宴",area:a2.id,status:"active",created:td(-3)};
+  const p2={id:uid(),name:"新人入职流程上线",area:a3.id,status:"active",created:td(-10)};
+  const p3={id:uid(),name:"把家庭账单改成自动扣款",area:a4.id,status:"active",created:td(-6)};
+  S.projects.push(p1,p2,p3);
+  [["起草宾客名单","next",{ctx:"在家",mins:15,energy:"low",pid:p1.id}],["给老王打电话问餐厅档期","next",{ctx:"电话",mins:5,energy:"low",pid:p1.id}],
+   ["写入职第一周清单初稿","next",{ctx:"电脑",mins:60,energy:"high",pid:p2.id}],["新电脑采购审批","waiting",{who:"行政小李",pid:p2.id}],
+   ["预约年度体检","next",{ctx:"电话",mins:5,energy:"low"}],["读完《搞定Ⅲ》第 10 章","next",{ctx:"阅读",mins:30,energy:"mid"}],
+   ["季度复盘会","cal",{date:td(2),note:"14:00"}],["车险到期续保","cal",{date:td()}],
+   ["学弹吉他","someday",{}],["去冰岛看极光","someday",{}],
+   ["Wi-Fi 密码","ref",{note:"在路由器背面"}],
+   ["客户上周说的那个需求","inbox",{}],["牙有点疼","inbox",{}],["整理桌面上那堆纸","inbox",{}]
+  ].forEach(([t,l,o])=>add({text:t,list:l,...o}));
+  S.items.find(i=>i.who==="行政小李").created=td(-9);
+}
+
+V=location.hash.slice(1)||"today";
+render();
+</script>
+</body>
+</html>

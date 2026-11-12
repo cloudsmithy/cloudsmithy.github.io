@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>山洞四律 · 岩壁上的四块碑</title>
+<style>
+/* ====== 默认：洞内（深色岩壁 + 火把） ====== */
+:root{
+  --bg:#15110d; --bg2:#1d1813; --rock:#221c16; --rock2:#2a231c; --edge:rgba(255,226,180,.09);
+  --ink:#efe5d3; --ink2:#cbbca5; --ink3:#9d8d76;
+  --fire:#f0a65a; --fire2:#ffcf8a; --firesoft:rgba(240,166,90,.14);
+  --ochre:#d9804a; --chalk:rgba(239,229,211,.55);
+  --l1:#f0a65a; --l2:#e8836a; --l3:#a9c79c; --l4:#e6c67a;
+  --stone-a:#3b342c; --stone-b:#2a241e; --stone-c:#1f1a15;
+  --carve-hi:rgba(255,236,200,.10); --carve-lo:rgba(0,0,0,.75);
+  --glow:rgba(255,160,70,.24); --glow2:rgba(255,120,40,.10); --blend:screen;
+  --kai:"Kaiti SC","STKaiti","KaiTi","Kai","BiauKai","AR PL UKai CN",serif;
+  --song:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --shadow:0 1px 0 rgba(255,236,200,.05) inset,0 14px 30px rgba(0,0,0,.42);
+  color-scheme:dark;
+}
+/* ====== 浅色：洞口日光（砂岩） ====== */
+@media (prefers-color-scheme:light){
+  :root{
+    --bg:#e8d6b8; --bg2:#e1cba7; --rock:#f1e3ca; --rock2:#ead9bb; --edge:rgba(90,60,30,.16);
+    --ink:#2a2016; --ink2:#55432f; --ink3:#7a6449;
+    --fire:#a3501a; --fire2:#8a3f10; --firesoft:rgba(163,80,26,.10);
+    --ochre:#a3471f; --chalk:rgba(60,40,20,.45);
+    --l1:#a3501a; --l2:#a03a24; --l3:#4b6a40; --l4:#86621a;
+    --stone-a:#dcc59e; --stone-b:#ccb084; --stone-c:#bd9f72;
+    --carve-hi:rgba(255,248,230,.75); --carve-lo:rgba(80,50,20,.45);
+    --glow:rgba(255,248,215,.75); --glow2:rgba(255,236,190,.30); --blend:soft-light;
+    --shadow:0 1px 0 rgba(255,255,255,.5) inset,0 10px 24px rgba(90,60,30,.16);
+    color-scheme:light;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;color:var(--ink);font:16px/1.85 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+  background:
+    radial-gradient(1100px 700px at 15% -5%,color-mix(in srgb,var(--bg2) 90%,#000 0%),transparent 62%),
+    radial-gradient(900px 800px at 95% 35%,var(--bg2),transparent 60%),
+    radial-gradient(800px 600px at 10% 85%,var(--bg2),transparent 60%),
+    repeating-linear-gradient(112deg,rgba(255,255,255,.012) 0 2px,transparent 2px 9px),
+    repeating-linear-gradient(28deg,rgba(0,0,0,.05) 0 1px,transparent 1px 13px),
+    var(--bg);
+  background-attachment:fixed}
+a{color:inherit}
+.grain{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.grain .gb{opacity:.28}.grain .gn{opacity:.16}
+@media (prefers-color-scheme:light){.grain .gb{opacity:.07}.grain .gn{opacity:.12}}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 50% 45%,transparent 45%,rgba(0,0,0,.55) 100%)}
+@media (prefers-color-scheme:light){.vignette{background:radial-gradient(ellipse at 50% 0%,rgba(255,250,235,.55),transparent 55%),radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(110,75,35,.22) 100%)}}
+.torch{position:fixed;left:0;top:0;width:1000px;height:1000px;margin:-500px 0 0 -500px;border-radius:50%;pointer-events:none;z-index:45;
+  background:radial-gradient(circle,var(--glow) 0%,var(--glow2) 32%,transparent 66%);mix-blend-mode:var(--blend);
+  transform:translate3d(var(--tx,30vw),var(--ty,40vh),0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.torch::after{content:"";position:absolute;inset:30%;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%);animation:flick 2.6s infinite ease-in-out}
+@keyframes flick{0%,100%{opacity:.75;transform:scale(1)}20%{opacity:.95;transform:scale(1.04)}45%{opacity:.7;transform:scale(.97)}70%{opacity:1;transform:scale(1.02)}}
+main,nav,header,footer{position:relative;z-index:2}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--kai);font-weight:700;line-height:1.35;margin:0}
+p{margin:.4em 0}
+.muted{color:var(--ink2)}
+.small{font-size:13px;color:var(--ink3)}
+.k1{--c:var(--l1)} .k2{--c:var(--l2)} .k3{--c:var(--l3)} .k4{--c:var(--l4)}
+.carved{text-shadow:0 -1px 0 var(--carve-lo),0 1px 0 var(--carve-hi)}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);border-bottom:1px solid var(--edge)}
+nav.top .wrap{display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{font-family:var(--kai);font-weight:700;font-size:19px;margin-right:auto;white-space:nowrap;display:flex;align-items:center;gap:8px}
+nav.top .brand svg{width:20px;height:20px}
+nav.top a{text-decoration:none;font-size:14px;color:var(--ink2);padding:6px 12px;border-radius:8px;white-space:nowrap;transition:.2s}
+nav.top a:hover,nav.top a.on{color:var(--fire);background:var(--firesoft)}
+
+/* hero */
+.hero{padding:70px 0 40px;text-align:center}
+.mouth{position:relative;max-width:760px;margin:0 auto;padding:78px 40px 64px;border-radius:50% 50% 8px 8px / 62% 62% 8px 8px;
+  background:radial-gradient(ellipse at 50% 85%,var(--firesoft),transparent 70%),linear-gradient(180deg,color-mix(in srgb,var(--bg) 70%,#000 30%),var(--bg));
+  box-shadow:inset 0 30px 60px rgba(0,0,0,.55),inset 0 -2px 0 var(--edge),0 0 0 14px color-mix(in srgb,var(--rock2) 70%,transparent),0 0 0 15px var(--edge)}
+@media (prefers-color-scheme:light){.mouth{background:radial-gradient(ellipse at 50% 20%,rgba(255,250,230,.9),transparent 70%),linear-gradient(180deg,#f6ead4,#ead8b8);box-shadow:inset 0 24px 50px rgba(120,80,40,.18),0 0 0 14px #d8bf95,0 0 0 15px var(--edge)}}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.32em;color:var(--fire);margin-bottom:14px}
+.hero h1{font-size:clamp(52px,10vw,104px);letter-spacing:.14em;line-height:1.1;color:var(--ink)}
+.hero h1 .dot{color:var(--fire);margin:0 -.06em}
+.hero .motto{font-family:var(--kai);font-size:clamp(19px,2.6vw,26px);color:var(--fire2);margin-top:18px;letter-spacing:.08em}
+@media (prefers-color-scheme:light){.hero .motto{color:var(--fire)}}
+.hero .lead{font-size:clamp(16px,1.9vw,18.5px);color:var(--ink2);max-width:780px;margin:30px auto 0}
+.hero .lead strong{color:var(--ink)}
+.hero .author{font-size:13px;color:var(--ink3);max-width:720px;margin:12px auto 0;line-height:1.75}
+.frieze{display:block;width:100%;max-width:980px;height:auto;margin:34px auto 0}
+.paint{fill:none;stroke:var(--ochre);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.paintf{fill:var(--ochre)}
+.plaques{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;text-align:left}
+.plaque{display:block;text-decoration:none;padding:22px 22px 18px;border-radius:16px 22px 14px 20px;background:linear-gradient(170deg,rgba(255,255,255,.04),transparent 50%),var(--rock);border:1px solid var(--edge);box-shadow:var(--shadow);transition:transform .25s}
+.plaque:hover{transform:translateY(-3px)}
+.plaque .n{font-family:var(--kai);font-size:15px;color:var(--fire);letter-spacing:.2em}
+.plaque h3{font-size:23px;margin-top:4px}
+.plaque .role{font-size:12.5px;color:var(--ink3);margin-top:2px}
+.plaque p{font-size:14.5px;color:var(--ink2);margin-top:10px}
+
+/* section */
+section.block{padding:76px 0 70px;position:relative}
+.divider{display:block;width:240px;height:28px;margin:0 auto 46px;opacity:.75}
+.sec-head{margin-bottom:30px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.sec-head .seal{font-family:var(--kai);font-size:30px;color:var(--bg);background:var(--ochre);width:58px;height:58px;display:grid;place-items:center;border-radius:10px 14px 9px 13px;transform:rotate(-4deg);flex:none;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+@media (prefers-color-scheme:light){.sec-head .seal{color:#f6ead4}}
+.sec-head .tag{font-size:13px;color:var(--fire);letter-spacing:.18em}
+.sec-head h2{font-size:clamp(30px,4.4vw,44px)}
+.thesis{font-family:var(--kai);font-size:clamp(19px,2.3vw,23px);line-height:1.8;color:var(--ink);max-width:900px;margin:0 0 38px;padding:4px 0 4px 22px;border-left:3px solid var(--ochre)}
+h3.sub{font-size:24px;margin:54px 0 18px;display:flex;align-items:center;gap:12px}
+h3.sub::before{content:"";width:22px;height:12px;flex:none;background:var(--ochre);clip-path:polygon(0 50%,40% 0,100% 30%,70% 100%,20% 85%);opacity:.9}
+.slab{background:linear-gradient(170deg,rgba(255,255,255,.035),transparent 45%),var(--rock);border:1px solid var(--edge);border-radius:14px 18px 12px 16px;padding:22px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+
+/* 洞穴 · 四句 */
+.vows{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.vow{padding:20px 18px;border-radius:12px 18px 10px 16px;background:var(--rock);border:1px solid var(--edge);box-shadow:var(--shadow);font-family:var(--kai);font-size:18px;line-height:1.7}
+.vow small{display:block;font-family:var(--sans);font-size:12px;color:var(--fire);letter-spacing:.16em;margin-bottom:8px}
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.road div{padding:18px 18px 16px;font-size:14px;color:var(--ink2);position:relative}
+.road div b{display:block;font-family:var(--kai);font-size:19px;color:var(--ink);margin-bottom:4px}
+.road div::before{content:"";position:absolute;left:18px;right:0;top:0;height:3px;background:repeating-linear-gradient(90deg,var(--chalk) 0 10px,transparent 10px 16px)}
+.road div:last-child{background:var(--firesoft);border-radius:12px}
+.road div:last-child b{color:var(--fire)}
+
+/* 新手/高手 */
+.versus{display:grid;grid-template-columns:110px 1fr 1fr;border-radius:14px 18px 12px 16px;overflow:hidden;border:1px solid var(--edge);background:var(--rock);box-shadow:var(--shadow)}
+.versus>div{padding:14px 18px;border-top:1px solid var(--edge);font-size:14.5px;color:var(--ink2)}
+.versus .h{border-top:none;font-family:var(--kai);font-size:18px;color:var(--ink);background:rgba(0,0,0,.12)}
+.versus .h.g{color:var(--fire)}
+.versus .lbl{color:var(--ink3);font-size:13px}
+.versus .g2{font-family:var(--kai);font-size:18px;color:var(--ink)}
+
+/* 四种拖延 */
+.ptypes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pt{padding:20px 18px;border-radius:14px 18px 12px 16px;background:var(--rock);border:1px solid var(--edge);box-shadow:var(--shadow)}
+.pt .tally{height:22px;display:block;margin-bottom:8px}
+.pt h4{font-size:21px}
+.pt .tl{font-size:12px;color:var(--fire);letter-spacing:.1em;margin-top:2px}
+.pt p{font-size:13.8px;color:var(--ink2);margin-top:8px;line-height:1.7}
+.pt .rx{margin-top:10px;padding-top:10px;border-top:1px dashed var(--edge);font-size:13.8px;color:var(--ink2)}
+.pt .rx b{color:var(--fire)}
+.pt.warn{border-color:color-mix(in srgb,var(--ochre) 60%,transparent);background:linear-gradient(180deg,var(--firesoft),transparent 70%),var(--rock)}
+
+/* 地图 */
+.mapbox{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:start}
+.matrix-wrap{display:grid;grid-template-columns:34px 1fr;grid-template-rows:1fr auto;gap:8px}
+.axis-y{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:12.5px;color:var(--ink3);letter-spacing:.2em;display:flex;align-items:center;justify-content:center}
+.axis-x{grid-column:2;display:grid;grid-template-columns:1fr auto 1fr;font-size:12.5px;color:var(--ink3);letter-spacing:.08em;text-align:center;align-items:center}
+.axis-x b{color:var(--fire);padding:0 10px}
+.matrix{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;padding:6px}
+.quad{position:relative;z-index:1;min-height:172px;padding:18px;border-radius:12px 16px 10px 14px;cursor:pointer;transition:.25s;border:2px dashed var(--chalk);background:color-mix(in srgb,var(--rock) 55%,transparent)}
+.quad .ltr{float:right;font-family:var(--kai);font-size:42px;line-height:1;color:var(--ochre);opacity:.8}
+.quad .meta{font-size:11.5px;color:var(--ink3);letter-spacing:.06em}
+.quad h4{font-size:21px;margin:4px 0 2px}
+.quad p{font-size:13.5px;color:var(--ink2);margin-top:8px;line-height:1.6}
+.quad:hover{border-color:var(--fire)}
+.quad.on{border-style:solid;border-color:var(--fire);background:linear-gradient(180deg,var(--firesoft),transparent),var(--rock);box-shadow:0 0 30px var(--firesoft)}
+.quad.on h4{color:var(--fire)}
+.climb{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.climb-tip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-6deg);z-index:3;background:var(--ochre);color:var(--bg);font-size:12px;font-weight:700;padding:3px 12px;border-radius:6px 10px 5px 9px;white-space:nowrap;pointer-events:none}
+@media (prefers-color-scheme:light){.climb-tip{color:#f6ead4}}
+.locator .q{margin-bottom:16px}
+.locator .q>b{display:block;font-size:14.5px;margin-bottom:8px;font-weight:600}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--edge);background:rgba(0,0,0,.12);color:var(--ink2);padding:7px 14px;border-radius:8px 12px 7px 11px;font-size:14px;cursor:pointer;font-family:inherit;transition:.15s}
+.chip:hover{border-color:var(--fire);color:var(--ink)}
+.chip.on{background:var(--ochre);border-color:var(--ochre);color:var(--bg)}
+@media (prefers-color-scheme:light){.chip{background:rgba(255,255,255,.35)}.chip.on{color:#f6ead4}}
+.verdict{margin-top:6px;border-left:3px solid var(--fire);background:var(--firesoft);border-radius:0 12px 12px 0;padding:14px 16px;font-size:14.5px;min-height:100px}
+.verdict h4{font-size:20px;margin-bottom:4px;color:var(--fire)}
+.verdict p{margin:0;color:var(--ink2)}
+.axisnote{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.axisnote div{padding:16px;border-radius:12px 16px 10px 14px;background:var(--rock);border:1px solid var(--edge);font-size:13.8px;color:var(--ink2)}
+.axisnote b{display:block;font-family:var(--kai);font-size:18px;color:var(--ink);margin-bottom:2px}
+.weeks{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.weeks h4{font-size:20px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.weeks h4 span{font-size:12px;font-family:var(--sans);padding:1px 8px;border-radius:6px;background:rgba(0,0,0,.18);color:var(--ink3);font-weight:400}
+@media (prefers-color-scheme:light){.weeks h4 span{background:rgba(255,255,255,.4)}}
+.tl-list{list-style:none;margin:0;padding:0}
+.tl-list li{position:relative;padding:0 0 12px 24px;font-size:14.2px;color:var(--ink2);line-height:1.7}
+.tl-list li::before{content:"";position:absolute;left:4px;top:7px;width:9px;height:9px;border-radius:50% 40% 55% 45%;background:var(--dotc,var(--ink3))}
+.tl-list li::after{content:"";position:absolute;left:8px;top:19px;bottom:0;border-left:1.5px dashed var(--edge)}
+.tl-list li:last-child::after{display:none}
+.tl-list q{font-family:var(--kai);font-size:16px;color:var(--ink);quotes:"“" "”"}
+.weeks .sum{margin-top:6px;font-size:13.8px;padding:10px 12px;border-radius:10px;background:rgba(0,0,0,.16);color:var(--ink2)}
+@media (prefers-color-scheme:light){.weeks .sum{background:rgba(255,255,255,.4)}}
+
+/* 四块石碑 */
+.steles{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:end;margin:10px 0 0;padding:0 6px}
+.stele{position:relative;cursor:pointer;text-align:center;padding:40px 16px 28px;border-radius:50% 50% 8px 8px / 22% 22% 8px 8px;
+  background:radial-gradient(120% 70% at 30% 8%,rgba(255,255,255,.09),transparent 55%),
+             repeating-linear-gradient(96deg,rgba(0,0,0,.05) 0 2px,transparent 2px 11px),
+             linear-gradient(180deg,var(--stone-a),var(--stone-b) 62%,var(--stone-c));
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.07),inset 0 -14px 26px rgba(0,0,0,.32),inset 6px 0 14px rgba(0,0,0,.18),0 20px 34px rgba(0,0,0,.42);
+  transition:transform .3s,box-shadow .3s;border:none;font-family:inherit;color:var(--ink);width:100%}
+.stele:nth-child(2){padding-top:52px}.stele:nth-child(3){padding-top:46px}.stele:nth-child(4){padding-top:58px}
+.stele::after{content:"";position:absolute;left:-10px;right:-10px;bottom:-14px;height:16px;border-radius:4px;background:linear-gradient(180deg,var(--stone-b),var(--stone-c));box-shadow:0 8px 14px rgba(0,0,0,.35)}
+.stele:hover,.stele.lit{transform:translateY(-4px);box-shadow:inset 0 2px 0 rgba(255,255,255,.07),inset 0 -14px 26px rgba(0,0,0,.32),0 0 44px color-mix(in srgb,var(--c) 35%,transparent),0 20px 34px rgba(0,0,0,.42)}
+.stele .num{font-family:var(--kai);font-size:15px;letter-spacing:.3em;color:var(--c)}
+.stele .glyph{display:block;font-family:var(--kai);font-size:clamp(64px,8vw,96px);line-height:1.1;font-weight:700;color:color-mix(in srgb,var(--c) 75%,var(--stone-c));margin:8px 0 2px;text-shadow:0 -2px 0 var(--carve-lo),0 2px 0 var(--carve-hi)}
+.stele .name{font-family:var(--kai);font-size:24px;font-weight:700;letter-spacing:.2em;text-shadow:0 -1px 0 var(--carve-lo),0 1px 0 var(--carve-hi)}
+.stele .def{font-size:13.2px;color:var(--ink2);margin-top:10px;line-height:1.65;text-align:left}
+.stele svg{width:62px;height:62px;display:block;margin:14px auto 0}
+.stele svg .paint{stroke:var(--c);stroke-width:3.2}
+.stele svg .paintf{fill:var(--c)}
+.stele .sday{display:inline-block;margin-top:12px;font-size:12px;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 55%,transparent);border-radius:6px;padding:1px 8px}
+.ground{height:22px;margin:22px -10px 0;background:radial-gradient(ellipse at 50% 0,rgba(0,0,0,.35),transparent 70%)}
+
+.tablets{display:flex;flex-direction:column;gap:22px;margin-top:40px}
+.tablet{scroll-margin-top:80px;border-radius:16px 22px 14px 20px;background:linear-gradient(170deg,rgba(255,255,255,.035),transparent 40%),var(--rock);border:1px solid var(--edge);box-shadow:var(--shadow);display:grid;grid-template-columns:200px 1fr;overflow:hidden}
+.tablet .side{padding:26px 20px;border-right:1px dashed var(--edge);background:linear-gradient(180deg,color-mix(in srgb,var(--c) 10%,transparent),transparent 80%)}
+.tablet .side .g{font-family:var(--kai);font-size:62px;line-height:1;color:var(--c);font-weight:700}
+.tablet .side h3{font-size:30px;margin-top:6px;letter-spacing:.12em}
+.tablet .side .when{font-size:12.5px;color:var(--ink3);margin-top:10px;line-height:1.6}
+.tablet .side svg{width:84px;height:84px;margin-top:14px}
+.tablet .side svg .paint{stroke:var(--c)}
+.tablet .side svg .paintf{fill:var(--c)}
+.tablet .main{padding:24px 26px;display:grid;grid-template-columns:1fr 1fr;gap:18px 28px}
+.tablet .main h4{font-size:18.5px;color:var(--c);margin-bottom:4px}
+.tablet .main p{font-size:14.6px;color:var(--ink2)}
+.tablet .main p b{color:var(--ink)}
+.tablet .main .full{grid-column:1/-1}
+.tablet.flash{animation:flash 1.3s ease}
+@keyframes flash{30%{box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 55%,transparent),0 0 60px color-mix(in srgb,var(--c) 30%,transparent)}}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.pair div{border-radius:10px;padding:10px 12px;font-size:13.8px;line-height:1.6}
+.pair .bad{background:rgba(0,0,0,.18);color:var(--ink3)}
+.pair .ok{background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--ink)}
+@media (prefers-color-scheme:light){.pair .bad{background:rgba(255,255,255,.4)}}
+.pair b{display:block;font-size:12px;letter-spacing:.1em;margin-bottom:2px}
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.ways div{border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.65;background:color-mix(in srgb,var(--c) 12%,transparent);color:var(--ink2)}
+.ways b{display:block;color:var(--c);font-size:12.5px;margin-bottom:4px;letter-spacing:.04em}
+.ways q{font-family:var(--kai);font-size:15.5px;color:var(--ink);quotes:"“" "”"}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.steps span{font-size:12.8px;border:1px solid var(--edge);border-radius:6px 9px 5px 8px;padding:3px 9px;color:var(--ink2);background:rgba(0,0,0,.12)}
+@media (prefers-color-scheme:light){.steps span{background:rgba(255,255,255,.35)}}
+.steps span b{color:var(--c);margin-right:5px}
+.battles{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:6px}
+.battle{border-radius:10px 14px 9px 12px;padding:14px;border:1px solid var(--edge);background:rgba(0,0,0,.12)}
+@media (prefers-color-scheme:light){.battle{background:rgba(255,255,255,.35)}}
+.battle .y{font-family:var(--kai);font-size:26px;font-weight:700;color:var(--c);line-height:1.1}
+.battle .d{font-size:13px;color:var(--ink);font-weight:600;margin-top:2px}
+.battle .t{font-size:12.8px;color:var(--ink2);margin-top:6px;line-height:1.55}
+.bars{display:flex;align-items:flex-end;gap:10px;height:190px;padding:24px 4px 0;border-bottom:2px solid var(--chalk)}
+.bars div{flex:1;border-radius:6px 9px 0 0;position:relative;min-height:10px;background:linear-gradient(180deg,var(--fire2),var(--l4) 40%,color-mix(in srgb,var(--l4) 50%,transparent))}
+@media (prefers-color-scheme:light){.bars div{background:linear-gradient(180deg,var(--l4),color-mix(in srgb,var(--l4) 45%,transparent))}}
+.bars div span{position:absolute;top:-22px;left:0;right:0;text-align:center;font-size:12.5px;color:var(--ink2);font-weight:600}
+.bars-x{display:flex;gap:10px;padding:6px 4px 0}
+.bars-x span{flex:1;text-align:center;font-size:12px;color:var(--ink3)}
+
+/* 十六天 · 刻痕 */
+.daybar{display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:4px;border-radius:2px;background:var(--c)}
+.progress{display:flex;align-items:center;gap:14px;flex:1;min-width:240px}
+.progress .track{flex:1;height:8px;background:rgba(0,0,0,.25);border-radius:999px;overflow:hidden;border:1px solid var(--edge)}
+@media (prefers-color-scheme:light){.progress .track{background:rgba(255,255,255,.45)}}
+.progress .fill{height:100%;width:0;background:linear-gradient(90deg,var(--ochre),var(--fire));transition:width .35s}
+.progress .txt{font-size:14px;color:var(--ink2);min-width:70px;text-align:right}
+.days{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+.zone{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink3);letter-spacing:.12em;margin-top:8px}
+.zone::after{content:"";flex:1;border-top:1.5px dashed var(--edge)}
+.day{position:relative;text-align:left;cursor:pointer;font-family:inherit;color:var(--ink);padding:12px 10px 10px;border-radius:10px 14px 9px 13px;border:1px solid var(--edge);background:var(--rock);transition:.2s;min-height:112px;box-shadow:var(--shadow)}
+.day:hover{border-color:var(--fire)}
+.day.sel{border-color:var(--fire);box-shadow:0 0 0 1px var(--fire),0 0 26px var(--firesoft)}
+.day .tally{display:block;height:24px;width:auto;max-width:100%}
+.day .tally line{stroke:var(--chalk);stroke-width:2.4;stroke-linecap:round}
+.day.done .tally line{stroke:var(--fire)}
+.day .t{display:block;font-family:var(--kai);font-size:15px;color:var(--ink);margin-top:6px;line-height:1.35}
+.day .n{position:absolute;top:10px;right:10px;font-size:11px;color:var(--ink3)}
+.day .dots{display:flex;gap:3px;margin-top:8px}
+.day .dots i{width:14px;height:3px;border-radius:2px;background:var(--edge)}
+.day .dots i.f{background:var(--c)}
+.day.done{background:linear-gradient(180deg,var(--firesoft),transparent),var(--rock)}
+.day.done .n{color:var(--fire);font-weight:700}
+.dpanel{margin-top:16px;padding:22px 24px;border-radius:16px 22px 14px 20px;background:var(--rock);border:1px solid var(--edge);box-shadow:var(--shadow)}
+.dpanel .hd{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.dpanel .hd h4{font-size:25px}
+.dpanel .hd .zn{font-size:12.5px;color:var(--ink3)}
+.dpanel .hd button{margin-left:auto}
+.dpanel .essay{font-family:var(--kai);font-size:17px;color:var(--ink);margin-bottom:14px;padding:10px 16px;border-left:3px solid var(--ochre);background:var(--firesoft);border-radius:0 10px 10px 0}
+.tasks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.task{border:1px solid var(--edge);border-radius:10px 14px 9px 12px;padding:12px 14px;border-left:3px solid var(--c)}
+.task b{font-family:var(--kai);color:var(--c);font-size:17px}
+.task p{font-size:14px;color:var(--ink2);margin:4px 0 0}
+.task.off{opacity:.45;border-left-color:var(--edge)}
+.task.off b{color:var(--ink3)}
+.btn{border:1px solid var(--ochre);background:var(--ochre);color:var(--bg);padding:7px 16px;border-radius:8px 12px 7px 11px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:600}
+.btn.ghost{background:transparent;color:var(--fire)}
+@media (prefers-color-scheme:light){.btn{color:#f6ead4}.btn.ghost{color:var(--fire)}}
+
+/* 章节 */
+details.toc{margin-top:12px;border-radius:14px 18px 12px 16px;background:var(--rock);border:1px solid var(--edge);box-shadow:var(--shadow);overflow:hidden}
+details.toc summary{cursor:pointer;padding:16px 22px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--kai);font-size:19px;font-weight:700}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";font-family:var(--sans);font-size:24px;color:var(--fire);transition:.2s;flex:none}
+details.toc[open] summary::after{transform:rotate(45deg)}
+details.toc summary small{font-family:var(--sans);font-weight:400;color:var(--ink3);font-size:13px;margin-left:8px}
+.toc-body{padding:0 22px 18px}
+.ch{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:10px 0;border-top:1px dashed var(--edge);font-size:14.5px}
+.ch b{font-family:var(--kai);font-size:16.5px;color:var(--ink)}
+.ch span{color:var(--ink2)}
+
+/* 金句：刻石 */
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.quote{position:relative;padding:26px 26px 20px 30px;border-radius:14px 20px 12px 18px;
+  background:repeating-linear-gradient(100deg,rgba(0,0,0,.04) 0 2px,transparent 2px 12px),linear-gradient(170deg,var(--stone-a),var(--stone-b));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -10px 22px rgba(0,0,0,.25),0 12px 26px rgba(0,0,0,.35)}
+.quote p{margin:0;font-family:var(--kai);font-size:20px;line-height:1.75;color:var(--ink);text-shadow:0 -1px 0 var(--carve-lo),0 1px 0 var(--carve-hi)}
+.quote cite{display:block;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:10px}
+.quote::before{content:"";position:absolute;left:12px;top:22px;bottom:22px;width:3px;border-radius:2px;background:var(--ochre);opacity:.8}
+
+/* 清单 */
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.check label{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;cursor:pointer;transition:.2s;border-radius:12px 16px 10px 14px;background:var(--rock);border:1px solid var(--edge);box-shadow:var(--shadow)}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;margin-top:2px;border:2px dashed var(--chalk);border-radius:6px 9px 5px 8px;display:grid;place-items:center;cursor:pointer;transition:.15s}
+.check input:checked{border-style:solid;border-color:var(--ochre);background:var(--ochre)}
+.check input:checked::after{content:"";width:6px;height:12px;border:solid var(--bg);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+@media (prefers-color-scheme:light){.check input:checked::after{border-color:#f6ead4}}
+.check label:has(input:checked){opacity:.6}
+.check label:has(input:checked) b{text-decoration:line-through;text-decoration-color:var(--ochre)}
+.check b{font-size:15.5px;display:block;font-weight:600}
+.check span{font-size:13.8px;color:var(--ink2);display:block;margin-top:2px}
+.check .src{font-size:12px;color:var(--ink3);margin-top:6px}
+.check .lawtag{display:inline-block;font-family:var(--kai);font-size:13px;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 50%,transparent);border-radius:5px;padding:0 6px;margin-right:6px}
+
+footer{padding:40px 0 70px;text-align:center;font-size:13px;color:var(--ink3);line-height:1.9}
+footer svg{width:180px;height:auto;display:block;margin:0 auto 14px;opacity:.7}
+
+.reveal{opacity:0;transform:translateY(14px);filter:blur(3px);transition:opacity .8s ease,transform .8s ease,filter .8s ease}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}.torch,.torch::after{transition:none;animation:none}html{scroll-behavior:auto}}
+
+@media (max-width:920px){
+  .plaques{grid-template-columns:1fr}
+  .vows,.ptypes{grid-template-columns:1fr 1fr}
+  .road{grid-template-columns:1fr 1fr;gap:10px}
+  .mapbox,.weeks,.grid2{grid-template-columns:1fr}
+  .axisnote{grid-template-columns:1fr}
+  .steles{grid-template-columns:1fr 1fr;gap:34px 22px}
+  .stele,.stele:nth-child(n){padding-top:40px}
+  .tablet{grid-template-columns:1fr}
+  .tablet .side{border-right:none;border-bottom:1px dashed var(--edge);display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-items:center}
+  .tablet .side .g{grid-row:span 2}
+  .tablet .side svg{display:none}
+  .tablet .side .when{margin-top:0}
+  .battles{grid-template-columns:repeat(3,1fr)}
+  .days{grid-template-columns:repeat(4,1fr)}
+  .quotes{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .wrap{padding:0 18px}
+  .mouth{padding:56px 20px 44px;box-shadow:inset 0 30px 60px rgba(0,0,0,.5),0 0 0 8px color-mix(in srgb,var(--rock2) 70%,transparent)}
+  .vows,.ptypes,.road,.check,.tasks,.ways{grid-template-columns:1fr}
+  .tablet .main{grid-template-columns:1fr;padding:20px}
+  .battles{grid-template-columns:1fr 1fr}
+  .versus{grid-template-columns:64px 1fr 1fr}
+  .versus>div{padding:12px 10px;font-size:13.5px}
+  .versus .g2{font-size:15.5px}
+  .quad{min-height:140px;padding:12px}
+  .quad p,.quad .meta{display:none}
+  .quad .ltr{font-size:30px}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .stele .def{display:none}
+  .stele .glyph{font-size:58px}
+  .stele .name{font-size:20px}
+  .bars{gap:5px}.bars-x{gap:5px}
+  .bars-x span{font-size:10.5px;white-space:nowrap}
+  .bars div span{font-size:11px}
+  .sec-head .seal{width:48px;height:48px;font-size:25px}
+  .hero .motto{font-size:17px;letter-spacing:.02em}
+  .hero h1{letter-spacing:.06em}
+  .quad h4{font-size:17px;padding-right:22px}
+  .quad .ltr{position:absolute;top:10px;right:10px;float:none;font-size:24px}
+  .day{padding:10px 8px 8px;min-height:100px}
+  .day .n{position:static;display:block;margin-bottom:4px}
+  .day .t{font-size:13.5px}
+}
+
+/* ====== 我要怎么做？ 抽屉 ====== */
+.fab{position:fixed;right:22px;bottom:22px;z-index:52;display:flex;align-items:center;gap:8px;padding:12px 18px 12px 14px;border:none;cursor:pointer;font-family:var(--kai);font-size:18px;font-weight:700;color:var(--ink);
+  border-radius:16px 22px 14px 20px;background:radial-gradient(120% 90% at 30% 10%,rgba(255,255,255,.10),transparent 55%),linear-gradient(180deg,var(--stone-a),var(--stone-b));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1px var(--edge),0 10px 26px rgba(0,0,0,.45),0 0 34px var(--firesoft);transition:transform .2s}
+.fab:hover{transform:translateY(-2px)}
+.fab svg{width:24px;height:24px}
+.fab .bdg{font-family:var(--sans);font-size:11.5px;font-weight:700;color:var(--bg);background:var(--ochre);border-radius:999px;padding:1px 7px;margin-left:2px}
+@media (prefers-color-scheme:light){.fab .bdg{color:#f6ead4}}
+.scrim{position:fixed;inset:0;z-index:58;background:rgba(10,7,4,.55);opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:60;width:min(460px,100vw);display:flex;flex-direction:column;
+  background:linear-gradient(180deg,rgba(255,255,255,.03),transparent 30%),var(--bg);border-left:1px solid var(--edge);box-shadow:-20px 0 50px rgba(0,0,0,.45);
+  transform:translateX(105%);transition:transform .38s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.drawer.open{transform:none;visibility:visible}
+.drawer .dh{padding:20px 22px 14px;border-bottom:1px dashed var(--edge);background:radial-gradient(80% 120% at 10% 0,var(--firesoft),transparent 70%)}
+.drawer .dh .row{display:flex;align-items:center;gap:10px}
+.drawer .dh h2{font-size:26px;margin-right:auto}
+.drawer .dh p{font-size:13px;color:var(--ink3);margin:6px 0 10px}
+.xbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--edge);background:transparent;color:var(--ink2);font-size:22px;line-height:1;cursor:pointer}
+.xbtn:hover{color:var(--fire);border-color:var(--fire)}
+.drawer .db{flex:1;overflow-y:auto;padding:6px 22px 30px;overscroll-behavior:contain}
+.stage{margin-top:18px}
+.stage h3{font-size:20px;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.stage h3 i{font-style:normal;font-family:var(--sans);font-size:12px;font-weight:700;width:24px;height:24px;display:grid;place-items:center;border-radius:7px 10px 6px 9px;background:var(--ochre);color:var(--bg);flex:none}
+@media (prefers-color-scheme:light){.stage h3 i{color:#f6ead4}}
+.stage .hint{font-size:12.5px;color:var(--ink3);margin:0 0 8px 34px}
+.plan{display:flex;gap:12px;align-items:flex-start;padding:11px 12px;margin-top:8px;border-radius:10px 14px 9px 12px;background:var(--rock);border:1px solid var(--edge);cursor:pointer}
+.plan input{appearance:none;-webkit-appearance:none;flex:none;width:21px;height:21px;margin-top:2px;border:2px dashed var(--chalk);border-radius:5px 8px 5px 7px;display:grid;place-items:center;cursor:pointer}
+.plan input:checked{border-style:solid;border-color:var(--ochre);background:var(--ochre)}
+.plan input:checked::after{content:"";width:5px;height:10px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+@media (prefers-color-scheme:light){.plan input:checked::after{border-color:#f6ead4}}
+.plan:has(input:checked){opacity:.6}
+.plan:has(input:checked) b{text-decoration:line-through;text-decoration-color:var(--ochre)}
+.plan b{display:block;font-size:14.5px;font-weight:600;line-height:1.55}
+.plan span{display:block;font-size:13px;color:var(--ink2);line-height:1.6;margin-top:2px}
+.plan em{display:block;font-style:normal;font-size:11.5px;color:var(--fire);margin-top:4px;letter-spacing:.02em}
+.plan.trap b::before{content:"卡点 ";color:var(--ochre);font-family:var(--kai)}
+body.lock{overflow:hidden}
+@media (max-width:620px){
+  .fab{right:14px;bottom:14px;padding:10px 14px 10px 12px;font-size:16px}
+  .drawer{top:0;left:0;right:0;width:100%;border-left:none;border-top:1px solid var(--edge);border-radius:0;transform:translateY(105%)}
+  .drawer.open{transform:none}
+  .drawer .dh{padding-top:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- 岩壁颗粒与斑驳：内联 SVG 滤镜，无外部图片 -->
+<svg class="grain" aria-hidden="true" preserveAspectRatio="none">
+  <filter id="nz"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .45  0 0 0 0 .38  0 0 0 .55 0"/></filter>
+  <filter id="blot"><feTurbulence type="fractalNoise" baseFrequency=".006 .011" numOctaves="4" seed="7"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.05"/></filter>
+  <rect class="gb" width="100%" height="100%" filter="url(#blot)"/>
+  <rect class="gn" width="100%" height="100%" filter="url(#nz)"/>
+</svg>
+<div class="vignette" aria-hidden="true"></div>
+<div class="torch" id="torch" aria-hidden="true"></div>
+
+<!-- 洞穴壁画符号库 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="spray"><feGaussianBlur stdDeviation="1.6"/></filter>
+    <symbol id="i-torch" viewBox="0 0 40 40"><path class="paint" d="M20 38 L20 18"/><path class="paint" d="M14 18 L26 18"/><path class="paintf" d="M20 3 C27 10 26 15 20 17 C14 15 13 10 20 3 Z"/></symbol>
+    <symbol id="i-write" viewBox="0 0 80 80"><path class="paint" d="M12 22 C24 18 34 26 46 21 S62 18 68 22"/><path class="paint" d="M12 38 C22 34 30 41 42 37 S56 34 62 38"/><path class="paint" d="M12 54 C20 51 26 56 34 53"/><path class="paint" d="M48 66 L70 40"/><path class="paintf" d="M44 70 L47 63 L52 67 Z"/></symbol>
+    <symbol id="i-body" viewBox="0 0 80 80"><circle class="paint" cx="40" cy="15" r="7"/><path class="paint" d="M40 22 L40 50"/><path class="paint" d="M40 30 L22 10 M40 30 L58 10"/><path class="paint" d="M40 50 L28 72 M40 50 L52 72"/><path class="paint" d="M14 74 L66 74" stroke-dasharray="2 6"/></symbol>
+    <symbol id="i-screen" viewBox="0 0 80 80"><rect class="paint" x="24" y="10" width="32" height="56" rx="5"/><path class="paint" d="M36 58 L44 58"/><path class="paint" d="M10 70 L70 6"/><path class="paint" d="M12 40 C20 34 26 34 30 40 M50 40 C54 34 60 34 68 40" opacity=".6"/></symbol>
+    <symbol id="i-do" viewBox="0 0 80 80"><path class="paint" d="M44 74 L44 40 C44 22 74 22 74 40 L74 74"/><circle class="paint" cx="20" cy="26" r="6"/><path class="paint" d="M20 32 L22 52 M21 38 L34 44 M21 38 L10 46 M22 52 L32 70 M22 52 L12 68"/><path class="paint" d="M6 74 L76 74"/><path class="paintf" d="M59 54 C63 59 62 63 59 65 C56 63 55 59 59 54Z"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 60 70"><g filter="url(#spray)" class="paintf" opacity=".75"><ellipse cx="30" cy="48" rx="15" ry="16"/><rect x="13" y="16" width="7" height="30" rx="3.5" transform="rotate(-14 16 30)"/><rect x="21" y="6" width="7" height="34" rx="3.5"/><rect x="31" y="5" width="7" height="35" rx="3.5"/><rect x="40" y="11" width="7" height="31" rx="3.5" transform="rotate(10 43 26)"/><rect x="45" y="36" width="7" height="22" rx="3.5" transform="rotate(48 48 46)"/></g></symbol>
+    <symbol id="i-man" viewBox="0 0 40 60"><circle class="paint" cx="20" cy="8" r="5"/><path class="paint" d="M20 13 L18 34 M19 20 L30 28 M19 20 L8 26 M18 34 L28 54 M18 34 L8 54"/></symbol>
+  </defs>
+</svg>
+
+<nav class="top">
+  <div class="wrap">
+    <span class="brand"><svg viewBox="0 0 40 40"><use href="#i-torch"/></svg>山洞四律</span>
+    <a href="#overview">洞口</a>
+    <a href="#cave">精神山洞</a>
+    <a href="#map">自救地图</a>
+    <a href="#laws">四块碑</a>
+    <a href="#days">十六天</a>
+    <a href="#chapters">各章要点</a>
+    <a href="#quotes">刻石金句</a>
+    <a href="#todo">行动清单</a>
+  </div>
+</nav>
+
+<header class="hero" id="overview">
+  <div class="wrap">
+    <div class="mouth reveal" data-torch>
+      <div class="eyebrow">趁 早 · 现 代 修 行</div>
+      <h1 class="carved">山洞<span class="dot">·</span>四律</h1>
+      <div class="motto">山洞不是物理空间，山洞在你心间。</div>
+    </div>
+    <p class="lead reveal">人想过得顺遂，既要常常对自己满意，又要常常把事办成，也就是“又要千金，又要乐意”。作者把三十年试过的各门各派方法筛了一遍，留下四个反复出现的招式：<strong>写下、具身、戒屏、做事</strong>。每天练这四样，就是有意识地走进一座“精神山洞”，从<strong>习得性无助</strong>练成<strong>习得性自助</strong>。</p>
+    <p class="author reveal">作者：书中未署名（封面信息为“未知”）。作者在书中自述是“趁早”时间管理体系的创立者，著有《趁早》《按自己的意愿过一生》《五种时间》《总会过去 总会到来》。</p>
+
+    <svg class="frieze reveal" viewBox="0 0 980 130" aria-label="壁画：人踏着四块步石走向山洞">
+      <path class="paint" d="M10 112 C120 108 220 116 330 110 S560 106 640 112" stroke-width="2" opacity=".6"/>
+      <use href="#i-man" x="30" y="52" width="40" height="60"/>
+      <g class="k1"><ellipse cx="140" cy="112" rx="34" ry="7" style="fill:var(--l1)" opacity=".85"/><text x="140" y="94" text-anchor="middle" style="font-family:var(--kai);font-size:20px;fill:var(--l1)">写下</text></g>
+      <g class="k2"><ellipse cx="260" cy="110" rx="34" ry="7" style="fill:var(--l2)" opacity=".85"/><text x="260" y="92" text-anchor="middle" style="font-family:var(--kai);font-size:20px;fill:var(--l2)">具身</text></g>
+      <g class="k3"><ellipse cx="380" cy="110" rx="34" ry="7" style="fill:var(--l3)" opacity=".85"/><text x="380" y="92" text-anchor="middle" style="font-family:var(--kai);font-size:20px;fill:var(--l3)">戒屏</text></g>
+      <g class="k4"><ellipse cx="500" cy="110" rx="34" ry="7" style="fill:var(--l4)" opacity=".85"/><text x="500" y="92" text-anchor="middle" style="font-family:var(--kai);font-size:20px;fill:var(--l4)">做事</text></g>
+      <path class="paint" d="M580 112 L580 70 C580 22 690 22 690 70 L690 112" stroke-width="3.5"/>
+      <path class="paint" d="M560 112 L960 112" stroke-width="2" opacity=".6"/>
+      <text x="635" y="92" text-anchor="middle" style="font-family:var(--kai);font-size:18px;fill:var(--fire)">心流</text>
+      <use href="#i-hand" x="730" y="34" width="56" height="66"/>
+      <use href="#i-torch" x="820" y="58" width="44" height="50"/>
+      <use href="#i-man" x="890" y="52" width="40" height="60"/>
+      <path class="paint" d="M90 76 l18 0 m-6 -6 l6 6 l-6 6" stroke-width="2" opacity=".7"/>
+    </svg>
+
+    <div class="plaques">
+      <a class="plaque reveal" href="#cave" data-torch><div class="n">第 一 部 分</div><h3>成为现代高手</h3><div class="role">解释与动员 · 为什么会拖延</div><p>从拖延症切入：山洞的比喻、新手与高手“论心不论迹”、四种拖延的自我诊断，以及“习得性无助”是怎么形成的。</p></a>
+      <a class="plaque reveal" href="#map" data-torch><div class="n">第 二 部 分</div><h3>高手自救地图</h3><div class="role">全书唯一的一张图 · 你在哪里</div><p>横轴是目标任务，纵轴是主体感受，分出 A、B、C、D 四类人。所有人的方向都是一条从 C 区到 A 区的攀升线。</p></a>
+      <a class="plaque reveal" href="#laws" data-torch><div class="n">第 三 部 分</div><h3>山洞四律</h3><div class="role">核心 · 16 篇导读 + 日课</div><p>连续十六天，从一律叠加到四律。作者说：在“先理解后用上”和“先用上再说”之间，劝你选后者。</p></a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ 精神山洞 ============ -->
+<section class="block" id="cave">
+  <div class="wrap">
+    <svg class="divider" viewBox="0 0 240 28" aria-hidden="true"><path class="paint" d="M4 16 C30 6 50 24 80 14 S120 6 136 16" stroke-width="2"/><use href="#i-hand" x="150" y="0" width="22" height="26"/><circle class="paintf" cx="190" cy="15" r="3"/><circle class="paintf" cx="206" cy="12" r="3"/><circle class="paintf" cx="222" cy="16" r="3"/></svg>
+    <div class="sec-head reveal"><div class="seal">壹</div><div><div class="tag">第一部分 · 成为现代高手</div><h2 class="carved">精神山洞</h2></div></div>
+    <p class="thesis reveal" data-torch>山洞是武侠故事里主人公变厉害的地方：入洞修炼，出洞时练就绝世武功。作者曾以为要先有一张书桌、一个“自己的房间”才能动手，这段弯路走了少说十年。后来她明白，山洞要你自己动手才会出现。</p>
+
+    <div class="vows reveal" data-torch>
+      <div class="vow"><small>山洞在哪</small>山洞不是物理空间，山洞在你心间。</div>
+      <div class="vow"><small>何时出现</small>不是环境具备了你才能动手，而是你一动手，山洞立刻在平地耸起。</div>
+      <div class="vow"><small>要不要遁世</small>当下一动手，心境和环境立即转变，不需要远走或消失。</div>
+      <div class="vow"><small>谁厉害</small>厉害的从来不是山洞，是其中的人，和他正在习得的招式。</div>
+    </div>
+
+    <h3 class="sub reveal">现代修行：修正行动，就是修改命运</h3>
+    <div class="road reveal" data-torch>
+      <div><b>旧性格与逻辑</b>面对一件事，按过往的性格和逻辑做出反应。</div>
+      <div><b>反复发生的行为</b>同样的行为一遍遍重复。</div>
+      <div><b>导向结果 = 命</b>行为导向结果，这就是“命”。</div>
+      <div><b>修行 = 改命</b>修正行动，即刻偏离既定路线。山洞四律就是用来切换命运的四种行动。</div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">“现代修行”不用离开生活轨道：山洞外，我就是日常的我；山洞里，我修正行为。</p>
+
+    <h3 class="sub reveal">论心不论迹：新手和高手的差别，先在自我认知</h3>
+    <div class="versus reveal" data-torch>
+      <div class="h"></div><div class="h">新手对自己说</div><div class="h g">高手对自己说</div>
+      <div class="lbl">还没动手</div><div>我都还不会，我资源不足，没人也没钱，我肯定做不到。</div><div class="g2">“我总有一天会动手。”</div>
+      <div class="lbl">开始做了</div><div>我好不容易开始了一点，但不知道什么时候又会停下。</div><div class="g2">“我果然真就动手了。”</div>
+      <div class="lbl">做完以后</div><div>顺着这种认知推演下去，新手果然半途而废。</div><div class="g2">“不愧是我，我就知道可以做完。”</div>
+    </div>
+    <p class="small reveal" style="margin-top:10px">外界看来进度相同的两个人，可能有截然不同的自我认知。随时间推进，区别才显现出来。</p>
+
+    <h3 class="sub reveal">自我诊断：四种拖延（刻痕越多越重）</h3>
+    <div class="slab reveal" style="margin-bottom:16px" data-torch>
+      <p class="muted" style="margin:0">书中说，<b style="color:var(--ink)">人人都会拖延</b>，偶发拖延本来就是生活的一部分。拖延症“与其说是一种行为，不如说是一种对自我的判断”，也就是判断自己“事也没做，人也不行”。如果多次拖延已经让你否定自己、不敢面对任务，人生停滞、自我认知消极，那就需要干预。下面四种由轻到重，<b style="color:var(--fire)">符合第四种，就该立刻开始练习</b>。</p>
+    </div>
+    <div class="ptypes reveal" data-torch>
+      <div class="pt"><svg class="tally" viewBox="0 0 60 22"><path class="paint" d="M6 3 L6 19"/></svg>
+        <h4>结构性拖延</h4><div class="tl">最友好 · 高手也这样拖</div>
+        <p>为了不做那件长期的难事，先把容易的做了：洗衣、烧水、整理书桌，两小时过去了，最重要的事还没开始。</p>
+        <div class="rx"><b>书中看法：</b>前序时间没被浪费，小完成带来小快乐，形成完成的惯性。准备做足了，人自然站到最难的任务面前。</div></div>
+      <div class="pt"><svg class="tally" viewBox="0 0 60 22"><path class="paint" d="M6 3 L6 19 M14 3 L14 19"/></svg>
+        <h4>完美主义型拖延</h4><div class="tl">本质：怕失败</div>
+        <p>要确保百分百准备好、结果一定满意才开始。总盯着缺陷，一直在问人、收集信息，人还在原地转圈。</p>
+        <div class="rx"><b>出路：</b>需要一个强大的外力给你开始的契机。别人有六成准备就敢开始，你八成了还在犹豫；一旦下场，更有机会成长为强大的完美主义型实践者。</div></div>
+      <div class="pt"><svg class="tally" viewBox="0 0 60 22"><path class="paint" d="M6 3 L6 19 M14 3 L14 19 M22 3 L22 19"/></svg>
+        <h4>资源松懈型拖延</h4><div class="tl">谁痛苦，谁改变</div>
+        <p>重要不紧急，今天明天都行。好比家门口的著名景点自己从没去过，非要等它下月关闭才想动身。常见的是松懈于锻炼身体和学习提升。</p>
+        <div class="rx"><b>出路：</b>找到真正的志趣，就是做了就高兴、不为成功也愿意投入的事。不问有没有用，只问有没有志趣。</div></div>
+      <div class="pt warn"><svg class="tally" viewBox="0 0 60 22"><path class="paint" d="M6 3 L6 19 M14 3 L14 19 M22 3 L22 19 M30 3 L30 19"/></svg>
+        <h4>习惯性拖延</h4><div class="tl">习得性无助之后的现象</div>
+        <p>拖延一次次反复，成了习惯，最后一事无成。最难受的一种是：因为怕要不到，所以假装自己本来也不想要。</p>
+        <div class="rx"><b>出路：</b>既然负面认知是“习得”的，正面认知也能习得。通过山洞四律，从“习得性无助”走到“习得性自助”。</div></div>
+    </div>
+
+    <div class="grid2 reveal" style="margin-top:16px" data-torch>
+      <div class="slab">
+        <h4 style="font-size:20px;margin-bottom:6px">习得性无助从哪来</h4>
+        <p class="muted" style="font-size:14.5px">自我认知受基因和环境影响。基因和原生家庭选不了，<b style="color:var(--ink)">后天环境</b>可以重建。习得性无助通常来自缺乏积极解读的外部环境：常被打压否定，表现好也被挑剔，潜意识里形成“我做什么都不对”，于是本能地逃避任务，最终滑向习惯性拖延。</p>
+      </div>
+      <div class="slab">
+        <h4 style="font-size:20px;margin-bottom:6px">积极解读的人怎么拖延</h4>
+        <p class="muted" style="font-size:14.5px">同样拖着，他们会说“我事没做，但我人还行”“总有一天我还是会做的”。他们<b style="color:var(--ink)">和自己站在一起去对抗困难</b>，拖延没有大到影响自我认知，所以容易改善。书中还说：焦虑的反面是专注和具体。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 自救地图 ============ -->
+<section class="block" id="map">
+  <div class="wrap">
+    <svg class="divider" viewBox="0 0 240 28" aria-hidden="true"><use href="#i-man" x="10" y="2" width="18" height="26"/><use href="#i-man" x="34" y="2" width="18" height="26"/><path class="paint" d="M64 16 C90 8 110 22 140 14 S190 8 230 16" stroke-width="2"/></svg>
+    <div class="sec-head reveal"><div class="seal">贰</div><div><div class="tag">第二部分 · 全书唯一的一张图</div><h2 class="carved">高手自救地图</h2></div></div>
+    <p class="thesis reveal" data-torch>两条基准线：横轴看事做了多少，纵轴看人乐不乐意。两条都要，但“心外无物”，更重要的一定是主观感受。点一下岩壁上的象限，或在右边回答两个问题，找到你现在的位置。</p>
+
+    <div class="mapbox reveal" data-torch>
+      <div class="matrix-wrap">
+        <div class="axis-y">负面 ← 主体感受 → 正向</div>
+        <div class="matrix" id="matrix">
+          <div class="quad" data-q="D"><span class="ltr">D</span><div class="meta">未开始 · 感受正向</div><h4>快乐的学渣</h4><p>“无所事事”但真的心安理得。很多时候是我们的榜样，是自洽与精神胜利的人。</p></div>
+          <div class="quad" data-q="A"><span class="ltr">A</span><div class="meta">已完成 · 感受正向</div><h4>快乐的学霸</h4><p>事达预期，人也自信。真正的高手就是快乐的学霸，也是山洞四律的天然练习者。</p></div>
+          <div class="quad" data-q="C"><span class="ltr">C</span><div class="meta">未开始 · 感受负面</div><h4>痛苦的学渣</h4><p>事还没做就觉得自己不行，既然不行就更不想做。习得性无助和习惯性拖延的人在这里。</p></div>
+          <div class="quad" data-q="B"><span class="ltr">B</span><div class="meta">已完成 · 感受负面</div><h4>焦虑的学霸</h4><p>事都办了，还是觉得不够好。有启动和完成的能力，缺的是积极解读的内外部环境。</p></div>
+          <svg class="climb" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M8,94 C30,80 40,62 50,50 S70,18 92,6" fill="none" stroke="var(--ochre)" stroke-linecap="round" stroke-dasharray="1 7" vector-effect="non-scaling-stroke" style="stroke-width:6px" opacity=".9"/>
+          </svg>
+          <span class="climb-tip">攀升线 C → A</span>
+        </div>
+        <div></div>
+        <div class="axis-x"><span>蛰伏区（未开始）</span><b>MVA 最小行动</b><span>有效行动区（已开始）</span></div>
+      </div>
+
+      <div class="locator slab">
+        <div class="q"><b>1. 对那件你最在意的目标任务，你现在……</b>
+          <div class="seg" data-k="x"><button class="chip" data-v="0">还没开始</button><button class="chip" data-v="1">已经在做 / 做完了</button></div></div>
+        <div class="q"><b>2. 想到它的时候，你的主体感受是……</b>
+          <div class="seg" data-k="y"><button class="chip" data-v="1">高兴、自洽、满足</button><button class="chip" data-v="0">焦虑、恐惧、自责</button></div></div>
+        <div class="verdict" id="verdict"><h4>你在哪里？</h4><p>每个人此刻都能在地图上找到自己的位置。人的感受是流动的，人人都可能滑落 C 区，也都可以现在就启动自救。</p></div>
+      </div>
+    </div>
+    <p class="small reveal" style="text-align:center;margin-top:12px">点状线是“攀升线”：所有人的调节方向是两条，朝主体感受正向调节，朝任务完成度高调节，合起来就是从 C 区到 A 区。右上顶点是“知行合一”的高手状态。</p>
+
+    <div class="axisnote reveal" data-torch>
+      <div><b>蛰伏区</b>任务还没开始，但人不是空白的，心理上已经在准备和自我评价。这条看不见的暗线是灯塔，焦虑也在上面随时间滋生。</div>
+      <div><b>最小行动 MVA</b>Minimum Viable Action，向目标挪动的第一个有效行动。是千里之行的第一步，也是“成为行动者”的开始。</div>
+      <div><b>在路上</b>MVA 往右是有效行动区，终点取决于截止日。书中说，焦虑是因为没有踏上想象中的旅程，“在路上是最棒的”。</div>
+    </div>
+
+    <h3 class="sub reveal">同一份三周后要交的文档：C 区和 A 区怎么过</h3>
+    <div class="weeks reveal" data-torch>
+      <div class="slab">
+        <h4>C 区的你 <span>第十五天的观想</span></h4>
+        <ul class="tl-list" style="--dotc:var(--ink3)">
+          <li>计划每天写 2 小时，三周写完。时间看着很充足，先去做别的。</li>
+          <li>一周过去，发现每天得写 3 小时了，开始怀疑：我还能完成吗？</li>
+          <li>又一周过去，决定明天起每天写 6 小时，第二天时间又被占了。</li>
+          <li>只剩 3 天，关掉微信，飞快敲键盘，匆匆忙忙终于完成。</li>
+        </ul>
+        <div class="sum">你以为只花了 3 天。其实前面纠结焦虑的十几天也在付出情绪劳动，<b style="color:var(--ink)">真正用掉的是全部三周</b>。</div>
+      </div>
+      <div class="slab">
+        <h4>A 区的你 <span>同样的任务压力</span></h4>
+        <ul class="tl-list" style="--dotc:var(--fire)">
+          <li>拿到任务：<q>好的，这个就是我接下来的任务，我会找到最合适的完成方法。</q></li>
+          <li>时间表被打破：<q>时间表果然就是用来打破和重建的，好的，我现在开始重建。</q></li>
+          <li>完成一部分：<q>我很不错，我已经在推进中了。</q></li>
+          <li>接近完成：<q>不愧是我，我又要完成了！</q></li>
+        </ul>
+        <div class="sum">差别不在时间表，在脑回路。书中说，所有训练都是为了形成自助者的脑回路。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 四块碑 ============ -->
+<section class="block" id="laws">
+  <div class="wrap">
+    <svg class="divider" viewBox="0 0 240 28" aria-hidden="true"><use href="#i-torch" x="6" y="0" width="24" height="28"/><path class="paint" d="M40 16 C70 8 100 22 130 14 S180 8 200 16" stroke-width="2"/><use href="#i-torch" x="210" y="0" width="24" height="28"/></svg>
+    <div class="sec-head reveal"><div class="seal">叁</div><div><div class="tag">第三部分 · 四种朴素的行动</div><h2 class="carved">刻在岩壁上的四块碑</h2></div></div>
+    <p class="thesis reveal" data-torch>世间的成果不是自律带来的，是沉迷、精深专注、全情投入，也就是“心流”。为了反复抵达那里，人们发明了一串准备招式，像水面的步石，踏准了几块就到了对岸。这四块碑就是那四块步石。点碑文，读背面。</p>
+
+    <div class="steles reveal" data-torch>
+      <button class="stele k1" data-k="1"><div class="num">第 一 律</div><span class="glyph">写</span><div class="name">写下</div><div class="def">每天有固定时间用于“写下来”的练习，使用纸和笔进行传统书写。</div><svg viewBox="0 0 80 80"><use href="#i-write"/></svg><span class="sday">第 1 天起</span></button>
+      <button class="stele k2" data-k="2"><div class="num">第 二 律</div><span class="glyph">身</span><div class="name">具身</div><div class="def">每天有固定时间用于肢体上的活动，使用身体去完成和获得练习体验。</div><svg viewBox="0 0 80 80"><use href="#i-body"/></svg><span class="sday">第 3 天起</span></button>
+      <button class="stele k3" data-k="3"><div class="num">第 三 律</div><span class="glyph">屏</span><div class="name">戒屏</div><div class="def">每天有一段时间，不观看电子屏幕，不向任何电子屏幕投放注意力。</div><svg viewBox="0 0 80 80"><use href="#i-screen"/></svg><span class="sday">第 4 天起</span></button>
+      <button class="stele k4" data-k="4"><div class="num">第 四 律</div><span class="glyph">事</span><div class="name">做事</div><div class="def">全身心投入做人生本阶段最重要或最具意义的事。</div><svg viewBox="0 0 80 80"><use href="#i-do"/></svg><span class="sday">第 9 天起</span></button>
+    </div>
+    <div class="ground"></div>
+
+    <div class="tablets">
+      <!-- 写下 -->
+      <article class="tablet k1 reveal" id="law-1" data-torch>
+        <div class="side"><div class="g">写</div><h3>写下</h3><div class="when">第 1 天起<br>撬动自己力量的第一步</div><svg viewBox="0 0 80 80"><use href="#i-write"/></svg></div>
+        <div class="main">
+          <div><h4>是什么，为什么</h4><p>拿起真正的笔，碰到真正的纸，最好有沙沙声，字迹留在纸上。书中说这是在建立通往未来的第一条脑神经回路。<b>80% 的焦虑来自模糊的妄念</b>，因为之前没留够时间让思路变清晰。另外，用笔写，会让你放下手机。</p></div>
+          <div><h4>写什么：积极的自我解读</h4><p>从现在起，关于自我的一切描述都正着说、肯定地说、充满希望地说。过去别人负面的、限制的评价，一概停止参考。<b>80 分的考卷</b>，先别在乎 20 分怎么丢的，先欣慰得了 80 分。</p></div>
+          <div class="full"><h4>三种写法（书中示例）</h4>
+            <div class="ways">
+              <div><b>过去是好的 → 继续夸</b><q>我的身体调节能力很不错，很累的时候只要睡上一觉，我就恢复过来了。</q></div>
+              <div><b>未来尚模糊 → 描述光明的未来</b><q>我会找到最适合我的工作，收入满意，有几个靠谱的同事……</q></div>
+              <div><b>目前受困 → 想象改变的契机</b><q>营业额一直下降，我要每星期都尝试一套新方法，先尝试3个月再说！</q></div>
+            </div></div>
+          <div><h4>关键词是“再次”</h4><p>第一次反应往往是情绪的条件反射。积极解读是<b>再次</b>审视、分析，再解释给自己听。书中的比喻：意气用事的年轻人是杏仁核，淡定持重的智慧老人是前额叶。“写下”就是年轻人用文字和身体里的智慧老人商量。</p></div>
+          <div><h4>重新理解知行合一</h4><p>“知而不行，只是未知。”你的行动就是你智慧的总和。脑子知道、身体不动，说明潜意识还不知道，你得训练它。办法是不管三七二十一先行动：临时起意是好的，半途而废也是好的，隔三岔五也没问题。</p></div>
+          <div class="full"><h4>十六天里怎么写</h4>
+            <div class="steps"><span><b>D1</b>自我诊断：我常在哪个区</span><span><b>D2</b>用积极解读重写负面经历、最强技能、未来、近期挫折</span><span><b>D3–7</b>记录身体与手机练习的觉知</span><span><b>D8</b>写下“做事”计划</span><span><b>D9</b>以终为始倒推，写出第一项 MVA</span><span><b>D15</b>描述四律带来的“本体感受”</span><span><b>D16</b>十六天复盘</span></div></div>
+        </div>
+      </article>
+
+      <!-- 具身 -->
+      <article class="tablet k2 reveal" id="law-2" data-torch>
+        <div class="side"><div class="g">身</div><h3>具身</h3><div class="when">第 3 天起<br>看似身体训练，其实是精神训练</div><svg viewBox="0 0 80 80"><use href="#i-body"/></svg></div>
+        <div class="main">
+          <div><h4>是什么，为什么</h4><p>“具身认知”的缩略。大脑能控制身体，身体也能反过来影响思维和行为。每种姿势都像按钮，按下去，大脑就释放相应的递质。你先做出姿势、给大脑“编造”了信号，于是真的开始有了自信和状态。</p></div>
+          <div><h4>顺序反过来</h4>
+            <div class="pair"><div class="bad"><b>以为</b>有动力才去运动；自信了才挺胸；平静了才去散步</div><div class="ok"><b>其实</b>运动了才有动力；挺起胸膛才感到自信；散步了于是平静</div></div></div>
+          <div><h4>书中例子：高能量姿势</h4><p>练公众讲话的第一项就是挺胸抬头：不管多紧张都昂扬上台，站定，徐徐环顾四周；眼含期待、嘴角上扬、适时点头；声音清晰洪亮，手臂张开收拢。这些只是表面招式，但演讲老师都会让初学者先从模仿它们开始。</p></div>
+          <div><h4>低潮期解药</h4><p>15 分钟中等强度有氧运动就能让人精神焕发；想改变神经可塑性，要坚持数周或数月。怕苦的话，就把运动变成游戏，<b>加入已经把运动当游戏的人</b>。书中说运动是次优的调节手段，最优的是人对人的影响，去接近高能量的人。</p></div>
+          <div class="full"><h4>十六天里怎么练（由浅入深）</h4>
+            <div class="steps"><span><b>D3</b>高能量姿势 30 秒</span><span><b>D4</b>1 分钟</span><span><b>D5</b>2 分钟</span><span><b>D6–8</b>户外散步 20 分钟以上</span><span><b>D9–11</b>拉伸，细致感受舒展与放松</span><span><b>D12–16</b>HIIT 15 分钟以上（高阶模式）</span></div>
+            <p class="small" style="margin-top:8px">HIIT 让心率迅速上升直到力竭，完成后身体启动“奖励与补偿”，分泌大量多巴胺和内啡肽。书中说它能让你当下体验到高手的感受：完全投入，有大心脏。</p></div>
+        </div>
+      </article>
+
+      <!-- 戒屏 -->
+      <article class="tablet k3 reveal" id="law-3" data-torch>
+        <div class="side"><div class="g">屏</div><h3>戒屏</h3><div class="when">第 4 天起<br>四律中最重要的招式</div><svg viewBox="0 0 80 80"><use href="#i-screen"/></svg></div>
+        <div class="main">
+          <div><h4>是什么，为什么</h4><p>书中称它是“现代人最核心的自救行动”。手机本身是中性的工具：需要时拿起是良师益友，不需要时放不下就是洪水猛兽。注意力被劫持（想做 A，被吸去做 B），行为被打断（正做 A，被拉去做 C），人还没尝到行动的正反馈就被拉走了。</p></div>
+          <div><h4>从旧瘾到新瘾</h4>
+            <div class="pair"><div class="bad"><b>廉价多巴胺</b>甜食、游戏、刷短视频：简单、低成本、容易获得</div><div class="ok"><b>高质量多巴胺</b>完成难任务、学新技能、创造性工作、体育锻炼：持久而深刻</div></div>
+            <p style="margin-top:8px">重新做人不是做一个没有瘾的人，而是让新的瘾来引领自己。</p></div>
+          <div><h4>人是最终的目的</h4><p>书中借康德的话：手机是为了交给人，不是为了把人交给手机。有神经学家扫描短视频沉迷者的大脑，发现活跃区与赌博成瘾者高度重合，前额叶持续休眠，伏隔核亮如白昼。在算法诱导下让渡自我塑造的时间，作者称之为“数字他律”。</p></div>
+          <div><h4>最可持续的戒屏</h4><p>不是抓心挠肝地强忍，而是让<b>更有意思的事替代屏幕</b>。具身和做事都是另一种形式的戒屏，深入到一定程度，会忘了屏幕的存在。初期还是建议四律分开、一项一项练。</p></div>
+          <div class="full"><h4>十六天里怎么戒：先观察记录，再逐段切断</h4>
+            <div class="steps"><span><b>D4</b>记录起床后多久第一次看手机、晨间时长、第一个 APP</span><span><b>D5</b>观察睡前最后一刻用的 APP</span><span><b>D6</b>记录吃饭时用不用手机</span><span><b>D7–9</b>起床后不看手机，物理隔离</span><span><b>D10–12</b>睡前 1 小时不看</span><span><b>D13–14</b>进食时不看，专心咀嚼</span><span><b>D15–16</b>早起后、吃饭时、睡前都不看</span></div></div>
+        </div>
+      </article>
+
+      <!-- 做事 -->
+      <article class="tablet k4 reveal" id="law-4" data-torch>
+        <div class="side"><div class="g">事</div><h3>做事</h3><div class="when">第 9 天起<br>启动最小可行行动</div><svg viewBox="0 0 80 80"><use href="#i-do"/></svg></div>
+        <div class="main">
+          <div><h4>是什么，为什么</h4><p>在地图上，做事就是启动 MVA，是进入 A 区的重要突破。第九天才开始做事，说明高手也不是立刻就能做事：高手也内耗、也恐惧，但不会在同一种内耗上停留太久。前三律加上做事，合力同时作用于身心。</p></div>
+          <div><h4>高手的山洞：会“迷”</h4><p>《一代宗师》里宫二说：“我爹常说我这种人，唱戏能成名角，出家能做高僧，因为我会迷。”这个“迷”就是进入山洞。作者在知道“心流”这个词之前，管它叫“上身”。在心流里，毅力不是关键，人生也不必苦行。</p></div>
+          <div><h4>开始的时机</h4><p>有挑战的事不存在完全准备好的时候。越精细地准备越难开始，越研究越慌。作者每段写作期间都会<b>忍住不再继续收集信息和学习</b>，知道多少就交代多少，让它“有限而真诚”。</p></div>
+          <div><h4>心安理得，磨磨叽叽</h4><p>绝大多数改变是渐进的。比拖延本身更糟的，是给自己下“我有拖延症”的负面判断：本来能心安理得慢慢完成，一旦认为慢是问题，过程就满是焦虑和自我质疑。</p></div>
+          <div class="full"><h4>书中例子：作者成年后打过的五场硬仗（“关键努力”）</h4>
+            <div class="battles">
+              <div class="battle"><div class="y">2003</div><div class="d">120 天</div><div class="t">从外企辞职，备战 2004 年 1 月的全国研究生招生考试</div></div>
+              <div class="battle"><div class="y">2009</div><div class="d">100 天</div><div class="t">写第一本书《趁早》，同年 12 月出版</div></div>
+              <div class="battle"><div class="y">2015</div><div class="d">100 天</div><div class="t">写作《按自己的意愿过一生》，国庆期间完稿</div></div>
+              <div class="battle"><div class="y">2020</div><div class="d">40 天</div><div class="t">写作《五种时间》，7 月 1 日起每天超高强度写作</div></div>
+              <div class="battle"><div class="y">2022</div><div class="d">100 天</div><div class="t">写作《总会过去 总会到来》，6 月完稿</div></div>
+            </div>
+            <p class="small" style="margin-top:8px">这类项目有明确期限、超常工作量、高标准检验。按帕累托法则，只要把 20% 的时间投入山洞四律，就已经做出了最有效的关键努力。熬不住时，作者会去读高手自传里最崩溃的那段，或者找人结伴，把“我这个人果然还是不行”变成“果然大家感觉都差不多”。</p></div>
+          <div class="full"><h4>十六天里专注时长的爬坡（分钟）</h4><div class="bars" id="bars"></div><div class="bars-x" id="barsx"></div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 十六天 ============ -->
+<section class="block" id="days">
+  <div class="wrap">
+    <svg class="divider" viewBox="0 0 240 28" aria-hidden="true"><path class="paint" d="M20 4 L20 24 M30 4 L30 24 M40 4 L40 24 M50 4 L50 24 M14 20 L56 8" stroke-width="2.4"/><path class="paint" d="M80 4 L80 24 M90 4 L90 24 M100 4 L100 24 M110 4 L110 24 M74 20 L116 8" stroke-width="2.4"/><path class="paint" d="M140 4 L140 24 M150 4 L150 24 M160 4 L160 24 M170 4 L170 24 M134 20 L176 8" stroke-width="2.4"/><path class="paint" d="M200 4 L200 24" stroke-width="2.4"/></svg>
+    <div class="sec-head reveal"><div class="seal">日</div><div><div class="tag">练习日课 · 在岩壁上刻下每一天</div><h2 class="carved">十六天，像高手一样行动</h2></div></div>
+    <p class="thesis reveal" data-torch>“当高手写，我们就写；当高手起身活动，我们也起身活动；当高手放下手机，我们也放下手机；当高手做事，我们便也做自己的事。”练习之外的时间照原样做自己，毕竟高手也休息。</p>
+    <div class="daybar reveal">
+      <div class="legend"><span class="k1"><i></i>写下</span><span class="k2"><i></i>具身</span><span class="k3"><i></i>戒屏</span><span class="k4"><i></i>做事</span></div>
+      <div class="progress"><div class="track"><div class="fill" id="dfill"></div></div><div class="txt" id="dtxt">0 / 16 天</div></div>
+    </div>
+    <div class="days reveal" id="daygrid" data-torch></div>
+    <div class="dpanel reveal" id="dpanel" data-torch></div>
+    <p class="small reveal" style="margin-top:10px">点任意一天查看当日导读和练习；“刻下这一天”后刻痕会被火光点亮，进度保存在本机浏览器。</p>
+  </div>
+</section>
+
+<!-- ============ 各章 ============ -->
+<section class="block" id="chapters">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="seal">卷</div><div><div class="tag">CONTENTS</div><h2 class="carved">各章要点</h2></div></div>
+
+    <details class="toc reveal" open data-torch>
+      <summary><span>前言 &amp; 第一部分 · 成为现代高手<small>8 节</small></span></summary>
+      <div class="toc-body">
+        <div class="ch"><b>前言</b><span>“千金难买我乐意，但我又要千金，又要乐意。”方法论的书分两类，一类教人感觉良好，一类教人把事办成。作者筛了三十年，发现四个招式几乎出现在所有宗派里。全书三部分，第三部分是核心，可以直接从那里开始。</span></div>
+        <div class="ch"><b>精神山洞</b><span>山洞是武侠主人公变强的地方，也是作者对“解救软弱的自己”的幻想。她从电视台逃到外企再逃到研究生院，发现到处都是众人。结论：山洞在心间，一动手就耸起。</span></div>
+        <div class="ch"><b>现代修行</b><span>修行就是修正行动；行为导向结果就是命，修正行动就是改命。不必离群索居，可以从第一种行动开始，逐日叠加到四种。</span></div>
+        <div class="ch"><b>论心不论迹</b><span>新手以为与高手的差距是客观成果，其实最大的差异是对自己的看法。</span></div>
+        <div class="ch"><b>怎样才算</b><span>人人都会拖延。拖延症是对自己的负面判断，“事也没做，人也不行”。当你认为它已在浪费生命、严重影响人生质量时，就需要干预。</span></div>
+        <div class="ch"><b>自我诊断</b><span>四种拖延：结构性（最友好）、完美主义型（需要外力）、资源松懈型（找到志趣）、习惯性（立刻开始练习）。</span></div>
+        <div class="ch"><b>习惯性拖延</b><span>无所事事是本来不想要，一事无成是想要的一个都没要到，最难受的是怕要不到就假装不想要。人只活一次，充分燃烧过才少留遗憾。</span></div>
+        <div class="ch"><b>习得性</b><span>习惯性拖延发生在习得性无助之后。负面认知能习得，正面认知也能，这就是“习得性自助”。焦虑不是愿望实现时才消失的，在启动和推进的路上就已逐渐消失。</span></div>
+      </div>
+    </details>
+
+    <details class="toc reveal" data-torch>
+      <summary><span>第二部分 · 高手自救地图<small>9 节</small></span></summary>
+      <div class="toc-body">
+        <div class="ch"><b>高手自救地图</b><span>全书唯一的一张图，原名“习得性自助模型”。高手先确定自己的位置，再找起点入手；高手会一直找办法帮自己，不坐等救援。自助者天助。</span></div>
+        <div class="ch"><b>所有人都在</b><span>每个人都能在地图上找到自己。你会找到帮手和伙伴，但前提是你已经走在自救的道路上。</span></div>
+        <div class="ch"><b>两条基准线</b><span>有人看成就，有人看感受。在高手这里两条都是基准线，但心外无物，主观感受更重要。</span></div>
+        <div class="ch"><b>高手的横轴</b><span>最左侧是蛰伏区。任务一旦在心里出现，这条暗线就诞生了，是灯塔，也滋生焦虑。</span></div>
+        <div class="ch"><b>最小行动</b><span>MVA 是横轴的分界点。从这里往右，人逐渐远离不作为，成为行动者。</span></div>
+        <div class="ch"><b>在路上</b><span>有效行动区一直延伸到截止日。“三十五岁的时候我将如何”这类期许迟迟没有推进，就会焦虑。</span></div>
+        <div class="ch"><b>主体感受</b><span>纵轴才是一切目的。正向感受是“我可以，我能行”；负面感受是焦虑、恐惧、担忧、痛苦、自责。它不总与完成度成正比。</span></div>
+        <div class="ch"><b>你是谁，你在哪里</b><span>A 快乐的学霸、B 焦虑的学霸、C 痛苦的学渣、D 快乐的学渣。D 区是自洽和精神胜利的榜样。</span></div>
+        <div class="ch"><b>C 区警告 · 攀升方向</b><span>人人都可能滑落 C 区。A 区人是天然练习者。所有人的调节方向汇成一条从 C 到 A 的攀升线，方法就是山洞四律。</span></div>
+      </div>
+    </details>
+
+    <details class="toc reveal" data-torch>
+      <summary><span>第三部分 · 山洞四律（导言 + 十六天导读）<small>17 节</small></span></summary>
+      <div class="toc-body">
+        <div class="ch"><b>导言 · 山洞四律</b><span>不是练自律。智能时代人分两类，少数人主动防御注意力丧失，多数人深陷手机。四律是智能时代之前就有的“步石”。</span></div>
+        <div class="ch"><b>第一天 · 重新理解知行合一</b><span>书写是撬动力量的第一步。“未有知而不行者。知而不行，只是未知。”</span></div>
+        <div class="ch"><b>第二天 · 积极的自我解读</b><span>为自己亲手创建后天的正向环境；关键在“再次”审视；年轻人与智慧老人。</span></div>
+        <div class="ch"><b>第三天 · 高能量姿势</b><span>具身认知；姿势像按钮，引发递质；自我养育从每天昂首挺胸和微笑开始。</span></div>
+        <div class="ch"><b>第四天 · 从旧瘾到新瘾</b><span>戒屏登场。廉价多巴胺与高质量多巴胺；山洞四律让上瘾辞旧迎新。</span></div>
+        <div class="ch"><b>第五天 · 给脑子多吃点好的</b><span>前额叶可以由弱变强；凝神专注增强大脑，分心涣散弱化大脑。吃高质量多巴胺不等于吃苦。</span></div>
+        <div class="ch"><b>第六天 · 关键努力</b><span>帕累托法则：20% 的时间投入四律。作者的五次硬仗；结伴，见证自己的崩溃和熬下去。</span></div>
+        <div class="ch"><b>第七天 · 人是最终的目的</b><span>注意力被劫持、行为被打断；康德；“自律”的反义词是“他律”；必须刻意练习屏幕戒断。</span></div>
+        <div class="ch"><b>第八天 · 舒适区的拖延</b><span>蛰伏区最后一天。说“我有一天一定会写一本书”的 A，十年后成了遗憾。一旦冒出“要不要离开舒适区”的念头，说明那里已经不舒适了。</span></div>
+        <div class="ch"><b>第九天 · 心安理得 磨磨叽叽</b><span>做事登场，启动 MVA。渐进的改变也是改变；“认为自己有拖延症”这一判断比拖延本身更耽误事。</span></div>
+        <div class="ch"><b>第十天 · 穹顶建筑师</b><span>作者三次严重拖延：没去的中央九台复试、没再考的拍卖师实操、一个月没动的总经理方案。迟疑像建筑师端详材料：这不是我想要的建筑。</span></div>
+        <div class="ch"><b>第十一天 · 开始的时机</b><span>飞轮效应；不存在完全准备好；世界是慷慨的，别人的收获不是你的失去。</span></div>
+        <div class="ch"><b>第十二天 · 低潮期解药</b><span>具身高阶模式 HIIT。运动是次优的调节手段，最优的是人对人的影响。</span></div>
+        <div class="ch"><b>第十三天 · 甄别期待</b><span>高手的终极追寻是山洞，不是成功。分辨哪些期待适合自己：试了果然快乐，那这个期待就是你的。</span></div>
+        <div class="ch"><b>第十四天 · 论证假设</b><span>纵轴比横轴重要。创业是自己差遣自己；像村上春树每天上午固定写 4000 字那样，做职业的而不是业余的。</span></div>
+        <div class="ch"><b>第十五天 · 高手的脑回路</b><span>C 区与 A 区的三周对照；所有训练皆为精神训练；无助者等环境来救，自助者始终在争取自救。</span></div>
+        <div class="ch"><b>第十六天 · 玩家心态</b><span>六种奖励神经递质；世界是一场靠大脑奖励物驱动的游戏。祝愿：创建新系统、成为玩家、夺回大脑控制权。</span></div>
+      </div>
+    </details>
+
+    <details class="toc reveal" data-torch>
+      <summary><span>后记 · 顺天才能改命<small>1 节</small></span></summary>
+      <div class="toc-body">
+        <div class="ch"><b>两个最具摧毁性的原因</b><span>一是移动互联网和短视频的致瘾能力；二是目标模糊，今天想做明天又觉得不重要。本质都是当下不行动比行动舒适。</span></div>
+        <div class="ch"><b>大脑训练</b><span>远离拖延本质上是大脑训练，脑子可塑。酝酿、等待和体验也是训练中非常有效的一部分。</span></div>
+        <div class="ch"><b>顺天</b><span>逆天改命，逆的不是天，是弱脑的本能。天一定会要你强，不会要你弱。</span></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 金句 ============ -->
+<section class="block" id="quotes">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="seal">铭</div><div><div class="tag">逐字摘录 · 刻石</div><h2 class="carved">金句</h2></div></div>
+    <div class="quotes">
+      <div class="quote reveal" data-torch><p>不要等，不是环境具备了你才能动手，而是你一动手，山洞立刻在平地耸起，将你笼罩。</p><cite>第一部分 · 精神山洞</cite></div>
+      <div class="quote reveal" data-torch><p>积极解读的人面对困难和坏结果时，会习惯性地选择和自己站在一起去对抗困难，而不是选择和困难站在一起去对抗自己。</p><cite>第一部分 · 习得性</cite></div>
+      <div class="quote reveal" data-torch><p>焦虑不是在愿望实现时才消失的，在坚信它能消失的当下，在启动和推进的路上，焦虑就已经逐渐消失了。</p><cite>第一部分 · 习得性</cite></div>
+      <div class="quote reveal" data-torch><p>吃高质量多巴胺绝对不等于吃苦，而等于吃点好的。</p><cite>第五天 · 给脑子多吃点好的</cite></div>
+      <div class="quote reveal" data-torch><p>手机被发明生产出来，是为了把手机交给人，不是为了把人交给手机。</p><cite>第七天 · 人是最终的目的</cite></div>
+      <div class="quote reveal" data-torch><p>世界上不缺我这本书，但我自己缺我这本书。</p><cite>第十一天 · 开始的时机</cite></div>
+      <div class="quote reveal" data-torch><p>比钢铁般的意志更强大的，是幸福的洪流。</p><cite>第十三天 · 高手的山洞</cite></div>
+      <div class="quote reveal" data-torch><p>所谓逆天改命，逆的也从来都不是天，而是弱脑的本能。</p><cite>后记 · 顺天才能改命</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 清单 ============ -->
+<section class="block" id="todo">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="seal">行</div><div><div class="tag">START HERE</div><h2 class="carved">行动清单：今天就进洞</h2></div></div>
+    <div class="progress" style="margin-bottom:18px"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 12</div></div>
+    <div class="check" id="check" data-torch></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <svg viewBox="0 0 180 60" aria-hidden="true"><use href="#i-hand" x="0" y="0" width="50" height="58"/><use href="#i-torch" x="64" y="8" width="40" height="48"/><use href="#i-man" x="120" y="2" width="36" height="56"/></svg>
+  根据《山洞四律》全文整理（作者书中未署名，自述为“趁早”创立者）<br>
+  十六天刻痕与清单勾选均保存在本机浏览器
+</footer>
+
+<button class="fab" id="fab" aria-haspopup="dialog" aria-controls="drawer"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#i-torch"/></svg>我要怎么做？<span class="bdg" id="fabbdg">0/0</span></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dtitle" aria-hidden="true">
+  <div class="dh">
+    <div class="row"><h2 id="dtitle" class="carved">我要怎么做？</h2><button class="xbtn" id="dclose" aria-label="关闭">×</button></div>
+    <p>按书里的方法排出的落地路线，每一步都注明出处。勾选进度保存在本机浏览器。</p>
+    <div class="progress"><div class="track"><div class="fill" id="planfill"></div></div><div class="txt" id="plantxt">0 / 0</div></div>
+  </div>
+  <div class="db" id="planbody"></div>
+</aside>
+
+<script>
+const LN=["写下","具身","戒屏","做事"];
+
+/* 象限定位 */
+const QA={
+  A:["A · 快乐的学霸","事达预期，人也自信。你已经是习得性自助者，是山洞四律的天然练习者。人生分阶段，上个阶段顺利不保证下个阶段没有困顿，继续练。"],
+  B:["B · 焦虑的学霸","你有启动和完成的能力，缺的是积极解读的内外部环境。调节方向是朝主体感受正向走，第二天的“积极的自我解读”就是为此写的。"],
+  C:["C · 痛苦的学渣","书中说 C 区人最需要山洞四律，这是习得性无助和习惯性拖延的位置。能确定的是：你可以现在就启动自救，从第一天的“写下”开始。"],
+  D:["D · 快乐的学渣","心安理得、自洽，在很多时候是我们的榜样。如果你也想要千金，调节方向是朝任务完成度高的方向走，从找到一个最小行动 MVA 开始。"]
+};
+const sel={x:null,y:null};
+function showQ(q){
+  document.querySelectorAll('.quad').forEach(el=>el.classList.toggle('on',el.dataset.q===q));
+  document.getElementById('verdict').innerHTML=`<h4>${QA[q][0]}</h4><p>${QA[q][1]}</p>`;
+}
+function syncChips(){document.querySelectorAll('.seg').forEach(s=>s.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.v===sel[s.dataset.k])))}
+document.querySelectorAll('.quad').forEach(el=>el.onclick=()=>{const q=el.dataset.q;sel.x=(q==='A'||q==='B')?'1':'0';sel.y=(q==='A'||q==='D')?'1':'0';syncChips();showQ(q)});
+document.querySelectorAll('.seg').forEach(s=>s.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  sel[s.dataset.k]=c.dataset.v;syncChips();
+  if(sel.x!==null&&sel.y!==null)showQ(sel.x==='1'?(sel.y==='1'?'A':'B'):(sel.y==='1'?'D':'C'));
+}));
+
+/* 石碑 → 碑文 */
+document.querySelectorAll('.stele').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById('law-'+b.dataset.k);
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
+}));
+
+/* 做事时长 */
+const MIN=[[9,25],[10,40],[11,50],[12,60],[13,75],[14,75],[15,100],[16,180]];
+document.getElementById('bars').innerHTML=MIN.map(m=>`<div style="height:${m[1]/180*100}%"><span>${m[1]}</span></div>`).join('');
+document.getElementById('barsx').innerHTML=MIN.map(m=>`<span>第${m[0]}天</span>`).join('');
+
+/* 刻痕 SVG：每 5 道一组（4 竖 + 1 斜） */
+function tally(n){
+  let s='',x=4,w=0;
+  for(let g=0;g<Math.ceil(n/5);g++){
+    const k=Math.min(5,n-g*5),x0=x;
+    for(let i=0;i<Math.min(k,4);i++){s+=`<line x1="${x}" y1="3" x2="${x+(i%2?1:-1)*.6}" y2="21"/>`;x+=7}
+    if(k===5){s+=`<line x1="${x0-4}" y1="17" x2="${x-1}" y2="6"/>`}
+    x+=6;
+  }
+  w=x;
+  return `<svg class="tally" viewBox="0 0 ${w} 24" style="width:${w}px">${s}</svg>`;
+}
+
+/* 十六天 */
+const D=[
+ ["重新理解知行合一","书写是撬动自己力量的第一步。用真正的笔和真正的纸，建立通往未来的第一条脑神经回路。",
+  ["自我诊断：我常处于哪个区；最近一次拖延是关于什么、当时的主体感受；我认为高手最厉害的能力；今年做到什么就能缩短和高手的距离。",null,null,null]],
+ ["积极的自我解读","所有关于自我的描述都正着说、肯定地说、充满希望地说。为自己亲手创建后天的正向环境。",
+  ["用积极解读重新描述：成长中的一次负面经历、自己掌握得最好的一项技能、对未来的想象、如何应对最近的挫折。",null,null,null]],
+ ["高能量姿势","具身登场。你想得到怎样的感受，就怎样调遣你的身体。",
+  ["过去我用什么办法帮自己振奋；什么姿态让我更阳光自信；从现在起我会做什么改变身体状态；习得高能量姿势后会有怎样的感受。","保持“高能量姿势”30 秒，体验前后和过程中的感觉与情绪。",null,null]],
+ ["从旧瘾到新瘾","戒屏登场，现代人最核心的自救行动。只有上更新的瘾才能变更路径。",
+  ["高能量姿势后的感受；身边谁常保持高能量姿势；我的手机上瘾是轻度、中度还是重度，为什么；对今日用机时长和频次的预期。","保持“高能量姿势”1 分钟。","记录：起床后坚持了多久才第一次看手机；晨间用机时长；起床后第一个打开的 APP。",null]],
+ ["给脑子多吃点好的","前额叶像肌肉，可以由弱变强。专心致志地生活，就是在给脑子吃高质量多巴胺。",
+  ["记录早起用机后的觉知与感受；如果早上不用手机我会做什么；如果今天能完全放下手机一段时间，我会去做什么。","保持“高能量姿势”2 分钟。","观察睡前一刻是否还在用手机；是的话记下最后用的 APP，否的话记下睡前多久放下的。",null]],
+ ["关键努力","把 20% 的时间投入山洞四律，就已经做出了最有效的关键努力。打过硬仗的人和没打过的不一样。",
+  ["记录睡前用机后的觉知与感受；对今日户外散步的预期；对今日吃饭时用手机的预期。","户外散步 20 分钟。","记录：吃饭时是否用手机，一开始就用还是中途拿起；用了多久、打开了什么 APP。",null]],
+ ["人是最终的目的","手机是为了交给人，不是为了把人交给手机。要找回主体性，必须刻意练习屏幕戒断。",
+  ["散步中印象最深刻的事物；记录吃饭用机情况后有什么发现。","户外散步 20 分钟以上。","起床后不立即拿手机，尽可能长时间物理隔离并记下时间，专心做好晨间例行事项。",null]],
+ ["舒适区的拖延","蛰伏区的最后一天。冒出“要不要离开舒适区”的念头，说明这里已经不舒适了，需要有正在走出去的动作。",
+  ["仔细描述将要启动的“做事”计划：明日开始、何时完成；定量完成度（多少字、多少千米、多少天）；里程碑；完成时和谁庆祝；生活会有什么改变；会对自己有什么新的积极解读。","户外散步 20 分钟以上。","起床后不看手机，尽量物理隔离，专心做好晨间例行事项。",null]],
+ ["心安理得 磨磨叽叽","做事登场，启动最小可行行动。磨磨叽叽的改变也是改变。",
+  ["写下尽量具体的做事计划（起点、资源、时间）；以终为始倒推拆分时间节点；写下今天启动所需的第一项最小可行行动；对拉伸和“做事 25 分钟”的感受预期。","身体拉伸训练，更细致地使用身体，感受舒展，尤其是放松的部分。","起床后不看手机，尽量物理隔离。","专注目标任务，完成第一个 25 分钟的启动行动。"]],
+ ["穹顶建筑师","人是自己人生穹顶的建筑师。每次迟疑，都像建筑师在端详材料：这不是我想要的那个建筑。",
+  ["拉伸训练后身体的感受；终于启动“做事 25 分钟”后的感受。","拉伸训练。","睡前 1 小时不看手机，尽量物理隔离。","专注目标任务 40 分钟。"]],
+ ["开始的时机","对于有挑战的事，不存在完全准备好的时候。事情不是因为完美而开始，而是因为有开始的冲动。",
+  ["想象并描述未来进入循环增强阶段的自己；对“做事 50 分钟”的感受和完成度预期。","拉伸训练。","睡前 1 小时不看手机。","专注目标任务 50 分钟。"]],
+ ["低潮期解药","具身高阶模式。HIIT 让你当下就体验到高手的感受：完全投入，有大心脏。",
+  ["“做事 50 分钟”后的感受；对今日高强度运动的预期。","用 HIIT 模式运动 15 分钟。","睡前 1 小时不看手机。","专注目标任务 60 分钟。"]],
+ ["甄别期待","高手的终极追寻是山洞，不是成功，成功是在山洞中修炼的结果。活在自己的正向体验和感受里。",
+  ["高强度运动力竭时我在想什么；对今日“进食戒屏”的预期。","用 HIIT 模式室内徒手健身 15 分钟以上。","进食时不看手机，全身心感受咀嚼的过程和食物的味道。","专注目标任务 75 分钟。"]],
+ ["论证假设","纵轴比横轴重要。写下、具身、戒屏、做事，本身就是创业生活的日常循环。",
+  ["“做事 75 分钟”后的感受；对今日再次达成 75 分钟的预期。","用 HIIT 模式运动 15 分钟以上。","一天所有进食过程中都不看手机。","专注目标任务 75 分钟。"]],
+ ["高手的脑回路","观想 C 区与 A 区面对同一任务的不同反应。这是一个精神世界，所有训练皆为精神训练。",
+  ["尽量细致地描述山洞四律带来的“本体感受”。","用 HIIT 模式运动。","早起后一小时、吃饭时、睡前一小时都不看手机。","专注目标任务 100 分钟。"]],
+ ["玩家心态","世界是一场靠大脑奖励物驱动的游戏。祝愿你创建新系统，成为玩家，夺回大脑控制权。",
+  ["十六天里印象最深的感受发生在哪天；哪一律体会最深；和十六天前相比最大的变化；情绪提振发生在哪天哪个时刻；会把哪几律持久执行下去。","用 HIIT 模式室内徒手健身。","早起后、入睡前、进食中都不看手机，全身心体验生活的细节。","专注目标任务 3 小时。"]]
+];
+const DKEY='cave-16days-v1';
+let done=new Set(JSON.parse(localStorage.getItem(DKEY)||'[]')),cur=0;
+const dg=document.getElementById('daygrid');
+function renderDays(){
+  let h='<div class="zone">蛰伏区 · 第 1–8 天 · 写下 → 具身 → 戒屏，逐日叠加</div>';
+  D.forEach((d,i)=>{
+    if(i===8)h+='<div class="zone">有效行动区 · 第 9–16 天 · 四律叠加，做事时长逐日加码</div>';
+    h+=`<button class="day${done.has(i)?' done':''}${i===cur?' sel':''}" data-i="${i}"><span class="n">第${i+1}天</span>${tally(i+1)}<span class="t">${d[0]}</span><span class="dots">${d[2].map((t,k)=>`<i class="k${k+1}${t?' f':''}"></i>`).join('')}</span></button>`;
+  });
+  dg.innerHTML=h;
+  document.getElementById('dfill').style.width=(done.size/16*100)+'%';
+  document.getElementById('dtxt').textContent=done.size+' / 16 天';
+}
+function renderPanel(){
+  const d=D[cur],isDone=done.has(cur);
+  document.getElementById('dpanel').innerHTML=`<div class="hd"><h4>第${cur+1}天 · ${d[0]}</h4><span class="zn">${cur<8?'蛰伏区':'有效行动区'} · 今日练习：${d[2].map((t,k)=>t?LN[k]:null).filter(Boolean).join(' + ')}</span><button class="btn${isDone?' ghost':''}" id="dbtn">${isDone?'抹去刻痕':'刻下这一天'}</button></div>
+  <div class="essay">${d[1]}</div>
+  <div class="tasks">${d[2].map((t,k)=>`<div class="task k${k+1}${t?'':' off'}"><b>${LN[k]}</b><p>${t||['','第 3 天起加入','第 4 天起加入','第 9 天起加入'][k]}</p></div>`).join('')}</div>`;
+  document.getElementById('dbtn').onclick=()=>{done.has(cur)?done.delete(cur):done.add(cur);localStorage.setItem(DKEY,JSON.stringify([...done]));renderDays();renderPanel()};
+}
+dg.addEventListener('click',e=>{const b=e.target.closest('.day');if(!b)return;cur=+b.dataset.i;renderDays();renderPanel()});
+for(let i=0;i<16;i++){if(!done.has(i)){cur=i;break}}
+renderDays();renderPanel();
+
+/* 行动清单 */
+const T=[
+ [1,"每天留一段固定时间，用纸和笔写","真正的笔、真正的纸。写现在、过去、未来、计划、复盘都行，书写这个动作不能省。","第一天"],
+ [1,"所有关于自己的描述，都正着说","过去好就继续夸，未来模糊就描述光明，眼下受困就想象改变的契机。80 分的卷子，先欣慰这 80 分。","第二天"],
+ [1,"遇事等一等，做第二次反应","第一反应常是条件反射。等智慧老人开口，“再次”审视、分析，再解释给自己听。","第二天"],
+ [2,"紧张或低落时，先摆出高能量姿势","挺胸抬头、嘴角上扬，保持 30 秒到 2 分钟，体会前后感受的变化。","第三至五天"],
+ [2,"每天户外散步 20 分钟，再逐步加入拉伸和 HIIT","不是平静了才去散步，而是散步了于是平静。HIIT 每次 15 分钟以上。","第六至十六天"],
+ [2,"找已经把运动当游戏的人，跟他们一起玩","玩的次数多了，大脑就开始改变；最好的调节是接近高能量的人。","第十二天"],
+ [3,"先记录一天：起床后多久第一次看手机","晨间用机时长、第一个打开的 APP、睡前最后用的 APP、吃饭时用不用。先了解，再切断。","第四至六天"],
+ [3,"守住三段无屏时间：早起后一小时、吃饭时、睡前一小时","起床后与手机物理隔离，专心做晨间例行事项；进食时专心咀嚼和品尝味道。","第七至十六天"],
+ [4,"写下“做事”计划的六要素","何时开始和完成、定量完成度、里程碑、和谁庆祝、生活将如何改变、对自己的新积极解读。","第八天"],
+ [4,"以终为始倒推，写出第一项最小可行行动 MVA","然后专注做第一个 25 分钟，之后逐步加到 3 小时。","第九至十六天"],
+ [4,"开始做事之后，忍住不再继续收集信息","知道多少就交代多少，让它“有限而真诚”，别掉进完美主义的越研究越慌。","第十一天"],
+ [4,"时间表被打破时，对自己说：重建就好","“时间表果然就是用来打破和重建的”；熬不住就找人结伴，或去读高手自传里最崩溃的那段。","第六天 · 第十五天"]
+];
+const KEY='cave-check-v1',saved=JSON.parse(localStorage.getItem(KEY)||'[]');
+const ck=document.getElementById('check');
+ck.innerHTML=T.map((t,i)=>`<label class="k${t[0]}"><input type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[1]}</b><span>${t[2]}</span><div class="src"><span class="lawtag">${LN[t[0]-1]}</span>出处：${t[3]}</div></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  localStorage.setItem(KEY,JSON.stringify(on));
+  document.getElementById('pfill').style.width=(on.length/T.length*100)+'%';
+  document.getElementById('ptxt').textContent=on.length+' / '+T.length;
+}
+ck.addEventListener('change',prog);prog();
+
+/* 显现 */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* 火把：跟随当前阅读段落；鼠标移动时短暂跟随指针 */
+const torch=document.getElementById('torch'),lights=[...document.querySelectorAll('[data-torch]')];
+let pointerUntil=0,ticking=false;
+function aim(){
+  ticking=false;
+  if(Date.now()<pointerUntil)return;
+  const mid=innerHeight*0.42;let best=null,bd=1e9;
+  for(const el of lights){const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)continue;
+    const c=Math.min(Math.max(mid,r.top+40),r.bottom-40),d=Math.abs(c-mid)+(r.top>mid?r.top-mid:0);if(d<bd){bd=d;best=el}}
+  if(!best)return;
+  const r=best.getBoundingClientRect();
+  const x=r.left+Math.min(r.width*0.32,360),y=Math.min(Math.max(r.top+Math.min(r.height*0.35,220),80),innerHeight-80);
+  torch.style.setProperty('--tx',x+'px');torch.style.setProperty('--ty',y+'px');
+  document.querySelectorAll('.stele.lit').forEach(s=>s.classList.remove('lit'));
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(aim)}},{passive:true});
+addEventListener('resize',aim);
+addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;pointerUntil=Date.now()+1400;torch.style.setProperty('--tx',e.clientX+'px');torch.style.setProperty('--ty',e.clientY+'px');clearTimeout(aim.t);aim.t=setTimeout(aim,1500)},{passive:true});
+document.querySelectorAll('.stele').forEach(s=>s.addEventListener('mouseenter',()=>{document.querySelectorAll('.stele').forEach(x=>x.classList.toggle('lit',x===s))}));
+aim();
+
+/* 导航高亮 */
+const links=[...document.querySelectorAll('nav.top a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{let k=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<120)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k))},{passive:true});
+/* ====== 我要怎么做？ ====== */
+const PLAN=[
+ ["今天就做","3 件 15 分钟内能做完的事",[
+  ["拿出纸和笔，写下今天的“自我诊断”","我常处于地图的哪个区；最近一次拖延关于什么、当时感受如何；我认为高手最厉害的能力是什么；今年做到什么就能缩短和高手的距离。","第一天 · 今日练习"],
+  ["保持“高能量姿势”30 秒","挺胸抬头、嘴角上扬，体验前后和过程中自己的感觉和情绪。","第三天 · 今日练习"],
+  ["今晚睡前，观察自己最后一刻是否还在用手机","是的话记下最后用的 APP；不是的话记下睡前多久放下的。先观察，不急着戒。","第五天 · 今日练习"]]],
+ ["第一周","在蛰伏区把前三律逐日叠加起来",[
+  ["每天固定一段时间用纸笔“写下”，而且只用积极解读来写","过去好的继续夸，未来模糊的描述光明，眼下受困的想象改变契机。","第一天 · 第二天"],
+  ["照十六天日课走完第 1–7 天","写下（第 1 天起）→ 加具身（第 3 天起）→ 加戒屏（第 4 天起），每天在本页“十六天”里刻下一道。","第三部分 · 第一天至第七天"],
+  ["把高能量姿势从 30 秒延到 2 分钟，再换成户外散步 20 分钟","不是平静了才去散步，而是散步了于是平静。","第三天至第七天"],
+  ["分别记录起床后、睡前、吃饭时三个时段的手机使用","起床后多久第一次看、第一个 APP；睡前最后用的 APP；吃饭时用不用、用多久。了解清楚了，才能切断劫持链条。","第四天至第六天"],
+  ["第八天写下“做事”计划","何时开始、何时完成；定量完成度；里程碑；和谁庆祝；生活会有什么改变；对自己会有什么新的积极解读。","第八天 · 今日练习"]]],
+ ["一个月后","十六天练完，四律成为日常，再检验一次",[
+  ["习惯：每天专注做那件最重要的事","从第一个 25 分钟启动行动开始，按日课加到 40、50、60、75、100 分钟，直到 3 小时。","第九天至第十六天"],
+  ["习惯：早起后一小时、吃饭时、睡前一小时不看手机","最可持续的戒屏，是让更有意思的事替代屏幕。","第十天 · 第十五天 · 第十六天"],
+  ["习惯：用 HIIT 运动 15 分钟以上","运动后神清气爽，对接下来的生活工作充满期待；有规律健身习惯的人更少拖延。","第十二天起"],
+  ["检验：回答第十六天的五个复盘问题","印象最深的一天、体会最深的一律、最大的变化、情绪提振的时刻、会持久执行哪几律。","第十六天 · 今日练习"],
+  ["检验：在自救地图上重新定位自己","看是否沿两个方向移动：主体感受更正向，任务完成度更高，也就是从 C 区朝 A 区攀升。","第二部分 · 攀升方向"],
+  ["检验：听听自己面对任务时的脑回路","是否从“我还能完成吗”变成了“我很不错，我已经在推进中了”。","第十五天 · 高手的脑回路"]]],
+ ["卡住了怎么办","书里提到的常见障碍和对策",[
+  ["总想等准备好了再开始","有挑战的事不存在完全准备好的时候；开始后忍住不再继续收集信息，让它“有限而真诚”。完美主义型拖延需要一个外力给你开始的契机。","第十一天 · 自我诊断"],
+  ["嫌自己慢，给自己盖章“拖延症”","渐进的改变也是改变。“认为自己有拖延症”这个负面判断，比拖延本身耽误更多的事。念念不忘，心安理得，磨磨叽叽。","第九天"],
+  ["熬不住了，觉得“我这个人果然还是不行”","找人结伴，变成“果然大家感觉都差不多”；或者去读高手自传里最崩溃的那段。","第六天 · 关键努力"],
+  ["运动起不来，嫌苦","把运动变成好玩的游戏，加入那些已经把运动当游戏的人；更好的是接近高能量的人。","第十二天 · 低潮期解药"],
+  ["时间表被打破了","“时间表果然就是用来打破和重建的”，现在就重建，重建的时间表依然是最适合你的。","第十五天"],
+  ["练了几天就断了","临时起意是好的，半途而废也是好的，隔三岔五也没问题。有契机就上，随时撕开口子。","第一天 · 重新理解知行合一"],
+  ["写下的东西觉得矫情、自己都不信","书中说“写下”会从犹豫过渡到坦诚、务实地写；内容会变，但书写这一行动不可以省略。","第一天 · 第十天"],
+  ["目标模糊，今天想做明天又不想","后记称目标迷失是“持续行动的大杀器”；第一天说 80% 的焦虑来自模糊的妄念，把念头写清楚是第一步。","后记 · 第一天"]]]
+];
+const PKEY='cave-plan-v1';
+const pDone=new Set(JSON.parse(localStorage.getItem(PKEY)||'[]'));
+const pb=document.getElementById('planbody');
+let pid=0;
+pb.innerHTML=PLAN.map((st,si)=>`<div class="stage"><h3><i>${'①②③④'[si]}</i>${st[0]}</h3><div class="hint">${st[1]}</div>${st[2].map(it=>{const id='p'+(pid++);return `<label class="plan${si===3?' trap':''}"><input type="checkbox" data-id="${id}" ${pDone.has(id)?'checked':''}><div><b>${it[0]}</b><span>${it[1]}</span><em>出处：${it[2]}</em></div></label>`}).join('')}</div>`).join('');
+const PTOTAL=pid;
+function pprog(){
+  const on=[...pb.querySelectorAll('input:checked')].map(x=>x.dataset.id);
+  localStorage.setItem(PKEY,JSON.stringify(on));
+  document.getElementById('planfill').style.width=(on.length/PTOTAL*100)+'%';
+  document.getElementById('plantxt').textContent=on.length+' / '+PTOTAL;
+  document.getElementById('fabbdg').textContent=on.length+'/'+PTOTAL;
+}
+pb.addEventListener('change',pprog);pprog();
+const drawer=document.getElementById('drawer'),scrim=document.getElementById('scrim'),fab=document.getElementById('fab');
+function openD(){drawer.classList.add('open');scrim.classList.add('open');drawer.setAttribute('aria-hidden','false');document.body.classList.add('lock');setTimeout(()=>document.getElementById('dclose').focus(),50)}
+function closeD(){drawer.classList.remove('open');scrim.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('lock');fab.focus()}
+fab.onclick=openD;scrim.onclick=closeD;document.getElementById('dclose').onclick=closeD;
+addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('open'))closeD()});
+if(location.hash==='#plan')openD();
+</script>
+</body>
+</html>

@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>麦肯锡精英的思考习惯 · 心理韧性练习册</title>
+<style>
+:root{
+  --bg:#f1f5f6; --paper:#ffffff; --paper2:#f7fafa;
+  --ink:#1f2b33; --ink2:#45545e; --ink3:#5c6b74;
+  --line:#d9e2e6; --rule:#d3dee3;
+  --mist:#376581; --mists:#e1ebf1; --mistm:#a7c2d2;
+  --sage:#416a59; --sages:#e2ede7; --sagem:#a6c6b7;
+  --rose:#9a4e45; --roses:#f5e7e4; --rosem:#dfb4ad;
+  --sand:#7d6233; --sands:#f2ebde;
+  --r:22px; --r2:16px;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --round:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --shadow:0 1px 2px rgba(31,43,51,.04),0 6px 20px rgba(31,43,51,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#12181b; --paper:#1a2226; --paper2:#1e272b;
+    --ink:#e4ecef; --ink2:#b7c5cb; --ink3:#95a6ae;
+    --line:#2a363b; --rule:#314047;
+    --mist:#93bdd6; --mists:#1c3140; --mistm:#3c5d72;
+    --sage:#93c7b0; --sages:#1a2f27; --sagem:#3b5f50;
+    --rose:#e8a69d; --roses:#382422; --rosem:#6a403b;
+    --sand:#d9b77a; --sands:#33291a;
+    --shadow:0 1px 2px rgba(0,0,0,.25),0 6px 20px rgba(0,0,0,.2);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4,h5{font-family:var(--round);font-weight:700;line-height:1.4;margin:0;letter-spacing:.01em}
+p{margin:.45em 0}
+.muted{color:var(--ink2)}
+.small{font-size:13.5px;color:var(--ink3)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--round);font-weight:600;font-size:13px;border-radius:999px;padding:3px 12px;line-height:1.6}
+.pill.m{background:var(--mists);color:var(--mist)}
+.pill.s{background:var(--sages);color:var(--sage)}
+.pill.r{background:var(--roses);color:var(--rose)}
+.pill.d{background:var(--sands);color:var(--sand)}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:4px;height:58px;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .brand{font-family:var(--round);font-weight:700;margin-right:auto;white-space:nowrap;display:flex;align-items:center;gap:8px;padding-right:12px}
+nav.top .brand::before{content:"";width:12px;height:12px;border-radius:4px;background:linear-gradient(135deg,var(--mistm),var(--sagem))}
+nav.top a{text-decoration:none;font-size:14px;color:var(--ink2);padding:6px 12px;border-radius:999px;white-space:nowrap;transition:.2s}
+nav.top a:hover,nav.top a.on{background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+
+/* cover */
+.cover-wrap{padding:44px 0 24px}
+.cover{background:linear-gradient(150deg,var(--mists) 0%,color-mix(in srgb,var(--mists) 50%,var(--sages)) 55%,var(--sages) 100%);border-radius:34px;padding:56px 52px 48px;display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:start}
+.cover .lab{display:flex;gap:8px;flex-wrap:wrap}
+.cover .lab .pill{background:color-mix(in srgb,var(--paper) 75%,transparent);color:var(--ink2)}
+.cover h1{font-size:clamp(34px,5.2vw,56px);margin-top:20px;letter-spacing:.02em}
+.cover h1 .nw{display:inline-block}
+.cover .by{color:var(--ink2);font-size:15px;margin-top:6px}
+.cover .lead{font-size:clamp(16.5px,1.9vw,19px);color:var(--ink);margin-top:22px;line-height:1.85}
+.cover .lead b{color:var(--mist)}
+.note{background:var(--paper);border-radius:var(--r);padding:24px 24px 22px;box-shadow:var(--shadow)}
+.note h4{font-size:15px;color:var(--mist);display:flex;align-items:center;gap:8px}
+.note h4::before{content:"!";display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--mists);color:var(--mist);font-size:12px}
+.note p{font-size:14.5px;color:var(--ink2)}
+.vstep{list-style:none;margin:16px 0 0;padding:14px 0 0;counter-reset:v;border-top:1px dashed var(--line)}
+.vstep li{counter-increment:v;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;position:relative;padding-bottom:12px;font-size:14.5px}
+.vstep li::before{content:counter(v);width:26px;height:26px;border-radius:50%;background:var(--mists);color:var(--mist);display:grid;place-items:center;font-family:var(--round);font-weight:700;font-size:13px}
+.vstep li:not(:last-child)::after{content:"";position:absolute;left:12.5px;top:28px;bottom:2px;width:1.5px;background:var(--line)}
+.vstep li:last-child::before{background:var(--sages);color:var(--sage);content:"✓"}
+.vstep b{font-family:var(--round);font-weight:700;display:block;line-height:1.5}
+.vstep span{color:var(--ink3);font-size:13px;line-height:1.5;display:block}
+
+.contents{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.cc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px 18px;text-decoration:none;display:block;transition:transform .25s,border-color .25s}
+.cc:hover{transform:translateY(-2px);border-color:var(--mistm)}
+.cc .pg{font-family:var(--round);font-size:12.5px;color:var(--ink3);letter-spacing:.08em}
+.cc h3{font-size:18px;margin-top:6px}
+.cc p{font-size:14px;color:var(--ink2);margin-top:8px;line-height:1.7}
+.cc .pill{margin-top:12px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.facts div{border:1.5px dashed var(--line);border-radius:var(--r);padding:16px 18px;font-size:14px;color:var(--ink2)}
+.facts b{display:block;font-family:var(--round);font-size:15.5px;color:var(--ink);margin-bottom:2px}
+
+/* sections */
+section.lesson{padding:80px 0 20px}
+.lhead{margin-bottom:30px;max-width:820px}
+.lhead .pill{margin-bottom:12px}
+.lhead h2{font-size:clamp(26px,3.6vw,36px)}
+.lhead p{font-size:16.5px;color:var(--ink2);margin-top:12px}
+h3.t{font-size:20px;margin:48px 0 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h3.t::before{content:"";width:6px;height:22px;border-radius:3px;background:var(--mistm)}
+h3.t small{font-family:var(--sans);font-weight:400;font-size:13.5px;color:var(--ink3)}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.box h4{font-size:16.5px;margin-bottom:6px}
+.box p,.box li{font-size:14.5px;color:var(--ink2)}
+.box ul{margin:6px 0 0;padding-left:1.2em}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+
+/* lanes */
+.lanes{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px 28px 22px}
+.lane{display:grid;grid-template-columns:92px repeat(5,1fr);align-items:start}
+.lane+.lane{margin-top:22px;padding-top:22px;border-top:1px dashed var(--line)}
+.lane .who{font-family:var(--round);font-weight:700;font-size:18px;padding-top:2px}
+.lane .who small{display:block;font-family:var(--sans);font-weight:400;font-size:12.5px;color:var(--ink3)}
+.lane.bad .who{color:var(--rose)} .lane.good .who{color:var(--sage)}
+.st{position:relative;padding:34px 10px 0;text-align:center}
+.st::before{content:"";position:absolute;top:6px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--paper);border:3px solid var(--k);z-index:1}
+.st:not(:last-child)::after{content:"";position:absolute;top:13px;left:50%;width:100%;height:2px;background:var(--km)}
+.lane.bad{--k:var(--rose);--km:var(--rosem)} .lane.good{--k:var(--sage);--km:var(--sagem)}
+.st b{display:block;font-family:var(--round);font-size:15px;color:var(--k)}
+.st span{display:block;font-size:13.5px;color:var(--ink2);line-height:1.6;margin-top:2px}
+.lanes .cap{margin-top:18px;font-size:13.5px;color:var(--ink3);background:var(--paper2);border-radius:14px;padding:10px 14px}
+
+/* abc */
+.abc{display:grid;grid-template-columns:1fr 36px 1.1fr 36px 1fr;align-items:stretch}
+.abc .c{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.abc .c.b{background:var(--mists);border-color:var(--mistm)}
+.abc .L{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--round);font-weight:800;font-size:22px;background:var(--mists);color:var(--mist)}
+.abc .c.b .L{background:var(--mist);color:var(--paper)}
+.abc h4{font-size:16.5px;margin-top:12px}
+.abc .en{font-size:12.5px;color:var(--ink3)}
+.abc .eg{font-size:14px;color:var(--ink2);margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule);line-height:1.7}
+.abc .ar{display:grid;place-items:center;color:var(--ink3);font-size:20px}
+.abc-note{margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.abc-note .eq{font-family:var(--round);font-weight:700;font-size:15px;white-space:nowrap}
+.abc-note .eq s{color:var(--rose);text-decoration-thickness:2px;margin-right:10px}
+.abc-note .eq span{color:var(--mist)}
+
+/* emotion pairs */
+.emos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.emo{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px 18px;display:flex;flex-direction:column;gap:10px}
+.emo .row{display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:14px;padding:10px 14px}
+.emo .row.b{background:var(--roses)} .emo .row.g{background:var(--sages)}
+.emo .row strong{font-family:var(--round);font-size:20px}
+.emo .row.b strong{color:var(--rose)} .emo .row.g strong{color:var(--sage)}
+.emo .row em{font-style:normal;font-size:13.5px;font-weight:600}
+.emo .row.b em{color:var(--rose)} .emo .row.g em{color:var(--sage)}
+.emo .sw{text-align:center;font-size:12.5px;color:var(--ink3);line-height:1}
+.emo .why{font-size:13px;color:var(--ink3);line-height:1.6;margin-top:2px}
+
+/* thought pair cards */
+.tpairs{display:flex;flex-direction:column;gap:16px}
+.tp{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.tp>div{padding:22px 24px 20px;position:relative}
+.tp .w{background:var(--roses);--k:var(--rose)}
+.tp .ok{background:var(--sages);--k:var(--sage)}
+.tp .k{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tp .k h4{font-size:18px}
+.tp .w h4{color:var(--rose)} .tp .ok h4{color:var(--sage)}
+.tp .k small{font-size:12.5px;color:var(--ink3)}
+.tp .lined{margin-top:12px;font-size:15.5px;line-height:34px;color:var(--ink);background:repeating-linear-gradient(to bottom,transparent 0,transparent 33px,color-mix(in srgb,var(--k) 30%,transparent) 33px,color-mix(in srgb,var(--k) 30%,transparent) 34px);padding-bottom:1px}
+.tp .src{font-size:12.5px;color:var(--ink3);margin-top:8px;line-height:1.6}
+.tp .ok::before{content:"→";position:absolute;left:-17px;top:24px;width:34px;height:34px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink3);font-size:15px;z-index:2}
+.tp.root .w{background:color-mix(in srgb,var(--roses) 70%,var(--rosem))}
+.tp.root .ok{background:color-mix(in srgb,var(--sages) 70%,var(--sagem))}
+.trap{border:1.5px dashed var(--rosem);border-radius:var(--r);padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;background:var(--paper)}
+.trap h4{font-size:16.5px;color:var(--rose)}
+.trap h4.s{color:var(--sage)}
+.trap p{font-size:14.5px;color:var(--ink2)}
+.trap q{display:block;font-size:15px;color:var(--ink);quotes:"“" "”";margin-top:6px}
+
+/* steps */
+.stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stepper a{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;transition:border-color .2s}
+.stepper a:hover{border-color:var(--mistm)}
+.stepper .n{width:44px;height:44px;border-radius:14px;background:var(--mists);color:var(--mist);display:grid;place-items:center;font-family:var(--round);font-weight:800;font-size:20px}
+.stepper b{font-family:var(--round);font-size:15.5px;display:block;line-height:1.5}
+.stepper span{font-size:13px;color:var(--ink3);line-height:1.6;display:block;margin-top:2px}
+
+.page{margin-top:40px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:34px 34px 32px;position:relative}
+.page .ph{display:flex;align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.page .ph .n{width:54px;height:54px;border-radius:18px;background:var(--mist);color:var(--paper);display:grid;place-items:center;font-family:var(--round);font-weight:800;font-size:24px;flex:none}
+.page .ph h3{font-size:23px}
+.page .ph p{margin:0;color:var(--ink3);font-size:14px}
+.page .inner{background:var(--paper2);border-radius:var(--r2);padding:20px}
+.page .inner h4{font-size:16px;margin-bottom:6px}
+.page .inner p,.page .inner li{font-size:14.5px;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chips span{font-size:14px;border-radius:999px;padding:4px 12px;background:var(--roses);color:var(--rose)}
+.split2{display:grid;grid-template-columns:1fr 1fr;border-radius:14px;overflow:hidden;margin-top:10px;text-align:center}
+.split2 div{padding:12px}
+.split2 .a{background:var(--mists);color:var(--mist)} .split2 .b{background:var(--roses);color:var(--rose)}
+.split2 b{display:block;font-family:var(--round)}
+.split2 .z{grid-column:1/-1;background:var(--bg);color:var(--ink2);font-size:13.5px}
+.mini3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.mini3>div{border:1px solid var(--line);border-radius:var(--r2);padding:16px}
+.mini3 .pill{margin-bottom:6px}
+.mini3 h5{font-size:15.5px;margin-bottom:4px}
+.mini3 p{font-size:13.5px;color:var(--ink2);margin:0;line-height:1.7}
+.flowh{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:10px}
+.flowh>div{position:relative;padding:14px 18px 14px 16px;font-size:13.5px;color:var(--ink2);border:1px solid var(--line);background:var(--paper);line-height:1.65}
+.flowh>div+div{border-left:none}
+.flowh>div:first-child{border-radius:var(--r2) 0 0 var(--r2)}
+.flowh>div:last-child{border-radius:0 var(--r2) var(--r2) 0}
+.flowh>div:not(:last-child)::after{content:"";position:absolute;right:-8px;top:50%;width:14px;height:14px;background:var(--paper);border-top:1px solid var(--line);border-right:1px solid var(--line);transform:translateY(-50%) rotate(45deg);z-index:1}
+.flowh b{display:block;font-family:var(--round);color:var(--rose);font-size:14.5px;margin-bottom:2px}
+
+.asks{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.ask{border:1px solid var(--line);border-radius:var(--r2);padding:20px;background:var(--paper)}
+.ask .hd{display:flex;align-items:center;gap:10px}
+.ask .hd i{font-style:normal;width:34px;height:34px;border-radius:12px;background:var(--mists);color:var(--mist);display:grid;place-items:center;font-family:var(--round);font-weight:800}
+.ask .hd b{font-family:var(--round);font-size:17px;color:var(--mist)}
+.ask .q{font-family:var(--round);font-weight:600;font-size:16.5px;margin:12px 0 6px;line-height:1.55}
+.ask p{font-size:14px;color:var(--ink2);margin:0;line-height:1.75}
+.ask .eg{margin-top:10px;font-size:13.5px;color:var(--ink2);background:var(--paper2);border-radius:12px;padding:10px 12px;line-height:1.7}
+.ask .eg b{color:var(--ink);font-weight:600}
+
+.chat{display:flex;flex-direction:column;gap:10px}
+.bub{max-width:88%;border-radius:18px;padding:10px 14px;font-size:14.5px;line-height:1.7}
+.bub small{display:block;font-size:12px;color:var(--ink3);margin-bottom:2px;font-weight:600}
+.bub.t{background:var(--mists);color:var(--ink);border-bottom-left-radius:6px;align-self:flex-start}
+.bub.c{background:var(--paper);border:1px solid var(--line);color:var(--ink2);border-bottom-right-radius:6px;align-self:flex-end}
+.bub.aha{background:var(--sages);color:var(--ink);border:none}
+
+table.ruled{width:100%;border-collapse:collapse;font-size:14.5px}
+.ruled th{font-family:var(--round);font-size:13px;color:var(--ink3);font-weight:600;text-align:left;padding:8px 14px;border-bottom:2px solid var(--rule)}
+.ruled td{padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.7}
+.ruled td.l{color:var(--mist);font-family:var(--round);font-weight:700;white-space:nowrap;width:1%}
+.ruled td.w{color:var(--rose)}
+.ruled td.ok{color:var(--sage);font-weight:600}
+.ruled td.mid{color:var(--ink2)}
+
+.formula{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:stretch}
+.formula .f{background:var(--paper2);border-radius:var(--r2);padding:16px;font-size:13.5px;color:var(--ink2);line-height:1.7}
+.formula .f b{display:block;font-family:var(--round);font-size:15.5px;color:var(--ink);margin-bottom:4px}
+.formula .f q{display:block;margin-top:8px;color:var(--sage);font-weight:600;quotes:"“" "”"}
+.formula .plus{display:grid;place-items:center;color:var(--ink3);font-family:var(--round);font-weight:700;font-size:18px}
+
+.record{border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.record .rr{display:grid;grid-template-columns:120px 1fr 1fr;border-top:1px solid var(--rule)}
+.record .rr:first-child{border-top:none}
+.record .rr>div{padding:12px 16px;font-size:14.5px;line-height:1.75}
+.record .rr .lb{background:var(--paper2);font-family:var(--round);font-weight:700;color:var(--mist);font-size:14px;border-right:2px solid var(--mistm)}
+.record .rr .lb small{display:block;font-family:var(--sans);font-weight:400;color:var(--ink3);font-size:12px}
+.record .rr .tx{color:var(--ink)}
+.record .rr .ex{color:var(--ink3);font-size:13.5px;border-left:1px dashed var(--rule)}
+.record .rr.x .tx{color:var(--rose)}
+.record .rr.x .lb{color:var(--rose);border-right-color:var(--rosem)}
+
+/* cases */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:6px 16px;border-radius:999px;font:14px var(--sans);cursor:pointer;transition:.15s}
+.chip.on{background:var(--mist);border-color:var(--mist);color:var(--paper)}
+.chip.ghost{margin-left:auto}
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start}
+.qc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.qc.hide{display:none}
+.qc .top{padding:20px 22px 14px}
+.qc .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.qc .meta .no{font-family:var(--round);font-weight:700;font-size:13px;color:var(--ink3)}
+.qc h4{font-size:19px;margin-top:6px}
+.qc .who{font-size:13px;color:var(--ink3)}
+.qc .sit{font-size:14.5px;color:var(--ink2);margin-top:8px}
+.qc .part{padding:14px 22px 16px;border-top:1px solid var(--line)}
+.qc .part .t{font-family:var(--round);font-weight:700;font-size:13px;letter-spacing:.06em;margin-bottom:6px}
+.qc .part.x{background:color-mix(in srgb,var(--roses) 60%,var(--paper))}
+.qc .part.x .t{color:var(--rose)}
+.qc .part.o{background:color-mix(in srgb,var(--sages) 60%,var(--paper))}
+.qc .part.o .t{color:var(--sage)}
+.qc q{display:block;font-size:15px;color:var(--ink);quotes:"“" "”";line-height:1.75}
+.qc .seq{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
+.qc .seq span{font-size:13px;border-radius:999px;padding:2px 10px;background:var(--paper);border:1px solid var(--line);color:var(--ink2)}
+.qc .seq span.e{font-family:var(--round);font-weight:700;border:none}
+.qc .part.x .seq span.e{background:var(--rose);color:var(--paper)}
+.qc .part.o .seq span.e{background:var(--sage);color:var(--paper)}
+.qc .think{padding:12px 22px 16px;border-top:1px dashed var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.qc .think span{font-size:13.5px;color:var(--ink3)}
+.qc .think button{border:1px solid var(--sage);background:transparent;color:var(--sage);border-radius:999px;padding:6px 14px;font:13.5px var(--sans);cursor:pointer}
+.qc .ans{display:none}
+.qc.open .ans{display:block}
+.qc.open .think{display:none}
+.qc .pt{padding:12px 22px 16px;font-size:13.5px;color:var(--ink2);border-top:1px solid var(--line);line-height:1.75}
+.qc .pt b{font-family:var(--round);color:var(--mist);margin-right:6px}
+
+/* thought record */
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:30px;overflow:hidden}
+.sheet .sh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:22px 28px;background:linear-gradient(120deg,var(--mists),var(--sages))}
+.sheet .sh h3{font-size:20px}
+.sheet .sh span{font-size:13.5px;color:var(--ink2)}
+.sr{display:grid;grid-template-columns:170px 1fr;border-top:1px solid var(--rule)}
+.sr .lb{padding:18px 18px 16px 28px;background:var(--paper2);border-right:2px solid var(--mistm)}
+.sr .lb b{display:flex;align-items:center;gap:8px;font-family:var(--round);font-size:15px}
+.sr .lb b i{font-style:normal;width:24px;height:24px;border-radius:8px;background:var(--mists);color:var(--mist);display:grid;place-items:center;font-size:12.5px;flex:none}
+.sr .lb small{display:block;color:var(--ink3);font-size:12.5px;line-height:1.55;margin-top:4px}
+.sr .fd{padding:14px 28px 16px 22px}
+.sr.bad .lb{border-right-color:var(--rosem)} .sr.bad .lb b i{background:var(--roses);color:var(--rose)}
+.sr.good .lb{border-right-color:var(--sagem)} .sr.good .lb b i{background:var(--sages);color:var(--sage)}
+.line-in{width:100%;border:none;border-bottom:1.5px solid var(--rule);background:transparent;color:var(--ink);font:15.5px/34px var(--sans);padding:0 2px;outline:none;transition:border-color .15s}
+.line-in:focus{border-bottom-color:var(--mist)}
+textarea.line-in{border-bottom:none;resize:vertical;min-height:103px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 33px,var(--rule) 33px,var(--rule) 34px);background-attachment:local}
+textarea.line-in:focus{background:repeating-linear-gradient(to bottom,transparent 0,transparent 33px,var(--mistm) 33px,var(--mistm) 34px);background-attachment:local}
+.line-in::placeholder{color:var(--ink3);opacity:.85}
+.detect{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.detect:empty{display:none}
+.detect span{font-size:12.5px;border-radius:999px;padding:2px 10px;background:var(--roses);color:var(--rose);font-weight:600}
+.detect span em{font-style:normal;font-weight:400}
+.detect .none{background:var(--paper2);color:var(--ink3);font-weight:400;border-radius:12px}
+.emopick{display:flex;gap:8px;flex-wrap:wrap}
+.emopick button{border:1px solid var(--line);background:var(--paper);color:var(--ink2);border-radius:999px;padding:6px 18px;font:14.5px var(--sans);cursor:pointer;transition:.15s}
+.emopick button.on{background:var(--rose);border-color:var(--rose);color:var(--paper)}
+.swap{margin-top:10px;font-size:14px;color:var(--ink2)}
+.swap:empty{display:none}
+.swap b{color:var(--sage)}
+.disp{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.disp label{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink2);cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:10px 12px;transition:.15s}
+.disp label:has(input:checked){background:var(--mists);border-color:var(--mistm)}
+.disp label b{color:var(--ink);font-family:var(--round);margin-right:6px}
+.disp input{margin-top:6px;accent-color:var(--mist);flex:none}
+.result{background:var(--sages);border-radius:var(--r2);padding:16px 18px;font-size:15.5px;line-height:1.95;color:var(--ink)}
+.result .ph{color:var(--ink3);font-size:14px}
+.result mark{background:color-mix(in srgb,var(--paper) 70%,transparent);color:var(--sage);font-weight:600;padding:0 4px;border-radius:6px}
+.result mark.b{color:var(--rose)}
+.sheet .bar{display:flex;gap:8px;flex-wrap:wrap;padding:16px 28px 22px;border-top:1px solid var(--rule);align-items:center}
+.btn{border:1px solid var(--mist);background:var(--mist);color:var(--paper);border-radius:999px;padding:8px 18px;font:14px var(--sans);cursor:pointer}
+.btn.g{background:transparent;color:var(--mist)}
+.bar .msg{font-size:13px;color:var(--ink3);margin-left:6px}
+.saved{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.saved:empty{display:none}
+.saved .sc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r2);padding:14px 16px;font-size:13.5px;color:var(--ink2)}
+.saved .sc .h{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.saved .sc .h b{color:var(--ink);font-family:var(--round);font-size:14.5px}
+.saved .sc .h button{border:none;background:none;color:var(--ink3);cursor:pointer;font:12.5px var(--sans)}
+.saved .sc .h button:hover{color:var(--rose)}
+.saved .sc .old{color:var(--rose);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--rose) 45%,transparent);margin-top:4px}
+.saved .sc .new{color:var(--ink);margin-top:6px;line-height:1.75}
+.saved .sc .d{font-size:12px;color:var(--ink3);margin-top:6px}
+
+/* columns */
+.colg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.colg .box .pill{margin-bottom:10px}
+.colg .box h4{font-size:18px;margin-bottom:8px}
+details.toc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);margin-top:18px;overflow:hidden}
+details.toc summary{cursor:pointer;padding:18px 24px;font-family:var(--round);font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";width:28px;height:28px;border-radius:50%;background:var(--mists);color:var(--mist);display:grid;place-items:center;font-size:18px;transition:.2s}
+details.toc[open] summary::after{transform:rotate(45deg)}
+.toc-body{padding:0 24px 20px}
+.toc-body h5{font-size:14.5px;color:var(--mist);margin:16px 0 4px}
+.tr{display:grid;grid-template-columns:240px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--rule);font-size:14.5px}
+.tr b{font-weight:600}
+.tr span{color:var(--ink2)}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.qt{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px 18px 26px;position:relative;overflow:hidden}
+.qt::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:0 4px 4px 0;background:var(--sagem)}
+.qt p{font-size:17px;line-height:1.85;color:var(--ink);margin:0;font-weight:500}
+.qt cite{display:block;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:10px}
+
+/* checklist */
+.prog{display:flex;align-items:center;gap:16px;margin-bottom:18px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 12px 10px 20px}
+.prog .track{flex:1;height:10px;background:var(--bg);border-radius:999px;overflow:hidden}
+.prog .fill{height:100%;width:0;background:linear-gradient(90deg,var(--mistm),var(--sage));border-radius:999px;transition:width .35s}
+.prog .txt{font-family:var(--round);font-weight:700;font-size:15px;min-width:56px;text-align:right}
+.prog button{border:1px solid var(--line);background:var(--paper2);color:var(--ink3);border-radius:999px;padding:4px 14px;font:13px var(--sans);cursor:pointer}
+.check{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.check label,.dlist label{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;cursor:pointer;transition:.2s}
+.check input,.dlist input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;border:2px solid var(--mistm);border-radius:50%;margin-top:1px;display:grid;place-items:center;transition:.15s;cursor:pointer;background:var(--paper)}
+.check input:checked,.dlist input:checked{background:var(--sage);border-color:var(--sage)}
+.check input:checked::after,.dlist input:checked::after{content:"";width:6px;height:11px;border:solid var(--paper);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check input:focus-visible,.dlist input:focus-visible{outline:2px solid var(--mist);outline-offset:2px}
+.check label:has(input:checked),.dlist label:has(input:checked){background:var(--sages);border-color:transparent}
+.check label:has(input:checked) b,.dlist label:has(input:checked) b{color:var(--sage)}
+.check b,.dlist b{font-family:var(--round);font-size:15.5px;display:block;line-height:1.55}
+.check span,.dlist span{font-size:14px;color:var(--ink2);display:block;margin-top:2px;line-height:1.7}
+.check .src,.dlist .src{font-size:12px;color:var(--ink3);margin-top:6px}
+
+footer{padding:60px 0 110px;text-align:center;font-size:13px;color:var(--ink3)}
+
+/* FAB + drawer */
+.fab{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:10px;border:none;background:var(--mist);color:var(--paper);font:700 15px var(--round);padding:12px 18px 12px 20px;border-radius:999px;box-shadow:0 10px 28px rgba(31,43,51,.22);cursor:pointer;transition:transform .2s}
+.fab:hover{transform:translateY(-2px)}
+.fab:focus-visible{outline:3px solid var(--mistm);outline-offset:3px}
+.fab .cnt{font:600 12.5px var(--sans);background:color-mix(in srgb,var(--paper) 22%,transparent);border-radius:999px;padding:1px 9px}
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(15,22,26,.38);opacity:0;pointer-events:none;transition:opacity .25s}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(470px,100%);background:var(--bg);border-radius:28px 0 0 28px;box-shadow:-12px 0 36px rgba(15,22,26,.16);display:flex;flex-direction:column;transform:translateX(104%);visibility:hidden;transition:transform .32s ease,visibility 0s .32s}
+body.dopen{overflow:hidden}
+body.dopen .scrim{opacity:1;pointer-events:auto}
+body.dopen .drawer{transform:none;visibility:visible;transition:transform .32s ease}
+.dhead{padding:22px 24px 16px;border-bottom:1px solid var(--line);background:linear-gradient(140deg,var(--mists),var(--sages));border-radius:28px 0 0 0}
+.dhead .row1{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.dhead h3{font-size:21px}
+.dhead p{margin:4px 0 0;font-size:13.5px;color:var(--ink2);line-height:1.6}
+.dclose{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink2);font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.dclose:focus-visible{outline:2px solid var(--mist);outline-offset:2px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:color-mix(in srgb,var(--paper) 70%,transparent);border-radius:999px;padding:4px;margin-top:14px}
+.seg button{border:none;background:transparent;color:var(--ink2);border-radius:999px;padding:7px 10px;font:600 14px var(--round);cursor:pointer}
+.seg button.on{background:var(--paper);color:var(--mist);box-shadow:var(--shadow)}
+.dhead .why{font-size:12.5px;color:var(--ink3);margin-top:8px}
+.dprog{display:flex;align-items:center;gap:12px;margin-top:12px}
+.dprog .track{flex:1;height:8px;background:color-mix(in srgb,var(--paper) 70%,transparent);border-radius:999px;overflow:hidden}
+.dprog .fill{height:100%;width:0;background:var(--sage);border-radius:999px;transition:width .3s}
+.dprog span{font:700 13.5px var(--round);min-width:44px;text-align:right}
+.dbody{flex:1;overflow-y:auto;padding:8px 20px 28px;overscroll-behavior:contain}
+.phase{margin-top:18px}
+.phase .phh{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.phase .phh i{font-style:normal;flex:none;width:34px;height:34px;border-radius:12px;background:var(--mist);color:var(--paper);display:grid;place-items:center;font:800 15px var(--round)}
+.phase .phh b{font-family:var(--round);font-size:16.5px;display:block;line-height:1.4}
+.phase .phh small{font-size:12.5px;color:var(--ink3);display:block}
+.phase.stuck .phh i{background:var(--sand)}
+.dlist{display:flex;flex-direction:column;gap:8px}
+.dlist label{padding:14px 16px;border-radius:18px;gap:12px}
+.dlist b{font-size:15px}
+.dlist span{font-size:13.5px}
+.dlist .src{display:inline-block;margin-top:6px;background:var(--mists);color:var(--mist);border-radius:999px;padding:0 9px;font-size:12px}
+.phase.stuck .dlist .src{background:var(--sands);color:var(--sand)}
+.dfoot{font-size:12.5px;color:var(--ink3);margin-top:18px;line-height:1.7}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.drawer,.scrim{transition:none!important}}
+
+@media (max-width:920px){
+  .cover{grid-template-columns:1fr;padding:40px 30px 32px;gap:26px}
+  .contents,.emos,.stepper{grid-template-columns:1fr 1fr}
+  .facts,.mini3{grid-template-columns:1fr}
+  .lane{grid-template-columns:1fr}
+  .lane .who{margin-bottom:6px}
+  .st{text-align:left;padding:0 0 12px 30px}
+  .st::before{top:5px;left:0;margin-left:0}
+  .st:not(:last-child)::after{top:20px;left:7px;width:2px;height:100%}
+  .abc{grid-template-columns:1fr}
+  .abc .ar{height:30px;transform:rotate(90deg)}
+  .abc-note{grid-template-columns:1fr;gap:6px}
+  .flowh{grid-template-columns:1fr 1fr;gap:10px}
+  .flowh>div,.flowh>div:first-child,.flowh>div:last-child{border-radius:var(--r2);border-left:1px solid var(--line)}
+  .flowh>div::after{display:none}
+  .formula{grid-template-columns:1fr}
+  .formula .plus{height:24px}
+  .cases,.colg,.g2,.asks{grid-template-columns:1fr}
+  .record .rr{grid-template-columns:110px 1fr}
+  .record .rr .ex{grid-column:2;border-left:none;border-top:1px dashed var(--rule);padding-top:8px}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .cover{border-radius:26px;padding:32px 22px 26px}
+  .contents,.emos,.stepper,.check,.quotes,.saved,.disp{grid-template-columns:1fr}
+  .tp{grid-template-columns:1fr}
+  .tp .ok::before{left:50%;top:-17px;margin-left:-17px;content:"↓"}
+  .trap{grid-template-columns:1fr;gap:12px}
+  .page{padding:24px 18px;border-radius:24px}
+  .lanes{padding:22px 18px}
+  .flowh{grid-template-columns:1fr}
+  .sr{grid-template-columns:1fr}
+  .sr .lb{border-right:none;border-bottom:2px solid var(--mistm);padding:14px 18px 10px}
+  .sr.bad .lb{border-bottom-color:var(--rosem)} .sr.good .lb{border-bottom-color:var(--sagem)}
+  .sr .fd{padding:12px 18px 14px}
+  .sheet .sh,.sheet .bar{padding-left:18px;padding-right:18px}
+  .tr{grid-template-columns:1fr;gap:2px}
+  .record .rr{grid-template-columns:1fr}
+  .record .rr .lb{border-right:none;border-bottom:1px solid var(--rule)}
+  .record .rr .ex{grid-column:1}
+  .ruled{font-size:13.5px}.ruled th,.ruled td{padding:8px}
+  .chip.ghost{margin-left:0}
+  .fab{right:14px;bottom:14px}
+  .drawer{top:0;left:0;right:0;bottom:0;width:100%;border-radius:0;transform:translateY(104%)}
+  .dhead{border-radius:0;padding:18px 18px 14px}
+  .dbody{padding:4px 14px 28px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <span class="brand">心理韧性练习册</span>
+    <a href="#overview">总览</a>
+    <a href="#model">核心模型</a>
+    <a href="#pairs">错误思维对照</a>
+    <a href="#steps">四个步骤</a>
+    <a href="#cases">案例练习</a>
+    <a href="#tool">思维记录表</a>
+    <a href="#cols">专栏</a>
+    <a href="#quotes">摘抄</a>
+    <a href="#todo">打卡</a>
+  </div>
+</nav>
+
+<header class="cover-wrap" id="overview">
+  <div class="wrap">
+    <div class="cover">
+      <div>
+        <div class="lab"><span class="pill">读书笔记 · 练习册</span><span class="pill">Mental Toughness</span></div>
+        <h1><span class="nw">麦肯锡精英的</span><span class="nw">思考习惯</span></h1>
+        <div class="by">[日] 高杉尚孝 著　杨建兴 译　中信出版</div>
+        <p class="lead">压力本身没有实体，是我们的<b>思维方式</b>造出来的。把“必须……”的绝对要求换成“最好能……”的相对愿望，人就会从坏的负面情绪换到<b>好的负面情绪</b>，从逃避、攻击换到准备、协商，在压力之下照样发挥实力。</p>
+      </div>
+      <div class="note">
+        <h4>使用前先看</h4>
+        <p>书名和内容不太一样。这本书讲的不是麦肯锡的工作方法，而是作者的“高杉派心理韧性理论”：一门管理思维和情绪的压力管理技术，理论基础是理性情绪行为心理学的 ABC 理论。“麦肯锡”只在后记里出现过：1990 年，作者是麦肯锡纽约事务所唯一的日本咨询师。</p>
+        <ol class="vstep">
+          <li><div><b>定位错误的思维方式</b><span>找出那句“必须”</span></div></li>
+          <li><div><b>驳斥它</b><span>逻辑、实证、实用、灵活四个角度</span></div></li>
+          <li><div><b>发现正确的思维方式</b><span>换成“最好能……但必须如此的理由并不存在”</span></div></li>
+          <li><div><b>选择好的负面情绪</b><span>担心、不快、悲伤、自责</span></div></li>
+          <li><div><b>采取正面行动</b><span>准备、协商、分享、反省</span></div></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="contents">
+      <a class="cc" href="#model"><div class="pg">PART 1</div><h3>总论</h3><p>心理韧性的本质：ABC 理论，负面情绪也分好坏两种。</p><span class="pill m">为什么会被压垮</span></a>
+      <a class="cc" href="#steps"><div class="pg">PART 2</div><h3>理论篇 · 4 个步骤</h3><p>“必须”型和派生的三种错误思维，四个驳斥标准，正确思维的四个要素。</p><span class="pill m">方法本身</span></a>
+      <a class="cc" href="#cases"><div class="pg">PART 3</div><h3>实践篇 · 8 个案例</h3><p>愤怒、罪恶感、不安、情绪低落各两例，每例分负面例子、导师指导、正面例子。</p><span class="pill s">对话式练习</span></a>
+      <a class="cc" href="#cols"><div class="pg">PART 4</div><h3>4 篇专栏 + 后记</h3><p>心身耗竭、干劲、成果主义、企业的视点，以及书名的来历。</p><span class="pill d">个人与组织</span></a>
+    </div>
+    <div class="facts">
+      <div><b>不是“积极思维”</b>作者明确说，这不是教人凡事往好处想、也不是诉诸情绪的书。压力之下硬要积极，往往撑不久。</div>
+      <div><b>是可以学会的技能</b>逻辑思维和演示能力过去也被当成天生的。心理韧性是“思维方式的技术”，靠理论加反复练习就能提高。</div>
+      <div><b>不用苦修</b>“不用每天独自冥想几小时，也不用待在山里经受瀑布击打，更不用坐禅开悟。”</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MODEL ================= -->
+<section class="lesson" id="model">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill m">PART 1 · 总论</span><h2>压力是怎么把人压垮的</h2><p>“向压力屈服”，是在压力之下由坏的负面情绪引出坏的行动；“战胜压力”，是由好的负面情绪引出好的行动。两条路在哪里分岔，取决于当事人自己的思维方式。</p></div>
+
+    <div class="lanes reveal">
+      <div class="lane bad">
+        <div class="who">屈服<small>向压力低头</small></div>
+        <div class="st"><b>压力情况</b><span>被委以重任、遭到训斥、目标没完成</span></div>
+        <div class="st"><b>错误的思维方式</b><span>“我必须……”“绝对不能……”</span></div>
+        <div class="st"><b>坏的负面情绪</b><span>不安、愤怒、情绪低落、罪恶感</span></div>
+        <div class="st"><b>坏的行动</b><span>逃避、攻击、自我封闭、自我否定</span></div>
+        <div class="st"><b>情况恶化</b><span>有实力也发挥不出来</span></div>
+      </div>
+      <div class="lane good">
+        <div class="who">战胜<small>顶住压力</small></div>
+        <div class="st"><b>压力情况</b><span>同样的情况，没有改变</span></div>
+        <div class="st"><b>正确的思维方式</b><span>“最好能……但必须如此的理由并不存在”</span></div>
+        <div class="st"><b>好的负面情绪</b><span>担心、不快、悲伤、自责</span></div>
+        <div class="st"><b>好的行动</b><span>准备、协商、分享、反省</span></div>
+        <div class="st"><b>情况改善</b><span>得到好结果的概率上升</span></div>
+      </div>
+      <div class="cap">开篇案例：泷口（38 岁）当上新产品项目负责人，一直提醒自己“必须完成上司交办的任务，不允许失败”。后来他越来越不安，开始对组员发火，头痛失眠，到了要向高层做中期汇报的那天早上，连被窝都爬不出来。</div>
+    </div>
+
+    <h3 class="t reveal">ABC 理论：情绪的诱发装置<small>源自理性情绪行为心理学</small></h3>
+    <div class="abc reveal">
+      <div class="c"><div class="L">A</div><h4>成为起因的事件</h4><div class="en">Activating Event</div>
+        <div class="eg"><b>例一：</b>广濑连续几天拼命说明，客户还是不理解修改系统战略的必要性。</div>
+        <div class="eg"><b>例二：</b>组员竹田反复犯同样的错误。</div></div>
+      <div class="ar">→</div>
+      <div class="c b"><div class="L">B</div><h4>思维方式（通常意识不到）</h4><div class="en">Belief</div>
+        <div class="eg"><b>例一：</b>“我无论如何都要取得客户对战略转换的理解。”</div>
+        <div class="eg"><b>例二：</b>“不能重复犯同样的错误。”</div></div>
+      <div class="ar">→</div>
+      <div class="c"><div class="L">C</div><h4>作为结果的情绪与行动</h4><div class="en">Consequence</div>
+        <div class="eg"><b>例一：</b>广濑对项目前景深感不安。</div>
+        <div class="eg"><b>例二：</b>广濑带着愤怒，大声批评了竹田。</div></div>
+    </div>
+    <div class="box abc-note reveal" style="margin-top:14px">
+      <div class="eq"><s>A → C</s><span>A + B → C</span></div>
+      <p style="margin:0">证据就在日常经验里：同样是谈判受挫，有人情绪非常低落，有人只是有点悲伤；即便是同一个人，同样的情况下也未必每次都有同样的情绪。如果情绪由状况自动引发，人人的反应都应该一样。所以作者说，心理压力和被车撞到不同，它“本身并没有实际状态”。</p>
+    </div>
+
+    <h3 class="t reveal">负面情绪也分好坏：四对对照</h3>
+    <div class="emos reveal">
+      <div class="emo"><div class="row b"><strong>不安</strong><em>→ 逃避</em></div><div class="sw">换成</div><div class="row g"><strong>担心</strong><em>→ 精心准备</em></div><div class="why">不安常出现在：把情况解释成对自己的威胁时</div></div>
+      <div class="emo"><div class="row b"><strong>愤怒</strong><em>→ 攻击</em></div><div class="sw">换成</div><div class="row g"><strong>不快</strong><em>→ 协商、折中</em></div><div class="why">愤怒常出现在：自己遭到否定，或被人挡住去路时</div></div>
+      <div class="emo"><div class="row b"><strong>情绪低落</strong><em>→ 自我封闭</em></div><div class="sw">换成</div><div class="row g"><strong>悲伤</strong><em>→ 与人分享</em></div><div class="why">情绪低落常出现在：觉得失去了重要的东西时</div></div>
+      <div class="emo"><div class="row b"><strong>罪恶感</strong><em>→ 自我否定</em></div><div class="sw">换成</div><div class="row g"><strong>自责</strong><em>→ 反省行为</em></div><div class="why">罪恶感常出现在：觉得自己破坏了道德时</div></div>
+    </div>
+    <p class="small reveal" style="margin-top:12px">每一对都很接近，但并不相同。作者打了个比方：以“悲伤”为主题的电影和歌容易引起共鸣，以“情绪低落”为主题的则很难。实践篇里有学员说，负面情绪分良性和恶性，“和胆固醇很像”。</p>
+  </div>
+</section>
+
+<!-- ================= PAIRS ================= -->
+<section class="lesson" id="pairs">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill r">对照卡</span><h2>四种错误思维，左边错误，右边改写</h2><p>根源只有一个：把目标、价值、志向变成绝对要求的“必须”。一旦做不到，就等于“不该发生的事情发生了”，这个解不开的悖论又派生出另外三种错误思维。书里给每一种都配了对应的正确想法，后三种合称“三个接受”。</p></div>
+    <div class="tpairs reveal">
+      <div class="tp root">
+        <div class="w"><div class="k"><h4>“必须”型</h4><span class="pill r">原点 · 绝对要求</span></div>
+          <div class="lined">“我绝不能失败。”</div>
+          <div class="src">典型说法还有：“我必须时刻做到完美”“我绝不能被否定”“别人要按我想的去做”“情况必须经常对我有利”。</div></div>
+        <div class="ok"><div class="k"><h4>“最好”型</h4><span class="pill s">原点 · 相对愿望</span></div>
+          <div class="lined">“我最好能避免失败，可我绝对不可以失败的理由并不存在。”</div>
+          <div class="src">肯定价值，同时明确否定绝对要求。这是书里替泷口做的改写。</div></div>
+      </div>
+      <div class="tp">
+        <div class="w"><div class="k"><h4>绝望悲观</h4><small>认定“糟糕透了”</small></div>
+          <div class="lined">“糟糕透了，已经没救了。”</div>
+          <div class="src">高桥丢掉订单后的想法。认定自己注定失败，于是放弃该做的努力，让坏预言自己成真。</div></div>
+        <div class="ok"><div class="k"><h4>希望期待</h4></div>
+          <div class="lined">“不希望发生，但即使发生了也并非世界末日。”</div>
+          <div class="src">“最糟糕”在逻辑上不存在，那只是自己这么认为。</div></div>
+      </div>
+      <div class="tp">
+        <div class="w"><div class="k"><h4>耐性缺乏</h4><small>断言“受不了了”</small></div>
+          <div class="lined">“在公司领导层面前出现失误这种事情，我是受不了的。”</div>
+          <div class="src">砂田拒绝演示时说的话。嘴上说受不了的人其实还在忍着，这只是一种确信。</div></div>
+        <div class="ok"><div class="k"><h4>耐心有韧劲</h4></div>
+          <div class="lined">“不欢迎，但可以承受。”</div>
+          <div class="src">想到底，多数坏结果都是可以承受的风险。</div></div>
+      </div>
+      <div class="tp">
+        <div class="w"><div class="k"><h4>指责 / 自卑</h4><small>“无法饶恕”“是我不行”</small></div>
+          <div class="lined">“我真是又蠢又笨……”</div>
+          <div class="src">中村被训斥后的想法。寻找造成悲剧的“罪人”，给自己或别人贴标签。</div></div>
+        <div class="ok"><div class="k"><h4>容忍接受</h4></div>
+          <div class="lined">“没有谁百分之百不好。”</div>
+          <div class="src">中村后来的想法：“尽管犯错误不是什么好事，但也并非仅凭这一点就说明我是一个毫无价值的人。”</div></div>
+      </div>
+      <div class="trap">
+        <div><h4>另外要小心：“无所谓”型</h4><q>犯个错误就是小事一桩。</q><p>受不了“必须”带来的矛盾，干脆把价值本身也否定掉。看似逞强，其实是自我防御，和“必须”型一体两面，完美主义者容易掉进去。</p></div>
+        <div><h4 class="s">正确的做法：先肯定价值</h4><q>自己不犯错误是非常令人满意和向往的。</q><p>正确思维不是降低标准。对完美主义者说“凡事 70 分就行啦”，多半不会被接受。要保留价值，只丢掉“必须”。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEPS ================= -->
+<section class="lesson" id="steps">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill m">PART 2 · 理论篇</span><h2>强化心理韧性的 4 个步骤</h2><p>心理韧性的本质是一门思维技术：面对压力时，把原有的错误思维修正为正确思维，从而把坏的负面情绪和消极行动，换成好的负面情绪和积极行动。需要有意识地反复练习，但在较短时间内就能学会。</p></div>
+    <div class="stepper reveal">
+      <a href="#s1"><span class="n">1</span><div><b>定位错误的思维方式</b><span>找出“必须”和三种派生思维</span></div></a>
+      <a href="#s2"><span class="n">2</span><div><b>驳斥错误的思维方式</b><span>光意识到不够，要彻底驳倒</span></div></a>
+      <a href="#s3"><span class="n">3</span><div><b>发现正确的思维方式</b><span>以“最好能……”为原点</span></div></a>
+      <a href="#s4"><span class="n">4</span><div><b>选择好情绪与正面行动</b><span>有意识地选，反复练</span></div></a>
+    </div>
+
+    <div class="page reveal" id="s1">
+      <div class="ph"><span class="n">1</span><div><h3>定位错误的思维方式</h3><p>根源在“必须”</p></div></div>
+      <div class="g2">
+        <div class="inner">
+          <h4>“必须”型的典型说法</h4>
+          <div class="chips"><span>我必须时刻做到完美</span><span>我绝不能在竞争中失败</span><span>我绝不可以犯错误</span><span>我绝不能被否定</span><span>别人要按我想的去做</span><span>情况必须经常对我有利</span></div>
+          <p style="margin-top:12px">听上去很振奋人心，其实都是“进行不切实际要求”的错误思维。泷口的“完成任务、不失败、按期出成果、回应期待”每一项都是好目标，问题出在前面加了“必须”。</p>
+        </div>
+        <div class="inner">
+          <h4>悖论：同时踩油门和刹车</h4>
+          <div class="split2"><div class="a"><b>绝对要求</b>“绝对不能落榜”</div><div class="b"><b>现实</b>努力了，还是没考过</div><div class="z">“不该发生的事情发生了”，矛盾解不开，于是被看成“难以承受的悲剧”</div></div>
+          <p style="margin-top:10px">铃木（34 岁）抱着“无论如何都要通过晋升考试”的想法，出结果前一直非常不安，落榜后意志非常消沉。</p>
+        </div>
+      </div>
+      <div class="mini3">
+        <div><span class="pill r">弊端一</span><h5>过程本身很痛苦</h5><p>一边担心失败这个悲剧一边努力，很难享受过程，连周围的鼓励都会变成压力。</p></div>
+        <div><span class="pill r">弊端二</span><h5>做到了也不满足，会心身耗竭</h5><p>“必须”意味着“做到是应该的”。佐藤读完 MBA 当咨询师，抱着“绝对要满足周围人的期待”拼命工作，做完第三个项目就辞职了。</p></div>
+        <div><span class="pill r">弊端三</span><h5>低效，降低胜算</h5><p>“失败了怎么办”的不安消耗大量能量，思维变僵，难有创意。低效的思维方式和低效的工序一样需要改进。</p></div>
+      </div>
+      <h4 style="margin:26px 0 4px;font-size:16px">错误思维会层层放大：高桥丢单</h4>
+      <div class="flowh">
+        <div><b>“必须”</b>“我无论如何也要拿下订单。”结果订单被竞争对手抢走。</div>
+        <div><b>绝望悲观</b>“糟糕透了，已经没救了”，陷入巨大的情绪低落。</div>
+        <div><b>耐性缺乏</b>一旦认定情况最糟，“已经无法忍受”的想法就开始运作。</div>
+        <div><b>指责 / 自卑</b>“都怪对方”“都怪高层”“自己真没本事”，于是找不到改进之策。</div>
+      </div>
+      <p class="small" style="margin-top:12px">星野（29 岁）的例子说明，同一个处境下，不同的“必须”会引出不同的坏情绪：觉得上司挡了路就愤怒，觉得失去了“一直让上司满意的自己”就情绪低落，觉得受到威胁就不安，觉得失了信用就有罪恶感。</p>
+    </div>
+
+    <div class="page reveal" id="s2">
+      <div class="ph"><span class="n">2</span><div><h3>驳斥错误的思维方式</h3><p>驳斥 = 彻底反驳，同时加以否定</p></div></div>
+      <div class="asks">
+        <div class="ask"><div class="hd"><i>1</i><b>逻辑性</b></div><div class="q">好处列得再多，能推出“必须”吗？</div><p>罗列再多完美的好处，也只说明完美“令人向往”。从“令人向往”推不出“必须”，两者之间是逻辑跳跃（non sequitur）。“最糟糕”“无法忍受”“百分之百不好”在逻辑上也都不成立。</p></div>
+        <div class="ask"><div class="hd"><i>2</i><b>实证性</b></div><div class="q">现实里能验证吗？因果真的成立吗？</div><p>完美的人不存在；说“受不了”的人正在忍着；凭一次行为评价一个人的全部，是“过度的一般化”。</p><div class="eg"><b>根本：</b>“对方一直皱眉，谈判肯定破裂，我的职业生涯也完了。”皱眉和破裂没有必然联系，也许对方天生就是一张苦脸。</div></div>
+        <div class="ask"><div class="hd"><i>3</i><b>实用性</b></div><div class="q">这么想，能让我变得幸福吗？</div><p>答案总是“不能”。非存够 100 万日元不可，存不到不幸福，存到了又担心丢了、花完了。认定“没戏了”，就懒得去改善。</p><div class="eg"><b>例外：</b>园长在运动会上说“大家人品好，所以今天天气才这么好”，不合逻辑，但很实用，也没问题。</div></div>
+        <div class="ask"><div class="hd"><i>4</i><b>灵活性</b></div><div class="q">我是不是把一厢情愿当成了绝对真理？</div><p>科学的态度是“假说思考”：把主张当作暂定的真理，出现相反的事实时谦虚地承认。错误思维却是“绝对的确信”。</p><div class="eg"><b>注意：</b>强烈的信念不等于绝对确信。风投看重总裁的自信，但过度自信也是创业失败的原因之一。</div></div>
+      </div>
+      <div class="g2" style="margin-top:18px">
+        <div class="inner">
+          <h4>逻辑驳斥示范：远藤（52 岁，商社服装部门负责人）</h4>
+          <div class="chat" style="margin-top:10px">
+            <div class="bub t"><small>高杉</small>为什么决定了的事情就必须要遵守呢？</div>
+            <div class="bub c"><small>远藤</small>不遵守，组织秩序就维持不下去，业务会堵塞，还会影响业绩……所以绝对要遵守。</div>
+            <div class="bub t"><small>高杉</small>无论怎么罗列论据，只是遵守的好处增加了，令人向往的程度增加了，推不出“必须”遵守这个结论。</div>
+            <div class="bub c aha"><small>远藤</small>原来我是把原本仅仅非常理想的状态当成了必须达到的状态。</div>
+          </div>
+        </div>
+        <div class="inner">
+          <h4>完整示范：吉田（26 岁，医疗器械制造商市场营销企划部）</h4>
+          <p style="color:var(--rose);font-weight:600;margin:8px 0 4px">“同事绝对不可以批评我。”</p>
+          <table class="ruled">
+            <tr><td class="l">逻辑性</td><td>不被批评的好处很多，但这只说明不被批评“理想”，推不出“不可以”被批评。</td></tr>
+            <tr><td class="l">实证性</td><td>只要是允许自由表达的社会，人人都会被批评，这才自然。</td></tr>
+            <tr><td class="l">实用性</td><td>批评能让人学到自己没注意的地方；接受不了批评的人会怨恨对方，等于在树敌。</td></tr>
+            <tr><td class="l">灵活性</td><td>把一厢情愿的想法当作相对的假说，出现相反的事实时虚心接受。</td></tr>
+          </table>
+          <p class="small" style="margin-top:10px">实践篇的建议：尽可能明确地否定，一次又一次反复否定，可以大声说出来。压抑愤怒没用，要击溃它的元凶“必须”。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page reveal" id="s3">
+      <div class="ph"><span class="n">3</span><div><h3>发现正确的思维方式</h3><p>原点：“最好能……”</p></div></div>
+      <div class="formula">
+        <div class="f"><b>肯定重要价值</b>先把目标当作相对愿望肯定下来。否定了价值，就会掉进“无所谓”。<q>我最好能完成交办的任务。</q></div>
+        <div class="plus">+</div>
+        <div class="f"><b>否定绝对要求</b>明确宣布“必须如此的理由不存在”。<q>但我必须完成的理由并不存在。</q></div>
+        <div class="plus">+</div>
+        <div class="f"><b>承认坏结果可能发生</b>世上没道理的事和自己掌控不了的事比比皆是。<q>现实点儿的话，考虑不周的情况也是常有的。</q></div>
+        <div class="plus">+</div>
+        <div class="f"><b>现实地评价坏结果</b>冷静分析，会发现这些都是可以接受的风险。<q>但即便无法做到，太阳还是会照样升起。</q></div>
+      </div>
+      <h4 style="margin:26px 0 8px;font-size:16px">改写练习 · 示范：泷口的四句话</h4>
+      <div style="overflow-x:auto">
+        <table class="ruled">
+          <thead><tr><th>错误：绝对要求</th><th>先肯定价值</th><th>再否定绝对要求（完整的正确思维）</th></tr></thead>
+          <tbody>
+            <tr><td class="w">我必须完成上司交办的任务</td><td class="mid">我最好能完成交办的任务</td><td class="ok">我最好可以完成任务，但我必须完成的理由并不存在</td></tr>
+            <tr><td class="w">我绝不能失败</td><td class="mid">我最好不失败</td><td class="ok">我最好能避免失败，可我绝对不可以失败的理由并不存在</td></tr>
+            <tr><td class="w">我在规定期限内必须拿出成果</td><td class="mid">我最好可以在规定期限内拿出成果</td><td class="ok">我最好能在限期内拿出成果，但必须拿出成果的理由并不存在</td></tr>
+            <tr><td class="w">我必须满足周围人的期待</td><td class="mid">我最好可以满足周围人的期待</td><td class="ok">我最好可以满足周围人的期待，但是必须满足这种期待的理由并不存在</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="g2" style="margin-top:18px">
+        <div class="inner"><h4>真的发生了会怎样？</h4><p>按期拿不出成果，会有人抱怨，名声会下降，甚至可能被裁员。这些当然不理想，但“即便真的发生了，也死不了人，世界也不会就此结束”。想到底，都是可以承受的风险。</p></div>
+        <div class="inner"><h4>为什么相对愿望更适合这个时代</h4><p>抱着相对愿望，没实现也只是“原本就可能发生的事情发生了”，不会产生悖论。人能继续珍惜目标，从对失败的不安中解放出来，把精力用在解决问题上，胜算自然提高。</p></div>
+      </div>
+    </div>
+
+    <div class="page reveal" id="s4">
+      <div class="ph"><span class="n">4</span><div><h3>选择好的负面情绪，采取正面行动</h3><p>反复练习，养成习惯</p></div></div>
+      <p class="muted" style="margin-top:-6px">道理懂了，一开始错误思维和坏情绪还是会冒出来，这没办法。关键是每次都察觉到，有意识地选择正确的思维方式。练得多了，就能当场切断坏的负面情绪。下面是作者给渡边写的思维链条，右栏是他在括号里的讲解。</p>
+      <div class="record" style="margin-top:16px">
+        <div class="rr x"><div class="lb">原来的想法<small>渡边 · 31 岁 · 商社营销</small></div><div class="tx">“我绝对必须满足顾客要求。否则顾客马上就会倒向竞争对手公司那边。那将是世界末日，糟糕到了极点！”</div><div class="ex">竞争越来越激烈，业务指标越来越高。</div></div>
+        <div class="rr"><div class="lb">肯定 + 否定</div><div class="tx">“顾客感到满足是再好不过的了，为此付出努力十分重要。不过让顾客绝对满意的理由不存在，归根结底只是非常理想的状态而已。”</div><div class="ex">肯定价值，定位为相对愿望，再否定绝对要求。</div></div>
+        <div class="rr"><div class="lb">承认坏结果</div><div class="tx">“无论什么样的顾客都让其完全满意是非常困难的。其中，有的人会毫无道理地倒向竞争对手公司。”</div><div class="ex">承认可能有不好的结果，也就是在现实地思考。</div></div>
+        <div class="rr"><div class="lb">现实评价<small>选择“悲伤”</small></div><div class="tx">“……这将非常令人悲伤，同时也是巨大的损失。但是，这不过是可能发生的事情发生了而已。并非世界末日，更不能说明我是一个没有价值的人。”</div><div class="ex">选择好的负面情绪，把损失看作可以承受的风险，不给自己贴标签。</div></div>
+        <div class="rr"><div class="lb">正面行动</div><div class="tx">“不管怎样，追求顾客满意度十分重要，我要通过尽可能倾听顾客心声，争取提高顾客满意度。”</div><div class="ex">再次确认志向，朝改善状况的方向行动。</div></div>
+      </div>
+      <p class="small" style="margin-top:12px">作者的结论：就算情况不发生改变，换成正确的思维方式，压力本身也会减轻。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASES ================= -->
+<section class="lesson" id="cases">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill s">PART 3 · 实践篇</span><h2>八个案例，先想再看答案</h2><p>书里每个案例都演两遍：先演负面例子，作者以导师身份指导“问题出在哪里”“该怎么办”，再用正确思维重演一遍。这里先给出原来的想法，你可以先自己试着改写，再点开看书里的版本。</p></div>
+    <div class="filters">
+      <button class="chip on" data-e="all">全部 8 个</button>
+      <button class="chip" data-e="愤怒">跨越愤怒</button>
+      <button class="chip" data-e="罪恶感">消除罪恶感</button>
+      <button class="chip" data-e="不安">克服不安</button>
+      <button class="chip" data-e="情绪低落">避免情绪低落</button>
+      <button class="chip ghost" id="openAll">全部展开</button>
+    </div>
+    <div class="cases" id="cases-grid"></div>
+  </div>
+</section>
+
+<!-- ================= TOOL ================= -->
+<section class="lesson" id="tool">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill m">轮到你了</span><h2>思维记录表</h2><p>按书里的 4 个步骤，把自己最近的一次压力情况填进去。最下面一栏会按第 3 步的四个要素自动拼出正确的思维方式。记录只保存在本机浏览器里。</p></div>
+    <div class="sheet reveal">
+      <div class="sh"><h3>我的思维记录</h3><span id="today"></span></div>
+      <div class="sr"><div class="lb"><b><i>A</i>发生了什么</b><small>压力情况</small></div><div class="fd"><input class="line-in" type="text" id="tA" placeholder="例：上司让我在经营会议上向领导层做演示"></div></div>
+      <div class="sr bad"><div class="lb"><b><i>1</i>我的想法</b><small>定位错误思维：照实写下冒出来的念头</small></div><div class="fd"><textarea class="line-in" id="tB" placeholder="例：演示绝对不能失败，搞砸了我的职业生涯就完了，我受不了。"></textarea><div class="detect" id="detect"></div></div></div>
+      <div class="sr bad"><div class="lb"><b><i>C</i>我的情绪</b><small>选一个最接近的</small></div><div class="fd"><div class="emopick" id="emopick"><button data-b="不安">不安</button><button data-b="愤怒">愤怒</button><button data-b="情绪低落">情绪低落</button><button data-b="罪恶感">罪恶感</button></div><div class="swap" id="swap"></div></div></div>
+      <div class="sr"><div class="lb"><b><i>2</i>驳斥</b><small>逐条想过就勾上</small></div><div class="fd"><div class="disp" id="disp">
+        <label><input type="checkbox"><span><b>逻辑性</b>好处列得再多，也只说明它“令人向往”，推不出“必须”。</span></label>
+        <label><input type="checkbox"><span><b>实证性</b>现实中真能做到、能验证吗？说“受不了”时，我其实正在忍着。</span></label>
+        <label><input type="checkbox"><span><b>实用性</b>这么想，能让我更幸福、更有胜算吗？</span></label>
+        <label><input type="checkbox"><span><b>灵活性</b>我是不是把一厢情愿当成了绝对真理？</span></label>
+      </div></div></div>
+      <div class="sr good"><div class="lb"><b><i>3</i>我真正看重的</b><small>肯定价值，别否定它</small></div><div class="fd"><input class="line-in" type="text" id="tV" placeholder="例：把演示做好"></div></div>
+      <div class="sr good"><div class="lb"><b><i>4</i>正面行动</b><small>接下来具体做什么</small></div><div class="fd"><input class="line-in" type="text" id="tAct" placeholder="例：接下任务，认真准备，请演示高手参谋，请上司看彩排"></div></div>
+      <div class="sr good"><div class="lb"><b><i>✓</i>改写结果</b><small>正确的思维方式，自动生成，可以照着读出来</small></div><div class="fd"><div class="result" id="result"></div></div></div>
+      <div class="bar"><button class="btn" id="bSave">保存这条记录</button><button class="btn g" id="bEx">载入书中例子</button><button class="btn g" id="bClr">清空</button><span class="msg" id="exnote"></span></div>
+    </div>
+    <div class="saved" id="saved"></div>
+  </div>
+</section>
+
+<!-- ================= COLUMNS ================= -->
+<section class="lesson" id="cols">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill d">PART 4 · 专栏与后记</span><h2>从个人到组织</h2><p>四篇专栏回答了两个常见疑问：不说“必须”，人会不会就不努力了？公司逼着员工“必须”，个人该怎么办？</p></div>
+    <div class="colg reveal">
+      <div class="box"><span class="pill d">专栏一</span><h4>心身耗竭综合征的预防</h4>
+        <p>目标达成后反而疲惫虚脱，失去挑战新目标的力气。专业上叫“疲惫性抑郁症”，一般需要找专业医师治疗。考试成功、找到工作、盖了房子、还完房贷、获得晋升、退休这些人生节点尤其要注意。</p>
+        <p>根源是实现目标的过程中背着“必须”。预防的想法是：“最好可以实现目标，但是绝对必须实现的理由并不存在。”同时也要注意均衡饮食和充足睡眠。</p></div>
+      <div class="box"><span class="pill d">专栏二</span><h4>正确的思维方式与干劲的关系</h4>
+        <p>企业培训里最常见的问题：换成相对愿望，人会不会就不努力了？作者的回答是“不会”。</p>
+        <p>“一定要”带有胁迫性，是一种负面动机，而且想着“必须”也照样可能偷懒。同样的努力，带着“最好能”去做效率更高：能放松地学习，会做必要的休息，靠“担心”而不是“不安”推动自己；万一落榜，也会想再挑战一次。</p></div>
+      <div class="box"><span class="pill d">专栏三</span><h4>成果主义的陷阱</h4>
+        <p>泡沫经济破灭后，日本企业在 20 世纪 90 年代纷纷引入成果主义和目标管理，弊端随之显现：</p>
+        <ul><li>高效员工被目标压力压垮</li><li>有人流于形式，只设容易达成的目标</li><li>只顾自己的目标，职场出现矛盾</li><li>过于恐惧失败，不愿挑战高目标</li><li>上司把难出成果的工作派给看不顺眼的部下</li></ul>
+        <p>后来补上的“胜任力”概念也不是万能药。作者认为，没有心理韧性做支撑，成果主义终将碰壁。</p></div>
+      <div class="box"><span class="pill d">专栏四</span><h4>企业的视点</h4>
+        <p>组织正在越来越多地要求员工“必须”。一种解释是，很多高层自己就是靠“必须”拼过来的，所以只知道这一种激励方式。可是“高效员工急速垮掉”的事越来越多。</p>
+        <p>作者主张的新指导方式：强调实现目标多么令人向往，同时如实说明做不到的坏处；把失败定位为“可以允许的风险”，而不是“不该发生的悲剧”。只要失败不可原谅，喊多少遍“不要畏惧失败”都没用。</p>
+        <p class="small">员工个人的解法：不管组织用什么说法逼你“必须”，现实地看，那都只是强烈的愿望而已。</p></div>
+      <div class="box"><span class="pill m">后记 · 书名里“麦肯锡”的来历</span><h4>曼哈顿街头的一次偶遇</h4>
+        <p>1990 年，作者在麦肯锡纽约事务所做一个美国商业银行的业务简化项目，项目包括裁员。项目很成功，作者还收到了时任麦肯锡老板弗莱德·格拉克的亲笔感谢信。两三个月后，他在曼哈顿街头遇到客户方的一位团队成员。对方说：“I lost my job as a result of that project.”</p>
+        <p>可这个人对裁掉他的银行和咨询公司毫无怨恨，因为他已经在欧洲一家金融机构上班了。作者说，那一刻他“窥见到了纽约人心理韧性的强大”。</p></div>
+      <div class="box"><span class="pill m">这本书的来路</span><h4>理论、经验和培训</h4>
+        <ul>
+          <li>学术来源：认知行为心理学、理性情绪行为心理学、普通语义学、东方哲学</li>
+          <li>经验来源：作者在日美两地做经营咨询、投行业务、企业危机管理顾问，高杉事务所的“心理韧性强化培训”，还有养育 4 个孩子</li>
+          <li>以作者 2001–2002 年在 NHK 主讲的《电视英语商务世界》节目主题为基础</li>
+          <li>作者和一位外资企业的美国人事高管一致认为，日本职场人士不擅长财务、逻辑思考、演示和压力应对</li>
+        </ul></div>
+    </div>
+
+    <details class="toc reveal">
+      <summary>全书目录一览</summary>
+      <div class="toc-body">
+        <h5>开篇</h5>
+        <div class="tr"><b>前言 为何现在提倡增强心理韧性？</b><span>心理韧性是发挥实力的必要条件，也是学习新技能的前提，而且可以学会。</span></div>
+        <div class="tr"><b>总论 心理韧性的本质</b><span>屈服与战胜、好坏两种负面情绪、ABC 理论、心理韧性的本质和 4 个步骤。</span></div>
+        <div class="tr"><b>专栏 心身耗竭综合征的预防</b><span>目标达成后也要小心，“必须”是心身耗竭的根源。</span></div>
+        <h5>理论篇 用于强化心理韧性的 4 个基本步骤</h5>
+        <div class="tr"><b>步骤 1 定位错误的思维方式</b><span>“必须”型及其悖论、“无所谓”型、三种派生思维、坏情绪和坏行动的诱发。</span></div>
+        <div class="tr"><b>步骤 2 驳斥错误的思维方式</b><span>不合逻辑、无法实证、不实用、不灵活；吉田的完整示范。</span></div>
+        <div class="tr"><b>步骤 3 发现正确的思维方式</b><span>肯定价值、否定绝对要求、承认坏结果可能发生、现实评价坏结果；三个接受。</span></div>
+        <div class="tr"><b>专栏 正确的思维方式与干劲的关系</b><span>“最好能”不等于努力程度低，反而效率更高。</span></div>
+        <div class="tr"><b>步骤 4 选择好的负面情绪，采取正面行动</b><span>渡边的完整思维链条。</span></div>
+        <div class="tr"><b>专栏 成果主义的陷阱</b><span>目标管理和胜任力的问题，成果主义需要心理韧性做支撑。</span></div>
+        <h5>实践篇 通过案例分析强化心理韧性</h5>
+        <div class="tr"><b>案例学习 1 跨越愤怒</b><span>1-1 受到上司斥责 · 1-2 优秀部下提出辞职</span></div>
+        <div class="tr"><b>案例学习 2 消除罪恶感</b><span>2-1 无法满足增产要求 · 2-2 爽约</span></div>
+        <div class="tr"><b>案例学习 3 克服不安</b><span>3-1 拒绝不擅长的演示 · 3-2 销售额未达标</span></div>
+        <div class="tr"><b>案例学习 4 避免情绪低落</b><span>4-1 错过晋升机会 · 4-2 创业失败</span></div>
+        <div class="tr"><b>专栏 企业的视点</b><span>组织强化“必须”的原因和危害，管理者的新激励方式。</span></div>
+        <div class="tr"><b>后记</b><span>麦肯锡纽约事务所的经历，纽约人的心理韧性。</span></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= QUOTES ================= -->
+<section class="lesson" id="quotes">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill s">摘抄</span><h2>值得抄下来的八句话</h2></div>
+    <div class="quotes reveal">
+      <div class="qt"><p>压力并不作为客观实际状态“存在”，毫不夸张地说，归根结底还是由当事人的思维方式创造出来的。</p><cite>总论</cite></div>
+      <div class="qt"><p>如果将“必须”型思维方式比作汽车，它就是一种无异于同时用力踩下油门和刹车的自我毁灭式思维方式。</p><cite>理论篇 · 步骤 1</cite></div>
+      <div class="qt"><p>“必须”并不在“令人向往”的延长线上。</p><cite>理论篇 · 步骤 2</cite></div>
+      <div class="qt"><p>只要自己不宣布终结，职业生涯就不可能终结。</p><cite>理论篇 · 步骤 2</cite></div>
+      <div class="qt"><p>就算做错了事情，也不能把“错误”与“当事人”画等号。</p><cite>案例 1-1 受到上司斥责</cite></div>
+      <div class="qt"><p>虽然有些担心，不，正因为担心，我更要扎扎实实做好准备！</p><cite>案例 3-1 拒绝不擅长的演示</cite></div>
+      <div class="qt"><p>糟糕的情况可能存在，更糟糕的情况也是有的。可是，“最糟糕”的情况是不存在的。那只是你自己这么认为而已。</p><cite>案例 3-2 销售额未达标</cite></div>
+      <div class="qt"><p>就算你去了很远的地方，你也逃避不了自己的思维方式。</p><cite>案例 4-2 创业失败</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TODO ================= -->
+<section class="lesson" id="todo">
+  <div class="wrap">
+    <div class="lhead reveal"><span class="pill m">打卡</span><h2>可执行练习清单</h2><p>都来自书里的方法和案例。做过一次就勾上，进度保存在本机。想按时间顺序一步步来，可以点右下角的“我要怎么做？”。</p></div>
+    <div class="prog"><div class="track"><div class="fill" id="pfill"></div></div><div class="txt" id="ptxt">0 / 12</div><button id="preset">重置</button></div>
+    <div class="check" id="check"></div>
+  </div>
+</section>
+
+<footer>
+  根据《麦肯锡精英的思考习惯》（[日] 高杉尚孝 著，杨建兴 译，中信出版集团）全文整理<br>
+  思维记录、打卡和路线进度只保存在本机浏览器
+</footer>
+
+<!-- ================= DRAWER ================= -->
+<button class="fab" id="fab" aria-haspopup="dialog" aria-controls="drawer" aria-expanded="false">我要怎么做？<span class="cnt" id="fabcnt">0/0</span></button>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dtitle">
+  <div class="dhead">
+    <div class="row1"><div><h3 id="dtitle">我要怎么做？</h3><p>按书里的方法排出的落地路线，每一步都标了出处。</p></div><button class="dclose" id="dclose" aria-label="关闭">×</button></div>
+    <div class="seg" role="tablist"><button role="tab" data-r="self" class="on">自己练</button><button role="tab" data-r="team">带团队</button></div>
+    <div class="why" id="dwhy"></div>
+    <div class="dprog"><div class="track"><div class="fill" id="dfill"></div></div><span id="dtxt">0 / 0</span></div>
+  </div>
+  <div class="dbody" id="dbody"></div>
+</aside>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+
+/* ---------- cases ---------- */
+const CASES=[
+{no:"案例 1-1",e:"愤怒",t:"受到上司斥责",who:"中村 · 32 岁 · 精密机械制造企业",
+ sit:"报告里有两处简单的计算错误，被涩谷课长当着同事的面训斥。",
+ xq:"像我这样的专业人士绝对不能犯低级错误，如果犯了，那我就是一个大笨蛋。上司也不该当着大家的面斥责部下。",
+ xf:["愤怒","给自己贴“又蠢又笨”的标签","认定课长“作为领导太不合格”"],
+ oq:"终究还是不犯错误最好，但没有理由说“不可以”犯错误。我和课长都是不完美的人。",
+ of:["不快","承认是粗心","反省睡眠不足、调整作息","体谅上司，尽快重做"],
+ pt:"高杉学青蛙在地上跳：“因为我感觉自己像青蛙，所以我就是一只青蛙。”自己认为的未必是事实。对人的评价和对行为的评价要分开。"},
+{no:"案例 1-2",e:"愤怒",t:"优秀部下提出辞职",who:"藤井 · 48 岁 · 电子机器企业研发负责人",
+ sit:"得力部下三宅事先没商量，突然说干到月底就辞职。",
+ xq:"他不应该恩将仇报。身为上司，我必须预知一切。",
+ xf:["愤怒","骂对方“良心去哪了”，攻击人格","想让他在业内混不下去","矛头又转向自己和公司"],
+ oq:"最好任何人都不恩将仇报，但没有理由说人绝对必须那样。依情况不同，有时也做不到。",
+ of:["不快","问清理由：去费城大学任教","协商请他在项目里多留两三个月","提前了解部下想法，向高层提改进方案"],
+ pt:"性格就是思维、情绪、行为的模式。同样的事，另一位上司就能平常心处理。坏情绪的矛头会同时指向自己、他人和现状。"},
+{no:"案例 2-1",e:"罪恶感",t:"无法满足增产要求",who:"清水 · 53 岁 · 制药公司感冒药制造部门负责人",
+ sit:"感冒意外流行，销售负责人金子逼他增产，还质问“你难道就没有道德上的责任感吗”。",
+ xq:"作为生产部门负责人，我必须满足需求，必须履行职责。",
+ xf:["罪恶感","情绪低落","接受对方强加的罪恶感","给自己盖上“不称职”的烙印"],
+ oq:"但愿能够满足增产的要求，可我绝对必须做到的理由并不存在。",
+ of:["自责","指出这不是道德问题","说明减产别的产品也于事无补","去和其他生产经理商量"],
+ pt:"诉诸罪恶感逼人让步是“犯规的谈判手段”。心里有“必须”，才会留下接受罪恶感的空隙。需求预测失误，金子自己也有责任。"},
+{no:"案例 2-2",e:"罪恶感",t:"爽约",who:"田中 · 33 岁 · 女性 · IT 咨询公司项目经理",
+ sit:"临时来了急活，赶不上自己张罗的朋友聚会，朋友在电话里埋怨她。",
+ xq:"我必须遵守约定，对自己说的话负责。我应该预见到会临时来活。",
+ xf:["罪恶感","“我真讨厌自己”","给自己贴标签"],
+ oq:"能说话算话最好，但没有理由非那样做不可。事实上，也有做不到的时候。",
+ of:["自责","坦白说明，约定下次补上","拼一小时，争取去待 30 分钟","下次把工作管理得更好"],
+ pt:"一年要做数不清的行为，错几个才算“坏人”？这种标准根本不存在，何况人还在变。自责是“憎其罪但不憎其人”。"},
+{no:"案例 3-1",e:"不安",t:"拒绝不擅长的演示",who:"砂田 · 33 岁 · 卫浴企业营销企划",
+ sit:"上司野中想让他在经营会议上向领导层做演示，这是一个让高层认识他的好机会。",
+ xq:"演示绝不能失败，必须做得完美，绝不能受到差评。搞砸了我的职业生涯就完了。",
+ xf:["不安","当场拒绝（逃避）","事后骂自己“真没用”，一个压力又引出新的压力"],
+ oq:"但愿我能做好演示，不出差错非常重要。可没有理由说我的演示必须完美，即使出现失误，天也塌不下来。",
+ of:["担心","接下任务，扎实准备","请演示高手足立参谋","请上司来看彩排"],
+ pt:"先如实接受不擅长演示的自己。接受不等于“无所谓”，擅长当然比不擅长好。"},
+{no:"案例 3-2",e:"不安",t:"销售额未达标",who:"松井 · 36 岁 · 大型制药公司 MR（医药代表）",
+ sit:"半年销售目标眼看完不成，深夜还在加班，胃疼得找胃药。",
+ xq:"既然在大家面前承诺了，就必须达标。绝不能把弱点暴露给别人。不达标职业生涯就完了。",
+ xf:["不安、焦虑","对同事假装“一切顺利”","已经到了极限，还硬要再增加拜访次数"],
+ oq:"达成销售目标很重要，但没有绝对必须达成的理由。达不成是“非常不理想”，不是“最糟糕”。",
+ of:["担心","坦率地向同事富田请教","改在医生诊疗结束后的傍晚拜访","好好吃饭，好好睡觉"],
+ pt:"压力之下硬要单方面积极地想，往往难以持久。比起用老办法再加把劲，换个做法更能打开局面。"},
+{no:"案例 4-1",e:"情绪低落",t:"错过晋升机会",who:"园部 · 33 岁 · 外资医疗器械制造商营销",
+ sit:"今年没能晋升，竞争对手、同事清水却升了。",
+ xq:"今年当然必须获得晋升。不能输给竞争对手。",
+ xf:["情绪低落（丧失感）","想第二天就递辞呈","认定“在这家公司绝对不可能有发展”"],
+ oq:"今年最好可以获得晋升，那将是非常令人满意的结果。可是没有理由说我绝对一定能获得晋升。",
+ of:["悲伤","平静接受，问清没晋升的理由","参考“协调能力欠缺”的意见","休两三天假，泡温泉，尽快打起精神"],
+ pt:"高杉和他对调立场，让他来安慰“情绪低落的园部”。现实就是：并非世界末日，到了明天早上，太阳还会照常升起。"},
+{no:"案例 4-2",e:"情绪低落",t:"创业失败",who:"小林 · 38 岁 · 女性 · 服装行业创业者",
+ sit:"和伙伴黑部创业两年半，两次支票没能兑现，银行停止往来，公司资产全部被罚没。",
+ xq:"创业是不能有失败的。",
+ xf:["情绪低落 + 愤怒","陷入“如果当初”综合征：怪打折店、怪银行、怪自己没听父母的话去当老师","给自己贴“人生彻底完了”的标签","想搬到没人认识的地方"],
+ oq:"创业一帆风顺是最理想的，但必须一帆风顺的理由不存在。倒闭是可以从头再来的“巨大的不利局面”。",
+ of:["悲伤","找出原因：资金筹措太幼稚，账面有利润但现金不足","决定学会计和财务，下次找资本雄厚的伙伴","先去乡下泡温泉，想想下一步"],
+ pt:"“如果当初”源于想逃离“难以承受的悲剧”。复盘有用，日夜悔恨于事无补。打折店和银行也只是做了企业该做的事。"}
+];
+const seq=a=>`<div class="seq"><span class="e">${a[0]}</span>${a.slice(1).map(x=>`<span>${x}</span>`).join('')}</div>`;
+const cg=$('cases-grid');
+cg.innerHTML=CASES.map((c,i)=>`<article class="qc" data-e="${c.e}">
+  <div class="top"><div class="meta"><span class="no">${c.no}</span><span class="pill r">${c.e}</span></div><h4>${c.t}</h4><div class="who">${c.who}</div><p class="sit">${c.sit}</p></div>
+  <div class="part x"><div class="t">原来的想法</div><q>${c.xq}</q>${seq(c.xf)}</div>
+  <div class="think"><span>先想一想：这里藏着哪个“必须”？你会怎么改写？</span><button data-i="${i}">看书里的改写</button></div>
+  <div class="ans"><div class="part o"><div class="t">改写后的想法</div><q>${c.oq}</q>${seq(c.of)}</div><div class="pt"><b>要点</b>${c.pt}</div></div>
+</article>`).join('');
+cg.addEventListener('click',e=>{const b=e.target.closest('.think button');if(b)b.closest('.qc').classList.add('open')});
+let allOpen=false;
+$('openAll').onclick=()=>{allOpen=!allOpen;cg.querySelectorAll('.qc').forEach(q=>q.classList.toggle('open',allOpen));$('openAll').textContent=allOpen?'全部收起':'全部展开'};
+document.querySelectorAll('#cases .chip[data-e]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#cases .chip[data-e]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  cg.querySelectorAll('.qc').forEach(c=>c.classList.toggle('hide',b.dataset.e!=='all'&&c.dataset.e!==b.dataset.e));
+});
+
+/* ---------- thought record ---------- */
+$('today').textContent=new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric'});
+const SWAP={"不安":["担心","精心准备"],"愤怒":["不快","协商、折中"],"情绪低落":["悲伤","与人分享"],"罪恶感":["自责","反省自己的行为"]};
+const PAT=[
+ ["“必须”型",/必须|一定要|绝对|绝不|不能|不可以|不该|不应该|无论如何|非得|当然要|理所当然|非.{0,6}不可/g],
+ ["绝望悲观",/糟糕透|糟透|完了|没救|世界末日|最糟|没戏|没希望|不可能有发展|毁了/g],
+ ["耐性缺乏",/受不了|无法忍受|忍不下去|承受不了|撑不住|受够了|扛不住/g],
+ ["指责/自卑",/没用|蠢|笨|无能|不称职|不合格|都怪|饶不了|无法原谅|讨厌自己|没出息|差劲|废物|一无是处/g],
+ ["“无所谓”型",/无所谓|没意义|毫无意义|白搭|不值一提|没什么大不了|就那么回事|算了吧/g]
+];
+let curEmo='';
+function detect(){
+  const t=$('tB').value;
+  if(!t.trim()){$('detect').innerHTML='';return}
+  const hits=PAT.map(([n,r])=>{const m=t.match(r);return m?`<span>${n} <em>${[...new Set(m)].slice(0,4).map(esc).join('、')}</em></span>`:''}).filter(Boolean);
+  $('detect').innerHTML=hits.length?hits.join(''):'<span class="none">没找到典型说法。书里说，引发情绪的思维方式大多意识不到：想一想，背后有没有一句没说出口的“必须”？</span>';
+}
+function render(){
+  const v=$('tV').value.trim(), act=$('tAct').value.trim();
+  if(!v){$('result').innerHTML='<span class="ph">先在第 3 栏写下“我真正看重的是……”，这里会生成改写后的想法。</span>';return}
+  const g=curEmo?SWAP[curEmo]:null;
+  let h=`我最好能<mark>${esc(v)}</mark>，这很重要，也很令人向往。但是，绝对必须${esc(v)}的理由并不存在。现实地说，做不到的情况也有可能发生；即使发生了，那也只是可能发生的事情发生了，并非世界末日，是可以承受的风险，也不能说明谁百分之百不好。`;
+  if(g) h+=`所以我感到的是<mark>${g[0]}</mark>，而不是<mark class="b">${curEmo}</mark>。`;
+  if(act) h+=`接下来我要：<mark>${esc(act)}</mark>。`;
+  $('result').innerHTML=h;
+}
+function setEmo(e){
+  curEmo=e||'';
+  $('emopick').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.b===curEmo));
+  $('swap').innerHTML=curEmo?`把坏的负面情绪 <b style="color:var(--rose)">${curEmo}</b> 换成好的负面情绪 <b>${SWAP[curEmo][0]}</b>，它容易引出的行动是：<b>${SWAP[curEmo][1]}</b>`:'';
+  render();
+}
+$('emopick').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setEmo(curEmo===b.dataset.b?'':b.dataset.b)});
+$('tB').addEventListener('input',detect);
+['tV','tAct'].forEach(id=>$(id).addEventListener('input',render));
+const EX=[
+ {n:"砂田 · 案例 3-1",a:"上司让我在经营会议上向领导层做演示",b:"演示绝不能失败，必须做得完美，绝不能受到差评。要是搞砸了，我的职业生涯也就完了，我受不了。",e:"不安",v:"把演示做好",act:"接下任务，扎扎实实准备，请足立先生参谋，请上司看彩排"},
+ {n:"中村 · 案例 1-1",a:"报告里有两处计算错误，被课长当着同事的面训斥",b:"像我这样的专业人士绝对不能犯低级错误，我真是又蠢又笨。课长也不该当众骂我，作为领导太不合格了。",e:"愤怒",v:"不犯错误",act:"尽快重做，以后更加注意，生活再规律一些"},
+ {n:"清水 · 案例 2-1",a:"感冒意外流行，销售部门要求紧急增产，我做不到",b:"作为生产部门负责人，我必须满足需求、必须履行职责。做不到，我就是不称职。",e:"罪恶感",v:"满足增产的要求",act:"说明这不是道德问题，再和其他生产经理商量"},
+ {n:"园部 · 案例 4-1",a:"今年没能晋升，竞争对手清水却升了",b:"今年当然必须获得晋升，绝对不能输给清水。在这家公司绝对不可能有发展了。",e:"情绪低落",v:"今年获得晋升",act:"问清没晋升的理由，改进协调能力，休两三天假恢复干劲"}
+];
+let exi=0;
+$('bEx').onclick=()=>{
+  const x=EX[exi%EX.length]; exi++;
+  $('tA').value=x.a;$('tB').value=x.b;$('tV').value=x.v;$('tAct').value=x.act;
+  detect(); setEmo(x.e);
+  $('exnote').textContent='已载入：'+x.n+'。再点一次换下一个例子。';
+};
+$('bClr').onclick=()=>{
+  ['tA','tB','tV','tAct'].forEach(id=>$(id).value='');
+  $('disp').querySelectorAll('input').forEach(i=>i.checked=false);
+  detect(); setEmo(''); $('exnote').textContent='';
+};
+const TKEY='mt-record-v1';
+function drawSaved(){
+  const L=store(TKEY)||[];
+  $('saved').innerHTML=L.map((c,i)=>`<div class="sc"><div class="h"><b>${esc(c.a||'未填写情况')}</b><button data-i="${i}">删除</button></div>${c.b?`<div class="old">${esc(c.b)}</div>`:''}<div class="new">${esc(c.r)}</div><div class="d">${esc(c.d)}</div></div>`).join('');
+}
+$('saved').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-i]'); if(!b)return;
+  const L=store(TKEY)||[]; L.splice(+b.dataset.i,1); store(TKEY,L); drawSaved();
+});
+$('bSave').onclick=()=>{
+  if(!$('tV').value.trim()){$('tV').focus();$('exnote').textContent='先写下第 3 栏“我真正看重的”。';return}
+  const L=store(TKEY)||[];
+  L.unshift({a:$('tA').value.trim(),b:$('tB').value.trim(),r:$('result').textContent,d:new Date().toLocaleString('zh-CN')});
+  store(TKEY,L.slice(0,30)); drawSaved();
+  $('exnote').textContent='已保存到下方。';
+};
+detect(); render(); drawSaved();
+
+/* ---------- checklist ---------- */
+const T=[
+["压力一来，先给情绪定名","对照四对情绪问自己：现在是不安还是担心？愤怒还是不快？情绪低落还是悲伤？罪恶感还是自责？","总论"],
+["找出藏在背后的“必须”","在念头里找“必须、绝对、不能、不该、无论如何”。大多数时候它没说出口，要主动去挖。","步骤 1"],
+["顺藤摸瓜查三种派生思维","有没有“糟糕透了”“受不了了”“都怪他 / 我真没用”？它们会互相放大。","步骤 1"],
+["用四个标准逐条驳斥","逻辑：能推出“必须”吗？实证：现实中成立吗？实用：这么想有好处吗？灵活：是不是把一厢情愿当成了真理？","步骤 2"],
+["先肯定价值，别将错就错","把目标说成“非常重要、令人向往”，不要变成“无所谓”“让承诺见鬼去吧”。","步骤 3 · 案例 3-2"],
+["大声、反复地否定绝对要求","对自己说出来：“……的理由并不存在。”只在表面否定一次不够。","案例 1-2 · 3-1"],
+["把最坏的结果想到底","真发生了会怎样？会死人吗？世界会结束吗？多数时候都是可以承受的风险。“太阳还会照常升起。”","步骤 3 · 案例 4-1"],
+["把行为和人分开","犯了错是事实，但不把“错误”和“当事人”画等号，不给自己或别人贴标签。","案例 1-1 · 2-2"],
+["选好情绪，接上正面行动","担心就去准备，不快就去协商，悲伤就去分享，自责就去反省。","步骤 4"],
+["分清工作责任和道德问题","别人诉诸你的罪恶感逼你让步时，先看看这到底是不是道德问题。","案例 2-1"],
+["复盘可以，沉湎“如果当初”不行","回顾判断有帮助，日夜悔恨于事无补。逃到远方，也逃不开自己的思维方式。","案例 4-2"],
+["换方法，也要休养","不只是更拼命：向同事请教、调整做法，按时吃饭睡觉，必要时休假。目标达成后也留意心身耗竭。","案例 3-2 · 4-1 · 专栏一"]
+];
+const KEY='mt-check-v1';
+const savedC=store(KEY)||[];
+const ck=$('check');
+ck.innerHTML=T.map((t,i)=>`<label><input type="checkbox" data-i="${i}" ${savedC.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">出处：${t[2]}</div></div></label>`).join('');
+function prog(){
+  const on=[...ck.querySelectorAll('input:checked')].map(x=>+x.dataset.i);
+  store(KEY,on);
+  $('pfill').style.width=(on.length/T.length*100)+'%';
+  $('ptxt').textContent=on.length+' / '+T.length;
+}
+ck.addEventListener('change',prog); prog();
+$('preset').onclick=()=>{ck.querySelectorAll('input').forEach(i=>i.checked=false);prog()};
+
+/* ---------- drawer route ---------- */
+const ROUTE={
+ self:{why:"给想在自己身上练心理韧性的人。",phases:[
+  {t:"今天就做",d:"3 件 15 分钟内能完成的事",items:[
+   ["写下一次压力情况的 ABC","挑最近一件让你不安、愤怒、低落或有罪恶感的事，写出 A（发生了什么）和 C（情绪和行动），再找出夹在中间的 B：那句“必须”。","总论 · ABC 理论；步骤 1"],
+   ["用四个标准驳一遍这句“必须”","逻辑：好处再多能推出“必须”吗？实证：现实中能做到吗？实用：这么想有好处吗？灵活：是不是一厢情愿？","步骤 2"],
+   ["改写并大声说出来","“我最好能……，但必须……的理由并不存在。做不到也有可能，即使发生了也并非世界末日。”书里让砂田、小林都大声对自己说。","步骤 3；案例 3-1、4-2"]]},
+  {t:"第一周",d:"要建立起来的做法",items:[
+   ["坏情绪一出现，先定名再换掉","不安换成担心，愤怒换成不快，情绪低落换成悲伤，罪恶感换成自责。","总论；步骤 4"],
+   ["每次都反复否定绝对要求","只在表面否定一次不够，“需要一次又一次反复否定‘必须’型思维方式，然后替换成‘愿望’型思维方式”。","案例 1-2"],
+   ["选好情绪后，马上接一个正面行动","担心就去准备，不快就去协商，悲伤就去分享，自责就去反省。","步骤 4；实践篇各正面例子"],
+   ["发现自己在贴标签时，把行为和人分开","犯错是事实，但不把“错误”和“当事人”画等号，对自己和对别人都一样。","案例 1-1、2-2"],
+   ["压力大时照顾好饮食和睡眠","正面例子里，松井决定好好吃饭睡觉，园部和小林都安排了休假泡温泉。","专栏一；案例 3-2、4-1、4-2"]]},
+  {t:"一个月后",d:"要形成的习惯，以及怎么检验",items:[
+   ["习惯：察觉到坏情绪时能当场切断","书里第 4 步的目标是把这套做法“培养成一种习惯”，最后能“当场切断坏的负面情绪”。检验：回看这个月的记录，坏情绪出现时，你是不是每次都意识到了，并有意识地换了想法。","步骤 4"],
+   ["检验：同类情况下，行动变了没有","对照“屈服”和“战胜”的定义：你现在的反应是逃避、攻击、封闭、否定自己，还是准备、协商、分享、反省？","总论"],
+   ["检验：失败之后还愿意再挑战吗","抱着相对愿望，没做成也不会燃尽，园部、小林都保留了“再挑战一次”的力气。","专栏二；案例 4-1、4-2"],
+   ["检验：做成了，有没有满足感","如果目标达成后反而疲惫虚脱、提不起劲，就要留意心身耗竭，回头查一查过程中背了多少“必须”。","专栏一"]]},
+  {t:"卡住了怎么办",d:"书里提到的常见障碍和对策",stuck:true,items:[
+   ["“道理都懂，可就是还会那样感觉”","硬压情绪、硬往积极处想都很难。书里的办法是从源头切断：不直接改情绪，去改引发情绪的思维方式。","案例 4-1、1-2"],
+   ["“一开始还是会冒出错误想法”","这是没办法的事。关键在每次察觉到，并有意识地选。“从一开始就进行完美实践并不容易，希望你能多次反复训练。”","步骤 4；案例 1-2"],
+   ["“不说‘必须’，我会不会就不努力了？”","不会。“必须”是带胁迫性的负面动机；同样的努力，带着“最好能”去做效率更高。","专栏二；案例 2-1"],
+   ["“去掉‘必须’以后，变成了‘无所谓’”","这是另一种错误思维。先肯定价值，“能够达标非常重要和理想”，只丢掉“必须”那一部分。","步骤 1、3；案例 3-2"],
+   ["“我天生就是这种性格，改不了”","性格就是思维、情绪、行为模式；情绪产生时必定有思维介入，改变思维方式，情绪也是可以控制的。","案例 1-2、2-2"],
+   ["“别人一句‘你没有责任感吗’，我就垮了”","先分清这是工作责任还是道德问题。诉诸罪恶感逼人让步，是“犯规的谈判手段”。","案例 2-1"],
+   ["“公司就是要求我必须达标”","不管组织用什么说法，现实地看，那都只是强烈的愿望而已。","专栏 · 企业的视点"],
+   ["“脑子里一直转着‘如果当初’”","回顾过去的判断有时有帮助，但日夜悔恨于事无补；逃到远方，也逃不开自己的思维方式。","案例 4-2"]]}
+ ]},
+ team:{why:"书里专门有一篇写给经营者和管理者（专栏 · 企业的视点），所以单列一条路线。先把“自己练”做起来，作者说管理层要“自身也实践‘愿望’型思维方式”。",phases:[
+  {t:"今天就做",d:"3 件 15 分钟内能完成的事",items:[
+   ["先在自己身上用一次相对愿望","拿你此刻最大的一项业务目标，改写成“达成它非常重要和理想，但必须达成的理由并不存在”。","专栏 · 企业的视点；步骤 3"],
+   ["找出你最近对部下说过的“必须”","比如“必须实现目标”“决不允许失败”。书里说，这是很多组织唯一会用的激励方式。","专栏 · 企业的视点"],
+   ["想好下一次批评部下时怎么说","斥责本来是让部下认识到问题、促其改进的手段，不能变成对人格的攻击。只评价行为，不给人贴标签。","案例 1-1、1-2"]]},
+  {t:"第一周",d:"要建立起来的做法",items:[
+   ["布置目标时把两面都讲清楚","强调实现目标多么令人向往，同时如实说明做不到的坏处。","专栏 · 企业的视点"],
+   ["把失败定位为“可以允许的风险”","而不是“不该发生的难以忍受的悲剧”。失败可以容忍，员工才会果敢地一直挑战。","专栏 · 企业的视点"],
+   ["部下出状况时，用“不快”代替“愤怒”","像藤井的正面例子那样：先问清理由，再协商，想办法管控损失。","案例 1-2"],
+   ["不用罪恶感逼人让步","“你没有道德上的责任感吗”这种说法是犯规的谈判手段，问题应该当工作责任来谈。","案例 2-1"]]},
+  {t:"一个月后",d:"要形成的习惯，以及怎么检验",items:[
+   ["检验：部下失败后是不是还在坚持","书里说令人满意的结果是：员工不因失败而萎靡不振，而是坚持努力，为公司提高获胜概率。","专栏 · 企业的视点"],
+   ["检验：有没有出现成果主义的弊端","高效员工被目标压垮、只设简单目标、不愿挑战高目标、职场出现矛盾、把难出成果的工作派给看不顺眼的部下。","专栏 · 成果主义的陷阱"],
+   ["习惯：提前了解部下在想什么","藤井事后的改进：提前掌握部下的想法，想好替补人选，管理负担太重就向高层提改进方案。","案例 1-2"]]},
+  {t:"卡住了怎么办",d:"书里提到的常见障碍和对策",stuck:true,items:[
+   ["“我自己就是靠‘必须’拼出来的”","负面动机能否成为高效动机是不确定的，努力了也不一定成功；施压过大，会把高效员工压垮。","专栏 · 企业的视点"],
+   ["“我说了‘不要怕失败’，大家还是怕”","只要失败是无法得到原谅的悲剧，员工自然会害怕。要改的是对失败的定位，而不是口号。","专栏 · 企业的视点"],
+   ["“不施压，员工就不努力”","同样的努力，带着“最好能”去做效率更高，落空了也愿意再挑战。","专栏二"],
+   ["“引入了胜任力模型，也没见起色”","胜任力不是万能药。不管设什么目标、模仿什么胜任力，都需要能顽强执行下去的心理韧性做支撑。","专栏 · 成果主义的陷阱"]]}
+ ]}
+};
+const RKEY='mt-route-v1';
+let route=(store(RKEY+'-tab')==='team')?'team':'self';
+let done=new Set(store(RKEY)||[]);
+function ids(r){const a=[];ROUTE[r].phases.forEach((p,i)=>p.items.forEach((_,j)=>a.push(`${r}-${i}-${j}`)));return a}
+function drawRoute(){
+  const R=ROUTE[route];
+  document.querySelectorAll('.seg button').forEach(b=>{b.classList.toggle('on',b.dataset.r===route);b.setAttribute('aria-selected',b.dataset.r===route)});
+  $('dwhy').textContent=R.why;
+  $('dbody').innerHTML=R.phases.map((p,i)=>`<div class="phase${p.stuck?' stuck':''}"><div class="phh"><i>${p.stuck?'?':i+1}</i><div><b>${p.t}</b><small>${p.d}</small></div></div><div class="dlist">${p.items.map((it,j)=>{const id=`${route}-${i}-${j}`;return `<label><input type="checkbox" data-id="${id}" ${done.has(id)?'checked':''}><div><b>${it[0]}</b><span>${it[1]}</span><span class="src">出处：${it[2]}</span></div></label>`}).join('')}</div></div>`).join('')+`<p class="dfoot">勾选进度保存在本机，与页面里的打卡清单分开记录。</p>`;
+  routeProg();
+}
+function routeProg(){
+  const a=ids(route), n=a.filter(x=>done.has(x)).length;
+  $('dfill').style.width=(n/a.length*100)+'%';
+  $('dtxt').textContent=n+' / '+a.length;
+  $('fabcnt').textContent=n+'/'+a.length;
+}
+$('dbody').addEventListener('change',e=>{
+  const c=e.target.closest('input[data-id]'); if(!c)return;
+  c.checked?done.add(c.dataset.id):done.delete(c.dataset.id);
+  store(RKEY,[...done]); routeProg();
+});
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{route=b.dataset.r;store(RKEY+'-tab',route);drawRoute();$('dbody').scrollTop=0});
+let lastFocus=null;
+function openD(){lastFocus=document.activeElement;document.body.classList.add('dopen');$('fab').setAttribute('aria-expanded','true');setTimeout(()=>$('dclose').focus(),60)}
+function closeD(){document.body.classList.remove('dopen');$('fab').setAttribute('aria-expanded','false');(lastFocus||$('fab')).focus()}
+$('fab').onclick=openD; $('dclose').onclick=closeD; $('scrim').onclick=closeD;
+document.addEventListener('keydown',e=>{
+  if(!document.body.classList.contains('dopen'))return;
+  if(e.key==='Escape'){e.preventDefault();closeD();return}
+  if(e.key==='Tab'){
+    const f=[...$('drawer').querySelectorAll('button,input,[tabindex]:not([tabindex="-1"])')].filter(x=>x.offsetParent!==null);
+    if(!f.length)return;
+    const first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+  }
+});
+drawRoute();
+
+/* ---------- reveal & nav ---------- */
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+const links=[...document.querySelectorAll('nav.top a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+function navOn(){let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<120)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k))}
+addEventListener('scroll',navOn,{passive:true}); navOn();
+</script>
+</body>
+</html>

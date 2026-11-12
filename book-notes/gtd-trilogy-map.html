@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTD 一张图 · 搞定三部曲合并去重</title>
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffdf9; --ink:#1f1d1a; --ink2:#5b5650; --ink3:#8d877e;
+  --line:#e7e1d6; --soft:#f0ebe2;
+  --b1:#0f766e; --b1s:#e2f2ef;
+  --b2:#b45309; --b2s:#fbeedd;
+  --b3:#4338ca; --b3s:#e8e7fb;
+  --x:#0f766e; --xs:#e2f2ef;   /* 掌控轴 */
+  --y:#4338ca; --ys:#e8e7fb;   /* 视角轴 */
+  --hot:#c2410c;
+  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --r:14px; --shadow:0 1px 2px rgba(30,25,15,.04),0 8px 24px rgba(30,25,15,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#151412; --paper:#1d1c19; --ink:#efebe4; --ink2:#b5aea3; --ink3:#857f76;
+    --line:#2f2c27; --soft:#25231f;
+    --b1:#4fd1c0; --b1s:#173230; --b2:#f2a65a; --b2s:#3a2a19; --b3:#a5a1ff; --b3s:#25244a;
+    --x:#4fd1c0; --xs:#173230; --y:#a5a1ff; --ys:#25244a; --hot:#fb923c;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:48px 28px 64px}
+h1,h2,h3,h4{font-family:var(--serif);margin:0;line-height:1.35}
+.muted{color:var(--ink2)} .small{font-size:12.5px;color:var(--ink3)}
+
+/* book badges */
+.bk{display:inline-flex;gap:3px;vertical-align:middle}
+.bk i{font-style:normal;font-family:var(--serif);font-size:11px;font-weight:700;width:20px;height:18px;border-radius:5px;display:inline-grid;place-items:center;line-height:1}
+.bk .o1{background:var(--b1s);color:var(--b1)} .bk .o2{background:var(--b2s);color:var(--b2)} .bk .o3{background:var(--b3s);color:var(--b3)}
+.bk .off{background:transparent;color:var(--line);border:1px dashed var(--line)}
+.p2{font-size:11.5px;color:var(--b2);font-weight:600;white-space:nowrap}
+
+/* header */
+header{text-align:center;margin-bottom:30px}
+header .eyebrow{font-size:12.5px;letter-spacing:.2em;color:var(--ink3)}
+header h1{font-size:clamp(32px,5vw,52px);margin-top:6px;letter-spacing:.03em}
+header p{color:var(--ink2);max-width:760px;margin:10px auto 0}
+.legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* problem → goal banner */
+.banner{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:26px 0 22px}
+.banner .box{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;box-shadow:var(--shadow)}
+.banner .box .k{font-size:12px;letter-spacing:.18em;color:var(--ink3)}
+.banner .box h3{font-size:19px;margin:2px 0 4px}
+.banner .box p{margin:0;font-size:13.5px;color:var(--ink2)}
+.banner .mid{font-family:var(--serif);font-size:15px;color:var(--ink2);text-align:center;line-height:1.5}
+.banner .mid b{display:block;font-size:26px;color:var(--hot)}
+.banner .goal{border-color:var(--hot)}
+
+/* ===== MAIN DIAGRAM ===== */
+.diagram{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px 22px 18px;box-shadow:var(--shadow)}
+.dtitle{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin:0 4px 14px}
+.dtitle h2{font-size:22px}
+.board{display:grid;grid-template-columns:34px 232px repeat(5,1fr);grid-template-rows:repeat(5,auto) auto 30px;gap:8px;position:relative}
+.yaxis{grid-column:1;grid-row:1/6;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--y);letter-spacing:.3em;font-size:15px;border-right:2px solid var(--y);position:relative}
+
+.xaxis{grid-column:3/8;grid-row:7;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--x);letter-spacing:.3em;font-size:15px;border-top:2px solid var(--x);position:relative}
+.xaxis::after{content:"";position:absolute;top:-7px;right:-8px;border:6px solid transparent;border-right:none;border-left-color:var(--x)}
+
+.rung{grid-column:2;background:var(--ys);border-radius:12px;padding:10px 12px;position:relative}
+.rung .h{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.rung b{font-family:var(--serif);font-size:15.5px;color:var(--y)}
+.rung .alias{font-size:11.5px;color:var(--ink3)}
+.rung .d{font-size:12.5px;color:var(--ink2);line-height:1.5;margin-top:2px}
+.rung .f{display:flex;justify-content:space-between;align-items:center;margin-top:5px}
+.cad{font-size:11px;background:var(--paper);color:var(--y);border-radius:999px;padding:1px 8px;font-weight:600}
+
+.origin{grid-column:2;grid-row:6;background:var(--hot);color:#fff;border-radius:14px;padding:14px 14px;position:relative;box-shadow:0 6px 20px color-mix(in srgb,var(--hot) 35%,transparent)}
+.origin b{font-family:var(--serif);font-size:19px;display:block}
+.origin .alias{font-size:11.5px;opacity:.85}
+.origin p{margin:6px 0 0;font-size:12.5px;line-height:1.55;opacity:.95}
+.origin .bk i{background:rgba(255,255,255,.22)!important;color:#fff!important}
+
+.step{grid-row:6;background:var(--xs);border-radius:12px;padding:10px 12px;position:relative}
+.step .n{font-family:var(--serif);font-size:12px;color:var(--x);font-weight:700}
+.step b{font-family:var(--serif);font-size:16px;color:var(--x);display:block;line-height:1.3}
+.step .alias{font-size:11.5px;color:var(--ink3)}
+.step .d{font-size:12.5px;color:var(--ink2);line-height:1.5;margin:4px 0 4px}
+.step::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);color:var(--x);font-size:13px;z-index:2}
+.step.last::after{content:none}
+
+.field{grid-column:3/8;grid-row:1/6;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;position:relative}
+.q{border:1.5px dashed var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;position:relative;z-index:1;background:color-mix(in srgb,var(--paper) 70%,transparent)}
+.q .tag{font-size:11px;letter-spacing:.12em;color:var(--ink3);font-weight:700}
+.q .neg{font-size:12px;color:var(--ink3);text-decoration:line-through;margin-top:6px}
+.q h4{font-size:21px;margin:0}
+.q p{font-size:13px;color:var(--ink2);margin:6px 0 0;line-height:1.6}
+.q .ii{margin-top:auto;padding-top:8px;font-size:12px;color:var(--b2)}
+.q.best{border:2px solid var(--hot);background:color-mix(in srgb,var(--hot) 8%,var(--paper))}
+.q.best h4{color:var(--hot)}
+.q .hint{position:absolute;top:12px;right:12px;font-size:11.5px;font-weight:700;color:#fff;background:var(--hot);padding:2px 9px;border-radius:999px}
+.route-label{position:absolute;right:calc(50% + 14px);bottom:calc(50% - 26px);z-index:3;font-size:12px;background:var(--hot);color:#fff;padding:3px 10px;border-radius:999px;font-weight:600;white-space:nowrap;display:none}
+
+/* ===== PANELS ===== */
+.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;box-shadow:var(--shadow)}
+.panel h3{font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.panel.wide{grid-column:span 2}
+.panel.full{grid-column:1/-1}
+
+/* decision tree */
+.tree{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.tree .n{background:var(--soft);border-radius:9px;padding:7px 10px}
+.tree .n.q2{background:var(--xs);color:var(--x);font-weight:600}
+.tree .two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.tree .three{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.tree .lab{font-size:11px;color:var(--ink3);letter-spacing:.12em;text-align:center}
+.tree .hot{background:color-mix(in srgb,var(--hot) 12%,var(--paper));color:var(--hot);font-weight:600}
+.tree small{display:block;color:var(--ink3);font-size:11.5px;font-weight:400}
+
+/* cadence */
+.cadence{position:relative;padding-left:18px}
+.cadence::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--x),var(--y))}
+.cadence div{position:relative;padding:4px 0 7px;font-size:13px;color:var(--ink2);line-height:1.5}
+.cadence div::before{content:"";position:absolute;left:-17px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--c,var(--x))}
+.cadence b{color:var(--ink);font-size:13.5px;margin-right:6px}
+
+/* lists */
+.lists{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12.5px}
+.lists div{background:var(--soft);border-radius:9px;padding:7px 10px;color:var(--ink2);line-height:1.5}
+.lists b{color:var(--ink);display:block;font-size:13px}
+
+/* mapping natural planning ↔ levels */
+.map{display:grid;grid-template-columns:1fr 26px 1fr;gap:6px 4px;align-items:center;font-size:13px}
+.map .l{background:var(--xs);color:var(--x);border-radius:9px;padding:7px 10px;font-weight:600}
+.map .r{background:var(--ys);color:var(--y);border-radius:9px;padding:7px 10px;font-weight:600}
+.map .eq{text-align:center;color:var(--ink3)}
+.map .hd{font-size:11px;letter-spacing:.12em;color:var(--ink3);font-weight:700}
+
+/* glossary */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:11.5px;color:var(--ink3);font-weight:600;letter-spacing:.06em}
+tr:last-child td{border-bottom:none}
+td.u{font-family:var(--serif);font-weight:700;color:var(--ink);white-space:nowrap}
+td{color:var(--ink2)}
+
+/* coverage */
+.cov td,.cov th{text-align:center;padding:7px 6px}
+.cov td:first-child,.cov th:first-child{text-align:left}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%}
+.dot.f1{background:var(--b1)} .dot.f2{background:var(--b2)} .dot.f3{background:var(--b3)}
+.dot.h1{border:2px solid var(--b1)} .dot.h2{border:2px solid var(--b2)} .dot.h3{border:2px solid var(--b3)}
+.dot.no{width:10px;height:2px;border-radius:2px;background:var(--line)}
+.cov .grp td{font-size:11px;letter-spacing:.14em;color:var(--ink3);background:var(--soft);font-weight:700;text-align:left;padding:4px 8px}
+
+/* unique */
+.uniq{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.uniq>div{border-radius:12px;padding:14px 14px 10px;background:var(--cs)}
+.panel.wide .uniq{grid-template-columns:1fr;gap:10px}
+.uniq h4{font-size:15.5px;color:var(--c);margin-bottom:6px}
+.uniq ul{margin:0;padding-left:1.1em;font-size:13px;color:var(--ink2);line-height:1.65}
+.c1{--c:var(--b1);--cs:var(--b1s)} .c2{--c:var(--b2);--cs:var(--b2s)} .c3{--c:var(--b3);--cs:var(--b3s)}
+
+footer{margin-top:24px;text-align:center;font-size:12.5px;color:var(--ink3)}
+
+@media (max-width:1000px){
+  .board{grid-template-columns:28px 1fr 1fr;grid-template-rows:auto}
+  .yaxis,.xaxis,.route,.route-label{display:none}
+  .rung{grid-column:2/4;grid-row:auto}
+  .origin{grid-column:2/4;grid-row:auto}
+  .step{grid-column:auto;grid-row:auto}
+  .step::after{content:none}
+  .field{grid-column:2/4;grid-row:auto;grid-template-rows:auto auto}
+  .board>.rung,.board>.origin,.board>.step,.board>.field{grid-column-start:1}
+  .board{grid-template-columns:1fr 1fr}
+  .board>.rung,.board>.origin,.board>.field{grid-column:1/-1}
+  .panels{grid-template-columns:1fr 1fr}
+  .uniq{grid-template-columns:1fr}
+  .banner{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .panels{grid-template-columns:1fr}.panel.wide{grid-column:auto}
+  .field{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">搞定Ⅰ + Ⅱ + Ⅲ · 合并去重</div>
+  <h1>GTD 一张图</h1>
+  <p>三本书反复讲的其实是同一套东西：横轴是<b style="color:var(--x)">掌控</b>（五步），纵轴是<b style="color:var(--y)">视角</b>（六个层面），两条轴从<b style="color:var(--hot)">下一步行动</b>出发。各本只是叫法不同，讲的深浅不同。</p>
+  <div class="legend">
+    <span><span class="bk"><i class="o1">Ⅰ</i></span>无压工作的艺术</span>
+    <span><span class="bk"><i class="o2">Ⅱ</i></span>52 项原则</span>
+    <span><span class="bk"><i class="o3">Ⅲ</i></span>平衡工作与生活的艺术</span>
+    <span><span class="p2">Ⅱ-29</span> = 对应《搞定Ⅱ》第 29 条原则</span>
+  </div>
+</header>
+
+<div class="banner">
+  <div class="box">
+    <div class="k">问题</div>
+    <h3>开放循环 · 意义不明的超负荷</h3>
+    <p>压力不是因为事多，而是脑子里挂着没想清楚的承诺：结果没定义，下一步没确定，提醒没放进可信的地方。<span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></p>
+  </div>
+  <div class="mid">清出来 · 想清楚 · 放好 · 常回顾<b>⟶</b></div>
+  <div class="box goal">
+    <div class="k">目标</div>
+    <h3>心如止水 · 舰长和指挥官</h3>
+    <p>对每件事都做出恰当的反应，然后归于平静。“你的力量取决于你的放松能力。”<span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></p>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="diagram">
+  <div class="dtitle">
+    <h2>主图：掌控 × 视角</h2>
+    <span class="small">先往右（建立掌控），再往上（摆正视角）。《搞定Ⅰ》叫“横向管理 / 纵向管理”</span>
+  </div>
+
+  <div class="board" id="board">
+    <div class="yaxis">视 角 · 六 个 层 面 ⟶</div>
+
+    <div class="rung" style="grid-row:1"><div class="h"><b>宗旨与原则</b><span class="alias">5 万英尺 · 5 楼</span></div><div class="d">为什么做？判断重要性和成败的终极标准</div><div class="f"><span class="cad">需要重定方向时</span><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></div></div>
+    <div class="rung" style="grid-row:2"><div class="h"><b>愿景 · 3–5 年</b><span class="alias">4 万英尺 · 4 楼</span></div><div class="d">长远的成功是什么样？至少要有 51% 的可信度</div><div class="f"><span class="cad">每年</span><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></div></div>
+    <div class="rung" style="grid-row:3"><div class="h"><b>目标 · 1–2 年</b><span class="alias">3 万英尺 · 3 楼</span></div><div class="d">我想完成什么？琐事失控时，先别急着定目标</div><div class="f"><span class="cad">每年订 · 每季调</span><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></div></div>
+    <div class="rung" style="grid-row:4"><div class="h"><b>责任范围</b><span class="alias">2 万英尺 · 2 楼</span></div><div class="d">我要维持什么？工作上 4–7 项，生活上 7–10 类</div><div class="f"><span class="cad">每 1–3 个月</span><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></div></div>
+    <div class="rung" style="grid-row:5"><div class="h"><b>项目</b><span class="alias">1 万英尺 · 1 楼</span></div><div class="d">一年内要多步完成的结果，通常 30–100 个，是最常被忽视的一层</div><div class="f"><span class="cad">每周</span><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></div></div>
+
+    <div class="origin">
+      <b>下一步行动</b>
+      <span class="alias">跑道 · 地面 · 两轴的交汇点</span>
+      <p>以动词开头、看得见的动作，通常 50–150 项。<br>“先做什么、怎么做、在哪做”</p>
+      <div style="margin-top:6px"><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span> <span style="font-size:11.5px;opacity:.9">Ⅱ-22 · Ⅱ-48</span></div>
+    </div>
+
+    <div class="step" style="grid-column:3"><span class="n">01</span><b>收集</b><span class="alias">Ⅲ 改叫“捕捉”</span><div class="d">100% 写出来，入口越少越好，随身带工具，大脑清扫加提示清单</div><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span> <span class="p2">Ⅱ-1·2·10·38</span></div>
+    <div class="step" style="grid-column:4"><span class="n">02</span><b>理清</b><span class="alias">处理 → “明确意义”</span><div class="d">是什么？要不要行动？想要什么结果？下一步是什么？约 15 秒</div><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span> <span class="p2">Ⅱ-9·22·23</span></div>
+    <div class="step" style="grid-column:5"><span class="n">03</span><b>组织</b><span class="alias">组织整理</span><div class="d">放的位置和意义一致；好系统让你感觉不到它的存在</div><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span> <span class="p2">Ⅱ-28·32·37</span></div>
+    <div class="step" style="grid-column:6"><span class="n">04</span><b>回顾</b><span class="alias">Ⅲ 改叫“深思”</span><div class="d">不自觉地回顾，就会一直心不在焉地回顾；每周回顾是关键</div><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span> <span class="p2">Ⅱ-12·29·33·34</span></div>
+    <div class="step last" style="grid-column:7"><span class="n">05</span><b>执行</b><span class="alias">Ⅲ 改叫“参与”</span><div class="d">依次看情境、时间、精力、重要性，凭直觉选，一次只投入一件</div><span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span> <span class="p2">Ⅱ-25·43·51</span></div>
+
+    <div class="field" id="field">
+      <div class="q">
+        <span class="tag">低掌控 · 高视角</span>
+        <span class="neg">空想家</span>
+        <h4>梦想家</h4>
+        <p>想法和承诺多过资源，作者称之为“闪亮的垃圾”。缺的是往右走：把想法落成项目和下一步。</p>
+        <span class="ii">↔ Ⅱ-5 以有限的可能，去利用无限的机遇</span>
+      </div>
+      <div class="q best">
+        <span class="tag">高掌控 · 高视角</span>
+        <span class="neg" style="text-decoration:none">&nbsp;</span>
+        <h4>舰长和指挥官</h4>
+        <p>手轻握舵轮，眼盯地平线，一有偏离就调整。也就是“心如止水”。要提防的是自满。</p>
+        <span class="ii">↔ Ⅱ-44 你的力量取决于你的放松能力</span>
+      </div>
+      <div class="q">
+        <span class="tag">低掌控 · 低视角</span>
+        <span class="neg">受害者</span><span class="hint">① 先往右 → 清工作篮、建清单</span>
+        <h4>回应者</h4>
+        <p>被最新、最急的事拖着走。出路是先清空工作篮：“不知道该干什么时，先清工作篮。”</p>
+        <span class="ii">↔ Ⅱ-30 反应能力提升生存能力</span>
+      </div>
+      <div class="q">
+        <span class="tag">高掌控 · 低视角</span>
+        <span class="neg">微观管理者</span><span class="hint">② 再往上 ↑ 问“为了什么”</span>
+        <h4>执行者</h4>
+        <p>清单很整齐，却只顾数豆子。缺的是往上走：问一句“这是为了什么？”</p>
+        <span class="ii">↔ Ⅱ-41 过度控制等于失去控制</span>
+      </div>
+    </div>
+
+    <div class="xaxis">掌 控 · 五 步 ⟶</div>
+  </div>
+  <p class="small" style="margin:12px 4px 0">①② 是《搞定Ⅲ》建议的路线：先在低层面建立掌控，再往上摆正视角。“高度”只代表视野多宽，不代表多重要。四个象限会随事情来回切换，“改善现状的第一步是接受现状”。</p>
+</div>
+
+<!-- ===== PANELS ===== -->
+<div class="panels">
+
+  <div class="panel">
+    <h3>理清：一张决策树 <span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></h3>
+    <div class="tree">
+      <div class="n">📥 工作篮：从最上面一项开始，一次一件，处理过的不放回去</div>
+      <div class="n q2">需要行动吗？</div>
+      <div class="two"><div class="lab">不需要</div><div class="lab">需要</div></div>
+      <div class="two">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div class="n">🗑 垃圾</div>
+          <div class="n">🌱 将来/也许<small>或者写进备忘录系统</small></div>
+          <div class="n">📚 参考资料<small>60 秒内归好档</small></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div class="n q2">想要什么结果？<small>要多步完成的 → 项目</small></div>
+          <div class="n q2">下一步行动是什么？</div>
+          <div class="n hot">⚡ 2 分钟内做完 → 立刻做</div>
+          <div class="n">🤝 委派 → 等待清单</div>
+          <div class="n">📅 推迟 → 日程表 / 行动清单</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>回顾节奏：每个层面多久看一次 <span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></h3>
+    <div class="cadence">
+      <div><b>随时</b>捕捉：手边永远有纸笔或手机</div>
+      <div><b>每天</b>看日程表和情境清单；工作篮 24–48 小时清空一次</div>
+      <div style="--c:var(--hot)"><b>每周 · 约 2 小时</b>确认 → 更新 → 创造；项目清单逐个过一遍，系统成败就看这一步</div>
+      <div style="--c:var(--y)"><b>每 1–3 个月</b>责任范围、焦点领域</div>
+      <div style="--c:var(--y)"><b>每季</b>调整 1–2 年目标</div>
+      <div style="--c:var(--y)"><b>每年</b>订目标、审视愿景；把归档柜清理一遍</div>
+      <div style="--c:var(--y)"><b>需要时</b>宗旨与原则：要重定方向时才去追问</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>单个项目：自然计划五步 <span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></h3>
+    <div class="map">
+      <span class="hd">一个项目内部</span><span></span><span class="hd">放大到整个人生</span>
+      <span class="l">① 目的与原则</span><span class="eq">≈</span><span class="r">宗旨与原则</span>
+      <span class="l">② 愿景 / 结果</span><span class="eq">≈</span><span class="r">愿景 · 目标</span>
+      <span class="l">③ 头脑风暴</span><span class="eq">≈</span><span class="r">责任范围 · 项目</span>
+      <span class="l">④ 组织整理</span><span class="eq">≈</span><span class="r">项目</span>
+      <span class="l">⑤ 下一步行动</span><span class="eq">≈</span><span class="r">下一步行动</span>
+    </div>
+    <p class="small" style="margin:10px 0 0">六个层面就是把自然计划放大到整个人生（Ⅲ）。约 80% 的项目列个清单就够，15% 用思维导图，5% 才需要走完五步（Ⅰ）。思路不清就往上回溯，行动不足就往下推进。</p>
+  </div>
+
+  <div class="panel">
+    <h3>组织：一套清单 <span class="bk"><i class="o1">Ⅰ</i><i class="o2">Ⅱ</i><i class="o3">Ⅲ</i></span></h3>
+    <div class="lists">
+      <div><b>项目清单</b>每个项目配一条下一步</div>
+      <div><b>情境行动清单</b>电话 / 电脑 / 外出 / 家 / 议事日程</div>
+      <div><b>日程表</b>只放“硬性安排”，不写每日待办</div>
+      <div><b>等待清单</b>交给了谁、哪天交的</div>
+      <div><b>将来 / 也许</b>每周回顾时看一遍</div>
+      <div><b>项目辅助资料</b>每个项目的资料和笔记</div>
+      <div><b>参考资料</b>按字母归档，抽屉别装超过 3/4</div>
+      <div><b>备忘夹 · 核查清单</b>43 个文件夹（Ⅰ）、提示清单（Ⅲ）</div>
+    </div>
+    <p class="small" style="margin:8px 0 0">邮件：“@行动”“@等待”两个文件夹，收件箱清零（Ⅰ）。</p>
+  </div>
+
+  <div class="panel wide">
+    <h3>叫法对照：同一个东西，三本书的名字</h3>
+    <table>
+      <thead><tr><th>本图统一叫</th><th>搞定Ⅰ</th><th>搞定Ⅱ</th><th>搞定Ⅲ</th></tr></thead>
+      <tbody>
+        <tr><td class="u">掌控（横轴）</td><td>横向管理 · 工作流程 5 个步骤</td><td>PART5 工作流程的 5 个阶段</td><td>获得掌控</td></tr>
+        <tr><td class="u">视角（纵轴）</td><td>纵向管理 · 六个高度视角</td><td>六个层面（第 4、14 条）</td><td>摆正视角 · 六个关注层面</td></tr>
+        <tr><td class="u">收集 / 理清</td><td>收集 · 理清（处理）</td><td>收集 · 处理</td><td>捕捉 · 明确意义</td></tr>
+        <tr><td class="u">回顾 / 执行</td><td>回顾 · 执行</td><td>回顾 · 行动</td><td>深思 · 参与</td></tr>
+        <tr><td class="u">各个层面</td><td>地面 · 1 楼 … 5 楼</td><td>行动 · 项目 … 人生目的</td><td>跑道 · 1 万 … 5 万英尺</td></tr>
+        <tr><td class="u">自然计划五步</td><td>自然计划法</td><td>自然式计划模式</td><td>合乎自然的规划</td></tr>
+        <tr><td class="u">理想状态</td><td>心如止水</td><td>就绪状态 · 放松</td><td>舰长和指挥官</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h3>重复度：哪些内容三本都讲</h3>
+    <table class="cov">
+      <thead><tr><th></th><th style="color:var(--b1)">Ⅰ</th><th style="color:var(--b2)">Ⅱ</th><th style="color:var(--b3)">Ⅲ</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="4">三本都讲（核心）</td></tr>
+        <tr><td>掌控五步</td><td><span class="dot f1"></span></td><td><span class="dot h2"></span></td><td><span class="dot f3"></span></td></tr>
+        <tr><td>下一步行动</td><td><span class="dot f1"></span></td><td><span class="dot f2"></span></td><td><span class="dot f3"></span></td></tr>
+        <tr><td>每周回顾</td><td><span class="dot f1"></span></td><td><span class="dot f2"></span></td><td><span class="dot f3"></span></td></tr>
+        <tr><td>六个层面</td><td><span class="dot h1"></span></td><td><span class="dot h2"></span></td><td><span class="dot f3"></span></td></tr>
+        <tr><td>自然计划五步</td><td><span class="dot f1"></span></td><td><span class="dot h2"></span></td><td><span class="dot h3"></span></td></tr>
+        <tr><td>决策树 · 2 分钟</td><td><span class="dot f1"></span></td><td><span class="dot h2"></span></td><td><span class="dot f3"></span></td></tr>
+        <tr><td>情境清单 · 四标准</td><td><span class="dot f1"></span></td><td><span class="dot h2"></span></td><td><span class="dot f3"></span></td></tr>
+        <tr class="grp"><td colspan="4">只有一本讲</td></tr>
+        <tr><td>掌控×视角矩阵</td><td><span class="dot no"></span></td><td><span class="dot no"></span></td><td><span class="dot f3"></span></td></tr>
+        <tr><td>43 个备忘夹</td><td><span class="dot f1"></span></td><td><span class="dot no"></span></td><td><span class="dot no"></span></td></tr>
+        <tr><td>认知科学佐证</td><td><span class="dot f1"></span></td><td><span class="dot no"></span></td><td><span class="dot no"></span></td></tr>
+        <tr><td>放松 / 放慢 / 失败观</td><td><span class="dot no"></span></td><td><span class="dot f2"></span></td><td><span class="dot no"></span></td></tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin:8px 0 0">实心＝专门展开讲，空心＝概述或提到。</p>
+  </div>
+
+  <div class="panel wide">
+    <h3>去重之后，每本独有的东西</h3>
+    <div class="uniq">
+      <div class="c1">
+        <h4>Ⅰ 独有：操作细节</h4>
+        <ul>
+          <li>首次启动：留出 2 整天，先收实物，再清空大脑</li>
+          <li>43 个备忘夹，按字母顺序归档，归档 60 秒原则</li>
+          <li>工作三重性：“不存在中断，只是对新事务管理不善”</li>
+          <li>三原则：不答应 / 做完 / 重新商定</li>
+          <li>新版第 14 章：用认知科学研究佐证 GTD</li>
+        </ul>
+      </div>
+      <div class="c2">
+        <h4>Ⅱ 独有：心法与态度</h4>
+        <ul>
+          <li>提升效率的能力，与休息的能力成正比</li>
+          <li>放慢速度以提升速度（Ⅱ-47），动中求变更容易（Ⅱ-51）</li>
+          <li>精益求精，但不求“最好”（Ⅱ-19）</li>
+          <li>以“更佳选择的比例”衡量自己（Ⅱ-52）</li>
+          <li>先确定原则，而不是监管制度（Ⅱ-36）</li>
+        </ul>
+      </div>
+      <div class="c3">
+        <h4>Ⅲ 独有：模型与诊断</h4>
+        <ul>
+          <li>掌控×视角矩阵：先判断自己在哪个象限，再决定往右还是往上</li>
+          <li>真正的问题是“意义不明的超负荷”，不是时间</li>
+          <li>格雷西的花园：同一个人先建立掌控、再写六层面文件</li>
+          <li>五步改名，把“工作”定义为一切想做而还没做的事</li>
+          <li>五个口头禅：最操心什么 / 要什么结果 / 下一步 / 真正看重什么 / 提示放在哪</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>根据《搞定Ⅰ》《搞定Ⅱ》《搞定Ⅲ》（戴维·艾伦 著，中信出版）整理 · 象限与《搞定Ⅱ》原则的对应、以及“Ⅱ-x”编号的归类，是整理时的归纳，不是原书的说法</footer>
+</div>
+<!-- 我要怎么做？ -->
+<style>
+.how-fab{position:fixed;right:24px;bottom:24px;z-index:80;border:none;cursor:pointer;background:var(--ink);color:var(--paper);font:600 15px/1 var(--sans);padding:15px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;transition:transform .15s}
+.how-fab:hover{transform:translateY(-2px)}
+.how-fab i{font-style:normal;background:var(--b1);color:#fff;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px}
+.how-mask{position:fixed;inset:0;background:rgba(15,13,10,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.25s;z-index:90}
+.how-drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--paper);z-index:91;transform:translateX(105%);transition:transform .3s ease;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.2)}
+.how-open .how-mask{opacity:1;pointer-events:auto}.how-open .how-drawer{transform:none}
+.how-hd{padding:22px 22px 14px;border-bottom:1px solid var(--line)}
+.how-hd h3{font-family:var(--serif);font-size:22px;margin:0}
+.how-hd p{margin:4px 0 0;font-size:13px;color:var(--ink3)}
+.how-x{position:absolute;top:16px;right:16px;border:none;background:var(--soft);color:var(--ink2);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px}
+.how-bar{height:6px;background:var(--soft);border-radius:999px;overflow:hidden;margin-top:12px}.how-bar b{display:block;height:100%;width:0;background:var(--b1);transition:width .3s}
+.how-bd{overflow-y:auto;padding:6px 22px 30px;flex:1}
+.how-ph{margin-top:18px}
+.how-ph h4{font-family:var(--serif);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.how-ph h4 span{font-family:var(--sans);font-size:11px;font-weight:700;color:#fff;background:var(--c);padding:2px 8px;border-radius:999px;letter-spacing:.05em}
+.how-ph label{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:10px;cursor:pointer;font-size:14px;line-height:1.6;color:var(--ink)}
+.how-ph label:hover{background:var(--soft)}
+.how-ph input{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;border:2px solid var(--ink3);border-radius:5px;margin-top:3px;display:grid;place-items:center;cursor:pointer}
+.how-ph input:checked{background:var(--c);border-color:var(--c)}
+.how-ph input:checked::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.how-ph label:has(input:checked) .t{color:var(--ink3);text-decoration:line-through}
+.how-ph .src{display:block;font-size:11.5px;color:var(--ink3);margin-top:1px}
+.how-stuck{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:14px}
+.how-stuck b{display:block;color:var(--ink)}.how-stuck span{color:var(--ink2);font-size:13.5px}
+.how-app{display:block;text-align:center;margin-top:20px;padding:12px;border-radius:12px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600}
+@media (max-width:620px){.how-drawer{top:auto;height:92vh;width:100%;border-radius:18px 18px 0 0;transform:translateY(105%)}.how-fab{right:16px;bottom:16px}}
+</style>
+<button class="how-fab" id="howFab" aria-haspopup="dialog"><i>?</i>我要怎么做？</button>
+<div class="how-mask" id="howMask"></div>
+<aside class="how-drawer" role="dialog" aria-modal="true" aria-labelledby="howTitle">
+  <button class="how-x" id="howX" aria-label="关闭">✕</button>
+  <div class="how-hd"><h3 id="howTitle">我要怎么做？</h3><p>按三本书的方法落地，勾选会保存在本机 · <span id="howN">0</span> 步已完成</p><div class="how-bar"><b id="howBar"></b></div></div>
+  <div class="how-bd" id="howBd"></div>
+</aside>
+<script>
+(function(){
+const P=[
+ {k:"今天就做",c:"#c2410c",s:[
+  ["清空大脑 20 分钟到 1 小时：一张纸只写一件事，把脑子里挂着的事全写下来","Ⅰ 第 5 章"],
+  ["准备一个实体工作篮，再加一个随身的记录工具，收集入口越少越好","Ⅰ 第 4 章 · Ⅱ 第 1 条"],
+  ["从工作篮最上面一项开始处理 10 件：两分钟内能做完的当场做掉","Ⅰ 第 6 章"]]},
+ {k:"第一周",c:"#0f766e",s:[
+  ["留出整块时间完成第一次收集和理清，书里建议两整天，学员一般要 10–15 小时","Ⅰ 第 4–6 章"],
+  ["建好项目清单、按情境分的行动清单、等待清单、将来/也许清单；日程表只放硬性安排","Ⅰ 第 7 章"],
+  ["邮箱清零：建“@行动”“@等待”两个文件夹","Ⅰ 第 7 章"],
+  ["周五下午留约 2 小时，做第一次每周回顾：确认 → 更新 → 创造","Ⅰ 第 8 章 · Ⅲ 第 7 章"]]},
+ {k:"一个月后",c:"#4338ca",s:[
+  ["每周回顾连续做满 4 次；检验标准是每个项目都至少有一条下一步","Ⅰ 第 8 章 · Ⅱ 第 29 条"],
+  ["工作篮每 24–48 小时清空一次","Ⅲ 第 18 章"],
+  ["写下责任范围（工作 4–7 项、生活 7–10 类），之后每月看一次","Ⅲ 第 13 章"],
+  ["自检：哪件事还在脑子里反复冒出来，就说明它没想清楚、没放进系统","Ⅱ 第 9 条"]]}
+];
+const ST=[
+ ["系统断了几周，清单全过期了","别放弃，从清空工作篮、做一次每周回顾重新开始。脱轨容易，回到正轨也容易。","Ⅰ 第 15 章 · Ⅱ 第 52 条"],
+ ["不知道现在该做什么","先清工作篮；再按情境、可用时间、精力、重要性依次筛选。","Ⅲ 第 18 章 · Ⅰ 第 9 章"],
+ ["某件事一直拖着不动","下一步写得不够具体，改成以动词开头、马上能动手的动作。","Ⅰ 第 12 章"],
+ ["清单很整齐，却觉得没方向","往上升一层，问一句“这是为了什么？”","Ⅲ 第 3 章 · Ⅱ 第 14 条"],
+ ["累了，什么都不想做","做“小事清单”上的事，或者整理清单本身。","Ⅰ 第 9 章"]
+];
+const KEY="gtd-how-v1";let on=JSON.parse(localStorage.getItem(KEY)||"[]");
+const total=P.reduce((n,p)=>n+p.s.length,0);
+const bd=document.getElementById("howBd");
+bd.innerHTML=P.map((p,i)=>`<div class="how-ph" style="--c:${p.c}"><h4><span>${i+1}</span>${p.k}</h4>${p.s.map((s,j)=>`<label><input type="checkbox" data-k="${i}-${j}"${on.includes(i+"-"+j)?" checked":""}><span><span class="t">${s[0]}</span><span class="src">${s[1]}</span></span></label>`).join("")}</div>`).join("")
+ +`<div class="how-ph" style="--c:#8d877e"><h4><span>4</span>卡住了怎么办</h4>${ST.map(s=>`<div class="how-stuck"><b>${s[0]}</b><span>${s[1]}</span><span class="src" style="font-size:11.5px;color:var(--ink3);display:block">${s[2]}</span></div>`).join("")}</div>`
+ +`<a class="how-app" href="getting-things-done.html">打开配套的 GTD app，直接开始 →</a>`;
+const upd=()=>{document.getElementById("howN").textContent=on.length;document.getElementById("howBar").style.width=(on.length/total*100)+"%"};upd();
+bd.addEventListener("change",e=>{const k=e.target.dataset.k;if(!k)return;on=e.target.checked?[...new Set([...on,k])]:on.filter(x=>x!==k);localStorage.setItem(KEY,JSON.stringify(on));upd()});
+const open=()=>{document.body.classList.add("how-open");document.getElementById("howX").focus()},close=()=>{document.body.classList.remove("how-open");document.getElementById("howFab").focus()};
+document.getElementById("howFab").onclick=open;document.getElementById("howX").onclick=close;document.getElementById("howMask").onclick=close;
+addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("how-open"))close()});
+})();
+</script>
+
+</body>
+</html>

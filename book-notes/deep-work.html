@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>深度工作 · 一页读懂</title>
+<script>
+(function(){var q=location.search,t=null;try{t=localStorage.getItem('dw-theme')}catch(e){}
+if(/theme=light/.test(q))t='light';if(/theme=dark/.test(q))t='dark';
+document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');})();
+</script>
+<style>
+:root,html[data-theme=dark]{
+  --bg:#060b16; --bg2:#0a1121; --surf:#0d1527; --line:#18233b; --line2:#24345a;
+  --ink:#e8edf6; --ink2:#a2afc5; --ink3:#5f6d89;
+  --acc:#93c5fd; --onacc:#06101f; --accs:rgba(147,197,253,.11); --accm:rgba(147,197,253,.45);
+  --warm:#e5ad76; --warms:rgba(229,173,118,.17);
+  --teal:#7dd3c0; --teals:rgba(125,211,192,.12);
+  --gray:#8b96ab; --grays:rgba(139,150,171,.12);
+  color-scheme:dark;
+}
+html[data-theme=light]{
+  --bg:#fcfcfa; --bg2:#f3f4f2; --surf:#ffffff; --line:#e3e5e9; --line2:#c9ced8;
+  --ink:#04070e; --ink2:#363d4c; --ink3:#767e90;
+  --acc:#1e3a8a; --onacc:#ffffff; --accs:rgba(30,58,138,.07); --accm:rgba(30,58,138,.35);
+  --warm:#9a4d0b; --warms:rgba(154,77,11,.08);
+  --teal:#0f766e; --teals:rgba(15,118,110,.08);
+  --gray:#6b7280; --grays:rgba(107,114,128,.09);
+  color-scheme:light;
+}
+:root{
+  --mono:"SF Mono",SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.85 var(--sans);-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+::selection{background:var(--acc);color:var(--onacc)}
+a{color:inherit}
+h1,h2,h3,h4{font-weight:600;line-height:1.35;margin:0;letter-spacing:.01em}
+p{margin:.5em 0}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+.narrow{max-width:760px}
+.screen > .wrap,.hero > .wrap,.divider > .wrap{width:100%}
+.mono{font-family:var(--mono)}
+.lab{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.lab.a{color:var(--acc)}
+.muted{color:var(--ink2)}
+.dim3{color:var(--ink3)}
+.acc{color:var(--acc)}
+.warm{color:var(--warm)}
+strong,b{font-weight:600;color:var(--ink)}
+
+/* top bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:60;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .in{display:flex;align-items:center;gap:6px;height:52px;max-width:1240px;margin:0 auto;padding:0 20px}
+.bar .brand{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;white-space:nowrap;margin-right:14px}
+.bar .brand i{font-style:normal;color:var(--acc)}
+.bar nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.bar nav::-webkit-scrollbar{display:none}
+.bar nav a{font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--ink3);padding:5px 9px;border-radius:6px;white-space:nowrap;letter-spacing:.04em;transition:color .2s,background .2s}
+.bar nav a:hover{color:var(--ink)}
+.bar nav a.on{color:var(--acc);background:var(--accs)}
+.tg{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink2);background:transparent;border:1px solid var(--line2);border-radius:999px;padding:4px 11px;cursor:pointer;white-space:nowrap;transition:.2s}
+.tg:hover{color:var(--ink);border-color:var(--ink3)}
+.tg[aria-pressed=true]{color:var(--acc);border-color:var(--accm)}
+.prog{position:absolute;left:0;bottom:-1px;height:2px;background:var(--acc);width:0;transition:width .1s linear}
+
+/* focus mode */
+.f{transition:opacity .5s ease}
+body.focus .f.dim{opacity:.16}
+@media (prefers-reduced-motion:reduce){.f{transition:none}html{scroll-behavior:auto}}
+
+/* screens */
+.screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:14vh 0}
+.screen.auto{min-height:0;padding:12vh 0}
+.hairline{border:none;border-top:1px solid var(--line);margin:0}
+.big{font-size:clamp(28px,4.4vw,50px);font-weight:300;line-height:1.45;letter-spacing:.01em}
+.big em{font-style:normal;color:var(--acc);font-weight:400}
+.mid{font-size:clamp(21px,2.6vw,29px);font-weight:300;line-height:1.6}
+.lede{font-size:17px;color:var(--ink2);max-width:760px}
+.gap1{margin-top:18px}.gap2{margin-top:36px}.gap3{margin-top:64px}.gap4{margin-top:96px}
+
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:18vh 0 10vh}
+.hero h1{font-size:clamp(64px,13vw,168px);font-weight:200;letter-spacing:.12em;line-height:1.05;margin:26px 0 8px;margin-left:-.06em}
+.hero .sub{font-size:clamp(18px,2.4vw,26px);font-weight:300;color:var(--ink2);letter-spacing:.14em}
+.hero .one{margin-top:56px;max-width:720px;font-size:clamp(18px,2vw,21px);font-weight:300;line-height:1.85;color:var(--ink2)}
+.hero .one b{font-weight:500}
+.cue{margin-top:72px;font-family:var(--mono);font-size:12px;color:var(--ink3);letter-spacing:.14em;display:flex;align-items:center;gap:12px}
+.cue::before{content:"";width:40px;height:1px;background:var(--ink3)}
+
+/* rows of items with top hairline */
+.cols{display:grid;gap:40px 36px}
+.c2{grid-template-columns:repeat(2,1fr)}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}
+.it{border-top:1px solid var(--line2);padding-top:18px}
+.it .lab{display:block;margin-bottom:8px}
+.it h4{font-size:18px;margin-bottom:6px}
+.it p,.it li{font-size:15px;color:var(--ink2);line-height:1.8}
+.it ul,.it ol{margin:6px 0 0;padding-left:1.2em}
+.it.acc-t{border-top-color:var(--acc)}
+.it.warm-t{border-top-color:var(--warm)}
+.who{font-family:var(--mono);font-size:11.5px;color:var(--acc);letter-spacing:.06em;margin-top:10px;display:block}
+.q{border-left:2px solid var(--acc);padding-left:16px;font-size:17px;line-height:1.8;color:var(--ink);font-weight:400}
+.q small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:6px;letter-spacing:.06em}
+.note{font-size:14px;color:var(--ink3);max-width:760px}
+
+/* definitions */
+.defs{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.defs > div{padding:36px 36px 34px 0}
+.defs > div+div{padding-left:36px;border-left:1px solid var(--line2)}
+.defs h3{font-size:clamp(30px,4vw,44px);font-weight:300;margin:12px 0 16px}
+.defs p{font-size:17.5px;line-height:1.9;color:var(--ink)}
+.defs .kw{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.defs .kw span{font-family:var(--mono);font-size:11.5px;color:var(--ink2);border:1px solid var(--line2);border-radius:4px;padding:2px 8px}
+.defs .d1 .kw span{color:var(--acc);border-color:var(--accm)}
+.defs .d2 .lab{color:var(--warm)}
+
+/* formula */
+.formula{font-size:clamp(26px,5.2vw,64px);font-weight:200;letter-spacing:.04em;line-height:1.35}
+.formula .nw{white-space:nowrap}
+.formula .op{font-family:var(--mono);color:var(--ink3);margin:0 .28em;font-weight:300}
+.formula .x{color:var(--acc);font-weight:400}
+
+/* svg */
+svg text{font-family:var(--mono)}
+.s-ax{stroke:var(--line2);stroke-width:1}
+.s-a{stroke:var(--acc);fill:none;stroke-width:2.2}
+.s-w{stroke:var(--warm);fill:none;stroke-width:2.2;stroke-dasharray:6 6}
+.s-t{fill:var(--ink3);font-size:11px}
+.s-ta{fill:var(--acc);font-size:12px}
+.s-tw{fill:var(--warm);font-size:12px}
+.s-gap{fill:var(--accs)}
+.s-hub{fill:var(--warms);stroke:var(--warm);stroke-width:1}
+.s-sp{fill:var(--bg);stroke:var(--acc);stroke-width:1}
+.s-ln{stroke:var(--line2);stroke-width:1}
+.s-in{fill:var(--acc)}
+
+/* index list (book map / rule index) */
+.idx{list-style:none;margin:0;padding:0;counter-reset:i}
+.idx li{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.idx li:last-child{border-bottom:1px solid var(--line)}
+.idx .n{font-family:var(--mono);font-size:13px;color:var(--ink3)}
+.idx .t{font-size:18px}
+.idx .t small{display:block;font-size:14px;color:var(--ink2);margin-top:2px}
+.idx .r{font-family:var(--mono);font-size:11.5px;color:var(--ink3);text-align:right}
+.idx a{text-decoration:none}
+.idx li:hover .t{color:var(--acc)}
+
+/* dividers */
+.divider{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:16vh 0;border-top:1px solid var(--line);position:relative}
+.divider .num{font-family:var(--mono);font-size:clamp(90px,17vw,220px);font-weight:200;line-height:.9;color:transparent;-webkit-text-stroke:1px var(--line2);letter-spacing:-.02em;margin-bottom:12px}
+.divider h2{font-size:clamp(44px,8vw,96px);font-weight:200;letter-spacing:.08em;line-height:1.15}
+.divider .en{font-family:var(--mono);font-size:13px;color:var(--acc);letter-spacing:.2em;margin-top:14px;text-transform:uppercase}
+.divider .th{margin-top:44px;max-width:740px;font-size:clamp(18px,2vw,21px);font-weight:300;line-height:1.9;color:var(--ink2)}
+.divider .idx{margin-top:56px;max-width:740px}
+
+/* strategy blocks */
+.strat{padding:12vh 0 4vh}
+.sh{display:flex;align-items:baseline;gap:18px;margin-bottom:22px;flex-wrap:wrap}
+.sh .k{font-family:var(--mono);font-size:13px;color:var(--acc);letter-spacing:.08em}
+.sh h3{font-size:clamp(26px,3.4vw,38px);font-weight:300}
+.sub-h{font-size:19px;font-weight:600;margin:0 0 12px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 32px}
+.stat{border-top:1px solid var(--line2);padding-top:16px}
+.stat .v{font-family:var(--mono);font-size:clamp(28px,3.4vw,40px);font-weight:300;color:var(--ink);line-height:1.1;letter-spacing:-.02em}
+.stat .v small{font-size:.42em;color:var(--ink3);margin-left:4px;letter-spacing:0}
+.stat.w .v{color:var(--warm)}
+.stat.a .v{color:var(--acc)}
+.stat .k{font-size:13.5px;color:var(--ink2);margin-top:8px;line-height:1.65}
+
+/* ch2 flow */
+.flow3{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:28px}
+.flow3 .colh{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--ink3);margin-bottom:12px}
+.flow3 .bx{border-left:1px solid var(--line2);padding:2px 0 2px 16px;margin-bottom:22px}
+.flow3 .bx b{display:block;font-size:16.5px;margin-bottom:2px}
+.flow3 .bx span{font-size:14.5px;color:var(--ink2);line-height:1.75;display:block}
+.flow3 .bx.root{border-left:2px solid var(--ink)}
+.flow3 .bx.bias{border-left:2px solid var(--warm)}
+.flow3 .bx.res{border-left:2px solid var(--acc)}
+.flow3 .bx.res b{color:var(--acc)}
+
+/* rooms */
+.rooms{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line2)}
+.room{padding:18px 16px;border-left:1px solid var(--line2);position:relative;min-height:170px}
+.room:first-child{border-left:none}
+.room .lab{font-size:11px}
+.room h4{font-size:17px;font-weight:500;margin:8px 0 6px}
+.room p{font-size:13.5px;color:var(--ink2);line-height:1.7;margin:0}
+.room.deep{background:var(--acc);color:var(--onacc)}
+.room.deep h4,.room.deep p,.room.deep .lab{color:var(--onacc)}
+.room.deep p{opacity:.85}
+.rooms-ax{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:10px;letter-spacing:.1em}
+.rooms-ax span:last-child::after{content:"  →"}
+
+/* philosophies */
+.phil{border-top:1px solid var(--line2)}
+.prow{display:grid;grid-template-columns:140px 1fr 1fr;gap:28px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.prow .pn b{font-size:20px;font-weight:400;display:block}
+.prow .pn span{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.04em}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.day{position:relative;height:66px;background:var(--bg2);border-radius:3px;overflow:hidden}
+.day i{position:absolute;left:0;right:0}
+.day i.d{background:var(--acc);z-index:2;border-radius:1px}
+.day i.s{background:var(--warms);border-top:1px solid color-mix(in srgb,var(--warm) 45%,transparent);border-bottom:1px solid color-mix(in srgb,var(--warm) 45%,transparent)}
+.wkl{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;font-family:var(--mono);font-size:10.5px;color:var(--ink3);text-align:center;margin-top:4px}
+.prow .pd{font-size:14.5px;color:var(--ink2);line-height:1.75}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:14px;letter-spacing:.03em}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px;background:var(--lc);border-radius:2px}
+
+table.t{width:100%;border-collapse:collapse;font-size:14.5px}
+.t th{font-family:var(--mono);font-weight:400;font-size:11.5px;letter-spacing:.12em;color:var(--ink3);text-align:left;padding:10px 14px 10px 0;border-bottom:1px solid var(--line2)}
+.t td{padding:16px 14px 16px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2);line-height:1.75}
+.t td:first-child{color:var(--acc);white-space:nowrap;font-size:16px;width:96px}
+
+/* timeline */
+.tl{position:relative;height:64px;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.tl div{position:absolute;top:8px;bottom:8px;display:flex;flex-direction:column;justify-content:center;padding:0 10px;font-size:12.5px;line-height:1.35;white-space:nowrap;overflow:hidden;border-radius:2px}
+.tl .d{background:var(--acc);color:var(--onacc);font-weight:500}
+.tl .s{background:var(--warms);color:var(--warm)}
+.tl .w{background:var(--teals);color:var(--teal)}
+.tl .w.open{-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent);mask-image:linear-gradient(90deg,#000 55%,transparent)}
+.tl small{font-family:var(--mono);font-size:10.5px;opacity:.8;font-weight:400}
+.tlx{position:relative;height:20px;font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-top:6px}
+.tlx span{position:absolute;transform:translateX(-50%)}
+.tlx span:first-child{transform:none}
+
+/* gestures list */
+.glist{border-top:1px solid var(--line2)}
+.gl{display:grid;grid-template-columns:200px 170px 1fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.gl b{font-size:16.5px;font-weight:500}
+.gl .m{font-family:var(--mono);font-size:12px;color:var(--acc)}
+.gl span{font-size:14.5px;color:var(--ink2);line-height:1.75}
+
+/* 4dx */
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line2)}
+.steps4 > div{padding:20px 20px 4px 0}
+.steps4 > div+div{padding-left:20px;border-left:1px solid var(--line)}
+.steps4 h4{font-size:17px;font-weight:500;margin:8px 0 6px}
+.steps4 p{font-size:14px;color:var(--ink2);margin:0;line-height:1.75}
+.tally{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0 6px}
+.tally i{width:5px;height:24px;background:var(--acc);display:inline-block;border-radius:1px}
+.tally i.o{outline:1.5px solid var(--warm);outline-offset:3px;border-radius:2px}
+
+/* ritual */
+.ritual{list-style:none;margin:0;padding:0;counter-reset:r;display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line2)}
+.ritual li{counter-increment:r;padding:16px 14px 0 0;font-size:14px;color:var(--ink2);line-height:1.7}
+.ritual li+li{padding-left:14px;border-left:1px solid var(--line)}
+.ritual li::before{content:"0" counter(r);display:block;font-family:var(--mono);font-size:12px;color:var(--ink3);margin-bottom:6px}
+.ritual li:last-child{color:var(--acc);font-size:19px;font-weight:400}
+.ritual li:last-child::before{color:var(--acc)}
+
+/* internet blocks */
+.ib{display:flex;height:36px;gap:2px}
+.ib span{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;white-space:nowrap;border-radius:2px}
+.ib .off{flex:15;background:var(--acc);color:var(--onacc)}
+.ib .on{flex:5;background:var(--warms);color:var(--warm)}
+.ibx{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-top:6px}
+
+.loop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.loop span{font-size:14px;border:1px solid var(--accm);color:var(--acc);border-radius:999px;padding:4px 14px}
+.loop i{font-style:normal;font-family:var(--mono);color:var(--ink3)}
+
+/* vs */
+.vs{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.vs > div{padding:30px 32px 28px 0}
+.vs > div+div{padding-left:32px;border-left:1px solid var(--line2)}
+.vs h4{font-size:24px;font-weight:300;margin:10px 0 12px}
+.vs p.d{font-size:17px;line-height:1.9;color:var(--ink)}
+.vs .bad .lab{color:var(--warm)}
+
+.farm{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line2)}
+.farm div{padding:16px 16px 0 0;font-size:14.5px;color:var(--ink2);line-height:1.75}
+.farm div+div{padding-left:16px;border-left:1px solid var(--line)}
+.farm .lab{display:block;margin-bottom:6px}
+.farm div:last-child{color:var(--acc)}
+
+.dec{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:20px;border-top:1px solid var(--line2)}
+.dec div{padding:16px 16px 0 0;font-size:14.5px;color:var(--ink2)}
+.dec div+div{padding-left:16px;border-left:1px solid var(--line)}
+.dec b{display:block;font-size:17px;font-weight:400;margin-bottom:2px}
+.dec .y b{color:var(--acc)}
+
+.day24{display:flex;height:40px;gap:2px;font-family:var(--mono);font-size:11.5px}
+.day24 div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;padding:0 8px;border-radius:2px}
+
+/* rule 4 */
+.est{display:flex;flex-direction:column;gap:16px}
+.est .r{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;font-size:14px;color:var(--ink2)}
+.est .bars{display:flex;flex-direction:column;gap:4px}
+.est .bb{height:16px;font-family:var(--mono);font-size:10.5px;line-height:16px;padding-left:8px;white-space:nowrap;border-radius:2px}
+.est .bb.gu{background:var(--grays);color:var(--ink3)}
+.est .bb.re{background:var(--acc);color:var(--onacc)}
+
+.nb{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.page{border:1px solid var(--line2);border-radius:3px;padding:16px 16px 16px 12px;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 25px,var(--line) 25px,var(--line) 26px);background-position:0 42px}
+.page .ph{font-family:var(--mono);font-size:10.5px;color:var(--ink3);letter-spacing:.08em;height:26px}
+.pg{display:grid;grid-template-columns:42px 1fr 1fr 1.1fr;column-gap:8px}
+.pg .tm{font-family:var(--mono);font-size:10.5px;color:var(--ink3);height:26px;line-height:26px}
+.pg .blk{border:1px solid var(--ink2);border-radius:2px;font-size:12.5px;padding:2px 6px;line-height:1.35;display:flex;align-items:center;margin:1px 0;color:var(--ink)}
+.pg .old .blk{border-color:var(--ink3);color:var(--ink3);text-decoration:line-through;opacity:.7}
+.pg .blk.dp{border-color:var(--acc);color:var(--acc);background:var(--accs)}
+.pg .blk.bf{border-style:dashed}
+.pg .side{font-size:12px;color:var(--ink2);line-height:26px}
+.pg .side div::before{content:"— ";color:var(--ink3)}
+
+.depth{display:flex;flex-direction:column;gap:14px}
+.depth .r{display:grid;grid-template-columns:300px 1fr 92px;gap:18px;align-items:center;font-size:14.5px;color:var(--ink2)}
+.depth .tr{height:6px;background:var(--line);border-radius:999px;overflow:hidden}
+.depth .tr i{display:block;height:100%;background:var(--acc)}
+.depth .r.sh2 .tr i{background:var(--warm)}
+.depth .v{font-family:var(--mono);font-size:12.5px;color:var(--ink3);text-align:right}
+
+.gauge{position:relative;height:36px;background:var(--accs);border-radius:2px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-family:var(--mono);font-size:11px}
+.gauge .z{position:absolute;top:0;bottom:0;left:30%;width:20%;background:var(--warms);border-left:1px solid var(--warm);border-right:1px solid var(--warm)}
+.gauge span{position:relative}
+.gx{position:relative;height:20px;font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-top:6px}
+.gx span{position:absolute;transform:translateX(-50%)}
+
+.mail{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line2)}
+.mail div{padding:18px 24px 0 0;font-size:15px;line-height:1.85;color:var(--ink2)}
+.mail div+div{padding-left:24px;border-left:1px solid var(--line);color:var(--ink)}
+.mail .lab{display:block;margin-bottom:8px}
+
+.papers{display:flex;flex-direction:column;gap:12px}
+.papers .r{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;font-size:14px;color:var(--ink2)}
+.papers .b{height:26px;background:var(--acc);color:var(--onacc);font-family:var(--mono);font-size:11.5px;display:flex;align-items:center;padding-left:10px;white-space:nowrap;border-radius:2px}
+
+/* quotes */
+.quote{padding:13vh 0;border-top:1px solid var(--line)}
+.quote p{font-size:clamp(26px,3.8vw,44px);font-weight:300;line-height:1.55;max-width:900px;margin:0}
+.quote .lab{display:block;margin-top:22px}
+.quote .qn{font-family:var(--mono);font-size:12px;color:var(--acc);display:block;margin-bottom:24px;letter-spacing:.1em}
+
+/* toc */
+details.toc{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+details.toc summary{cursor:pointer;padding:18px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:16px}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--acc);transition:.2s}
+details.toc[open] summary::after{transform:rotate(45deg)}
+.toc-b{padding:0 0 18px}
+.toc-b h5{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--acc);margin:18px 0 4px;font-weight:400}
+.ch{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:10px 0;border-top:1px solid var(--line);font-size:14.5px}
+.ch span{color:var(--ink2)}
+
+/* tool */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line2);margin-bottom:34px}
+.tab{background:none;border:none;border-bottom:2px solid transparent;color:var(--ink3);font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;padding:12px 18px 12px 0;margin-right:18px;cursor:pointer;margin-bottom:-1px}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected=true]{color:var(--acc);border-bottom-color:var(--acc)}
+.pane{display:none}
+.pane.on{display:block}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;border:1px solid var(--line2);background:transparent;color:var(--ink2);padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s;white-space:nowrap}
+.btn:hover{border-color:var(--ink3);color:var(--ink)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
+.btn.pri:hover{opacity:.9;color:var(--onacc)}
+.btn.sel{border-color:var(--acc);color:var(--acc)}
+.btn:disabled{opacity:.35;cursor:default}
+.inp{font:inherit;font-size:15px;background:transparent;color:var(--ink);border:none;border-bottom:1px solid var(--line2);padding:8px 2px;outline:none;width:100%}
+.inp:focus{border-bottom-color:var(--acc)}
+select.inp{width:auto;font-family:var(--mono);font-size:13px;padding:4px 2px;cursor:pointer}
+select.inp option{background:var(--surf);color:var(--ink)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+/* timer */
+.timer{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ring{position:relative;width:min(380px,80vw);aspect-ratio:1;margin:0 auto}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .bg{fill:none;stroke:var(--line);stroke-width:2}
+.ring .fg{fill:none;stroke:var(--acc);stroke-width:2.5;stroke-linecap:round;transition:stroke-dashoffset .4s linear}
+.ring .ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring .tm{font-family:var(--mono);font-size:clamp(46px,8vw,76px);font-weight:200;letter-spacing:-.02em;line-height:1}
+.ring .st{font-family:var(--mono);font-size:11.5px;color:var(--ink3);letter-spacing:.16em;margin-top:14px;text-transform:uppercase}
+.ring .tk{font-size:14.5px;color:var(--ink2);margin-top:10px;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.timer.run .ring .st{color:var(--acc)}
+.rules{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;font-size:13.5px;color:var(--ink3);line-height:1.9}
+.rules b{color:var(--ink2);font-weight:500}
+.log{margin-top:22px}
+.log .li{display:grid;grid-template-columns:56px 1fr auto;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;color:var(--ink2)}
+.log .li .mono{font-size:12px;color:var(--ink3)}
+.msg{font-family:var(--mono);font-size:12px;color:var(--warm);min-height:20px;margin-top:10px;letter-spacing:.02em}
+
+/* planner */
+.plan{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
+.planner{display:flex;gap:10px;align-items:flex-start;overflow-x:auto;padding-bottom:4px}
+.vers{display:flex;gap:6px}
+.ver{width:74px;flex:none}
+.ver .vh{font-family:var(--mono);font-size:10px;color:var(--ink3);text-align:center;height:22px;text-decoration:line-through}
+.ver .vg{position:relative;border:1px solid var(--line);border-radius:2px;opacity:.55}
+.ver .vb{position:absolute;left:2px;right:2px;border:1px solid var(--ink3);border-radius:2px;font-size:10px;line-height:1.2;padding:1px 3px;overflow:hidden;color:var(--ink3);text-decoration:line-through}
+.cur{flex:1;min-width:250px}
+.cur .vh{font-family:var(--mono);font-size:10.5px;color:var(--acc);height:22px;letter-spacing:.12em}
+.grid{position:relative;user-select:none;-webkit-user-select:none;border:1px solid var(--line2);border-radius:2px;cursor:crosshair;overflow:hidden}
+.grid .gr{position:absolute;left:0;right:0;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--ink3);padding-left:6px;line-height:22px}
+.grid .gr.half{border-top-style:dotted}
+.grid .gr:first-child{border-top:none}
+.grid .selb{position:absolute;left:50px;right:6px;background:var(--accs);border:1px dashed var(--acc);border-radius:2px;pointer-events:none}
+.grid .bk{position:absolute;left:50px;right:6px;border-radius:2px;padding:3px 50px 3px 8px;font-size:13px;line-height:1.3;overflow:hidden;cursor:default;border:1px solid var(--tc);background:color-mix(in srgb,var(--tc) 12%,transparent);color:var(--ink)}
+.grid .bk b{font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--tc);letter-spacing:.06em;margin-right:4px}
+.grid .bk small{display:block;font-family:var(--mono);font-size:10px;color:var(--ink3)}
+.grid .bk.t-d{--tc:var(--acc);background:var(--acc);color:var(--onacc)}
+.grid .bk.t-d b,.grid .bk.t-d small{color:var(--onacc);opacity:.8}
+.grid .bk.t-s{--tc:var(--warm)} .grid .bk.t-r{--tc:var(--teal)} .grid .bk.t-b{--tc:var(--gray);border-style:dashed}
+.grid .bk .ops{position:absolute;right:4px;top:3px;display:flex;gap:3px}
+.grid .bk .ops button{width:20px;height:20px;border:none;border-radius:50%;background:color-mix(in srgb,currentColor 16%,transparent);color:inherit;font-size:11px;line-height:20px;padding:0;cursor:pointer;font-family:var(--mono)}
+.tchips{display:flex;gap:6px;flex-wrap:wrap}
+.tchips .btn{--tc:var(--acc)}
+.tchips .btn[data-t=s]{--tc:var(--warm)} .tchips .btn[data-t=r]{--tc:var(--teal)} .tchips .btn[data-t=b]{--tc:var(--gray)}
+.tchips .btn.sel{border-color:var(--tc);color:var(--tc)}
+.pstats{display:grid;grid-template-columns:1fr 1fr;gap:28px 24px}
+.warn{margin-top:26px;display:flex;flex-direction:column;gap:0}
+.warn div{font-size:13.5px;line-height:1.75;color:var(--ink2);padding:10px 0 10px 14px;border-left:2px solid var(--line2);margin-bottom:8px}
+.warn div.w{border-left-color:var(--warm);color:var(--warm)}
+.warn div.ok{border-left-color:var(--acc)}
+.hint{font-family:var(--mono);font-size:11.5px;color:var(--ink3);letter-spacing:.02em;margin-top:14px}
+
+/* scoreboard */
+.score{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
+.srow{display:grid;grid-template-columns:76px 1fr 56px 64px;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.srow:last-child{border-bottom:1px solid var(--line)}
+.srow .dl{font-family:var(--mono);font-size:12px;color:var(--ink2)}
+.srow .dl small{display:block;font-size:10.5px;color:var(--ink3)}
+.srow.today .dl{color:var(--acc)}
+.marks{display:flex;flex-wrap:wrap;gap:6px;min-height:24px;align-items:flex-end}
+.mk{width:6px;height:24px;border-radius:1px;background:var(--acc);cursor:pointer;border:none;padding:0}
+.mk.ms{outline:1.5px solid var(--warm);outline-offset:3px}
+.mk.half{height:12px;cursor:default;opacity:.6}
+.srow .hrs{font-family:var(--mono);font-size:12px;color:var(--ink3);text-align:right}
+.sb{display:flex;gap:4px;justify-content:flex-end}
+.sb button{width:28px;height:26px;border-radius:4px;border:1px solid var(--line2);background:transparent;color:var(--ink2);cursor:pointer;font-family:var(--mono);font-size:13px;line-height:1}
+.sb button:hover{border-color:var(--acc);color:var(--acc)}
+.hist{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:20px}
+.hist div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-family:var(--mono);font-size:10px;color:var(--ink3);gap:4px}
+.hist i{display:block;width:100%;max-width:26px;background:var(--line2);min-height:1px;border-radius:1px}
+.hist div.cw i{background:var(--acc)}
+.shut{list-style:none;margin:16px 0 0;padding:0}
+.shut li{border-top:1px solid var(--line)}
+.shut label{display:flex;gap:12px;align-items:center;padding:9px 0;font-size:14px;color:var(--ink2);cursor:pointer}
+.shut input,.chk input{appearance:none;-webkit-appearance:none;flex:none;width:16px;height:16px;border:1px solid var(--ink3);border-radius:2px;display:grid;place-items:center;cursor:pointer;margin:0}
+.shut input:checked,.chk input:checked{background:var(--acc);border-color:var(--acc)}
+.shut input:checked::after,.chk input:checked::after{content:"";width:4px;height:8px;border:solid var(--onacc);border-width:0 1.5px 1.5px 0;transform:rotate(45deg) translate(-.5px,-1px)}
+.shut label:has(input:checked){color:var(--ink3);text-decoration:line-through}
+.done{font-size:22px;font-weight:300;color:var(--acc);margin-top:14px;min-height:34px}
+
+/* checklist */
+.chk{list-style:none;margin:0;padding:0;counter-reset:c;columns:2;column-gap:48px}
+.chk li{break-inside:avoid;counter-increment:c;border-top:1px solid var(--line)}
+.chk label{display:grid;grid-template-columns:28px 16px 1fr;gap:12px;align-items:start;padding:16px 0 14px;cursor:pointer}
+.chk label::before{content:counter(c,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--ink3);padding-top:3px}
+.chk input{margin-top:5px}
+.chk b{font-size:16px;font-weight:500;display:block}
+.chk span{font-size:14px;color:var(--ink2);display:block;margin-top:3px;line-height:1.75}
+.chk .src{font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-top:6px;letter-spacing:.04em}
+.chk label:has(input:checked) b{text-decoration:line-through;color:var(--ink3)}
+.chk label:has(input:checked) span{color:var(--ink3)}
+.cprog{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.cprog .tr{flex:1;height:2px;background:var(--line2)}
+.cprog .fl{height:100%;width:0;background:var(--acc);transition:width .35s}
+.cprog .tx{font-family:var(--mono);font-size:13px;color:var(--ink2)}
+
+footer{padding:80px 0 90px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--ink3);letter-spacing:.04em;line-height:2}
+
+/* responsive */
+@media (max-width:920px){
+  .c3,.c4,.stats{grid-template-columns:1fr 1fr}
+  .flow3{grid-template-columns:1fr;gap:4px}
+  .rooms{grid-template-columns:1fr}
+  .room{border-left:none;border-top:1px solid var(--line2);min-height:0}
+  .room:first-child{border-top:none}
+  .prow{grid-template-columns:1fr;gap:12px}
+  .gl{grid-template-columns:1fr 1fr;gap:4px 16px}
+  .gl span{grid-column:1/-1}
+  .steps4,.ritual,.farm{grid-template-columns:1fr 1fr}
+  .steps4 > div:nth-child(3),.ritual li:nth-child(4),.ritual li:nth-child(3),.farm div:nth-child(3){padding-left:0;border-left:none}
+  .ritual li:nth-child(4){padding-left:14px;border-left:1px solid var(--line)}
+  .ritual li:nth-child(5){padding-left:0;border-left:none}
+  .nb,.timer,.plan,.score{grid-template-columns:1fr;gap:40px}
+  .depth .r{grid-template-columns:1fr 80px}
+  .depth .r .tr{grid-column:1/-1;grid-row:2}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .c2,.c3,.c4,.stats,.defs,.vs,.mail,.dec,.steps4,.ritual,.farm{grid-template-columns:1fr}
+  .defs > div,.vs > div,.mail div{padding:24px 0}
+  .defs > div+div,.vs > div+div,.mail div+div{padding-left:0;border-left:none;border-top:1px solid var(--line2)}
+  .steps4 > div,.steps4 > div+div,.ritual li,.ritual li+li,.farm div,.farm div+div,.dec div,.dec div+div{padding-left:0!important;border-left:none!important;border-top:1px solid var(--line);padding-bottom:12px}
+  .gl{grid-template-columns:1fr}
+  .est .r,.papers .r{grid-template-columns:1fr;gap:6px}
+  .idx li{grid-template-columns:40px 1fr}
+  .idx .r{display:none}
+  .chk{columns:1}
+  .ch{grid-template-columns:1fr;gap:2px}
+  .t td:first-child{width:auto}
+  .t thead{display:none}
+  .t tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+  .t td{display:block;padding:3px 0;border:none}
+  .t td:first-child{font-size:18px;margin-bottom:4px}
+  .tlw .tl,.tlw .tlx{min-width:620px}
+  .pg{grid-template-columns:36px 1fr 1fr}
+  .pg .side{display:none!important}
+  .day24{font-size:10px}
+  .bar .brand{display:none}
+  .srow{grid-template-columns:62px 1fr 64px}
+  .srow .hrs{display:none}
+  .screen{padding:10vh 0}
+}
+/* how-to drawer */
+.fab{position:fixed;right:22px;bottom:22px;z-index:70;background:var(--acc);color:var(--onacc);border:none;border-radius:999px;padding:12px 20px 12px 18px;font-size:14.5px;font-weight:500;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.28);display:flex;align-items:center;gap:10px;transition:transform .2s,opacity .2s}
+.fab:hover{transform:translateY(-2px)}
+.fab .dot{font-family:var(--mono);font-size:11px;opacity:.75;letter-spacing:.04em}
+.fab.hide{opacity:0;pointer-events:none;transform:translateY(8px)}
+.ov{position:fixed;inset:0;z-index:79;background:rgba(2,5,12,.55);opacity:0;pointer-events:none;transition:opacity .3s}
+html[data-theme=light] .ov{background:rgba(10,15,28,.28)}
+.ov.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(500px,94vw);background:var(--bg);border-left:1px solid var(--line2);transform:translateX(102%);transition:transform .35s cubic-bezier(.2,.7,.2,1),visibility 0s linear .35s;visibility:hidden;display:flex;flex-direction:column}
+.drawer.open{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.dh{padding:22px 24px 16px;border-bottom:1px solid var(--line);flex:none}
+.dh .top{display:flex;align-items:flex-start;gap:12px}
+.dh h3{font-size:26px;font-weight:300;margin-top:6px}
+.dx-close{margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:transparent;color:var(--ink2);font-size:16px;cursor:pointer;flex:none;font-family:var(--mono)}
+.dx-close:hover{color:var(--ink);border-color:var(--ink3)}
+.dprog{display:flex;align-items:center;gap:12px;margin-top:14px}
+.dprog .tr{flex:1;height:2px;background:var(--line2)}
+.dprog .fl{height:100%;width:0;background:var(--acc);transition:width .3s}
+.dprog .tx{font-family:var(--mono);font-size:11.5px;color:var(--ink2)}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line2);border-radius:6px;overflow:hidden;margin-top:16px}
+.seg button{background:transparent;border:none;border-left:1px solid var(--line2);color:var(--ink2);font-size:13px;padding:8px 4px;cursor:pointer;font-family:inherit}
+.seg button:first-child{border-left:none}
+.seg button[aria-pressed=true]{background:var(--acc);color:var(--onacc)}
+.db{overflow-y:auto;overscroll-behavior:contain;padding:6px 24px 40px;flex:1}
+.ph-card{padding:18px 0 4px}
+.ph-card .fit{font-size:14px;color:var(--ink2);line-height:1.8;margin:8px 0}
+.ph-card .fit b{font-weight:500}
+.stage{padding-top:26px}
+.stage h4{display:flex;align-items:baseline;gap:10px;font-size:18px;font-weight:500;margin-bottom:4px}
+.stage h4 .n{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:400}
+.stage .sd{font-size:13px;color:var(--ink3);margin:0 0 6px}
+.hl{list-style:none;margin:0;padding:0}
+.hl li{border-top:1px solid var(--line)}
+.hl label{display:grid;grid-template-columns:16px 1fr;gap:12px;padding:12px 0;cursor:pointer;align-items:start}
+.hl input{appearance:none;-webkit-appearance:none;width:16px;height:16px;border:1px solid var(--ink3);border-radius:2px;margin:4px 0 0;display:grid;place-items:center;cursor:pointer}
+.hl input:checked{background:var(--acc);border-color:var(--acc)}
+.hl input:checked::after{content:"";width:4px;height:8px;border:solid var(--onacc);border-width:0 1.5px 1.5px 0;transform:rotate(45deg) translate(-.5px,-1px)}
+.hl .tx{font-size:14.5px;line-height:1.75;color:var(--ink)}
+.hl .tx em{font-style:normal;display:block;font-size:13.5px;color:var(--ink2);margin-top:3px}
+.hl .tx em.chk2::before{content:"检验 · ";font-family:var(--mono);font-size:11px;color:var(--acc)}
+.hl .tx em.fix::before{content:"对策 · ";font-family:var(--mono);font-size:11px;color:var(--acc)}
+.hl .src{font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-top:4px;display:block;letter-spacing:.03em}
+.hl .t15{font-family:var(--mono);font-size:10.5px;color:var(--warm);margin-left:6px}
+.hl label:has(input:checked) .tx{color:var(--ink3)}
+.hl label:has(input:checked) .tx > span:first-child{text-decoration:line-through}
+.dfoot{display:flex;justify-content:space-between;align-items:center;padding-top:22px;font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.dfoot button{background:none;border:none;color:var(--ink3);font-family:var(--mono);font-size:11px;cursor:pointer;text-decoration:underline}
+@media (max-width:640px){
+  .fab{right:14px;bottom:14px;padding:11px 16px}
+  .drawer{top:0;left:0;right:0;bottom:0;width:100%;height:100%;border-left:none;transform:translateY(102%)}
+  .drawer.open{transform:none}
+  .dh{padding:18px 18px 14px}
+  .db{padding:4px 18px 40px}
+  .seg button{font-size:12.5px}
+}
+@media (prefers-reduced-motion:reduce){.drawer,.ov,.fab{transition:none}}
+@media print{.bar,.fab,.drawer,.ov{display:none}body.focus .f.dim{opacity:1}}
+</style>
+</head>
+<body class="focus">
+
+<header class="bar">
+  <div class="in">
+    <span class="brand">DEEP WORK <i>/</i> 深度工作</span>
+    <nav id="nav">
+      <a href="#top">00 序</a>
+      <a href="#idea">01 理论</a>
+      <a href="#r1">R1 深入</a>
+      <a href="#r2">R2 无聊</a>
+      <a href="#r3">R3 社交媒体</a>
+      <a href="#r4">R4 浮浅</a>
+      <a href="#end">结论</a>
+      <a href="#quotes">金句</a>
+      <a href="#tool">工具</a>
+      <a href="#todo">清单</a>
+    </nav>
+    <button class="tg" id="focusBtn" aria-pressed="true" title="非当前段落降低透明度">聚焦 开</button>
+    <button class="tg" id="themeBtn" title="切换深色 / 浅色">浅色</button>
+  </div>
+  <div class="prog" id="prog"></div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="f">
+      <div class="lab">Book Notes · 卡尔·纽波特 著 · 宋伟 译</div>
+      <h1>深度工作</h1>
+      <div class="sub">如何有效使用每一点脑力</div>
+    </div>
+    <p class="one f">网络工具把知识工作者的注意力肢解得支离破碎，大多数人用回邮件、开会、刷消息这类<b>浮浅工作</b>填满了一天。作者的判断是：正因为能长时间专注的人越来越少，这种能力反而越来越值钱。全书先论证这一点，再给出四条把深度变成日常习惯的准则。</p>
+    <div class="cue">向下滚动 · 一次只读一件事</div>
+  </div>
+</section>
+
+<!-- definitions -->
+<section class="screen">
+  <div class="wrap">
+    <div class="lab f" style="margin-bottom:26px">00.1 · 两个定义 · 前言</div>
+    <div class="defs f">
+      <div class="d1">
+        <div class="lab a">Deep Work</div>
+        <h3>深度工作</h3>
+        <p>在无干扰的状态下专注进行职业活动，使个人的认知能力达到极限。这种努力能够创造新价值，提升技能，而且难以复制。</p>
+        <div class="kw"><span>无干扰</span><span>认知极限</span><span>创造新价值</span><span>难以复制</span></div>
+      </div>
+      <div class="d2">
+        <div class="lab">Shallow Work</div>
+        <h3>浮浅工作</h3>
+        <p>对认知要求不高的事务性任务，往往在受到干扰的情况下开展。此类工作通常不会为世界创造太多新价值，且容易复制。</p>
+        <div class="kw"><span>事务性</span><span>常被打断</span><span>价值低</span><span>容易复制</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- formula -->
+<section class="screen">
+  <div class="wrap">
+    <div class="lab f" style="margin-bottom:30px">00.2 · 生产力公式 · 第 1 章</div>
+    <div class="formula f"><span class="nw">高质量工作产出</span><span class="nw"><span class="op">=</span>时间<span class="op">×</span><span class="x">专注度</span></span></div>
+    <p class="lede gap2 f">作者用这条公式解释亚当·格兰特为何高产：把困难的工作合并成密集、无干扰的时段，专注度拉到最高，单位时间的产出也就最大。他为写《如何成为尖子生》采访过 50 名顶尖学生，发现最优秀的学生学习时间往往比低一档的还短。</p>
+  </div>
+</section>
+
+<!-- hypothesis -->
+<section class="screen">
+  <div class="wrap">
+    <div class="lab f" style="margin-bottom:30px">00.3 · 全书的基础 · 深度工作假设</div>
+    <p class="mid f" style="max-width:900px">“深度工作的能力日益<em class="warm" style="font-style:normal">稀少</em>，而几乎同时，其在社会经济中的价值也日益<span class="acc">提升</span>。因此，能够培养这项技能，并将其内化为工作生活之核心的人，将会取得成功。”</p>
+    <div class="f gap3" style="max-width:720px">
+      <svg viewBox="0 0 560 250" width="100%" role="img" aria-label="深度工作假设示意图">
+        <polygon class="s-gap" points="318,112 530,48 530,200"/>
+        <line class="s-ax" x1="30" y1="222" x2="540" y2="222"/>
+        <path class="s-a" d="M34,192 C150,178 320,120 530,48"/>
+        <path class="s-w" d="M34,46 C170,58 340,124 530,200"/>
+        <text class="s-ta" x="350" y="62">深度工作的价值 ↑</text>
+        <text class="s-tw" x="44" y="34">能做到深度工作的人 ↓</text>
+        <text x="440" y="132" text-anchor="middle" class="s-ta">机会</text>
+        <text x="440" y="150" text-anchor="middle" class="s-t">少数人的优势</text>
+        <text class="s-t" x="30" y="242">工业经济时代</text>
+        <text class="s-t" x="540" y="242" text-anchor="end">信息经济时代 →</text>
+      </svg>
+      <p class="note">示意图：两条趋势叠加，就是第一部分结尾说的“典型的市场错位”。第一部分让你相信这个假设，第二部分教你利用它。</p>
+    </div>
+  </div>
+</section>
+
+<!-- map -->
+<section class="screen">
+  <div class="wrap narrow">
+    <div class="lab f" style="margin-bottom:26px">00.4 · 全书结构</div>
+    <ol class="idx f">
+      <li><span class="n">P1.1</span><a class="t" href="#ch1">深度工作是有价值的<small>学得快、产出高都靠它</small></a><span class="r">第 1 章</span></li>
+      <li><span class="n">P1.2</span><a class="t" href="#ch2">深度工作是少见的<small>商业潮流推着人走向浮浅</small></a><span class="r">第 2 章</span></li>
+      <li><span class="n">P1.3</span><a class="t" href="#ch3">深度工作是有意义的<small>深度的生活才是优质生活</small></a><span class="r">第 3 章</span></li>
+    </ol>
+    <ol class="idx f gap2">
+      <li><span class="n">R1</span><a class="t" href="#r1">工作要深入<small>用惯例和固定程序代替意志力</small></a><span class="r">6 项策略</span></li>
+      <li><span class="n">R2</span><a class="t" href="#r2">拥抱无聊<small>像练肌肉一样训练专注</small></a><span class="r">4 项策略</span></li>
+      <li><span class="n">R3</span><a class="t" href="#r3">远离社交媒体<small>像手艺人挑工具一样挑网络工具</small></a><span class="r">3 项策略</span></li>
+      <li><span class="n">R4</span><a class="t" href="#r4">摒弃浮浅<small>给浮浅工作设上限，把时间还给深度</small></a><span class="r">5 项策略</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PART 1 ============ -->
+<section class="divider" id="idea">
+  <div class="wrap">
+    <div class="f">
+      <div class="num">P1</div>
+      <div class="lab">Part One · 第一部分</div>
+      <h2>理论</h2>
+      <div class="en">The Idea</div>
+    </div>
+    <p class="th f">前两章讲实用：深度工作越来越值钱，同时越来越少见，培养它就能在职业上胜出。第 3 章讲人性：从神经学、心理学到哲学，深度都和意义连在一起。</p>
+  </div>
+</section>
+
+<!-- ch1 -->
+<section class="screen auto" id="ch1">
+  <div class="wrap">
+    <div class="lab a f">第 1 章</div>
+    <p class="big f" style="margin-top:14px">深度工作是<em>有价值的</em>。</p>
+    <p class="lede gap1 f">作者引用布林约尔松和麦卡菲《与机器赛跑》：数字科技带来的“大重组”没有碾压所有工作，而是把它们分化了。新经济里有三类人会获得特别的优势。</p>
+    <div class="cols c3 gap3 f">
+      <div class="it acc-t"><span class="lab">01 · 高级技术工人</span><h4>擅长使用智能机器</h4><p>泰勒·考恩：“关键问题在于，你是否擅长使用智能机器？”</p><span class="who">内特·西尔弗</span></div>
+      <div class="it acc-t"><span class="lab">02 · 超级明星</span><h4>所在领域的个中翘楚</h4><p>远程协作让人才市场全球共享，“胜者通吃”。舍温·罗森：“连续听一系列中等水平的歌手唱歌并不能累加成一场无与伦比的演出。”</p><span class="who">大卫·海涅迈尔·汉森</span></div>
+      <div class="it"><span class="lab">03 · 所有者</span><h4>有资本投入新科技的人</h4><p>Instagram 以 13 名雇员卖出 10 亿美元，回报流向风投。作者坦言：没有秘诀帮你成为下一个约翰·杜尔。</p><span class="who">约翰·杜尔</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen auto">
+  <div class="wrap">
+    <p class="mid f" style="max-width:820px">能借鉴的是前两类。进入它们要两种核心能力，<span class="acc">而这两种能力都依赖深度工作</span>。</p>
+    <div class="cols c2 gap3 f">
+      <div class="it acc-t">
+        <span class="lab">能力一 · 迅速掌握复杂工具</span>
+        <h4>注意力全情投入 + 反馈 = 刻意练习</h4>
+        <p>艾利克森的研究：专家与常人的差异来自刻意练习，而“注意力涣散基本上与刻意练习要求的聚精会神是相对立的”。神经学解释是髓磷脂：专注让同一回路在隔离状态下反复激活，髓磷脂包裹上去，技能就固化了。</p>
+        <p class="q gap1">如果你无法学习，就无法成功。</p>
+      </div>
+      <div class="it acc-t">
+        <span class="lab">能力二 · 质量和速度达到精英水平</span>
+        <h4>任务 A → 任务 B = 注意力残留</h4>
+        <p>索菲·勒鲁瓦发现：从任务 A 转到 B，注意力不会立刻跟过去，残留越多，下一项任务表现越差。每 10 分钟瞥一眼收件箱，看到暂时解决不了的消息，就会在两件没完成的事之间来回残留。</p>
+        <p class="q gap1">如果你不产出，就不会成功，不管你的技艺多么纯熟，天资多么聪颖。</p>
+      </div>
+    </div>
+    <div class="it gap3 f" style="max-width:820px">
+      <span class="lab">例外 · “杰克·多西是怎么回事？”</span>
+      <p>推特和 Square 的创始人整天在会议间穿梭、随时被打断，却极为成功。作者的回答：大公司高管是不靠深度也能成功的特例，此外还有部分销售人员和说客，他们的价值就在于持续联系。但不要急着给自己的工作贴上“不需要深度”的标签：波士顿咨询的顾问被迫每周断联一天后发现，客户并不需要时时联系到他们，表现反而更好。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ch2 -->
+<section class="screen auto" id="ch2">
+  <div class="wrap">
+    <div class="lab a f">第 2 章</div>
+    <p class="big f" style="margin-top:14px">深度工作是<em>少见的</em>。</p>
+    <p class="lede gap1 f">开放式办公室、即时通讯、要求内容生产者活跃在社交媒体，这三股商业潮流都在削弱深度。作者认为它们大行其道，并不是因为更有价值，而是因为价值和代价都算不清楚。</p>
+    <div class="flow3 gap3 f">
+      <div>
+        <div class="colh">根源</div>
+        <div class="bx root"><b>度量黑洞</b><span>分心的成本和深度的价值很难衡量，削弱深度的行为便没人追究。</span></div>
+        <div class="bx"><b>例：汤姆·考克兰的测算</b><span>每周收 511 封、发 284 封邮件；全公司每年为处理邮件支付 100 多万美元，每封约 95 美分。</span></div>
+      </div>
+      <div>
+        <div class="colh">在黑洞掩护下盛行的三种思维</div>
+        <div class="bx bias"><b>最小阻力原则</b><span>没有明确反馈时，人倾向于当下最简单的做法：随时问随时答、按收件箱顺序干活、开例会、转发一句“想法？”</span></div>
+        <div class="bx bias"><b>忙碌代表生产能力</b><span>知识工作说不清做得好不好，人就退回工业时代的标准，用看得见的忙碌证明价值。</span></div>
+        <div class="bx bias"><b>对互联网的顶礼膜拜</b><span>波兹曼所说的“技术垄断”：与网络有关的就默认是好的，其他选择“隐形了，也因此变得无关紧要”。</span></div>
+      </div>
+      <div>
+        <div class="colh">结果</div>
+        <div class="bx res"><b>深度工作越来越少</b><span>商业整体失去了价值产出的巨大增长潜力。</span></div>
+        <div class="bx res"><b>对个人反而是好事</b><span>同伴和雇主的短视，让愿意深度工作的人获得巨大的个人优势。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ch3 -->
+<section class="screen auto" id="ch3">
+  <div class="wrap">
+    <div class="lab a f">第 3 章</div>
+    <p class="big f" style="margin-top:14px">深度工作是<em>有意义的</em>。</p>
+    <p class="lede gap1 f">铁匠里克·富勒尔用 8 小时锤炼一柄维京长剑：“我不需要一把剑。但是我必须造剑。”工匠的深度与满足感之间的联系一目了然，知识工作里却很模糊。作者从窄到宽给出三种论证。</p>
+    <div class="cols c3 gap3 f">
+      <div class="it acc-t"><span class="lab">神经学 · 《全神贯注》</span><h4>你关注什么，就过着什么样的生活</h4><p>威妮弗雷德·加拉格尔患癌后发现，大脑依据你关注的事物构建世界观：“你的为人、你的思考、你的感受和所做之事，以及你的喜好，恰是你所关注事物的概括。”整天盯着收件箱，大脑就会认定工作满是压力、烦扰和琐事。</p></div>
+      <div class="it acc-t"><span class="lab">心理学 · 《心流》</span><h4>工作比休闲更容易带来享受</h4><p>契克森米哈赖用传呼机随机抽样（经验抽样法）发现：最优体验往往发生在身体或头脑为完成艰难而有价值的事而达到极限时，即“心流”。一周内心流越多，生活满意度越高；深度工作正适合产生心流。</p></div>
+      <div class="it acc-t"><span class="lab">哲学 · 《万物闪耀》</span><h4>手艺里有神圣感</h4><p>德莱弗斯和凯利认为，工匠的任务“并非产出意义，而是培养内在技能，辨别本已存在的意义”。任何对高水平技能的追求都能带来这种意义，写代码、写作、咨询都可以是一门手艺，而培养手艺需要深度工作。</p></div>
+    </div>
+    <p class="mid gap4 f" style="max-width:860px">“木车轮并不高贵，但是制作木车轮则可以高贵。”</p>
+    <p class="note gap1 f">作者把这种在深度中繁荣、在浅薄中沉沦的人称作“深度智人”（Homo Sapiens Deepensis）。</p>
+  </div>
+</section>
+
+<!-- numbers -->
+<section class="screen auto">
+  <div class="wrap">
+    <div class="lab f" style="margin-bottom:34px">第一部分里的数字</div>
+    <div class="stats f">
+      <div class="stat w"><div class="v">60%<small>+</small></div><div class="k">麦肯锡 2012：知识工作者每周用于电子沟通和网络搜索的工作占比；近 30% 时间只用来读回邮件</div></div>
+      <div class="stat w"><div class="v">98%</div><div class="k">杰森·本在金融公司时，有好多天几乎这么多时间都在上网</div></div>
+      <div class="stat a"><div class="v">5h<small>+</small></div><div class="k">他把自己锁进没有电脑的房间，后来每天能专注学习这么久，读了约 18 本书</div></div>
+      <div class="stat a"><div class="v">4→10<small>万美元</small></div><div class="k">本转行程序员前后的年收入</div></div>
+      <div class="stat w"><div class="v">20–25<small>h/周</small></div><div class="k">莱斯利·佩罗研究的职场人在办公室外处理邮件的时间</div></div>
+      <div class="stat a"><div class="v">1<small>天/周</small></div><div class="k">佩罗让波士顿咨询团队每人每周断联一天：客户没丢，产品更好</div></div>
+      <div class="stat a"><div class="v">60<small>篇+</small></div><div class="k">亚当·格兰特受聘正教授时的同行评审论著数</div></div>
+      <div class="stat a"><div class="v">3–4<small>h/天</small></div><div class="k">作者每天、每周五天的无打扰专注工作，工作日很少工作到五六点</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RULE 1 ============ -->
+<section class="divider" id="r1">
+  <div class="wrap">
+    <div class="f">
+      <div class="num">R1</div>
+      <div class="lab">Rule 01 / 04 · 准则 1</div>
+      <h2>工作要深入</h2>
+      <div class="en">Work Deeply</div>
+    </div>
+    <p class="th f">霍夫曼和鲍迈斯特给 205 人配传呼机，收集了 7500 多个样本：人们整天都在抵抗欲望，对网络和电视只有大约一半时间抵御成功。<b>意志力是有限的，会被消耗。</b>所以关键不是良好的意图，而是用惯例和固定程序，让进入并保持专注所需的意志力最小。</p>
+    <ol class="idx f">
+      <li><span class="n">1.0</span><a class="t" href="#r1-0">理想模型：极乐机</a><span class="r"></span></li>
+      <li><span class="n">1.1</span><a class="t" href="#r1-1">选定你的深度哲学</a><span class="r">四种做法</span></li>
+      <li><span class="n">1.2</span><a class="t" href="#r1-2">习惯化</a><span class="r">三个问题</span></li>
+      <li><span class="n">1.3</span><a class="t" href="#r1-3">要有大手笔</a><span class="r">六个例子</span></li>
+      <li><span class="n">1.4</span><a class="t" href="#r1-4">不要独自工作</a><span class="r">中心辐射</span></li>
+      <li><span class="n">1.5</span><a class="t" href="#r1-5">像经商一样执行</a><span class="r">4DX</span></li>
+      <li><span class="n">1.6</span><a class="t" href="#r1-6">图安逸</a><span class="r">停工仪式</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="strat" id="r1-0">
+  <div class="wrap">
+    <div class="sh f"><span class="k">1.0</span><h3>理想模型：戴维·德怀恩的“极乐机”</h3></div>
+    <p class="lede f">一座一层高的长方形建筑，5 个房间一字排开，没有走廊，必须穿过前一间才能进下一间，越往里越深。目前仍只是建筑图纸。准则一要帮你在纷乱的职业生活里模拟出它的效果。</p>
+    <div class="f gap2">
+      <div class="rooms">
+        <div class="room"><span class="lab">Room 1</span><h4>陈列室</h4><p>展示这里产出的深度工作成果，制造“健康压力和同伴压力的文化”。</p></div>
+        <div class="room"><span class="lab">Room 2</span><h4>沙龙</h4><p>好咖啡、沙发、无线网，用来争辩和沉思，酝酿想法。</p></div>
+        <div class="room"><span class="lab">Room 3</span><h4>图书馆</h4><p>存放所有产出和资料，“机器的硬盘”。</p></div>
+        <div class="room"><span class="lab">Room 4</span><h4>办公空间</h4><p>会议室和隔间，做低强度的浮浅工作。</p></div>
+        <div class="room deep"><span class="lab">Room 5</span><h4>深度工作室</h4><p>6×10 英尺小室，18 英寸隔音墙。工作 90 分钟、休息 90 分钟，循环两到三次。</p></div>
+      </div>
+      <div class="rooms-ax"><span>街道 · 浅</span><span>越往里越深</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r1-1">
+  <div class="wrap">
+    <div class="sh f"><span class="k">1.1</span><h3>选定你的深度哲学</h3></div>
+    <p class="lede f">作者见过四种在实践中都很有效的做法。挑一种适合自己处境的；不匹配的哲学会让你在习惯成形前就脱轨。</p>
+    <div class="f gap2">
+      <div class="phil" id="phil"></div>
+      <div class="legend"><span style="--lc:var(--acc)">深度工作</span><span style="--lc:var(--warms)">浮浅 / 开放时间</span><span style="--lc:var(--bg2)">其他时间</span><span>每格一天 · 自上而下约 05:00–21:00 · 依据书中人物做法的示意</span></div>
+    </div>
+    <div class="f gap3" style="overflow-x:auto">
+      <table class="t">
+        <thead><tr><th>哲学</th><th>怎么做</th><th>书中的人</th><th>适合谁 · 要注意</th></tr></thead>
+        <tbody>
+          <tr><td>禁欲主义</td><td>摒弃或最小化浮浅职责，让深度工作最大化。</td><td>唐纳德·克努特：1990 年 1 月 1 日起不再用电子邮箱，来信由助理分类，其余每 3 个月左右批量处理。尼尔·斯蒂芬森：网站上不留邮箱。</td><td>对世界的贡献实在、清晰、可以个体化的人。适用的人有限。</td></tr>
+          <tr><td>双峰</td><td>把时间分成两块：一块像禁欲者一样无干扰地深度工作，其余做别的事。可按周分，也可按年分。</td><td>卡尔·荣格：伯林根塔楼写作，苏黎世看诊、泡咖啡馆。亚当·格兰特：课程集中到一个学期，每月两三次闭关 2–4 天，邮件设自动回复。</td><td>必须在非深度事务上投入才能成功的人。深度时段至少一整天，几小时太短。</td></tr>
+          <tr><td>节奏</td><td>把深度工作变成简单的日常习惯：链条法（每天做完在日历上画红 X，别让链子断掉），或每天固定开工时间。</td><td>杰瑞·宋飞的链条法。布莱恩·查普尔：每天 5:30 起床写到 7:30，后来提前到 4:45，每 2–3 周完成一章论文草稿。</td><td>常规办公室工作者最常用。强度不及双峰，但更符合人的天性，一年累计的深度时长往往更多。</td></tr>
+          <tr><td>新闻记者</td><td>只要有空闲，就随时切入深度模式。</td><td>沃尔特·艾萨克森在度假屋里上楼写 20 分钟到 1 小时，写成 864 页的《聪敏人》。作者本人也主要用这种方式，但会在每周开始时先计划。</td><td>不适合新手：快速切换会大量消耗意志力，还需要对自己的能力和工作价值有信心。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r1-2">
+  <div class="wrap">
+    <div class="sh f"><span class="k">1.2</span><h3>习惯化</h3></div>
+    <p class="lede f">伟大的思想家很少打乱自己的工作习惯。曼森·卡里编录了大量作家的日常后总结：等待灵感来袭是非常非常糟糕的计划。大卫·布鲁克斯的话更直接：“伟大的创造性头脑如艺术家般思考，却如会计般工作。”</p>
+    <div class="f gap2">
+      <div class="sub-h">达尔文写《物种起源》时的一个上午</div>
+      <div class="tlw" style="overflow-x:auto"><div class="tl" id="darwin"></div><div class="tlx" id="darwinAx"></div></div>
+      <p class="note">据他儿子弗朗西斯回忆；午间散步要到想出满意的答案才停。罗伯特·卡罗的纽约办公室则“每一英寸空间都是按规则来布置的”，连穿什么去上班都固定。</p>
+    </div>
+    <div class="cols c3 gap3 f">
+      <div class="it"><span class="lab">问题 1</span><h4>在哪里工作，工作多久？</h4><p>关上门、清空桌子，最好有专用场所，比如会议室或安静的图书馆。设定具体时长，让它成为有终点的挑战。</p></div>
+      <div class="it"><span class="lab">问题 2</span><h4>开始后怎样继续？</h4><p>定规则，比如不准上网，或每 20 分钟产出一定字数。否则大脑会一遍遍审视该做什么，白白浪费意志力。</p></div>
+      <div class="it"><span class="lab">问题 3</span><h4>如何支持自己？</h4><p>一杯好咖啡、足够的食物、散步这样的轻度活动，材料整理得井井有条。尼采说：“只有散步中得到的想法才是有价值的。”</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r1-3">
+  <div class="wrap">
+    <div class="sh f"><span class="k">1.3</span><h3>要有大手笔</h3></div>
+    <p class="lede f">对惯常环境做出巨大改变，再配上可观的金钱或精力投入，只为支持一项深度任务。投入提升了任务在心理上的重要性，大脑就不那么想拖延。<b>“有时想要做到深入，必须先要做大。”</b></p>
+    <div class="glist f gap2">
+      <div class="gl"><b>J.K. 罗琳</b><span class="m">每天约 1000 美元</span><span>家里擦窗工、孩子、狗叫，干扰太多。她住进爱丁堡巴尔默勒尔酒店的套房，在那里写完了哈利·波特最后一本。</span></div>
+      <div class="gl"><b>比尔·盖茨</b><span class="m">每年两次思考周</span><span>带上书和白纸隐居湖边小屋，只读书、思考大局。1995 年的“互联网浪潮”备忘录就写于思考周。</span></div>
+      <div class="gl"><b>艾伦·莱特曼</b><span class="m">约两个半月</span><span>每年夏天隐居缅因州一座没有网络和电话的小岛，“恢复了生命中一些沉静的东西”。</span></div>
+      <div class="gl"><b>迈克尔·波伦 · 丹·品克</b><span class="m">自建写作小屋</span><span>其实一台笔记本、一张桌子就能写。小屋的价值不在舒适，而在为写得更好而建造它的大手笔。</span></div>
+      <div class="gl"><b>威廉·肖克利</b><span class="m">芝加哥一间旅馆</span><span>晶体管的发明被团队成员抢先后，他把自己锁在旅馆房间里夯实新设计，后来的结式晶体管助他拿到诺贝尔奖。</span></div>
+      <div class="gl"><b>彼得·尚克曼</b><span class="m">30 小时 · 4000 美元</span><span>要在两周内交书稿，他订了往返东京的商务舱，去程写、回程写，落地时书稿已完成。“完全物有所值。”</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r1-4">
+  <div class="wrap">
+    <div class="sh f"><span class="k">1.4</span><h3>不要独自工作</h3></div>
+    <p class="lede f">开放式办公室背后的“偶然创造力理论”有道理，但理解片面。麻省理工 20 号楼和贝尔实验室的魔力，来自私人办公室加上少量共享长走廊，而不是大开间。新建的斯塔特中心，教授们还要求在门框加装隔音垫片。</p>
+    <div class="cols c2 gap2 f" style="align-items:center">
+      <div>
+        <svg viewBox="0 0 400 300" width="100%" role="img" aria-label="中心辐射型布局示意图">
+          <g id="hubLines"></g>
+          <circle cx="200" cy="150" r="58" class="s-hub"/>
+          <text x="200" y="146" text-anchor="middle" class="s-tw">中枢</text>
+          <text x="200" y="166" text-anchor="middle" class="s-t">交流 · 偶遇 · 争辩</text>
+          <g id="hubSpokes"></g>
+        </svg>
+        <p class="note" style="text-align:center;margin:0 auto">中心辐射型：常去中枢碰撞想法，回到辐射区深度工作</p>
+      </div>
+      <div>
+        <div class="it"><span class="lab">方针 1</span><h4>分心仍是深度工作的大敌</h4><p>把追求意外发现和深度思考分开，分别优化，不要混在一起。</p></div>
+        <div class="it gap1"><span class="lab">方针 2</span><h4>回到辐射区后，适合时就用“白板效应”</h4><p>和人肩并肩解决问题，对方在等你下一步的洞见，这会抑制逃避深度的本能。1947 年的一个月里，实验物理学家布拉顿和理论学家巴丁在一间小实验室里轮流专注，一个设计实验验证理论，一个据实验拓展理论，做出了第一个可用的固态晶体管。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r1-5">
+  <div class="wrap">
+    <div class="sh f"><span class="k">1.5</span><h3>像经商一样执行</h3></div>
+    <p class="lede f">安迪·格鲁夫对克里斯坦森说：“我问你如何做，你却告诉我应该做什么。”作者把《高效能人士的执行 4 原则》（4DX）用在个人的深度工作上。</p>
+    <div class="steps4 f gap2">
+      <div><span class="lab a">原则 1</span><h4>关注极端重要的事情</h4><p>“你想做的事情越多，完成的事情反而越少。”在深度时间里追少数几个雄心勃勃的目标。作者定的是：一学年发表 5 篇高质量论文。</p></div>
+      <div><span class="lab a">原则 2</span><h4>抓住引领性指标</h4><p>论文数是滞后性指标，拿到时相关表现已成过去。引领性指标是：投入在极端重要目标上的深度工作时长。</p></div>
+      <div><span class="lab a">原则 3</span><h4>准备醒目的计分板</h4><p>“计分的时候，人们的表现很不同。”作者把卡片纸剪成条，每周一条贴在显示器旁，记下当周的深度工作时长。</p></div>
+      <div><span class="lab a">原则 4</span><h4>定期问责</h4><p>每周回顾计分板：庆贺好的一周，找出糟糕一周的原因，想办法让接下来几天得高分。</p></div>
+    </div>
+    <div class="f gap3" style="max-width:760px">
+      <span class="lab">作者的计分板 · 示意</span>
+      <div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i></i><i></i></div>
+      <p class="note" style="margin-top:6px">论文取得重要进展的那一小时画圈：把累积时长和实际成果连起来，也校准“一项成果要多少深度时间”。结果：到 2014 年夏天有 9 篇论文被接收，前一年是 4 篇。</p>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r1-6">
+  <div class="wrap">
+    <div class="sh f"><span class="k">1.6</span><h3>图安逸</h3></div>
+    <p class="lede f">漫画家蒂姆·克莱德尔说：“闲散之于大脑就如维生素 D 之于身体一样不可或缺。”作者的做法是：工作日结束后到第二天早上，彻底屏蔽与工作相关的思考，晚饭后不查邮件，也不在脑子里回放白天的对话。需要更多时间，就加一下班；屏蔽之后就必须放松。</p>
+    <div class="cols c3 gap2 f">
+      <div class="it"><span class="lab">原因 1</span><h4>安逸时光有助于提升洞察力</h4><p>狄克思特修斯的“无意识思维理论”：信息量大、模糊甚至矛盾的决策，交给无意识更好。买车实验里，读完信息后被小游戏分心的一组，决定反而更好。</p></div>
+      <div class="it"><span class="lab">原因 2</span><h4>安逸时光帮助补充专注的能量</h4><p>“注意力复原理论”：在植物园走 50 分钟的人，数字倒背成绩比走过闹市的人高 20%，严冬重做也成立。和朋友聊天、做饭听音乐、陪孩子玩都有类似效果；晚上回邮件就复原不了。</p></div>
+      <div class="it"><span class="lab">原因 3</span><h4>晚上放下的工作没那么重要</h4><p>艾利克森：新手每天高度专注约 1 小时就到极限，专家最多约 4 小时。柏林的精英小提琴手每天刻意练习约三个半小时，分两段。白天用够了，晚上能做的只是低价值的浮浅事。</p></div>
+    </div>
+    <div class="f gap3">
+      <div class="sub-h">作者的停工仪式</div>
+      <p class="lede" style="margin-bottom:20px">对抗“蔡加尼克效应”：未完成的任务会持续抢注意力。鲍迈斯特和马西卡姆博发现，不必真的做完，只要为它定下计划，就能释放认知资源。</p>
+      <ol class="ritual">
+        <li>最后看一眼收件箱，确认没有要紧急回复的</li>
+        <li>把脑子里和当天随手记下的新任务转进任务列表</li>
+        <li>快速浏览每个清单里的每一项任务</li>
+        <li>查看接下来几天的日程，别漏掉截止日期和预约</li>
+        <li>据此定出第二天的大概计划</li>
+        <li>说出：“停工完成。”</li>
+      </ol>
+      <p class="note gap2">每天多花 10–15 分钟；大约一到两周后，大脑才会信任这个仪式，晚上真正放松下来。“工作时，努力工作。完成时，就放松下来。”（工具区的“本周”页有一份可勾选的停工清单。）</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RULE 2 ============ -->
+<section class="divider" id="r2">
+  <div class="wrap">
+    <div class="f">
+      <div class="num">R2</div>
+      <div class="lab">Rule 02 / 04 · 准则 2</div>
+      <h2>拥抱无聊</h2>
+      <div class="en">Embrace Boredom</div>
+    </div>
+    <p class="th f">高度集中注意力的能力是一种需要训练的技能，不是攒够动力就能随时打开的开关。而且，只要一有无聊就去找刺激，大脑会被重新编排，到真正需要专注时也专注不了。训练有两个目标：提高专注的强度，克服分心的欲望。</p>
+    <ol class="idx f">
+      <li><span class="n">2.1</span><a class="t" href="#r2-1">不要不断分心，而要不断专注</a><span class="r">规划上网</span></li>
+      <li><span class="n">2.2</span><a class="t" href="#r2-2">像罗斯福一样工作</a><span class="r">硬期限冲锋</span></li>
+      <li><span class="n">2.3</span><a class="t" href="#r2-3">有成果的冥想</a><span class="r">走路时想一件事</span></li>
+      <li><span class="n">2.4</span><a class="t" href="#r2-4">记住一副牌</a><span class="r">注意力控制</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="strat">
+  <div class="wrap">
+    <div class="cols c2 f">
+      <div class="it"><span class="lab">亚当·马林的清晨</span><p>他二十多岁才开始每天清早研读《塔木德》，和学习伙伴一起把认知推到极限。拉比说：“如果某一天没有挑战自己的心智极限，那么你就不能说已经完成了这一天的任务。”几年后，他发现自己打理生意时的理解力明显更深、更有创造性。</p></div>
+      <div class="it"><span class="lab">克利福德·纳斯的发现</span><p>长期多任务的人“不能过滤掉无关的事务”，注意力长期分散。他们自认为需要时能“像激光一样专注”，但积习让他们做不到。如果排队 5 分钟、等朋友的每一刻都用来刷手机，大脑就可能被改造成这样。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r2-1">
+  <div class="wrap">
+    <div class="sh f"><span class="k">2.1</span><h3>不要不断分心，而要不断专注</h3></div>
+    <p class="lede f">流行的“网络安息日”（每周一天远离网络）治不了已经习惯分心的大脑，就像一周只健康饮食一天很难变瘦。反过来做：不是偶尔从分心里抽时间专注，而是从专注里规划出偶尔的分心。在电脑旁放一个本子，写下下一次可以上网的时间，在那之前完全不碰网络。</p>
+    <div class="f gap2">
+      <div class="sub-h">即使工作要求频繁回邮件也适用</div>
+      <p class="lede" style="margin-bottom:16px">书中的例子：两场会议之间有两个小时，每专注 15 分钟上网查一次邮件、每次 5 分钟，两小时里仍有 90 分钟在离线状态下抵挡分心。</p>
+      <div class="ib" id="ib"></div>
+      <div class="ibx"><span>会议结束</span><span>2 小时 · 离线 90′ / 上网 30′</span><span>下一场会议</span></div>
+    </div>
+    <div class="cols c3 gap3 f">
+      <div class="it"><span class="lab">要点 1</span><h4>网络时段多也没关系</h4><p>网络时段的次数和总时长不重要，重要的是离线时段的完整性。</p></div>
+      <div class="it"><span class="lab">要点 2</span><h4>时段外彻底屏蔽</h4><p>离线时卡住了、非查资料不可，也别马上上网：先换别的离线工作；实在不行就把下次上网提前，但至少再等 5 分钟，把“想上网”和“上网的回馈”割裂开。</p></div>
+      <div class="it"><span class="lab">要点 3</span><h4>下班后也按计划上网</h4><p>大脑不太区分工作内外。约晚饭的短信、查餐馆地址可以；排队时就忍住这一点无聊，靠自己的头脑度过。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r2-2">
+  <div class="wrap">
+    <div class="sh f"><span class="k">2.2</span><h3>像罗斯福一样工作</h3></div>
+    <p class="lede f">西奥多·罗斯福在哈佛兴趣广泛，拳击、摔跤、舞蹈、自然学，大一结束的夏天就出了一本鸟类书。据传记作家估计，他每天用在学业上的时间不超过四分之一，7 门课仍拿了 5 门优秀。秘诀是在 8:30 到 16:30 之间，扣掉上课、锻炼和午饭，剩下的时间只攻课业，而且强度极高。</p>
+    <div class="cols c4 gap2 f">
+      <div class="it acc-t"><span class="lab">01</span><h4>挑一项深度任务</h4><p>选一项优先级高、需要深度工作才能完成的任务。</p></div>
+      <div class="it acc-t"><span class="lab">02</span><h4>定硬性截止期限</h4><p>估算通常要多久，再定一个远远少于它、几乎不可能的期限。</p></div>
+      <div class="it acc-t"><span class="lab">03</span><h4>让期限无法忽略</h4><p>能公开就公开，告诉等结果的人；不能就在手机上设倒计时。</p></div>
+      <div class="it acc-t"><span class="lab">04</span><h4>全力冲锋</h4><p>不查邮件、不做白日梦、不来回泡咖啡。开始时每周不超过一次，有把握后再加频率。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r2-3">
+  <div class="wrap">
+    <div class="sh f"><span class="k">2.3</span><h3>有成果的冥想</h3></div>
+    <p class="lede f">在身体忙碌、头脑空闲的时候，比如走路、慢跑、开车、淋浴，把注意力集中到一个定义明确的专业难题上。走神了，就像打坐一样把它拉回来。作者在波士顿读博士后时，每天步行过查尔斯河上下班，上一本书大部分章节的提纲就是这样想出来的。每周两三次即可；他起初试了十几次才有成果，需要耐心。</p>
+    <div class="cols c2 gap2 f">
+      <div class="it"><span class="lab">建议 1</span><h4>小心分心和原地打转</h4><p>大脑会冒出无关但看似更有趣的念头，温柔地提醒自己稍后再想。另一种更隐蔽的阻碍是原地打转：大脑为省能量，反复绕着已知部分转，不肯推进到困难的下一步。</p></div>
+      <div class="it"><span class="lab">建议 2</span><h4>给深度思考搭架构</h4><p>深度思考不会自然发生，需要结构：</p>
+        <div class="loop"><span>考察并记住相关变量</span><i>→</i><span>确定下一步要解决的具体问题</span><i>→</i><span>解决后巩固收获</span><i>↺</i></div>
+        <p class="note" style="margin-top:10px">例：写书时下一步问题可能是“我如何有效的开篇”；做证明时可能是“如果这个性质不成立，那么哪里会出错”。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r2-4">
+  <div class="wrap">
+    <div class="sh f"><span class="k">2.4</span><h3>记住一副牌</h3></div>
+    <p class="lede f">丹尼尔·基洛夫高中时健忘散漫，被诊断为注意力缺失症，训练记忆后 5 分钟能记住一副洗好的牌，还成了一等荣誉毕业生。罗迪格的团队发现：记忆运动员和常人最大的差别不在记忆力，而在“注意力控制”。下面是美国记忆冠军罗恩·怀特的记牌方法。</p>
+    <div class="cols c4 gap2 f">
+      <div class="it acc-t"><span class="lab">01</span><h4>建影像库</h4><p>在脑中依次走过家里 5 个房间，记清每间的样子。</p></div>
+      <div class="it acc-t"><span class="lab">02</span><h4>排 52 件物品</h4><p>每间按顺序记 10 件大件物品（桌子，不要铅笔），再加后院 2 件。</p></div>
+      <div class="it acc-t"><span class="lab">03</span><h4>牌对应形象</h4><p>每张牌配一个难忘的人或物，例如方片 K（方片代表财富）是唐纳德·特朗普。</p></div>
+      <div class="it acc-t"><span class="lab">04</span><h4>走一遍，记一副</h4><p>每遇一件物品看一张牌，想象对应形象在物品旁做件难忘的事，比如特朗普在你家门垫上蹭鞋上的泥。</p></div>
+    </div>
+    <p class="mid gap3 f" style="max-width:860px">记牌本身没什么特别。关键是：<span class="acc">只要你愿意付出努力，就可以提高自己专注的能力。</span></p>
+  </div>
+</section>
+
+<!-- ============ RULE 3 ============ -->
+<section class="divider" id="r3">
+  <div class="wrap">
+    <div class="f">
+      <div class="num">R3</div>
+      <div class="lab">Rule 03 / 04 · 准则 3</div>
+      <h2>远离社交媒体</h2>
+      <div class="en">Quit Social Media</div>
+    </div>
+    <p class="th f">巴拉唐德·瑟斯顿一年里有 59 000 条 Gmail 对话、1500 条脸谱网动态，于是断网 25 天，结束后很快又回到了碎片化状态。作者认为“全戒”和“认命”都不对。第三条路是：这些工具并不全是邪恶的，但要像手艺人挑工具那样，设一个严格的标准。</p>
+    <ol class="idx f">
+      <li><span class="n">3.0</span><a class="t" href="#r3-0">任何益处法 vs 手艺人方法</a><span class="r"></span></li>
+      <li><span class="n">3.1</span><a class="t" href="#r3-1">在网络使用习惯中采用关键少数法则</a><span class="r">80/20</span></li>
+      <li><span class="n">3.2</span><a class="t" href="#r3-2">戒掉社交媒体</a><span class="r">30 天实验</span></li>
+      <li><span class="n">3.3</span><a class="t" href="#r3-3">不要用网络来消遣</a><span class="r">一天中的一天</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="strat" id="r3-0">
+  <div class="wrap">
+    <div class="sh f"><span class="k">3.0</span><h3>两种挑工具的方法</h3></div>
+    <div class="vs f gap1">
+      <div class="bad">
+        <span class="lab">大多数人的默认做法</span>
+        <h4>“任何益处法”</h4>
+        <p class="d">一旦发现使用一款网络工具有任何可能的益处，或者是不使用就可能错过某些事，你就觉得有足够理由使用这款网络工具。</p>
+        <p class="note">忽视了弊端：致瘾，抢走本可用于深度工作的时间和注意力。</p>
+      </div>
+      <div>
+        <span class="lab a">作者的建议</span>
+        <h4>工具选择的手艺人方法</h4>
+        <p class="d">明确在你的职业和个人生活中决定成功与幸福的核心因素。只有一种工具对这些因素的实际益处大于实际害处时才选择这种工具。</p>
+        <p class="note">网络工具和铁匠的锤子、画家的刷子没什么不同，只是工具。</p>
+      </div>
+    </div>
+    <div class="f gap3">
+      <div class="sub-h">农场主佛利斯特·普里查德为什么卖掉干草压捆机</div>
+      <p class="lede" style="margin-bottom:18px">按“任何益处”的逻辑，有免费草场就该自己压干草。普里查德算的账更细：</p>
+      <div class="farm">
+        <div><span class="lab">直接成本</span>燃料、维修、存放机器的棚子、税费</div>
+        <div><span class="lab">机会成本</span>整个夏天晒干草，就没时间养能卖钱、还产粪肥的汽锅鸡</div>
+        <div><span class="lab">买干草的好处</span>用现金换来动物的蛋白和肥料，重机也不会把土地压实</div>
+        <div><span class="lab a">结论</span>“土壤的肥力是我的底线。”于是卖掉了压捆机，干草全部买入。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r3-1">
+  <div class="wrap">
+    <div class="sh f"><span class="k">3.1</span><h3>在网络使用习惯中采用关键少数法则</h3></div>
+    <p class="lede f">马尔科姆·格拉德威尔、迈克尔·路易斯、乔治·派克都不用推特。他们不认为推特没用，只是判断它的好处抵不过坏处。作者把这种判断拆成四步：</p>
+    <div class="cols c4 gap2 f">
+      <div class="it acc-t"><span class="lab">01</span><h4>列高层次目标</h4><p>职业和私人生活各列几个。“一学年发表 6 篇论文”这种太具体。</p></div>
+      <div class="it acc-t"><span class="lab">02</span><h4>每个目标 2–3 个关键活动</h4><p>明确到知道怎么做，又不取决于某个时间点的结果，如“定期阅读并理解我所在领域的最前沿成果”。</p></div>
+      <div class="it acc-t"><span class="lab">03</span><h4>逐个审查工具</h4><p>它对每个关键活动是实质积极、实质消极，还是无影响？</p></div>
+      <div class="it acc-t"><span class="lab">04</span><h4>只留净收益为正的</h4><p>积极影响大于消极影响，才继续使用。</p></div>
+    </div>
+    <div class="cols c2 gap3 f">
+      <div class="it"><span class="lab">书中的推演 · 迈克尔·路易斯</span><h4>目标：写作精美的叙述体故事</h4><p>关键活动：有耐心、有深度地研究；有目的性地认真写作。推特对两者最好是无影响，最坏是实质消极，所以不该用。对不那么有名的作者，作者也算了一笔账：每周 5 天、每天 10 条一对一推文，就算一半人成了忠实读者，两年也只多卖约 2000 本，“最多只能算一个平庸的宣传”。</p></div>
+      <div class="it"><span class="lab">书中的推演 · 脸谱网</span><h4>目标：维持亲密而有益的友谊</h4><p>关键活动：经常花时间与重要的人保持有意义的联系；为重要的人做牺牲。脸谱网的好处真实存在，却都帮不上这两件需要线下投入大量时间的事。但大一新生要广交朋友、海外军人要和家人保持浅度联系，结论就可能相反。</p></div>
+    </div>
+    <p class="mid gap4 f" style="max-width:880px">“在许多情境中，80% 的已知效果源自 20% 的可能原因。”</p>
+    <p class="lede gap1 f">所有活动无论重要与否，都消耗同样的时间和注意力，这是零和博弈。把在脸谱网上找老朋友的时间，换成和一位好朋友共进午餐。</p>
+  </div>
+</section>
+
+<section class="strat" id="r3-2">
+  <div class="wrap">
+    <div class="sh f"><span class="k">3.2</span><h3>戒掉社交媒体</h3></div>
+    <p class="lede f">灵感来自赖安·尼科迪莫斯的“打包派对”：把家当全部装箱，一周后多数箱子没打开过，于是扔掉。社交媒体也照此办理：30 天不用脸谱网、Instagram、Google+、推特、Snapchat、Vine，以及之后新出的同类服务。<b>不删账号，也不在网上宣布</b>，就是悄悄停用。</p>
+    <div class="f gap2">
+      <div class="sub-h">30 天后，对每项服务问两个问题</div>
+      <p class="mid" style="max-width:860px">1. 如果我一直在用这种服务，过去 30 天会过得更好吗？<br>2. 人们是否关心我有没有在用这种服务？</p>
+      <div class="dec">
+        <div class="y"><b>两个都是“否”</b>永久戒掉。</div>
+        <div><b>很确定的“是”</b>重新启用。</div>
+        <div><b>模糊不清</b>自己决定；作者鼓励戒掉，随时可以再加入。</div>
+      </div>
+      <p class="note gap2">不宣布，是为了看清真实情况：写书时推特用户平均有 208 个听众，容易让人以为自己的发言很重要。作者说，对多数人而言，除了亲友，可能没人注意到你没登录。</p>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r3-3">
+  <div class="wrap">
+    <div class="sh f"><span class="k">3.3</span><h3>不要用网络来消遣</h3></div>
+    <p class="lede f">阿诺德·本内特 1910 年在《如何度过一天 24 小时》里描写一个伦敦职员：10 点到 18 点上班，早晚通勤各 50 分钟。他把这 8 小时当成“这一天”，其余只是前奏和尾声。本内特说，工作之外那 16 个多小时应该看成“一天中的一天”。</p>
+    <div class="f gap2">
+      <div class="day24">
+        <div style="flex:8;background:var(--grays);color:var(--ink3)">10:00–18:00 · 上班 8h</div>
+        <div style="flex:16;background:var(--acc);color:var(--onacc)">工作之外 16h+ · 一天中的一天</div>
+      </div>
+      <p class="lede gap2">娱乐网站靠精心雕琢的标题和算法吸引你一直点下去，而且不用登录，前两条策略管不住它们。办法是在晚上和周末到来之前就定好要做的事：有序地读一系列挑好的书、锻炼、和益友面对面交往、安排好的爱好。作者自己同时读 3–5 本书，下班到第二天早上，手机和电脑通常被冷落。</p>
+      <p class="q gap2" style="max-width:760px">人的智力系统可以进行长时间的高强度活动：它不像人的手脚一样会疲倦。除睡觉以外，它只需要变化，而不是停止。<small>阿诺德·本内特</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RULE 4 ============ -->
+<section class="divider" id="r4">
+  <div class="wrap">
+    <div class="f">
+      <div class="num">R4</div>
+      <div class="lab">Rule 04 / 04 · 准则 4</div>
+      <h2>摒弃浮浅</h2>
+      <div class="en">Drain the Shallows</div>
+    </div>
+    <p class="th f">浮浅工作在多数知识工作中免不了，目标是减少它的分量，而不是消除。它的害处常被低估，作用常被高估。每天深度工作最多约 4 小时，8 小时里留一半给浮浅事不算坏事；问题是会议、电话、预约很容易把那 4 小时也吃掉。</p>
+    <ol class="idx f">
+      <li><span class="n">4.1</span><a class="t" href="#r4-1">一天的每一分钟都要做好计划</a><span class="r">半小时方格</span></li>
+      <li><span class="n">4.2</span><a class="t" href="#r4-2">定量分析每一项活动的深度</a><span class="r">毕业生测试</span></li>
+      <li><span class="n">4.3</span><a class="t" href="#r4-3">向老板申请浮浅工作预算</a><span class="r">30%–50%</span></li>
+      <li><span class="n">4.4</span><a class="t" href="#r4-4">5 点半之前结束工作</a><span class="r">固定日程</span></li>
+      <li><span class="n">4.5</span><a class="t" href="#r4-5">变得不容易联系到</a><span class="r">三个邮件技巧</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="strat">
+  <div class="wrap">
+    <div class="cols c2 f">
+      <div class="it"><span class="lab">37signals 的两个实验</span><p>2007 年夏天起，每年 5–10 月每周只工作 4 天，工作量却没少。贾森·弗里德说：“一周 4 天工作制的意义在于做更少的工作”，砍掉的主要是浮浅工作。后来又让员工整个 6 月免去所有浮浅职责、专做自己的项目，路演日上产生了两个迅速投产的项目。“我们怎么能不呢？”</p></div>
+      <div class="it"><span class="lab">作者的一个学期日</span><p>11 点到 12 点、1 点到 2 点半两个会，3 点到 5 点上一节课，8 小时只剩 4 小时。就算把邮件和其他浮浅任务压到半小时，也达不到每天 4 小时深度工作的目标。所以减少浮浅工作的任务十分紧迫。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r4-1">
+  <div class="wrap">
+    <div class="sh f"><span class="k">4.1</span><h3>一天的每一分钟都要做好计划</h3></div>
+    <p class="lede f">我们一天中的大多数时间是在浑浑噩噩中度过的，连自己花了多少时间都估不准：</p>
+    <div class="f gap2"><div class="est" id="est"></div></div>
+    <div class="nb gap3 f">
+      <div>
+        <div class="sub-h">作者的做法</div>
+        <ol class="muted" style="font-size:15px;padding-left:1.2em;margin:0">
+          <li>专门准备一个本子，每个工作日开始时翻开新的一页。</li>
+          <li>左侧每隔一行写一个小时，把整个工作日划成方格，最短半小时一格。</li>
+          <li>零碎小事（回老板的邮件、提交退款单）归进一个“任务方格”，从格子引一条线到右侧逐条列出。</li>
+          <li>日程被打断，就在空下来时花几分钟重排余下的时间。作者划掉旧方格，在右边画新的；一天改十几次也别气馁。</li>
+        </ol>
+        <div class="cols c3 gap2">
+          <div class="it"><span class="lab">诀窍 1</span><p>估得保守些。大多数事要花的时间都比你预想的长。</p></div>
+          <div class="it"><span class="lab">诀窍 2</span><p>留备用方格：超时就用它，没超时就去做非紧急事务，比如查邮箱。</p></div>
+          <div class="it"><span class="lab">诀窍 3</span><p>多留任务方格，上午的方格留得比预计多一些，接住意外事件。</p></div>
+        </div>
+      </div>
+      <div class="page" aria-label="笔记本页面示意">
+        <div class="ph">示意 · 按书中方法画的一页 · 划掉的是旧版</div>
+        <div class="pg" id="nbpage"></div>
+      </div>
+    </div>
+    <p class="lede gap3 f">读者约瑟夫担心这样太死板。作者的回答：计划的目的是谋划周到，不是限制。有灵感、有突破性洞见时，他会把日程抛到一边，跟进到理清头绪，再重排当天剩下的时间。核心是时常问自己：<b>“在今天剩下的时间里，我做什么最有道理？”</b></p>
+  </div>
+</section>
+
+<section class="strat" id="r4-2">
+  <div class="wrap">
+    <div class="sh f"><span class="k">4.2</span><h3>定量分析每一项活动的深度</h3></div>
+    <p class="lede f">有些任务看上去很难或很重要，其实是浮浅的。用一个问题来给它打分：</p>
+    <p class="mid gap1 f" style="max-width:900px">“要让一个刚毕业还没有在该领域接受特别训练的大学生完成这项工作需要多久（几个月）？”</p>
+    <div class="depth gap3 f">
+      <div class="r"><span>和搭档合编要投给期刊的学术文章草稿</span><div class="tr"><i style="width:100%"></i></div><span class="v">50–75 周</span></div>
+      <div class="r sh2"><span>做一份本季度销售量的 PPT</span><div class="tr"><i style="width:12%"></i></div><span class="v">约 2 个月</span></div>
+      <div class="r sh2"><span>参加讨论重要工程进度的会议</span><div class="tr"><i style="width:17%"></i></div><span class="v">约 3 个月</span></div>
+    </div>
+    <p class="note gap2 f">需要很多个月才能上手的，多半是深度工作，单位时间回报更高，还能锻炼你；大学生很快能上手的，可视作浮浅工作，应减少投入。这只是思维实验，不是真让你去雇毕业生。</p>
+  </div>
+</section>
+
+<section class="strat" id="r4-3">
+  <div class="wrap">
+    <div class="sh f"><span class="k">4.3</span><h3>向老板申请浮浅工作预算</h3></div>
+    <p class="lede f">很少有人问：你的时间应该有几成投入到浮浅工作中？去问老板（先跟他解释深度和浮浅的定义）；自己当老板，就问自己。得到答案后，努力控制在预算内。</p>
+    <div class="f gap2">
+      <div class="gauge"><div class="z"></div><span class="acc">更多深度</span><span class="warm">更多浮浅</span></div>
+      <div class="gx"><span style="left:0;transform:none">0%</span><span style="left:30%">30%</span><span style="left:40%;color:var(--warm)">常见答案</span><span style="left:50%">50%</span><span style="left:100%;transform:translateX(-100%)">100%</span></div>
+      <p class="lede gap2">对多数非入门级知识岗位，答案通常在 30%–50%：低于 30%，老板会担心你成了不回邮件的隐士；50% 是天然上限。守预算可能意味着对浮浅项目说不，把每周情况通报会换成结果导向的汇报，在更多早晨屏蔽通讯。拿着“上周浮浅工作的时间占比”去谈，就有了掩护。如果老板说你应该马上做所有需要你马上做的浮浅工作，这也有用：说明这份工作不需要深度，该谋划转岗了。</p>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r4-4">
+  <div class="wrap">
+    <div class="sh f"><span class="k">4.4</span><h3>5 点半之前结束工作</h3></div>
+    <p class="lede f">作者称之为“固定日程生产力”：定死某个时间后不再工作，再倒推找办法在这之前完成。写这一段前的 7 天里，他有 65 组邮件对话，5 点半后只发了 5 封。</p>
+    <div class="cols c3 gap2 f">
+      <div class="it warm-t"><span class="lab">反例 · “汤姆”</span><h4>12 小时只有 1.5 小时真正的工作</h4><p>一位年轻教授贴出的日程：5 个会议、3 小时行政事务。他接受了周末也工作，认为“没有几个年轻老师可以避免这种命运”。</p></div>
+      <div class="it acc-t"><span class="lab">正例 · 拉蒂卡·纳帕尔</span><h4>每周最多 50 小时</h4><p>给浮浅事设硬配额：每年最多出差 5 次（初级教员常见 12–24 次），还限制每年读论文的数量。照样拿到终身教职，三年后成为正教授，研究登上《科学》封面。</p></div>
+      <div class="it acc-t"><span class="lab">作者 · 2011–2014</span><h4>晚上不工作，约 20 篇论文</h4><p>同期还拿了两个奖、出版一本书，写完了这一本。时间有限，迫使他谨慎说“是”，也逼着他做精巧的计划。</p></div>
+    </div>
+    <div class="f gap3">
+      <div class="sub-h">拒绝的技巧：明确拒绝，理由模糊</div>
+      <p class="lede">不给对方否定具体理由的机会，也忍住用“我可以帮你看看企划书”来安抚，那往往一样占时间。书中的说法：</p>
+      <p class="mid gap1" style="max-width:860px">“听起来很有趣，但是我的行程有冲突，恐怕参加不了。”</p>
+      <p class="note gap2">固定日程让你进入稀缺思维：任何深度之外的职责都变得可疑，默认答案变成“不”。作者说，如果只选一种行为来重新确立深度工作的方向，它应该排在备选单的前几位。</p>
+    </div>
+  </div>
+</section>
+
+<section class="strat" id="r4-5">
+  <div class="wrap">
+    <div class="sh f"><span class="k">4.5</span><h3>变得不容易联系到</h3></div>
+    <p class="lede f">约翰·弗里曼在《电邮的暴政》里提醒：我们几乎忘了自己有权重新安排工作日。作者给出三个处理电子邮件的技巧。</p>
+    <div class="cols c3 gap2 f">
+      <div class="it"><span class="lab">贴士 1</span><h4>让发邮件给你的人多做工作</h4><p>“发件人过滤器”：作者网站不留通用邮箱，版权找文学经纪人，演讲找演讲经纪人，另有一个特殊情况邮箱，并写明只回复符合日程或个人兴趣的邮件。克莱·赫伯特要求先看常见问题、填问卷、付一小笔费用；安东尼奥·森特诺要求勾选三项承诺。</p></div>
+      <div class="it"><span class="lab">贴士 2</span><h4>收发邮件时多做些工作</h4><p>回复前先问：“这条信息指向哪一个项目，成功完成项目的最有效流程（就产生的信息数量而言）是什么？”然后把整个流程写进回信：当前在哪一步、接下来怎么走。约咖啡就直接给出两天各三个时段，回复即确认。</p></div>
+      <div class="it"><span class="lab">贴士 3</span><h4>不要回复</h4><p>麻省理工许多知名学者的默认做法：让收件人相信邮件值得一读，是发件人的责任。出现以下任何一点就不回：</p>
+        <ul><li>含混不清，很难合理回复</li><li>你对问题或提议不感兴趣</li><li>回了没好结果，不回也没坏结果</li></ul>
+      </div>
+    </div>
+    <div class="mail gap3 f">
+      <div><span class="lab">多半得不到回复</span>教授好。我想有机会过来拜访您，讨论一下“课题甲”。您有空吗？</div>
+      <div><span class="lab a">更可能得到回复</span>教授好。我正在与我的导师“乙教授”开展一个与“课题甲”类似的项目。请问我可以在周四您办公时间的最后 15 分钟拜访您吗？届时可以向您更详细地介绍我们的进展，并探讨这些是否对您当前的项目有所裨益？</div>
+    </div>
+    <p class="note gap2 f">蒂姆·菲利斯：“培养允许坏的小事发生的习惯。否则，你将永远发现不了改变命运的大事。”</p>
+  </div>
+</section>
+
+<!-- ============ CONCLUSION ============ -->
+<section class="divider" id="end">
+  <div class="wrap">
+    <div class="f">
+      <div class="num">END</div>
+      <div class="lab">Conclusion · 结论</div>
+      <h2>深度远比想象的强大</h2>
+    </div>
+    <p class="th f">1974 年冬天，比尔·盖茨用 8 个星期为“牵牛星”电脑写出 BASIC，常常写着写着睡倒在键盘上。保罗·艾伦称之为“专注力的惊人之举”。作者强调：深度工作重要，不是因为分心是邪恶的，而是因为它能让盖茨在一个学期里创立起 10 亿美元的产业。</p>
+  </div>
+</section>
+
+<section class="strat">
+  <div class="wrap">
+    <div class="cols c2 f">
+      <div>
+        <div class="sub-h">作者自己的“深度之年”</div>
+        <p class="lede">2013 年秋到 2014 年夏：写这本书、准备终身教职申请、一项著名拨款被拒、和太太准备迎接第二个孩子。他果决地拒绝耗时的约会，在办公桌旁放计分板，遛狗、铲雪、堵车时都在想问题，坚持晚上不工作。</p>
+        <div class="papers gap2">
+          <div class="r"><span>研究生期间</span><div class="b" style="width:22%">2 篇/年</div></div>
+          <div class="r"><span>成为教授后</span><div class="b" style="width:44%">平均 4 篇/年</div></div>
+          <div class="r"><span>深度之年</span><div class="b" style="width:100%">9 篇同行审评文章</div></div>
+        </div>
+        <p class="note gap1">他也承认这一年或许过于激进，十分消耗脑力，以后会缓和强度。</p>
+      </div>
+      <div>
+        <div class="sub-h">深度的生活并不适合所有人</div>
+        <p class="lede">它需要艰苦的努力，从根本上改变习惯。快速收发邮件、在社交媒体上发消息带来的繁忙假象让人安心；全力去做一件美好的事，却会逼你面对自己最好的成果（暂时）还没那么好的可能。</p>
+        <p class="lede">但如果你愿意跨过这些舒适区和恐惧，将头脑发挥到极致，你会像前人一样发现，深度能造就富有效率和意义的生活。</p>
+        <p class="q gap2">我将活出专注的人生，因为这是最好的选择。<small>加拉格尔 · 作者以此收尾</small></p>
+      </div>
+    </div>
+    <details class="toc gap4 f">
+      <summary>全书章节一览 · 前言 / 3 章 / 4 条准则 / 结论</summary>
+      <div class="toc-b">
+        <h5>前言</h5>
+        <div class="ch"><b>荣格的伯林根塔楼</b><span>提出深度工作与浮浅工作的定义、深度工作假设；杰森·本从“人工电子数据表制作员”转型程序员的故事。</span></div>
+        <h5>第一部分 · 理论</h5>
+        <div class="ch"><b>1 深度工作是有价值的</b><span>高级技术工人、超级明星、所有者；两种核心能力；刻意练习与髓磷脂；注意力残留与生产力公式；杰克·多西这类例外。</span></div>
+        <div class="ch"><b>2 深度工作是少见的</b><span>度量黑洞；最小阻力原则；忙碌代表生产能力；对互联网的顶礼膜拜；对生意是坏事，对个人是好事。</span></div>
+        <div class="ch"><b>3 深度工作是有意义的</b><span>从神经学、心理学、哲学三个角度论证深度与意义的联系；深度智人。</span></div>
+        <h5>第二部分 · 准则</h5>
+        <div class="ch"><b>准则 1 工作要深入</b><span>选定你的深度哲学；习惯化；要有大手笔；不要独自工作；像经商一样执行；图安逸。</span></div>
+        <div class="ch"><b>准则 2 拥抱无聊</b><span>不要不断分心，而要不断专注；像罗斯福一样工作；有成果的冥想；记住一副牌。</span></div>
+        <div class="ch"><b>准则 3 远离社交媒体</b><span>在网络使用习惯中采用关键少数法则；戒掉社交媒体；不要用网络来消遣。</span></div>
+        <div class="ch"><b>准则 4 摒弃浮浅</b><span>一天的每一分钟都要做好计划；定量分析每一项活动的深度；向老板申请浮浅工作预算；5 点半之前结束工作；变得不容易联系到。</span></div>
+        <h5>结论</h5>
+        <div class="ch"><b>盖茨与作者的深度之年</b><span>深度工作远比大多数人所了解的强大；深度的生活不适合所有人，但能造就富有效率和意义的生活。</span></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section id="quotes" style="border-top:1px solid var(--line)">
+  <div class="wrap" style="padding-top:12vh">
+    <div class="lab f">Quotes · 金句 · 原文逐字</div>
+  </div>
+  <div class="wrap" id="qlist"></div>
+</section>
+
+<!-- ============ TOOL ============ -->
+<section class="divider" id="tool" style="min-height:0;padding:14vh 0 12vh">
+  <div class="wrap">
+    <div class="f">
+      <div class="lab">Tool · 小工具</div>
+      <h2 style="font-size:clamp(34px,5vw,58px)">深度工作计时 · 时段规划</h2>
+    </div>
+    <p class="th f" style="margin-top:24px">按准则 4 把今天划成方格，按准则 1 计时并记进计分板。计时一段只做一件事：不查邮件，不上网。数据只保存在本机浏览器。</p>
+
+    <div class="f gap3">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-p="timer" aria-selected="true">01 计时</button>
+        <button class="tab" role="tab" data-p="plan" aria-selected="false">02 时段规划</button>
+        <button class="tab" role="tab" data-p="week" aria-selected="false">03 本周计分板</button>
+      </div>
+
+      <!-- timer -->
+      <div class="pane on" id="pane-timer">
+        <div class="timer" id="timerBox">
+          <div class="ring">
+            <svg viewBox="0 0 200 200"><circle class="bg" cx="100" cy="100" r="94"/><circle class="fg" id="tRing" cx="100" cy="100" r="94"/></svg>
+            <div class="ctr"><div class="tm" id="tTime">90:00</div><div class="st" id="tState">准备开始</div><div class="tk" id="tTask"></div></div>
+          </div>
+          <div>
+            <span class="lab">这一段只做一件事</span>
+            <input class="inp" id="tLabel" maxlength="40" placeholder="例如：写论文第 3 节的证明">
+            <div class="row gap2">
+              <span class="lab" style="margin-right:4px">时长</span>
+              <button class="btn" data-dur="60">60′</button>
+              <button class="btn sel" data-dur="90">90′</button>
+              <button class="btn" data-dur="120">120′</button>
+              <select class="inp" id="tCustom" aria-label="自定义时长"><option value="">自定义</option></select>
+            </div>
+            <div class="row gap2">
+              <button class="btn pri" id="tStart">开始</button>
+              <button class="btn" id="tStop">结束并记录</button>
+              <button class="btn" id="tReset">重置</button>
+            </div>
+            <div class="msg" id="tMsg"></div>
+            <div class="rules"><b>为什么默认 90 分钟：</b>布莱恩·查普尔认定深度工作至少要 90 分钟一段，因为进入专注需要时间；“极乐机”的深度工作室也按 90 分钟工作、90 分钟休息循环。<br><b>计时中：</b>离线时段，不查邮件、不上网；真要上网，先换别的离线工作，或至少再等 5 分钟。</div>
+            <div class="log" id="tLog"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- planner -->
+      <div class="pane" id="pane-plan">
+        <div class="plan">
+          <div>
+            <div class="row" style="margin-bottom:16px">
+              <span class="lab">工作日</span><select class="inp" id="pStart"></select><span class="dim3">–</span><select class="inp" id="pEnd"></select>
+              <span class="lab" style="margin-left:auto">浮浅预算</span>
+              <select class="inp" id="pBudget"><option value="30">30%</option><option value="40" selected>40%</option><option value="50">50%</option></select>
+            </div>
+            <div class="tchips">
+              <button class="btn sel" data-t="d">深度</button>
+              <button class="btn" data-t="s">浮浅 / 任务</button>
+              <button class="btn" data-t="r">午饭 / 休息</button>
+              <button class="btn" data-t="b">备用</button>
+            </div>
+            <div class="row gap1">
+              <input class="inp" id="pLabel" maxlength="40" placeholder="方格里写什么" style="flex:1;min-width:160px">
+              <button class="btn pri" id="pAdd">放进方格</button>
+            </div>
+            <div class="hint" id="pHint"></div>
+            <div class="msg" id="pMsg"></div>
+            <div class="planner gap1">
+              <div class="vers" id="pVers"></div>
+              <div class="cur"><div class="vh" id="pCurH">当前计划</div><div class="grid" id="pGrid"></div></div>
+            </div>
+            <div class="row gap2">
+              <button class="btn" id="pRev">改计划 · 旧版划掉保留</button>
+              <button class="btn" id="pClear" style="margin-left:auto">清空今天</button>
+            </div>
+          </div>
+          <div>
+            <div class="pstats">
+              <div class="stat a"><div class="v" id="sDeep">0</div><div class="k">深度工作 · 小时</div></div>
+              <div class="stat w"><div class="v" id="sShal">0</div><div class="k">浮浅工作 · 小时</div></div>
+              <div class="stat w"><div class="v" id="sRatio">–</div><div class="k">浮浅占比（深度 + 浮浅中）</div></div>
+              <div class="stat"><div class="v" id="sFree">0</div><div class="k">还没安排 · 小时</div></div>
+            </div>
+            <div class="warn" id="pWarn"></div>
+            <p class="note">深度方格右上角的 ▶ 会把这一段送进计时器。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- week -->
+      <div class="pane" id="pane-week">
+        <div class="score">
+          <div>
+            <div class="row" style="margin-bottom:12px">
+              <span class="mid" id="scWeek" style="font-size:22px;margin-right:auto">本周</span>
+              <button class="btn" id="scPrev">‹ 上周</button>
+              <button class="btn" id="scNext">下周 ›</button>
+            </div>
+            <div id="scRows"></div>
+            <p class="hint">每条竖线 = 1 小时深度工作（短线 = 半小时）。计时结束会自动记入；+ / − 手动增减 1 小时；点竖线画圈，标记取得重要进展的那一小时。</p>
+          </div>
+          <div>
+            <div class="pstats">
+              <div class="stat a"><div class="v" id="scTotal">0</div><div class="k">本周深度工作 · 小时</div></div>
+              <div class="stat w"><div class="v" id="scMs">0</div><div class="k">画圈 · 重要进展</div></div>
+            </div>
+            <div class="hist" id="scHist"></div>
+            <div class="lab gap3">今天的停工仪式</div>
+            <ul class="shut" id="shut"></ul>
+            <div class="done" id="shutDone"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TODO ============ -->
+<section id="todo" style="border-top:1px solid var(--line);padding:14vh 0 10vh">
+  <div class="wrap">
+    <div class="f">
+      <div class="lab">Start Here · 可执行清单</div>
+      <h2 style="font-size:clamp(34px,5vw,58px);font-weight:200;margin:14px 0 36px">从明天开始</h2>
+    </div>
+    <div class="cprog f"><div class="tr"><div class="fl" id="cfill"></div></div><div class="tx" id="ctxt">00 / 14</div></div>
+    <ul class="chk f" id="check"></ul>
+  </div>
+</section>
+
+<button class="fab" id="howBtn" aria-haspopup="dialog" aria-controls="how">我要怎么做？<span class="dot" id="howDot"></span></button>
+<div class="ov" id="howOv"></div>
+<aside class="drawer" id="how" role="dialog" aria-modal="true" aria-labelledby="howT" aria-hidden="true">
+  <div class="dh">
+    <div class="top">
+      <div><span class="lab">落地路线 · 只用书里的方法</span><h3 id="howT">我要怎么做？</h3></div>
+      <button class="dx-close" id="howClose" aria-label="关闭">×</button>
+    </div>
+    <div class="dprog"><div class="tr"><div class="fl" id="howFill"></div></div><span class="tx" id="howTxt">0 / 0</span></div>
+    <div class="seg" role="group" aria-label="选择深度哲学" id="howSeg">
+      <button data-ph="monastic">禁欲主义</button><button data-ph="bimodal">双峰</button><button data-ph="rhythmic">节奏</button><button data-ph="journalistic">新闻记者</button>
+    </div>
+  </div>
+  <div class="db" id="howBody"></div>
+</aside>
+
+<footer>
+  <div class="wrap">
+    根据卡尔·纽波特《深度工作：如何有效使用每一点脑力》（宋伟 译）全文整理，内容均出自原书。<br>
+    清单、计时记录、时段规划和计分板只保存在本机浏览器 · 默认深色，右上角可切换浅色与聚焦模式。
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const pad=n=>(n<10?'0':'')+n;
+const ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const mm=m=>Math.floor(m/60)+':'+pad(m%60);
+function load(k,def){try{const v=JSON.parse(localStorage.getItem(k));return v==null?def:v}catch(e){return def}}
+function store(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const today=new Date();
+
+/* ---------- theme & focus ---------- */
+const root=document.documentElement;
+function syncTheme(){$('themeBtn').textContent=root.dataset.theme==='light'?'深色':'浅色'}
+$('themeBtn').onclick=()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('dw-theme',root.dataset.theme)}catch(e){};syncTheme()};
+syncTheme();
+let focusOn=load('dw-focus',true);
+if(/focus=off/.test(location.search))focusOn=false;
+function syncFocus(){document.body.classList.toggle('focus',focusOn);$('focusBtn').setAttribute('aria-pressed',focusOn);$('focusBtn').textContent=focusOn?'聚焦 开':'聚焦 关';upd()}
+$('focusBtn').onclick=()=>{focusOn=!focusOn;store('dw-focus',focusOn);syncFocus()};
+
+/* ---------- static visuals ---------- */
+const PH=[
+ ["禁欲主义","克努特 · 斯蒂芬森","几乎每个工作日都整块投入深度，浮浅事务压到最少，信件按季度批量处理。",
+  [[[8,18,'d']],[[8,18,'d']],[[8,18,'d']],[[8,18,'d']],[[8,18,'d']],[],[]]],
+ ["双峰","荣格 · 格兰特","深度时段至少一整天。以按周划分为例：4 天彻底闭关，其余时间开放、易于联系。",
+  [[[8,19,'d']],[[8,19,'d']],[[8,19,'d']],[[8,19,'d']],[[9,18,'s']],[[10,16,'s']],[[10,14,'s']]]],
+ ["节奏","宋飞 · 查普尔","每天同一时间开工。查普尔 5:30（后来 4:45）写到 7:30，再去上全职的班。",
+  [[[5,7.5,'d'],[9,17,'s']],[[5,7.5,'d'],[9,17,'s']],[[5,7.5,'d'],[9,17,'s']],[[5,7.5,'d'],[9,17,'s']],[[5,7.5,'d'],[9,17,'s']],[],[]]],
+ ["新闻记者","艾萨克森 · 作者","哪里有空闲就插进深度：孩子睡着、会议取消、周末有人帮忙带孩子时。",
+  [[[9,17,'s'],[14,15.5,'d']],[[9,17,'s'],[20,21,'d']],[[9,17,'s'],[10,11,'d']],[[9,17,'s'],[15.5,17,'d']],[[9,17,'s']],[[13,15,'d']],[[9,10,'d'],[20,21,'d']]]]
+];
+(function(){const H0=5,HS=16;
+$('phil').innerHTML=PH.map(p=>{
+  const days=p[3].map(d=>`<div class="day">${d.map(s=>`<i class="${s[2]}" style="top:${(s[0]-H0)/HS*100}%;height:${(s[1]-s[0])/HS*100}%"></i>`).join('')}</div>`).join('');
+  return `<div class="prow"><div class="pn"><b>${p[0]}</b><span>${p[1]}</span></div><div><div class="week">${days}</div><div class="wkl"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div></div><div class="pd">${p[2]}</div></div>`;
+}).join('');})();
+
+(function(){
+  const s=7,e=13,W=e-s,fh=h=>Math.floor(h)+':'+pad(Math.round((h%1)*60));
+  const seg=[[7,8,'w','起床 · 散步 · 独自早餐',''],[8,9.5,'d','书房工作',''],[9.5,10.5,'s','拆阅前一天的信件',''],[10.5,12,'d','回书房工作',''],[12,13,'w open','沿既定路线散步思考','12:00–想出答案为止']];
+  $('darwin').innerHTML=seg.map(x=>`<div class="${x[2]}" style="left:${(x[0]-s)/W*100}%;width:calc(${(x[1]-x[0])/W*100}% - 2px)">${x[3]}<small>${x[4]||fh(x[0])+'–'+fh(x[1])}</small></div>`).join('');
+  $('darwinAx').innerHTML=[7,8,9,10,11,12].map(h=>`<span style="left:${(h-s)/W*100}%">${pad(h)}:00</span>`).join('');
+})();
+
+(function(){
+  const cx=200,cy=150;let L='',S='';
+  for(let i=0;i<6;i++){
+    const a=-Math.PI/2+i*Math.PI/3,x=cx+148*Math.cos(a),y=cy+112*Math.sin(a);
+    L+=`<line class="s-ln" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`;
+    S+=`<rect class="s-sp" x="${x-34}" y="${y-16}" width="68" height="32" rx="3"/><rect class="s-in" x="${x-27}" y="${y-9}" width="8" height="18" rx="1"/><text x="${x+7}" y="${y+4}" text-anchor="middle" class="s-ta">深度</text>`;
+  }
+  $('hubLines').innerHTML=L;$('hubSpokes').innerHTML=S;
+})();
+
+$('ib').innerHTML=Array.from({length:6},()=>'<span class="off">离线 15′</span><span class="on">网 5′</span>').join('');
+
+(function(){
+  const E=[["英国 25–34 岁 · 每周看电视","自估 15–16h",16,"实测 28h 以上",28,30],
+           ["美国人 · 每晚睡眠","自估 7h",7,"实际 8.6h",8.6,10],
+           ["自称每周工作 60–64 小时","自称 60–64h",62,"实际约 44h",44,75],
+           ["自称每周工作 75 小时","自称 75h",75,"实际约 55h",55,75]];
+  $('est').innerHTML=E.map(e=>`<div class="r"><span>${e[0]}</span><div class="bars"><div class="bb gu" style="width:${e[2]/e[5]*100}%">${e[1]}</div><div class="bb re" style="width:${e[4]/e[5]*100}%">${e[3]}</div></div></div>`).join('')+'<p class="note" style="margin:0">电视数据来自英国电视证照管理局的调查和广播公司观众调查委员会的计量装置；其余几项见劳拉·范·卡姆在《华尔街日报》的文章。</p>';
+})();
+
+(function(){
+  const rows=['9:00','','10:00','','11:00','','12:00','','13:00','','14:00',''];
+  const old=[[0,4,'新闻宣传稿','dp'],[4,2,'备用：续写 / 查邮箱','bf'],[6,2,'午饭',''],[8,2,'任务方格',''],[10,2,'头脑风暴','dp']];
+  const neu=[[4,1,'新闻宣传稿（续）','dp'],[5,1,'临时插进的新任务',''],[6,2,'午饭',''],[8,2,'任务方格',''],[10,2,'头脑风暴','dp']];
+  const side=[[8,'回老板的电子邮件'],[9,'提交退款单'],[10,'问卡尔报告的情况']];
+  const g=`display:grid;grid-template-rows:repeat(${rows.length},26px)`;
+  const col=(a,c)=>`<div class="${c}" style="${g}">`+a.map(b=>`<div class="blk ${b[3]}" style="grid-row:${b[0]+1}/span ${b[1]}">${b[2]}</div>`).join('')+'</div>';
+  $('nbpage').innerHTML=`<div style="${g}">`+rows.map(r=>`<div class="tm">${r}</div>`).join('')+'</div>'+col(old,'old')+col(neu,'new')+`<div class="side" style="${g}">`+side.map(s=>`<div style="grid-row:${s[0]+1}">${s[1]}</div>`).join('')+'</div>';
+})();
+
+/* ---------- quotes ---------- */
+const Q=[
+ ["深度的生活才是优质生活。","前言"],
+ ["如果你无法学习，就无法成功。","第 1 章"],
+ ["如果你不产出，就不会成功，不管你的技艺多么纯熟，天资多么聪颖。","第 1 章"],
+ ["你不需要一种稀缺的工作，你需要的是用世间少有的方式完成工作。","第 3 章"],
+ ["伟大的创造性头脑如艺术家般思考，却如会计般工作。","准则 1 · 引大卫·布鲁克斯"],
+ ["有时想要做到深入，必须先要做大。","准则 1 · 要有大手笔"],
+ ["工作时，努力工作。完成时，就放松下来。","准则 1 · 图安逸"],
+ ["我们说深度工作是重要的，不是因为分心是邪恶的，而是因为深度工作能够使比尔·盖茨在一个学期创立起 10 亿美元的产业。","结论"]
+];
+$('qlist').innerHTML=Q.map((q,i)=>`<div class="quote f"><span class="qn">${pad(i+1)} / ${pad(Q.length)}</span><p>“${q[0]}”</p><span class="lab">${q[1]}</span></div>`).join('');
+
+/* ---------- tabs ---------- */
+function showTab(p){document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.p===p));document.querySelectorAll('.pane').forEach(x=>x.classList.toggle('on',x.id==='pane-'+p));}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>showTab(t.dataset.p));
+{const m=location.search.match(/tab=(\w+)/);if(m)showTab(m[1]);}
+
+/* ---------- scoreboard (shared) ---------- */
+const SK='dw-score-v2';let SC=load(SK,{}),wOff=0;
+function monday(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-(x.getDay()+6)%7);return x}
+function weekOf(d){const k=ymd(monday(d));if(!SC[k])SC[k]=Array.from({length:7},()=>({m:0,ms:[]}));return SC[k]}
+function addMinutes(d,min){const w=weekOf(d);w[(d.getDay()+6)%7].m=Math.max(0,w[(d.getDay()+6)%7].m+min);store(SK,SC);renderS()}
+const DN=['周一','周二','周三','周四','周五','周六','周日'];
+function renderS(){
+  const m=monday(today);m.setDate(m.getDate()+wOff*7);const key=ymd(m);
+  const wk=SC[key]||Array.from({length:7},()=>({m:0,ms:[]}));
+  const end=new Date(m);end.setDate(end.getDate()+6);
+  $('scWeek').textContent=(wOff===0?'本周 · ':wOff===-1?'上周 · ':'')+`${m.getMonth()+1}/${m.getDate()} – ${end.getMonth()+1}/${end.getDate()}`;
+  $('scRows').innerHTML=wk.map((d,i)=>{
+    const dd=new Date(m);dd.setDate(dd.getDate()+i);const isT=ymd(dd)===ymd(today);
+    const full=Math.floor(d.m/60),half=d.m%60>=30;
+    let mk='';for(let j=0;j<full;j++)mk+=`<button class="mk ${d.ms.includes(j)?'ms':''}" data-d="${i}" data-j="${j}" title="${d.ms.includes(j)?'取消画圈':'画圈：这一小时取得了重要进展'}" aria-label="第 ${j+1} 小时"></button>`;
+    if(half)mk+='<span class="mk half" aria-hidden="true"></span>';
+    return `<div class="srow ${isT?'today':''}"><div class="dl">${DN[i]}<small>${dd.getMonth()+1}/${dd.getDate()}${isT?' · 今天':''}</small></div><div class="marks">${mk}</div><div class="hrs">${d.m?(Math.round(d.m/6)/10)+'h':''}</div><div class="sb"><button data-sub="${i}" title="减 1 小时">−</button><button data-add="${i}" title="加 1 小时">+</button></div></div>`;
+  }).join('');
+  const tot=wk.reduce((a,d)=>a+d.m,0)/60,ms=wk.reduce((a,d)=>a+d.ms.filter(j=>j<Math.floor(d.m/60)).length,0);
+  $('scTotal').textContent=Math.round(tot*10)/10;$('scMs').textContent=ms;
+  const hs=[];for(let k=7;k>=0;k--){const x=new Date(m);x.setDate(x.getDate()-k*7);const w=SC[ymd(x)];hs.push([x,w?w.reduce((a,d)=>a+d.m,0)/60:0,k===0])}
+  const mx=Math.max(5,...hs.map(h=>h[1]));
+  $('scHist').innerHTML=hs.map(h=>`<div class="${h[2]?'cw':''}"><span>${h[1]?Math.round(h[1]*10)/10:''}</span><i style="height:${h[1]/mx*80}px"></i>${h[0].getMonth()+1}/${h[0].getDate()}</div>`).join('');
+  $('scNext').disabled=wOff>=0;
+}
+$('scRows').addEventListener('click',e=>{
+  const m=monday(today);m.setDate(m.getDate()+wOff*7);const wk=weekOf(m),t=e.target.closest('button');if(!t)return;
+  if(t.dataset.add!==undefined){const d=wk[+t.dataset.add];if(d.m<16*60)d.m+=60}
+  else if(t.dataset.sub!==undefined){const d=wk[+t.dataset.sub];d.m=Math.max(0,d.m-60);d.ms=d.ms.filter(j=>j<Math.floor(d.m/60))}
+  else if(t.dataset.j!==undefined){const d=wk[+t.dataset.d],j=+t.dataset.j,ix=d.ms.indexOf(j);ix<0?d.ms.push(j):d.ms.splice(ix,1)}
+  store(SK,SC);renderS();
+});
+$('scPrev').onclick=()=>{wOff--;renderS()};
+$('scNext').onclick=()=>{if(wOff<0){wOff++;renderS()}};
+
+// shutdown ritual
+const SHUT=['最后看一眼收件箱，没有要紧急回复的','新任务都已转进任务列表','浏览过每个清单里的每一项任务','看过接下来几天的日程','定好了明天的大概计划'];
+const SHK='dw-shut-'+ymd(today);let shut=load(SHK,[]);
+function renderShut(){
+  $('shut').innerHTML=SHUT.map((s,i)=>`<li><label><input type="checkbox" data-i="${i}" ${shut.includes(i)?'checked':''}>${s}</label></li>`).join('');
+  $('shutDone').textContent=shut.length===SHUT.length?'停工完成。':'';
+}
+$('shut').addEventListener('change',e=>{const i=+e.target.dataset.i;shut=e.target.checked?[...new Set([...shut,i])]:shut.filter(x=>x!==i);store(SHK,shut);$('shutDone').textContent=shut.length===SHUT.length?'停工完成。':''});
+renderShut();
+
+/* ---------- timer ---------- */
+const TK='dw-timer-v1',LK='dw-sess-'+ymd(today);
+let T=load(TK,{dur:90,remain:90*60000,run:false,endAt:0,label:''});
+let sess=load(LK,[]);
+const RING=2*Math.PI*94;$('tRing').style.strokeDasharray=RING;
+(function(){let o='<option value="">自定义</option>';for(let m=15;m<=240;m+=15)o+=`<option value="${m}">${m}′</option>`;$('tCustom').innerHTML=o})();
+$('tLabel').value=T.label||'';
+function fmt(ms){ms=Math.max(0,ms);const s=Math.ceil(ms/1000);return pad(Math.floor(s/60))+':'+pad(s%60)}
+function remainNow(){return T.run?T.endAt-Date.now():T.remain}
+function drawT(){
+  const r=remainNow(),tot=T.dur*60000;
+  $('tTime').textContent=fmt(r);
+  $('tRing').style.strokeDashoffset=RING*(1-Math.max(0,Math.min(1,r/tot)));
+  $('tState').textContent=T.run?'离线 · 专注中':(r<tot?'已暂停':'准备开始');
+  $('tTask').textContent=T.label||'';
+  $('tStart').textContent=T.run?'暂停':(r<tot?'继续':'开始');
+  $('timerBox').classList.toggle('run',T.run);
+  document.querySelectorAll('[data-dur]').forEach(b=>b.classList.toggle('sel',+b.dataset.dur===T.dur));
+  document.title=T.run?fmt(r)+' · '+(T.label||'深度工作'):'深度工作 · 一页读懂';
+}
+function setDur(m){if(T.run)return;T.dur=m;T.remain=m*60000;store(TK,T);drawT()}
+document.querySelectorAll('[data-dur]').forEach(b=>b.onclick=()=>{setDur(+b.dataset.dur);$('tCustom').value=''});
+$('tCustom').onchange=e=>{if(e.target.value)setDur(+e.target.value)};
+$('tLabel').oninput=e=>{T.label=e.target.value.trim();store(TK,T);drawT()};
+$('tStart').onclick=()=>{
+  if(T.run){T.remain=T.endAt-Date.now();T.run=false}
+  else{if(T.remain<=0)T.remain=T.dur*60000;T.endAt=Date.now()+T.remain;T.run=true;$('tMsg').textContent=''}
+  store(TK,T);drawT();
+};
+function finish(auto){
+  const used=Math.round((T.dur*60000-Math.max(0,remainNow()))/60000);
+  T.run=false;T.remain=T.dur*60000;store(TK,T);
+  if(used>=1){
+    const n=new Date();sess.push({t:pad(n.getHours())+':'+pad(n.getMinutes()),l:T.label||'深度工作',m:used});store(LK,sess);
+    addMinutes(n,used);
+    $('tMsg').textContent=(auto?'时间到。':'')+`已记录 ${used} 分钟深度工作到本周计分板。`;
+    if(auto)beep();
+  }else $('tMsg').textContent='不足 1 分钟，没有记录。';
+  drawT();drawLog();
+}
+$('tStop').onclick=()=>{if(T.run||T.remain<T.dur*60000)finish(false);else $('tMsg').textContent='还没开始计时。'};
+$('tReset').onclick=()=>{T.run=false;T.remain=T.dur*60000;store(TK,T);$('tMsg').textContent='';drawT()};
+function drawLog(){
+  const tot=sess.reduce((a,s)=>a+s.m,0);
+  $('tLog').innerHTML=sess.length?`<span class="lab">今天 · ${Math.floor(tot/60)}h ${tot%60}m</span>`+sess.slice().reverse().map(s=>`<div class="li"><span class="mono">${s.t}</span><span>${esc(s.l)}</span><span class="mono">${s.m}′</span></div>`).join(''):'';
+}
+function beep(){try{const A=new (window.AudioContext||window.webkitAudioContext)();[0,.35,.7].forEach(d=>{const o=A.createOscillator(),g=A.createGain();o.frequency.value=660;o.connect(g);g.connect(A.destination);g.gain.setValueAtTime(.0001,A.currentTime+d);g.gain.exponentialRampToValueAtTime(.18,A.currentTime+d+.02);g.gain.exponentialRampToValueAtTime(.0001,A.currentTime+d+.28);o.start(A.currentTime+d);o.stop(A.currentTime+d+.3)})}catch(e){}}
+setInterval(()=>{if(T.run){if(T.endAt-Date.now()<=0)finish(true);else drawT()}},500);
+drawT();drawLog();
+
+/* ---------- planner ---------- */
+const PK='dw-plan-'+ymd(today),ROW=26,TN={d:'深度',s:'浮浅',r:'休息',b:'备用'};
+let P=load(PK,{start:480,end:1050,blocks:[],versions:[],budget:40});
+let sel=null,drag=false,curT='d';
+(function(){let a='',b='';for(let m=300;m<=660;m+=30)a+=`<option value="${m}">${mm(m)}</option>`;for(let m=900;m<=1380;m+=30)b+=`<option value="${m}">${mm(m)}</option>`;
+  $('pStart').innerHTML=a;$('pEnd').innerHTML=b;$('pStart').value=P.start;$('pEnd').value=P.end;$('pBudget').value=P.budget||40;})();
+const saveP=()=>store(PK,P);
+$('pStart').onchange=e=>{P.start=+e.target.value;sel=null;saveP();renderP()};
+$('pEnd').onchange=e=>{P.end=+e.target.value;sel=null;saveP();renderP()};
+$('pBudget').onchange=e=>{P.budget=+e.target.value;saveP();renderP()};
+document.querySelectorAll('.tchips .btn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tchips .btn').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');curT=b.dataset.t});
+function renderP(){
+  const n=(P.end-P.start)/30,g=$('pGrid');g.style.height=n*ROW+'px';
+  let h='';
+  for(let i=0;i<n;i++){const m=P.start+i*30,isH=m%60===0;h+=`<div class="gr ${isH?'':'half'}" style="top:${i*ROW}px;height:${ROW}px">${isH?mm(m):''}</div>`}
+  P.blocks.slice().sort((x,y)=>x.s-y.s).forEach(b=>{
+    const s=Math.max(b.s,P.start),e=Math.min(b.e,P.end);if(e<=s)return;
+    const top=(s-P.start)/30*ROW,ht=(e-s)/30*ROW-2;
+    h+=`<div class="bk t-${b.t}" style="top:${top+1}px;height:${ht}px"><b>${TN[b.t]}</b>${esc(b.l||'')}${ht>40?`<small>${mm(b.s)}–${mm(b.e)}</small>`:''}<span class="ops">${b.t==='d'?`<button data-go="${b.id}" title="用计时器开始这一段">▶</button>`:''}<button data-del="${b.id}" title="删除这个方格">×</button></span></div>`;
+  });
+  if(sel){const a=Math.min(sel.a,sel.b),z=Math.max(sel.a,sel.b);h+=`<div class="selb" style="top:${a*ROW+1}px;height:${(z-a+1)*ROW-2}px"></div>`;
+    $('pHint').textContent='已选 '+mm(P.start+a*30)+'–'+mm(P.start+(z+1)*30)+(sel.pending?' · 再点一格作为结束':'')+' · 选好类型后点“放进方格”';}
+  else $('pHint').textContent='在时间格上拖动选出一段时间（触屏：先点开始格，再点结束格）';
+  g.innerHTML=h;
+  const vs=P.versions.slice(-3),off=P.versions.length-vs.length;
+  $('pVers').innerHTML=vs.map((v,i)=>{let vh='';v.blocks.forEach(b=>{const s=Math.max(b.s,P.start),e=Math.min(b.e,P.end);if(e<=s)return;vh+=`<div class="vb" style="top:${(s-P.start)/30*ROW+1}px;height:${(e-s)/30*ROW-2}px">${esc(b.l||TN[b.t])}</div>`});
+    return `<div class="ver"><div class="vh">v${off+i+1} ${v.at}</div><div class="vg" style="height:${n*ROW}px">${vh}</div></div>`}).join('');
+  $('pCurH').textContent=P.versions.length?`当前 · v${P.versions.length+1}`:'当前计划';
+  statsP();
+}
+function statsP(){
+  const sum=t=>P.blocks.filter(b=>b.t===t).reduce((a,b)=>a+Math.max(0,Math.min(b.e,P.end)-Math.max(b.s,P.start)),0)/60;
+  const d=sum('d'),s=sum('s'),r=sum('r'),bf=sum('b'),tot=(P.end-P.start)/60,free=Math.max(0,tot-d-s-r-bf),f=x=>Math.round(x*10)/10;
+  $('sDeep').textContent=f(d);$('sShal').textContent=f(s);$('sFree').textContent=f(free);
+  const ratio=d+s>0?Math.round(s/(d+s)*100):null,bud=+$('pBudget').value;
+  $('sRatio').textContent=ratio===null?'–':ratio+'%';
+  const W=[];
+  if(!P.blocks.length)W.push(['','先把今天划成方格。书中建议每个工作日开始时就做，最短半小时一格。']);
+  if(d>4)W.push(['w','深度工作超过 4 小时。书中引艾利克森的研究：熟练者每天深度工作很少能超过约 4 小时，新手约 1 小时。']);
+  else if(d>0)W.push(['ok',`今天安排了 ${f(d)} 小时深度工作；书中熟练者的上限约 4 小时。`]);
+  if(ratio!==null&&s>0)W.push(ratio>bud?['w',`浮浅占比 ${ratio}%，超出预算 ${bud}%：考虑对一些浮浅事说不，或把它们批量放进任务方格。`]:['ok',`浮浅占比 ${ratio}%，在预算 ${bud}% 以内。`]);
+  if(P.end>1050)W.push(['w','收工晚于 5:30。作者的“固定日程生产力”：定死收工时间，再倒推怎样在这之前完成。']);
+  if(d>0&&!P.blocks.some(b=>b.t==='b'))W.push(['','没有备用方格。拿不准要多久的任务，可以在下面多留一格，用不上就去做非紧急事务。']);
+  $('pWarn').innerHTML=W.map(w=>`<div class="${w[0]}">${w[1]}</div>`).join('');
+}
+const G=$('pGrid');
+function rowAt(e){const r=G.getBoundingClientRect(),n=(P.end-P.start)/30;return Math.max(0,Math.min(n-1,Math.floor((e.clientY-r.top)/ROW)))}
+G.addEventListener('pointerdown',e=>{
+  if(e.target.closest('.bk'))return;const r=rowAt(e);$('pMsg').textContent='';
+  if(e.pointerType==='mouse'){drag=true;sel={a:r,b:r};try{G.setPointerCapture(e.pointerId)}catch(_){}}
+  else{if(sel&&sel.pending){sel.b=r;sel.pending=false}else sel={a:r,b:r,pending:true}}
+  renderP();
+});
+G.addEventListener('pointermove',e=>{if(!drag)return;const r=rowAt(e);if(r!==sel.b){sel.b=r;renderP()}});
+G.addEventListener('pointerup',()=>{drag=false});
+G.addEventListener('click',e=>{
+  const d=e.target.closest('[data-del]'),go=e.target.closest('[data-go]');
+  if(d){P.blocks=P.blocks.filter(b=>String(b.id)!==d.dataset.del);saveP();renderP()}
+  if(go){const b=P.blocks.find(b=>String(b.id)===go.dataset.go);if(!b)return;
+    if(T.run){$('pMsg').textContent='计时器正在运行，先结束当前这一段。';return}
+    T.dur=b.e-b.s;T.remain=T.dur*60000;T.label=b.l||'深度工作';store(TK,T);$('tLabel').value=T.label;drawT();showTab('timer');
+    $('tool').scrollIntoView({behavior:'smooth'});$('tMsg').textContent='已载入这一段，点“开始”。';}
+});
+function addBlock(){
+  if(!sel){$('pMsg').textContent='先在时间格上选出一段时间。';return}
+  const a=Math.min(sel.a,sel.b),z=Math.max(sel.a,sel.b),s=P.start+a*30,e=P.start+(z+1)*30;
+  if(P.blocks.some(b=>b.s<e&&b.e>s)){$('pMsg').textContent='和已有方格重叠了，先点方格上的 × 删掉旧的。';return}
+  P.blocks.push({id:Date.now(),s,e,t:curT,l:$('pLabel').value.trim()});
+  sel=null;$('pLabel').value='';$('pMsg').textContent='';saveP();renderP();
+}
+$('pAdd').onclick=addBlock;
+$('pLabel').addEventListener('keydown',e=>{if(e.key==='Enter')addBlock()});
+$('pRev').onclick=()=>{
+  if(!P.blocks.length){$('pMsg').textContent='还没有方格，不需要改版。';return}
+  const n=new Date();P.versions.push({at:pad(n.getHours())+':'+pad(n.getMinutes()),blocks:JSON.parse(JSON.stringify(P.blocks))});
+  $('pMsg').textContent='旧版已划掉保留在左边。直接改当前计划：删掉不合适的方格，重画余下的时间。';saveP();renderP();
+};
+$('pClear').onclick=()=>{if(!confirm('清空今天的所有方格和旧版？'))return;P.blocks=[];P.versions=[];sel=null;saveP();renderP()};
+renderP();renderS();
+
+/* ---------- checklist ---------- */
+const CL=[
+["选定一种深度哲学","禁欲主义、双峰、节奏、新闻记者四选一，看清自己的处境再定。新手别从新闻记者式开始。","准则 1 · 1.1"],
+["给深度工作定好习惯","在哪里做、做多久；开工后的规则（如不准上网）；用什么支持自己（咖啡、食物、散步）。","准则 1 · 1.2"],
+["选一个极端重要的目标，挂起计分板","记录每周的深度工作时长，取得重要进展的那一小时画圈。","准则 1 · 1.5"],
+["每周回顾一次计分板","庆贺好的一周，找出糟糕一周的原因，据此安排下一周的深度时段。","准则 1 · 1.5"],
+["建立停工仪式","查收件箱、转录新任务、过一遍所有清单和日程、定第二天的计划，最后说“停工完成”。之后不碰工作。","准则 1 · 1.6"],
+["预先规划上网时间","电脑旁放个本子，写下下一次能上网的时间；之前完全离线，卡住了也至少再等 5 分钟。下班后照样执行。","准则 2 · 2.1"],
+["每周一次罗斯福冲锋","挑一项深度任务，定一个远少于估算的硬期限，公开它或设倒计时，然后全力冲。","准则 2 · 2.2"],
+["每周两三次有成果的冥想","散步、通勤、淋浴时只想一个定义明确的难题：变量 → 下一步问题 → 巩固。","准则 2 · 2.3"],
+["用手艺人方法审查网络工具","列出目标和 2–3 个关键活动，只留下对它们净收益为正的工具。","准则 3 · 3.1"],
+["做一次 30 天社交媒体停用实验","不删号、不宣布。30 天后问：用了会更好吗？有人在意吗？都是否，就永久戒掉。","准则 3 · 3.2"],
+["提前安排晚上和周末","选好要读的书、锻炼、和朋友见面、爱好，别把空白留给娱乐网站。","准则 3 · 3.3"],
+["每天早上把工作日划成半小时方格","留备用格和任务方格；被打断就重排余下的时间，有灵感时可以先把计划放一边。","准则 4 · 4.1"],
+["和老板定下浮浅工作预算","先用“大学毕业生要学多久”给任务打分，再拿着上周的浮浅占比去谈，常见答案在 30%–50%。","准则 4 · 4.2 / 4.3"],
+["定一个固定的收工时间，并收紧邮件","比如 5 点半。设发件人过滤器，回信写清整个流程；含混、不感兴趣、回不回都无所谓的邮件就不回。","准则 4 · 4.4 / 4.5"]
+];
+const CK='dw-check-v1',saved=load(CK,[]);
+$('check').innerHTML=CL.map((t,i)=>`<li><label><input type="checkbox" data-i="${i}" ${saved.includes(i)?'checked':''}><div><b>${t[0]}</b><span>${t[1]}</span><div class="src">${t[2]}</div></div></label></li>`).join('');
+function progC(){const on=[...$('check').querySelectorAll('input:checked')].map(x=>+x.dataset.i);store(CK,on);$('cfill').style.width=(on.length/CL.length*100)+'%';$('ctxt').textContent=pad(on.length)+' / '+CL.length}
+$('check').addEventListener('change',progC);progC();
+
+/* ---------- how-to drawer ---------- */
+const HP={
+ monastic:{name:'禁欲主义',fit:'<b>适合：</b>对世界的贡献实在、清晰、可以个体化的人，比如以写书、做研究为主业。书中提醒适用的人有限；不属于这一类也不必嫉妒。',
+  how:'<b>怎么排：</b>摒弃或最小化浮浅职责。克努特不用电子邮箱，只留邮寄地址，助理挑出紧急信件，其余约每 3 个月批量处理；斯蒂芬森在网站上写明自己不回邮件。',
+  steps:[['用一两句话写下你的职业目标，像克努特那样说得清清楚楚','准则 1 · 1.1'],['列出不直接服务于这个目标的浮浅职责，逐项想办法摒弃或转交','准则 1 · 1.1'],['给外界一个替代联系渠道，写明什么情况才会回复，来信集中批量处理','准则 1 · 1.1 · 准则 4 · 4.5']]},
+ bimodal:{name:'双峰',fit:'<b>适合：</b>必须在非深度事务上有实质投入才能成功的人。需要一定的灵活性，能整天“消失”。',
+  how:'<b>怎么排：</b>把时间分成两块，深度时段像禁欲者一样工作，其余时间开放。可按周分（如每周 4 天深度），也可按年分（集中在一个季节或学期）。深度时段至少一整天，几小时太短。',
+  steps:[['选划分尺度（按周还是按年），在日历上圈出第一段至少一整天的深度时段','准则 1 · 1.1'],['提前广泛告知这段时间联系不上你，并保证时段之外很容易找到你','准则 1 · 1.1'],['深度时段开始前设好邮件自动回复，关上门，像格兰特那样','第 1 章 · 准则 1 · 1.1']]},
+ rhythmic:{name:'节奏',fit:'<b>适合：</b>常规办公室工作者最常选。不能一连消失几天，又需要靠习惯保持进度的人。',
+  how:'<b>怎么排：</b>把深度工作变成雷打不动的日常：每天固定开工时间（查普尔 5:30–7:30），或用链条法每天在日历上画红 X。查普尔认定一段至少要 90 分钟。',
+  steps:[['定下每天的固定开工时间，一段至少 90 分钟','准则 1 · 1.1'],['在墙上挂一本日历，每完成一天就画一个大红 X，别让链子断掉','准则 1 · 1.1'],['从明天起按这个时间开工，不再临时决定“今天要不要深度工作”','准则 1 · 1.1']]},
+ journalistic:{name:'新闻记者',fit:'<b>适合：</b>已经熟练、对自己的能力和工作价值有信心的人。书中明确说不适合新手：从浮浅快速切进深度会大量消耗意志力。新手可以先用节奏式。',
+  how:'<b>怎么排：</b>只要有空闲就切入深度模式。作者自己的做法是每周开始时先决定哪些时间深度工作，每天开始时再按需调整，减少临时决定的次数。',
+  steps:[['周一先在日程里标出本周可能的深度时段','准则 1 · 1.1'],['每天早上按当天情况再调整一次','准则 1 · 1.1 · 准则 4'],['把材料准备好，会议取消、孩子睡着这类空闲一出现就开工','准则 1 · 1.1']]}
+};
+const HS=[
+ {k:'t',n:'①',h:'今天就做',d:'三件 15 分钟内能完成的事',items:[
+  ['在电脑旁放一个本子，写下下一次允许上网的时间；在那之前不碰网络','','准则 2 · 2.1','2 分钟'],
+  ['拿一页纸，把今天剩下的工作时间划成半小时方格，零碎小事归进一个任务方格','','准则 4 · 4.1','10 分钟'],
+  ['下班前做一次停工仪式：查收件箱、转录新任务、过一遍清单和日程、定明天的计划，然后说“停工完成”','','准则 1 · 1.6','10–15 分钟']]},
+ {k:'w',n:'②',h:'第一周',d:'要建立起来的做法',items:[
+  ['按上面选的哲学排好这周的深度时段，并定好习惯：在哪里做、做多久、什么规则、用什么支持自己','','准则 1 · 1.1 / 1.2'],
+  ['选一个极端重要的目标，剪一张卡片纸条做本周计分板，每深度工作一小时记一笔','','准则 1 · 1.5'],
+  ['每个工作日早上划方格、晚上做停工仪式；被打断就重排余下的时间','','准则 4 · 4.1 · 准则 1 · 1.6'],
+  ['工作内外都按计划上网；排队、等人时忍住无聊，不拿手机','','准则 2 · 2.1'],
+  ['悄悄开始 30 天社交媒体停用：不删号，也不宣布','','准则 3 · 3.2'],
+  ['做一次罗斯福冲锋：挑一项深度任务，定一个远少于估算的硬期限','','准则 2 · 2.2'],
+  ['用“大学毕业生要学多久”给本周任务打分，再和老板谈浮浅工作预算','','准则 4 · 4.2 / 4.3'],
+  ['周末前定好晚上和周末要做的事：读哪几本书、锻炼、和哪位朋友见面','','准则 3 · 3.3'],
+  ['周末回顾计分板：好的一周好在哪，差的一周差在哪，据此排下周','','准则 1 · 1.5']]},
+ {k:'m',n:'③',h:'一个月后',d:'要形成的习惯，以及怎么检验',items:[
+  ['停工仪式成了习惯','书中说一两周后大脑会信任它；形成之后，跳过它会让你感到不安','准则 1 · 1.6','chk2'],
+  ['计分板连续四周都有记录','对照画圈的进展，能大致估出一项成果需要多少深度小时','准则 1 · 1.5','chk2'],
+  ['30 天社交媒体实验到期','逐项问：一直用的话这 30 天会更好吗？有人在意我没用吗？两个都是否，就永久戒掉','准则 3 · 3.2','chk2'],
+  ['有成果的冥想每周两三次','能在走路、通勤时推进一个具体难题；作者起初试了十几次才有成果','准则 2 · 2.3','chk2'],
+  ['固定收工时间一直守住','收工后不再收发工作邮件。作者某 7 天里 65 组邮件对话，5 点半后只发了 5 封','准则 4 · 4.4','chk2'],
+  ['浮浅工作守在预算内','统计上周浮浅工作的时间占比，和与老板定下的数字对照','准则 4 · 4.3','chk2'],
+  ['罗斯福冲锋有把握后提高频率','每次都能赶在（或接近）硬期限前完成','准则 2 · 2.2','chk2']]},
+ {k:'s',n:'④',h:'卡住了怎么办',d:'书里提到的常见障碍和对策，试过就勾上',items:[
+  ['总忍不住分心，靠决心撑不住','意志力有限，会被消耗。别靠决心，靠固定的时间、地点和规则','准则 1 · 引言 / 1.2','fix'],
+  ['离线时段卡住了，非上网查资料不可','先换别的离线工作；实在不行就把下次上网提前，但至少再等 5 分钟','准则 2 · 2.1','fix'],
+  ['计划总被打断','空下来就花几分钟重排余下的时间；估得保守些，留备用方格和任务方格','准则 4 · 4.1','fix'],
+  ['晚上脑子还在转工作','这是蔡加尼克效应。做停工仪式，为未完成的任务定好计划，大脑就能放下','准则 1 · 1.6','fix'],
+  ['家里或开放式办公室干扰太多','找专用场所，比如会议室或安静的图书馆；必要时来个大手笔，像罗琳那样换个环境','准则 1 · 1.2 / 1.3','fix'],
+  ['担心不秒回邮件会出问题','佩罗让咨询团队每周断联一天，客户并不在意，产品反而更好；老板晚上发邮件，不代表要你立刻回','第 2 章 · 准则 4 · 4.4','fix'],
+  ['拒绝不了别人的请求','明确拒绝，理由模糊：“听起来很有趣，但是我的行程有冲突，恐怕参加不了。”','准则 4 · 4.4','fix'],
+  ['有成果的冥想总在原地打转','发现自己绕着已知部分转，就把注意力推向下一步；按“变量 → 下一步问题 → 巩固”来想','准则 2 · 2.3','fix'],
+  ['老板说你的时间都该做浮浅工作','说明这份工作不需要深度。书中建议感谢反馈，然后谋划转到重视深度的岗位','准则 4 · 4.3','fix']]}
+];
+const HK='dw-howto-v1';let HO=load(HK,{ph:'rhythmic',done:[]});
+if(!HP[HO.ph])HO.ph='rhythmic';
+function hIds(){const ids=HP[HO.ph].steps.map((_,i)=>'p-'+HO.ph+'-'+i);HS.forEach(s=>s.items.forEach((_,i)=>ids.push(s.k+i)));return ids}
+function hItem(id,txt,sub,src,cls,t15){return `<li><label><input type="checkbox" data-h="${id}" ${HO.done.includes(id)?'checked':''}><span class="tx"><span>${txt}</span>${t15?`<span class="t15">${t15}</span>`:''}${sub?`<em class="${cls||''}">${sub}</em>`:''}<span class="src">${src}</span></span></label></li>`}
+function renderHow(){
+  const p=HP[HO.ph];
+  document.querySelectorAll('#howSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.ph===HO.ph));
+  let h=`<div class="ph-card"><span class="lab a">你选的深度哲学 · ${p.name}</span><p class="fit">${p.fit}</p><p class="fit">${p.how}</p><ul class="hl">${p.steps.map((s,i)=>hItem('p-'+HO.ph+'-'+i,s[0],'',s[1])).join('')}</ul></div>`;
+  HS.forEach(s=>{h+=`<div class="stage"><h4><span class="n">${s.n}</span>${s.h}</h4><p class="sd">${s.d}</p><ul class="hl">${s.items.map((it,i)=>hItem(s.k+i,it[0],s.k==='t'?'':it[1],it[2],s.k==='t'?'':it[3],s.k==='t'?it[3]:'')).join('')}</ul></div>`});
+  h+=`<div class="dfoot"><span>进度只保存在本机浏览器</span><button id="howReset">清空勾选</button></div>`;
+  $('howBody').innerHTML=h;progHow();
+}
+function progHow(){const ids=hIds(),n=ids.filter(i=>HO.done.includes(i)).length;$('howFill').style.width=(n/ids.length*100)+'%';$('howTxt').textContent=n+' / '+ids.length;$('howDot').textContent=n?n+'/'+ids.length:''}
+$('howSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;HO.ph=b.dataset.ph;store(HK,HO);renderHow()};
+$('howBody').addEventListener('change',e=>{const id=e.target.dataset.h;if(!id)return;HO.done=e.target.checked?[...new Set([...HO.done,id])]:HO.done.filter(x=>x!==id);store(HK,HO);progHow()});
+$('howBody').addEventListener('click',e=>{if(e.target.id==='howReset'&&confirm('清空“我要怎么做？”里的所有勾选？')){HO.done=[];store(HK,HO);renderHow()}});
+let howLast=null;
+function openHow(){howLast=document.activeElement;$('how').classList.add('open');$('howOv').classList.add('open');$('how').setAttribute('aria-hidden','false');$('howBtn').classList.add('hide');root.style.overflow='hidden';setTimeout(()=>$('howClose').focus(),60)}
+function closeHow(){$('how').classList.remove('open');$('howOv').classList.remove('open');$('how').setAttribute('aria-hidden','true');$('howBtn').classList.remove('hide');root.style.overflow='';if(howLast&&howLast.focus)howLast.focus()}
+$('howBtn').onclick=openHow;$('howClose').onclick=closeHow;$('howOv').onclick=closeHow;
+document.addEventListener('keydown',e=>{
+  if(!$('how').classList.contains('open'))return;
+  if(e.key==='Escape'){e.preventDefault();closeHow();return}
+  if(e.key==='Tab'){const f=[...$('how').querySelectorAll('button,input,[tabindex]:not([tabindex="-1"])')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+renderHow();
+
+/* ---------- focus mode, nav, progress ---------- */
+const FS=[...document.querySelectorAll('.f')];
+const links=[...document.querySelectorAll('#nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+let ticking=false;
+function upd(){
+  ticking=false;
+  const vh=innerHeight,top=vh*.3,bot=vh*.7;
+  if(focusOn){
+    let any=false;const st=FS.map(el=>{const r=el.getBoundingClientRect();const on=r.bottom>top&&r.top<bot;if(on)any=true;return [el,on,r]});
+    if(!any){let best=null,bd=1e9;st.forEach(s=>{const c=(s[2].top+s[2].bottom)/2,dd=Math.abs(c-vh/2);if(dd<bd){bd=dd;best=s[0]}});st.forEach(s=>s[0].classList.toggle('dim',s[0]!==best))}
+    else st.forEach(s=>s[0].classList.toggle('dim',!s[1]));
+  }else FS.forEach(el=>el.classList.remove('dim'));
+  let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<vh*.4)k=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===k));
+  const h=document.documentElement.scrollHeight-vh;$('prog').style.width=(h>0?scrollY/h*100:0)+'%';
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+addEventListener('resize',upd);
+document.addEventListener('focusin',e=>{const f=e.target.closest&&e.target.closest('.f');if(f&&focusOn)f.classList.remove('dim')});
+syncFocus();
+</script>
+</body>
+</html>

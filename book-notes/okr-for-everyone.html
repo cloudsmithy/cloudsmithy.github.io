@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《每个人的OKR》精读笔记 · 姚琼</title>
+<style>
+:root{
+  --paper:#f7f4ee; --card:#fffdf9; --ink:#1d2330; --ink2:#4a5263; --mute:#8a90a0;
+  --line:#e6e0d4; --red:#d9482b; --red-soft:#fbe9e3; --teal:#16786f; --teal-soft:#e0f1ee;
+  --gold:#c98a1b; --gold-soft:#fbf1dc; --blue:#2f5fb3; --blue-soft:#e6eefb; --plum:#7a3f8f; --plum-soft:#f2e7f6;
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","STSong",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.85 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+#progress{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--red),var(--gold));z-index:50}
+
+/* ---------- layout ---------- */
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1240px;margin:0 auto;gap:48px;padding:0 28px}
+nav.toc{position:sticky;top:0;height:100vh;overflow:auto;padding:36px 0 40px;font-size:14px}
+nav.toc .brand{font:700 15px/1.4 var(--serif);margin-bottom:18px;letter-spacing:.5px}
+nav.toc .brand small{display:block;font:400 12px var(--sans);color:var(--mute);margin-top:2px}
+nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+nav.toc li a{display:block;padding:6px 10px 6px 12px;border-left:2px solid var(--line);text-decoration:none;color:var(--ink2);transition:.15s}
+nav.toc li a:hover{color:var(--ink);background:#efe9dd}
+nav.toc li a.on{border-left-color:var(--red);color:var(--red);font-weight:600;background:#f3ebe0}
+nav.toc .grp{font-size:11px;letter-spacing:2px;color:var(--mute);margin:16px 0 6px 12px}
+main{padding:40px 0 120px;min-width:0}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center;padding:28px 0 44px;border-bottom:1px solid var(--line)}
+.hero img{width:200px;border-radius:6px;box-shadow:0 18px 40px -16px rgba(30,30,40,.45),0 2px 6px rgba(0,0,0,.08);transform:rotate(-2deg)}
+.eyebrow{font-size:12px;letter-spacing:3px;color:var(--red);font-weight:700}
+.hero h1{font:800 48px/1.15 var(--serif);margin:10px 0 8px;letter-spacing:1px}
+.hero .sub{color:var(--ink2);font-size:17px;margin:0 0 20px}
+.hero .thesis{font:600 22px/1.6 var(--serif);border-left:4px solid var(--red);padding:2px 0 2px 16px;margin:0 0 24px}
+.stats{display:flex;gap:28px;flex-wrap:wrap}
+.stats div{font-size:13px;color:var(--mute)}
+.stats b{display:block;font:800 30px/1.1 var(--serif);color:var(--ink)}
+
+/* ---------- section ---------- */
+section{padding:56px 0 8px}
+.chap{font-size:12px;letter-spacing:3px;color:var(--mute);font-weight:700}
+h2{font:800 32px/1.3 var(--serif);margin:6px 0 10px}
+h2 .n{color:var(--red);margin-right:10px}
+h3{font:700 21px/1.4 var(--serif);margin:36px 0 12px}
+h4{font-size:16px;margin:0 0 6px}
+.lead{font-size:17px;color:var(--ink2);max-width:46em;margin:0 0 8px}
+p{margin:10px 0}
+.muted{color:var(--mute)}
+hr.soft{border:0;border-top:1px dashed var(--line);margin:40px 0}
+
+/* ---------- components ---------- */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;position:relative}
+.card.tint-red{background:var(--red-soft);border-color:#f1cfc4}
+.card.tint-teal{background:var(--teal-soft);border-color:#bfe0da}
+.card.tint-gold{background:var(--gold-soft);border-color:#eedcb4}
+.card.tint-blue{background:var(--blue-soft);border-color:#c9d8f3}
+.card.tint-plum{background:var(--plum-soft);border-color:#e0cbe8}
+.card .k{font-size:12px;letter-spacing:2px;color:var(--mute);font-weight:700;margin-bottom:4px}
+.card p:last-child{margin-bottom:0}
+.big{font:800 26px/1.2 var(--serif)}
+.tag{display:inline-block;font-size:12px;padding:1px 9px;border-radius:99px;background:#efe8db;color:var(--ink2);margin:2px 4px 2px 0}
+.tag.red{background:var(--red-soft);color:var(--red)}
+.tag.teal{background:var(--teal-soft);color:var(--teal)}
+
+.tldr{counter-reset:c}
+.tldr .card{padding-left:64px}
+.tldr .card::before{counter-increment:c;content:counter(c);position:absolute;left:20px;top:18px;font:800 30px/1 var(--serif);color:var(--red)}
+
+.formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.formula span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 12px;font-weight:600}
+.formula i{font-style:normal;color:var(--mute)}
+.eg{font-family:var(--serif);font-size:17px;background:#fff;border-radius:10px;padding:10px 14px;border:1px dashed var(--line);margin-top:10px}
+
+blockquote{margin:22px 0;padding:18px 22px;background:var(--card);border-left:4px solid var(--gold);border-radius:0 var(--r) var(--r) 0;font:600 18px/1.7 var(--serif)}
+blockquote cite{display:block;font:400 13px var(--sans);color:var(--mute);margin-top:6px;font-style:normal}
+
+.story{background:#f1ece2;border-radius:var(--r);padding:16px 20px;font-size:15px;color:var(--ink2);margin:14px 0}
+.story b{color:var(--ink)}
+.story::before{content:"📖 书中故事";display:block;font-size:12px;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:4px}
+
+.tip{border:1.5px solid var(--teal);border-radius:var(--r);padding:16px 20px;background:#fff;margin:16px 0}
+.tip::before{content:"小贴士";display:inline-block;background:var(--teal);color:#fff;font-size:12px;padding:1px 10px;border-radius:99px;margin-bottom:8px;letter-spacing:1px}
+.tip ul{margin:4px 0 0;padding-left:20px}
+
+/* table */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:15px}
+.tbl th,.tbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl thead th{background:#efe8db;font-weight:700}
+.tbl td:first-child{font-weight:600;white-space:nowrap}
+.tbl .hl{color:var(--red);font-weight:600}
+.scroll{overflow-x:auto}
+
+/* OKR example card */
+.okr{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.okr .o{padding:14px 18px;background:var(--ink);color:#fff;font:700 16px/1.5 var(--serif)}
+.okr .o small{display:block;font:400 12px var(--sans);opacity:.65;letter-spacing:1px;margin-bottom:2px}
+.okr ul{list-style:none;margin:0;padding:8px 0}
+.okr li{padding:7px 18px 7px 56px;position:relative;font-size:14.5px;line-height:1.65}
+.okr li b{position:absolute;left:18px;top:8px;font-size:11px;background:var(--red-soft);color:var(--red);padding:0 6px;border-radius:5px;line-height:20px}
+.okr li .t{display:block;color:var(--mute);font-size:13px}
+.okr .src{margin-top:auto;padding:8px 18px 12px;font-size:12px;color:var(--mute);border-top:1px dashed var(--line)}
+.okr.teal .o{background:var(--teal)} .okr.red .o{background:var(--red)} .okr.gold .o{background:#9a6912}
+.okr.blue .o{background:var(--blue)} .okr.plum .o{background:var(--plum)}
+
+/* timeline */
+.tl{position:relative;margin:20px 0;padding-left:28px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),var(--red))}
+.tl .it{position:relative;margin:0 0 18px}
+.tl .it::before{content:"";position:absolute;left:-26px;top:8px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--red)}
+.tl .y{font:800 18px var(--serif);color:var(--red);margin-right:8px}
+
+/* pyramid */
+.pyr{display:flex;flex-direction:column;align-items:center;gap:6px;margin:18px 0}
+.pyr div{text-align:center;color:#fff;border-radius:8px;padding:9px 12px;font-weight:600;font-size:15px}
+.pyr div small{display:block;font-weight:400;opacity:.85;font-size:12px}
+
+/* onion */
+.onion-wrap{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center}
+.onion{position:relative;width:300px;height:300px}
+.onion div{position:absolute;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:flex-start;justify-content:center;font-size:12.5px;font-weight:700;color:#fff;padding-top:8px}
+.onion div:nth-child(1){width:300px;height:300px;background:#f0c7b8;color:#8b3a26}
+.onion div:nth-child(2){width:240px;height:240px;background:#eaa48d;color:#7a2e1c}
+.onion div:nth-child(3){width:180px;height:180px;background:#e27f60}
+.onion div:nth-child(4){width:120px;height:120px;background:#d9482b}
+.onion div:nth-child(5){width:62px;height:62px;background:#9e2c15;align-items:center;padding:0}
+
+/* quadrant */
+.quad{display:grid;grid-template-columns:28px 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:8px;max-width:720px}
+.quad .ax{font-size:12px;color:var(--mute);display:flex;align-items:center;justify-content:center}
+.quad .ax.v{writing-mode:vertical-rl}
+.quad .q{border-radius:12px;padding:14px 16px;min-height:120px}
+.quad .q h4{margin-bottom:2px}
+.quad .q .d{font:800 18px var(--serif)}
+.q1{background:var(--red-soft)} .q2{background:var(--teal-soft);outline:2px solid var(--teal)} .q3{background:var(--gold-soft)} .q4{background:#eceae6}
+
+/* steps */
+.steps{counter-reset:s;display:grid;gap:14px}
+.steps .card{padding-left:70px}
+.steps .card::before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:20px;font:800 24px/1 var(--serif);color:var(--teal)}
+
+/* kanban */
+.kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kanban .col{background:#efe9de;border-radius:12px;padding:12px}
+.kanban .col h4{font-size:13px;letter-spacing:1px}
+.kanban .note{background:#fff7c2;border-radius:4px;padding:8px 10px;font-size:13.5px;margin-top:8px;box-shadow:0 2px 0 rgba(0,0,0,.06);transform:rotate(-.6deg)}
+.kanban .col:nth-child(2) .note{background:#ffe1cf;transform:rotate(.5deg)}
+.kanban .col:nth-child(3) .note{background:#d7f1e3;transform:rotate(-.3deg)}
+
+/* confidence slider */
+.conf{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.conf input[type=range]{width:100%;accent-color:var(--red);margin:14px 0 4px}
+.conf .scale{display:flex;justify-content:space-between;font-size:12px;color:var(--mute)}
+.conf .out{display:flex;gap:16px;align-items:center;margin-top:12px}
+.conf .num{font:800 46px/1 var(--serif);min-width:64px;text-align:center}
+.conf .verdict{font-weight:700;font-size:17px}
+.conf .verdict small{display:block;font-weight:400;color:var(--ink2);font-size:14px}
+
+/* checklist */
+.check label{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-radius:10px;cursor:pointer;transition:.15s}
+.check label:hover{background:#f1ece2}
+.check input{margin-top:6px;accent-color:var(--teal);width:17px;height:17px}
+.check .score{margin-top:10px;font-weight:700;color:var(--teal)}
+
+/* hats */
+.hats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hat{border-radius:12px;padding:14px 16px;font-size:14.5px;border:1px solid var(--line)}
+.hat h4::before{content:"";display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:8px;vertical-align:-1px;border:1px solid rgba(0,0,0,.15);background:var(--c)}
+
+/* career stages */
+.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.stage{padding:18px 16px;background:var(--card);border-right:1px solid var(--line)}
+.stage:last-child{border-right:0}
+.stage .yr{font:800 22px var(--serif)}
+.stage .nm{font-weight:700;color:var(--red)}
+.stage .st{font-size:13px;color:var(--mute);margin:4px 0 8px}
+.stage .ad{font-size:14px;background:#f4efe6;border-radius:8px;padding:6px 10px}
+
+/* reverse timeline */
+.rev{display:flex;gap:0;align-items:stretch;overflow-x:auto;padding-bottom:6px}
+.rev div{flex:1;min-width:120px;padding:12px 14px;background:var(--card);border:1px solid var(--line);margin-left:-1px;font-size:14px;position:relative}
+.rev div:first-child{border-radius:12px 0 0 12px;margin-left:0;background:var(--red);color:#fff;border-color:var(--red)}
+.rev div:last-child{border-radius:0 12px 12px 0;background:var(--ink);color:#fff;border-color:var(--ink)}
+.rev b{display:block;font:800 17px var(--serif)}
+
+/* energy */
+.energy .card{text-align:center}
+.energy .ic{font-size:30px}
+
+/* SAID */
+.said{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.said .card .L{font:800 34px/1 var(--serif);color:var(--plum)}
+
+/* quotes */
+.quotes{columns:2;column-gap:16px}
+.quotes blockquote{break-inside:avoid;margin:0 0 16px;font-size:16.5px}
+
+/* verdict */
+.pros li,.cons li{margin:6px 0}
+.pros li::marker{content:"＋ ";color:var(--teal);font-weight:800}
+.cons li::marker{content:"－ ";color:var(--red);font-weight:800}
+
+/* template */
+.tpl{width:100%;border-collapse:collapse;background:#fff;font-size:14px}
+.tpl td,.tpl th{border:1px solid #cfc7b8;padding:10px 12px;height:40px}
+.tpl th{background:#efe8db}
+.btn{display:inline-block;margin-top:12px;background:var(--ink);color:#fff;border:0;border-radius:99px;padding:8px 18px;font-size:14px;cursor:pointer}
+.btn:hover{background:var(--red)}
+
+footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+
+@media (max-width:1000px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  nav.toc{display:none}
+  .g3,.g4,.said,.hats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stages{grid-template-columns:repeat(2,1fr)}
+  .stage:nth-child(2){border-right:0}
+  .stage:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero img{margin:0 auto;width:150px}
+  .hero .thesis{text-align:left}
+  .hero h1{font-size:36px}
+  .stats{justify-content:center}
+  .g2,.g3,.g4,.said,.hats,.kanban{grid-template-columns:1fr}
+  .onion-wrap{grid-template-columns:1fr;justify-items:center}
+  .quotes{columns:1}
+  .stages{grid-template-columns:1fr}
+  .stage{border-right:0;border-bottom:1px solid var(--line)}
+  h2{font-size:26px}
+}
+/* ---------- guide button & modal ---------- */
+.guide-btn{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:var(--ink);color:#fff;border:0;border-radius:99px;padding:12px 22px 12px 16px;font:600 16px var(--sans);cursor:pointer;box-shadow:0 10px 24px -12px rgba(29,35,48,.7);transition:.18s}
+.guide-btn:hover{background:var(--red);transform:translateY(-1px)}
+.guide-btn .ic{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;font-size:16px}
+.guide-btn small{font-weight:400;opacity:.7;font-size:12.5px}
+.nav-guide{display:block;margin:0 0 18px;background:var(--ink);color:#fff!important;border-radius:10px;padding:9px 12px;text-decoration:none;font-weight:600;cursor:pointer;border:0;width:100%;text-align:left;font-size:14px}
+.nav-guide:hover{background:var(--red)}
+.fab{position:fixed;right:22px;bottom:22px;z-index:40;background:var(--red);color:#fff;border:0;border-radius:99px;padding:12px 18px;font:600 14px var(--sans);cursor:pointer;box-shadow:0 12px 28px -10px rgba(217,72,43,.75);opacity:0;transform:translateY(12px);pointer-events:none;transition:.25s}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+body.guide-open{overflow:hidden}
+body.guide-open .fab{display:none}
+
+.gmodal{position:fixed;inset:0;z-index:100;display:none}
+.gmodal.open{display:block}
+.gmodal .backdrop{position:absolute;inset:0;background:rgba(20,22,30,.55);backdrop-filter:blur(3px);animation:fade .2s}
+.gmodal .panel{position:absolute;top:3vh;bottom:3vh;left:50%;transform:translateX(-50%);width:min(1040px,94vw);background:var(--paper);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);animation:rise .25s}
+@keyframes fade{from{opacity:0}} @keyframes rise{from{opacity:0;transform:translate(-50%,16px)}}
+.gbar{display:flex;align-items:center;gap:12px;padding:14px 22px;background:var(--ink);color:#fff;flex:none}
+.gbar .t{font:700 18px var(--serif);flex:1}
+.gbar .t small{font:400 12px var(--sans);opacity:.6;margin-left:8px}
+.gbar button{background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:99px;padding:6px 14px;font-size:13px;cursor:pointer}
+.gbar button:hover{background:var(--red)}
+.gtabs{display:flex;gap:4px;padding:10px 22px 0;background:#ece6da;flex:none;overflow-x:auto}
+.gtabs a{padding:8px 14px;font-size:13.5px;border-radius:10px 10px 0 0;text-decoration:none;color:var(--ink2);white-space:nowrap}
+.gtabs a:hover{background:#f4efe6}
+.gtabs a.on{background:var(--paper);color:var(--red);font-weight:700}
+.gbody{overflow:auto;padding:8px 34px 60px;flex:1;scroll-behavior:smooth}
+.gbody section{padding:34px 0 4px}
+.gbody h2{font-size:27px}
+.gnote{font-size:13px;color:var(--mute);background:#efe9de;border-radius:10px;padding:8px 12px;margin-top:12px}
+.star{color:var(--gold);font-weight:800}
+
+/* balance wheel */
+.wheel{display:grid;grid-template-columns:340px 1fr;gap:28px;align-items:center}
+.wheel svg{width:100%;max-width:340px;height:auto}
+.sl{display:grid;grid-template-columns:96px 1fr 34px;gap:10px;align-items:center;margin:6px 0;font-size:14.5px}
+.sl input{accent-color:var(--red);width:100%}
+.sl b{font:800 18px var(--serif);text-align:right}
+.advice{margin-top:16px}
+.advice .card{padding:16px 18px}
+
+/* cadence */
+.cad{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin:18px 0}
+.cad::before{content:"";position:absolute;left:10%;right:10%;top:23px;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--teal))}
+.cad .n{text-align:center;padding:0 8px;position:relative}
+.cad .dot{width:48px;height:48px;border-radius:50%;margin:0 auto 10px;background:#fff;border:3px solid var(--red);display:grid;place-items:center;font:800 14px var(--serif);color:var(--red)}
+.cad h4{margin:0 0 4px}
+.cad p{font-size:13.5px;color:var(--ink2);margin:0;text-align:left}
+
+/* worksheet */
+.ws{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.ws .hd{display:flex;align-items:center;gap:10px;padding:10px 16px;color:#fff;font-weight:700}
+.ws .hd span{font-size:12px;opacity:.8;font-weight:400}
+.ws .hd input{flex:1;background:rgba(255,255,255,.15);border:0;border-radius:8px;color:#fff;padding:7px 10px;font:600 15px var(--sans)}
+.ws .hd input::placeholder{color:rgba(255,255,255,.65)}
+.ws table{width:100%;border-collapse:collapse;font-size:14px}
+.ws th{font-size:12px;color:var(--mute);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.ws td{padding:6px 8px;border-bottom:1px solid var(--line)}
+.ws tr:last-child td{border-bottom:0}
+.ws td input,.ws td select{width:100%;border:1px solid transparent;background:#faf8f3;border-radius:7px;padding:6px 8px;font:14px var(--sans);color:var(--ink)}
+.ws td input:focus,.ws td select:focus{outline:0;border-color:var(--teal);background:#fff}
+.saved{font-size:12px;color:var(--teal);margin-left:8px}
+
+/* energy check */
+.echk{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.echk .card{text-align:center;padding:14px}
+.echk .dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.echk .dots button{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);background:#fff;cursor:pointer;font-size:11px;color:var(--mute)}
+.echk .dots button.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.echk-out{margin-top:10px;font-weight:600}
+
+.pit{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pit .card{padding:14px 18px}
+.pit .card h4::before{content:"✗ ";color:var(--red)}
+.pit .card p{font-size:14.5px}
+.pit .card p b{color:var(--teal)}
+
+@media (max-width:760px){
+  .gbody{padding:4px 18px 50px}
+  .wheel{grid-template-columns:1fr;justify-items:center}
+  .cad{grid-template-columns:1fr;gap:14px}
+  .cad::before{display:none}
+  .cad p{text-align:center}
+  .echk,.pit{grid-template-columns:1fr 1fr}
+  .gbar .t small{display:none}
+}
+
+@media print{
+  nav.toc,#progress,.btn,.fab,.guide-btn,.nav-guide{display:none!important}
+  .wrap{grid-template-columns:1fr}
+  body{background:#fff}
+  section{break-inside:avoid-page}
+  body.guide-open .wrap{display:none}
+  body.guide-open{overflow:visible}
+  body.guide-open .gmodal{position:static}
+  body.guide-open .gmodal .backdrop,body.guide-open .gtabs,body.guide-open .gbar button{display:none}
+  body.guide-open .gmodal .panel{position:static;transform:none;width:auto;box-shadow:none;border-radius:0;animation:none}
+  body.guide-open .gbody{overflow:visible}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="wrap">
+
+<nav class="toc">
+  <div class="brand">每个人的OKR<small>姚琼 · 精读笔记</small></div>
+  <button class="nav-guide" data-open-guide>📘 个人 OKR 指导手册</button>
+  <ol>
+    <li><a href="#tldr">一页读懂</a></li>
+    <li><a href="#author">作者与这本书</a></li>
+    <div class="grp">方法篇</div>
+    <li><a href="#c1">1 · OKR 是什么</a></li>
+    <li><a href="#write">1 · 怎么写 O 和 KR</a></li>
+    <li><a href="#c2">2 · 团队协作与创新</a></li>
+    <div class="grp">个人篇</div>
+    <li><a href="#c3">3 · 个人效率与执行力</a></li>
+    <li><a href="#c4">4 · 职业生涯突破</a></li>
+    <div class="grp">生活篇</div>
+    <li><a href="#c5">5 · 幸福生活</a></li>
+    <li><a href="#c6">6 · 孩子教育</a></li>
+    <div class="grp">落地</div>
+    <li><a href="#howto">个人上手 7 步</a></li>
+    <li><a href="#quotes">金句摘录</a></li>
+    <li><a href="#review">我的评价</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <img src="data:image/jpeg;base64,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" alt="《每个人的OKR》封面">
+  <div>
+    <div class="eyebrow">BOOK NOTES · 精读笔记</div>
+    <h1>每个人的OKR</h1>
+    <p class="sub">姚琼 著 · 推荐序：明道云创始人 任向晖 · 2020 年</p>
+    <p class="thesis">OKR 不只是企业的管理工具，<br>它是一种活法：工作、职业、家庭、孩子，都能用“目标 + 量化关键结果”来管。</p>
+    <div class="stats">
+      <div><b>6</b>章</div>
+      <div><b>37</b>节</div>
+      <div><b>55</b>张表格 / 案例</div>
+      <div><b>3×3</b>作者推荐结构</div>
+    </div>
+    <button class="guide-btn" data-open-guide><span class="ic">📘</span><span>个人 OKR 指导手册<br><small>工作、成长、生活怎么平衡 · 可填写</small></span></button>
+  </div>
+</header>
+
+<!-- ============ TL;DR ============ -->
+<section id="tldr">
+  <div class="chap">TL;DR</div>
+  <h2>一页读懂</h2>
+  <p class="lead">如果只记五件事，记这五件。</p>
+  <div class="grid g2 tldr">
+    <div class="card"><h4>O 回答“我要去哪”，KR 回答“怎么知道我到了”</h4><p>这是格鲁夫发明 OKR 时的原话。O 要鼓舞人心、有挑战；KR 必须量化、可衡量，全部达成时 O 应自然实现。</p></div>
+    <div class="card"><h4>少即是多：3 个 O × 3～4 个 KR</h4><p>一个周期（通常一季度）只聚焦最重要的几件事。超过 3 件就记不住、抓不住重点——“三的法则”。</p></div>
+    <div class="card"><h4>OKR 不考核，只管方向</h4><p>KPI 管“检测与控制”，OKR 管“激励与成长”。别把 OKR 和工资挂钩，否则它就变成了另一个 KPI。</p></div>
+    <div class="card"><h4>公开透明 + 定期回顾 是它真正起效的地方</h4><p>写下来、贴出来、讲出来；按日/周/月/季“洋葱会议”跟进，季末打分复盘再迭代。</p></div>
+    <div class="card" style="grid-column:1/-1"><h4>同一套方法可以搬到生活里</h4><p>孝顺父母、维系友情、脱单、经营婚姻、减肥、旅行、带娃学习……全书后半本都是学员的真实生活 OKR。核心动作一样：<b>定一个让人想去做的 O → 拆成可数的 KR → 拆成每周任务 → 公开打卡 → 复盘调整</b>。</p></div>
+  </div>
+</section>
+
+<!-- ============ AUTHOR ============ -->
+<section id="author">
+  <div class="chap">ABOUT</div>
+  <h2>作者与这本书</h2>
+  <div class="grid g2">
+    <div class="card">
+      <div class="k">作者</div>
+      <p><b>姚琼</b>，自称“中国第一位 OKR 布道者”。浙江初中英语老师 → 读研到上海 → 外企培训助理一路做到人力资源副总裁（20 年，最后一家是爱立信）→ 2013 年接触 OKR、去美国学习 → 2016 年近 50 岁辞职创办姚琼工作室，辅导过腾讯、字节跳动、京东等上百家企业。另著有《OKR 使用手册》等。</p>
+    </div>
+    <div class="card">
+      <div class="k">写作动机</div>
+      <p>作者给自己定了一个新 O：<b>“让一亿中国人学会使用 OKR，成为更优秀的自己。”</b>这本书就是这个 O 的一个 KR。她受约翰·杜尔启发——杜尔的生活 OKR 是“提升和女儿们的亲密关系”，KR 是“每周 4 天 6 点下班和女儿吃饭”，最后完成了约 70%。</p>
+    </div>
+  </div>
+  <h3>作者自己 2019 年的 OKR（表 0-1）</h3>
+  <div class="grid g2">
+    <div class="okr red">
+      <div class="o"><small>O1</small>成为中国最具影响力的 OKR 教练</div>
+      <ul>
+        <li><b>KR1</b>2019 年出版《OKR 使用手册》</li>
+        <li><b>KR2</b>每月开设全国公开课，辅导企业过百</li>
+        <li><b>KR3</b>推出 2～3 个音视频系列课程</li>
+        <li><b>KR4</b>通过咨询项目，塑造 5 家 OKR 标杆企业</li>
+      </ul>
+    </div>
+    <div class="okr">
+      <div class="o"><small>O2</small>大力提升自身专业能力</div>
+      <ul>
+        <li><b>KR1</b>浏览全球管理/绩效/OKR 书籍，每月至少 5 本</li>
+        <li><b>KR2</b>参加全球顶尖商学院课程（12 月）</li>
+        <li><b>KR3</b>完成 ICF 国际教练联合会课程（4 月）</li>
+        <li><b>KR4</b>创作一本 OKR 生活绘本</li>
+      </ul>
+    </div>
+  </div>
+  <h3>全书结构</h3>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>章</th><th>主题</th><th>一句话</th></tr></thead>
+    <tbody>
+      <tr><td>第 1 章</td><td>揭开 OKR 的庐山真面目</td><td>来历、与 KPI/SMART/BSC 的区别、谷歌经验、O 与 KR 的写法、怎么落地、谁适合用</td></tr>
+      <tr><td>第 2 章</td><td>团队协作与创新</td><td>目标一致、目标透明、创新突破、远程办公、管理者当教练、从外部激励转向内驱</td></tr>
+      <tr><td>第 3 章</td><td>个人效率与执行力</td><td>O-KR-任务三位一体、时间管理、沟通、在家办公、问责、信心指数、六顶思考帽</td></tr>
+      <tr><td>第 4 章</td><td>职业生涯突破</td><td>迷茫期 / 成长期 / 成熟期 / 转型期，各自该定什么 OKR</td></tr>
+      <tr><td>第 5 章</td><td>幸福生活</td><td>亲情、友情、爱情、婚姻、健康、旅行、工作与生活平衡</td></tr>
+      <tr><td>第 6 章</td><td>孩子教育</td><td>规划未来、发展爱好、学业进步、培养毅力、父母做榜样</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ CHAPTER 1 ============ -->
+<section id="c1">
+  <div class="chap">CHAPTER 1</div>
+  <h2><span class="n">01</span>OKR 是什么</h2>
+  <p class="lead">OKR = Objectives and Key Results，目标与关键结果。一套设定目标、跟踪完成情况的管理工具、方法和思维模式。</p>
+
+  <h3>家谱：从 MBO 到 OKR</h3>
+  <div class="tl">
+    <div class="it"><span class="y">1954</span><b>彼得·德鲁克</b>在《管理的实践》提出 MBO 目标管理——OKR 的“鼻祖”。核心思想：用自我控制代替强制管理。缺点：没有落地工具，容易执行不足、目标无人问津。</div>
+    <div class="it"><span class="y">1970s</span><b>安迪·格鲁夫</b>在英特尔创立 iMBOs，即 OKR 的“祖父”。两个问题定义了 OKR：<i>我要去哪里？</i>——目标；<i>我如何知道能否达到那里？</i>——关键结果。</div>
+    <div class="it"><span class="y">1999</span><b>约翰·杜尔</b>在冰激凌店楼上的会议室给谷歌董事会讲 OKR，“OKR 之父”。谷歌此后每季度全员提交 OKR，杜尔又把它带给 100 多家被投公司。</div>
+    <div class="it"><span class="y">2013</span>谷歌风投合伙人<b>瑞克·克劳</b>把谷歌 OKR 做法分享到网上，OKR 开始被大众知道。</div>
+    <div class="it"><span class="y">2016</span>作者离开爱立信，创办工作室专门在国内推广 OKR。</div>
+  </div>
+
+  <h3>OKR 的“兄弟姐妹”</h3>
+  <div class="grid g3">
+    <div class="card tint-gold"><div class="k">SMART 原则</div><p>乔治·多兰提出，用来<b>写目标</b>的标准：具体、可衡量、可达成、相关、有时限。“一定要瘦下来” → “一个月瘦 10 斤”。</p></div>
+    <div class="card tint-blue"><div class="k">KPI</div><p>关键绩效指标，基于二八法则，把关键事务指标化。形式有比率（合格率）、常数（销售额）、日期（每月 10 日前交文档）。本质是<b>考核工具</b>。</p></div>
+    <div class="card tint-teal"><div class="k">BSC 平衡计分卡</div><p>卡普兰与诺顿，财务/客户/内部运营/学习成长四维度。战略性强但难分解到一线员工。作者建议：<b>公司层用年度 BSC，员工层用季度/月度 OKR</b>。</p></div>
+  </div>
+
+  <h3>OKR vs KPI（表 1-2）</h3>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>区别点</th><th>OKR</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td>实质</td><td class="hl">管理方法</td><td>绩效考核工具</td></tr>
+      <tr><td>管理思维</td><td class="hl">自我管理</td><td>控制管理</td></tr>
+      <tr><td>目标形式</td><td>目标 + 关键结果（过程 + 结果）</td><td>结果</td></tr>
+      <tr><td>目标来源</td><td>聚焦优先和关键事务</td><td>团队或个人“成功”的数字化衡量</td></tr>
+      <tr><td>目标调整</td><td class="hl">动态调整，不断迭代</td><td>相对稳定</td></tr>
+      <tr><td>制定方法</td><td>上下结合，360 度对齐</td><td>自上而下</td></tr>
+      <tr><td>目标呈现</td><td class="hl">公开：目标、进度、结果</td><td>保密，仅责任者与上级可见</td></tr>
+      <tr><td>过程管理</td><td>持续跟进</td><td>考核时关注</td></tr>
+      <tr><td>结果</td><td class="hl">富有挑战，可以容忍失败</td><td>要求 100% 完成甚至超越</td></tr>
+      <tr><td>应用</td><td>评分不直接关联考核与薪酬</td><td>直接关联考核与薪酬</td></tr>
+    </tbody>
+  </table></div>
+  <blockquote>KPI 的作用更多在于“检测”和“控制”，而 OKR 的作用则体现在“激励”和“成长”。用 OKR 进行管理，用 KPI 进行考核。<cite>—— 第 1.2 节</cite></blockquote>
+
+  <h3>谷歌经验：“二要”和“一不要”</h3>
+  <div class="grid g3">
+    <div class="card tint-red"><div class="big">要挑战</div><p>谷歌目标分<b>承诺型</b>（必须达成，如销售额）和<b>挑战型</b>（失败率约 40% 也照样鼓励）。要是一个人所有目标都达成了，说明目标定得不够难。</p></div>
+    <div class="card tint-red"><div class="big">要透明</div><p>上至 CEO 下至员工，OKR 全部公开可查。公开就是承诺，方便监督；还带来被低估的<b>可追踪性</b>，以及组织的敏捷。</p></div>
+    <div class="card"><div class="big">不要考核</div><p>OKR 以“周”为单位跟踪回顾，重过程。千万别用 OKR 考核员工，否则就“落入另一个 KPI 的陷阱”。</p></div>
+  </div>
+
+  <h3>谁适合用？</h3>
+  <p>CEO 用它定公司方向；管理者用它带团队；职场人用它做业绩和职业规划；家长和孩子一起定学习 OKR；夫妻用它经营家庭；学生用它做学习、实习、就业计划；单身的话——<span class="tag red">“找到另一半就是你的 OKR”</span>。</p>
+</section>
+
+<!-- ============ WRITE ============ -->
+<section id="write">
+  <div class="chap">CHAPTER 1 · 1.4–1.6</div>
+  <h2><span class="n">01</span>怎么写 O 和 KR</h2>
+  <div class="story">心理学实验：三组人走向三个村庄。第一组不知目的地，半路就没人愿意走；第二组知道目的地但没有里程碑，靠老手打气；第三组<b>每公里都有一座里程碑</b>，一路欢声笑语很快到达。——O 是村庄，KR 就是里程碑。</div>
+
+  <div class="grid g2">
+    <div class="card tint-red">
+      <div class="k">目标 O · 回答 WHAT</div>
+      <div class="formula"><span>副词</span><i>+</i><span>形容词</span><i>+</i><span>动词</span><i>+</i><span>名词</span></div>
+      <p>特征：鼓舞人心、可达成、本季度可执行、结果可控、对业务有价值。一般不超过两句话。</p>
+      <div class="eg">本季度<b>大力</b>提升客户满意度</div>
+      <p class="muted" style="font-size:14px">✗ 死气沉沉：“完成项目”“保证客户满意度和去年一致”<br>✓ 激发人心：“大力提升品牌的全球影响力”</p>
+    </div>
+    <div class="card tint-teal">
+      <div class="k">关键结果 KR · 回答 HOW</div>
+      <div class="formula"><span>通过（做某件事）</span><i>，</i><span>达成（某个量化成果）</span></div>
+      <p>特征：量化；有挑战、激励人；具体；有过程管理；能推动正确的行为。<b>“量化，量化，再量化”</b>。</p>
+      <div class="eg">通过优化流程，将客户问题一次性解决率提升 50%</div>
+      <p class="muted" style="font-size:14px">✗ 禁用模糊动词：“参与”“帮助”“分析”<br>✓ 激活团队，确保第一季度签订 1000 万美元预定合同</p>
+    </div>
+  </div>
+
+  <div class="story">袋鼠总从笼子里跑出来，管理员把笼子从 2 米加到 3 米再到 10 米。长颈鹿问袋鼠：他们还会继续加高吗？袋鼠说：“很难说，如果他们继续忘记关门的话。”——KR 要抓住真正的关键，而不是在错误的方向上加码。</div>
+
+  <h3>三条原则</h3>
+  <div class="grid g3">
+    <div class="card"><h4>① OKR 一定源于组织战略</h4><p>例：游戏公司战略“拓展海外” → 公司 O“去印度、马来西亚设分支” → HR 的 O“组建当地团队” → 行动“发布 5 个运营岗位”。</p></div>
+    <div class="card"><h4>② 挑战与可控并存</h4><p>“年收益 2000 万到 2200 万”“效率提升 10%”——正常努力就能达到，不算挑战。谷歌“YouTube 日均观看时长 10 亿小时”是 10 倍目标。要学“10 倍速思维”。</p></div>
+    <div class="card"><h4>③ OKR 不是待办清单</h4><p>OKR 不是日常任务或“要做的事”的列表，而是要带来突破的少数关键目标。用指数级 OKR 取代增量型 OKR。</p></div>
+  </div>
+
+  <h3>信心指数：检验你的目标够不够难</h3>
+  <p>给每个 KR 设一个初始信心指数（1～10），表示你觉得自己有多大把握完成。作者建议从 <b>5</b> 起步，<b>5～8</b> 是合理区间。复盘时对照：信心 5 的 KR 最后打 6 分也值得表扬；信心 9 的 KR 只打了 9 分，说明做得不够好。</p>
+  <div class="conf">
+    <b>试一试：拖动设定你的初始信心指数</b>
+    <input type="range" min="1" max="10" value="5" id="confRange">
+    <div class="scale"><span>1 · 几乎不可能</span><span>5 · 五五开</span><span>10 · 稳拿</span></div>
+    <div class="out"><div class="num" id="confNum">5</div><div class="verdict" id="confText"></div></div>
+  </div>
+
+  <h3>落地：自上而下拆解</h3>
+  <div class="pyr">
+    <div style="width:40%;background:var(--ink)">公司年度 OKR</div>
+    <div style="width:62%;background:#5a4a3a">团队季度 OKR<small>承接公司的 O 或 KR</small></div>
+    <div style="width:84%;background:var(--red)">员工季度 OKR<small>承接团队的 O 或 KR，再拆成每周任务</small></div>
+  </div>
+  <div class="tip">
+    <b>OKR 如何分解？</b>
+    <ul>
+      <li>公司的 KR 可以分解为部门的 O</li>
+      <li>部门的 KR 可以分解为员工的 O</li>
+      <li>跨部门协作需求可以成为你的“协作 KR”</li>
+      <li>本人可以主动提出具有挑战性和创新性的 OKR</li>
+    </ul>
+  </div>
+  <p>个人层面的实施只有三件事：<span class="tag teal">计划表</span><span class="tag teal">打卡</span><span class="tag teal">奖励</span>。把要做什么、怎么做、做多少写进表格公开出来，相当于在朋友圈“晒计划求监督”；奖励用“娱乐化、轻物质”的方式。</p>
+</section>
+
+<!-- ============ CHAPTER 2 ============ -->
+<section id="c2">
+  <div class="chap">CHAPTER 2</div>
+  <h2><span class="n">02</span>团队协作与创新</h2>
+  <p class="lead">高效团队要过三关：目标一致 → 目标透明 → 创新突破。再加上远程协同、管理者当教练、激励转向内驱。</p>
+
+  <h3>先把 OKR 挂到使命和愿景上</h3>
+  <div class="grid g4">
+    <div class="card"><div class="k">使命 · 50～100 年</div><p>我是谁，为什么存在。<br><span class="muted">迪士尼：使人们过得快乐</span></p></div>
+    <div class="card"><div class="k">愿景 · 5～20 年</div><p>我要到哪里去。<br><span class="muted">GE：永远做世界第一</span></p></div>
+    <div class="card"><div class="k">战略</div><p>为实现愿景做的全局谋划。</p></div>
+    <div class="card tint-red"><div class="k">OKR</div><p>战略落地的抓手。<br><span class="muted">华为：3 年消费者业务做到 1000 亿美元</span></p></div>
+  </div>
+
+  <h3>第一关 · 目标一致</h3>
+  <div class="grid g2">
+    <div class="card"><h4>自上而下 + 自下而上</h4><p>公司年度 OKR → 季度 → 部门 → 员工；同时员工也可以自己提出 OKR，往上补充。谷歌大约是<b>自上而下 60%、自下而上 40%</b>。目标少而精：最多 5 个 O，每个 O 最多 4 个 KR。</p></div>
+    <div class="card"><h4>上下对齐，左右协同</h4><p>部门目标有三个来源：上级拆下来的；部门之间的协作要求；部门自己提出的创新和挑战型目标。</p></div>
+  </div>
+
+  <h3>第二关 · 目标透明：洋葱会议</h3>
+  <div class="onion-wrap">
+    <div class="onion">
+      <div>半年会</div><div>季度复盘会</div><div>月度总结会</div><div>每周进度会</div><div>每天站会</div>
+    </div>
+    <div>
+      <p>作者课上的招牌方法，像剥洋葱一样一层层深入沟通。<b>每天站会</b>：早上 15 分钟，站在 OKR 看板前轮流汇报。</p>
+      <p><b>共识会</b>在制定阶段开：CEO 和高管讨论目标是否互相支撑、KR 能否支撑 O、够不够有挑战、信心指数多少、部门之间是否协调。</p>
+      <div class="tip"><b>让 OKR 公开透明的五种方式</b>
+        <ul><li><b>贴出来</b>：做一块 OKR 看板</li><li><b>讲出来</b>：在会上公开承诺</li><li><b>发出来</b>：汇总后邮件发全员</li><li><b>用软件</b>：OKR 软件、钉钉、微信群</li><li><b>放内网</b>：公共文件夹可查进度和评分</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>第三关 · 用 OKR 创新</h3>
+  <div class="grid g3">
+    <div class="card tint-plum"><h4>O 的创新</h4><p>从 0 到 1，做以前没做过的事（颠覆性创新）。例：打造爆款产品。</p></div>
+    <div class="card tint-plum"><h4>KR 的创新</h4><p>用以前没用过的方法达成目标（微创新）。作者建议<b>每人每季度设一个创新 OKR</b>。</p></div>
+    <div class="card tint-plum"><h4>OKR 本身就是解题法</h4><p>O = 面临的问题；KR = 设计出来的解决方案。</p></div>
+  </div>
+  <p>书里推荐三个和 OKR 搭配的创新工具：</p>
+  <div class="grid g3">
+    <div class="card"><div class="k">斯坦福设计思维</div><p>同理心 → 定义 → 创想 → 原型 → 测试，以人的需求为中心循环迭代。</p></div>
+    <div class="card"><div class="k">世界咖啡</div><p>4～6 人一桌讨论 OKR 30 分钟 → 组长不动、组员换桌 15 分钟 → 回原桌汇报 → 汇总上墙修改。华为某团队用它收集了 67 条建议。</p></div>
+    <div class="card"><div class="k">思维导图</div><p>层级结构天然对应 O → KR 的隶属关系，适合画全公司 OKR 地图。</p></div>
+  </div>
+
+  <h3>远程办公（2020 年疫情背景）</h3>
+  <p>远程办公的两大挑战：见不到面（协作），看不到人（管控）。作者的观点是：<b>要的不是工作时间，而是精力投入和产出</b>。携程 9 个月实验显示在家工作效率提高 12%。OKR 和远程管理的底层思维一致：信任员工、靠自我管理。具体做法是把洋葱会议搬到线上——在线共识会建立目标感；在线日会/周会建立责任感；在线复盘会让人成长。</p>
+
+  <h3>管理者 = OKR 教练</h3>
+  <div class="grid g2">
+    <div class="card">
+      <div class="k">帮员工定目标的 5 个问题</div>
+      <ol style="margin:4px 0 0;padding-left:20px"><li>你想要什么？</li><li>你怎样得到它？</li><li>为什么它很重要？</li><li>如何知道自己已经实现目标？</li><li>这是你想要的吗？</li></ol>
+    </div>
+    <div class="card">
+      <div class="k">GROW 教练模型</div>
+      <p><b>G</b>oal 目标（设挑战 O）· <b>R</b>eality 现状 · <b>O</b>ptions 选择 · <b>W</b>rap up 行动计划（确定 KR）</p>
+      <p class="muted" style="font-size:14px">格鲁夫：90 分钟的一对一谈话，能影响下属两周的工作效率。</p>
+    </div>
+  </div>
+  <div class="tip"><b>谷歌高效主管的八个习惯</b>
+    <ul><li>当好教练</li><li>避免微观管理、充分授权</li><li>关注成员的成就和心情</li><li>关注生产力、以结果为导向</li><li>做好沟通者</li><li>帮成员发展职业生涯</li><li>为团队设定清晰愿景</li><li>用技术能力给出建议</li></ul>
+  </div>
+
+  <h3>激励：从“要我做”到“我要做”</h3>
+  <p>引用丹尼尔·平克《驱动力》：物质激励会削弱内在动机。按德西和瑞安的“自我决定理论”，OKR 能同时满足三种心理需要：</p>
+  <div class="grid g3">
+    <div class="card tint-teal"><div class="big">自主</div><p>员工自己发起、自己执行目标。</p></div>
+    <div class="card tint-teal"><div class="big">胜任</div><p>不考核，鼓励挑战。</p></div>
+    <div class="card tint-teal"><div class="big">有趣</div><p>做这份工作本身让我快乐。</p></div>
+  </div>
+  <p>再配合“全员认可”：腾讯每人每月 6 枚勋章送给帮助过自己的同事；唯品会 App 上公开发表扬信，都可以兑奖。</p>
+</section>
+
+<!-- ============ CHAPTER 3 ============ -->
+<section id="c3">
+  <div class="chap">CHAPTER 3</div>
+  <h2><span class="n">03</span>个人效率与执行力</h2>
+  <p class="lead">执行力差的四个原因：目标不明确、不懂方法、眼界太窄、怕压力找借口。OKR 正好对着治。</p>
+
+  <h3>三位一体：O → KR → 任务</h3>
+  <p>O 是方向盘，KR 是导航路线，任务是每天开的每一段路。每季度 <b>2～5 个 O</b>，每个 O <b>2～4 个 KR</b>，作者最推荐 <b>3×3 或 3×4</b>。如果 KR 全完成了 O 却没实现，说明 KR 支撑不够或者考虑的维度不全。</p>
+  <div class="okr gold">
+    <div class="o"><small>表 3-1 · 学员示例</small>通过供应链管理创新建立最优库存</div>
+    <ul>
+      <li><b>KR1</b>加大供应商前移库和通用物资批量询价应用范围，通用物资库存总额不超过 500 万元<span class="t">T1 盘点现状 → T2 分析并制订扩大计划 → T3 实施</span></li>
+      <li><b>KR2</b>重新梳理制定仓储物流线三级管理制度<span class="t">T1 调查现状与问题 → T2 制定制度 → T3 组织利益相关方讨论确定</span></li>
+      <li><b>KR3</b>推广物资管理平台，实现全过程信息化<span class="t">T1 确定推广范围 → T2 组织培训 → T3 上线、跟踪并解决问题</span></li>
+    </ul>
+  </div>
+
+  <h3>目标管理 × 时间管理：四象限 + 4D 原则</h3>
+  <div class="quad">
+    <div></div><div class="ax">紧急</div><div class="ax">不紧急</div>
+    <div class="ax v">重要</div>
+    <div class="q q1"><div class="d">Do it now</div><h4>重要又紧急</h4><p>难缠客户、客户投诉——马上做。</p></div>
+    <div class="q q2"><div class="d">Do it later · 用 OKR 规划</div><h4>重要不紧急 ★</h4><p>组织能力、人才培养、品牌、自我提升。<b>OKR 的主战场</b>：提前规划并拆到每天，才能减少救火。</p></div>
+    <div class="ax v">不重要</div>
+    <div class="q q3"><div class="d">Delegate</div><h4>紧急不重要</h4><p>多是满足别人的期望。很快能做完的就顺手做，费时间的就授权给别人。</p></div>
+    <div class="q q4"><div class="d">Don't do it</div><h4>不紧急不重要</h4><p>无关电话、刷手机、闲聊——尽量不做。</p></div>
+  </div>
+  <p class="muted" style="font-size:14px">书中举了李彦宏 2019 年“提升百度组织能力”的 OKR，作为“重要不紧急”事项要提前规划的例子。</p>
+
+  <h3>四个时间工具</h3>
+  <div class="grid g4">
+    <div class="card"><div class="k">二八法则</div><p>精力最好的时段做最重要的事，疲惫时处理邮件等琐事。</p></div>
+    <div class="card"><div class="k">吃青蛙</div><p>每天早上先做最难的事；两件重要的事先做更重要的；重要的事说做就做。</p></div>
+    <div class="card"><div class="k">百灵鸟作息</div><p>早上处理复杂重要的事；午后低谷过后做较重要的事；入夜做社交和例行工作。</p></div>
+    <div class="card"><div class="k">瑞士奶酪</div><p>把大任务切成小块，利用零碎时间“打洞”，不要干等整块时间。</p></div>
+  </div>
+  <div class="story">微软的<b>潘正磊</b>每天被各组同事的问题打断，越忙越学不到东西。老板帮她设了一个“回答问题的时间”，同时定了一个目标“让其他组自力更生”，培训他们自己解决常见问题。她后来做到了微软总部产品部门的总经理。</div>
+  <div class="grid g2">
+    <div class="tip" style="margin:0"><b>拒绝拖延</b><ul><li>把工作写在纸上思考</li><li>开工前备齐材料</li><li>从小事做起，拆成环节</li><li>抑制完美主义，保持快节奏</li></ul></div>
+    <div class="tip" style="margin:0"><b>拒绝干扰</b><ul><li>上司：主动同步你的 OKR 和进度，带着方案去沟通</li><li>同事：设“回答问题时间”，学会拒绝</li><li>下属：留固定时间给他们汇报</li><li>工位挂牌：“忙碌中勿扰 / 欢迎骚扰时间 ×××”</li></ul></div>
+  </div>
+
+  <h3>每周任务清单 & 每周签到</h3>
+  <p>任务清单三件事：<b>分类</b>（重要/紧急程度）、<b>安排</b>（排进具体时段）、<b>总结</b>（完成了哪些、没完成哪些、还剩多少、怎么改进）。</p>
+  <p>德勤的 <b>Weekly Check-in</b>：周一把本周计划发给领导，周五汇报做了什么、完成度多少、遇到什么困难。模板分四格：</p>
+  <div class="grid g4">
+    <div class="card tint-blue"><div class="k">每周更新</div><p>P1 / P2 / P3 优先级事项</p></div>
+    <div class="card tint-blue"><div class="k">季度 OKR</div><p>O1、O2 及各自 KR</p></div>
+    <div class="card tint-blue"><div class="k">月度计划</div><p>P1 / P2 / P3</p></div>
+    <div class="card tint-blue"><div class="k">风险预估</div><p>P1 / P2 / P3</p></div>
+  </div>
+
+  <h3>个人版洋葱会议怎么说</h3>
+  <div class="grid g2">
+    <div class="card"><h4>每日站会 · 3 分钟“三段论”</h4><p>昨天做了什么 → 今天准备做什么 → 遇到哪些障碍、需要什么支持。</p></div>
+    <div class="card"><h4>每周周会 · 4 个问题</h4><p>本周取得了哪些进步？遇到哪些障碍？下周主要计划？要做什么来改善 OKR 结果？</p></div>
+    <div class="card"><h4>月会</h4><p>OKR 进度、成功经验、下月计划、需要的帮助。</p></div>
+    <div class="card"><h4>季度复盘会</h4><p>OKR 打分和回顾，听取同事和领导的建议，制定下一季度目标。</p></div>
+  </div>
+
+  <h3>DISC：协作时按对方风格沟通</h3>
+  <div class="grid g4">
+    <div class="card tint-red"><div class="big">D 支配型</div><p>直截了当、讲效率；汇报时带两个以上方案让他选。</p></div>
+    <div class="card tint-gold"><div class="big">I 影响型</div><p>多赞美、多给表达机会；涉及细节和数字要写下来。</p></div>
+    <div class="card tint-teal"><div class="big">S 稳健型</div><p>一对一沟通，多支持鼓励，问“这件事你怎么看”。</p></div>
+    <div class="card tint-blue"><div class="big">C 谨慎型</div><p>准备充分，信息完整具体，肯定他的精准。</p></div>
+  </div>
+
+  <h3>OKR 问责制：我的 OKR 我做主</h3>
+  <p style="font:700 18px/1.8 var(--serif)">本人制定 → 本人宣布 → 本人执行 → 本人回顾 → 本人打分 → 本人改善</p>
+  <div class="grid g2">
+    <div class="card"><h4>视觉化</h4><p>写在便签上贴在工位、打印挂起来、设成屏保。作者把工作 OKR 和进修 OKR 贴在客厅白墙上，“每天吃饭一抬头就看到自己的承诺”。</p></div>
+    <div class="card"><h4>自我激励</h4><p>勾勒愿景；离开舒适区定挑战目标（作者“每月读 5 本书”只完成了七成，但读书的时间段找到了：在飞机上）；把失败当成长机会；遇到挫折时问自己“为什么没达成，要调整什么”。</p></div>
+  </div>
+  <div class="tip"><b>自我激励清单</b>
+    <ul><li>成功后奖励自己吃冰激凌</li><li>早上对着镜子说“我是最棒的”</li><li>回想自己的巅峰时刻</li><li>告诉好朋友自己的想法</li><li>先开始一小步</li><li><b>完成胜于完美</b></li></ul>
+  </div>
+
+  <h3>在家办公四步法</h3>
+  <div class="steps">
+    <div class="card"><h4>营造环境</h4><p>定好每天的工作时段并告诉家人；选专用空间，开电脑就代表上班（仪式感）；提前一天准备好吃的。“自由不是没有计划。”</p></div>
+    <div class="card"><h4>明确目标</h4><p>OKR 周期缩短到 1～2 个月甚至一周；周计划里每个任务不超过 1 天，并且有明确的完成标志；用 To Do / Doing / Done 看板——“让看板而不是老板来管理我们”。</p></div>
+    <div class="card"><h4>深度工作</h4><p>参考卡尔·纽波特：每次 45 分钟～1.5 小时，开免打扰、邮件自动回复、提前告诉同事。被打断后要 23 分钟才能重新集中注意力。做完放松一下。</p></div>
+    <div class="card"><h4>每周回顾</h4><p>本周感觉如何？是什么让我达成了目标？什么阻碍了我？哪些行动推动了长期目标？下周怎么改进？</p></div>
+  </div>
+
+  <h3>六顶思考帽 × OKR</h3>
+  <p>爱德华·德博诺的思维工具，作者在辅导京东时看到他们把六顶帽子贴在墙上辅助制定 OKR。</p>
+  <div class="hats">
+    <div class="hat" style="--c:#fff"><h4>白帽 · 事实</h4>本月业绩多少？现有和潜在客户各有多少？</div>
+    <div class="hat" style="--c:#3fae6a"><h4>绿帽 · 创造</h4>什么样的创新 KR 能更好地实现目标？</div>
+    <div class="hat" style="--c:#f2c230"><h4>黄帽 · 乐观</h4>完成目标能带来什么好处？</div>
+    <div class="hat" style="--c:#222"><h4>黑帽 · 批判</h4>执行中会有哪些风险？要提前准备哪些预案？</div>
+    <div class="hat" style="--c:#d83b2b"><h4>红帽 · 直觉</h4>这个 OKR 让我兴奋还是压力山大？信心指数多少？</div>
+    <div class="hat" style="--c:#2f6bd0"><h4>蓝帽 · 统筹</h4>当前最重要的任务是什么？我希望取得什么成果？</div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 4 ============ -->
+<section id="c4">
+  <div class="chap">CHAPTER 4</div>
+  <h2><span class="n">04</span>职业生涯突破</h2>
+  <p class="lead">本章聚焦职业生涯的“确立阶段”（25～44 岁）。这个阶段的人大多处在“忙、盲、茫”的状态：每天很忙但业绩平平，不喜欢手上的工作，也不知道往哪个方向走。</p>
+
+  <h3>确立阶段的四个时期（表 4-1）</h3>
+  <div class="stages">
+    <div class="stage"><div class="yr">1～3 年</div><div class="nm">迷茫期</div><div class="st">频繁跳槽 · 无方向，无能力</div><div class="ad">→ 测评职业发展方向</div></div>
+    <div class="stage"><div class="yr">3～5 年</div><div class="nm">成长期</div><div class="st">温水煮青蛙 · 有方向，无能力</div><div class="ad">→ 加强核心能力学习</div></div>
+    <div class="stage"><div class="yr">5～10 年</div><div class="nm">成熟期</div><div class="st">职场天花板 · 有能力，无方向</div><div class="ad">→ 内部转岗 / 外部跳槽</div></div>
+    <div class="stage"><div class="yr">10～20 年</div><div class="nm">转型期</div><div class="st">中年危机 · 有方向，有能力</div><div class="ad">→ 斜杠 / 第二曲线 / 转行 / 做专家</div></div>
+  </div>
+
+  <h3>定职业 OKR 的五个要点</h3>
+  <div class="grid g3">
+    <div class="card"><h4>清晰且有挑战</h4><p>学 Python 逼一把半年能学会，却给自己一年，就没有驱动力。</p></div>
+    <div class="card"><h4>不好高骛远</h4><p>月薪 5000 想一年跳到 3 万不现实。而且涨薪是公司决定的，不在你的可控范围内。</p></div>
+    <div class="card"><h4>战线别太长</h4><p>三年做到中层 → 第一年项目主管 → 第二年项目经理 → 第三年部门经理。</p></div>
+    <div class="card"><h4>KR 支撑 O</h4><p>年度、季度、月度都有 KR；KR 可以调整，<b>O 最好坚持</b>。</p></div>
+    <div class="card"><h4>KR 量化</h4><p>拆到季度、月度计划，再落到每天的行动——“每一天都在为未来那个优秀的自己打工”。</p></div>
+  </div>
+
+  <h3>迷茫期：“蜻蜓点水”的人先认识自己</h3>
+  <p>95 后的第一份工作平均只做 7 个月。作者建议先做测评（霍兰德、MBTI、九型人格）找到方向；如果喜欢所在的行业，<b>在一家公司至少待 3 年</b>。然后从 10 年后的目标往回倒推：</p>
+  <div class="story">小梁英语专业毕业，2 年换了 4 份工作（英语老师 → 教育咨询 → 保险 → 海外销售）。测评显示他偏企业型，语言是优势。目标是 10 年后成为互联网大厂总监、年薪百万，倒推如下：</div>
+  <div class="rev">
+    <div><b>现在</b>进入互联网创业公司做海外业务</div>
+    <div><b>2 年</b>初级专员</div>
+    <div><b>3 年</b>高级专员</div>
+    <div><b>5 年</b>主管 / 产品经理 · 年薪约 50 万</div>
+    <div><b>8 年</b>年薪 80 万</div>
+    <div><b>10 年</b>著名互联网企业总监 · 年薪 100 万</div>
+  </div>
+  <div class="okr blue" style="margin-top:14px">
+    <div class="o"><small>表 4-4</small>一年内跳槽进入互联网创业公司工作</div>
+    <ul>
+      <li><b>KR1</b>每月海外业务销售目标完成度达到 120%，做到本公司最优、行业领先</li>
+      <li><b>KR2</b>每天在“英语流利说”App 练习商务口语 30 分钟</li>
+      <li><b>KR3</b>参加项目管理学习，拿下 PMP 证书</li>
+      <li><b>KR4</b>每季参加行业峰会/展会，认识至少 10 位创业公司的人事负责人</li>
+    </ul>
+  </div>
+
+  <h3>成长期：跳出“温水煮青蛙”</h3>
+  <div class="grid g2">
+    <div class="card"><h4>从舒适区走到学习区</h4><p>舒适区：没有难度；学习区：略高于能力；恐慌区：远超能力，得不到成长。要待在<b>学习区</b>。</p></div>
+    <div class="card"><h4>核心竞争力 = 别人不容易模仿的</h4><p>作者做了 20 年 HR，总结为：学历（工作几年后只是门槛）＋ 技术能力与软能力 ＋ 行业经验 ＋ 项目经验 ＋ 行业证书。英语好不算核心竞争力，能做同传才算。</p></div>
+  </div>
+
+  <h3>成熟期：撞上“职场天花板”</h3>
+  <p>不同类型企业的天花板各不一样：外企高层是外国人；国企论资排辈；民企老板说了算；创业公司不确定性大；互联网公司人才多、岗位少。先用“金色种子”问题或盖洛普优势识别器找到自己的优势，再从三条路里选一条：</p>
+  <div class="grid g3">
+    <div class="card tint-teal"><h4>内部转岗（首选）</h4><p>风险最小，还能成为复合型人才。</p></div>
+    <div class="card tint-gold"><h4>跳槽</h4><p>不要轻易换行业和职业；下一份工作要建立在上一份的积累上；别只看涨薪幅度。</p></div>
+    <div class="card tint-blue"><h4>通过学习转行</h4><p>读 EMBA、考证书。书中例子：技术工程师读 EMBA 后转做私募基金经理。</p></div>
+  </div>
+  <div class="scroll" style="margin-top:14px"><table class="tbl">
+    <thead><tr><th>你现在是</th><th>作者的跳槽建议</th></tr></thead>
+    <tbody>
+      <tr><td>大公司小主管</td><td>去小公司当经理，对方看重你的大公司经验，愿意给高薪</td></tr>
+      <tr><td>大公司部门经理</td><td>去小公司当总监或负责人</td></tr>
+      <tr><td>小公司主管</td><td>去大公司，哪怕做基础工作，简历上要有一段名企经历</td></tr>
+      <tr><td>外企主管</td><td>去民企，前提是你能适应民企的水土</td></tr>
+      <tr><td>私企 ↔ 国企</td><td>想要稳定就转国企；在国企得不到发展又有能力，就去民企</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tip"><b>跳槽准备 8 件事</b><ul><li>拿学历 · 考证书 · 做项目 · 学行业知识</li><li>和猎头保持联系 · 完善领英资料</li><li>发表行业文章 · 参加行业会议拓展人脉</li></ul></div>
+
+  <h3>转型期：度过“中年危机”</h3>
+  <div class="story">《小欢喜》里的方圆，在医药公司做法务，公司被并购后他成了唯一被裁的人，找工作屡屡碰壁，最后白天开网约车、晚上给电视剧配音。</div>
+  <div class="grid g3">
+    <div class="card"><h4>自我教练（5W2H）</h4><p>我真正想要什么？为什么重要？想成为什么样的人？用什么衡量？有哪些阻碍和资源？第一步是什么？谁能支持我？</p></div>
+    <div class="card"><h4>斜杠 · 第二曲线</h4><p>查尔斯·汉迪：<b>第二曲线必须在第一曲线到达巅峰之前就开始</b>。例子是吴军：技术专家 / 高管 / 投资人 / 畅销书作家 / 得到专栏作者。</p></div>
+    <div class="card"><h4>利用优势成为专家</h4><p>两个关键：清晰的目标方向 ＋ 持续不懈的努力。作者举了 50 岁的高中同学，从离婚律师转型为律所投行业务法律负责人。</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="okr plum">
+      <div class="o"><small>表 4-7 · 吴军 2017 · O1</small>完成学习计划</div>
+      <ul><li><b>KR1</b>上两门 Coursera 课，一门法律一门生物</li><li><b>KR2</b>认真读 10 本书，再快速读另外 10 本</li></ul>
+    </div>
+    <div class="okr plum">
+      <div class="o"><small>表 4-7 · 吴军 2017 · O2</small>完成《美国十案》和一本科普书初稿</div>
+      <ul><li><b>KR1</b>10 月把两本书的初稿交给出版社</li><li><b>KR2</b>吸取教训，提前和写推荐序的朋友打招呼</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 5 ============ -->
+<section id="c5">
+  <div class="chap">CHAPTER 5</div>
+  <h2><span class="n">05</span>幸福生活</h2>
+  <p class="lead">20 多岁加班到没有生活，30 多岁背着房贷只想安静待着，40 多岁发现已经不知道怎么跟家人说话。作者说 OKR 能帮人“做正确的事，并且把事情做正确”。幸福从四个维度衡量：<b>家庭、朋友、健康、工作</b>。</p>
+
+  <h3>真实生活 OKR 案例墙</h3>
+  <div class="grid g3">
+    <div class="okr red">
+      <div class="o"><small>5.2 孝顺父母 · 表 5-1</small>让父母心情愉悦</div>
+      <ul>
+        <li><b>KR1</b>每周与父母视频 2 次<span class="t">问身体；问要不要买米油等重物；说说自己在哪出差</span></li>
+        <li><b>KR2</b>每年为父母准备礼物至少 6 次<span class="t">节日、生日、换季；粽子月饼等实用传统物品</span></li>
+        <li><b>KR3</b>每年安排父母体检<span class="t">买套餐、陪去、帮着解读报告</span></li>
+        <li><b>KR4</b>每年带父母旅游 2 次<span class="t">近郊舒适为主，多拍照分享给亲友</span></li>
+      </ul>
+      <div class="src">作者本人的 KR：每天在大家庭群里问候父母早晚安，并报告自己在哪个城市上课。</div>
+    </div>
+    <div class="okr plum">
+      <div class="o"><small>5.4 追求爱情 · 表 5-7</small>找一个与我有着共同经历、共同爱好且有幽默感的人</div>
+      <ul>
+        <li><b>KR1</b>通过主动寻找或亲友介绍，6 个月内找到 3 位符合要求的对象</li>
+        <li><b>KR2</b>先线上沟通，有一定了解后转到线下吃饭、看电影</li>
+        <li><b>KR3</b>了解对方三观和生活习惯，建立彼此舒服的沟通模式，至少维持 3 个月</li>
+      </ul>
+      <div class="src">关键一步：把“彼此聊得来”这种模糊说法写具体，然后公开出去，让亲友都来帮忙。“爱情不能守株待兔。”</div>
+    </div>
+    <div class="okr gold">
+      <div class="o"><small>5.5 经营婚姻 · 表 5-9</small>三年内存钱买公寓房</div>
+      <ul>
+        <li><b>KR1</b>每天记账，避开不必要开销，年存款达到 XX 万元</li>
+        <li><b>KR2</b>了解房价波动，一年内考察 8 次</li>
+        <li><b>KR3</b>一年内投资一个副业，额外收入达到 XX 万元</li>
+      </ul>
+      <div class="src">美好婚姻的三块基石：良好的经济实力、互相包容、爱与良好的沟通。</div>
+    </div>
+    <div class="okr teal">
+      <div class="o"><small>5.5 经营婚姻 · 表 5-10（男学员）</small>提升妻子的幸福感</div>
+      <ul>
+        <li><b>KR1</b>每周做家务至少 5 次</li>
+        <li><b>KR2</b>每天在家陪妻子、孩子至少 2 小时</li>
+        <li><b>KR3</b>一年内陪妻子去市外旅行 2 次以上</li>
+        <li><b>KR4</b>每个月准备一个礼物</li>
+      </ul>
+      <div class="src">洗碗吵架的例子：问题不在谁洗碗，而在体谅。买台洗碗机，两个人都解放了。</div>
+    </div>
+    <div class="okr blue">
+      <div class="o"><small>5.6 健康 · 表 5-11</small>8 月减重 8 斤以上，但体形不松垮</div>
+      <ul>
+        <li><b>KR1</b>三餐按表格搭配蔬菜、肉类、主食，晚 7 点后不进食</li>
+        <li><b>KR2</b>有氧每周 ≥4 次，每次 ≥50 分钟，心率 ≥140</li>
+        <li><b>KR3</b>力量训练每周 ≥3 次，每次 50 分钟</li>
+        <li><b>KR4</b>调节作息，23:30 前睡觉</li>
+      </ul>
+      <div class="src">健身三招：目标量化，比如“一个月减重 5 斤”；公开打卡，找到“听众”；做不到就分析原因、调整 KR，别放弃。</div>
+    </div>
+    <div class="okr">
+      <div class="o"><small>5.7 平衡生活 · 表 5-14（男学员）</small>成为一个有趣的人</div>
+      <ul>
+        <li><b>KR1</b>学拍视频，记录生活</li>
+        <li><b>KR2</b>b-box 有所突破，达到表演级</li>
+        <li><b>KR3</b>作为一个优秀的大厨，每月学 2 道大菜</li>
+        <li><b>KR4</b>减重超过 25 斤，然后保持体重</li>
+      </ul>
+      <div class="src">互联网公司的 90 后员工说“我们没有生活”。作者的回答是：生活本身也值得定一个 OKR。</div>
+    </div>
+  </div>
+
+  <h3>友情：在人生不同阶段保持存在感</h3>
+  <div class="grid g4">
+    <div class="card"><div class="k">大学</div><p>别做室友间的“点赞之交”。主动结交志同道合的朋友、优秀的学长学姐、其他专业的朋友和感兴趣的老师，参加社团和校外活动。</p></div>
+    <div class="card"><div class="k">工作后</div><p>点赞和生日祝福只是机械地维持关系，吃喝玩乐只是消磨时间。友情要靠<b>深度互动</b>：一起健身、读书会、旅行。</p></div>
+    <div class="card"><div class="k">中年</div><p>朋友是倾诉的对象。书里的“女人帮”至少每两周聚一次。</p></div>
+    <div class="card"><div class="k">老年</div><p>作者 80 岁的父亲每天给几个群发早安，打太极、学摄影和国画，还办了外币收藏展。</p></div>
+  </div>
+  <p class="muted" style="font-size:14px">克林顿的做法：每天睡前把当天联系过的人和细节记在卡片上，录入关系数据库。</p>
+
+  <h3>工作与生活平衡：管理四种能量</h3>
+  <p>在 996 的环境里，时间上很难平衡，能平衡的是<b>精力</b>。</p>
+  <div class="grid g4 energy">
+    <div class="card tint-red"><div class="ic">🏃</div><h4>物理能量</h4><p>作息规律、按时吃饭、运动。</p></div>
+    <div class="card tint-blue"><div class="ic">🧠</div><h4>精神能量</h4><p>长时间专注后一定要休息调整。</p></div>
+    <div class="card tint-gold"><div class="ic">💞</div><h4>情感能量</h4><p>来自人际关系；负面情绪会消耗它，可以找朋友逛街聊天来排解。</p></div>
+    <div class="card tint-teal"><div class="ic">🔥</div><h4>激励能量</h4><p>来自做有意义的事。知道意义，再累也能坚持。</p></div>
+  </div>
+  <div class="tip"><b>孝顺父母的十大标准</b>（书中引自美国某网站）<ul><li>提供情感支持 · 保证父母财务稳定 · 经常打电话</li><li>安排家庭聚会 · 安排老人参与社区活动 · 调整家中布置</li><li>评估护理需求 · 呵护健康 · 给老人建回忆录 · 有耐心</li></ul></div>
+</section>
+
+<!-- ============ CHAPTER 6 ============ -->
+<section id="c6">
+  <div class="chap">CHAPTER 6</div>
+  <h2><span class="n">06</span>孩子教育</h2>
+  <p class="lead">孩子聪明但成绩不好，勤奋却不进步，作者认为不是孩子不努力，而是<b>学习力不足</b>（自控力、思维力、阅读力、专注力、作业力）。作者有个读大二的儿子，从小就用 OKR 思维带他。</p>
+
+  <h3>五件事</h3>
+  <div class="grid g2">
+    <div class="card"><h4>① 规划未来</h4><p>从小埋下职业规划的种子：认识自己的兴趣特长、了解各种职业（带孩子去商场、企业、警察局看看）、明白职业无贵贱。书里引用了《人生七年》和马云父亲的例子。</p></div>
+    <div class="card"><h4>② 发展爱好：扬长避短</h4><p>作者反对“短板理论”，认为与其报十几个兴趣班，不如“宁挖一口井，不挖十个坑”。先观察孩子的闪光点，再用 OKR 把爱好练成优势。</p></div>
+    <div class="card"><h4>③ 学业进步</h4><p>按学期、季度、月度定学习 OKR，用家里的白板配合 To Do / Doing / Done 跟踪进度，积累“笑脸”换奖励。</p></div>
+    <div class="card"><h4>④ 培养毅力</h4><p>聚焦一件事 → 刻意练习（找榜样、拆目标、及时反馈）→ 父母协同、量化反馈 → 激励和奖励结合。</p></div>
+    <div class="card" style="grid-column:1/-1"><h4>⑤ OKR“全家桶”：爸妈是最好的榜样</h4><p>父母自己刷着抖音，却要求孩子不玩手机，这行不通。孩子在兴趣班上课时，家长与其玩手机，不如自己也学点东西。<b>“一流的家长做榜样，二流的家长做教练，三流的家长做保姆。”</b></p></div>
+  </div>
+
+  <h3>一个六年级小学生写的 OKR</h3>
+  <div class="story">期中考试后，妈妈（作者在厦门的学员）陪她分析试卷：语文阅读理解失分多，数学计算粗心，英语阅读读不懂。于是她写下了第一个 OKR，并写进了日记。</div>
+  <div class="grid g2">
+    <div class="okr red">
+      <div class="o"><small>O</small>期末语数英三科取得全优成绩</div>
+      <ul>
+        <li><b>KR1</b>语文：每天打卡一篇阅读理解，读完三本书，提高阅读得分</li>
+        <li><b>KR2</b>数学：每天打卡一道计算题，建立错题本，计算准确率提高到 100% 并掌握概念</li>
+        <li><b>KR3</b>英语：每天打卡背五个单词、做一篇阅读理解</li>
+      </ul>
+    </div>
+    <div class="okr teal">
+      <div class="o"><small>表 6-1</small>参加暑期游泳班，学会游泳</div>
+      <ul>
+        <li><b>KR1</b>浅水区一周内学会俯漂，建立漂浮感和平衡感</li>
+        <li><b>KR2</b>半个月内学会蛙泳，掌握划水和蹬夹水</li>
+        <li><b>KR3</b>一个月内掌握换气技巧和节奏</li>
+        <li><b>KR4</b>两个月内进入深水区，掌握踩水和仰漂</li>
+      </ul>
+      <div class="src">“学会游泳”这种模糊的目标，要先定义清楚什么叫“掌握”。</div>
+    </div>
+  </div>
+
+  <h3>学习看板 & 每日三句话</h3>
+  <div class="kanban">
+    <div class="col"><h4>TO DO · 今天要做</h4><div class="note">放学后用 15 分钟计划今天的作业和目标</div></div>
+    <div class="col"><h4>DOING · 本周进行中</h4><div class="note">一直在做、还没完成的作业</div></div>
+    <div class="col"><h4>DONE · 已完成</h4><div class="note">总结昨天学到了什么，巩固一遍</div></div>
+  </div>
+  <p>和孩子一起说：<b>昨天我完成了什么作业？今天我要完成什么作业？我遇到了什么困难，需要什么帮助？</b></p>
+
+  <h3>SAID 反馈法：反馈要具体可数</h3>
+  <p>“你最近表现不错”太笼统。换成可以数的说法：“这个月比上个月多读了 2 本书，读书笔记多写了 2 篇。”</p>
+  <div class="said">
+    <div class="card tint-plum"><div class="L">S</div><h4>Specific 具体</h4><p>用具体的事说明哪些完成了，哪些没完成。</p></div>
+    <div class="card tint-plum"><div class="L">A</div><h4>Ask 提问</h4><p>问开放性问题，一对一双向沟通，让孩子自己总结。</p></div>
+    <div class="card tint-plum"><div class="L">I</div><h4>Impact 影响</h4><p>说明孩子的努力对别人、对班级有什么影响。</p></div>
+    <div class="card tint-plum"><div class="L">D</div><h4>Do 行动</h4><p>哪些行为继续保持，哪些需要改变。</p></div>
+  </div>
+
+  <h3>给孩子的简易复盘打分</h3>
+  <div class="grid g3">
+    <div class="card" style="border-left:6px solid #2fa36b"><div class="big">100 分 · 绿</div><p>KR 全部出色完成，一切顺利。</p></div>
+    <div class="card" style="border-left:6px solid #e8b21c"><div class="big">70 分 · 黄</div><p>没有 100% 完成，但可以接受；进度延后。</p></div>
+    <div class="card" style="border-left:6px solid #d9482b"><div class="big">30 分 · 红</div><p>这个 KR 彻底失败。</p></div>
+  </div>
+  <p>让孩子自己在白板上贴磁性贴标注进度。完成得不好也别批评，用鼓励的方式让孩子自己想办法。奖励分<b>物质</b>（礼物、旅游、学习用品）和<b>非物质</b>（拥抱、表扬、写信、安排娱乐时间）两类。</p>
+
+  <div class="okr gold" style="margin-top:16px">
+    <div class="o"><small>表 6-5 · 家庭 OKR</small>养成读书的好习惯</div>
+    <ul>
+      <li><b>KR1</b>每天亲子阅读 30 分钟，交流心得</li>
+      <li><b>KR2</b>每周举办一次家庭读书会</li>
+      <li><b>KR3</b>全家每月去两次图书馆或绘本馆</li>
+      <li><b>KR4</b>每月与孩子共读一本书，写一篇读书心得</li>
+      <li><b>KR5</b>一年参加一次大型书展</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ HOWTO ============ -->
+<section id="howto">
+  <div class="chap">PUT IT TO WORK</div>
+  <h2>个人上手 7 步</h2>
+  <p class="lead">书里的方法分散在各章，这里按时间顺序整理成一份可以直接照做的流程。</p>
+  <div class="steps">
+    <div class="card"><h4>先问自己 5 个问题</h4><p>我想要什么？为什么重要？怎样得到它？怎么知道达成了？这真是我想要的吗？（第 2.6 节的教练提问，用来问自己同样管用）</p></div>
+    <div class="card"><h4>定 3 个 O（工作、成长、生活各一个最好）</h4><p>套“副词 + 形容词 + 动词 + 名词”的格式，一个季度一个周期。工作的 O 尽量承接上级的 KR，生活的 O 自己定。</p></div>
+    <div class="card"><h4>每个 O 配 3～4 个 KR，并逐条体检</h4><p>套“通过……达成……”的格式，必须有数字或明确的完成标志。给每个 KR 标上初始信心指数（5～8 为宜）。</p></div>
+    <div class="card"><h4>把 KR 拆成每周任务</h4><p>按四象限排优先级，最难的“青蛙”放在精力最好的时段；每个任务不超过 1 天，并且有完成标志。</p></div>
+    <div class="card"><h4>公开出来</h4><p>贴在墙上或工位，设成屏保，告诉家人朋友，在朋友圈打卡。工作上的 OKR 主动同步给上级。</p></div>
+    <div class="card"><h4>每周回顾，每天三句话</h4><p>每天：昨天做了什么 / 今天做什么 / 卡在哪。每周：进步、障碍、下周计划、怎么改善 OKR。KR 不对就改，O 尽量坚持。</p></div>
+    <div class="card"><h4>季末打分复盘，进入下一轮</h4><p>按信心指数对照得分：七成左右就很好。完成后给自己一个轻量奖励。记住“完成胜于完美”。</p></div>
+  </div>
+
+  <h3>KR 体检清单</h3>
+  <div class="card check" id="krcheck">
+    <label><input type="checkbox">有数字，或者有清晰可判定的完成标志</label>
+    <label><input type="checkbox">描述的是结果，不是“参与 / 帮助 / 分析 / 努力”这类动作</label>
+    <label><input type="checkbox">结果主要在我的可控范围内（不是“老板给我涨薪”）</label>
+    <label><input type="checkbox">如果所有 KR 都完成了，O 就自然实现了</label>
+    <label><input type="checkbox">信心指数在 5～8 之间：要跳一跳才够得着</label>
+    <label><input type="checkbox">本周期（季度/月）内能做完</label>
+    <label><input type="checkbox">能拆出下周就能开始的具体任务</label>
+    <div class="score" id="krscore">已勾选 0 / 7</div>
+  </div>
+
+  <h3>空白模板（表 1-5 OKR 目标记录表）</h3>
+  <div class="scroll">
+  <table class="tpl" id="tpl">
+    <thead><tr><th style="width:22%">O</th><th>KR</th><th style="width:12%">信心</th><th style="width:16%">时间</th><th style="width:12%">得分</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="3">O1：</td><td>KR1：</td><td></td><td></td><td></td></tr><tr><td>KR2：</td><td></td><td></td><td></td></tr><tr><td>KR3：</td><td></td><td></td><td></td></tr>
+      <tr><td rowspan="3">O2：</td><td>KR1：</td><td></td><td></td><td></td></tr><tr><td>KR2：</td><td></td><td></td><td></td></tr><tr><td>KR3：</td><td></td><td></td><td></td></tr>
+      <tr><td rowspan="3">O3：</td><td>KR1：</td><td></td><td></td><td></td></tr><tr><td>KR2：</td><td></td><td></td><td></td></tr><tr><td>KR3：</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="muted" style="font-size:13px">模板里的格子可以直接点进去填写，填完用浏览器打印就能贴在墙上。“信心”和“得分”两列是根据第 3.6 节补充的。</p>
+  <button class="btn" onclick="window.print()">打印 / 存为 PDF</button>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section id="quotes">
+  <div class="chap">QUOTES</div>
+  <h2>金句摘录</h2>
+  <div class="quotes">
+    <blockquote>我要去哪里？答案就是目标。我如何知道能否达到那里？答案就是关键结果。<cite>—— 安迪·格鲁夫</cite></blockquote>
+    <blockquote>放大目标的动能，缩小行动的自由，聚焦在单一的方向。<cite>—— 任向晖，推荐序</cite></blockquote>
+    <blockquote>有目标并不难，难的是从众多看似有价值的目标中找到属于你的那一个，并将它牢牢抓在手心。<cite>—— 任向晖，推荐序</cite></blockquote>
+    <blockquote>毁掉一个人最直接的方式，就是让他没有目标地瞎忙。<cite>—— 第 3.1 节</cite></blockquote>
+    <blockquote>让看板而不是老板来管理我们。<cite>—— 第 3.4 节</cite></blockquote>
+    <blockquote>自由不意味着随时开始，而是依据计划行事。只不过计划可以灵活调整。<cite>—— 第 3.4 节</cite></blockquote>
+    <blockquote>第二曲线必须在第一曲线到达巅峰之前就开始。<cite>—— 查尔斯·汉迪，第 4.5 节引</cite></blockquote>
+    <blockquote>你还会继续跳槽，你的每一次跳槽都是在为下一次跳槽积累行业和职业经验。<cite>—— 第 4.4 节</cite></blockquote>
+    <blockquote>没有一场战争是按照计划打的，但没有一场战争可以在没有计划的情况下获胜。<cite>—— 拿破仑，第 3.1 节引</cite></blockquote>
+    <blockquote>一流的家长做榜样，二流的家长做教练，三流的家长做保姆。<cite>—— 第 6.5 节</cite></blockquote>
+    <blockquote>学会 OKR 工作法和生活法，人人都可以成为行走的 OKR！<cite>—— 自序</cite></blockquote>
+  </div>
+</section>
+
+<!-- ============ REVIEW ============ -->
+<section id="review">
+  <div class="chap">VERDICT</div>
+  <h2>我的评价</h2>
+  <div class="grid g2">
+    <div class="card tint-teal">
+      <h4>值得读的地方</h4>
+      <ul class="pros" style="padding-left:22px;margin:6px 0 0">
+        <li><b>第 1 章和第 3 章真有用</b>：O 和 KR 的写作公式、3×3 结构、信心指数、洋葱会议、每周签到模板，拿来就能用。</li>
+        <li><b>案例多</b>：55 张表格，生活类案例在其他 OKR 书里很少见，可以直接照着改。</li>
+        <li><b>门槛低</b>：通俗易懂，适合没接触过 OKR 的人，也适合推荐给家人。</li>
+        <li><b>把“不考核”讲透了</b>：反复强调 OKR 和 KPI 各管各的，这是很多企业落地 OKR 时最容易踩的坑。</li>
+      </ul>
+    </div>
+    <div class="card tint-red">
+      <h4>需要打折扣的地方</h4>
+      <ul class="cons" style="padding-left:22px;margin:6px 0 0">
+        <li><b>后半本重复度高</b>：第 4～6 章基本是同一套模板套到不同场景，配上名人故事加鸡汤。</li>
+        <li><b>很多生活 KR 其实是任务清单</b>：比如“每周做家务 5 次”“每月送礼物”。这和书里自己说的“OKR 不是待办清单”相矛盾，更接近习惯打卡。</li>
+        <li><b>有些引用不严谨</b>：“左脑理性、右脑感性”的分工说是早已被推翻的流行心理学；书里写的苹果“使命”与常见说法对不上；《人生七年》被简化成“穷人的孩子没目标”，也有误读的嫌疑。</li>
+        <li><b>时代感强</b>：996、2020 年疫情在家办公、钉钉飞书免费这些背景，今天读起来有点过时，但方法本身不受影响。</li>
+        <li><b>带货意味</b>：多处推荐作者的《OKR 使用手册》和自己的课程。</li>
+      </ul>
+    </div>
+  </div>
+  <blockquote style="border-left-color:var(--red)">一句话：<b>把它当作一本“OKR 入门 + 生活案例集”来读</b>，重点精读第 1、3 章，后面几章挑和自己相关的场景，抄案例、改成自己的版本就够了。想深入企业落地，再去读约翰·杜尔的《这就是 OKR》。</blockquote>
+</section>
+
+<footer>
+  根据《每个人的OKR》（姚琼 著）全文整理。书中表格内容按原书图片转录，评价部分是笔记作者的个人观点。仅供个人学习使用。
+</footer>
+
+</main>
+</div>
+
+<button class="fab" id="fab" data-open-guide>📘 个人 OKR 指导手册</button>
+
+<!-- ============ GUIDE MODAL ============ -->
+<div class="gmodal" id="guide" role="dialog" aria-modal="true" aria-label="个人 OKR 指导手册">
+  <div class="backdrop" data-close-guide></div>
+  <div class="panel">
+    <div class="gbar">
+      <div class="t">📘 个人 OKR 指导手册<small>工作 · 成长 · 生活，怎么定、怎么跟、怎么平衡</small></div>
+      <button onclick="printGuide()">打印手册</button>
+      <button data-close-guide>关闭 ✕</button>
+    </div>
+    <nav class="gtabs" id="gtabs">
+      <a href="#g-wheel">① 平衡体检</a>
+      <a href="#g-mix">② 3 个 O 怎么配</a>
+      <a href="#g-sheet">③ 填写我的 OKR</a>
+      <a href="#g-rhythm">④ 一个季度的节奏</a>
+      <a href="#g-balance">⑤ 平衡的 8 条规则</a>
+      <a href="#g-weekly">⑥ 每周回顾</a>
+      <a href="#g-pits">⑦ 常见坑</a>
+    </nav>
+    <div class="gbody" id="gbody">
+
+      <div class="gnote">这份手册以书里的方法为骨架：3×3 结构、O 和 KR 的写法、信心指数、四种能量、三的法则、每周回顾、复盘打分。标 <span class="star">☆</span> 的是我补充的实践做法，书里没有直接写。你填的内容只保存在这台电脑的浏览器里。</div>
+
+      <!-- ① wheel -->
+      <section id="g-wheel">
+        <div class="chap">STEP 1</div>
+        <h2>先做一次平衡体检</h2>
+        <p class="lead">书里用家庭、朋友、健康、工作四个维度衡量幸福，第 3、5 章又分别强调了自我提升和“做一个有趣的人”。这里合成 6 个维度，凭直觉给自己现在的状态打分（1～10 分）。</p>
+        <div class="wheel">
+          <svg id="radar" viewBox="0 0 340 340" aria-label="平衡雷达图"></svg>
+          <div>
+            <div id="sliders"></div>
+            <div class="advice" id="advice"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ② mix -->
+      <section id="g-mix">
+        <div class="chap">STEP 2</div>
+        <h2>3 个 O 怎么配</h2>
+        <p class="lead">书里推荐每季度 3 个 O、每个 O 配 3～4 个 KR（三的法则），作者自己也是一个工作 O 加一个进修 O。想兼顾平衡，可以按下面这样分配：</p>
+        <div class="grid g3">
+          <div class="card tint-blue"><div class="k">O1 · 工作</div><div class="big">承接上级</div><p>从上级或团队的 KR 拆下来，主动和上级对齐。放在“重要不紧急”的象限里，别写成日常职责的清单。</p></div>
+          <div class="card tint-gold"><div class="k">O2 · 成长</div><div class="big">投资自己</div><p>能力、证书、读书、第二曲线。书里的例子：作者每月读 5 本书，小梁考 PMP，吴军上 Coursera 课。</p></div>
+          <div class="card tint-teal"><div class="k">O3 · 生活</div><div class="big">选最低分那项</div><p>从体检里分数最低的维度挑一个，<b>只挑一个</b>。家庭、健康、朋友、乐趣轮流来，一个季度专心补一块。<span class="star">☆</span></p></div>
+        </div>
+        <div class="tip"><b>为什么生活 O 一季度只选一个？</b><span class="star">☆</span>
+          <ul><li>书里说 OKR 要聚焦，3 个 O 已经是上限。生活 O 一下子定 4 个，最后往往一个都坚持不下来。</li>
+          <li>其他维度不用定 O，靠<b>习惯底线</b>维持就行，比如每周给父母打一次电话、23:30 前睡觉。底线写进第 ⑤ 部分的“护栏”里。</li></ul></div>
+      </section>
+
+      <!-- ③ worksheet -->
+      <section id="g-sheet">
+        <div class="chap">STEP 3</div>
+        <h2>填写我的季度 OKR <span class="saved" id="savedTip"></span></h2>
+        <p class="lead">O 用“副词 + 形容词 + 动词 + 名词”的格式写，KR 用“通过……达成……”的格式写。“信心”填 5～8 比较合适。“最低版本”是忙不过来时保底要做到的程度。<span class="star">☆</span></p>
+        <div id="sheet"></div>
+        <button class="btn" onclick="fillExample()">填入示例</button>
+        <button class="btn" style="background:#8a90a0" onclick="clearSheet()">清空</button>
+        <p class="muted" style="font-size:13px">示例是我按书中格式写的一份平衡型 OKR，生活 O 参考了表 5-11 的健身 OKR 和表 5-1 的孝顺父母 OKR。</p>
+      </section>
+
+      <!-- ④ rhythm -->
+      <section id="g-rhythm">
+        <div class="chap">STEP 4</div>
+        <h2>一个季度的节奏</h2>
+        <p class="lead">书里的“洋葱会议”是给团队用的，个人也能照这个节奏执行。OKR 能不能成，很大程度看定期回顾有没有坚持下来。</p>
+        <div class="cad">
+          <div class="n"><div class="dot">季初</div><h4>定</h4><p>做平衡体检，写 3×3，给每个 KR 标信心指数，拆出第一周的任务。贴上墙，告诉家人，工作 OKR 发给上级。</p></div>
+          <div class="n"><div class="dot">每天</div><h4>3 分钟</h4><p>三句话：昨天完成了什么，今天做什么，卡在哪里。早上精力最好的时候先“吃青蛙”。</p></div>
+          <div class="n"><div class="dot">每周</div><h4>20 分钟</h4><p>周日晚上做每周回顾（见第 ⑥ 部分），给 4 种能量打分，排好下周任务。可以把计划发给上级（每周签到）。</p></div>
+          <div class="n"><div class="dot">每月</div><h4>调 KR</h4><p>看进度。KR 不管用就换，O 尽量坚持。生活 KR 可以根据当月忙闲调整强度。</p></div>
+          <div class="n"><div class="dot">季末</div><h4>打分复盘</h4><p>每个 KR 按 0～10 分打分，和当初的信心指数对比，七成左右算正常。给自己一个奖励，进入下一轮。</p></div>
+        </div>
+      </section>
+
+      <!-- ⑤ balance -->
+      <section id="g-balance">
+        <div class="chap">STEP 5</div>
+        <h2>平衡的 8 条规则</h2>
+        <p class="lead">书里的核心观点：在 996 的环境里，时间上很难做到平衡，能管的是<b>精力</b>。下面每条都注明了出处。</p>
+        <div class="steps">
+          <div class="card"><h4>把生活 KR 写成日历上的固定时间</h4><p>学约翰·杜尔：O 是“提升和女儿们的亲密关系”，KR 是“每周 4 天 6 点下班和女儿们一起吃饭”。生活 KR 要像会议一样占住日历上的时间，最后他完成了 70%。<span class="muted">—— 自序</span></p></div>
+          <div class="card"><h4>每个生活 KR 都设一个“最低版本”<span class="star">☆</span></h4><p>项目冲刺期间不要直接放弃，降级执行：每周和父母视频 2 次降为 1 次语音，健身每周 4 次降为 2 次。降级还有 70 分，放弃就是 0 分。</p></div>
+          <div class="card"><h4>用 4 种能量做“油表”</h4><p>物理能量（睡眠、吃饭、运动）、精神能量（专注后要休息）、情感能量（人际关系）、激励能量（意义感）。每周打一次分，哪项亮红灯，下周就先补哪项。<span class="muted">—— 5.7</span></p></div>
+          <div class="card"><h4>工作时间做深度工作，换来下班准时</h4><p>每天安排 1～2 段 45～90 分钟的深度工作，开免打扰，设“回答问题时间”。白天效率上去了，晚上才有时间留给生活 KR。<span class="muted">—— 3.2 / 3.4</span></p></div>
+          <div class="card"><h4>生活 O 至少有一个 KR 是结果</h4><p>“每周做家务 5 次”这种打卡式 KR 可以有，但最好再配一个检验效果的结果 KR，比如“季末问伴侣满意度，从 6 分提高到 8 分”。不然 OKR 就变成了待办清单。<span class="star">☆</span></p></div>
+          <div class="card"><h4>和家人一起定，而不是定给家人</h4><p>婚姻 OKR 夫妻一起写（比如书里的三年买房 OKR），亲子用“全家桶”，父母陪孩子一起做。共同的目标才走得远。<span class="muted">—— 5.4 / 5.5 / 6.5</span></p></div>
+          <div class="card"><h4>公开生活 OKR，给自己找“听众”</h4><p>朋友圈打卡、贴在客厅墙上。“有这么多眼睛看着我呢”，比一个人默默坚持更容易。<span class="muted">—— 5.6 / 3.5</span></p></div>
+          <div class="card"><h4>OKR 不考核，也别拿它考核自己</h4><p>没完成就分析原因、调整 KR，不自责。“没有人会拿 OKR 来考核我们”，它的作用是提醒你什么最重要。<span class="muted">—— 5.6</span></p></div>
+        </div>
+      </section>
+
+      <!-- ⑥ weekly -->
+      <section id="g-weekly">
+        <div class="chap">STEP 6</div>
+        <h2>每周回顾（20 分钟）</h2>
+        <div class="grid g2">
+          <div class="card">
+            <div class="k">书中的 6 个回顾问题（3.4）</div>
+            <ol style="margin:4px 0 0;padding-left:20px">
+              <li>我本周总体感觉如何？</li><li>是什么让我在本周达到目标？</li><li>有什么事情阻止我实现目标？</li><li>本周哪些行动推动了长期目标？</li><li>下周我该如何改善？</li><li>下周怎么做才能实现长期目标？</li>
+            </ol>
+          </div>
+          <div class="card">
+            <div class="k">补两个平衡问题 <span class="star">☆</span></div>
+            <ol start="7" style="margin:4px 0 0;padding-left:20px">
+              <li>3 个 O 里，本周哪个被冷落了？下周给它安排一个固定时间。</li>
+              <li>本周有没有哪个生活 KR 只做到了“最低版本”？连续两周都这样，就该调整 KR 了。</li>
+            </ol>
+          </div>
+        </div>
+        <h3>本周能量油表</h3>
+        <div class="echk" id="echk"></div>
+        <div class="echk-out" id="echkOut"></div>
+      </section>
+
+      <!-- ⑦ pitfalls -->
+      <section id="g-pits">
+        <div class="chap">STEP 7</div>
+        <h2>常见坑，以及书里的解法</h2>
+        <div class="pit">
+          <div class="card"><h4>目标太多</h4><p>五六个 O 一起推，最后哪个都没做好。<b>解法：</b>3 个 O，每个 3～4 个 KR，“宁挖一口井，不挖十个坑”。</p></div>
+          <div class="card"><h4>KR 是动作不是结果</h4><p>写成“参与”“学习”“努力”。<b>解法：</b>改成“通过……达成（数字）”，不用模糊的动词。</p></div>
+          <div class="card"><h4>定完就忘</h4><p>季初热血，季末才想起来。<b>解法：</b>贴在墙上、设成屏保，每天三句话，每周回顾。</p></div>
+          <div class="card"><h4>定得太稳</h4><p>每个 KR 都有九成把握，等于换了个名字的 KPI。<b>解法：</b>信心指数控制在 5～8，复盘得 6 分也值得表扬。</p></div>
+          <div class="card"><h4>定得不可控</h4><p>“一年月薪涨到 3 万”取决于公司。<b>解法：</b>改成自己能控制的，比如证书、项目成果、能力。</p></div>
+          <div class="card"><h4>工作把生活全挤掉</h4><p>生活 O 一忙就停。<b>解法：</b>日历上锁定时间，加上最低版本。<span class="star">☆</span></p></div>
+          <div class="card"><h4>KR 不灵也硬撑</h4><p>方法不对还继续加码，就像袋鼠笼子越加越高。<b>解法：</b>每月检查一次，KR 可以改，O 尽量坚持。</p></div>
+          <div class="card"><h4>完美主义</h4><p>没做到满分就觉得失败。<b>解法：</b>“完成胜于完美”，先开始一小步，七成就算好成绩。</p></div>
+        </div>
+        <blockquote>让看板而不是老板来管理我们。<cite>—— 第 3.4 节</cite></blockquote>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// progress bar
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+
+// scrollspy
+const links=[...document.querySelectorAll('nav.toc a')];
+const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('on'));const a=map.get(e.target.id);a&&a.classList.add('on')}})},{rootMargin:'-30% 0px -65% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>io.observe(s));
+
+// confidence slider
+const r=document.getElementById('confRange'),n=document.getElementById('confNum'),t=document.getElementById('confText');
+function conf(){const v=+r.value;n.textContent=v;let c,txt;
+  if(v<=3){c='#d9482b';txt='定得太高了<small>几乎没有把握，容易挫败放弃。可以拆小一点，或者把周期拉长。</small>'}
+  else if(v===4){c='#e0772b';txt='偏激进<small>可以试试，但要想清楚资源和风险（戴黑帽想一想）。</small>'}
+  else if(v<=8){c='#16786f';txt=(v===5?'作者推荐的起点':'合理区间')+'<small>跳一跳才够得着，正是 OKR 想要的挑战感。复盘时得 6 分都值得表扬。</small>'}
+  else{c='#8a90a0';txt='太稳了，像 KPI<small>正常努力就能完成，缺乏挑战。试着把数字往上提，或者换一条更有突破性的路径。</small>'}
+  n.style.color=c;t.innerHTML=txt;t.style.color=c}
+r.addEventListener('input',conf);conf();
+
+// KR checklist
+const boxes=[...document.querySelectorAll('#krcheck input')],sc=document.getElementById('krscore');
+boxes.forEach(b=>b.addEventListener('change',()=>{const k=boxes.filter(x=>x.checked).length;
+  sc.textContent='已勾选 '+k+' / 7'+(k===7?' · 这是一条合格的 KR ✓':k>=5?' · 差一点，再改改':'');}));
+
+// editable template
+document.querySelectorAll('#tpl td').forEach(td=>td.contentEditable='true');
+
+/* ================= guide ================= */
+const LS='okr-guide-v1';
+const store=(()=>{try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return {}}})();
+function save(){try{localStorage.setItem(LS,JSON.stringify(store));const s=document.getElementById('savedTip');s.textContent='✓ 已自动保存';clearTimeout(save.t);save.t=setTimeout(()=>s.textContent='',1500)}catch(e){}}
+
+const guide=document.getElementById('guide'),fab=document.getElementById('fab'),gbody=document.getElementById('gbody');
+function openGuide(){guide.classList.add('open');document.body.classList.add('guide-open');if(location.hash!=='#guide')history.replaceState(null,'','#guide')}
+function closeGuide(){guide.classList.remove('open');document.body.classList.remove('guide-open');if(location.hash==='#guide')history.replaceState(null,'',location.pathname)}
+function printGuide(){openGuide();setTimeout(()=>window.print(),50)}
+document.querySelectorAll('[data-open-guide]').forEach(b=>b.addEventListener('click',openGuide));
+document.querySelectorAll('[data-close-guide]').forEach(b=>b.addEventListener('click',closeGuide));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&guide.classList.contains('open'))closeGuide()});
+if(location.hash==='#guide')openGuide();
+addEventListener('scroll',()=>fab.classList.toggle('show',scrollY>700),{passive:true});
+
+// tabs scrollspy inside modal
+const gtabs=[...document.querySelectorAll('#gtabs a')];
+gtabs.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})}));
+gbody.addEventListener('scroll',()=>{let cur=gtabs[0];gtabs.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(s.offsetTop-gbody.offsetTop-120<=gbody.scrollTop)cur=a});gtabs.forEach(a=>a.classList.toggle('on',a===cur))},{passive:true});
+gtabs[0].classList.add('on');
+
+// ---- balance wheel ----
+const DIMS=[
+  {k:'work',n:'工作事业',c:'#2f5fb3',eg:['O：一年内跳槽进入互联网创业公司工作（表 4-4）','KR：每天练商务口语 30 分钟；拿下 PMP；每季认识 10 位创业公司人事负责人']},
+  {k:'grow',n:'成长学习',c:'#c98a1b',eg:['O：大力提升自身专业能力（作者 2019）','KR：每月读 5 本专业书；完成 ICF 教练课程（4 月）']},
+  {k:'health',n:'身体健康',c:'#16786f',eg:['O：减重 8 斤以上，但体形不松垮（表 5-11）','KR：有氧每周 ≥4 次、每次 ≥50 分钟；力量每周 3 次；23:30 前睡觉']},
+  {k:'family',n:'家庭亲情',c:'#d9482b',eg:['O：让父母心情愉悦（表 5-1）／提升妻子的幸福感（表 5-10）','KR：每周与父母视频 2 次；每年安排父母体检；每天陪家人至少 2 小时']},
+  {k:'friend',n:'朋友社交',c:'#7a3f8f',eg:['书中思路（5.3）：从“点赞之交”变成深度互动','可以这样写 KR：每月组织 1 次读书会或运动局；每季和 3 位老朋友深聊一次；每年和朋友旅行 1 次']},
+  {k:'fun',n:'兴趣乐趣',c:'#5a4a3a',eg:['O：成为一个有趣的人（表 5-14）','KR：学拍视频记录生活；b-box 达到表演级；每月学 2 道大菜']}
+];
+store.wheel=store.wheel||{};
+const sliders=document.getElementById('sliders');
+DIMS.forEach(d=>{const v=store.wheel[d.k]??5;sliders.insertAdjacentHTML('beforeend',`<div class="sl"><span style="color:${d.c};font-weight:700">${d.n}</span><input type="range" min="1" max="10" value="${v}" data-k="${d.k}"><b id="v-${d.k}">${v}</b></div>`)});
+sliders.addEventListener('input',e=>{if(!e.target.dataset.k)return;store.wheel[e.target.dataset.k]=+e.target.value;document.getElementById('v-'+e.target.dataset.k).textContent=e.target.value;drawWheel();save()});
+function drawWheel(){
+  const svg=document.getElementById('radar'),cx=170,cy=170,R=118,N=DIMS.length;
+  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/N;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]};
+  let h='';
+  [2,4,6,8,10].forEach(l=>{h+=`<polygon points="${DIMS.map((_,i)=>pt(i,R*l/10).join(',')).join(' ')}" fill="${l===10?'#fffdf9':'none'}" stroke="#e6e0d4" stroke-width="1"/>`});
+  DIMS.forEach((d,i)=>{const [x,y]=pt(i,R);h+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e6e0d4"/>`;const [lx,ly]=pt(i,R+26);h+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="700" fill="${d.c}">${d.n}</text>`});
+  const vals=DIMS.map(d=>store.wheel[d.k]??5);
+  h+=`<polygon points="${vals.map((v,i)=>pt(i,R*v/10).join(',')).join(' ')}" fill="rgba(217,72,43,.18)" stroke="#d9482b" stroke-width="2.5" stroke-linejoin="round"/>`;
+  vals.forEach((v,i)=>{const [x,y]=pt(i,R*v/10);h+=`<circle cx="${x}" cy="${y}" r="4.5" fill="#fff" stroke="${DIMS[i].c}" stroke-width="2.5"/>`});
+  const avg=(vals.reduce((a,b)=>a+b,0)/N).toFixed(1);
+  h+=`<text x="${cx}" y="${cy-6}" text-anchor="middle" font-size="26" font-weight="800" fill="#1d2330" font-family="Songti SC,serif">${avg}</text><text x="${cx}" y="${cy+14}" text-anchor="middle" font-size="11" fill="#8a90a0">平均分</text>`;
+  svg.innerHTML=h;
+  // advice: lowest life dimension (exclude work & grow which map to O1/O2)
+  const life=DIMS.filter(d=>!['work','grow'].includes(d.k)).map(d=>({...d,v:store.wheel[d.k]??5})).sort((a,b)=>a.v-b.v);
+  const low=life[0],spread=Math.max(...vals)-Math.min(...vals);
+  const wk=store.wheel.work??5;
+  let warn='';
+  if(spread>=5)warn=`<p>最高和最低差了 <b>${spread}</b> 分，失衡比较明显。这个季度的生活 O 值得认真对待。</p>`;
+  if(wk>=8&&low.v<=4)warn+=`<p>工作打了 ${wk} 分，${low.n}只有 ${low.v} 分，正是书里说的“忙、茫、盲”的样子。可以先把生活 KR 写进日历，锁定时间（第 ⑤ 部分第 1 条）。</p>`;
+  document.getElementById('advice').innerHTML=`<div class="card tint-teal"><div class="k">建议本季度的生活 O 从这里入手</div><div class="big" style="color:${low.c}">${low.n} · ${low.v} 分</div><p style="font-size:14.5px;margin-top:8px">${low.eg[0]}<br><span class="muted">${low.eg[1]}</span></p>${warn}<p class="muted" style="font-size:13px">其他维度不用定 O，用习惯底线维持就行。工作和成长对应 O1、O2，所以这里只在生活类维度里挑。</p></div>`;
+}
+drawWheel();
+
+// ---- worksheet ----
+const ROWS=[{k:'o1',t:'O1 · 工作',c:'var(--blue)'},{k:'o2',t:'O2 · 成长',c:'#9a6912'},{k:'o3',t:'O3 · 生活',c:'var(--teal)'}];
+store.sheet=store.sheet||{};
+function renderSheet(){
+  document.getElementById('sheet').innerHTML=ROWS.map(r=>{const s=store.sheet[r.k]||{};
+    return `<div class="ws"><div class="hd" style="background:${r.c}"><span>${r.t}</span><input data-f="${r.k}.o" placeholder="副词 + 形容词 + 动词 + 名词，例如：本季度大幅提升……" value="${esc(s.o)}"></div>
+    <table><thead><tr><th style="width:46%">关键结果 KR（通过……达成……）</th><th style="width:11%">信心</th><th>最低版本 ☆</th><th style="width:11%">季末得分</th></tr></thead><tbody>
+    ${[1,2,3].map(i=>`<tr><td><input data-f="${r.k}.kr${i}" placeholder="KR${i}" value="${esc(s['kr'+i])}"></td>
+      <td><select data-f="${r.k}.c${i}">${['','1','2','3','4','5','6','7','8','9','10'].map(v=>`<option${s['c'+i]===v?' selected':''}>${v}</option>`).join('')}</select></td>
+      <td><input data-f="${r.k}.m${i}" placeholder="忙的时候至少……" value="${esc(s['m'+i])}"></td>
+      <td><input data-f="${r.k}.s${i}" placeholder="0–10" value="${esc(s['s'+i])}"></td></tr>`).join('')}
+    </tbody></table></div>`}).join('');
+}
+function esc(v){return (v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+document.getElementById('sheet').addEventListener('input',e=>{const f=e.target.dataset.f;if(!f)return;const [r,k]=f.split('.');(store.sheet[r]=store.sheet[r]||{})[k]=e.target.value;save()});
+renderSheet();
+function fillExample(){
+  if(Object.values(store.sheet).some(o=>Object.values(o||{}).some(Boolean))&&!confirm('会覆盖你已经填写的内容，确定吗？'))return;
+  store.sheet={
+    o1:{o:'本季度大幅提升所负责项目的交付质量',kr1:'通过建立上线前检查清单，将线上故障数从每月 4 次降到 1 次',c1:'6',m1:'核心模块必须走清单',kr2:'通过每周和关键客户同步一次，客户满意度从 7 分提升到 9 分',c2:'5',m2:'双周同步一次',kr3:'通过沉淀 3 篇排障文档，新人独立处理问题的比例达到 80%',c3:'7',m3:'至少写完 1 篇'},
+    o2:{o:'系统性地提升数据分析能力',kr1:'通过每周 3 小时系统学习，季末完成一门 SQL 进阶课程并通过结课测验',c1:'7',m1:'每周 1 小时',kr2:'通过每月读 2 本专业书，季末输出 6 篇读书笔记',c2:'6',m2:'每月 1 本',kr3:'独立完成 1 个业务分析项目，并在部门内分享',c3:'5',m3:'先完成分析，分享延到下季'},
+    o3:{o:'明显改善身体状态、找回精力',kr1:'通过每周有氧 3 次、每次 40 分钟，季末 5 公里跑进 30 分钟',c1:'5',m1:'每周 2 次快走',kr2:'通过 23:30 前上床，每周至少 5 天睡满 7 小时',c2:'6',m2:'每周至少 3 天',kr3:'通过晚 7 点后不进食，体重从 75kg 降到 71kg',c3:'5',m3:'工作日做到'}
+  };renderSheet();save();
+}
+function clearSheet(){if(!confirm('清空所有填写内容？'))return;store.sheet={};renderSheet();save()}
+
+// ---- energy check ----
+const EN=[{k:'phy',n:'🏃 物理能量',d:'睡眠、饮食、运动'},{k:'men',n:'🧠 精神能量',d:'专注力、脑力'},{k:'emo',n:'💞 情感能量',d:'人际关系、情绪'},{k:'mot',n:'🔥 激励能量',d:'意义感、动力'}];
+store.energy=store.energy||{};
+const echk=document.getElementById('echk');
+function renderEnergy(){
+  echk.innerHTML=EN.map(e=>`<div class="card"><h4>${e.n}</h4><div class="muted" style="font-size:12.5px">${e.d}</div><div class="dots">${[1,2,3,4,5].map(v=>`<button data-e="${e.k}" data-v="${v}" class="${(store.energy[e.k]||0)>=v?'on':''}">${v}</button>`).join('')}</div></div>`).join('');
+  const done=EN.filter(e=>store.energy[e.k]);const out=document.getElementById('echkOut');
+  if(done.length<EN.length){out.innerHTML='<span class="muted">给 4 种能量各打 1～5 分。</span>';return}
+  const low=EN.filter(e=>store.energy[e.k]<=2);
+  const tips={phy:'下周先保证睡眠，把健康 KR 的“最低版本”做到。',men:'下周安排固定的深度工作时间和休息间隔，减少被打断。',emo:'下周约一位朋友或家人好好聊一次（5.3 / 5.7）。',mot:'重新读一遍自己的 O，问问“为什么它对我重要”（5W2H 自我教练）。'};
+  out.innerHTML=low.length?`<span style="color:var(--red)">亮红灯：${low.map(e=>e.n).join('、')}</span><br>${low.map(e=>'· '+tips[e.k]).join('<br>')}`:'<span style="color:var(--teal)">4 种能量都在 3 分以上，状态不错，继续保持 👍</span>';
+}
+echk.addEventListener('click',e=>{const b=e.target.closest('button[data-e]');if(!b)return;store.energy[b.dataset.e]=+b.dataset.v;renderEnergy();save()});
+renderEnergy();
+</script>
+</body>
+</html>

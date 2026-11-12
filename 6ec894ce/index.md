@@ -1,0 +1,21 @@
+# 修复 GitHub Pages 推送后 CNAME 自动重置旧域名的问题
+
+- URL: https://blog.no-claw.com/6ec894ce/
+- 日期: 2026-03-05
+- 分类: 软件
+- 标签: Blog
+
+Hexo 使用Github action 部署后 GitHub Pages 域名自动变成已经取消的实效的域名，而不是预期的 `*.github.io`
+
+排查之后是`source/CNAME` 文件中配置了旧域名 `airag.click`
+
+删除 CNAME 文件后重新部署就可以解决
+
+```bash
+rm source/CNAME
+```
+
+- CNAME 文件会被 Hexo 复制到生成目录，告诉 GitHub Pages 使用自定义域名
+- 删除后将使用默认的 `<username>.github.io` 域名
+
+后面更新—— 还是换Cloudflare Page吧，SEO还好。Git Page还抓不到sitemap？反扒机制？？
